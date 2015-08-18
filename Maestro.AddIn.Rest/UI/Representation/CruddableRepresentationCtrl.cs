@@ -19,17 +19,10 @@
 //
 
 #endregion Disclaimer / License
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Dynamic;
 using Maestro.AddIn.Rest.Model;
+using System;
+using System.Dynamic;
+using System.Windows.Forms;
 
 namespace Maestro.AddIn.Rest.UI.Representation
 {
@@ -107,24 +100,12 @@ namespace Maestro.AddIn.Rest.UI.Representation
                 tabs.TabPages.Add(TAB_DELETE);
         }
 
-        private void chkGet_CheckedChanged(object sender, EventArgs e)
-        {
-            this.CheckStates();
-        }
+        private void chkGet_CheckedChanged(object sender, EventArgs e) => this.CheckStates();
 
-        private void chkPost_CheckedChanged(object sender, EventArgs e)
-        {
-            this.CheckStates();
-        }
+        private void chkPost_CheckedChanged(object sender, EventArgs e) => this.CheckStates();
 
-        private void chkPut_CheckedChanged(object sender, EventArgs e)
-        {
-            this.CheckStates();
-        }
+        private void chkPut_CheckedChanged(object sender, EventArgs e) => this.CheckStates();
 
-        private void chkDelete_CheckedChanged(object sender, EventArgs e)
-        {
-            this.CheckStates();
-        }
+        private void chkDelete_CheckedChanged(object sender, EventArgs e) => this.CheckStates();
     }
 }

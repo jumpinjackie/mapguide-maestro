@@ -23,13 +23,7 @@ using Maestro.AddIn.Rest.Model;
 using Maestro.AddIn.Rest.UI.Representation;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Maestro.AddIn.Rest.UI
@@ -76,10 +70,7 @@ namespace Maestro.AddIn.Rest.UI
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-        }
+        private void btnCancel_Click(object sender, EventArgs e) => this.DialogResult = DialogResult.Cancel;
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -93,7 +84,7 @@ namespace Maestro.AddIn.Rest.UI
             dynamic conf = _ctrl.GetOptions();
             ((IDictionary<string, object>)repr)[_rep] = conf;
 
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

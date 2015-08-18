@@ -23,11 +23,6 @@ using ICSharpCode.Core;
 using Maestro.AddIn.Rest.UI;
 using Maestro.Base;
 using Maestro.Base.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Maestro.AddIn.Rest.Commands
 {

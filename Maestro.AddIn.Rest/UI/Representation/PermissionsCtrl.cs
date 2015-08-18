@@ -19,16 +19,11 @@
 //
 
 #endregion Disclaimer / License
-using System;
+using Maestro.AddIn.Rest.Model;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Maestro.AddIn.Rest.Model;
 
 namespace Maestro.AddIn.Rest.UI.Representation
 {
@@ -39,10 +34,7 @@ namespace Maestro.AddIn.Rest.UI.Representation
             InitializeComponent();
         }
 
-        public void Init(RestSourceContext context)
-        {
-            lstAllowGroups.DataSource = context.GetGroups();
-        }
+        public void Init(RestSourceContext context) => lstAllowGroups.DataSource = context.GetGroups();
 
         public void UpdateConfiguration(dynamic methodConfig)
         {
