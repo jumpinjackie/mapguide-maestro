@@ -27,7 +27,7 @@ using System.Threading;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tile
 {
-    internal class RenderThreads
+    internal class RenderThreads : IDisposable
     {
         private class EventPassing
         {
@@ -59,7 +59,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
         private readonly Queue<EventPassing> _raiseEvents = new Queue<EventPassing>();
         private readonly object _syncLock;
-        private readonly AutoResetEvent _event;
+        private AutoResetEvent _event;
         private readonly TilingRunCollection _parent;
         private readonly int _scale;
         private readonly string _group;
@@ -91,6 +91,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             _cols = cols;
             _rowOffset = rowOffset;
             _colOffset = colOffset;
+        }
+
+        ~RenderThreads()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _event?.Dispose();
+                _event = null;
+            }
         }
 
         public void RunAndWait()

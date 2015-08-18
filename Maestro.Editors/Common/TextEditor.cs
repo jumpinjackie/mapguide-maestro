@@ -60,6 +60,29 @@ namespace Maestro.Editors.Common
             textEditorControl.TextEditorProperties.SupportReadOnlySegments = true;
         }
 
+        ~TextEditorBase()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                textEditorControl?.Dispose();
+                textEditorControl = null;
+
+                textArea?.Dispose();
+                textArea = null;
+            }
+        }
+
         public IndentStyle IndentStyle
         {
             get { return textEditorControl.IndentStyle; }
@@ -245,7 +268,7 @@ namespace Maestro.Editors.Common
     /// </summary>
     internal class MonoCompatibleTextEditor : TextEditorBase
     {
-        private readonly AutoCompletionListBox _autoBox;
+        private AutoCompletionListBox _autoBox;
         private ToolTip _autoCompleteTooltip;
 
         internal MonoCompatibleTextEditor(TextEditorControl textEditor)
@@ -253,6 +276,19 @@ namespace Maestro.Editors.Common
         {
             _autoBox = new AutoCompletionListBox();
             _autoCompleteTooltip = new ToolTip();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _autoBox?.Dispose();
+                _autoBox = null;
+
+                _autoCompleteTooltip?.Dispose();
+                _autoCompleteTooltip = null;
+            }
+            base.Dispose(disposing);
         }
 
         private Control _parent;

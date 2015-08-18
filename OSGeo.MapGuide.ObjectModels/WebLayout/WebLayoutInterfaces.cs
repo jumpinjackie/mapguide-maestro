@@ -917,10 +917,20 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     {
     }
 
+    public class CommandEventArgs : EventArgs
+    {
+        public CommandEventArgs(ICommand cmd)
+        {
+            this.Command = cmd;
+        }
+
+        public ICommand Command { get; }
+    }
+
     /// <summary>
     ///
     /// </summary>
-    public delegate void CommandEventHandler(ICommand cmd);
+    public delegate void CommandEventHandler(object sender, CommandEventArgs args);
 
     /// <summary>
     /// The master list of viewer commands

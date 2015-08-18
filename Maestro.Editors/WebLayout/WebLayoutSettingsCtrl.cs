@@ -177,10 +177,7 @@ namespace Maestro.Editors.WebLayout
             base.UnsubscribeEventHandlers();
         }
 
-        private void chkCustomView_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckInitialView();
-        }
+        private void chkCustomView_CheckedChanged(object sender, EventArgs e) => CheckInitialView();
 
         private void CheckInitialView()
         {
@@ -191,25 +188,13 @@ namespace Maestro.Editors.WebLayout
                 _wl.Map.InitialView = null;
         }
 
-        private void chkTaskPane_CheckedChanged(object sender, EventArgs e)
-        {
-            numTaskPaneWidth.Enabled = chkTaskPane.Checked;
-        }
+        private void chkTaskPane_CheckedChanged(object sender, EventArgs e) => numTaskPaneWidth.Enabled = chkTaskPane.Checked;
 
-        private void CheckLeftPaneVisibility()
-        {
-            numInfoPaneWidth.Enabled = chkLegend.Checked || chkProperties.Checked;
-        }
+        private void CheckLeftPaneVisibility() => numInfoPaneWidth.Enabled = chkLegend.Checked || chkProperties.Checked;
 
-        private void chkLegend_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckLeftPaneVisibility();
-        }
+        private void chkLegend_CheckedChanged(object sender, EventArgs e) => CheckLeftPaneVisibility();
 
-        private void chkProperties_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckLeftPaneVisibility();
-        }
+        private void chkProperties_CheckedChanged(object sender, EventArgs e) => CheckLeftPaneVisibility();
 
         private void cmbHyperlinkTarget_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -231,9 +216,6 @@ namespace Maestro.Editors.WebLayout
             }
         }
 
-        private void btnShowInBrowser_Click(object sender, EventArgs e)
-        {
-            _edsvc.OpenUrl(txtAjaxViewerUrl.Text);
-        }
+        private void btnShowInBrowser_Click(object sender, EventArgs e) => _edsvc.OpenUrl(txtAjaxViewerUrl.Text);
     }
 }

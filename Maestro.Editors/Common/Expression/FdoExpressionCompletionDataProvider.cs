@@ -43,7 +43,7 @@ namespace Maestro.Editors.Common.Expression
     //NOTE/TODO:
     //Auto-completions are currently case-sensitive and will only trigger on the correct case.
 
-    internal class FdoExpressionCompletionDataProvider : ICompletionDataProvider
+    internal class FdoExpressionCompletionDataProvider : ICompletionDataProvider, IDisposable
     {
         private ClassDefinition _klass;
         private IFdoProviderCapabilities _caps;
@@ -60,7 +60,27 @@ namespace Maestro.Editors.Common.Expression
             this.ImageList.Images.Add(Properties.Resources.funnel);
         }
 
-        public System.Windows.Forms.ImageList ImageList { get; }
+        ~FdoExpressionCompletionDataProvider()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                this.ImageList?.Dispose();
+                this.ImageList = null;
+            }
+        }
+
+        public System.Windows.Forms.ImageList ImageList { get; private set; }
 
         public string PreSelection { get; }
 

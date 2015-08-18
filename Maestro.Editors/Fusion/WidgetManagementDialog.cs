@@ -112,7 +112,7 @@ namespace Maestro.Editors.Fusion
                 if (e.PropertyName == nameof(widget.Name))
                     item.Name = widget.Name;
             };
-            widget.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(widgetChange, (eh) => widget.PropertyChanged -= eh);
+            widget.PropertyChanged += WeakEventHandler.Wrap(widgetChange, (eh) => widget.PropertyChanged -= eh);
 
             _items.Add(item);
         }

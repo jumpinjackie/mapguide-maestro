@@ -29,6 +29,7 @@ namespace Maestro.Shared.UI
     /// Helper class to set a control's cursor to busy during the lifetime of this
     /// object
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1063:ImplementIDisposableCorrectly")]
     public class WaitCursor : IDisposable
     {
         private readonly Control _owner;

@@ -169,14 +169,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             base.Close();
         }
 
-        public override void Dispose()
+        protected override void Dispose(bool disposing)
         {
-            if (_resp != null)
+            if (disposing)
             {
-                ((IDisposable)_resp).Dispose();
-                _resp = null;
+                if (_resp != null)
+                {
+                    ((IDisposable)_resp).Dispose();
+                    _resp = null;
+                }
             }
-            base.Dispose();
+            base.Dispose(disposing);
         }
 
         public override PropertyValueType GetPropertyType(string name)

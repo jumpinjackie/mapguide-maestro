@@ -136,7 +136,7 @@ namespace MgCooker
 
             if (this.InvokeRequired)
             {
-                ProgressCallback action = DisplayProgress;
+                TileProgressEventHandler action = DisplayProgress;
                 this.Invoke(action, new object[] { sender, args });
             }
             else

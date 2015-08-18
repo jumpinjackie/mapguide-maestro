@@ -30,11 +30,12 @@ namespace Maestro.Editors.Common
     /// A combo box customised for selection of colors
     /// </summary>
     [Serializable]
-    public class ColorComboBox
-        : CustomCombo
+    public class ColorComboBox : CustomCombo
     {
         private bool m_allowTransparent = false;
+        [NonSerialized]
         private SpecialCell m_currentColor;
+        [NonSerialized]
         private ColorDialog m_colorPicker;
         private static ColorDialog m_sharedColorPicker;
 

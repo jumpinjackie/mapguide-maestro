@@ -67,34 +67,37 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             }
         }
 
-        public override void Dispose()
+        protected override void Dispose(bool disposing)
         {
-            Close();
-            if (_agfRw != null)
+            if (disposing)
             {
-                try
+                Close();
+                if (_agfRw != null)
                 {
-                    _agfRw.Dispose();
+                    try
+                    {
+                        _agfRw.Dispose();
+                    }
+                    catch (MgException ex)
+                    {
+                        ex.Dispose();
+                    }
+                    _agfRw = null;
                 }
-                catch (MgException ex)
+                if (_wktRw != null)
                 {
-                    ex.Dispose();
+                    try
+                    {
+                        _wktRw.Dispose();
+                    }
+                    catch (MgException ex)
+                    {
+                        ex.Dispose();
+                    }
+                    _wktRw = null;
                 }
-                _agfRw = null;
             }
-            if (_wktRw != null)
-            {
-                try
-                {
-                    _wktRw.Dispose();
-                }
-                catch (MgException ex)
-                {
-                    ex.Dispose();
-                }
-                _wktRw = null;
-            }
-            base.Dispose();
+            base.Dispose(disposing);
         }
 
         public override ReaderType ReaderType => ReaderType.Data;

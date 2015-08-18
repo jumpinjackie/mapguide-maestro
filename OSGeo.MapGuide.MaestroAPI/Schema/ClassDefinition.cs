@@ -35,7 +35,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     /// 
     /// Class Definitions belong to a Feature Schema
     /// </summary>
-    public class ClassDefinition : SchemaElement, IFdoSerializable
+    public sealed class ClassDefinition : SchemaElement, IFdoSerializable
     {
         private List<DataPropertyDefinition> _identity;
 

@@ -22,10 +22,12 @@
 
 using Maestro.Editors.Common;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;
+using System.Collections.Specialized;
 
 namespace Maestro.Editors.SymbolDefinition
 {
@@ -41,15 +43,9 @@ namespace Maestro.Editors.SymbolDefinition
             this.PreviewLocale = "en"; //NOXLATE
         }
 
-        public IServerConnection CurrentConnection
-        {
-            get { return _inner.CurrentConnection; }
-        }
+        public IServerConnection CurrentConnection => _inner.CurrentConnection;
 
-        public string SessionID
-        {
-            get { return _inner.SessionID; }
-        }
+        public string SessionID => _inner.SessionID;
 
         public string SuggestedSaveFolder
         {
@@ -63,60 +59,31 @@ namespace Maestro.Editors.SymbolDefinition
             }
         }
 
-        public void RegisterCustomNotifier(INotifyResourceChanged irc)
-        {
-            _inner.RegisterCustomNotifier(irc);
-        }
+        public void RegisterCustomNotifier(INotifyResourceChanged irc) => _inner.RegisterCustomNotifier(irc);
 
-        public bool IsUpgradeAvailable
-        {
-            get { return false; }
-        }
+        public bool IsUpgradeAvailable => false;
 
-        public string SelectAnyResource()
-        {
-            return _inner.SelectAnyResource();
-        }
+        public string SelectAnyResource() => _inner.SelectAnyResource();
 
-        public string SelectResource(string resType)
-        {
-            return _inner.SelectResource(resType);
-        }
+        public string SelectResource(string resType) => _inner.SelectResource(resType);
 
-        public string SelectFolder()
-        {
-            return _inner.SelectFolder();
-        }
+        public string SelectFolder() => _inner.SelectFolder();
 
         public void UpdateResourceContent(string xml)
         {
             throw new NotSupportedException();
         }
 
-        public string SelectUnmanagedData(string startPath, System.Collections.Specialized.NameValueCollection fileTypes)
-        {
-            return _inner.SelectUnmanagedData(startPath, fileTypes);
-        }
+        public string SelectUnmanagedData(string startPath, NameValueCollection fileTypes) => _inner.SelectUnmanagedData(startPath, fileTypes);
 
-        public string EditExpression(string currentExpr, OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition schema, string providerName, string featureSourceId, ExpressionEditorMode mode, bool attachStylizationFunctions)
-        {
-            return _inner.EditExpression(currentExpr, schema, providerName, featureSourceId, mode, attachStylizationFunctions);
-        }
+        public string EditExpression(string currentExpr, ClassDefinition schema, string providerName, string featureSourceId, ExpressionEditorMode mode, bool attachStylizationFunctions)
+            => _inner.EditExpression(currentExpr, schema, providerName, featureSourceId, mode, attachStylizationFunctions);
 
-        public string ResourceID
-        {
-            get { return _inner.ResourceID; }
-        }
+        public string ResourceID => _inner.ResourceID;
 
-        public string EditedResourceID
-        {
-            get { return _inner.EditedResourceID; }
-        }
+        public string EditedResourceID => _inner.EditedResourceID;
 
-        public IResource GetEditedResource()
-        {
-            return _symDef;
-        }
+        public IResource GetEditedResource() => _symDef;
 
         public event System.ComponentModel.CancelEventHandler BeforeSave;
 
@@ -145,22 +112,13 @@ namespace Maestro.Editors.SymbolDefinition
             get { throw new NotImplementedException(); }
         }
 
-        public void MarkDirty()
-        {
-            _inner.MarkDirty();
-        }
+        public void MarkDirty() => _inner.MarkDirty();
 
         public event EventHandler DirtyStateChanged;
 
-        public string GetCoordinateSystem()
-        {
-            return _inner.GetCoordinateSystem();
-        }
+        public string GetCoordinateSystem() => _inner.GetCoordinateSystem();
 
-        public void HasChanged()
-        {
-            _inner.HasChanged();
-        }
+        public void HasChanged() => _inner.HasChanged();
 
         public void RequestRefresh()
         {
@@ -174,47 +132,24 @@ namespace Maestro.Editors.SymbolDefinition
 
         public event EventHandler Saved;
 
-        public void SyncSessionCopy()
-        {
-            _inner.SyncSessionCopy();
-        }
+        public void SyncSessionCopy() => _inner.SyncSessionCopy();
 
-        public Version SiteVersion
-        {
-            get { return _inner.SiteVersion; }
-        }
+        public Version SiteVersion => _inner.SiteVersion;
 
-        public void OpenResource(string resourceId)
-        {
-            _inner.OpenResource(resourceId);
-        }
+        public void OpenResource(string resourceId) => _inner.OpenResource(resourceId);
 
-        public int[] SupportedServiceTypes
-        {
-            get { return _inner.SupportedServiceTypes; }
-        }
+        public int[] SupportedServiceTypes => _inner.SupportedServiceTypes;
 
-        public IService GetService(int serviceType)
-        {
-            return _inner.GetService(serviceType);
-        }
+        public IService GetService(int serviceType) => _inner.GetService(serviceType);
 
-        public object GetCustomProperty(string name)
-        {
-            return _inner.GetCustomProperty(name);
-        }
+        public object GetCustomProperty(string name) => _inner.GetCustomProperty(name);
 
         public void RunProcess(string processName, params string[] args)
         {
             throw new NotImplementedException();
         }
 
-        public void PrePreviewProcess()
-        {
-            var handler = this.BeforePreview;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
+        public void PrePreviewProcess() => this.BeforePreview?.Invoke(this, EventArgs.Empty);
 
         public event EventHandler BeforePreview;
 

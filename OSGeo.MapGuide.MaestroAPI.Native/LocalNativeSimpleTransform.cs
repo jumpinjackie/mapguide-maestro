@@ -49,11 +49,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             ty = coord.Y;
         }
 
+        ~LocalNativeSimpleTransform()
+        {
+            Dispose(false);
+        }
+
         public void Dispose()
         {
-            if (_trans != null)
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                _trans.Dispose();
+                _trans?.Dispose();
                 _trans = null;
             }
         }

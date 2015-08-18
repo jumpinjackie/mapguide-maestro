@@ -884,12 +884,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
         public bool SupportsResourcePreviews => false;
 
-        public override void Dispose()
+        protected override void Dispose(bool disposing)
         {
-            if (m_con != null)
+            if (disposing)
             {
-                m_con.Dispose();
-                m_con = null;
+                if (m_con != null)
+                {
+                    m_con.Dispose();
+                    m_con = null;
+                }
             }
         }
 

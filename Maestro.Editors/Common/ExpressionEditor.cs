@@ -63,6 +63,15 @@ namespace Maestro.Editors.Common
             _editor.KeyPress += OnEditorKeyPress;
             _editor.DialogKeyPress += OnEditorDialogKeyPress;
             _contextualBuffer = new StringBuilder();
+
+            this.Disposed += OnDisposed;
+        }
+
+        private void OnDisposed(object sender, EventArgs e)
+        {
+            this.Disposed -= OnDisposed;
+            _editor?.Dispose();
+            _editor = null;
         }
 
         /// <summary>
@@ -326,8 +335,10 @@ namespace Maestro.Editors.Common
 
         private void ShowAutoComplete(char ch)
         {
-            var provider = new FdoExpressionCompletionDataProvider(_cls, _caps);
-            _editor.ShowCompletionWindow(provider, ch);
+            using (var provider = new FdoExpressionCompletionDataProvider(_cls, _caps))
+            {
+                _editor.ShowCompletionWindow(provider, ch);
+            }
         }
 
         private void ColumnName_Click(object sender, EventArgs e)

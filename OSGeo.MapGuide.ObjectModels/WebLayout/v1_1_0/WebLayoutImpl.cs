@@ -905,9 +905,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
                 OnPropertyChanged(nameof(CommandSet));
                 if (cmd is IInvokeUrlCommand || cmd is IInvokeScriptCommand || cmd is ISearchCommand)
                 {
-                    var handler = this.CustomCommandAdded;
-                    if (handler != null)
-                        handler(cmd);
+                    this.CustomCommandAdded?.Invoke(this, new CommandEventArgs(cmd));
                 }
             }
         }
@@ -921,9 +919,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
                 OnPropertyChanged(nameof(CommandSet));
                 if (cmd is IInvokeUrlCommand || cmd is IInvokeScriptCommand || cmd is ISearchCommand)
                 {
-                    var handler = this.CustomCommandRemoved;
-                    if (handler != null)
-                        handler(cmd);
+                    this.CustomCommandRemoved?.Invoke(this, new CommandEventArgs(cmd));
                 }
             }
         }

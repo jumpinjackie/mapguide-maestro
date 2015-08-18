@@ -64,7 +64,7 @@ namespace Maestro.Base.UI
 
             _omgr = omgr;
             _viewMgr = viewMgr;
-            _viewMgr.ViewActivated += WeakEventHandler.Wrap<Maestro.Shared.UI.ViewEventHandler>(OnViewActivated, (eh) => _viewMgr.ViewActivated -= eh);
+            _viewMgr.ViewActivated += WeakEventHandler.Wrap<ViewEventHandler>(OnViewActivated, (eh) => _viewMgr.ViewActivated -= eh);
 
             _siteExp = siteExp;
             _siteExp.ItemsSelected += WeakEventHandler.Wrap<RepositoryItemEventHandler>(OnSiteExplorerItemsSelected, (eh) => _siteExp.ItemsSelected -= eh);

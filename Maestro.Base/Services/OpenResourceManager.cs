@@ -211,7 +211,7 @@ namespace Maestro.Base.Services
                         }
                     }
                 };
-                ed.ViewContentClosing += WeakEventHandler.Wrap<CancelEventHandler>(vcClosing, (eh) => ed.ViewContentClosing -= eh);
+                ed.ViewContentClosing += WeakEventHandler.Wrap(vcClosing, (eh) => ed.ViewContentClosing -= eh);
                 EventHandler vcClosed = (sender, e) =>
                 {
                     //Recompute the resource key as that may have changed by a save as operation

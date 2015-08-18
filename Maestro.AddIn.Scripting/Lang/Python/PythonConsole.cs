@@ -76,7 +76,32 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             textEditor.IndentStyle = IndentStyle.None;
         }
 
-        public void Dispose() => disposedEvent.Set();
+        ~PythonConsole()
+        {
+            Dispose(false);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                disposedEvent.Set();
+                disposedEvent?.Dispose();
+                disposedEvent = null;
+
+                inputLineReceivedEvent?.Dispose();
+                inputLineReceivedEvent = null;
+
+                lineReceivedEvent?.Dispose();
+                lineReceivedEvent = null;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
         public TextWriter Output
         {

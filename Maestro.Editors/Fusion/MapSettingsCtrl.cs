@@ -87,7 +87,7 @@ namespace Maestro.Editors.Fusion
                 if (e.PropertyName == nameof(group.id))
                     item.Text = group.id;
             };
-            group.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(groupChange, (eh) => group.PropertyChanged -= eh);
+            group.PropertyChanged += WeakEventHandler.Wrap(groupChange, (eh) => group.PropertyChanged -= eh);
             lstMaps.Items.Add(item);
         }
 

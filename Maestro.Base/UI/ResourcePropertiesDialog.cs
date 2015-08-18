@@ -112,6 +112,14 @@ namespace Maestro.Base.UI
             _siteExp = siteExp;
 
             InReferenceList.SmallImageList = OutReferenceList.SmallImageList = icons.SmallImageList;
+            this.Disposed += OnDisposed;
+        }
+
+        private void OnDisposed(object sender, EventArgs e)
+        {
+            this.Disposed -= OnDisposed;
+            m_icons?.Dispose();
+            m_icons = null;
         }
 
         /// <summary>

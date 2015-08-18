@@ -20,9 +20,8 @@
 
 #endregion Disclaimer / License
 
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels;
+using System;
 using System.Windows.Forms;
 
 namespace Maestro.Base.UI
@@ -30,7 +29,7 @@ namespace Maestro.Base.UI
     /// <summary>
     /// Defines a cache of icons for resource types
     /// </summary>
-    public interface IResourceIconCache
+    public interface IResourceIconCache : IDisposable
     {
         /// <summary>
         /// Gets the small resource icon list
@@ -63,12 +62,34 @@ namespace Maestro.Base.UI
     public class ResourceIconCache : IResourceIconCache
     {
         private ImageList _small;
-        private readonly ImageList _large;
+        private ImageList _large;
 
         private ResourceIconCache()
         {
             _small = new ImageList();
             _large = new ImageList();
+        }
+
+        ~ResourceIconCache()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _small?.Dispose();
+                _small = null;
+                _large?.Dispose();
+                _large = null;
+            }
         }
 
         private const string UNKNOWN = nameof(UNKNOWN);

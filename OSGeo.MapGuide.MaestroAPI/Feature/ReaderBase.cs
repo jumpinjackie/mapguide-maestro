@@ -31,6 +31,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public abstract class ReaderBase : IReader
     {
+        ~ReaderBase()
+        {
+            Dispose(false);
+        }
+
         /// <summary>
         /// Gets the current iterated record
         /// </summary>
@@ -86,8 +91,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        public virtual void Dispose()
+        public void Dispose()
         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+
         }
 
         /// <summary>

@@ -45,10 +45,7 @@ namespace Maestro.Editors.WebLayout
             set { trvMenuItems.Model = value; }
         }
 
-        public override void Bind(IEditorService service)
-        {
-            service.RegisterCustomNotifier(this);
-        }
+        public override void Bind(IEditorService service) => service.RegisterCustomNotifier(this);
 
         protected override void UnsubscribeEventHandlers()
         {
@@ -84,18 +81,15 @@ namespace Maestro.Editors.WebLayout
             RefreshModel();
         }
 
-        private void OnCustomCommandRemoved(ICommand cmd)
+        private void OnCustomCommandRemoved(object sender, CommandEventArgs args)
         {
-            RemoveCustomCommandEntry(mnuCustom, cmd);
+            RemoveCustomCommandEntry(mnuCustom, args.Command);
 
             //Might have invalidated (and removed) some menu items, so refresh
             RefreshModel();
         }
 
-        private void OnCustomCommandAdded(ICommand cmd)
-        {
-            AddCustomCommandEntry(mnuCustom, cmd);
-        }
+        private void OnCustomCommandAdded(object sender, CommandEventArgs args) => AddCustomCommandEntry(mnuCustom, args.Command);
 
         private void InitCustomCommandMenu()
         {
@@ -156,7 +150,7 @@ namespace Maestro.Editors.WebLayout
                     mi.Text = cmd.Name;
             };
             _customCommandListeners[mi] = handler;
-            cmd.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(handler, (eh) => cmd.PropertyChanged -= eh);
+            cmd.PropertyChanged += WeakEventHandler.Wrap(handler, (eh) => cmd.PropertyChanged -= eh);
             mi.Tag = cmd;
             tsi.DropDown.Items.Add(mi);
         }
@@ -211,7 +205,7 @@ namespace Maestro.Editors.WebLayout
                         trvMenuItems.Refresh();
                     }
                 };
-                cmd.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(handler, (eh) => cmd.PropertyChanged -= eh);
+                cmd.PropertyChanged += WeakEventHandler.Wrap(handler, (eh) => cmd.PropertyChanged -= eh);
 
                 if (trvMenuItems.SelectedNode != null)
                 {
@@ -292,10 +286,7 @@ namespace Maestro.Editors.WebLayout
             }
         }
 
-        private void trvMenuItems_SelectionChanged(object sender, EventArgs e)
-        {
-            EvaluateCommandState();
-        }
+        private void trvMenuItems_SelectionChanged(object sender, EventArgs e) => EvaluateCommandState();
 
         private void EvaluateCommandState()
         {
@@ -394,9 +385,7 @@ namespace Maestro.Editors.WebLayout
         }
 
         private void trvMenuItems_ItemDrag(object sender, ItemDragEventArgs e)
-        {
-            trvMenuItems.DoDragDrop(((TreeNodeAdv[])e.Item)[0], DragDropEffects.All);
-        }
+            => trvMenuItems.DoDragDrop(((TreeNodeAdv[])e.Item)[0], DragDropEffects.All);
 
         private void trvMenuItems_DragDrop(object sender, DragEventArgs e)
         {

@@ -1563,12 +1563,15 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         #region IDisposable Members
 
-        public override void Dispose()
+        protected override void Dispose(bool disposing)
         {
-            lock (SyncRoot)
+            if (disposing)
             {
-                if (m_featureProviders != null)
-                    m_featureProviders = null;
+                lock (SyncRoot)
+                {
+                    if (m_featureProviders != null)
+                        m_featureProviders = null;
+                }
             }
         }
 

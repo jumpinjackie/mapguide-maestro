@@ -3,16 +3,15 @@ using Maestro.Shared.UI;
 using Microsoft.Scripting.Hosting.Shell;
 using System;
 using System.Windows.Forms;
+using ICSharpCode.Core;
+using Maestro.AddIn.Scripting.Lang.Python;
 
 namespace Maestro.AddIn.Scripting.UI
 {
-    using ICSharpCode.Core;
-    using Lang.Python;
-
     internal partial class IronPythonRepl : SingletonViewContent
     {
         private ITextEditor textEditor;
-        private readonly PythonConsoleHost host;
+        private PythonConsoleHost host;
 
         public IronPythonRepl()
         {
@@ -42,11 +41,8 @@ namespace Maestro.AddIn.Scripting.UI
 
         public void Shutdown()
         {
-            if (host != null)
-            {
-                Console.WriteLine("Terminate python host");
-                host.Terminate(0);
-            }
+            Console.WriteLine("Terminate python host");
+            host?.Terminate(0);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -57,26 +53,17 @@ namespace Maestro.AddIn.Scripting.UI
 
         private void OnDisposed(object sender, EventArgs e)
         {
-            if (host != null)
-            {
-                Console.WriteLine("Dispose python host");
-                host.Dispose();
-            }
+            Console.WriteLine("Dispose python host");
+            host?.Dispose();
+            host = null;
+
+            textEditor?.Dispose();
+            textEditor = null;
         }
 
-        public override ViewRegion DefaultRegion
-        {
-            get
-            {
-                return ViewRegion.Bottom | ViewRegion.Floating;
-            }
-        }
+        public override ViewRegion DefaultRegion => ViewRegion.Bottom | ViewRegion.Floating;
 
-        private static void NewPrompt(IConsole con)
-        {
-            //HACK: Should be a way to get this from IronPython
-            con.Write(">>> ", Microsoft.Scripting.Hosting.Shell.Style.Prompt);
-        }
+        private static void NewPrompt(IConsole con) => con.Write(">>> ", Style.Prompt); //HACK: Should be a way to get this from IronPython
 
         private void btnClear_Click(object sender, EventArgs e)
         {

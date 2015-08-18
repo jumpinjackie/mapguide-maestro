@@ -28,8 +28,7 @@ namespace Maestro.Login
     /// <summary>
     /// A class that wraps the wait cursor into a disposable class, for use with deterministic disposal
     /// </summary>
-    public class WaitCursor
-        : IDisposable
+    public class WaitCursor : IDisposable
     {
         private Form m_owner = null;
         private readonly Cursor m_oldcursor;
@@ -52,16 +51,30 @@ namespace Maestro.Login
 
         #region IDisposable Members
 
+        ~WaitCursor()
+        {
+            Dispose(false);
+        }
+        
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         public void Dispose()
         {
-            //If we are the the outermost WaitCursor, reset the cursor
-            if (m_owner != null && m_owner.Cursor == Cursors.WaitCursor)
+            Dispose(false);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                m_owner.Cursor = m_oldcursor;
-                m_owner = null;
+                //If we are the the outermost WaitCursor, reset the cursor
+                if (m_owner != null && m_owner.Cursor == Cursors.WaitCursor)
+                {
+                    m_owner.Cursor = m_oldcursor;
+                    m_owner = null;
+                }
             }
         }
 

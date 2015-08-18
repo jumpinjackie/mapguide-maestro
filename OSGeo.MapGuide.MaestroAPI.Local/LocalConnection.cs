@@ -128,35 +128,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         private MgdRenderingService _renderSvc;
         private MgdTileService _tileSvc;
 
-        public override void Dispose()
+        protected override void Dispose(bool disposing)
         {
-            if (_resSvc != null)
+            if (disposing)
             {
-                _resSvc.Dispose();
+                _resSvc?.Dispose();
                 _resSvc = null;
-            }
 
-            if (_featSvc != null)
-            {
-                _featSvc.Dispose();
+                _featSvc?.Dispose();
                 _featSvc = null;
-            }
 
-            if (_drawSvc != null)
-            {
-                _drawSvc.Dispose();
+                _drawSvc?.Dispose();
                 _drawSvc = null;
-            }
 
-            if (_renderSvc != null)
-            {
-                _renderSvc.Dispose();
+                _renderSvc?.Dispose();
                 _renderSvc = null;
-            }
 
-            if (_tileSvc != null)
-            {
-                _tileSvc.Dispose();
+                _tileSvc?.Dispose();
                 _tileSvc = null;
             }
         }
@@ -213,7 +201,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         private void LogMethodCall(string method, bool success, params string[] values)
         {
-            OnRequestDispatched(method + "(" + string.Join(", ", values) + ") " + ((success) ? "Success" : "Failure"));
+            OnRequestDispatched($"{method}({string.Join(", ", values)}) {((success) ? "Success" : "Failure")}");
         }
 
         public override Stream GetResourceXmlData(string resourceID)
@@ -321,7 +309,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 OnResourceAdded(newpath);
         }
 
-        public override System.IO.Stream GetResourceData(string resourceID, string dataname)
+        public override Stream GetResourceData(string resourceID, string dataname)
         {
             var res = GetResourceService();
             //var result = Native.Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceData"), new object[] { new MgResourceIdentifier(resourceID), dataname });
@@ -1140,10 +1128,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new MgReadOnlyStream(fetch);
         }
 
-        public Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi) => this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, "PNG", false);
-        public Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi) => this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, "PNG", false);
-        public Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format) => this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, format, false);
-        public Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format) => this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, format, false);
+        public Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi)
+            => this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, "PNG", false);
+
+        public Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi) 
+            => this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, "PNG", false);
+
+        public Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format)
+            => this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, format, false);
+
+        public Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)
+            => this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, format, false);
 
         public Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
         {
@@ -1200,7 +1195,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new MgReadOnlyStream(fetch);
         }
 
-        public Stream RenderMapLegend(Mapping.RuntimeMap map, int width, int height, System.Drawing.Color backgroundColor, string format)
+        public Stream RenderMapLegend(RuntimeMap map, int width, int height, System.Drawing.Color backgroundColor, string format)
         {
             var impl = map as LocalRuntimeMap;
             if (impl == null)

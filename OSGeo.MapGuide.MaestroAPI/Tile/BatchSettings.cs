@@ -152,14 +152,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="args"></param>
-    public delegate void ProgressCallback(object sender, TileProgressEventArgs args);
+    public delegate void TileProgressEventHandler(object sender, TileProgressEventArgs args);
 
     /// <summary>
     /// This delegate is used to monitor progress on tile rendering
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="args"></param>
-    public delegate void ErrorCallback(object sender, TileRenderingErrorEventArgs args);
+    public delegate void TileErrorEventHandler(object sender, TileRenderingErrorEventArgs args);
 
     /// <summary>
     /// These are the avalible states for callbacks
@@ -225,7 +225,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// <summary>
     /// Class to hold settings for a batch run of tile building
     /// </summary>
-    public class TilingRunCollection
+    public class TilingRunCollection : IDisposable
     {
         /// <summary>
         /// A reference to the connection
@@ -257,57 +257,57 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <summary>
         /// All maps are being rendered
         /// </summary>
-        public event ProgressCallback BeginRenderingMaps;
+        public event TileProgressEventHandler BeginRenderingMaps;
 
         /// <summary>
         /// A map is being rendered
         /// </summary>
-        public event ProgressCallback BeginRenderingMap;
+        public event TileProgressEventHandler BeginRenderingMap;
 
         /// <summary>
         /// A group is being rendered
         /// </summary>
-        public event ProgressCallback BeginRenderingGroup;
+        public event TileProgressEventHandler BeginRenderingGroup;
 
         /// <summary>
         /// A scale is being rendered
         /// </summary>
-        public event ProgressCallback BeginRenderingScale;
+        public event TileProgressEventHandler BeginRenderingScale;
 
         /// <summary>
         /// A tile is being rendered
         /// </summary>
-        public event ProgressCallback BeginRenderingTile;
+        public event TileProgressEventHandler BeginRenderingTile;
 
         /// <summary>
         /// All maps have been rendered
         /// </summary>
-        public event ProgressCallback FinishRenderingMaps;
+        public event TileProgressEventHandler FinishRenderingMaps;
 
         /// <summary>
         /// A map has been rendered
         /// </summary>
-        public event ProgressCallback FinishRenderingMap;
+        public event TileProgressEventHandler FinishRenderingMap;
 
         /// <summary>
         /// A group has been rendered
         /// </summary>
-        public event ProgressCallback FinishRenderingGroup;
+        public event TileProgressEventHandler FinishRenderingGroup;
 
         /// <summary>
         /// A scale has been rendered
         /// </summary>
-        public event ProgressCallback FinishRenderingScale;
+        public event TileProgressEventHandler FinishRenderingScale;
 
         /// <summary>
         /// A tile has been rendered
         /// </summary>
-        public event ProgressCallback FinishRenderingTile;
+        public event TileProgressEventHandler FinishRenderingTile;
 
         /// <summary>
         /// A tile has failed to render
         /// </summary>
-        public event ErrorCallback FailedRenderingTile;
+        public event TileErrorEventHandler FailedRenderingTile;
 
         internal void InvokeBeginRendering(MapTilingConfiguration batchMap)
         {
@@ -413,6 +413,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             AddMapDefinitions(maps);
         }
 
+        ~TilingRunCollection()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                this.PauseEvent?.Dispose();
+                this.PauseEvent = null;
+            }
+        }
+
         /// <summary>
         /// Adds the specified map definition ids
         /// </summary>
@@ -461,7 +481,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <param name="limit"></param>
         public void LimitCols(long limit) => m_maps.ForEach(bm => bm.LimitCols(limit));
 
-        private static void TriggerEvent(ProgressCallback evt, object sender, CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private static void TriggerEvent(TileProgressEventHandler evt, object sender, CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             var args = new TileProgressEventArgs(state, map, group, scaleindex, row, column, cancel);
             evt?.Invoke(sender, args);
@@ -819,12 +839,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
                 //If the MaxExtents are different from the actual bounds, we need a start offset offset
 
-                RenderThreads settings = new RenderThreads(this, m_parent, m_scaleindexmap[scaleindex], group, m_tileSetResourceID, rows, cols, rowTileOffset, colTileOffset, m_parent.Config.RandomizeTileSequence);
+                using (var settings = new RenderThreads(this, m_parent, m_scaleindexmap[scaleindex], group, m_tileSetResourceID, rows, cols, rowTileOffset, colTileOffset, m_parent.Config.RandomizeTileSequence))
+                {
+                    settings.RunAndWait();
 
-                settings.RunAndWait();
-
-                if (settings.TileSet.Count != 0 && !m_parent.Cancel)
-                    throw new Exception(Strings.TS_ThreadFailureError);
+                    if (settings.TileSet.Count != 0 && !m_parent.Cancel)
+                        throw new Exception(Strings.TS_ThreadFailureError);
+                }
             }
 
             m_parent.InvokeFinishRendering(this, group, scaleindex);

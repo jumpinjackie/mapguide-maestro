@@ -872,11 +872,11 @@ namespace Maestro.MapViewer
                     }
 
                     Image layerIcon = null;
-                    if (layerMeta.IsRaster)
+                    if (layerMeta.IsRaster == true)
                     {
                         layerIcon = Properties.Resources.lc_raster;
                     }
-                    else if (layerMeta.IsDwf)
+                    else if (layerMeta.IsDwf == true)
                     {
                         layerIcon = Properties.Resources.lc_dwf;
                     }
@@ -1201,7 +1201,7 @@ namespace Maestro.MapViewer
             /// <summary>
             /// Gets whether this layer is a raster layer
             /// </summary>
-            public bool IsRaster
+            public bool? IsRaster
             {
                 get
                 {
@@ -1214,7 +1214,7 @@ namespace Maestro.MapViewer
                     if (_isRaster.HasValue)
                         return _isRaster.Value;
 
-                    throw new Exception("Layer metadata not fully initialized"); //Shouldn't get to here
+                    return null;
                 }
             }
 
@@ -1223,7 +1223,7 @@ namespace Maestro.MapViewer
             /// <summary>
             /// Gets whether this layer is a DWF-based drawing layer
             /// </summary>
-            public bool IsDwf
+            public bool? IsDwf
             {
                 get
                 {
@@ -1236,7 +1236,7 @@ namespace Maestro.MapViewer
                     if (_isDwf.HasValue)
                         return _isRaster.Value;
 
-                    throw new Exception("Layer metadata not fully initialized"); //Shouldn't get to here
+                    return null;
                 }
             }
 

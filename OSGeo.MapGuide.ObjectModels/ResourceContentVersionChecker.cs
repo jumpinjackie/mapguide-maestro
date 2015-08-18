@@ -85,30 +85,31 @@ namespace OSGeo.MapGuide.ObjectModels
         public static ResourceTypeDescriptor GetVersionFromXmlStream(Stream ms)
         {
             string version = "1.0.0"; //NOXLATE
-            using (var xr = XmlReader.Create(ms))
+            XmlReader xr = null;
+            try
             {
+                xr = XmlReader.Create(ms);
                 xr.MoveToContent();
                 if (!xr.HasAttributes)
                     throw new SerializationException();
 
-                try
-                {
-                    //Parse version number from ResourceType-x.y.z.xsd
-                    string xsd = xr.GetAttribute("xsi:noNamespaceSchemaLocation"); //NOXLATE
-                    if (xsd == null)
-                        return null;
+                //Parse version number from ResourceType-x.y.z.xsd
+                string xsd = xr.GetAttribute("xsi:noNamespaceSchemaLocation"); //NOXLATE
+                if (xsd == null)
+                    return null;
 
-                    int start = (xsd.LastIndexOf("-")); //NOXLATE
-                    int end = xsd.IndexOf(".xsd") - 1; //NOXLATE
-                    version = xsd.Substring(start + 1, xsd.Length - end);
-                    string typeStr = xsd.Substring(0, start);
+                int start = (xsd.LastIndexOf("-")); //NOXLATE
+                int end = xsd.IndexOf(".xsd") - 1; //NOXLATE
+                version = xsd.Substring(start + 1, xsd.Length - end);
+                string typeStr = xsd.Substring(0, start);
 
-                    return new ResourceTypeDescriptor(typeStr, version);
-                }
-                finally
-                {
-                    xr.Close();
-                }
+                return new ResourceTypeDescriptor(typeStr, version);
+            }
+            finally
+            {
+                xr?.Close();
+                xr?.Dispose();
+                xr = null;
             }
         }
 

@@ -79,7 +79,7 @@ namespace Maestro.Editors.FeatureSource
                             node.ToolTipText = string.Format(Strings.ExtendedClassTooltip, ext.FeatureClass);
                         }
                     };
-                    ext.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(extPropChange, (eh) => ext.PropertyChanged -= eh);
+                    ext.PropertyChanged += WeakEventHandler.Wrap(extPropChange, (eh) => ext.PropertyChanged -= eh);
 
                     trvExtensions.Nodes.Add(node);
 
@@ -105,7 +105,7 @@ namespace Maestro.Editors.FeatureSource
                                     cNode.ToolTipText = calc.Expression;
                                 }
                             };
-                            calc.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(calcChange, (eh) => calc.PropertyChanged -= eh);
+                            calc.PropertyChanged += WeakEventHandler.Wrap(calcChange, (eh) => calc.PropertyChanged -= eh);
 
                             node.Nodes.Add(cNode);
                         }
@@ -127,7 +127,7 @@ namespace Maestro.Editors.FeatureSource
                                     jNode.Text = join.Name;
                                 }
                             };
-                            join.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(joinChange, (eh) => join.PropertyChanged -= eh);
+                            join.PropertyChanged += WeakEventHandler.Wrap(joinChange, (eh) => join.PropertyChanged -= eh);
 
                             node.Nodes.Add(jNode);
                         }
@@ -171,7 +171,7 @@ namespace Maestro.Editors.FeatureSource
                     node.ToolTipText = string.Format(Strings.ExtendedClassTooltip, ext.FeatureClass);
                 }
             };
-            ext.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(extChange, (eh) => ext.PropertyChanged -= eh);
+            ext.PropertyChanged += WeakEventHandler.Wrap(extChange, (eh) => ext.PropertyChanged -= eh);
 
             _fs.AddExtension(ext);
             OnResourceChanged();
@@ -209,7 +209,7 @@ namespace Maestro.Editors.FeatureSource
                             cNode.ToolTipText = calc.Expression;
                         }
                     };
-                    calc.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(calcChange, (eh) => calc.PropertyChanged -= eh);
+                    calc.PropertyChanged += WeakEventHandler.Wrap(calcChange, (eh) => calc.PropertyChanged -= eh);
 
                     node.Nodes.Add(cNode);
                     node.Expand();
@@ -247,7 +247,7 @@ namespace Maestro.Editors.FeatureSource
                             jNode.Text = join.Name;
                         }
                     };
-                    join.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(joinChange, (eh) => join.PropertyChanged -= eh);
+                    join.PropertyChanged += WeakEventHandler.Wrap(joinChange, (eh) => join.PropertyChanged -= eh);
 
                     node.Nodes.Add(jNode);
                     node.Expand();

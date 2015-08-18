@@ -69,8 +69,9 @@ namespace Maestro.Editors.WebLayout
             _wl.CommandSet.CustomCommandRemoved -= OnCommandRemoved;
         }
 
-        private void OnCommandRemoved(ICommand cmd)
+        private void OnCommandRemoved(object sender, CommandEventArgs args)
         {
+            var cmd = args.Command;
             if (_cmdsByName.ContainsKey(cmd.Name))
             {
                 var dec = _cmdsByName[cmd.Name];
@@ -79,9 +80,9 @@ namespace Maestro.Editors.WebLayout
             }
         }
 
-        private void OnCommandAdded(ICommand cmd)
+        private void OnCommandAdded(object sender, CommandEventArgs args)
         {
-            var dec = new CommandDecorator(cmd);
+            var dec = new CommandDecorator(args.Command);
             _cmds.Add(dec);
             _cmdsByName[dec.Name] = dec;
         }

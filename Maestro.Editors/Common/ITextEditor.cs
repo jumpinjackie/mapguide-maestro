@@ -35,6 +35,7 @@
 using ICSharpCode.TextEditor;
 using ICSharpCode.TextEditor.Document;
 using ICSharpCode.TextEditor.Gui.CompletionWindow;
+using System;
 using System.Drawing;
 
 namespace Maestro.Editors.Common
@@ -44,7 +45,7 @@ namespace Maestro.Editors.Common
     /// all the methods will be called on another thread not the main UI thread and will therefore need to
     /// be invoked.
     /// </summary>
-    public interface ITextEditor
+    public interface ITextEditor : IDisposable
     {
         /// <summary>
         /// Fired when a key is pressed but before any text has been added to the text editor.

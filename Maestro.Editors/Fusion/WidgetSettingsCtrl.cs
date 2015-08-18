@@ -232,7 +232,7 @@ namespace Maestro.Editors.Fusion
                                 OnResourceChanged();
                             }
                         };
-                        item.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(itemChange, (eh) => item.PropertyChanged -= eh);
+                        item.PropertyChanged += WeakEventHandler.Wrap(itemChange, (eh) => item.PropertyChanged -= eh);
                     }
                     break;
 
@@ -259,7 +259,7 @@ namespace Maestro.Editors.Fusion
                                 OnResourceChanged();
                             }
                         };
-                        item.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(itemChange, (eh) => item.PropertyChanged -= eh);
+                        item.PropertyChanged += WeakEventHandler.Wrap(itemChange, (eh) => item.PropertyChanged -= eh);
                     }
                     break;
             }

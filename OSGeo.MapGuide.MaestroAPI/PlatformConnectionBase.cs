@@ -340,10 +340,21 @@ namespace OSGeo.MapGuide.MaestroAPI
             set { m_cachedSchemas = value; }
         }
 
+        ~PlatformConnectionBase()
+        {
+            Dispose(false);
+        }
+
         /// <summary>
         /// Releases unmanaged and - optionally - managed resources
         /// </summary>
-        public abstract void Dispose();
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing) { }
 
         /// <summary>
         /// Clones this instance.
@@ -1659,37 +1670,38 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 var fun = new NameValueCollection();
                 fun.Add("EXTENT", $"SpatialExtents(\"{geometry}\")"); //NOXLATE
-                using (IReader fsr = AggregateQueryFeatureSource(resourceID, schema, filter, fun))
+                IReader fsr = null;
+                try
                 {
-                    try
+                    fsr = AggregateQueryFeatureSource(resourceID, schema, filter, fun);
+                    if (fsr.ReadNext())
                     {
-                        if (fsr.ReadNext())
-                        {
-                            if (fsr.IsNull("EXTENT")) //NOXLATE
-                                throw new NullExtentException();
+                        if (fsr.IsNull("EXTENT")) //NOXLATE
+                            throw new NullExtentException();
 
-                            IGeometry geom = fsr["EXTENT"] as IGeometry; //NOXLATE
-                            if (geom == null)
-                            {
-                                throw new NullExtentException();
-                            }
-                            else
-                            {
-                                var env = geom.EnvelopeInternal;
-                                return ObjectFactory.CreateEnvelope(
-                                    env.MinX,
-                                    env.MinY,
-                                    env.MaxX,
-                                    env.MaxY);
-                            }
+                        IGeometry geom = fsr["EXTENT"] as IGeometry; //NOXLATE
+                        if (geom == null)
+                        {
+                            throw new NullExtentException();
                         }
                         else
-                            throw new Exception(string.Format(Strings.ErrorNoDataInResource, resourceID));
+                        {
+                            var env = geom.EnvelopeInternal;
+                            return ObjectFactory.CreateEnvelope(
+                                env.MinX,
+                                env.MinY,
+                                env.MaxX,
+                                env.MaxY);
+                        }
                     }
-                    finally
-                    {
-                        fsr.Close();
-                    }
+                    else
+                        throw new Exception(string.Format(Strings.ErrorNoDataInResource, resourceID));
+                }
+                finally
+                {
+                    fsr?.Close();
+                    fsr?.Dispose();
+                    fsr = null;
                 }
             }
             catch
