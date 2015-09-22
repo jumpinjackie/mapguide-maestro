@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -13,13 +15,7 @@ namespace ProviderTemplate
         {
             InitializeComponent();
         }
-
-        private void btnFxDir_Click(object sender, EventArgs e)
-        {
-            if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                txtFxDir.Text = folderBrowserDialog.SelectedPath;
-        }
-
+        
         private void btnMgDir_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -28,13 +24,12 @@ namespace ProviderTemplate
 
         private void btnBuild_Click(object sender, EventArgs e)
         {
+            txtMessages.Clear();
             btnBuild.Enabled = false;
             worker.RunWorkerAsync(new BuildArgs()
             {
-                FxDir = txtFxDir.Text,
                 MgDir = txtMgDir.Text,
                 MgVersion = txtMgVersion.Text,
-                RefMapGuideDotNetApi = rdPre22.Checked,
                 DebugMode = chkDebug.Checked
             });
         }
@@ -50,25 +45,70 @@ namespace ProviderTemplate
 
         private class BuildArgs
         {
-            public string FxDir;
             public string MgDir;
             public string MgVersion;
-            public bool RefMapGuideDotNetApi;
             public bool DebugMode;
+
+            public string AssemblyName => $"OSGeo.MapGuide.MaestroAPI.Native-{MgVersion}";
+            public string AssemblyNameWithExtension => $"{AssemblyName}.dll";
+        }
+
+        void CompileProvider(BuildArgs ba, string keyFile, string outputDir, IEnumerable<string> sourceFiles, IEnumerable<string> referencePaths)
+        {
+            var files = new List<SyntaxTree>();
+            var references = new List<MetadataReference>();
+
+            //Add mscorlib and friends
+            references.Add(MetadataReference.CreateFromFile(typeof(object).Assembly.Location));
+            references.Add(MetadataReference.CreateFromFile(typeof(System.Collections.Specialized.NameValueCollection).Assembly.Location));
+            references.Add(MetadataReference.CreateFromFile(typeof(System.Linq.Enumerable).Assembly.Location));
+            references.Add(MetadataReference.CreateFromFile(typeof(System.Xml.XmlDocument).Assembly.Location));
+            references.Add(MetadataReference.CreateFromFile(typeof(System.Drawing.Color).Assembly.Location));
+            references.Add(MetadataReference.CreateFromFile(typeof(System.Data.CommandType).Assembly.Location));
+
+            foreach (var f in sourceFiles)
+            {
+                AppendMessage($"Parsing: {f}");
+                files.Add(CSharpSyntaxTree.ParseText(File.ReadAllText(f)));
+            }
+
+            foreach (var f in referencePaths)
+            {
+                AppendMessage($"Adding reference: {f}");
+                references.Add(MetadataReference.CreateFromFile(f));
+            }
+
+            var options = new CSharpCompilationOptions(
+                outputKind: OutputKind.DynamicallyLinkedLibrary,
+                platform: Platform.AnyCpu,
+                optimizationLevel: ba.DebugMode ? OptimizationLevel.Debug : OptimizationLevel.Release,
+                cryptoKeyFile: keyFile
+            );
+            var comp = CSharpCompilation.Create(ba.AssemblyNameWithExtension, files, references, options);
+            using (var fs = File.OpenWrite(Path.Combine(outputDir, ba.AssemblyNameWithExtension)))
+            {
+                var result = comp.Emit(fs);
+                if (result.Success)
+                {
+                    AppendMessage("Compilation success!");
+                }
+                else
+                {
+                    foreach (var diag in result.Diagnostics)
+                    {
+                        AppendMessage($"{diag.ToString()}");
+                    }
+                    AppendMessage("Compilation failed with errors");
+                    throw new Exception("Compilation failed with errors. See messages for more details");
+                }
+            }
         }
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             var ba = (BuildArgs)e.Argument;
             AppendMessage("Validating input parameters");
-            if (!Directory.Exists(ba.FxDir))
-            {
-                throw new Exception("The specified .net framework 4.0 directory does not exist");
-            }
-            else
-            {
-                AppendMessage(".net Framework 4.0  directory found");
-            }
+            
             if (!Directory.Exists(ba.MgDir))
             {
                 throw new Exception("The specified MapGuide .net assemblies directory does not exist");
@@ -152,8 +192,32 @@ namespace ProviderTemplate
             AppendMessage("Write out AssemblyInfo.cs");
             File.WriteAllText(Path.Combine(srcDir.ToString(), "AssemblyInfo.cs"), string.Format(Properties.Resources.AssemblyInfo, ba.MgVersion));
 
-            string asmName = "OSGeo.MapGuide.MaestroAPI.Native-" + ba.MgVersion + ".dll";
+            string asmName = $"{ba.AssemblyName}.dll";
             AppendMessage("http://xkcd.com/303/ - " + asmName);
+            var referencePaths = new List<string>()
+            {
+                Path.Combine(sdkBinDir.ToString(), "OSGeo.MapGuide.MaestroAPI.dll"),
+                Path.Combine(sdkBinDir.ToString(), "OSGeo.MapGuide.ObjectModels.dll"),
+                Path.Combine(libDir.ToString(), "OSGeo.MapGuide.Foundation.dll"),
+                Path.Combine(libDir.ToString(), "OSGeo.MapGuide.Geometry.dll"),
+                Path.Combine(libDir.ToString(), "OSGeo.MapGuide.PlatformBase.dll"),
+                Path.Combine(libDir.ToString(), "OSGeo.MapGuide.MapGuideCommon.dll"),
+                Path.Combine(libDir.ToString(), "OSGeo.MapGuide.Web.dll"),
+            };
+            foreach (string dll in txtAdditionalReferences.Lines)
+            {
+                var dllpath = Path.Combine(sdkBinDir.ToString(), dll);
+                if (!File.Exists(dllpath))
+                {
+                    throw new FileNotFoundException($"ERROR - File not found {dllpath}. Any references you add must be in {sdkBinDir.ToString()}");
+                }
+                referencePaths.Add(dllpath);
+            }
+            var sourceFiles = new List<string>();
+            sourceFiles.AddRange(Directory.GetFiles(srcDir.ToString(), "*.cs"));
+            sourceFiles.AddRange(Directory.GetFiles(srcCmdDir.ToString(), "*.cs"));
+            CompileProvider(ba, keyfile.ToString(), outputDir.ToString(), sourceFiles, referencePaths);
+            /*
             var args = new List<string>();
             if (ba.DebugMode)
             {
@@ -171,19 +235,20 @@ namespace ProviderTemplate
             args.Add("/keyfile:\"" + keyfile + "\"");
             args.Add("/out:\"" + Path.Combine(outputDir.ToString(), asmName) + "\"");
             args.Add("/reference:\"" + Path.Combine(sdkBinDir.ToString(), "OSGeo.MapGuide.MaestroAPI.dll") + "\"");
-            args.Add("/reference:\"" + Path.Combine(sdkBinDir.ToString(), "NetTopologySuite.Merged.dll") + "\"");
-            if (ba.RefMapGuideDotNetApi)
+            foreach (string dll in txtAdditionalReferences.Lines)
             {
-                args.Add("/reference:\"" + Path.Combine(libDir.ToString(), "MapGuideDotNetApi.dll") + "\"");
+                var dllpath = Path.Combine(sdkBinDir.ToString(), dll);
+                if (!File.Exists(dllpath))
+                {
+                    throw new FileNotFoundException($"ERROR - File not found {dllpath}. Any references you add must be in {sdkBinDir.ToString()}");
+                }
+                args.Add("/reference:\"" + dllpath + "\"");
             }
-            else
-            {
-                args.Add("/reference:\"" + Path.Combine(libDir.ToString(), "OSGeo.MapGuide.Foundation.dll") + "\"");
-                args.Add("/reference:\"" + Path.Combine(libDir.ToString(), "OSGeo.MapGuide.Geometry.dll") + "\"");
-                args.Add("/reference:\"" + Path.Combine(libDir.ToString(), "OSGeo.MapGuide.PlatformBase.dll") + "\"");
-                args.Add("/reference:\"" + Path.Combine(libDir.ToString(), "OSGeo.MapGuide.MapGuideCommon.dll") + "\"");
-                args.Add("/reference:\"" + Path.Combine(libDir.ToString(), "OSGeo.MapGuide.Web.dll") + "\"");
-            }
+            args.Add("/reference:\"" + Path.Combine(libDir.ToString(), "OSGeo.MapGuide.Foundation.dll") + "\"");
+            args.Add("/reference:\"" + Path.Combine(libDir.ToString(), "OSGeo.MapGuide.Geometry.dll") + "\"");
+            args.Add("/reference:\"" + Path.Combine(libDir.ToString(), "OSGeo.MapGuide.PlatformBase.dll") + "\"");
+            args.Add("/reference:\"" + Path.Combine(libDir.ToString(), "OSGeo.MapGuide.MapGuideCommon.dll") + "\"");
+            args.Add("/reference:\"" + Path.Combine(libDir.ToString(), "OSGeo.MapGuide.Web.dll") + "\"");
             args.Add("\"" + Path.Combine(srcDir.ToString(), "*.cs") + "\"");
             args.Add("\"" + Path.Combine(srcCmdDir.ToString(), "*.cs") + "\"");
             var cscPath = Path.Combine(ba.FxDir, "csc.exe");
@@ -194,7 +259,10 @@ namespace ProviderTemplate
                 proc.WaitForExit();
                 proc.CancelOutputRead();
                 AppendMessage("csc.exe returned " + proc.ExitCode);
+                if (proc.ExitCode != 0)
+                    throw new Exception($"csc.exe returned {proc.ExitCode}. This is most likely a build failure");
             }
+            */
         }
 
         private Process SetupProcess(string exe, string argsStr)
@@ -222,6 +290,15 @@ namespace ProviderTemplate
             {
                 AppendMessage("Build SUCCESS");
                 MessageBox.Show("Build completed. See readme.txt for further instructions");
+            }
+        }
+
+        private void btnSaveMessages_Click(object sender, EventArgs e)
+        {
+            using (var fp = new SaveFileDialog())
+            {
+                File.WriteAllText(fp.FileName, txtMessages.Text);
+                MessageBox.Show($"Messages saved to {fp.FileName}");
             }
         }
     }
