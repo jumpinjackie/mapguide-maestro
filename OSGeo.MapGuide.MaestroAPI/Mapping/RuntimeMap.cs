@@ -706,7 +706,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="s"></param>
         public virtual void Serialize(MgBinarySerializer s)
         {
-            if (s.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
+            bool bNewerThanMGOS12 = s.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2);
+            bool bNewerThanMGOS23 = s.SiteVersion >= new Version(2, 3);
+            bool bNewerThanMGOS30 = s.SiteVersion >= new Version(3, 0);
+
+            if (bNewerThanMGOS12)
             {
                 s.Write(MgBinaryVersion);
                 s.WriteResourceIdentifier(this.ResourceID);
@@ -727,21 +731,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             s.Write(Utility.SerializeHTMLColor(this.BackgroundColor, true));
             s.Write(this.MetersPerUnit);
 
-            if (s.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
+            if (bNewerThanMGOS12)
                 s.Write(this.LayerRefreshMode);
 
             s.Write(_finiteDisplayScales.Length);
             foreach (double d in _finiteDisplayScales)
                 s.Write(d);
 
-            if (s.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
+            if (bNewerThanMGOS12)
             {
                 SerializeChangeMap(s);
-                if (s.SiteVersion >= new Version(2, 3)) //SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP2012))
+                if (bNewerThanMGOS23)
                 {
                     s.Write(this.WatermarkUsage);
                 }
-                if (s.SiteVersion >= new Version(3, 0))
+                if (bNewerThanMGOS30)
                 {
                     s.WriteResourceIdentifier(this.TileSetDefinition);
                 }
@@ -909,7 +913,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             _disableChangeTracking = true;
 
-            if (d.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
+            bool bNewerThanMGOS12 = d.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2);
+            bool bNewerThanMGOS23 = d.SiteVersion >= new Version(2, 3);
+            bool bNewerThanMGOS30 = d.SiteVersion >= new Version(3, 0);
+
+            if (bNewerThanMGOS12)
             {
                 if (d.ReadInt32() != MgBinaryVersion)
                     throw new Exception(Strings.ErrorInvalidMapVersion);
@@ -942,7 +950,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.BackgroundColor = Utility.ParseHTMLColor(d.ReadString());
             this.MetersPerUnit = d.ReadDouble();
 
-            if (d.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
+            if (bNewerThanMGOS12)
                 this.LayerRefreshMode = d.ReadInt32();
 
             var fds = new List<double>();
@@ -953,14 +961,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             _finiteDisplayScales = fds.ToArray();
 
             m_changeList = new Dictionary<string, ChangeList>();
-            if (d.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
+            if (bNewerThanMGOS12)
             {
                 m_changeList = DeserializeChangeMap(d);
-                if (d.SiteVersion >= new Version(2, 3))
+                if (bNewerThanMGOS23)
                 {
                     this.WatermarkUsage = d.ReadInt32();
                 }
-                if (d.SiteVersion >= new Version(3, 0))
+                if (bNewerThanMGOS30)
                 {
                     this.TileSetDefinition = d.ReadResourceIdentifier();
                 }
