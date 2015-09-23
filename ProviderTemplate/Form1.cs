@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis.CSharp;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -82,7 +83,7 @@ namespace ProviderTemplate
                 outputKind: OutputKind.DynamicallyLinkedLibrary,
                 platform: Platform.AnyCpu,
                 optimizationLevel: ba.DebugMode ? OptimizationLevel.Debug : OptimizationLevel.Release,
-                cryptoKeyFile: keyFile
+                strongNameProvider: new DesktopStrongNameProvider(ImmutableArray.Create(keyFile))
             );
             var comp = CSharpCompilation.Create(ba.AssemblyNameWithExtension, files, references, options);
             using (var fs = File.OpenWrite(Path.Combine(outputDir, ba.AssemblyNameWithExtension)))
@@ -297,8 +298,11 @@ namespace ProviderTemplate
         {
             using (var fp = new SaveFileDialog())
             {
-                File.WriteAllText(fp.FileName, txtMessages.Text);
-                MessageBox.Show($"Messages saved to {fp.FileName}");
+                if (fp.ShowDialog() == DialogResult.OK)
+                {
+                    File.WriteAllText(fp.FileName, txtMessages.Text);
+                    MessageBox.Show($"Messages saved to {fp.FileName}");
+                }
             }
         }
     }

@@ -565,8 +565,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
             GetByteReaderMethod fetch = () =>
             {
-                MgMap m = new MgMap();
-                m.Open(res, mapname);
+                MgMap m = new MgMap(m_con);
+                m.Open(mapname);
                 MgSelection sel = new MgSelection(m);
                 //The color accepted by MgColor has alpha as the last value, but the returned has alpha first
                 MgColor color = new MgColor(Utility.ParseHTMLColor(m.GetBackgroundColor()));
@@ -590,8 +590,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
             GetByteReaderMethod fetch = () =>
             {
-                MgMap m = new MgMap();
-                m.Open(res, mapname);
+                MgMap m = new MgMap(m_con);
+                m.Open(mapname);
                 MgSelection sel = new MgSelection(m);
                 //The color accepted by MgColor has alpha as the last value, but the returned has alpha first
                 MgColor color = new MgColor(Utility.ParseHTMLColor(m.GetBackgroundColor()));
@@ -608,8 +608,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             MgRenderingService rnd = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
 
-            MgMap mmap = new MgMap();
-            mmap.Open(res, map.Name);
+            MgMap mmap = new MgMap(m_con);
+            mmap.Open(map.Name);
             MgSelection sel = new MgSelection(mmap);
             if (selection != null)
                 sel.FromXml(selection.ToXml());
@@ -631,8 +631,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
             GetByteReaderMethod fetch = () =>
             {
-                MgMap mmap = new MgMap();
-                mmap.Open(res, map.Name);
+                MgMap mmap = new MgMap(m_con);
+                mmap.Open(map.Name);
                 MgSelection sel = new MgSelection(mmap);
                 if (selection != null)
                     sel.FromXml(selection.ToXml());
@@ -650,8 +650,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
             GetByteReaderMethod fetch = () =>
             {
-                MgMap mmap = new MgMap();
-                mmap.Open(res, map.Name);
+                MgMap mmap = new MgMap(m_con);
+                mmap.Open(map.Name);
                 MgSelection sel = new MgSelection(mmap);
                 MgColor color = new MgColor(backgroundColor);
                 return rnd.RenderMapLegend(mmap, width, height, color, format);
@@ -1318,9 +1318,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             string runtimeMapName = rtMap.Name;
             MgRenderingService rs = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-            MgMap map = new MgMap();
+            MgMap map = new MgMap(m_con);
             string mapname = runtimeMapName.IndexOf(":") > 0 ? new ResourceIdentifier(runtimeMapName).Path : runtimeMapName;
-            map.Open(res, mapname);
+            map.Open(mapname);
 
             MgWktReaderWriter r = new MgWktReaderWriter();
             MgStringCollection layerNames = null;
