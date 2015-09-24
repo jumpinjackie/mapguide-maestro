@@ -157,7 +157,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\Maestro\packages\RefactoringEssentials.1.2.0\analyzers\dotnet\RefactoringEssentials.dll" />
+    <Analyzer Include="..\Maestro\packages\RefactoringEssentials.2.0.0\analyzers\dotnet\RefactoringEssentials.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

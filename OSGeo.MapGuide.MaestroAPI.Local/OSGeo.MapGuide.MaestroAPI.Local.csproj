@@ -63,17 +63,21 @@
       <HintPath>..\Maestro\packages\GeoAPI.1.7.3.1\lib\net45\GeoAPI.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.Desktop">
-      <HintPath>..\Maestro\packages\mg-desktop-x86.2.6.0.8316\lib\net40\OSGeo.MapGuide.Desktop.dll</HintPath>
+    <Reference Include="OSGeo.MapGuide.Desktop, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=e75f9fd7cf82dc3f, processorArchitecture=x86">
+      <HintPath>..\Maestro\packages\mg-desktop-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Desktop.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.Foundation">
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.6.0.8316\lib\net40\OSGeo.MapGuide.Foundation.dll</HintPath>
+    <Reference Include="OSGeo.MapGuide.Foundation, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Foundation.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.Geometry">
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.6.0.8316\lib\net40\OSGeo.MapGuide.Geometry.dll</HintPath>
+    <Reference Include="OSGeo.MapGuide.Geometry, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Geometry.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.PlatformBase">
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.6.0.8316\lib\net40\OSGeo.MapGuide.PlatformBase.dll</HintPath>
+    <Reference Include="OSGeo.MapGuide.PlatformBase, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.PlatformBase.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -165,7 +169,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\Maestro\packages\RefactoringEssentials.1.2.0\analyzers\dotnet\RefactoringEssentials.dll" />
+    <Analyzer Include="..\Maestro\packages\RefactoringEssentials.2.0.0\analyzers\dotnet\RefactoringEssentials.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
@@ -177,8 +181,8 @@
   </Target>
   <PropertyGroup>
     <PostBuildEvent>
-xcopy /s /y "$(SolutionDir)packages\mapguide-api-base-x86.2.6.0.8316\mapguide-api-base\*.*" "$(TargetDir)"
-xcopy /s /y "$(SolutionDir)packages\mg-desktop-x86.2.6.0.8316\mg-desktop\*.*" "$(TargetDir)"</PostBuildEvent>
+xcopy /s /y "$(SolutionDir)packages\mapguide-api-base-x86.3.0.0.8701\mapguide-api-base\*.*" "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)packages\mg-desktop-x86.3.0.0.8701\mg-desktop\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

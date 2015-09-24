@@ -120,11 +120,16 @@
     <Compile Include="Util\RightToLeftConverter.cs" />
     <Compile Include="WinFormsResourceService.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ICSharpCode.Core\ICSharpCode.Core.csproj">
       <Project>{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}</Project>
       <Name>ICSharpCode.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\..\Maestro\packages\RefactoringEssentials.2.0.0\analyzers\dotnet\RefactoringEssentials.dll" />
   </ItemGroup>
 </Project>

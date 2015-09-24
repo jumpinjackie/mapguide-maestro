@@ -940,7 +940,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             try
             {
                 MgdFeatureService fs = GetFeatureService();
-                return fs.UpdateFeatures(fsId, className, props, filter);
+                return fs.UpdateMatchingFeatures(fsId, className, props, filter);
             }
             catch (MgException ex)
             {

@@ -205,6 +205,7 @@
     <EmbeddedResource Include="Resources\CSharp-Mode.xshd" />
     <EmbeddedResource Include="Resources\HTML-Mode.xshd" />
     <EmbeddedResource Include="Resources\FDO.xshd" />
+    <None Include="packages.config" />
     <None Include="Resources\ICSharpCode.TextEditor.snk" />
     <EmbeddedResource Include="Resources\TextEditorControl.bmp" />
     <EmbeddedResource Include="Resources\Java-Mode.xshd" />
@@ -228,6 +229,9 @@
     <EmbeddedResource Include="Resources\Patch-Mode.xshd" />
     <EmbeddedResource Include="Resources\Python.xshd" />
     <EmbeddedResource Include="Resources\SQL.xshd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\..\Maestro\packages\RefactoringEssentials.2.0.0\analyzers\dotnet\RefactoringEssentials.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

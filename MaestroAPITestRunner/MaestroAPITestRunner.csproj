@@ -70,16 +70,16 @@
       <HintPath>..\Maestro\packages\NUnit.Runners.2.6.3\tools\lib\nunit-console-runner.dll</HintPath>
     </Reference>
     <Reference Include="OSGeo.MapGuide.Desktop">
-      <HintPath>..\Maestro\packages\mg-desktop-net40-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.Desktop.dll</HintPath>
+      <HintPath>..\Maestro\packages\mg-desktop-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="OSGeo.MapGuide.Foundation">
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.Foundation.dll</HintPath>
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Foundation.dll</HintPath>
     </Reference>
     <Reference Include="OSGeo.MapGuide.Geometry">
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.Geometry.dll</HintPath>
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Geometry.dll</HintPath>
     </Reference>
     <Reference Include="OSGeo.MapGuide.PlatformBase">
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.PlatformBase.dll</HintPath>
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.PlatformBase.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -184,8 +184,8 @@ COPY /Y "$(SolutionDir)..\OSGeo.MapGuide.MaestroAPI.Local\bin\$(ConfigurationNam
 COPY /Y "$(SolutionDir)..\Maestro.AddIn.Local\*.dll" "$(ProjectDir)$(OutDir)" )
 echo Copy CS-Map Dictionaries
 IF NOT EXIST "$(OutDir)Dictionaries" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\Dictionaries\*.*" "$(ProjectDir)$(OutDir)Dictionaries"
-xcopy /s /y "$(SolutionDir)packages\mapguide-api-base-x86.2.6.0.8316\mapguide-api-base\*.*" "$(TargetDir)"
-xcopy /s /y "$(SolutionDir)packages\mg-desktop-x86.2.6.0.8316\mg-desktop\*.*" "$(TargetDir)"</PostBuildEvent>
+xcopy /s /y "$(SolutionDir)packages\mapguide-api-base-x86.3.0.0.8701\mapguide-api-base\*.*" "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)packages\mg-desktop-x86.3.0.0.8701\mg-desktop\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
