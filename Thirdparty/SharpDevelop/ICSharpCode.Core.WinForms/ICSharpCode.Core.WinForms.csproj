@@ -126,10 +126,4 @@
       <Name>ICSharpCode.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\..\Maestro\packages\RefactoringEssentials.2.0.0\analyzers\dotnet\RefactoringEssentials.dll" />
-  </ItemGroup>
 </Project>

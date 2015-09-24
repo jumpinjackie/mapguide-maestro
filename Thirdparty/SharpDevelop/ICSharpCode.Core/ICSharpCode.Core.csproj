@@ -146,11 +146,5 @@
       <Link>Src\AddInTree\AddIn\AddIn.xsd</Link>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\..\Maestro\packages\RefactoringEssentials.2.0.0\analyzers\dotnet\RefactoringEssentials.dll" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
