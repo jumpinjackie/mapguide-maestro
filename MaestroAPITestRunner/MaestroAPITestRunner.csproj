@@ -164,6 +164,7 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>echo Performing post-build for Test Runner in $(ConfigurationName)
+pushd "$(ProjectDir)"
 IF "$(ConfigurationName)" == "Release" (
 IF NOT EXIST "$(SolutionDir)..\SDK\Test" MKDIR "$(SolutionDir)..\SDK\Test"
 echo Copy binaries to SDK output dir
@@ -171,8 +172,8 @@ echo XCOPY /S /Y /I "$(TargetDir)TestData\*.*" "$(SolutionDir)..\SDK\Test\TestDa
 XCOPY /S /Y /I "$(TargetDir)TestData\*.*" "$(SolutionDir)..\SDK\Test\TestData"
 echo XCOPY /S /Y /I "$(TargetDir)UserTestData\*.*" "$(SolutionDir)..\SDK\Test\UserTestData"
 XCOPY /S /Y /I "$(TargetDir)UserTestData\*.*" "$(SolutionDir)..\SDK\Test\UserTestData"
-echo XCOPY /Y /I "$(TargetDir)*.*" "$(SolutionDir)..\SDK\Test" /EXCLUDE:$(ProjectDir)sdk_excludes.txt
-XCOPY /Y /I "$(TargetDir)*.*" "$(SolutionDir)..\SDK\Test" /EXCLUDE:$(ProjectDir)sdk_excludes.txt
+echo XCOPY /Y /I "$(TargetDir)*.*" "$(SolutionDir)..\SDK\Test" /EXCLUDE:sdk_excludes.txt
+XCOPY /Y /I "$(TargetDir)*.*" "$(SolutionDir)..\SDK\Test" /EXCLUDE:sdk_excludes.txt
 echo Copy SDK test configuration
 echo COPY /Y "$(ProjectDir)TestMaestroAPI.LocalNative.xml" "$(SolutionDir)..\SDK\Test\TestMaestroAPI.xml"
 COPY /Y "$(ProjectDir)TestMaestroAPI.LocalNative.xml" "$(SolutionDir)..\SDK\Test\TestMaestroAPI.xml"
@@ -185,7 +186,8 @@ COPY /Y "$(SolutionDir)..\Maestro.AddIn.Local\*.dll" "$(ProjectDir)$(OutDir)" )
 echo Copy CS-Map Dictionaries
 IF NOT EXIST "$(OutDir)Dictionaries" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\Dictionaries\*.*" "$(ProjectDir)$(OutDir)Dictionaries"
 xcopy /s /y "$(SolutionDir)packages\mapguide-api-base-x86.3.0.0.8701\mapguide-api-base\*.*" "$(TargetDir)"
-xcopy /s /y "$(SolutionDir)packages\mg-desktop-x86.3.0.0.8701\mg-desktop\*.*" "$(TargetDir)"</PostBuildEvent>
+xcopy /s /y "$(SolutionDir)packages\mg-desktop-x86.3.0.0.8701\mg-desktop\*.*" "$(TargetDir)"
+popd</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
