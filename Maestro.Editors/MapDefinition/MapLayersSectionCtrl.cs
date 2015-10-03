@@ -205,14 +205,12 @@ namespace Maestro.Editors.MapDefinition
                 txtTileSet.Text = mdf3.TileSetDefinitionID;
         }
 
-        private void InitInlineModel()
-        {
-            trvBaseLayers.Model = _tiledLayerModel = new TiledLayerModel(_map.BaseMap);
-        }
+        private void InitInlineModel() => trvBaseLayers.Model = _tiledLayerModel = new TiledLayerModel(_map.BaseMap);
 
         private void OnMapPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "TileSourceType") //NOXLATE
+            IMapDefinition3 mdf3 = null;
+            if (e.PropertyName == nameof(mdf3.TileSourceType))
             {
                 var mdf = _map as IMapDefinition3;
                 if (mdf != null)
@@ -244,12 +242,9 @@ namespace Maestro.Editors.MapDefinition
 
         private void RefreshModels()
         {
-            if (_doLayerModel != null)
-                _doLayerModel.Invalidate();
-            if (_grpLayerModel != null)
-                _grpLayerModel.Invalidate();
-            if (_tiledLayerModel != null)
-                _tiledLayerModel.Invalidate();
+            _doLayerModel?.Invalidate();
+            _grpLayerModel?.Invalidate();
+            _tiledLayerModel?.Invalidate();
         }
 
         public event OpenLayerEventHandler RequestLayerOpen;
@@ -262,9 +257,7 @@ namespace Maestro.Editors.MapDefinition
                 var layer = node.Tag as LayerItem;
                 if (layer != null)
                 {
-                    var handler = this.RequestLayerOpen;
-                    if (handler != null)
-                        handler(this, layer.Tag.ResourceId);
+                    this.RequestLayerOpen?.Invoke(this, layer.Tag.ResourceId);
                 }
             }
         }
@@ -277,9 +270,7 @@ namespace Maestro.Editors.MapDefinition
                 var layer = node.Tag as LayerItem;
                 if (layer != null)
                 {
-                    var handler = this.RequestLayerOpen;
-                    if (handler != null)
-                        handler(this, layer.Tag.ResourceId);
+                    this.RequestLayerOpen?.Invoke(this, layer.Tag.ResourceId);
                 }
             }
         }
@@ -802,7 +793,7 @@ namespace Maestro.Editors.MapDefinition
                     var blg = _map.BaseMap.GetGroup(groupName);
                     while (blg != null)
                     {
-                        groupName = layGroup.Name + " (" + counter + ")";
+                        groupName = $"{layGroup.Name} ({counter})";
                         counter++;
 
                         blg = _map.BaseMap.GetGroup(groupName);
@@ -844,7 +835,7 @@ namespace Maestro.Editors.MapDefinition
                     while (_map.GetGroupByName(groupName) != null)
                     {
                         counter++;
-                        groupName = group.Tag.Name + "(" + counter + ")";
+                        groupName = $"{group.Tag.Name} ({counter})";
                     }
                     _map.AddGroup(groupName);
                     int layerCount = _map.GetDynamicLayerCount();
@@ -1046,7 +1037,7 @@ namespace Maestro.Editors.MapDefinition
         {
             //The node tag will probably be different, but the wrapped
             //instance is what we're checking for
-            var it = RestoreSelection<BaseLayerItem>(trvBaseLayers, (tag) => { return tag.Tag == item.Tag; });
+            var it = RestoreSelection<BaseLayerItem>(trvBaseLayers, (tag) => tag.Tag == item.Tag);
             if (it != null)
                 OnBaseLayerItemSelected(it);
         }
@@ -1055,7 +1046,7 @@ namespace Maestro.Editors.MapDefinition
         {
             //The node tag will probably be different, but the wrapped
             //instance is what we're checking for
-            var it = RestoreSelection<BaseLayerItem>(trvBaseLayers, (tag) => { return tag.Tag == layer; });
+            var it = RestoreSelection<BaseLayerItem>(trvBaseLayers, (tag) => tag.Tag == layer);
             if (it != null)
                 OnBaseLayerItemSelected(it);
         }
@@ -1064,7 +1055,7 @@ namespace Maestro.Editors.MapDefinition
         {
             //The node tag will probably be different, but the wrapped
             //instance is what we're checking for
-            var lyr = RestoreSelection<LayerItem>(trvLayerDrawingOrder, (tag) => { return tag.Tag == layer.Tag; });
+            var lyr = RestoreSelection<LayerItem>(trvLayerDrawingOrder, (tag) => tag.Tag == layer.Tag);
             if (lyr != null)
                 OnDrawOrderLayerItemSelected(lyr);
         }
@@ -1073,7 +1064,7 @@ namespace Maestro.Editors.MapDefinition
         {
             //The node tag will probably be different, but the wrapped
             //instance is what we're checking for
-            var lyr = RestoreSelection<LayerItem>(trvLayerDrawingOrder, (tag) => { return tag.Tag == layer; });
+            var lyr = RestoreSelection<LayerItem>(trvLayerDrawingOrder, (tag) => tag.Tag == layer);
             if (lyr != null)
                 OnDrawOrderLayerItemSelected(lyr);
         }
@@ -1118,23 +1109,9 @@ namespace Maestro.Editors.MapDefinition
             return layer;
         }
 
-        private object GetSelectedDrawOrderItem()
-        {
-            if (trvLayerDrawingOrder.SelectedNode != null)
-            {
-                return trvLayerDrawingOrder.SelectedNode.Tag;
-            }
-            return null;
-        }
+        private object GetSelectedDrawOrderItem() => trvLayerDrawingOrder.SelectedNode?.Tag;
 
-        private object GetSelectedLayerGroupItem()
-        {
-            if (trvLayersGroup.SelectedNode != null)
-            {
-                return trvLayersGroup.SelectedNode.Tag;
-            }
-            return null;
-        }
+        private object GetSelectedLayerGroupItem() => trvLayersGroup.SelectedNode?.Tag;
 
         private IEnumerable<object> GetSelectedLayerGroupItems()
         {
@@ -1147,13 +1124,7 @@ namespace Maestro.Editors.MapDefinition
             return result;
         }
 
-        private object GetSelectedTiledLayerItem()
-        {
-            if (trvBaseLayers.SelectedNode != null)
-                return trvBaseLayers.SelectedNode.Tag;
-            else
-                return null;
-        }
+        private object GetSelectedTiledLayerItem() => trvBaseLayers.SelectedNode?.Tag;
 
         private IEnumerable<object> GetSelectedTiledLayerItems()
         {
@@ -1499,22 +1470,15 @@ namespace Maestro.Editors.MapDefinition
                 var layer = node.Tag as BaseLayerItem;
                 if (layer != null)
                 {
-                    var handler = this.RequestLayerOpen;
-                    if (handler != null)
-                        handler(this, layer.Tag.ResourceId);
+                    this.RequestLayerOpen?.Invoke(this, layer.Tag.ResourceId);
                 }
             }
         }
 
         private void trvLayersGroup_ItemDrag(object sender, ItemDragEventArgs e)
-        {
-            trvLayersGroup.DoDragDrop(e.Item, DragDropEffects.All);
-        }
+            => trvLayersGroup.DoDragDrop(e.Item, DragDropEffects.All);
 
-        private void trvLayersGroup_DragEnter(object sender, DragEventArgs e)
-        {
-            HandleDragEnter(e);
-        }
+        private void trvLayersGroup_DragEnter(object sender, DragEventArgs e) => HandleDragEnter(e);
 
         private static void HandleDragEnter(DragEventArgs e)
         {
@@ -1827,15 +1791,11 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        private void trvLayerDrawingOrder_ItemDrag(object sender, ItemDragEventArgs e)
-        {
-            trvLayerDrawingOrder.DoDragDrop(e.Item, DragDropEffects.All);
-        }
+        private void trvLayerDrawingOrder_ItemDrag(object sender, ItemDragEventArgs e) 
+            => trvLayerDrawingOrder.DoDragDrop(e.Item, DragDropEffects.All);
 
         private void trvBaseLayers_ItemDrag(object sender, ItemDragEventArgs e)
-        {
-            trvBaseLayers.DoDragDrop(e.Item, DragDropEffects.All);
-        }
+            => trvBaseLayers.DoDragDrop(e.Item, DragDropEffects.All);
 
         private void trvBaseLayers_DragDrop(object sender, DragEventArgs e)
         {
@@ -1947,10 +1907,7 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        private void trvBaseLayers_DragEnter(object sender, DragEventArgs e)
-        {
-            HandleDragEnter(e);
-        }
+        private void trvBaseLayers_DragEnter(object sender, DragEventArgs e) => HandleDragEnter(e);
 
         private void trvBaseLayers_DragOver(object sender, DragEventArgs e)
         {

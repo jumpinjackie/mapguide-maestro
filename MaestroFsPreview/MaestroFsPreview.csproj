@@ -59,23 +59,7 @@
   <ItemGroup>
     <Reference Include="Aga.Controls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=fcc90fbf924463a3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Thirdparty\TreeViewAdv\Aga.Controls\obj\Debug\Aga.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="Maestro.Editors, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\Maestro.Editors.dll</HintPath>
-    </Reference>
-    <Reference Include="Maestro.Login, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\Maestro.Login.dll</HintPath>
-    </Reference>
-    <Reference Include="Maestro.Shared.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Maestro.Shared.UI\bin\Debug\Maestro.Shared.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.MapGuide.MaestroAPI, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\OSGeo.MapGuide.MaestroAPI.dll</HintPath>
+      <HintPath>..\Maestro\packages\TreeViewAdv.1.7.0.0\lib\net\Aga.Controls.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -147,13 +131,29 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Analyzer Include="..\Maestro\packages\RefactoringEssentials.2.0.0\analyzers\dotnet\RefactoringEssentials.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj">
+      <Project>{5ad2cdba-952e-4148-98a1-31d2e0d540d5}</Project>
+      <Name>Maestro.Editors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.Login\Maestro.Login.csproj">
+      <Project>{07588440-5f9f-4c30-aa06-9cf30ba6dde6}</Project>
+      <Name>Maestro.Login</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj">
+      <Project>{cfd19053-2172-41d3-8460-0fd2123a1e88}</Project>
+      <Name>Maestro.Shared.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
+      <Project>{80fa3158-8b5f-48d1-a393-0378afe48a7e}</Project>
+      <Name>OSGeo.MapGuide.MaestroAPI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj">
       <Project>{48c5eb23-45ae-4c4c-8fab-635428ae8ca1}</Project>
       <Name>OSGeo.MapGuide.ObjectModels</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\Maestro\packages\RefactoringEssentials.2.0.0\analyzers\dotnet\RefactoringEssentials.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
