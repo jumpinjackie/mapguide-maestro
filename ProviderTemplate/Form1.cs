@@ -85,7 +85,7 @@ namespace ProviderTemplate
                 optimizationLevel: ba.DebugMode ? OptimizationLevel.Debug : OptimizationLevel.Release,
                 strongNameProvider: new DesktopStrongNameProvider(ImmutableArray.Create(keyFile))
             );
-            var comp = CSharpCompilation.Create(ba.AssemblyNameWithExtension, files, references, options);
+            var comp = CSharpCompilation.Create(ba.AssemblyName, files, references, options);
             using (var fs = File.OpenWrite(Path.Combine(outputDir, ba.AssemblyNameWithExtension)))
             {
                 var result = comp.Emit(fs);
