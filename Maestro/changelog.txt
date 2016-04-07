@@ -1,4 +1,18 @@
-﻿6.0m4
+﻿6.0m5
+=====
+ - Fix: Missing NetTopologySuite.dll from installer, breaking various functionality
+ - Fix: Feature Source XML does not properly update when switching to unmanaged mode
+ - Fix: Cannot make v3.0.0 untiled Map Definitions
+ - MgCooker: Don't start a script generation or tiling run if no actual maps or tilesets have been selected
+ - ProviderTemplate: Update to use the Roslyn compiler
+ - Thirdparty library updates:
+   - GeoAPI 1.7.3.1
+   - NetTopologySuite 1.13.3.2
+   - Newtonsoft.Json 8.0.3
+   - RestSharp 105.2.3
+   - mg-desktop 3.0
+
+6.0m4
 =====
  
  - Updated to target .net Framework 4.5
