@@ -1363,7 +1363,7 @@ namespace MaestroAPITests
             }
 
             Assert.NotNull(rtInfo.CoordinateSystem);
-            Assert.IsNullOrEmpty(rtInfo.IconMimeType);
+            Assert.True(String.IsNullOrEmpty(rtInfo.IconMimeType));
             Assert.NotNull(rtInfo.Extents);
             Assert.NotNull(rtInfo.Layers);
             Assert.True(rtInfo.Layers.Count == 0);
@@ -1380,7 +1380,7 @@ namespace MaestroAPITests
                 Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
-            Assert.IsNullOrEmpty(rtInfo.IconMimeType);
+            Assert.True(String.IsNullOrEmpty(rtInfo.IconMimeType));
             Assert.NotNull(rtInfo.Extents);
             Assert.NotNull(rtInfo.Layers);
             Assert.True(rtInfo.Layers.Count == 0);
@@ -1400,7 +1400,7 @@ namespace MaestroAPITests
                 Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
-            Assert.IsNullOrEmpty(rtInfo.IconMimeType);
+            Assert.True(String.IsNullOrEmpty(rtInfo.IconMimeType));
             Assert.NotNull(rtInfo.Extents);
             Assert.NotNull(rtInfo.Layers);
             Assert.True(rtInfo.Layers.Count > 0);
@@ -1423,7 +1423,7 @@ namespace MaestroAPITests
                 Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
-            Assert.IsNotNullOrEmpty(rtInfo.IconMimeType);
+            Assert.False(String.IsNullOrEmpty(rtInfo.IconMimeType));
             Assert.NotNull(rtInfo.Extents);
             Assert.NotNull(rtInfo.Layers);
             Assert.True(rtInfo.Layers.Count > 0);
@@ -1442,7 +1442,7 @@ namespace MaestroAPITests
 
                         foreach (var rule in feat.Rules)
                         {
-                            Assert.IsNotNullOrEmpty(rule.IconBase64);
+                            Assert.False(String.IsNullOrEmpty(rule.IconBase64));
                         }
                     }
                 }
@@ -1461,16 +1461,16 @@ namespace MaestroAPITests
                 Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
-            Assert.IsNotNullOrEmpty(rtInfo.IconMimeType);
+            Assert.False(String.IsNullOrEmpty(rtInfo.IconMimeType));
             Assert.NotNull(rtInfo.Extents);
             Assert.NotNull(rtInfo.Layers);
             Assert.True(rtInfo.Layers.Count > 0);
             foreach (var layer in rtInfo.Layers)
             {
                 Assert.NotNull(layer.FeatureSource);
-                Assert.IsNotNullOrEmpty(layer.FeatureSource.ClassName);
-                Assert.IsNotNullOrEmpty(layer.FeatureSource.Geometry);
-                Assert.IsNotNullOrEmpty(layer.FeatureSource.ResourceID);
+                Assert.False(String.IsNullOrEmpty(layer.FeatureSource.ClassName));
+                Assert.False(String.IsNullOrEmpty(layer.FeatureSource.Geometry));
+                Assert.False(String.IsNullOrEmpty(layer.FeatureSource.ResourceID));
                 Assert.True(layer.ScaleRanges.Count > 0);
                 foreach (var sr in layer.ScaleRanges)
                 {
@@ -1483,7 +1483,7 @@ namespace MaestroAPITests
 
                         foreach (var rule in feat.Rules)
                         {
-                            Assert.IsNotNullOrEmpty(rule.IconBase64);
+                            Assert.False(String.IsNullOrEmpty(rule.IconBase64));
                         }
                     }
                 }
@@ -1535,7 +1535,7 @@ namespace MaestroAPITests
                 Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
-            Assert.IsNullOrEmpty(rtInfo.IconMimeType);
+            Assert.True(String.IsNullOrEmpty(rtInfo.IconMimeType));
             Assert.NotNull(rtInfo.Extents);
             Assert.NotNull(rtInfo.Layers);
             Assert.True(rtInfo.Layers.Count == 0);
@@ -1559,7 +1559,7 @@ namespace MaestroAPITests
                 Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
-            Assert.IsNullOrEmpty(rtInfo.IconMimeType);
+            Assert.True(String.IsNullOrEmpty(rtInfo.IconMimeType));
             Assert.NotNull(rtInfo.Extents);
             Assert.NotNull(rtInfo.Layers);
             Assert.True(rtInfo.Layers.Count == 0);
@@ -1586,7 +1586,7 @@ namespace MaestroAPITests
                 Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
-            Assert.IsNullOrEmpty(rtInfo.IconMimeType);
+            Assert.True(String.IsNullOrEmpty(rtInfo.IconMimeType));
             Assert.NotNull(rtInfo.Extents);
             Assert.NotNull(rtInfo.Layers);
             Assert.True(rtInfo.Layers.Count > 0);
@@ -1616,7 +1616,7 @@ namespace MaestroAPITests
                 Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
-            Assert.IsNotNullOrEmpty(rtInfo.IconMimeType);
+            Assert.False(String.IsNullOrEmpty(rtInfo.IconMimeType));
             Assert.NotNull(rtInfo.Extents);
             Assert.NotNull(rtInfo.Layers);
             Assert.True(rtInfo.Layers.Count > 0);
@@ -1635,7 +1635,7 @@ namespace MaestroAPITests
 
                         foreach (var rule in feat.Rules)
                         {
-                            Assert.IsNotNullOrEmpty(rule.IconBase64);
+                            Assert.False(String.IsNullOrEmpty(rule.IconBase64));
                         }
                     }
                 }
@@ -1661,16 +1661,16 @@ namespace MaestroAPITests
                 Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
-            Assert.IsNotNullOrEmpty(rtInfo.IconMimeType);
+            Assert.False(String.IsNullOrEmpty(rtInfo.IconMimeType));
             Assert.NotNull(rtInfo.Extents);
             Assert.NotNull(rtInfo.Layers);
             Assert.True(rtInfo.Layers.Count > 0);
             foreach (var layer in rtInfo.Layers)
             {
                 Assert.NotNull(layer.FeatureSource);
-                Assert.IsNotNullOrEmpty(layer.FeatureSource.ClassName);
-                Assert.IsNotNullOrEmpty(layer.FeatureSource.Geometry);
-                Assert.IsNotNullOrEmpty(layer.FeatureSource.ResourceID);
+                Assert.False(String.IsNullOrEmpty(layer.FeatureSource.ClassName));
+                Assert.False(String.IsNullOrEmpty(layer.FeatureSource.Geometry));
+                Assert.False(String.IsNullOrEmpty(layer.FeatureSource.ResourceID));
                 Assert.True(layer.ScaleRanges.Count > 0);
                 foreach (var sr in layer.ScaleRanges)
                 {
@@ -1683,7 +1683,7 @@ namespace MaestroAPITests
 
                         foreach (var rule in feat.Rules)
                         {
-                            Assert.IsNotNullOrEmpty(rule.IconBase64);
+                            Assert.False(String.IsNullOrEmpty(rule.IconBase64));
                         }
                     }
                 }

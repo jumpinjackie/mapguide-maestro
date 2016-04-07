@@ -212,7 +212,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.NotNull(geom);
 
             cls.DefaultGeometryPropertyName = geom.Name;
-            Assert.IsNotNullOrEmpty(cls.DefaultGeometryPropertyName);
+            Assert.False(String.IsNullOrEmpty(cls.DefaultGeometryPropertyName));
 
             schema.AddClass(cls);
             Assert.AreEqual(schema, cls.Parent);

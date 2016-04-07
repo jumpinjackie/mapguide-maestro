@@ -288,8 +288,8 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.NotNull(ds);
             Assert.NotNull(ds.Sheet);
             Assert.AreEqual(0, ds.Sheet.Count());
-            Assert.IsNullOrEmpty(ds.SourceName);
-            Assert.IsNullOrEmpty(ds.CoordinateSpace);
+            Assert.True(String.IsNullOrEmpty(ds.SourceName));
+            Assert.True(String.IsNullOrEmpty(ds.CoordinateSpace));
         }
 
         [Test]
@@ -306,7 +306,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             var ext = fs.Extension;
             Assert.NotNull(ext);
             Assert.AreEqual(0, ext.Count());
-            Assert.IsNullOrEmpty(fs.ConfigurationDocument);
+            Assert.True(String.IsNullOrEmpty(fs.ConfigurationDocument));
             Assert.AreEqual(0, fs.ConnectionPropertyNames.Length);
         }
 
@@ -328,10 +328,10 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             var ext = fs.Extension;
             Assert.NotNull(ext);
             Assert.AreEqual(0, ext.Count());
-            Assert.IsNullOrEmpty(fs.ConfigurationDocument);
+            Assert.True(String.IsNullOrEmpty(fs.ConfigurationDocument));
             Assert.AreEqual(2, fs.ConnectionPropertyNames.Length);
-            Assert.IsNotNullOrEmpty(fs.GetConnectionProperty("File"));
-            Assert.IsNotNullOrEmpty(fs.GetConnectionProperty("ReadOnly"));
+            Assert.False(String.IsNullOrEmpty(fs.GetConnectionProperty("File")));
+            Assert.False(String.IsNullOrEmpty(fs.GetConnectionProperty("ReadOnly")));
             var param2 = fs.GetConnectionProperties();
             Assert.AreEqual(2, param2.Count);
             Assert.NotNull(param2["File"]);
@@ -420,7 +420,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             {
                 var mdf = ObjectFactory.CreateMapDefinition(version, "Test");
                 Assert.AreEqual("Test", mdf.Name);
-                Assert.IsNullOrEmpty(mdf.CoordinateSystem);
+                Assert.True(String.IsNullOrEmpty(mdf.CoordinateSystem));
                 Assert.Null(mdf.ExtentCalculator);
                 Assert.Null(mdf.BaseMap);
                 Assert.NotNull(mdf.MapLayer);

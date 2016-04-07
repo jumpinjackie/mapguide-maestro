@@ -35,13 +35,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
         public void FeatureSchemaTest()
         {
             var fs = new FeatureSchema();
-            Assert.IsNullOrEmpty(fs.Name);
-            Assert.IsNullOrEmpty(fs.Description);
+            Assert.True(String.IsNullOrEmpty(fs.Name));
+            Assert.True(String.IsNullOrEmpty(fs.Description));
             Assert.AreEqual(0, fs.Classes.Count);
 
             fs = new FeatureSchema("Foo", "");
             Assert.AreEqual("Foo", fs.Name);
-            Assert.IsNullOrEmpty(fs.Description);
+            Assert.True(String.IsNullOrEmpty(fs.Description));
             Assert.AreEqual(0, fs.Classes.Count);
 
             fs = new FeatureSchema("Foo", "Bar");
@@ -156,7 +156,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             fs.WriteXml(doc, doc);
 
             string xml = doc.ToXmlString();
-            Assert.IsNotNullOrEmpty(xml);
+            Assert.False(String.IsNullOrEmpty(xml));
         }
 
         [Test]

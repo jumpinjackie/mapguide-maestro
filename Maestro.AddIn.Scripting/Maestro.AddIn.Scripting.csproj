@@ -686,9 +686,6 @@
       <DependentUpon>IronPythonRepl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\Maestro\packages\RefactoringEssentials.2.0.0\analyzers\dotnet\RefactoringEssentials.dll" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy /S /Y /I "$(SolutionDir)packages\IronPython.StdLib.2.7.5\content\Lib" "$(SolutionDir)$(OutDir)Lib"</PostBuildEvent>

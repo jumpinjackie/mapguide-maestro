@@ -105,7 +105,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Contains(1562.5, values);
             Assert.Contains(781.25, values);
             Assert.Contains(390.625, values);
-            Assert.IsNotNullOrEmpty(tsd.GetDefaultCoordinateSystem());
+            Assert.False(String.IsNullOrEmpty(tsd.GetDefaultCoordinateSystem()));
             
             var ext = tsd.Extents;
             Assert.AreEqual(-87.79786601383196, ext.MinX);
