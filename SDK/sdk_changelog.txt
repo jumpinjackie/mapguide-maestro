@@ -11,6 +11,7 @@ MASSIVE BREAKING CHANGES. High level overview:
    extension methods that previously relied on this fact now take an IServerConnection parameter to provide context.
  - Applications will now generally need to reference OSGeo.MapGuide.ObjectModels in addition to OSGeo.MapGuide.MaestroAPI for most existing code to compile
    and work as before.
+ - Need to target .net Framework 4.5 as a minimum (6.0m5 onwards)
 
 5.1
 ---
