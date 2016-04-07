@@ -228,6 +228,7 @@ Section
     File "${INST_OUTPUT_MAESTRO}\Microsoft.Dynamic.dll"
     File "${INST_OUTPUT_MAESTRO}\Microsoft.Scripting.dll"
     File "${INST_OUTPUT_MAESTRO}\Microsoft.Scripting.Metadata.dll"
+    File "${INST_OUTPUT_MAESTRO}\NetTopologySuite.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.FDO.Expressions.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.dll"
