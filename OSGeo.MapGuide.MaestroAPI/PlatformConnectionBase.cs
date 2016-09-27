@@ -2002,7 +2002,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
         /// <param name="source">The map definition layer</param>
         /// <returns></returns>
-        public RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source) => CreateMapLayer(parent, source);
+        public RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source) => CreateMapLayer(parent, source, false);
 
         /// <summary>
         /// Creates a new runtime map layer from the specified <see cref="T:OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer"/> instance
