@@ -578,9 +578,14 @@ namespace MgCooker
             if (!m_coordinateOverrides.ContainsKey(root.Text))
             {
                 //IEnvelope newbox = new OSGeo.MapGuide.IEnvelope();
-                IEnvelope origbox = ((IMapDefinition)root.Tag).Extents;
+                IMapDefinition mdf = root.Tag as IMapDefinition;
+                ITileSetDefinition tdf = root.Tag as ITileSetDefinition;
+                IEnvelope origbox = null;
+                if (mdf != null)
+                    origbox = mdf.Extents;
+                else if (tdf != null)
+                    origbox = tdf.Extents;
                 IEnvelope newbox = origbox.Clone();
-
                 m_coordinateOverrides.Add(root.Text, newbox);
             }
 
