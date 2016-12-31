@@ -31,6 +31,7 @@ using OSGeo.MapGuide.ObjectModels;
 using System.IO;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System.Xml;
+using OSGeo.MapGuide.MaestroAPI.Tests;
 
 namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
 {
@@ -49,7 +50,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
         [Test]
         public void RebaseTest()
         {
-            var res = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), File.OpenRead("UserTestData\\TestTiledMap.xml"));
+            var res = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), Utils.OpenFile("UserTestData\\TestTiledMap.xml"));
             res.ResourceID = "Library://Test.MapDefinition";
             var rbaser = new ResourceRebaser(res);
             var rbres = rbaser.Rebase("Library://UnitTests/Layers/", "Library://Rebased/Layers/");

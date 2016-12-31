@@ -24,6 +24,7 @@ using Moq;
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.MaestroAPI.Tests;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
@@ -42,7 +43,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
         private static RuntimeMap CreateTestMap()
         {
             var layers = new Dictionary<string, ILayerDefinition>();
-            var mdf = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), File.OpenRead("UserTestData\\TestTiledMap.xml"));
+            var mdf = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), Utils.OpenFile("UserTestData\\TestTiledMap.xml"));
             mdf.ResourceID = "Library://UnitTest/Test.MapDefinition";
             foreach (var lyr in mdf.BaseMap.BaseMapLayerGroups.First().BaseMapLayer)
             {
@@ -89,7 +90,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
         [Test]
         public void UnsupportedConnectionTest()
         {
-            var res = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), File.OpenRead("UserTestData\\TestTiledMap.xml"));
+            var res = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), Utils.OpenFile("UserTestData\\TestTiledMap.xml"));
             var conn = new Mock<IServerConnection>();
             var caps = new Mock<IConnectionCapabilities>();
             caps.Setup(c => c.SupportedServices).Returns(new int[0]);

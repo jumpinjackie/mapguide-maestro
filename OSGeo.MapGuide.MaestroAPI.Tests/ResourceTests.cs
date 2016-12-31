@@ -93,7 +93,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual("LayerDefinition-1.0.0.xsd", ldf.ValidatingSchema);
             Assert.AreEqual(new Version(1, 0, 0), ldf.ResourceVersion);
 
-            using (var fs = File.OpenWrite("LayerDef_100.xml"))
+            using (var fs = Utils.OpenTempWrite("LayerDef_100.xml"))
             {
                 using (var src = ObjectFactory.Serialize(ldf))
                 {
@@ -108,7 +108,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual("LayerDefinition-1.1.0.xsd", ldf1.ValidatingSchema);
             Assert.AreEqual(new Version(1, 1, 0), ldf1.ResourceVersion);
 
-            using (var fs = File.OpenWrite("LayerDef_110.xml"))
+            using (var fs = Utils.OpenTempWrite("LayerDef_110.xml"))
             {
                 using (var src = ObjectFactory.Serialize(ldf1))
                 {
@@ -123,7 +123,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual("LayerDefinition-1.2.0.xsd", ldf2.ValidatingSchema);
             Assert.AreEqual(new Version(1, 2, 0), ldf2.ResourceVersion);
 
-            using (var fs = File.OpenWrite("LayerDef_120.xml"))
+            using (var fs = Utils.OpenTempWrite("LayerDef_120.xml"))
             {
                 using (var src = ObjectFactory.Serialize(ldf2))
                 {
@@ -138,7 +138,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual("LayerDefinition-1.3.0.xsd", ldf3.ValidatingSchema);
             Assert.AreEqual(new Version(1, 3, 0), ldf3.ResourceVersion);
 
-            using (var fs = File.OpenWrite("LayerDef_130.xml"))
+            using (var fs = Utils.OpenTempWrite("LayerDef_130.xml"))
             {
                 using (var src = ObjectFactory.Serialize(ldf3))
                 {
@@ -154,7 +154,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual(new Version(2, 3, 0), ldf4.ResourceVersion);
             Assert.IsTrue(ldf4.SubLayer is ISubLayerDefinition2);
 
-            using (var fs = File.OpenWrite("LayerDef_230.xml"))
+            using (var fs = Utils.OpenTempWrite("LayerDef_230.xml"))
             {
                 using (var src = ObjectFactory.Serialize(ldf4))
                 {
@@ -348,7 +348,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual("MapDefinition-1.0.0.xsd", mdf.ValidatingSchema);
             Assert.AreEqual(new Version(1, 0, 0), mdf.ResourceVersion);
 
-            using (var fs = File.OpenWrite("MapDef_100.xml"))
+            using (var fs = Utils.OpenTempWrite("MapDef_100.xml"))
             {
                 using (var src = ObjectFactory.Serialize(mdf))
                 {
@@ -364,7 +364,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual(new Version(2, 3, 0), mdf2.ResourceVersion);
             Assert.True(mdf2 is IMapDefinition2);
 
-            using (var fs = File.OpenWrite("MapDef_230.xml"))
+            using (var fs = Utils.OpenTempWrite("MapDef_230.xml"))
             {
                 using (var src = ObjectFactory.Serialize(mdf2))
                 {
@@ -387,7 +387,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual("LoadProcedure-1.0.0.xsd", lproc.ValidatingSchema);
             Assert.AreEqual(new Version(1, 0, 0), lproc.ResourceVersion);
 
-            using (var fs = File.OpenWrite("LoadProc_100.xml"))
+            using (var fs = Utils.OpenTempWrite("LoadProc_100.xml"))
             {
                 using (var src = ObjectFactory.Serialize(lproc))
                 {
@@ -402,7 +402,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual("LoadProcedure-1.1.0.xsd", lproc2.ValidatingSchema);
             Assert.AreEqual(new Version(1, 1, 0), lproc2.ResourceVersion);
 
-            using (var fs = File.OpenWrite("LoadProc_110.xml"))
+            using (var fs = Utils.OpenTempWrite("LoadProc_110.xml"))
             {
                 using (var src = ObjectFactory.Serialize(lproc2))
                 {
@@ -417,7 +417,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual("LoadProcedure-2.2.0.xsd", lproc3.ValidatingSchema);
             Assert.AreEqual(new Version(2, 2, 0), lproc3.ResourceVersion);
 
-            using (var fs = File.OpenWrite("LoadProc_220.xml"))
+            using (var fs = Utils.OpenTempWrite("LoadProc_220.xml"))
             {
                 using (var src = ObjectFactory.Serialize(lproc3))
                 {
@@ -440,7 +440,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual("WebLayout-1.0.0.xsd", wl.ValidatingSchema);
             Assert.AreEqual(new Version(1, 0, 0), wl.ResourceVersion);
 
-            using (var fs = File.OpenWrite("WebLayout_100.xml"))
+            using (var fs = Utils.OpenTempWrite("WebLayout_100.xml"))
             {
                 using (var src = ObjectFactory.Serialize(wl))
                 {
@@ -456,7 +456,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual(new Version(1, 1, 0), wl2.ResourceVersion);
             Assert.True(wl2 is IWebLayout2);
 
-            using (var fs = File.OpenWrite("WebLayout_110.xml"))
+            using (var fs = Utils.OpenTempWrite("WebLayout_110.xml"))
             {
                 using (var src = ObjectFactory.Serialize(wl2))
                 {
@@ -479,7 +479,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual("SymbolDefinition-1.0.0.xsd", ssym.ValidatingSchema);
             Assert.AreEqual(new Version(1, 0, 0), ssym.ResourceVersion);
 
-            using (var fs = File.OpenWrite("SimpleSymDef_100.xml"))
+            using (var fs = Utils.OpenTempWrite("SimpleSymDef_100.xml"))
             {
                 using (var src = ObjectFactory.Serialize(ssym))
                 {
@@ -494,7 +494,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual("SymbolDefinition-1.1.0.xsd", ssym2.ValidatingSchema);
             Assert.AreEqual(new Version(1, 1, 0), ssym2.ResourceVersion);
 
-            using (var fs = File.OpenWrite("SimpleSymDef_110.xml"))
+            using (var fs = Utils.OpenTempWrite("SimpleSymDef_110.xml"))
             {
                 using (var src = ObjectFactory.Serialize(ssym2))
                 {
@@ -510,7 +510,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual("SymbolDefinition-1.0.0.xsd", csym.ValidatingSchema);
             Assert.AreEqual(new Version(1, 0, 0), csym.ResourceVersion);
 
-            using (var fs = File.OpenWrite("CompoundSymDef_100.xml"))
+            using (var fs = Utils.OpenTempWrite("CompoundSymDef_100.xml"))
             {
                 using (var src = ObjectFactory.Serialize(csym))
                 {
@@ -525,7 +525,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual("SymbolDefinition-1.1.0.xsd", csym2.ValidatingSchema);
             Assert.AreEqual(new Version(1, 1, 0), csym2.ResourceVersion);
 
-            using (var fs = File.OpenWrite("CompoundSymDef_110.xml"))
+            using (var fs = Utils.OpenTempWrite("CompoundSymDef_110.xml"))
             {
                 using (var src = ObjectFactory.Serialize(csym2))
                 {

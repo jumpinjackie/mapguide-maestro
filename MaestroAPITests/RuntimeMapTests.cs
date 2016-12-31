@@ -49,7 +49,7 @@ namespace MaestroAPITests
         //Guard variable to prevent duplicate registration on repeated test runs of a single test session
         private static bool _registered = false;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             if (!_registered)
@@ -62,7 +62,7 @@ namespace MaestroAPITests
             }
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void Teardown()
         {
         }

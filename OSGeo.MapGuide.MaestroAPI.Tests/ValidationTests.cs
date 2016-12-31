@@ -39,7 +39,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
     [TestFixture]
     public class ValidationTests
     {
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             ResourceValidatorLoader.LoadStockValidators();
@@ -246,7 +246,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var fs = new FeatureSchema();
             var doc = new XmlDocument();
 
-            doc.Load("UserTestData\\1896.xml");
+            doc.Load(Utils.ResolvePath("UserTestData\\1896.xml"));
 
             var mgr = new XmlNamespaceManager(doc.NameTable);
             mgr.AddNamespace("xs", XmlNamespaces.XS);

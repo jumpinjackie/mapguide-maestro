@@ -99,7 +99,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             string path = Path.GetTempFileName();
             doc.Save(path);
 
-            FeatureSourceDescription fsd = new FeatureSourceDescription(File.OpenRead(path));
+            FeatureSourceDescription fsd = new FeatureSourceDescription(Utils.OpenFile(path));
             Assert.AreEqual(1, fsd.Schemas.Length);
 
             schema = fsd.Schemas[0];

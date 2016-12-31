@@ -40,7 +40,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         [Test]
         public void TestMySqlSchema()
         {
-            var fds = new FeatureSourceDescription(File.OpenRead("UserTestData\\gen_default1_MySql_master.xml"));
+            var fds = new FeatureSourceDescription(Utils.OpenFile("UserTestData\\gen_default1_MySql_master.xml"));
             Assert.AreEqual(1, fds.Schemas.Length);
 
             var fs = fds.GetSchema("AutoGen");
@@ -132,14 +132,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         [Test]
         public void TestOdbcLoad()
         {
-            var conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\odbc_example_config.xml")) as OdbcConfigurationDocument;
+            var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText("UserTestData\\odbc_example_config.xml")) as OdbcConfigurationDocument;
             Assert.NotNull(conf);
         }
 
         [Test]
         public void TestOdbcLoad2()
         {
-            var conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\odbc_example_config2.xml")) as OdbcConfigurationDocument;
+            var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText("UserTestData\\odbc_example_config2.xml")) as OdbcConfigurationDocument;
             Assert.NotNull(conf);
         }
 
@@ -220,10 +220,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             conf.AddOverride(ov);
 
             string path = "OdbcConfigTest.xml";
-            File.WriteAllText(path, conf.ToXml());
+            Utils.WriteAllText(path, conf.ToXml());
 
             conf = null;
-            string xml = File.ReadAllText(path);
+            string xml = Utils.ReadAllText(path);
             conf = ConfigurationDocument.LoadXml(xml) as OdbcConfigurationDocument;
             Assert.NotNull(conf);
 
@@ -239,21 +239,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         [Test]
         public void TestWmsLoad()
         {
-            var conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\NASA_WMS_config_doc.xml")) as WmsConfigurationDocument;
+            var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText("UserTestData\\NASA_WMS_config_doc.xml")) as WmsConfigurationDocument;
             Assert.NotNull(conf);
         }
 
         [Test]
         public void TestWmsLoad2()
         {
-            var conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\wms_config_example1.xml")) as WmsConfigurationDocument;
+            var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText("UserTestData\\wms_config_example1.xml")) as WmsConfigurationDocument;
             Assert.NotNull(conf);
         }
 
         [Test]
         public void TestWmsLoad3()
         {
-            var conf = ConfigurationDocument.LoadXml(File.ReadAllText("UserTestData\\wms_config_example2.xml")) as WmsConfigurationDocument;
+            var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText("UserTestData\\wms_config_example2.xml")) as WmsConfigurationDocument;
             Assert.NotNull(conf);
         }
 
@@ -295,10 +295,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             conf.AddRasterItem(item);
 
             string path = "WmsConfigTest.xml";
-            File.WriteAllText(path, conf.ToXml());
+            Utils.WriteAllText(path, conf.ToXml());
 
             conf = null;
-            string xml = File.ReadAllText(path);
+            string xml = Utils.ReadAllText(path);
             conf = ConfigurationDocument.LoadXml(xml) as WmsConfigurationDocument;
             Assert.NotNull(conf);
 
