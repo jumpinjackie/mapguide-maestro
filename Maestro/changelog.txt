@@ -1,4 +1,15 @@
-﻿6.0m5
+﻿Next
+====
+
+ - Fix: MgCooker - InvalidCastException when editing override coordinates for a selected TileSetDefinition
+ - Fix: API - Infinite recursive call in CreateMapLayer
+ - Package updates:
+  - IronPython 2.7.7
+  - DockPanel 2.12
+  - Newtonsoft.Json 9.0.2
+  - Roslyn 1.3.2 (for ProviderTemplate tool)
+
+6.0m5
 =====
  - Fix: Missing NetTopologySuite.dll from installer, breaking various functionality
  - Fix: Feature Source XML does not properly update when switching to unmanaged mode
