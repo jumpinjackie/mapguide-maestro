@@ -33,6 +33,11 @@ namespace Maestro.Base.UI.Preferences
     public static class ConfigProperties
     {
         /// <summary>
+        /// The selected theme
+        /// </summary>
+        public const string SelectedTheme = "General.SelectedTheme"; //NOXLATE
+
+        /// <summary>
         /// The locale to preview in
         /// </summary>
         public const string PreviewLocale = "General.PreviewLocale"; //NOXLATE

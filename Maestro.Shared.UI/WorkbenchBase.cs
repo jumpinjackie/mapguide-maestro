@@ -22,6 +22,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -103,6 +104,40 @@ namespace Maestro.Shared.UI
 
             // Use the Idle event to update the status of menu and toolbar items.
             Application.Idle += OnApplicationIdle;
+        }
+
+        public ThemeBase Theme => contentPanel.Theme;
+
+        public virtual void ApplyTheme(ThemeBase theme)
+        {
+            contentPanel.Theme = theme;
+            if (theme != null)
+            {
+                var toolstrips = toolStripContainer
+                                    .TopToolStripPanel
+                                    .Controls
+                                    .OfType<ToolStrip>()
+                                .Concat(toolStripContainer
+                                    .BottomToolStripPanel
+                                    .Controls
+                                    .OfType<ToolStrip>())
+                                .Concat(toolStripContainer
+                                    .LeftToolStripPanel
+                                    .Controls
+                                    .OfType<ToolStrip>())
+                                .Concat(toolStripContainer
+                                    .RightToolStripPanel
+                                    .Controls
+                                    .OfType<ToolStrip>());
+
+                foreach (var ts in toolstrips)
+                {
+                    theme.ApplyTo(ts);
+                }
+                theme.ApplyTo(menu);
+                theme.ApplyTo(status);
+                theme.ApplyTo(ctxToolbar);
+            }
         }
 
         private void OnActiveDocumentChanged(object sender, EventArgs e)

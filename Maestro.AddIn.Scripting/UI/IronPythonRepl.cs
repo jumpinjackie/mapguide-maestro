@@ -1,5 +1,6 @@
 ﻿using ICSharpCode.Core;
 using Maestro.AddIn.Scripting.Lang.Python;
+using Maestro.Base;
 using Maestro.Editors.Common;
 using Maestro.Shared.UI;
 using Microsoft.Scripting.Hosting.Shell;
@@ -48,6 +49,7 @@ namespace Maestro.AddIn.Scripting.UI
         protected override void OnLoad(EventArgs e)
         {
             textEditor.SetParent(this.ParentForm);
+            Workbench.Instance.ApplyThemeTo(toolStrip1);
             base.OnLoad(e);
         }
 

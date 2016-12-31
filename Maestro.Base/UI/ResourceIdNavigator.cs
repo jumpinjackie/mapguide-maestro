@@ -55,7 +55,8 @@ namespace Maestro.Base.UI
         public ResourceIdNavigator(ServerConnectionManager connMgr,
                                    OpenResourceManager omgr,
                                    ViewContentManager viewMgr,
-                                   ISiteExplorer siteExp)
+                                   ISiteExplorer siteExp,
+                                   Workbench wb)
         {
             _connMgr = connMgr;
             _connMgr.ConnectionAdded += WeakEventHandler.Wrap<ServerConnectionEventHandler>(OnConnectionAdded, (eh) => _connMgr.ConnectionAdded -= eh);
@@ -112,6 +113,8 @@ namespace Maestro.Base.UI
                 _btnGo,
                 _btnOpenAsXml
             });
+
+            wb.Theme?.ApplyTo(_strip);
         }
 
         private void OnSiteExplorerItemsSelected(object sender, RepositoryItemEventArgs e)

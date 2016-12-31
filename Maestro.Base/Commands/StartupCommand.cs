@@ -51,6 +51,10 @@ namespace Maestro.Base.Commands
 
                 ServiceRegistry.GetService<NewItemTemplateService>().InitUserTemplates();
                 var wb = Workbench.Instance;
+
+                Themes.CurrentTheme = Props.Get<string>(ConfigProperties.SelectedTheme, null);
+                wb.ApplyTheme(Themes.Get(Themes.CurrentTheme));
+
                 wb.FormClosing += new System.Windows.Forms.FormClosingEventHandler(OnWorkbenchClosing);
                 wb.Text = "MapGuide Maestro"; //NOXLATE
 

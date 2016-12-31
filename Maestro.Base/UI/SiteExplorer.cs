@@ -37,6 +37,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace Maestro.Base.UI
 {
@@ -80,6 +81,11 @@ namespace Maestro.Base.UI
                     FocusOnNode(ed.EditorService.CurrentConnection.DisplayName, ed.EditorService.ResourceID);
                 }
             }
+        }
+
+        internal void AcceptTheme(ThemeBase theme)
+        {
+            theme.ApplyTo(tsSiteExplorer);
         }
 
         private void OnIdle(object sender, EventArgs e)

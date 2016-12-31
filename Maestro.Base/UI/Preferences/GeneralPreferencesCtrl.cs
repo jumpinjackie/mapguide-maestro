@@ -25,6 +25,7 @@ using Maestro.Shared.UI;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using Props = ICSharpCode.Core.PropertyService;
 
@@ -48,6 +49,9 @@ namespace Maestro.Base.UI.Preferences
                 rdAjax.Checked = true;
             else
                 rdFusion.Checked = true;
+
+            cmbTheme.DataSource = new string[] { "(none)" }.Concat(Themes.List).ToArray();
+            cmbTheme.SelectedItem = Props.Get<string>(ConfigProperties.SelectedTheme, null);
 
             var path = Props.Get(ConfigProperties.UserTemplatesDirectory, Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates")); //NOXLATE
             txtTemplatePath.Text = path;
@@ -96,6 +100,8 @@ namespace Maestro.Base.UI.Preferences
             else
                 Apply(ConfigProperties.PreviewViewerType, "AJAX"); //NOXLATE
 
+            var themeName = cmbTheme.SelectedItem?.ToString();
+            Apply(ConfigProperties.SelectedTheme, themeName);
             Apply(ConfigProperties.UserTemplatesDirectory, txtTemplatePath.Text);
             Apply(ConfigProperties.MgCookerPath, txtMgCooker.Text);
             Apply(ConfigProperties.LocalFsPreviewPath, txtFsPreview.Text);
@@ -106,6 +112,9 @@ namespace Maestro.Base.UI.Preferences
             Apply(ConfigProperties.ShowTipOfTheDay, chkShowTipOfTheDay.Checked);
 
             //These changes require restart
+            if (themeName != Themes.CurrentTheme)
+                restart = true;
+
             if (Apply(ConfigProperties.ShowMessages, chkMessages.Checked ? "True" : "False")) //NOXLATE
                 restart = true;
 

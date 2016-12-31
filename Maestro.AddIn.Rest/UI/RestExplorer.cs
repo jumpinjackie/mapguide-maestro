@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 using Maestro.AddIn.Rest.Model;
+using Maestro.Base;
 using Maestro.Base.Services;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
@@ -39,6 +40,12 @@ namespace Maestro.AddIn.Rest.UI
         {
             InitializeComponent();
             this.Title = this.Description = Strings.RestExplorer;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            Workbench.Instance.ApplyThemeTo(toolStrip1);
+            base.OnLoad(e);
         }
 
         public override ViewRegion DefaultRegion => ViewRegion.Right;

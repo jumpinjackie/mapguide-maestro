@@ -40,6 +40,9 @@
             this.chkOutbound = new System.Windows.Forms.CheckBox();
             this.chkMessages = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnBrowseLiveMapEditor = new System.Windows.Forms.Button();
+            this.txtLiveMapEditor = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnBrowseRtMapInspector = new System.Windows.Forms.Button();
             this.txtRtMapInspector = new System.Windows.Forms.TextBox();
@@ -54,9 +57,8 @@
             this.cmbOpenedColor = new Maestro.Editors.Common.ColorComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnBrowseLiveMapEditor = new System.Windows.Forms.Button();
-            this.txtLiveMapEditor = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbTheme = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -144,6 +146,24 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // btnBrowseLiveMapEditor
+            // 
+            resources.ApplyResources(this.btnBrowseLiveMapEditor, "btnBrowseLiveMapEditor");
+            this.btnBrowseLiveMapEditor.Name = "btnBrowseLiveMapEditor";
+            this.btnBrowseLiveMapEditor.UseVisualStyleBackColor = true;
+            this.btnBrowseLiveMapEditor.Click += new System.EventHandler(this.btnBrowseLiveMapEditor_Click);
+            // 
+            // txtLiveMapEditor
+            // 
+            resources.ApplyResources(this.txtLiveMapEditor, "txtLiveMapEditor");
+            this.txtLiveMapEditor.Name = "txtLiveMapEditor";
+            this.txtLiveMapEditor.ReadOnly = true;
+            // 
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
@@ -230,27 +250,23 @@
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
-            // label8
+            // label9
             // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
             // 
-            // btnBrowseLiveMapEditor
+            // cmbTheme
             // 
-            resources.ApplyResources(this.btnBrowseLiveMapEditor, "btnBrowseLiveMapEditor");
-            this.btnBrowseLiveMapEditor.Name = "btnBrowseLiveMapEditor";
-            this.btnBrowseLiveMapEditor.UseVisualStyleBackColor = true;
-            this.btnBrowseLiveMapEditor.Click += new System.EventHandler(this.btnBrowseLiveMapEditor_Click);
-            // 
-            // txtLiveMapEditor
-            // 
-            resources.ApplyResources(this.txtLiveMapEditor, "txtLiveMapEditor");
-            this.txtLiveMapEditor.Name = "txtLiveMapEditor";
-            this.txtLiveMapEditor.ReadOnly = true;
+            resources.ApplyResources(this.cmbTheme, "cmbTheme");
+            this.cmbTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTheme.FormattingEnabled = true;
+            this.cmbTheme.Name = "cmbTheme";
             // 
             // GeneralPreferencesCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.cmbTheme);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -303,5 +319,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnBrowseLiveMapEditor;
         private System.Windows.Forms.TextBox txtLiveMapEditor;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmbTheme;
     }
 }

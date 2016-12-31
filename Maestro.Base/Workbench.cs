@@ -24,6 +24,8 @@ using Maestro.Base.Editor;
 using Maestro.Base.UI;
 using Maestro.Shared.UI;
 using System;
+using WeifenLuo.WinFormsUI.Docking;
+using System.Windows.Forms;
 
 namespace Maestro.Base
 {
@@ -52,6 +54,11 @@ namespace Maestro.Base
         public static event EventHandler WorkbenchInitialized = delegate { };
 
         private static bool _init = false;
+
+        public void ApplyThemeTo(ToolStrip ts)
+        {
+            this.Theme?.ApplyTo(ts);
+        }
 
         /// <summary>
         /// Initializes the workbench.
@@ -83,6 +90,22 @@ namespace Maestro.Base
                     current.Close();
                     //CheckContainerStatus();
                 }
+                var theme = this.Theme;
+                var exp = _siteExp as SiteExplorer;
+                if (exp != null && theme != null)
+                {
+                    exp.AcceptTheme(theme);
+                }
+            }
+        }
+
+        public override void ApplyTheme(ThemeBase theme)
+        {
+            base.ApplyTheme(theme);
+            var exp = _siteExp as SiteExplorer;
+            if (exp != null && theme != null)
+            {
+                exp.AcceptTheme(theme);
             }
         }
 

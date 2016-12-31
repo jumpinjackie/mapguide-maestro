@@ -157,7 +157,7 @@ namespace Maestro.Base.Events
                 var openMgr = ServiceRegistry.GetService<OpenResourceManager>();
                 var siteExp = wb.ActiveSiteExplorer;
 
-                var nav = new ResourceIdNavigator(connMgr, openMgr, viewMgr, siteExp);
+                var nav = new ResourceIdNavigator(connMgr, openMgr, viewMgr, siteExp, wb);
                 wb.AddToolbar("Resource ID Bar", nav.NavigatorToolStrip, ToolbarRegion.Top, true);
             }
 
