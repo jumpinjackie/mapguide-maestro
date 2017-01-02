@@ -75,11 +75,11 @@ namespace Maestro.AddIn.Rest.UI
         private void btnSave_Click(object sender, EventArgs e)
         {
             dynamic repr = null;
-            if (!((IDictionary<string, object>)_config).ContainsKey("Representations")) 
+            if (!((IDictionary<string, object>)_config).ContainsKey(nameof(_config.Representations))) 
             {
-                _config.Representation = new ExpandoObject();   
+                _config.Representations = new ExpandoObject();   
             }
-            repr = _config.Representation;
+            repr = _config.Representations;
 
             dynamic conf = _ctrl.GetOptions();
             ((IDictionary<string, object>)repr)[_rep] = conf;
