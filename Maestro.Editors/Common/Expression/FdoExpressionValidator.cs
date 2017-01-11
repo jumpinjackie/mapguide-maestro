@@ -51,6 +51,11 @@ namespace Maestro.Editors.Common.Expression
 
     public class FdoExpressionValidator
     {
+        private bool IsStylizationFunc(string name)
+        {
+            return OSGeo.MapGuide.MaestroAPI.Utility.GetStylizationFunctions().Any(func => func.Name.ToUpper() == name.ToUpper());
+        }
+
         public void ValidateExpression(FdoExpression expr, ClassDefinition cls, IFdoProviderCapabilities caps)
         {
             switch (expr.ExpressionType)
@@ -77,7 +82,7 @@ namespace Maestro.Editors.Common.Expression
                     {
                         var func = ((FdoFunction)expr);
                         string name = func.Identifier.Name;
-                        if (!caps.Expression.SupportedFunctions.Any(f => f.Name.ToUpper() == name.ToUpper()))
+                        if (!IsStylizationFunc(name) && !caps.Expression.SupportedFunctions.Any(f => f.Name.ToUpper() == name.ToUpper()))
                             throw new FdoExpressionValidationException(string.Format(Strings.InvalidExpressionUnsupportedFunction, name), name);
 
                         foreach (var arg in func.Arguments)
