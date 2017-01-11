@@ -44,9 +44,11 @@ namespace Maestro.Editors.Fusion.WidgetEditors
         private string _xml;
         private IWidget _widget;
         private IWidgetInfo _widgetInfo;
+        private IEditorService _edSvc;
 
-        public void Setup(IWidget widget, FlexibleLayoutEditorContext context, IEditorService edsvc)
+        public void Setup(IWidget widget, FlexibleLayoutEditorContext context, IEditorService edSvc)
         {
+            _edSvc = edSvc;
             _widget = widget;
             _xml = _widget.ToXml();
             _widgetInfo = context.GetWidgetInfo(widget.Type);
@@ -62,6 +64,10 @@ namespace Maestro.Editors.Fusion.WidgetEditors
         private void txtXmlContent_TextChanged(object sender, EventArgs e)
         {
             btnSave.Enabled = !(txtXmlContent.Text.Equals(_xml));
+            if (btnSave.Enabled)
+            {
+                _edSvc.MarkDirty();
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
