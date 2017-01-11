@@ -21,8 +21,10 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
@@ -89,6 +91,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
 
                     var convRes = ObjectFactory.DeserializeXml(xml.ToString());
                     convRes.ResourceID = resource.ResourceID;
+
+                    //If upgraded to WebLayout 2.4 or higher need to add MapTip to command set
+                    var wl = convRes as IWebLayout;
+                    if (wl != null && wl.ResourceVersion >= new Version(2, 4, 0))
+                    {
+                        if (!wl.CommandSet.Commands.Any(cmd => cmd.Name == "MapTip"))
+                        {
+                            var maptip = wl.CreateBasicCommand("Maptip", "Click to enable/disable display of map tooltips", "Click to enable/disable display of map tooltips", "icon_maptip", TargetViewerType.All, BasicCommandActionType.MapTip);
+                            wl.CommandSet.AddCommand(maptip);
+                        }
+                    }
+
                     return convRes;
                 }
             }

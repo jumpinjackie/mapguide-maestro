@@ -27,6 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Maestro.Editors.WebLayout
@@ -107,6 +108,13 @@ namespace Maestro.Editors.WebLayout
                 mi.Tag = type;
                 mnuBuiltin.DropDown.Items.Add(mi);
             }
+            //Need to make sure MapTip is available for v2.4 onwards
+            if (_wl.ResourceVersion >= new Version(2, 4, 0))
+            {
+                ToolStripMenuItem mi = new ToolStripMenuItem(BasicCommandActionType.MapTip.ToString(), null, new EventHandler(OnAddBuiltInCommand));
+                mi.Tag = BasicCommandActionType.MapTip;
+                mnuBuiltin.DropDown.Items.Add(mi);
+            }
         }
 
         private void RemoveCustomCommandEntry(ToolStripMenuItem tsi, ICommand cmd)
@@ -160,10 +168,10 @@ namespace Maestro.Editors.WebLayout
             var tsi = sender as ToolStripItem;
             if (tsi != null && tsi.Tag != null)
             {
-                BuiltInCommandType cmdType = (BuiltInCommandType)tsi.Tag;
-
+                int cmdAction = Convert.ToInt32(tsi.Tag);
                 //Append to end of model of active treeview
-                var cmd = _wl.GetCommandByName(cmdType.ToString());
+                //var cmd = _wl.GetCommandByName(cmdName);
+                var cmd = _wl.CommandSet.Commands.OfType<IBasicCommand>().FirstOrDefault(c => cmdAction == (int)c.Action);
                 if (cmd != null)
                 {
                     var ci = _wl.CreateCommandItem(cmd.Name);
