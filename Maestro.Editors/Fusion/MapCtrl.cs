@@ -92,7 +92,7 @@ namespace Maestro.Editors.Fusion
             _models = new BindingList<MapModel>();
             lstMaps.DataSource = _models;
             UpdateMapList();
-            txtMapId.Text = _widget.MapId;
+            txtMapId.Text = group.id;
 
             LoadMapOptions();
         }
@@ -172,6 +172,7 @@ namespace Maestro.Editors.Fusion
 
         private void txtMapId_TextChanged(object sender, EventArgs e)
         {
+            _group.id = txtMapId.Text;
             if (_widget != null && txtMapId.Text != _widget.MapId)
             {
                 _widget.MapId = txtMapId.Text;
