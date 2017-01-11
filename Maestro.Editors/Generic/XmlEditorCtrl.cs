@@ -194,7 +194,7 @@ namespace Maestro.Editors.Generic
             set
             {
                 _origText = null;
-                txtXmlContent.Text = value;
+                txtXmlContent.Text = value.Trim().Trim('\0');
                 FormatText();
             }
         }
@@ -301,7 +301,7 @@ namespace Maestro.Editors.Generic
                     doc.WriteTo(uw);
                     uw.Flush();
                 }
-                txtXmlContent.Text = System.Text.Encoding.UTF8.GetString(ms.GetBuffer());
+                txtXmlContent.Text = System.Text.Encoding.UTF8.GetString(ms.GetBuffer()).Trim().Trim('\0');
             }
         }
 
