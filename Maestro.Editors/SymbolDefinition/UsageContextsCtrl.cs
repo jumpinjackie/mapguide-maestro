@@ -137,6 +137,7 @@ namespace Maestro.Editors.SymbolDefinition
                 return;
 
             _sym.PointUsage = (chkPoint.Checked) ? _pu : null;
+            _edSvc.MarkDirty();
         }
 
         private void chkLine_CheckedChanged(object sender, EventArgs e)
@@ -146,6 +147,7 @@ namespace Maestro.Editors.SymbolDefinition
                 return;
 
             _sym.LineUsage = (chkLine.Checked) ? _lu : null;
+            _edSvc.MarkDirty();
         }
 
         private void chkArea_CheckedChanged(object sender, EventArgs e)
@@ -155,6 +157,7 @@ namespace Maestro.Editors.SymbolDefinition
                 return;
 
             _sym.AreaUsage = (chkArea.Checked) ? _au : null;
+            _edSvc.MarkDirty();
         }
 
         private void OnRequestBrowse(SymbolField sender) => ParameterSelector.ShowParameterSelector(_sym.ParameterDefinition.Parameter, sender);

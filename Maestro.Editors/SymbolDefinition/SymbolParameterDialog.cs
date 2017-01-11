@@ -28,12 +28,14 @@ namespace Maestro.Editors.SymbolDefinition
 {
     internal partial class SymbolParameterDialog : Form
     {
+        private readonly IEditorService _edSvc;
         private readonly IParameter _p;
         private bool _init = false;
 
-        public SymbolParameterDialog(Version ver, IParameter p)
+        public SymbolParameterDialog(Version ver, IParameter p, IEditorService edSvc)
         {
             InitializeComponent();
+            _edSvc = edSvc;
             _p = p;
             _init = true;
             try
@@ -68,30 +70,35 @@ namespace Maestro.Editors.SymbolDefinition
         {
             if (_init) return;
             _p.Identifier = txtIdentifier.Text;
+            _edSvc.MarkDirty();
         }
 
         private void txtDisplayName_TextChanged(object sender, EventArgs e)
         {
             if (_init) return;
             _p.DisplayName = txtDisplayName.Text;
+            _edSvc.MarkDirty();
         }
 
         private void txtDescription_TextChanged(object sender, EventArgs e)
         {
             if (_init) return;
             _p.Description = txtDescription.Text;
+            _edSvc.MarkDirty();
         }
 
         private void txtDefaultValue_TextChanged(object sender, EventArgs e)
         {
             if (_init) return;
             _p.DefaultValue = txtDefaultValue.Text;
+            _edSvc.MarkDirty();
         }
 
         private void cmbDataType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_init) return;
             _p.DataType = cmbDataType.SelectedItem.ToString();
+            _edSvc.MarkDirty();
         }
     }
 }

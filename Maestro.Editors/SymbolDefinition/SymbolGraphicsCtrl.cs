@@ -86,6 +86,7 @@ namespace Maestro.Editors.SymbolDefinition
             var text = _sym.CreateTextGraphics();
             AddGraphicsItem(text);
             _sym.AddGraphics(text);
+            this.OnResourceChanged();
             new TextDialog(this, _sym, text).ShowDialog();
         }
 
@@ -94,6 +95,7 @@ namespace Maestro.Editors.SymbolDefinition
             var path = _sym.CreatePathGraphics();
             AddGraphicsItem(path);
             _sym.AddGraphics(path);
+            this.OnResourceChanged();
             new PathDialog(this, _sym, path).ShowDialog();
         }
 
@@ -102,6 +104,7 @@ namespace Maestro.Editors.SymbolDefinition
             var img = _sym.CreateImageGraphics();
             AddGraphicsItem(img);
             _sym.AddGraphics(img);
+            this.OnResourceChanged();
             new ImageDialog(this, _conn, _sym, img).ShowDialog();
         }
 
@@ -144,6 +147,7 @@ namespace Maestro.Editors.SymbolDefinition
                 var g = (IGraphicBase)li.Tag;
                 lstGraphics.Items.Remove(li);
                 _sym.RemoveGraphics(g);
+                this.OnResourceChanged();
             }
         }
     }

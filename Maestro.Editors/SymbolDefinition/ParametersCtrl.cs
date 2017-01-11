@@ -39,11 +39,13 @@ namespace Maestro.Editors.SymbolDefinition
             grdParameters.DataSource = _params;
         }
 
+        private IEditorService _edSvc;
         private BindingList<IParameter> _params;
         private ISimpleSymbolDefinition _sym;
 
         public override void Bind(IEditorService service)
         {
+            _edSvc = service;
             _params.Clear();
             _sym = (ISimpleSymbolDefinition)service.GetEditedResource();
             foreach (var p in _sym.ParameterDefinition.Parameter)
@@ -57,7 +59,7 @@ namespace Maestro.Editors.SymbolDefinition
             var p = _sym.CreateParameter();
             _params.Add(p);
             _sym.ParameterDefinition.AddParameter(p);
-            var diag = new SymbolParameterDialog(_sym.ResourceVersion, p);
+            var diag = new SymbolParameterDialog(_sym.ResourceVersion, p, _edSvc);
             diag.ShowDialog();
         }
 
@@ -66,7 +68,7 @@ namespace Maestro.Editors.SymbolDefinition
             if (grdParameters.SelectedRows.Count == 1)
             {
                 var p = (IParameter)grdParameters.SelectedRows[0].DataBoundItem;
-                var diag = new SymbolParameterDialog(_sym.ResourceVersion, p);
+                var diag = new SymbolParameterDialog(_sym.ResourceVersion, p, _edSvc);
                 diag.ShowDialog();
             }
         }
@@ -78,6 +80,7 @@ namespace Maestro.Editors.SymbolDefinition
                 var p = (IParameter)grdParameters.SelectedRows[0].DataBoundItem;
                 _params.Remove(p);
                 _sym.ParameterDefinition.RemoveParameter(p);
+                _edSvc.MarkDirty();
             }
         }
 

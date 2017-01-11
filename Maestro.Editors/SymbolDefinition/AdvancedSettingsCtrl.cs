@@ -81,6 +81,7 @@ namespace Maestro.Editors.SymbolDefinition
                 _sym.ResizeBox = _rbox;
             else
                 _sym.ResizeBox = null;
+            _edSvc.MarkDirty();
         }
 
         private void OnContentChanged(object sender, EventArgs e) => OnResourceChanged();
