@@ -50,10 +50,10 @@ namespace Maestro.LiveMapEditor
 
             //Register previewers
             var urlLauncher = new OurUrlLauncher();
-            ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new LocalMapPreviewer(new DefaultResourcePreviewer(urlLauncher), urlLauncher)); //NOXLATE
+            ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new LocalMapPreviewer(new DefaultResourcePreviewer(urlLauncher), urlLauncher, null)); //NOXLATE
             //A stub previewer does nothing, but will use local map previews for applicable resources if the configuration
             //property is set
-            ResourcePreviewerFactory.RegisterPreviewer("Maestro.LocalNative", new LocalMapPreviewer(new StubPreviewer(), urlLauncher)); //NOXLATE
+            ResourcePreviewerFactory.RegisterPreviewer("Maestro.LocalNative", new LocalMapPreviewer(new StubPreviewer(), urlLauncher, null)); //NOXLATE
 
             //Can't use this code, it requires a call to MgdPlatform.Initialize which we can't call indirectly :(
             /*

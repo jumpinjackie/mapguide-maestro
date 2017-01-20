@@ -1721,4 +1721,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="MgCookerIncompatibleTileSet" xml:space="preserve">
     <value>MgCooker only works with Tile Sets using the 'Default' tile provider</value>
   </data>
+  <data name="ResourcePreviewTitle" xml:space="preserve">
+    <value>Resource Preview</value>
+  </data>
 </root>

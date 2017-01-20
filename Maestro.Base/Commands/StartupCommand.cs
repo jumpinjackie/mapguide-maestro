@@ -43,11 +43,12 @@ namespace Maestro.Base.Commands
                 PreviewSettings.UseLocalPreview = PropertyService.Get(ConfigProperties.UseLocalPreview, ConfigProperties.DefaultUseLocalPreview);
 
                 var urlLauncher = ServiceRegistry.GetService<UrlLauncherService>();
-                ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new LocalMapPreviewer(new DefaultResourcePreviewer(urlLauncher), urlLauncher)); //NOXLATE
-                ResourcePreviewerFactory.RegisterPreviewer("Maestro.Rest", new LocalMapPreviewer(new DefaultResourcePreviewer(urlLauncher), urlLauncher)); //NOXLATE
+                var vcMgr = ServiceRegistry.GetService<ViewContentManager>();
+                ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new LocalMapPreviewer(new DefaultResourcePreviewer(urlLauncher), urlLauncher, vcMgr)); //NOXLATE
+                ResourcePreviewerFactory.RegisterPreviewer("Maestro.Rest", new LocalMapPreviewer(new DefaultResourcePreviewer(urlLauncher), urlLauncher, vcMgr)); //NOXLATE
                 //A stub previewer does nothing, but will use local map previews for applicable resources if the configuration
                 //property is set
-                ResourcePreviewerFactory.RegisterPreviewer("Maestro.LocalNative", new LocalMapPreviewer(new StubPreviewer(), urlLauncher)); //NOXLATE
+                ResourcePreviewerFactory.RegisterPreviewer("Maestro.LocalNative", new LocalMapPreviewer(new StubPreviewer(), urlLauncher, vcMgr)); //NOXLATE
 
                 ServiceRegistry.GetService<NewItemTemplateService>().InitUserTemplates();
                 var wb = Workbench.Instance;
@@ -57,14 +58,12 @@ namespace Maestro.Base.Commands
 
                 wb.FormClosing += new System.Windows.Forms.FormClosingEventHandler(OnWorkbenchClosing);
                 wb.Text = "MapGuide Maestro"; //NOXLATE
-
-                var mgr = ServiceRegistry.GetService<ViewContentManager>();
-
+                
                 if (Props.Get(ConfigProperties.ShowMessages, true))
-                    mgr.OpenContent<MessageViewer>(ViewRegion.Bottom);
+                    vcMgr.OpenContent<MessageViewer>(ViewRegion.Bottom);
 
                 if (Props.Get(ConfigProperties.ShowOutboundRequests, true))
-                    mgr.OpenContent<OutboundRequestViewer>(ViewRegion.Bottom);
+                    vcMgr.OpenContent<OutboundRequestViewer>(ViewRegion.Bottom);
 
                 LoginCommand.RunInternal(true);
             };

@@ -37,18 +37,21 @@ namespace Maestro.Editors.Preview
     /// </summary>
     public class LocalMapPreviewer : IResourcePreviewer
     {
-        private readonly IResourcePreviewer _inner;
-        private readonly IUrlLauncherService _launcher;
+        readonly IResourcePreviewer _inner;
+        readonly IUrlLauncherService _launcher;
+        readonly IViewContentManager _viewManager;
 
         /// <summary>
         /// Initializes a new instance of the LocalMapPreviewer class
         /// </summary>
         /// <param name="inner">The inner resource previewer</param>
         /// <param name="launcher">The URL launcher service</param>
-        public LocalMapPreviewer(IResourcePreviewer inner, IUrlLauncherService launcher)
+        /// <param name="viewManager">The view content manager</param>
+        public LocalMapPreviewer(IResourcePreviewer inner, IUrlLauncherService launcher, IViewContentManager viewManager)
         {
             _inner = inner;
             _launcher = launcher;
+            _viewManager = viewManager;
         }
 
         /// <summary>
@@ -164,8 +167,15 @@ namespace Maestro.Editors.Preview
                     if (obj != null)
                     {
                         var rtMap = (RuntimeMap)obj;
-                        var diag = new MapPreviewDialog(rtMap, _launcher, (edSvc.IsNew) ? null : edSvc.ResourceID);
-                        diag.Show(null);
+                        if (_viewManager != null)
+                        {
+                            _viewManager.OpenContent(ViewRegion.Document, () => new MapPreviewViewContent(rtMap, _launcher, (edSvc.IsNew) ? null : edSvc.ResourceID));
+                        }
+                        else
+                        {
+                            var diag = new MapPreviewDialog(rtMap, _launcher, (edSvc.IsNew) ? null : edSvc.ResourceID);
+                            diag.Show(null);
+                        }
                     }
                     else //Fallback, shouldn't happen
                     {
