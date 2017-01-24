@@ -1881,26 +1881,32 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
         {
             get
             {
-                foreach (var pair in this.PropertyMapping)
+                if (this.PropertyMapping != null)
                 {
-                    yield return pair;
+                    foreach (var pair in this.PropertyMapping)
+                    {
+                        yield return pair;
+                    }
                 }
             }
         }
 
         INameStringPair IVectorLayerDefinition.GetPropertyMapping(string name)
         {
-            foreach (var p in this.PropertyMapping)
+            if (this.PropertyMapping != null)
             {
-                if (p.Name == name)
-                    return p;
+                foreach (var p in this.PropertyMapping)
+                {
+                    if (p.Name == name)
+                        return p;
+                }
             }
             return null;
         }
 
         INameStringPair IVectorLayerDefinition.GetPropertyMappingAt(int index)
         {
-            if (index < 0 || index >= this.PropertyMapping.Count)
+            if (this.PropertyMapping == null || index < 0 || index >= this.PropertyMapping.Count)
                 throw new ArgumentOutOfRangeException();
 
             var item = this.PropertyMapping[index];
@@ -1925,57 +1931,78 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
         {
             var p = pair as NameStringPairType;
             if (p != null)
+            {
+                if (this.PropertyMapping == null)
+                {
+                    this.PropertyMapping = new BindingList<NameStringPairType>();
+                }
+
                 this.PropertyMapping.Add(p);
+            }
         }
 
         void IVectorLayerDefinition.RemovePropertyMapping(INameStringPair pair)
         {
             var p = pair as NameStringPairType;
-            if (p != null)
-                this.PropertyMapping.Remove(p);
+            var pmaps = this.PropertyMapping;
+            if (p != null && pmaps != null)
+            {
+                pmaps.Remove(p);
+                if (pmaps.Count == 0)
+                    this.PropertyMapping = null;
+            }
         }
 
         int IVectorLayerDefinition.GetPosition(INameStringPair pair)
         {
-            var p = pair as NameStringPairType;
-            if (p != null)
-                return this.PropertyMapping.IndexOf(p);
+            if (this.PropertyMapping != null)
+            {
+                var p = pair as NameStringPairType;
+                if (p != null)
+                    return this.PropertyMapping.IndexOf(p);
+            }
 
             return -1;
         }
 
         int IVectorLayerDefinition.MoveUp(INameStringPair pair)
         {
-            int pos = ((IVectorLayerDefinition)this).GetPosition(pair);
-            if (pos > 0)
+            if (this.PropertyMapping != null)
             {
-                int dest = pos - 1;
-                var p = this.PropertyMapping[dest];
-                var p2 = (NameStringPairType)pair;
+                int pos = ((IVectorLayerDefinition)this).GetPosition(pair);
+                if (pos > 0)
+                {
+                    int dest = pos - 1;
+                    var p = this.PropertyMapping[dest];
+                    var p2 = (NameStringPairType)pair;
 
-                //Swap
-                this.PropertyMapping[dest] = p2;
-                this.PropertyMapping[pos] = p;
+                    //Swap
+                    this.PropertyMapping[dest] = p2;
+                    this.PropertyMapping[pos] = p;
 
-                return dest;
+                    return dest;
+                }
             }
             return -1;
         }
 
         int IVectorLayerDefinition.MoveDown(INameStringPair pair)
         {
-            int pos = ((IVectorLayerDefinition)this).GetPosition(pair);
-            if (pos < this.PropertyMapping.Count - 1)
+            if (this.PropertyMapping != null)
             {
-                int dest = pos + 1;
-                var p = this.PropertyMapping[dest];
-                var p2 = (NameStringPairType)pair;
+                int pos = ((IVectorLayerDefinition)this).GetPosition(pair);
+                if (pos < this.PropertyMapping.Count - 1)
+                {
+                    int dest = pos + 1;
+                    var p = this.PropertyMapping[dest];
+                    var p2 = (NameStringPairType)pair;
 
-                //Swap
-                this.PropertyMapping[dest] = p2;
-                this.PropertyMapping[pos] = p;
+                    //Swap
+                    this.PropertyMapping[dest] = p2;
+                    this.PropertyMapping[pos] = p;
 
-                return dest;
+                    return dest;
+                }
             }
             return -1;
         }

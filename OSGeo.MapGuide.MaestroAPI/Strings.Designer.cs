@@ -1573,6 +1573,15 @@ namespace OSGeo.MapGuide.MaestroAPI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Layer has property mapping for non-existent property ({0}) in class ({1}).
+        /// </summary>
+        public static string LDF_InvalidPropertyMapping {
+            get {
+                return ResourceManager.GetString("LDF_InvalidPropertyMapping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Referenced Symbol Definition {0} has an irrelevant usage context for this layer because this layer does not have features of type: {1}.
         /// </summary>
         public static string LDF_IrrelevantUsageContext {
@@ -1596,6 +1605,15 @@ namespace OSGeo.MapGuide.MaestroAPI {
         public static string LDF_MinAndMaxScaleSwappedError {
             get {
                 return ResourceManager.GetString("LDF_MinAndMaxScaleSwappedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Layer Definition does not specify a class name.
+        /// </summary>
+        public static string LDF_MissingFeatureName {
+            get {
+                return ResourceManager.GetString("LDF_MissingFeatureName", resourceCulture);
             }
         }
         

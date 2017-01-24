@@ -138,7 +138,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                                         }
                                     }
                                     if (!found)
-                                        issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_ClassNotFound, string.Format(Strings.LDF_SchemaMissingError, qualClassName, fs.ResourceID)));
+                                        issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_InvalidPropertyMapping, string.Format(Strings.LDF_InvalidPropertyMapping, s.Name, qualClassName)));
                                 }
                             }
                         }
@@ -163,7 +163,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             if (vldef != null)
             {
                 if (string.IsNullOrEmpty(vldef.FeatureName))
-                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_MissingFeatureSource, Strings.LDF_MissingFeatureSourceError));
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_MissingFeatureName, Strings.LDF_MissingFeatureSourceError));
                 if (string.IsNullOrEmpty(vldef.Geometry))
                     issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_MissingGeometry, Strings.LDF_MissingGeometryError));
 
@@ -296,6 +296,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             }
             else if (gldef != null)
             {
+                if (string.IsNullOrEmpty(gldef.FeatureName))
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_MissingFeatureName, Strings.LDF_MissingFeatureSourceError));
+                if (string.IsNullOrEmpty(gldef.Geometry))
+                    issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_MissingGeometry, Strings.LDF_MissingGeometryError));
                 if (gldef.GridScaleRange == null || gldef.GridScaleRangeCount == 0)
                     issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_NoGridScaleRanges, Strings.LDF_MissingScaleRangesError));
                 else if (gldef.GridScaleRangeCount != 1)

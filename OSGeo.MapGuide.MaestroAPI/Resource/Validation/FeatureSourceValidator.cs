@@ -140,6 +140,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             if (providerNameUpper == "OSGEO.SQLSERVERSPATIAL" || //NOXLATE
                 providerNameUpper == "OSGEO.MYSQL" || //NOXLATE
                 providerNameUpper == "OSGEO.POSTGRESQL" || //NOXLATE
+                providerNameUpper == "OSGEO.ODBC" || //NOXLATE
                 providerNameUpper == "OSGEO.ARCSDE" || //NOXLATE
                 providerNameUpper == "OSGEO.WFS" || //NOXLATE
                 providerNameUpper == "OSGEO.WMS" || //NOXLATE
@@ -186,13 +187,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 System.Globalization.CultureInfo ci = System.Globalization.CultureInfo.InvariantCulture;
                 FdoSpatialContextList lst = context.GetSpatialContexts(feature.ResourceID);
                 if (lst == null || lst.SpatialContext == null || lst.SpatialContext.Count == 0)
+                {
                     issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_NoSpatialContext, Strings.FS_NoSpatialContextWarning));
+                }
                 else
+                {
                     foreach (FdoSpatialContextListSpatialContext c in lst.SpatialContext)
+                    {
                         if (c.Extent == null || c.Extent.LowerLeftCoordinate == null || c.Extent.UpperRightCoordinate == null)
                             issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_EmptySpatialContext, Strings.FS_EmptySpatialContextWarning));
                         else if (double.Parse(c.Extent.LowerLeftCoordinate.X, ci) <= -1000000 && double.Parse(c.Extent.LowerLeftCoordinate.Y, ci) <= -1000000 && double.Parse(c.Extent.UpperRightCoordinate.X, ci) >= 1000000 && double.Parse(c.Extent.UpperRightCoordinate.Y, ci) >= 1000000)
                             issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_DefaultSpatialContext, Strings.FS_DefaultSpatialContextWarning));
+                    }
+                }
             }
             catch (Exception ex)
             {

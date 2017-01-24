@@ -293,6 +293,38 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         }
 
         [Test]
+        public void CreateVectorLayerDefinitionTest()
+        {
+            var ldf100 = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
+            var ldf110 = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 1, 0));
+            var ldf120 = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 2, 0));
+            var ldf130 = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 3, 0));
+            var ldf230 = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(2, 3, 0));
+            var ldf240 = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(2, 4, 0));
+
+            var vl100 = (IVectorLayerDefinition)ldf100.SubLayer;
+            var vl110 = (IVectorLayerDefinition)ldf110.SubLayer;
+            var vl120 = (IVectorLayerDefinition)ldf120.SubLayer;
+            var vl130 = (IVectorLayerDefinition)ldf130.SubLayer;
+            var vl230 = (IVectorLayerDefinition)ldf230.SubLayer;
+            var vl240 = (IVectorLayerDefinition)ldf240.SubLayer;
+
+            Assert.AreEqual(0, vl100.PropertyMapping.Count());
+            Assert.AreEqual(0, vl110.PropertyMapping.Count());
+            Assert.AreEqual(0, vl120.PropertyMapping.Count());
+            Assert.AreEqual(0, vl130.PropertyMapping.Count());
+            Assert.AreEqual(0, vl230.PropertyMapping.Count());
+            Assert.AreEqual(0, vl240.PropertyMapping.Count());
+
+            Assert.AreEqual(1, vl100.VectorScaleRange.Count());
+            Assert.AreEqual(1, vl110.VectorScaleRange.Count());
+            Assert.AreEqual(1, vl120.VectorScaleRange.Count());
+            Assert.AreEqual(1, vl130.VectorScaleRange.Count());
+            Assert.AreEqual(1, vl230.VectorScaleRange.Count());
+            Assert.AreEqual(1, vl240.VectorScaleRange.Count());
+        }
+
+        [Test]
         public void CreateFeatureSourceTest()
         {
             var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");

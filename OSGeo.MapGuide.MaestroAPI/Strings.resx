@@ -903,4 +903,10 @@
   <data name="ODBC_IncompleteXYZColumnMapping" xml:space="preserve">
     <value>Table mapping for Feature class ({0}) has an incomplete column mapping. Either the X or Y or both columns are not specified</value>
   </data>
+  <data name="LDF_InvalidPropertyMapping" xml:space="preserve">
+    <value>Layer has property mapping for non-existent property ({0}) in class ({1})</value>
+  </data>
+  <data name="LDF_MissingFeatureName" xml:space="preserve">
+    <value>Layer Definition does not specify a class name</value>
+  </data>
 </root>

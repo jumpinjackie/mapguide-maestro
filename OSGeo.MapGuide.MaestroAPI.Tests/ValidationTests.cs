@@ -274,40 +274,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         public void TestCase_FsValidator_ValidatesOdbcConfigurationIssues()
         {
             var conf = new OdbcConfigurationDocument();
-
-            var sc = new FdoSpatialContextListSpatialContext();
-            sc.CoordinateSystemName = "LL84";
-            sc.CoordinateSystemWkt = "";
-            sc.Description = "Default Spatial Context";
-            sc.Extent = new FdoSpatialContextListSpatialContextExtent()
-            {
-                LowerLeftCoordinate = new FdoSpatialContextListSpatialContextExtentLowerLeftCoordinate()
-                {
-                    X = "-180.0",
-                    Y = "-180.0"
-                },
-                UpperRightCoordinate = new FdoSpatialContextListSpatialContextExtentUpperRightCoordinate()
-                {
-                    X = "180.0",
-                    Y = "180.0"
-                }
-            };
-            sc.ExtentType = FdoSpatialContextListSpatialContextExtentType.Static;
-            sc.Name = "Default";
-            sc.XYTolerance = 0.0001;
-            sc.ZTolerance = 0.0001;
+            var sc = CreateTestSpatialContext();
 
             var schema = new FeatureSchema("Default", "Default Schema");
-            var klass = new ClassDefinition("Test", "Test Class");
-            var id = new DataPropertyDefinition("ID", "Identity");
-            var geom = new GeometricPropertyDefinition("Geometry", "geometry")
-            {
-                GeometricTypes = FeatureGeometricType.Point
-            };
-            geom.SpatialContextAssociation = sc.Name;
-            klass.AddProperty(id, true);
-            klass.AddProperty(geom);
-            klass.DefaultGeometryPropertyName = geom.Name;
+            ClassDefinition klass = CreateTestClass(sc.Name);
+            GeometricPropertyDefinition geom = klass.Properties.OfType<GeometricPropertyDefinition>().FirstOrDefault(p => p.Name == klass.DefaultGeometryPropertyName);
+            
             schema.AddClass(klass);
 
             conf.AddSchema(schema);
@@ -352,7 +324,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockFs.Setup(fs => fs.ResourceID).Returns(resId);
             mockFs.Setup(fs => fs.Extension).Returns(Enumerable.Empty<IFeatureSourceExtension>());
             mockFs.Setup(fs => fs.ResourceType).Returns(ResourceTypes.FeatureSource.ToString());
-            mockFs.Setup(fs => fs.Provider).Returns("OSGeo.ODBC");
+            mockFs.Setup(fs => fs.Provider).Returns("OSGeo.SDF");
             mockFs.Setup(fs => fs.Serialize()).Returns(string.Empty);
 
             //XYZ column misconfigurations
@@ -363,7 +335,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var issues = validator.Validate(context, mockFs.Object, false);
             Assert.AreEqual(1, issues.Count());
             Assert.AreEqual(ValidationStatusCode.Error_OdbcConfig_IncompleteXYZColumnMapping, issues.First().StatusCode);
-            
+
             odbcTable.XColumn = null;
             odbcTable.YColumn = "Y";
 
@@ -433,6 +405,846 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
             Assert.AreEqual(0, issues.Count());
+        }
+
+        private ClassDefinition CreateTestClass(string scName, string className = "Test", string idName = "ID", string geomName = "Geometry")
+        {
+            var klass = new ClassDefinition(className, "Test Class");
+
+            var id = new DataPropertyDefinition(idName, "Identity");
+            var geom = new GeometricPropertyDefinition(geomName, "geometry")
+            {
+                GeometricTypes = FeatureGeometricType.Point
+            };
+            geom.SpatialContextAssociation = scName;
+            klass.AddProperty(id, true);
+            klass.AddProperty(geom);
+            klass.DefaultGeometryPropertyName = geom.Name;
+
+            return klass;
+        }
+
+        private static FdoSpatialContextListSpatialContext CreateTestSpatialContext()
+        {
+            var sc = new FdoSpatialContextListSpatialContext();
+            sc.CoordinateSystemName = "LL84";
+            sc.CoordinateSystemWkt = "";
+            sc.Description = "Default Spatial Context";
+            sc.Extent = new FdoSpatialContextListSpatialContextExtent()
+            {
+                LowerLeftCoordinate = new FdoSpatialContextListSpatialContextExtentLowerLeftCoordinate()
+                {
+                    X = "-180.0",
+                    Y = "-180.0"
+                },
+                UpperRightCoordinate = new FdoSpatialContextListSpatialContextExtentUpperRightCoordinate()
+                {
+                    X = "180.0",
+                    Y = "180.0"
+                }
+            };
+            sc.ExtentType = FdoSpatialContextListSpatialContextExtentType.Static;
+            sc.Name = "Default";
+            sc.XYTolerance = 0.0001;
+            sc.ZTolerance = 0.0001;
+            return sc;
+        }
+
+        [Test]
+        public void TestCase_FsValidator_FailedTestConnection()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var dataName = "config.xml";
+            var schemaName = "Default";
+
+            var sc = CreateTestSpatialContext();
+            var scList = new FdoSpatialContextList
+            {
+                SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>() { sc }
+            };
+
+            var mockExt = new Mock<IFeatureSourceExtension>();
+            var mockRelate = new Mock<IAttributeRelation>();
+            mockRelate.Setup(r => r.Name).Returns("abcd");
+
+            mockExt.Setup(ext => ext.AttributeRelate).Returns(new[] { mockRelate.Object });
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(rs => rs.GetResourceData(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == dataName))).Returns((Stream)null);
+            mockFeatSvc.Setup(fs => fs.TestConnection(It.Is<string>(arg => arg == resId))).Returns("false");
+            mockFeatSvc.Setup(fs => fs.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fs => fs.GetSpatialContextInfo(It.Is<string>(arg => arg == resId), It.IsAny<bool>())).Returns(scList);
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var mockFs = new Mock<IFeatureSource>();
+            mockFs.Setup(fs => fs.ConfigurationDocument).Returns(dataName);
+            mockFs.Setup(fs => fs.ResourceID).Returns(resId);
+            mockFs.Setup(fs => fs.Extension).Returns(new[] { mockExt.Object });
+            mockFs.Setup(fs => fs.ResourceType).Returns(ResourceTypes.FeatureSource.ToString());
+            mockFs.Setup(fs => fs.Provider).Returns("OSGeo.SDF");
+            mockFs.Setup(fs => fs.Serialize()).Returns(string.Empty);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, mockFs.Object, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_FeatureSource_ConnectionTestFailed, issues.First().StatusCode);
+        }
+
+        [Test]
+        public void TestCase_FsValidator_Credentials()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var dataName = "config.xml";
+            var schemaName = "Default";
+
+            var sc = CreateTestSpatialContext();
+            var scList = new FdoSpatialContextList
+            {
+                SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>() { sc }
+            };
+
+            var mockExt = new Mock<IFeatureSourceExtension>();
+            var mockRelate = new Mock<IAttributeRelation>();
+            mockRelate.Setup(r => r.Name).Returns("abcd");
+
+            mockExt.Setup(ext => ext.AttributeRelate).Returns(new[] { mockRelate.Object });
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(rs => rs.GetResourceData(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == dataName))).Returns((Stream)null);
+            mockResSvc.Setup(rs => rs.EnumerateResourceData(It.IsAny<string>())).Returns(new ResourceDataList { ResourceData = new System.ComponentModel.BindingList<ResourceDataListResourceData>() });
+            mockFeatSvc.Setup(fs => fs.TestConnection(It.Is<string>(arg => arg == resId))).Returns("true");
+            mockFeatSvc.Setup(fs => fs.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fs => fs.GetSpatialContextInfo(It.Is<string>(arg => arg == resId), It.IsAny<bool>())).Returns(scList);
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var mockFs = ObjectFactory.CreateFeatureSource("OSGeo.ODBC");
+            mockFs.ResourceID = resId;
+            mockFs.SetConnectionProperty("Username", "admin");
+            mockFs.SetConnectionProperty("Password", "password");
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, mockFs, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Warning_FeatureSource_Plaintext_Credentials, issues.First().StatusCode);
+
+            mockFs.SetConnectionProperty("Username", StringConstants.MgUsernamePlaceholder);
+            mockFs.SetConnectionProperty("Password", StringConstants.MgPasswordPlaceholder);
+
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, mockFs, false);
+            Assert.AreEqual(2, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Warning_FeatureSource_Cannot_Package_Secured_Credentials, issues.First().StatusCode);
+            Assert.AreEqual(ValidationStatusCode.Error_FeatureSource_SecuredCredentialTokensWithoutSecuredCredentialData, issues.Last().StatusCode);
+        }
+
+        [Test]
+        public void TestCase_FsValidator_SchemaRead()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var dataName = "config.xml";
+
+            var sc = CreateTestSpatialContext();
+            var scList = new FdoSpatialContextList
+            {
+                SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>() { sc }
+            };
+
+            var mockExt = new Mock<IFeatureSourceExtension>();
+            var mockRelate = new Mock<IAttributeRelation>();
+            mockRelate.Setup(r => r.Name).Returns("abcd");
+
+            mockExt.Setup(ext => ext.AttributeRelate).Returns(new[] { mockRelate.Object });
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(rs => rs.GetResourceData(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == dataName))).Returns((Stream)null);
+            mockFeatSvc.Setup(fs => fs.TestConnection(It.Is<string>(arg => arg == resId))).Returns("true");
+            mockFeatSvc.Setup(fs => fs.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new string[0]);
+            mockFeatSvc.Setup(fs => fs.GetSpatialContextInfo(It.Is<string>(arg => arg == resId), It.IsAny<bool>())).Returns(scList);
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var mockFs = new Mock<IFeatureSource>();
+            mockFs.Setup(fs => fs.ConfigurationDocument).Returns(dataName);
+            mockFs.Setup(fs => fs.ResourceID).Returns(resId);
+            mockFs.Setup(fs => fs.Extension).Returns(new[] { mockExt.Object });
+            mockFs.Setup(fs => fs.ResourceType).Returns(ResourceTypes.FeatureSource.ToString());
+            mockFs.Setup(fs => fs.Provider).Returns("OSGeo.SDF");
+            mockFs.Setup(fs => fs.Serialize()).Returns(string.Empty);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, mockFs.Object, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Warning_FeatureSource_NoSchemasFound, issues.First().StatusCode);
+        }
+
+        [Test]
+        public void TestCase_FsValidator_SpatialContexts()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var resId2 = "Library://Test2.FeatureSource";
+            var resId3 = "Library://Test3.FeatureSource";
+            var resId4 = "Library://Test4.FeatureSource";
+            var resId5 = "Library://Test5.FeatureSource";
+            var dataName = "config.xml";
+            var schemaName = "Default";
+
+            var sc = CreateTestSpatialContext();
+            var scBogus = CreateTestSpatialContext();
+            scBogus.Extent = null;
+            var scOOB = CreateTestSpatialContext();
+            scOOB.Extent = new FdoSpatialContextListSpatialContextExtent()
+            {
+                LowerLeftCoordinate = new FdoSpatialContextListSpatialContextExtentLowerLeftCoordinate()
+                {
+                    X = "-1000001",
+                    Y = "-1000001"
+                },
+                UpperRightCoordinate = new FdoSpatialContextListSpatialContextExtentUpperRightCoordinate()
+                {
+                    X = "1000001",
+                    Y = "1000001"
+                }
+            };
+            var badScList = new FdoSpatialContextList();
+            var scList = new FdoSpatialContextList
+            {
+                SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>() { sc }
+            };
+            var scListBogus = new FdoSpatialContextList
+            {
+                SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>() { scBogus }
+            };
+            var scListOOB = new FdoSpatialContextList
+            {
+                SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>() { scOOB }
+            };
+
+            var mockExt = new Mock<IFeatureSourceExtension>();
+            var mockRelate = new Mock<IAttributeRelation>();
+            mockRelate.Setup(r => r.Name).Returns("abcd");
+
+            mockExt.Setup(ext => ext.AttributeRelate).Returns(new[] { mockRelate.Object });
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(rs => rs.GetResourceData(It.IsAny<string>(), It.IsAny<string>())).Returns((Stream)null);
+            mockFeatSvc.Setup(fs => fs.TestConnection(It.IsAny<string>())).Returns("true");
+            mockFeatSvc.Setup(fs => fs.GetSchemas(It.IsAny<string>())).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fs => fs.GetSpatialContextInfo(It.Is<string>(arg => arg == resId), It.IsAny<bool>())).Returns((FdoSpatialContextList)null);
+            mockFeatSvc.Setup(fs => fs.GetSpatialContextInfo(It.Is<string>(arg => arg == resId2), It.IsAny<bool>())).Returns(badScList);
+            mockFeatSvc.Setup(fs => fs.GetSpatialContextInfo(It.Is<string>(arg => arg == resId3), It.IsAny<bool>())).Returns(scListBogus);
+            mockFeatSvc.Setup(fs => fs.GetSpatialContextInfo(It.Is<string>(arg => arg == resId4), It.IsAny<bool>())).Returns(scListOOB);
+            mockFeatSvc.Setup(fs => fs.GetSpatialContextInfo(It.Is<string>(arg => arg == resId5), It.IsAny<bool>())).Returns(scList);
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var mockFs = new Mock<IFeatureSource>();
+            mockFs.Setup(fs => fs.ConfigurationDocument).Returns(dataName);
+            mockFs.Setup(fs => fs.ResourceID).Returns(resId);
+            mockFs.Setup(fs => fs.Extension).Returns(new[] { mockExt.Object });
+            mockFs.Setup(fs => fs.ResourceType).Returns(ResourceTypes.FeatureSource.ToString());
+            mockFs.Setup(fs => fs.Provider).Returns("OSGeo.SDF");
+            mockFs.Setup(fs => fs.Serialize()).Returns(string.Empty);
+
+            var mockFs2 = new Mock<IFeatureSource>();
+            mockFs2.Setup(fs => fs.ConfigurationDocument).Returns(dataName);
+            mockFs2.Setup(fs => fs.ResourceID).Returns(resId2);
+            mockFs2.Setup(fs => fs.Extension).Returns(new[] { mockExt.Object });
+            mockFs2.Setup(fs => fs.ResourceType).Returns(ResourceTypes.FeatureSource.ToString());
+            mockFs2.Setup(fs => fs.Provider).Returns("OSGeo.SDF");
+            mockFs2.Setup(fs => fs.Serialize()).Returns(string.Empty);
+
+            var mockFs3 = new Mock<IFeatureSource>();
+            mockFs3.Setup(fs => fs.ConfigurationDocument).Returns(dataName);
+            mockFs3.Setup(fs => fs.ResourceID).Returns(resId3);
+            mockFs3.Setup(fs => fs.Extension).Returns(new[] { mockExt.Object });
+            mockFs3.Setup(fs => fs.ResourceType).Returns(ResourceTypes.FeatureSource.ToString());
+            mockFs3.Setup(fs => fs.Provider).Returns("OSGeo.SDF");
+            mockFs3.Setup(fs => fs.Serialize()).Returns(string.Empty);
+
+            var mockFs4 = new Mock<IFeatureSource>();
+            mockFs4.Setup(fs => fs.ConfigurationDocument).Returns(dataName);
+            mockFs4.Setup(fs => fs.ResourceID).Returns(resId4);
+            mockFs4.Setup(fs => fs.Extension).Returns(new[] { mockExt.Object });
+            mockFs4.Setup(fs => fs.ResourceType).Returns(ResourceTypes.FeatureSource.ToString());
+            mockFs4.Setup(fs => fs.Provider).Returns("OSGeo.SDF");
+            mockFs4.Setup(fs => fs.Serialize()).Returns(string.Empty);
+
+            var mockFs5 = new Mock<IFeatureSource>();
+            mockFs5.Setup(fs => fs.ConfigurationDocument).Returns(dataName);
+            mockFs5.Setup(fs => fs.ResourceID).Returns(resId5);
+            mockFs5.Setup(fs => fs.Extension).Returns(new[] { mockExt.Object });
+            mockFs5.Setup(fs => fs.ResourceType).Returns(ResourceTypes.FeatureSource.ToString());
+            mockFs5.Setup(fs => fs.Provider).Returns("OSGeo.SDF");
+            mockFs5.Setup(fs => fs.Serialize()).Returns(string.Empty);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, mockFs2.Object, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Warning_FeatureSource_NoSpatialContext, issues.First().StatusCode);
+
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, mockFs3.Object, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Warning_FeatureSource_EmptySpatialContext, issues.First().StatusCode);
+
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, mockFs4.Object, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Warning_FeatureSource_DefaultSpatialContext, issues.First().StatusCode);
+
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, mockFs5.Object, false);
+            Assert.AreEqual(0, issues.Count());
+        }
+
+        [Test]
+        public void TestCase_FsValidator_EmptyJoinPrefix()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var dataName = "config.xml";
+            var schemaName = "Default";
+
+            var sc = CreateTestSpatialContext();
+            var scList = new FdoSpatialContextList
+            {
+                SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>() { sc }
+            };
+
+            var mockExt = new Mock<IFeatureSourceExtension>();
+            var mockRelate = new Mock<IAttributeRelation>();
+            mockRelate.Setup(r => r.Name).Returns(string.Empty);
+
+            mockExt.Setup(ext => ext.AttributeRelate).Returns(new[] { mockRelate.Object });
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(rs => rs.GetResourceData(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == dataName))).Returns((Stream)null);
+            mockFeatSvc.Setup(fs => fs.TestConnection(It.Is<string>(arg => arg == resId))).Returns("true");
+            mockFeatSvc.Setup(fs => fs.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fs => fs.GetSpatialContextInfo(It.Is<string>(arg => arg == resId), It.IsAny<bool>())).Returns(scList);
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var mockFs = new Mock<IFeatureSource>();
+            mockFs.Setup(fs => fs.ConfigurationDocument).Returns(dataName);
+            mockFs.Setup(fs => fs.ResourceID).Returns(resId);
+            mockFs.Setup(fs => fs.Extension).Returns(new[] { mockExt.Object });
+            mockFs.Setup(fs => fs.ResourceType).Returns(ResourceTypes.FeatureSource.ToString());
+            mockFs.Setup(fs => fs.Provider).Returns("OSGeo.SDF");
+            mockFs.Setup(fs => fs.Serialize()).Returns(string.Empty);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, mockFs.Object, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Warning_FeatureSource_EmptyJoinPrefix, issues.First().StatusCode);
+        }
+
+        [Test]
+        public void TestCase_LayerValidator_ClassNotFound()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var ldfId = "Library://Test.LayerDefinition";
+            var schemaName = "Default";
+            var className = "Test";
+            var idName = "ID";
+            var geomName = "Geometry";
+            var klass = CreateTestClass("Default", className, idName, geomName);
+
+            var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
+
+            var ldf = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
+            ldf.SubLayer.ResourceId = resId;
+            ldf.ResourceID = ldfId;
+            var vl = (IVectorLayerDefinition)ldf.SubLayer;
+            vl.FeatureName = $"{schemaName}:{klass.Name}";
+            vl.Geometry = geomName;
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(rsvc => rsvc.GetResource(It.Is<string>(arg => arg == resId))).Returns(fs);
+
+            mockFeatSvc.Setup(fsvc => fsvc.TestConnection(It.Is<string>(arg => arg == resId))).Returns("false");
+            mockFeatSvc.Setup(fsvc => fsvc.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fsvc => fsvc.GetClassDefinition(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == $"{schemaName}:{className}"))).Returns((ClassDefinition)null);
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new LayerDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, ldf, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_ClassNotFound, issues.First().StatusCode);
+        }
+
+        [Test]
+        public void TestCase_LayerValidator_GeometryNotFound()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var ldfId = "Library://Test.LayerDefinition";
+            var schemaName = "Default";
+            var className = "Test";
+            var idName = "ID";
+            var geomName = "Geometry";
+            var klass = CreateTestClass("Default", className, idName, "Geom");
+
+            var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
+            fs.ResourceID = resId;
+
+            var ldf = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
+            ldf.SubLayer.ResourceId = resId;
+            ldf.ResourceID = ldfId;
+            var vl = (IVectorLayerDefinition)ldf.SubLayer;
+            vl.FeatureName = $"{schemaName}:{klass.Name}";
+            vl.Geometry = geomName;
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(rsvc => rsvc.GetResource(It.Is<string>(arg => arg == resId))).Returns(fs);
+
+            mockFeatSvc.Setup(fsvc => fsvc.TestConnection(It.Is<string>(arg => arg == resId))).Returns("false");
+            mockFeatSvc.Setup(fsvc => fsvc.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fsvc => fsvc.GetClassDefinition(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == $"{schemaName}:{className}"))).Returns(klass);
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new LayerDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, ldf, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_GeometryNotFound, issues.First().StatusCode);
+        }
+
+        [Test]
+        public void TestCase_LayerValidator_BadPropertyMapping()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var ldfId = "Library://Test.LayerDefinition";
+            var schemaName = "Default";
+            var className = "Test";
+            var idName = "ID";
+            var geomName = "Geometry";
+            var klass = CreateTestClass("Default", className, idName, geomName);
+
+            var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
+            fs.ResourceID = resId;
+
+            var ldf = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
+            ldf.SubLayer.ResourceId = resId;
+            ldf.ResourceID = ldfId;
+            var vl = (IVectorLayerDefinition)ldf.SubLayer;
+            vl.FeatureName = $"{schemaName}:{klass.Name}";
+            vl.Geometry = geomName;
+
+            vl.AddPropertyMapping(ldf.CreatePair("Foo", "Bar"));
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(rsvc => rsvc.GetResource(It.Is<string>(arg => arg == resId))).Returns(fs);
+
+            mockFeatSvc.Setup(fsvc => fsvc.TestConnection(It.Is<string>(arg => arg == resId))).Returns("false");
+            mockFeatSvc.Setup(fsvc => fsvc.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fsvc => fsvc.GetClassDefinition(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == $"{schemaName}:{className}"))).Returns(klass);
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new LayerDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, ldf, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_InvalidPropertyMapping, issues.First().StatusCode);
+        }
+
+        [Test]
+        public void TestCase_LayerValidator_MissingFeatureName()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var resId2 = "Library://TestRaster.FeatureSource";
+            var ldfId = "Library://Test.LayerDefinition";
+            var schemaName = "Default";
+            var className = "Test";
+            var idName = "ID";
+            var geomName = "Geometry";
+            var klass = CreateTestClass("Default", className, idName, geomName);
+
+            var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
+            fs.ResourceID = resId;
+
+            var gfs = ObjectFactory.CreateFeatureSource("OSGeo.GDAL");
+            gfs.ResourceID = resId2;
+
+            var ldf = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
+            ldf.SubLayer.ResourceId = resId;
+            ldf.ResourceID = ldfId;
+            var vl = (IVectorLayerDefinition)ldf.SubLayer;
+            vl.Geometry = geomName;
+
+            var gldf = ObjectFactory.CreateDefaultLayer(LayerType.Raster, new Version(1, 0, 0));
+            gldf.SubLayer.ResourceId = resId2;
+            gldf.ResourceID = ldfId;
+            var gl = (IRasterLayerDefinition)gldf.SubLayer;
+            gl.Geometry = geomName;
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(rsvc => rsvc.GetResource(It.Is<string>(arg => arg == resId))).Returns(fs);
+            mockResSvc.Setup(rsvc => rsvc.GetResource(It.Is<string>(arg => arg == resId2))).Returns(gfs);
+
+            mockFeatSvc.Setup(fsvc => fsvc.TestConnection(It.Is<string>(arg => arg == resId))).Returns("true");
+            mockFeatSvc.Setup(fsvc => fsvc.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fsvc => fsvc.GetClassDefinition(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == $"{schemaName}:{className}"))).Returns(klass);
+
+            mockFeatSvc.Setup(fsvc => fsvc.TestConnection(It.Is<string>(arg => arg == resId))).Returns("true");
+            mockFeatSvc.Setup(fsvc => fsvc.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fsvc => fsvc.GetClassDefinition(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == $"{schemaName}:{className}"))).Returns(klass);
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new LayerDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, ldf, false);
+            Assert.AreEqual(2, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_ClassNotFound, issues.First().StatusCode);
+            Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_MissingFeatureName, issues.Last().StatusCode);
+
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new LayerDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, gldf, false);
+            Assert.AreEqual(2, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_ClassNotFound, issues.First().StatusCode);
+            Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_MissingFeatureName, issues.Last().StatusCode);
+        }
+
+        [Test]
+        public void TestCase_LayerValidator_MissingGeometry()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var resId2 = "Library://TestRaster.FeatureSource";
+            var ldfId = "Library://Test.LayerDefinition";
+            var schemaName = "Default";
+            var className = "Test";
+            var idName = "ID";
+            var geomName = "Geometry";
+            var klass = CreateTestClass("Default", className, idName, geomName);
+
+            var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
+            fs.ResourceID = resId;
+
+            var gfs = ObjectFactory.CreateFeatureSource("OSGeo.GDAL");
+            gfs.ResourceID = resId;
+
+            var ldf = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
+            ldf.SubLayer.ResourceId = resId;
+            ldf.ResourceID = ldfId;
+            var vl = (IVectorLayerDefinition)ldf.SubLayer;
+            vl.FeatureName = $"{schemaName}:{klass.Name}";
+
+            var gldf = ObjectFactory.CreateDefaultLayer(LayerType.Raster, new Version(1, 0, 0));
+            gldf.SubLayer.ResourceId = resId2;
+            gldf.ResourceID = ldfId;
+            var gl = (IRasterLayerDefinition)gldf.SubLayer;
+            gl.FeatureName = $"{schemaName}:{klass.Name}";
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(rsvc => rsvc.GetResource(It.Is<string>(arg => arg == resId))).Returns(fs);
+            mockResSvc.Setup(rsvc => rsvc.GetResource(It.Is<string>(arg => arg == resId2))).Returns(gfs);
+
+            mockFeatSvc.Setup(fsvc => fsvc.TestConnection(It.Is<string>(arg => arg == resId))).Returns("false");
+            mockFeatSvc.Setup(fsvc => fsvc.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fsvc => fsvc.GetClassDefinition(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == $"{schemaName}:{className}"))).Returns(klass);
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new LayerDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, ldf, false);
+            Assert.AreEqual(2, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_GeometryNotFound, issues.First().StatusCode);
+            Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_MissingGeometry, issues.Last().StatusCode);
+
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new LayerDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, gldf, false);
+            Assert.AreEqual(2, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_GeometryNotFound, issues.First().StatusCode);
+            Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_MissingGeometry, issues.Last().StatusCode);
+        }
+
+        [Test]
+        public void TestCase_LayerValidator_ScaleRangeMinMaxSwapped()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var ldfId = "Library://Test.LayerDefinition";
+            var schemaName = "Default";
+            var className = "Test";
+            var idName = "ID";
+            var geomName = "Geometry";
+            var klass = CreateTestClass("Default", className, idName, geomName);
+
+            var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
+            fs.ResourceID = resId;
+
+            var ldf = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
+            ldf.SubLayer.ResourceId = resId;
+            ldf.ResourceID = ldfId;
+            var vl = (IVectorLayerDefinition)ldf.SubLayer;
+            vl.FeatureName = $"{schemaName}:{klass.Name}";
+            vl.Geometry = geomName;
+
+            vl.GetScaleRangeAt(0).MinScale = 1000;
+            vl.GetScaleRangeAt(0).MaxScale = 999;
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(rsvc => rsvc.GetResource(It.Is<string>(arg => arg == resId))).Returns(fs);
+
+            mockFeatSvc.Setup(fsvc => fsvc.TestConnection(It.Is<string>(arg => arg == resId))).Returns("false");
+            mockFeatSvc.Setup(fsvc => fsvc.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fsvc => fsvc.GetClassDefinition(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == $"{schemaName}:{className}"))).Returns(klass);
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new LayerDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, ldf, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_MinMaxScaleSwapped, issues.First().StatusCode);
+        }
+
+        [Test]
+        public void TestCase_LayerValidator_OverlappingScaleRanges()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var ldfId = "Library://Test.LayerDefinition";
+            var schemaName = "Default";
+            var className = "Test";
+            var idName = "ID";
+            var geomName = "Geometry";
+            var klass = CreateTestClass("Default", className, idName, geomName);
+
+            var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
+            fs.ResourceID = resId;
+
+            var ldf = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
+            ldf.SubLayer.ResourceId = resId;
+            ldf.ResourceID = ldfId;
+            var vl = (IVectorLayerDefinition)ldf.SubLayer;
+            vl.FeatureName = $"{schemaName}:{klass.Name}";
+            vl.Geometry = geomName;
+
+            vl.GetScaleRangeAt(0).MinScale = 100;
+            vl.GetScaleRangeAt(0).MaxScale = 200;
+
+            var vsr = ldf.CreateVectorScaleRange();
+            vsr.MinScale = 199;
+            vsr.MaxScale = 300;
+            vl.AddVectorScaleRange(vsr);
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(rsvc => rsvc.GetResource(It.Is<string>(arg => arg == resId))).Returns(fs);
+
+            mockFeatSvc.Setup(fsvc => fsvc.TestConnection(It.Is<string>(arg => arg == resId))).Returns("false");
+            mockFeatSvc.Setup(fsvc => fsvc.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fsvc => fsvc.GetClassDefinition(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == $"{schemaName}:{className}"))).Returns(klass);
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new LayerDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, ldf, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Info_LayerDefinition_ScaleRangeOverlap, issues.First().StatusCode);
+        }
+
+        [Test]
+        public void TestCase_LayerValidator_MissingDrawingSheet()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var dsId = "Library://Test.DrawingSource";
+            var ldfId = "Library://Test.LayerDefinition";
+            var schemaName = "Default";
+            var className = "Test";
+            var idName = "ID";
+            var geomName = "Geometry";
+            var klass = CreateTestClass("Default", className, idName, geomName);
+
+            var ds = ObjectFactory.CreateDrawingSource();
+            ds.ResourceID = dsId;
+
+            var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
+            fs.ResourceID = resId;
+
+            var ldf = ObjectFactory.CreateDefaultLayer(LayerType.Drawing, new Version(1, 0, 0));
+            ldf.SubLayer.ResourceId = dsId;
+            ldf.ResourceID = ldfId;
+            var dl = (IDrawingLayerDefinition)ldf.SubLayer;
+            dl.Sheet = "Foo";
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+            var mockDrawSvc = new Mock<IDrawingService>();
+
+            mockResSvc.Setup(rsvc => rsvc.GetResource(It.Is<string>(arg => arg == resId))).Returns(fs);
+            mockResSvc.Setup(rsvc => rsvc.GetResource(It.Is<string>(arg => arg == dsId))).Returns(ds);
+
+            mockFeatSvc.Setup(fsvc => fsvc.TestConnection(It.Is<string>(arg => arg == resId))).Returns("false");
+            mockFeatSvc.Setup(fsvc => fsvc.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fsvc => fsvc.GetClassDefinition(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == $"{schemaName}:{className}"))).Returns(klass);
+
+            var sheetList = new DrawingSectionList
+            {
+                Section = new System.ComponentModel.BindingList<DrawingSectionListSection>()
+            };
+            mockDrawSvc.Setup(dsvc => dsvc.EnumerateDrawingSections(It.IsAny<string>())).Returns(sheetList);
+
+            var mockCaps = new Mock<IConnectionCapabilities>();
+            mockCaps.Setup(c => c.SupportedServices).Returns(new[] { (int)ServiceType.Drawing });
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+            mockConn.Setup(c => c.Capabilities).Returns(mockCaps.Object);
+            mockConn.Setup(c => c.GetService(It.Is<int>(arg => arg == (int)ServiceType.Drawing))).Returns(mockDrawSvc.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new LayerDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, ldf, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_DrawingSourceSheetNotFound, issues.First().StatusCode);
+        }
+
+        [Test]
+        public void TestCase_LayerValidator_MissingDrawingSheetLayer()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var dsId = "Library://Test.DrawingSource";
+            var ldfId = "Library://Test.LayerDefinition";
+            var schemaName = "Default";
+            var className = "Test";
+            var idName = "ID";
+            var geomName = "Geometry";
+            var klass = CreateTestClass("Default", className, idName, geomName);
+
+            var ds = ObjectFactory.CreateDrawingSource();
+            ds.ResourceID = dsId;
+
+            var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
+            fs.ResourceID = resId;
+
+            var ldf = ObjectFactory.CreateDefaultLayer(LayerType.Drawing, new Version(1, 0, 0));
+            ldf.SubLayer.ResourceId = dsId;
+            ldf.ResourceID = ldfId;
+            var dl = (IDrawingLayerDefinition)ldf.SubLayer;
+            dl.Sheet = "Foo";
+            dl.LayerFilter = "Baz";
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+            var mockDrawSvc = new Mock<IDrawingService>();
+
+            mockResSvc.Setup(rsvc => rsvc.GetResource(It.Is<string>(arg => arg == resId))).Returns(fs);
+            mockResSvc.Setup(rsvc => rsvc.GetResource(It.Is<string>(arg => arg == dsId))).Returns(ds);
+
+            mockFeatSvc.Setup(fsvc => fsvc.TestConnection(It.Is<string>(arg => arg == resId))).Returns("false");
+            mockFeatSvc.Setup(fsvc => fsvc.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fsvc => fsvc.GetClassDefinition(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == $"{schemaName}:{className}"))).Returns(klass);
+
+            var sheetList = new DrawingSectionList
+            {
+                Section = new System.ComponentModel.BindingList<DrawingSectionListSection>()
+                {
+                    new DrawingSectionListSection { Name = "Foo" }
+                }
+            };
+            mockDrawSvc.Setup(dsvc => dsvc.EnumerateDrawingSections(It.Is<string>(arg => arg == dsId))).Returns(sheetList);
+            mockDrawSvc.Setup(dsvc => dsvc.EnumerateDrawingLayers(It.Is<string>(arg => arg == dsId), It.Is<string>(arg => arg == "Foo"))).Returns(new[] { "Bar" });
+
+            var mockCaps = new Mock<IConnectionCapabilities>();
+            mockCaps.Setup(c => c.SupportedServices).Returns(new[] { (int)ServiceType.Drawing });
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+            mockConn.Setup(c => c.Capabilities).Returns(mockCaps.Object);
+            mockConn.Setup(c => c.GetService(It.Is<int>(arg => arg == (int)ServiceType.Drawing))).Returns(mockDrawSvc.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new LayerDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, ldf, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_DrawingSourceSheetLayerNotFound, issues.First().StatusCode);
         }
     }
 }

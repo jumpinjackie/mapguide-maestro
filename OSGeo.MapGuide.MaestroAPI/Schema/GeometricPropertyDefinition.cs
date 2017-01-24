@@ -296,8 +296,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             geom.SetAttribute("hasMeasure", XmlNamespaces.FDO, this.HasMeasure.ToString().ToLower()); //NOXLATE
             geom.SetAttribute("hasElevation", XmlNamespaces.FDO, this.HasElevation.ToString().ToLower()); //NOXLATE
             geom.SetAttribute("srsName", XmlNamespaces.FDO, this.SpatialContextAssociation); //NOXLATE
-            geom.SetAttribute("geometricTypes", XmlNamespaces.FDO, GeometricTypesToString()); //NOXLATE
-            geom.SetAttribute("geometryTypes", XmlNamespaces.FDO, GeometryTypesToString()); //NOXLATE
+            geom.SetAttribute("geometricTypes", XmlNamespaces.FDO, GeometryTypesToString()); //NOXLATE
+            geom.SetAttribute("geometryTypes", XmlNamespaces.FDO, GeometricTypesToString()); //NOXLATE
             geom.SetAttribute("geometryReadOnly", XmlNamespaces.FDO, this.IsReadOnly.ToString().ToLower()); //NOXLATE
 
             //Write description node
@@ -324,7 +324,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             var hev = Utility.GetFdoAttribute(node, "hasElevation"); //NOXLATE
             var srs = Utility.GetFdoAttribute(node, "srsName"); //NOXLATE
 
-            this.GeometricTypes = ProcessGeometricTypes(gt2.Value);
+            this.GeometricTypes = ProcessGeometricTypes(gt.Value);
             if (gt2 != null)
                 this.SpecificGeometryTypes = ProcessSpecificGeometryTypes(gt2.Value);
 

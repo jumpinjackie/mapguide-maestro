@@ -418,6 +418,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Error_LayerDefinition_SymbolDefintionReferenceNotFound,
 
         /// <summary>
+        /// The Layer Definition contains a property mapping for a non-existent property
+        /// </summary>
+        Error_LayerDefinition_InvalidPropertyMapping,
+        
+        /// <summary>
+        /// The Layer Definition does not specify a class name
+        /// </summary>
+        Error_LayerDefinition_MissingFeatureName,
+
+        /// <summary>
         /// Unclassified validation error
         /// </summary>
         Error_WebLayout_Generic = 5501,
