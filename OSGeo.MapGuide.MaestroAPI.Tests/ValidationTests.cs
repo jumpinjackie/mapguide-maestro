@@ -24,12 +24,16 @@ using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -243,6 +247,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         [Test]
         public void TestCase1896()
         {
+            //This test case is for ticket 1896: Maestro layer validation incorrectly report missing primary key
+
             var fs = new FeatureSchema();
             var doc = new XmlDocument();
 
@@ -262,6 +268,171 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             {
                 Assert.True(cls.IdentityProperties.Count > 0, "Expected identity properties in: " + cls.QualifiedName);
             }
+        }
+
+        [Test]
+        public void TestCase_FsValidator_ValidatesOdbcConfigurationIssues()
+        {
+            var conf = new OdbcConfigurationDocument();
+
+            var sc = new FdoSpatialContextListSpatialContext();
+            sc.CoordinateSystemName = "LL84";
+            sc.CoordinateSystemWkt = "";
+            sc.Description = "Default Spatial Context";
+            sc.Extent = new FdoSpatialContextListSpatialContextExtent()
+            {
+                LowerLeftCoordinate = new FdoSpatialContextListSpatialContextExtentLowerLeftCoordinate()
+                {
+                    X = "-180.0",
+                    Y = "-180.0"
+                },
+                UpperRightCoordinate = new FdoSpatialContextListSpatialContextExtentUpperRightCoordinate()
+                {
+                    X = "180.0",
+                    Y = "180.0"
+                }
+            };
+            sc.ExtentType = FdoSpatialContextListSpatialContextExtentType.Static;
+            sc.Name = "Default";
+            sc.XYTolerance = 0.0001;
+            sc.ZTolerance = 0.0001;
+
+            var schema = new FeatureSchema("Default", "Default Schema");
+            var klass = new ClassDefinition("Test", "Test Class");
+            var id = new DataPropertyDefinition("ID", "Identity");
+            var geom = new GeometricPropertyDefinition("Geometry", "geometry")
+            {
+                GeometricTypes = FeatureGeometricType.Point
+            };
+            geom.SpatialContextAssociation = sc.Name;
+            klass.AddProperty(id, true);
+            klass.AddProperty(geom);
+            klass.DefaultGeometryPropertyName = geom.Name;
+            schema.AddClass(klass);
+
+            conf.AddSchema(schema);
+            conf.AddSpatialContext(sc);
+
+            var odbcTable = new OdbcTableItem()
+            {
+                ClassName = klass.Name,
+                SchemaName = schema.Name,
+                SpatialContextName = sc.Name,
+                XColumn = "X",
+                YColumn = null
+            };
+            conf.AddOverride(odbcTable);
+
+            Func<Stream> xmlStreamFunc = () => new MemoryStream(Encoding.UTF8.GetBytes(conf.ToXml()));
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            var resId = "Library://Test.FeatureSource";
+            var dataName = "config.xml";
+
+            mockFeatSvc.Setup(fs => fs.TestConnection(It.Is<string>(arg => arg == resId))).Returns("true");
+            mockFeatSvc.Setup(fs => fs.GetSpatialContextInfo(It.Is<string>(arg => arg == resId), It.IsAny<bool>())).Returns(new FdoSpatialContextList
+            {
+                SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>()
+                {
+                    sc
+                }
+            });
+            mockFeatSvc.Setup(fs => fs.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schema.Name });
+
+            mockResSvc.Setup(rs => rs.GetResourceData(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == dataName))).Returns(xmlStreamFunc);
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var mockFs = new Mock<IFeatureSource>();
+            mockFs.Setup(fs => fs.ConfigurationDocument).Returns(dataName);
+            mockFs.Setup(fs => fs.ResourceID).Returns(resId);
+            mockFs.Setup(fs => fs.Extension).Returns(Enumerable.Empty<IFeatureSourceExtension>());
+            mockFs.Setup(fs => fs.ResourceType).Returns(ResourceTypes.FeatureSource.ToString());
+            mockFs.Setup(fs => fs.Provider).Returns("OSGeo.ODBC");
+            mockFs.Setup(fs => fs.Serialize()).Returns(string.Empty);
+
+            //XYZ column misconfigurations
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, mockFs.Object, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_OdbcConfig_IncompleteXYZColumnMapping, issues.First().StatusCode);
+            
+            odbcTable.XColumn = null;
+            odbcTable.YColumn = "Y";
+
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, mockFs.Object, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_OdbcConfig_IncompleteXYZColumnMapping, issues.First().StatusCode);
+
+            odbcTable.XColumn = null;
+            odbcTable.YColumn = "Y";
+            odbcTable.ZColumn = "Z";
+
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, mockFs.Object, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_OdbcConfig_IncompleteXYZColumnMapping, issues.First().StatusCode);
+
+            odbcTable.XColumn = "X";
+            odbcTable.YColumn = null;
+            odbcTable.ZColumn = "Z";
+
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, mockFs.Object, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_OdbcConfig_IncompleteXYZColumnMapping, issues.First().StatusCode);
+
+            odbcTable.XColumn = "X";
+            odbcTable.YColumn = "Y";
+
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, mockFs.Object, false);
+            Assert.AreEqual(0, issues.Count());
+
+            //Bogus mapping class target
+            odbcTable.ClassName = "IDontExist";
+
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, mockFs.Object, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_OdbcConfig_NoTableOverrideForFeatureClass, issues.First().StatusCode);
+
+            //Bogus logical geometry property
+            odbcTable.ClassName = klass.Name;
+            geom.GeometricTypes = FeatureGeometricType.Surface;
+
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, mockFs.Object, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_OdbcConfig_InvalidLogicalGeometryProperty, issues.First().StatusCode);
+
+            //All good
+            geom.GeometricTypes = FeatureGeometricType.Point;
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new FeatureSourceValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, mockFs.Object, false);
+            Assert.AreEqual(0, issues.Count());
         }
     }
 }

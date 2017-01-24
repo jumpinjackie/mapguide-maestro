@@ -324,7 +324,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             var hev = Utility.GetFdoAttribute(node, "hasElevation"); //NOXLATE
             var srs = Utility.GetFdoAttribute(node, "srsName"); //NOXLATE
 
-            this.GeometricTypes = ProcessGeometricTypes(gt.Value);
+            this.GeometricTypes = ProcessGeometricTypes(gt2.Value);
             if (gt2 != null)
                 this.SpecificGeometryTypes = ProcessSpecificGeometryTypes(gt2.Value);
 

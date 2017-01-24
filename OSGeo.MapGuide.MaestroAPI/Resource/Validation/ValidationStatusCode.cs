@@ -474,6 +474,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// </summary>
         Error_SymbolDefinition_ImageGraphicReferenceResourceDataNotFound,
 
+        /// <summary>
+        /// The ODBC configuration document has a Feature Class that has no corresponding ODBC
+        /// table override definition (that would specify how its geometry property maps to X/Y/Z
+        /// columns)
+        /// </summary>
+        Error_OdbcConfig_NoTableOverrideForFeatureClass = 5801,
+
+        /// <summary>
+        /// The ODBC configuration document contains a logical feature class with a geometry
+        /// property that is not of type Point (other geometry types are not mappable in ODBC)
+        /// </summary>
+        Error_OdbcConfig_InvalidLogicalGeometryProperty,
+
+        /// <summary>
+        /// The ODBC configuration document contains a table override item with an incomplete X or Y column
+        /// mapping
+        /// </summary>
+        Error_OdbcConfig_IncompleteXYZColumnMapping
+
         #endregion errors
     }
 }

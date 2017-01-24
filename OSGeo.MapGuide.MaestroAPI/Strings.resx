@@ -894,4 +894,13 @@
   <data name="UnseedableTileSet" xml:space="preserve">
     <value>The given Map Definition or Tile Set Definition cannot be seeded</value>
   </data>
+  <data name="ODBC_InvalidGeometryProperty" xml:space="preserve">
+    <value>Feature class ({0}) has a logical geometry property ({1}) that is not of the Point geometry type</value>
+  </data>
+  <data name="ODBC_NoSuchTableOverrideForFeatureClass" xml:space="preserve">
+    <value>Feature class ({0}) has no corresponding ODBC table override item</value>
+  </data>
+  <data name="ODBC_IncompleteXYZColumnMapping" xml:space="preserve">
+    <value>Table mapping for Feature class ({0}) has an incomplete column mapping. Either the X or Y or both columns are not specified</value>
+  </data>
 </root>

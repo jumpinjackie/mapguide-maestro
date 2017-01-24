@@ -21,12 +21,15 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {
@@ -219,9 +222,56 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 }
             }
 
+            string configDocXml = feature.GetConfigurationContent(Connection);
+            if (!string.IsNullOrEmpty(configDocXml))
+            {
+                var doc = ConfigurationDocument.LoadXml(configDocXml);
+                var odbcDoc = doc as OdbcConfigurationDocument;
+                if (odbcDoc != null)
+                {
+                    issues.AddRange(ValidateOdbcDoc(feature, odbcDoc));
+                }
+            }
+
             context.MarkValidated(resource.ResourceID);
 
             return issues.ToArray();
+        }
+
+        private IEnumerable<ValidationIssue> ValidateOdbcDoc(IFeatureSource fs, OdbcConfigurationDocument odbcDoc)
+        {
+            foreach (var schema in odbcDoc.Schemas)
+            {
+                var featureClasses = schema
+                    .Classes
+                    .Where(c => !string.IsNullOrEmpty(c.DefaultGeometryPropertyName) && c.Properties.Any(p => p.Type == Schema.PropertyDefinitionType.Geometry && p.Name == c.DefaultGeometryPropertyName));
+
+                foreach (var fc in featureClasses)
+                {
+                    var geomProp = fc.Properties.OfType<GeometricPropertyDefinition>().FirstOrDefault(p => p.Name == fc.DefaultGeometryPropertyName);
+                    if (geomProp != null)
+                    {
+                        //Must be point
+                        if (geomProp.GeometricTypes != FeatureGeometricType.Point)
+                        {
+                            yield return new ValidationIssue(fs, ValidationStatus.Error, ValidationStatusCode.Error_OdbcConfig_InvalidLogicalGeometryProperty, string.Format(Strings.ODBC_InvalidGeometryProperty, fc.Name, geomProp.Name));
+                        }
+
+                        var ovTable = odbcDoc.GetOverride(schema.Name, fc.Name);
+                        if (ovTable == null) //If it has geometry, it must have a table override
+                        {
+                            yield return new ValidationIssue(fs, ValidationStatus.Error, ValidationStatusCode.Error_OdbcConfig_NoTableOverrideForFeatureClass, string.Format(Strings.ODBC_NoSuchTableOverrideForFeatureClass, fc.Name));
+                        }
+                        else if (geomProp.GeometricTypes == FeatureGeometricType.Point)
+                        {
+                            if (string.IsNullOrEmpty(ovTable.XColumn) || string.IsNullOrEmpty(ovTable.YColumn))
+                            {
+                                yield return new ValidationIssue(fs, ValidationStatus.Error, ValidationStatusCode.Error_OdbcConfig_IncompleteXYZColumnMapping, string.Format(Strings.ODBC_IncompleteXYZColumnMapping, fc.Name));
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>
