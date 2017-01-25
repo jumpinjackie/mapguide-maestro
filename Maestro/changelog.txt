@@ -1,5 +1,5 @@
-﻿Next
-====
+﻿6.0m6
+=====
 
  - Fix: MgCooker - InvalidCastException when editing override coordinates for a selected TileSetDefinition
  - Fix: API - Infinite recursive call in CreateMapLayer
@@ -10,6 +10,8 @@
  - Fix: Dirty state not triggered when editing most properties in a Symbol Definition
  - Fix: Editing Fusion widget XML does not trigger dirty state
  - Fix: Incorrect total tile counts for tiling runs with custom extents
+ - Fix: mapguide-rest addin generates incorrect representations node in configuration editor
+ - Added validation rules for ODBC configuration documents
  - MgCooker now supports a map-viewer-based extent selection mode
  - Local Map Previews are now non-modal
  - Added DockPanel themes
