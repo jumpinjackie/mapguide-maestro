@@ -258,7 +258,7 @@ namespace MgCooker
                 foreach (Config c in ReadTree())
                 {
                     MapTilingConfiguration bm = new MapTilingConfiguration(bx, c.MapDefinition);
-                    bm.SetGroups(new string[] { c.Group });
+                    bm.SetGroups(c.Group);
                     bm.SetScalesAndExtend(c.ScaleIndexes, c.ExtentOverride);
 
                     bx.Maps.Add(bm);

@@ -652,7 +652,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 return;
             }
 
-            IEnvelope extents = this.MaxExtent ?? m_tileSetExtents;
+            IEnvelope extents = m_tileSetExtents; //this.MaxExtent ?? m_tileSetExtents;
             double maxscale = m_maxscale;
 
             m_dimensions = new long[this.Resolutions][];
@@ -693,26 +693,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 //Using this algorithm, yields a negative number of columns/rows, if the max scale is larger than the max extent of the map.
                 rows = Math.Max(1, (int)Math.Ceiling((height_in_meters / tileHeight)));
                 cols = Math.Max(1, (int)Math.Ceiling((width_in_meters / tileWidth)));
-
+                
                 if (m_maxExtent != null)
                 {
                     //The extent is overridden, so we need to adjust the start offsets
-                    double offsetX = MaxExtent.MinX - m_tileSetExtents.MinX;
-                    double offsetY = m_tileSetExtents.MaxY - MaxExtent.MaxY;
+                    //and re-compute row/col span against the overridden extents
+                    double offsetX = m_maxExtent.MinX - m_tileSetExtents.MinX;
+                    double offsetY = m_tileSetExtents.MaxY - m_maxExtent.MaxY;
                     rowTileOffset = (int)Math.Floor(offsetY / tileHeight);
                     colTileOffset = (int)Math.Floor(offsetX / tileWidth);
 
-                    double offsetMaxX = MaxExtent.MaxX - m_tileSetExtents.MinX;
-                    double offsetMinY = m_tileSetExtents.MaxY - MaxExtent.MinY;
-                    int rowMinTileOffset = (int)Math.Floor(offsetMinY / tileHeight);
-                    int colMaxTileOffset = (int)Math.Floor(offsetMaxX / tileWidth);
+                    //Re-compute rows/cols against override extent
+                    width_in_meters = Math.Abs(m_parent.Config.MetersPerUnit * (m_maxExtent.MaxX - m_maxExtent.MinX));
+                    height_in_meters = Math.Abs(m_parent.Config.MetersPerUnit * (m_maxExtent.MaxY - m_maxExtent.MinY));
 
-                    //GT 03/08/2014 - the right number of columns/rows it's the the end tile (maxtileoffset, ex 12) - the start tile (coltileoffset, ex 11) +1
-                    //i.e. 12-11+1=2 so 2 columns
-                    cols = (colMaxTileOffset - colTileOffset) + 1;
-                    rows = (rowMinTileOffset - rowTileOffset) + 1;
+                    rows = Math.Max(1, (int)Math.Ceiling((height_in_meters / tileHeight)));
+                    cols = Math.Max(1, (int)Math.Ceiling((width_in_meters / tileWidth)));
                 }
-
                 m_dimensions[i] = new long[] { rows, cols, rowTileOffset, colTileOffset };
             }
         }
@@ -721,7 +718,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// Sets the list of groups
         /// </summary>
         /// <param name="groups"></param>
-        public void SetGroups(string[] groups)
+        public void SetGroups(params string[] groups)
         {
             List<string> g = new List<string>();
             for (int i = 0; i < m_groups.Length; i++)
