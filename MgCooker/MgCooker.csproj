@@ -71,6 +71,12 @@
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="CommandLineParser.cs" />
+    <Compile Include="MapExtentsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapExtentsDialog.Designer.cs">
+      <DependentUpon>MapExtentsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Progress.cs">
       <SubType>Form</SubType>
@@ -84,6 +90,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MapExtentsDialog.resx">
+      <DependentUpon>MapExtentsDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Progress.resx">
       <DependentUpon>Progress.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +156,10 @@
     <ProjectReference Include="..\Maestro.Login\Maestro.Login.csproj">
       <Project>{07588440-5f9f-4c30-aa06-9cf30ba6dde6}</Project>
       <Name>Maestro.Login</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.MapViewer\Maestro.MapViewer.csproj">
+      <Project>{4f9658de-d16f-4b40-b830-bb1e0136dbd7}</Project>
+      <Name>Maestro.MapViewer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj">
       <Project>{cfd19053-2172-41d3-8460-0fd2123a1e88}</Project>

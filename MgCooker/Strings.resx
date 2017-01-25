@@ -243,6 +243,9 @@ Either copy in the file, or do not use the Native connection method</value>
     <value>MgCooker is now paused, click OK to resume rendering</value>
     <comment>A text message displayed when MgCooker is paused</comment>
   </data>
+  <data name="PreparingMap" xml:space="preserve">
+    <value>Preparing Map</value>
+  </data>
   <data name="RemainingTime" xml:space="preserve">
     <value>{0}, remaining time: {1}</value>
     <comment>Label that displays the remaining time</comment>

@@ -70,6 +70,7 @@ namespace MgCooker
             this.MaxColLimit = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.lnkViewer = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.BoundsOverride.SuspendLayout();
@@ -146,6 +147,7 @@ namespace MgCooker
             // BoundsOverride
             // 
             resources.ApplyResources(this.BoundsOverride, "BoundsOverride");
+            this.BoundsOverride.Controls.Add(this.lnkViewer);
             this.BoundsOverride.Controls.Add(this.ModfiedOverrideWarning);
             this.BoundsOverride.Controls.Add(this.ResetBounds);
             this.BoundsOverride.Controls.Add(this.txtUpperY);
@@ -384,6 +386,13 @@ namespace MgCooker
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
+            // lnkViewer
+            // 
+            resources.ApplyResources(this.lnkViewer, "lnkViewer");
+            this.lnkViewer.Name = "lnkViewer";
+            this.lnkViewer.TabStop = true;
+            this.lnkViewer.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkViewer_LinkClicked);
+            // 
             // SetupRun
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -456,5 +465,6 @@ namespace MgCooker
         private System.Windows.Forms.TextBox txtProvider;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel lnkViewer;
     }
 }

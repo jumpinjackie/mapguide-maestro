@@ -9,6 +9,8 @@
  - Fix: XML editor opens with trailing null characters, causing bogus content validation errors when saving
  - Fix: Dirty state not triggered when editing most properties in a Symbol Definition
  - Fix: Editing Fusion widget XML does not trigger dirty state
+ - Fix: Incorrect total tile counts for tiling runs with custom extents
+ - MgCooker now supports a map-viewer-based extent selection mode
  - Local Map Previews are now non-modal
  - Added DockPanel themes
  - Package updates:

@@ -24,6 +24,8 @@ using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.MaestroAPI.Mapping;
+using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI.Tile;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
@@ -32,6 +34,7 @@ using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -526,6 +529,8 @@ namespace MgCooker
                 while (root.Parent != null)
                     root = root.Parent;
 
+                IMapDefinition mdf = root.Tag as IMapDefinition;
+                lnkViewer.Visible = (mdf != null);
                 IEnvelope box;
 
                 box = m_coordinateOverrides.ContainsKey(root.Text) ? m_coordinateOverrides[root.Text] : GetExtents(root);
@@ -729,6 +734,46 @@ namespace MgCooker
                     }
                 }
             });
+        }
+
+        private void lnkViewer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            TreeNode root = MapTree.SelectedNode;
+            while (root.Parent != null)
+                root = root.Parent;
+
+            IMapDefinition mdf = root.Tag as IMapDefinition;
+            if (mdf != null)
+            {
+                BusyWaitDelegate worker = () =>
+                {
+                    IMappingService mapSvc = (IMappingService)m_connection.GetService((int)ServiceType.Mapping);
+                    var rtMap = mapSvc.CreateMap(mdf);
+                    return rtMap;
+                };
+                Action<object, Exception> onComplete = (obj, ex) =>
+                {
+                    if (ex != null)
+                        throw ex;
+
+                    if (obj != null)
+                    {
+                        var rtMap = (RuntimeMap)obj;
+                        using (var diag = new MapExtentsDialog(rtMap))
+                        {
+                            if (diag.ShowDialog() == DialogResult.OK)
+                            {
+                                var env = diag.GetEnvelope();
+                                txtLowerX.Text = env.MinX.ToString(CultureInfo.InvariantCulture);
+                                txtLowerY.Text = env.MinY.ToString(CultureInfo.InvariantCulture);
+                                txtUpperX.Text = env.MaxX.ToString(CultureInfo.InvariantCulture);
+                                txtUpperY.Text = env.MaxY.ToString(CultureInfo.InvariantCulture);
+                            }
+                        }
+                    }
+                };
+                BusyWaitDialog.Run(Strings.PreparingMap, worker, onComplete);
+            }
         }
     }
 }

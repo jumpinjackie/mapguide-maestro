@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MgCooker
-{
-
-
+namespace MgCooker {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -356,6 +356,15 @@ namespace MgCooker
         internal static string PauseMessage {
             get {
                 return ResourceManager.GetString("PauseMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preparing Map.
+        /// </summary>
+        internal static string PreparingMap {
+            get {
+                return ResourceManager.GetString("PreparingMap", resourceCulture);
             }
         }
         
