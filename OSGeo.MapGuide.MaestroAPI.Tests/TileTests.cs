@@ -98,7 +98,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             Assert.AreEqual(127472, tileConf.TotalTiles);
 
-            customExtents = ObjectFactory.CreateEnvelope(-87.73, 43.71, -87.71, 43.75);
+            customExtents = ObjectFactory.CreateEnvelope(-87.7278601614039, 43.7443959276596, -87.7135994943579, 43.7592852552018);
             tileConf.SetScalesAndExtend(Enumerable.Range(0, 10).ToArray(), customExtents);
 
             //I don't know the exact number here, but it should be less than the original and

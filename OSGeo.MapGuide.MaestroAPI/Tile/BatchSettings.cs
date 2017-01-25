@@ -687,28 +687,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 // Also have in mind that you can also request tiles beyond the map extent (for example tile (-1, -1), however, there is probably no point to cache them unless you have valid data outside your initial map extents.
 
                 //The tile extent in meters
-                double tileWidth = ((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileWidth) * (scale));
-                double tileHeight = ((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileHeight) * (scale));
+                double tileMapWidth = ((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileWidth) * (scale));
+                double tileMapHeight = ((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileHeight) * (scale));
 
                 //Using this algorithm, yields a negative number of columns/rows, if the max scale is larger than the max extent of the map.
-                rows = Math.Max(1, (int)Math.Ceiling((height_in_meters / tileHeight)));
-                cols = Math.Max(1, (int)Math.Ceiling((width_in_meters / tileWidth)));
+                rows = Math.Max(1, (int)Math.Ceiling((height_in_meters / tileMapHeight)));
+                cols = Math.Max(1, (int)Math.Ceiling((width_in_meters / tileMapWidth)));
                 
                 if (m_maxExtent != null)
                 {
                     //The extent is overridden, so we need to adjust the start offsets
                     //and re-compute row/col span against the overridden extents
-                    double offsetX = m_maxExtent.MinX - m_tileSetExtents.MinX;
-                    double offsetY = m_tileSetExtents.MaxY - m_maxExtent.MaxY;
-                    rowTileOffset = (int)Math.Floor(offsetY / tileHeight);
-                    colTileOffset = (int)Math.Floor(offsetX / tileWidth);
+                    double offsetMapX = Math.Abs(m_parent.Config.MetersPerUnit * (m_maxExtent.MinX - m_tileSetExtents.MinX));
+                    double offsetMapY = Math.Abs(m_parent.Config.MetersPerUnit * (m_tileSetExtents.MaxY - m_maxExtent.MaxY));
+                    rowTileOffset = (int)Math.Floor(offsetMapY / tileMapHeight);
+                    colTileOffset = (int)Math.Floor(offsetMapX / tileMapWidth);
 
                     //Re-compute rows/cols against override extent
                     width_in_meters = Math.Abs(m_parent.Config.MetersPerUnit * (m_maxExtent.MaxX - m_maxExtent.MinX));
                     height_in_meters = Math.Abs(m_parent.Config.MetersPerUnit * (m_maxExtent.MaxY - m_maxExtent.MinY));
 
-                    rows = Math.Max(1, (int)Math.Ceiling((height_in_meters / tileHeight)));
-                    cols = Math.Max(1, (int)Math.Ceiling((width_in_meters / tileWidth)));
+                    rows = Math.Max(1, (int)Math.Ceiling((height_in_meters / tileMapHeight)));
+                    cols = Math.Max(1, (int)Math.Ceiling((width_in_meters / tileMapWidth)));
                 }
                 m_dimensions[i] = new long[] { rows, cols, rowTileOffset, colTileOffset };
             }
