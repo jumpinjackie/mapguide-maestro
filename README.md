@@ -25,11 +25,11 @@ MapGuide Maestro is designed with flexiblity in mind. The application tries very
 
 ## Unsupported Features
 
-MapGuide Maestro aims to most of the features avalible in MapGuide Open Source and AIMS, but a few things are not (and will not) be supported:
+MapGuide Maestro aims to support most of the features avalible in MapGuide Open Source and AIMS, but a few things are not (and will not) be supported:
 
  * Creating and editing Symbol Library resources
  * Full support for Load Procedures. Current support only covers loading of SDF/SHP/SQLite files without no support for file conversion or transforming coordinates.
 
 ## Issues/Questions/etc
 
-When using the tool, please bear in mind that the project is a work in progress, and may not always perform as expected. Try to keep backups of all important data. If you encounter an error, or have a feature request, please check our [issue list](https://github.com/jumpinjackie/mapguide-maestro/issues), and if it has not already been reported ​please report it (You must have a GitHub account). If you have a question about the usage, you can ask at the [mapguide-users mailing list](http://lists.osgeo.org/listinfo/mapguide-users).
+When using the tool, please bear in mind that the project is a continual work in progress, and may not always perform as expected. Try to keep backups of all important data. If you encounter an error, or have a feature request, please check our [issue list](https://github.com/jumpinjackie/mapguide-maestro/issues), and if it has not already been reported ​please report it (You must have a GitHub account). If you have a question about the usage, you can ask at the [mapguide-users mailing list](http://lists.osgeo.org/listinfo/mapguide-users).
