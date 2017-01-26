@@ -1,5 +1,7 @@
 # MapGuide Maestro
 
+[![Build status](https://ci.appveyor.com/api/projects/status/7250l5cn21yfr1mb?svg=true)](https://ci.appveyor.com/project/jumpinjackie/mapguide-maestro)
+
 MapGuide Maestro is an Open Source ([LGPL 2.1](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)) map authoring application for [MapGuide Open Source](https://mapguide.osgeo.org) and [Autodesk Infrastructure Map Server](http://www.autodesk.com/products/infrastructure-map-server/overview).
 
 MapGuide Maestro is written in 100% managed C#, targeting the .net Framework. It consists of:
