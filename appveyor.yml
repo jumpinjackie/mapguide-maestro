@@ -31,9 +31,8 @@ build:
 
 test_script:
 – ps: >-
-    .\Maestro\packages\OpenCover.$env:OPENCOVER_VERSION\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:"Maestro\packages\NUnit.ConsoleRunner.$env:NUNIT_VERSION\tools\nunit3-console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\{configuration}\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModel.Tests\bin\{configuration}\OSGeo.MapGuide.ObjectModels.Tests.dll" -output:Reports\OpenCoverCoverage.xml
-
-    $coveralls = (Resolve-Path
-"packages/coveralls.net.*/tools/csmacnz.coveralls.exe").ToString()
-
-    & $coveralls —opencover –i opencoverCoverage.xml —repoToken $env:COVERALLS_REPO_TOKEN —commitId $env:APPVEYOR_REPO_COMMIT —commitBranch $env:APPVEYOR_REPO_BRANCH —commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR —commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL —commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE —jobId $env:APPVEYOR_JOB_ID
+    .\Maestro\packages\OpenCover.$env:OPENCOVER_VERSION\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:"Maestro\packages\NUnit.ConsoleRunner.$env:NUNIT_VERSION\tools\nunit3-console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\{configuration}\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModel.Tests\bin\{configuration}\OSGeo.MapGuide.ObjectModels.Tests.dll" -output:OpenCoverCoverage.xml
+    
+    $coveralls = (Resolve-Path "packages/coveralls.net.*/tools/csmacnz.coveralls.exe").ToString()
+    
+    & $coveralls --opencover –i OpenCoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
