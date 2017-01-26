@@ -1,6 +1,7 @@
 # MapGuide Maestro
 
 [![Build status](https://ci.appveyor.com/api/projects/status/7250l5cn21yfr1mb?svg=true)](https://ci.appveyor.com/project/jumpinjackie/mapguide-maestro)
+[![Coverage Status](https://coveralls.io/repos/github/jumpinjackie/mapguide-maestro/badge.svg?branch=master)](https://coveralls.io/github/jumpinjackie/mapguide-maestro?branch=master)
 
 MapGuide Maestro is an Open Source ([LGPL 2.1](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)) map authoring application for [MapGuide Open Source](https://mapguide.osgeo.org) and [Autodesk Infrastructure Map Server](http://www.autodesk.com/products/infrastructure-map-server/overview).
 
