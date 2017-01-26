@@ -1,0 +1,8 @@
+.vs
+bin/
+obj/
+out/
+Maestro/packages
+SDK/addin-bin
+SDK/bin
+SDK/LocalNativeProvider
