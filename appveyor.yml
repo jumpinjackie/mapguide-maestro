@@ -19,8 +19,6 @@ before_build:
   - nuget restore Maestro\Maestro_All.sln
 
 environment:
-  OPENCOVER_VERSION: 4.6.519
-  NUNIT_VERSION: 3.6.0
   COVERALLS_REPO_TOKEN:
     secure: brg0Fy+w8aO/4JhYrsjvumIqAMCi26QNT3nJGUQNaKvLXSoXgywWn/WPCEnUJEEK
 
