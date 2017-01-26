@@ -1,0 +1,28 @@
+platform: Any CPU
+configuration: Release
+shallow_clone: true
+
+matrix:
+  fast_finish: true
+
+# enable AssemblyInfo.cs patching with build version number
+assembly_info:
+  patch: true
+  file: AssemblyInfo.*
+  assembly_version: "{version}"
+  assembly_file_version: "{version}"
+  assembly_informational_version: "{version}"
+
+# restore NuGet packages before running MSBuild
+before_build:
+  - nuget restore
+
+# package Web Application project for Web Deploy
+build:
+  parallel: true
+  project: Maestro/Maestro_All.sln
+
+test:
+  assemblies:
+    - OSGeo.MapGuide.ObjectModels.Tests\bin\$(configuration)\OSGeo.MapGuide.ObjectModels.Tests.dll
+    - OSGeo.MapGuide.MaestroAPI.Tests\bin\$(configuration)\OSGeo.MapGuide.MaestroAPI.Tests.dll
