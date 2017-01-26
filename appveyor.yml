@@ -1,6 +1,7 @@
 platform: Any CPU
 configuration: Release
 shallow_clone: true
+version: 6.0.0.{build}
 
 matrix:
   fast_finish: true
@@ -17,12 +18,22 @@ assembly_info:
 before_build:
   - nuget restore Maestro\Maestro_All.sln
 
-# package Web Application project for Web Deploy
+environment:
+  OPENCOVER_VERSION: 4.6.519
+  NUNIT_VERSION: 3.6.0
+  COVERALLS_REPO_TOKEN:
+    secure: brg0Fy+w8aO/4JhYrsjvumIqAMCi26QNT3nJGUQNaKvLXSoXgywWn/WPCEnUJEEK
+
 build:
   verbosity: minimal
   parallel: true
   project: Maestro\Maestro_All.sln
 
-test:
-  assemblies:
-    - '**\*.Tests.dll'
+test_script:
+– ps: >-
+    .\Maestro\packages\OpenCover.$env:OPENCOVER_VERSION\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:"Maestro\packages\NUnit.ConsoleRunner.$env:NUNIT_VERSION\tools\nunit3-console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\{configuration}\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModel.Tests\bin\{configuration}\OSGeo.MapGuide.ObjectModels.Tests.dll" -output:Reports\OpenCoverCoverage.xml
+
+    $coveralls = (Resolve-Path
+"packages/coveralls.net.*/tools/csmacnz.coveralls.exe").ToString()
+
+    & $coveralls —opencover –i opencoverCoverage.xml —repoToken $env:COVERALLS_REPO_TOKEN —commitId $env:APPVEYOR_REPO_COMMIT —commitBranch $env:APPVEYOR_REPO_BRANCH —commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR —commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL —commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE —jobId $env:APPVEYOR_JOB_ID
