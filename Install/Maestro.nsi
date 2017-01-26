@@ -236,6 +236,10 @@ Section
     File "${INST_OUTPUT_MAESTRO}\PowerCollections.dll"
     File "${INST_OUTPUT_MAESTRO}\ProjNet.dll"
     File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.dll"
+    File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.ThemeVS2003.dll"
+    File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.ThemeVS2012.dll"
+    File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.ThemeVS2013.dll"
+    File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll"
     
     # pdbs for greater context in exception stack traces
     #File "${INST_OUTPUT_MAESTRO}\Aga.Controls.pdb"

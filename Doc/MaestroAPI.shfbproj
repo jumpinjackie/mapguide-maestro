@@ -173,6 +173,9 @@ The main namespaces of the Maestro API are listed below
     <Reference Include="Aga.Controls">
       <HintPath>..\SDK\bin\Aga.Controls.dll</HintPath>
     </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\SDK\bin\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <!-- Import the SHFB build targets -->
   <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
