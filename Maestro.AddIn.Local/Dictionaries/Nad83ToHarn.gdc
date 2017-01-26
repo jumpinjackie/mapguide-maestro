@@ -1,0 +1,109 @@
+#######################################################################
+#
+# Copyright (c) 2008, Autodesk, Inc.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Autodesk, Inc. nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY Autodesk, Inc. ``AS IS'' AND ANY
+# EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL Autodesk, Inc. OR CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+########################################################################
+#
+# United States: NAD83 to HARN (HPGN)
+#
+# Each line points to a datum shift data file.  In the case of
+# overlapping coverage, the program selects the data file with
+# the smallest grid cell in the region of the conversion.  If
+# the grid cell sizes are the same, the program selects the
+# file which appears first in this file.
+#
+# Order the list of files as appropriate for your application.
+# You can add additional files as they become available.  While
+# the name, letter case, and location of the file name is not
+# important, the extension must be ".gsb" if the file is in
+# the Canadian National Transformation, Version 2 format.  Each
+# line may be a full path name.  The ".\Usa\Harn\" sequence used here is
+# a relative folder/directory reference, relative to the folder
+# (directory) in which this file resides.
+#
+# Deleteing, or commenting out, references to files that
+# you are unlikely to use may improve performance slightly.
+#
+# We use the .l?s as the extension as these files come in pairs,
+# a .las file and a .los file.  Both files must be present if
+# either is to be used.
+#
+# Note that the files can be in any directory.  The
+# ".\Usa\Harn\" prefix used here is a relative folder/directory
+# reference to the directory in which this file resides.
+#
+.\Usa\Harn\arhpgn.l?s
+.\Usa\Harn\alhpgn.l?s
+.\Usa\Harn\azhpgn.l?s
+.\Usa\Harn\cnhpgn.l?s
+.\Usa\Harn\cohpgn.l?s
+.\Usa\Harn\cshpgn.l?s
+.\Usa\Harn\emhpgn.l?s
+.\Usa\Harn\eshpgn.l?s
+.\Usa\Harn\ethpgn.l?s
+.\Usa\Harn\flhpgn.l?s
+.\Usa\Harn\gahpgn.l?s
+.\Usa\Harn\hihpgn.l?s
+.\Usa\Harn\iahpgn.l?s
+.\Usa\Harn\ilhpgn.l?s
+.\Usa\Harn\inhpgn.l?s
+.\Usa\Harn\kshpgn.l?s
+.\Usa\Harn\kyhpgn.l?s
+.\Usa\Harn\lahpgn.l?s
+.\Usa\Harn\mdhpgn.l?s
+.\Usa\Harn\mehpgn.l?s
+.\Usa\Harn\mihpgn.l?s
+.\Usa\Harn\mnhpgn.l?s
+.\Usa\Harn\mohpgn.l?s
+.\Usa\Harn\mshpgn.l?s
+.\Usa\Harn\nbhpgn.l?s
+.\Usa\Harn\nchpgn.l?s
+.\Usa\Harn\ndhpgn.l?s
+.\Usa\Harn\nehpgn.l?s
+.\Usa\Harn\njhpgn.l?s
+.\Usa\Harn\nmhpgn.l?s
+.\Usa\Harn\nvhpgn.l?s
+.\Usa\Harn\nyhpgn.l?s
+.\Usa\Harn\ohhpgn.l?s
+.\Usa\Harn\okhpgn.l?s
+.\Usa\Harn\pahpgn.l?s
+.\Usa\Harn\pvhpgn.l?s
+.\Usa\Harn\schpgn.l?s
+.\Usa\Harn\sdhpgn.l?s
+.\Usa\Harn\tnhpgn.l?s
+.\Usa\Harn\uthpgn.l?s
+.\Usa\Harn\vahpgn.l?s
+.\Usa\Harn\wihpgn.l?s
+.\Usa\Harn\wmhpgn.l?s
+.\Usa\Harn\wohpgn.l?s
+.\Usa\Harn\wshpgn.l?s
+.\Usa\Harn\wthpgn.l?s
+.\Usa\Harn\wvhpgn.l?s
+.\Usa\Harn\wyhpgn.l?s
+#
+# If you add a fallback here, it will be honored.  For
+# HARN, we doubt that it would be advisable to use this
+# feature.

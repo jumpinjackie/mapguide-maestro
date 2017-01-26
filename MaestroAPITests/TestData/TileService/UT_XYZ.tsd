@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TileSetDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="TileSetDefinition-3.0.0.xsd">
+  <TileStoreParameters>
+    <TileProvider>XYZ</TileProvider>
+    <Parameter>
+      <Name>TilePath</Name>
+      <Value>%MG_TILE_CACHE_PATH%</Value>
+    </Parameter>
+    <Parameter>
+      <Name>TileFormat</Name>
+      <Value>PNG</Value>
+    </Parameter>
+  </TileStoreParameters>
+  <Extents>
+    <MinX>-87.79786601383196</MinX>
+    <MaxX>-87.66452777186925</MaxX>
+    <MinY>43.6868578621819</MinY>
+    <MaxY>43.8037962206133</MaxY>
+  </Extents>
+  <BaseMapLayerGroup>
+    <Name>BaseLayers</Name>
+    <Visible>true</Visible>
+    <ShowInLegend>true</ShowInLegend>
+    <ExpandInLegend>true</ExpandInLegend>
+    <LegendLabel>Base Layers</LegendLabel>
+    <BaseMapLayer>
+      <Name>Parcels</Name>
+      <ResourceId>Library://UnitTests/Layers/Parcels.LayerDefinition</ResourceId>
+      <Selectable>true</Selectable>
+      <ShowInLegend>true</ShowInLegend>
+      <LegendLabel>Parcels</LegendLabel>
+      <ExpandInLegend>false</ExpandInLegend>
+    </BaseMapLayer>
+    <BaseMapLayer>
+      <Name>VotingDistricts</Name>
+      <ResourceId>Library://UnitTests/Layers/VotingDistricts.LayerDefinition</ResourceId>
+      <Selectable>true</Selectable>
+      <ShowInLegend>true</ShowInLegend>
+      <LegendLabel>Voting Districts</LegendLabel>
+      <ExpandInLegend>false</ExpandInLegend>
+    </BaseMapLayer>
+  </BaseMapLayerGroup>
+</TileSetDefinition>

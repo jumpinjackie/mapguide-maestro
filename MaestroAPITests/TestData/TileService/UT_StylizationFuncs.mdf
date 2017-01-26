@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MapDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2.4.0" xsi:noNamespaceSchemaLocation="MapDefinition-2.4.0.xsd">
+  <Name />
+  <CoordinateSystem>GEOGCS["WGS84 Lat/Long's, Degrees, -180 ==&gt; +180",DATUM["D_WGS_1984",SPHEROID["World_Geodetic_System_of_1984",6378137,298.257222932867]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]</CoordinateSystem>
+  <Extents>
+    <MinX>-87.764986236796631</MinX>
+    <MaxX>-87.695517537538109</MaxX>
+    <MinY>43.691398447253356</MinY>
+    <MaxY>43.7975198255836</MaxY>
+  </Extents>
+  <BackgroundColor>ffffffff</BackgroundColor>
+  <MapLayer>
+    <Name>StylizationTest</Name>
+    <ResourceId>Library://UnitTests/Layers/StylizationFuncs.LayerDefinition</ResourceId>
+    <Selectable>true</Selectable>
+    <ShowInLegend>true</ShowInLegend>
+    <LegendLabel>StylizationTest</LegendLabel>
+    <ExpandInLegend>true</ExpandInLegend>
+    <Visible>true</Visible>
+    <Group />
+  </MapLayer>
+  <Watermarks />
+</MapDefinition>

@@ -1,0 +1,20 @@
+The following files are excluded:
+
+Not required as binary forms exist
+
+ - OSTN02.txt
+ - OSTN97.txt
+ - Japan/TKY2JGD.par
+ - WW15MGH.GRD
+
+Not required as CS-Map Geoid Height functions are not used by MapGuide
+
+ - Usa/Geoid96
+ - Usa/Geoid99
+ - Usa/Geoid03
+ - WW15MGH.GRD
+
+Extraneous files that have no purpose for us
+ - CS-MAP.GID
+ - CS-MAP.HLP
+ - cs-map.cnt

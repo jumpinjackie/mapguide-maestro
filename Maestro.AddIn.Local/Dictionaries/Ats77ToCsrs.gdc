@@ -1,0 +1,59 @@
+#######################################################################
+#
+# Copyright (c) 2008, Autodesk, Inc.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Autodesk, Inc. nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY Autodesk, Inc. ``AS IS'' AND ANY
+# EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL Autodesk, Inc. OR CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+########################################################################
+#
+# Canada; ATS 77 to NAD83 (CSRS)
+# CSRS is the Canadian Spatial Reference System
+#
+# Currently, this file applies to New Brunswick Province and
+# Prince Edward Island, Canada, only.
+# Each line points to a datum shift data file.  In the case of
+# overlapping coverage, the program selects the data file with
+# the smallest grid cell in the region of the conversion.  If
+# the grid cell sizes are the same, the program selects the
+# file which appears first in this file.
+#
+# Order the list of files as appropriate for your application.
+# You can add additional files as they become available.  While
+# the name, letter case, and location of the file name is not
+# important, the extension must be ".gsb" if the file is in
+# the Canadian National Transformation, Version 2 format.  Each
+# line may be a full path name.  The ".\" sequence used here is
+# a relative folder/directory reference, relative to the folder
+# (directory) in which this file resides.
+#
+#.\Canada\ATS77\Nb7783v2.gsb
+#.\Canada\ATS77\PE7783v2.gsb
+#
+# The fallback datum definition is used when none of the above
+# listed files provides coverage for the point to be converted.
+# The specification given below,
+# is commented out and is provided simply as an example.  There
+# is no datum definition with the key name of ATS77-XX.
+#
+#Fallback=ATS77-XX

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LayerDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="LayerDefinition-1.2.0.xsd" version="1.2.0">
+  <VectorLayerDefinition>
+    <ResourceId>Library://UnitTests/Data/VotingDistricts.FeatureSource</ResourceId>
+    <FeatureName>Default:VotingDistricts</FeatureName>
+    <FeatureNameType>FeatureClass</FeatureNameType>
+    <PropertyMapping>
+      <Name>NAME</Name>
+      <Value>NAME</Value>
+    </PropertyMapping>
+    <Geometry>Geometry</Geometry>
+    <VectorScaleRange>
+      <AreaTypeStyle>
+        <AreaRule>
+          <LegendLabel></LegendLabel>
+          <Label>
+            <Unit>Centimeters</Unit>
+            <SizeContext>DeviceUnits</SizeContext>
+            <SizeX>0.3</SizeX>
+            <SizeY>0.3</SizeY>
+            <Text>concat('HTML Color: ', HTMLCOLOR(255, 0, 14), '\nFeature Source: ', FEATURESOURCE(), '\nLayer Definition: ', LAYERDEFINITION(), '\nMap Scale: ', MAPSCALE(), '\nMap Center (X): ', MAPCENTERX(), '\nMap Center (Y): ', MAPCENTERY(), '\nColor: ', ARGB(0, 255, 0, 255), '\nDecap: ', DECAP('HELLO WORLD'), '\nFeature Class: ', FEATURECLASS(), '\nFeature ID: ', FEATUREID(), '\nIf result (Built after 1980?): ', IF('YRBUILT &amp;gt; 1980', 'Yes', 'No'), '\nLayer ID: ', LAYERID(), '\nLookup Example (based on FeatId): ', Lookup( FeatId , 'FeatId unknown or empty', 1, 'one', 2, 'two', 3, 'three', 4, 'four', 5, 'five', 6, 'six', 7, 'seven', 8, 'eight', 9, 'nine', 10, 'ten'), '\nMap Name: ', MAPNAME(), '\nSession ID: ', SESSION(), '\nRange Example (FeatId): ', RANGE( FeatId , 'Unknown', 1, 3, '1-3', 3, 6,'3-6', 6, 10, '6 - 10'), '\nURL Encode example: ', URLENCODE('http://www.google.com/?foo=bar'))</Text>
+            <FontName>Arial</FontName>
+            <ForegroundColor>ff000000</ForegroundColor>
+            <BackgroundColor>ffffffff</BackgroundColor>
+            <BackgroundStyle>Ghosted</BackgroundStyle>
+            <VerticalAlignment>'Halfline'</VerticalAlignment>
+            <AdvancedPlacement>
+              <ScaleLimit>0.5</ScaleLimit>
+            </AdvancedPlacement>
+          </Label>
+          <AreaSymbolization2D>
+            <Fill>
+              <FillPattern>Solid</FillPattern>
+              <ForegroundColor>ffffffff</ForegroundColor>
+              <BackgroundColor>ffffffff</BackgroundColor>
+            </Fill>
+            <Stroke>
+              <LineStyle>Solid</LineStyle>
+              <Thickness>1</Thickness>
+              <Color>ff000000</Color>
+              <Unit>Points</Unit>
+              <SizeContext>DeviceUnits</SizeContext>
+            </Stroke>
+          </AreaSymbolization2D>
+        </AreaRule>
+      </AreaTypeStyle>
+    </VectorScaleRange>
+  </VectorLayerDefinition>
+</LayerDefinition>

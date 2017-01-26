@@ -110,201 +110,33 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Resources\SelectAggregatesSample.xml" />
+    <None Include="TestData\DrawingService\CorruptedDwf.dwf" />
+    <None Include="TestData\DrawingService\DrawingServiceTest.dump" />
+    <None Include="TestData\DrawingService\SpaceShip.dwf" />
+    <None Include="TestData\DrawingService\test.dwf" />
+    <None Include="TestData\FeatureService\SDF\Empty.FeatureSource" />
+    <None Include="TestData\FeatureService\SDF\Sheboygan_Parcels.FeatureSource" />
+    <None Include="TestData\FeatureService\SDF\Sheboygan_VotingDistricts.FeatureSource" />
+    <None Include="TestData\MappingService\MappingServiceTest.dump" />
+    <None Include="TestData\MappingService\UT_AllElements.pl" />
+    <None Include="TestData\MappingService\UT_HydrographicPolygons.fs" />
+    <None Include="TestData\MappingService\UT_NoLegend.pl" />
+    <None Include="TestData\MappingService\UT_PoweredByMapGuide.wdf" />
+    <None Include="TestData\MappingService\UT_Rail.fs" />
+    <None Include="TestData\MappingService\UT_Rail.wdf" />
+    <None Include="TestData\MappingService\UT_SymbolMart.sl" />
+    <None Include="TestData\MappingService\UT_Symbols.dwf" />
+    <None Include="TestData\TileService\UT_BaseMap.tsd" />
+    <None Include="TestData\TileService\UT_Parcels.fs" />
+    <None Include="TestData\TileService\UT_RoadCenterLines.fs" />
+    <None Include="TestData\TileService\UT_VotingDistricts.fs" />
+    <None Include="TestData\TileService\UT_XYZ.tsd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SelectFeatureSample.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SelectSqlSample.xml" />
-    <None Include="TestData\DrawingService\CorruptedDwf.dwf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\DrawingService\DrawingServiceTest.dump">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\DrawingService\SpaceShip.dwf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\DrawingService\test.dwf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\FeatureService\FeatureServiceTest.dump">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\FeatureService\SDF\Empty.FeatureSource">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\FeatureService\SDF\Sheboygan_BuildingOutlines.FeatureSource">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\FeatureService\SDF\Sheboygan_Parcels.FeatureSource">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\FeatureService\SDF\Sheboygan_VotingDistricts.FeatureSource">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\FeatureService\SDF\TEST.FeatureSource">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\FeatureService\SDF\TESTChainedInner1ToManyJoin.FeatureSource">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\FeatureService\SHP\Redding_Parcels.dbf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\FeatureService\SHP\Redding_Parcels.FeatureSource">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\FeatureService\SHP\Redding_Parcels.shp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\FeatureService\SHP\Redding_Parcels.shx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\MapLayer\Cities.LayerDefinition">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\MapLayer\MapLayerTest.dump">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\MapLayer\World countries.LayerDefinition">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\MapLayer\World.MapDefinition">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\MappingService\MappingServiceTest.dump">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\MappingService\UT_AllElements.pl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\MappingService\UT_HydrographicPolygons.fs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\MappingService\UT_NoLegend.pl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\MappingService\UT_PoweredByMapGuide.wdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\MappingService\UT_Rail.fs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\MappingService\UT_SymbolMart.sl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\MappingService\UT_Symbols.dwf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\MdfModel\MdfTestCompoundSymbol.sd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\MdfModel\MdfTestSimpleSymbol.sd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\ResourceService\d1.DrawingSource">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\ResourceService\d2.DrawingSource">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\ResourceService\r1.FeatureSource">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\ResourceService\ResourceServiceTest.dump">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\ResourceService\Shuttle.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\ResourceService\Shuttle_Corrupted.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\ResourceService\TEST.LayerDefinition">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\ResourceService\WesternEuropean.FeatureSource">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\ResourceService\Westernéuropèàn.FeatureSource">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\ServerAdmin\1.1.1.mgd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\ServerAdmin\ServerAdminTest.dump">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\SiteService\SiteServiceTest.dump">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Symbology\areasymbol.sd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Symbology\linesymbol.sd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Symbology\MTYP1500a.sd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Symbology\symbol.sd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Symbology\symbolp.sd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Symbology\UT_SymbologyLines.fs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Symbology\UT_SymbologyPoints.fs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Symbology\UT_SymbologyRoads.fs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\TileService\UT_BaseMap.tsd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\TileService\UT_Parcels.fs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\TileService\UT_RoadCenterLines.fs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\TileService\UT_VotingDistricts.fs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\TileService\UT_XYZ.tsd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Unicode\Sample_World_Unicode.FeatureSource">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Unicode\Sample_World_Unicode.LayerDefinition">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Unicode\Sample_World_Unicode.MapDefinition">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Unicode\Sample_World_Unicode.WebLayout">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Unicode\UnicodeTest.dump">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\WebLayout\Test.WebLayout">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\WebLayout\WebLayoutTest.dump">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Wfs\WfsTest.dump">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="TestData\Wms\WmsTest.dump">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\TestData\gen_default1_MySql_master.xml">
@@ -332,28 +164,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\FeatureJoinSelectSample.xml" />
-    <Content Include="TestData\CoordinateSystems\epsgcodes.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\CoordinateSystems\ogcwkts.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\CoordinateSystems\ogcwkts_original.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\DrawingService\InvalidDrawingSource.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\DrawingService\MapGuideDrawingSource.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\DrawingService\SpaceShipDrawingSource.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="TestData\DrawingService\InvalidDrawingSource.xml" />
+    <Content Include="TestData\DrawingService\MapGuideDrawingSource.xml" />
+    <Content Include="TestData\DrawingService\SpaceShipDrawingSource.xml" />
     <Content Include="TestData\FeatureService\SDF\Empty.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\FeatureService\SDF\Sheboygan_BuildingOutlines.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\FeatureService\SDF\Sheboygan_CityLimits.sdf">
@@ -365,28 +179,34 @@
     <Content Include="TestData\FeatureService\SDF\Sheboygan_VotingDistricts.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\FeatureService\SDF\TEST.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\KmlService\UT_GetFeaturesKMLResult.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\KmlService\UT_GetLayerKMLResult.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\KmlService\UT_GetMapKMLResult.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="TestData\MappingService\UT_HydrographicPolygons.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\MappingService\UT_HydrographicPolygons.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestData\MappingService\UT_MultiCTS.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\MappingService\UT_MultiCTSWithTheme.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\MappingService\UT_MultiFTS.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\MappingService\UT_MultiFTSSingleCTS.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\MappingService\UT_MultiFTSWithTheme.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\MappingService\UT_Rail.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\MappingService\UT_Rail.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\MappingService\UT_Rail_Watermark.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\MappingService\UT_Rail_Web.ldf">
@@ -396,117 +216,19 @@
     <Content Include="TestData\MappingService\UT_Rail_Web.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestData\MappingService\UT_RotatedPointStyles.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\MappingService\UT_Sheboygan.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\MappingService\UT_SheboyganWithWatermark.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\MdfModel\MdfTestMap.mdf">
+    <Content Include="TestData\MappingService\UT_Sheboygan_833.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\MdfModel\MdfTestTypeStyles.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\PrintLayout\MapViewportSample1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\ResourceService\AdministratorCredentials.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\ResourceService\Content2.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\ResourceService\EmptyFile.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\ResourceService\LibraryRepositoryContent.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\ResourceService\SampleRepositoryContent.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\ResourceService\SampleRepositoryHeader.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\ResourceService\SampleResourceHeader.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\ResourceService\Westernéuropèàn.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\ResourceService\World_Countries.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_Annotation1.ldf">
-      <DependentUpon>UT_Annotation1.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_Annotation1.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_Annotation2.ldf">
-      <DependentUpon>UT_Annotation2.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_Annotation2.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_Annotation3.ldf">
-      <DependentUpon>UT_Annotation3.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_Annotation3.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyLines.ldf">
-      <DependentUpon>UT_SymbologyLines.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyLines.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyLines.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyLinesCrossTick.ldf">
-      <DependentUpon>UT_SymbologyLinesCrossTick.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyLinesCrossTick.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyParcels.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyPoints.ldf">
-      <DependentUpon>UT_SymbologyPoints.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyPoints.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyPoints.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyPointsParam.ldf">
-      <DependentUpon>UT_SymbologyPointsParam.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyPointsParam.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyPolygons.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyRoads.ldf">
-      <DependentUpon>UT_SymbologyRoads.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyRoads.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Symbology\UT_SymbologyRoads.sdf">
+    <Content Include="TestData\MappingService\UT_SingleFTSMultiCTS.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\TileService\UT_BaseMap.mdf">
@@ -518,13 +240,13 @@
     <Content Include="TestData\TileService\UT_Parcels.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\TileService\UT_Parcels.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="TestData\TileService\UT_RoadCenterLines.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\TileService\UT_RoadCenterLines.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\TileService\UT_StylizationFuncs.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\TileService\UT_VotingDistricts.ldf">
@@ -533,37 +255,7 @@
     <Content Include="TestData\TileService\UT_VotingDistricts.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\Unicode\Sample_World_Unicode.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Wfs\Sheboygan_CityLimits.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Wfs\Sheboygan_CityLimits_Content.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Wfs\Sheboygan_CityLimits_Header.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Wfs\Sheboygan_CityLimits_Layer_Content.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Wfs\Sheboygan_CityLimits_Layer_Header.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Wms\Sheboygan_CityLimits.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Wms\Sheboygan_CityLimits_Content.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Wms\Sheboygan_CityLimits_Header.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Wms\Sheboygan_CityLimits_Layer_Content.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\Wms\Sheboygan_CityLimits_Layer_Header.xml">
+    <Content Include="TestData\TileService\UT_VotingDistrictsFunctions.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="UserTestData\1896.xml">

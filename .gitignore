@@ -2,7 +2,9 @@
 bin/
 obj/
 out/
+*.CSD
 Maestro/packages
 SDK/addin-bin
 SDK/bin
 SDK/LocalNativeProvider
+*.user

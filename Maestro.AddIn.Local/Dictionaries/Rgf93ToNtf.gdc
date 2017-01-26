@@ -1,0 +1,77 @@
+#######################################################################
+#
+# Copyright (c) 2008, Autodesk, Inc.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Autodesk, Inc. nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY Autodesk, Inc. ``AS IS'' AND ANY
+# EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL Autodesk, Inc. OR CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+########################################################################
+#
+# Europe: RGF93 to NTF
+#
+# Each line points to a datum shift data file.  In the case of
+# overlapping coverage, the program selects the data file with
+# the smallest grid cell in the region of the conversion.  If
+# the grid cell sizes are the same, the program selects the
+# file which appears first in this file.  Check the Help
+# file for more options.
+#
+# Order the list of files as appropriate for your application.
+# You can add additional files as they become available.  While
+# the name, and location of the file name is not important, the
+# extension must be ".gsb" if the file is in the Canadian National
+# Transformation, Version 2, format.  Each line may be a full path name.
+# The ".\" sequence used here is a relative folder/directory reference,
+# relative to the folder (directory) in which this file resides.
+#
+# During the development required to support local grid files in France,
+# it was determined that while the national file (which has been supported
+# for many years) defines a shift from RGF93 to NTF, the local grid files
+# define a shift from NTF to RGF93.  Thus, due to legacy reasons, this
+# GDC file is named "Rgf93ToNtf.gdc", even though the local grid files
+# actually define a transformation from NTF to RGF93.  Sorry for any
+# confusion which this may cause.
+#
+# Also note, that all data shift files are expected to be in little
+# endian order, regardless of the platform upon which this product is
+# running.  Bytes will be swapped as is appropriate by the product.
+#
+#.\France\cub_r93_l.gsb   # example of a possible entry
+.\France\gr3df97a.txt
+#
+# The fallback datum definition is used when none of the above
+# listed files provides coverage for the point to be converted.
+# The specification given below (in the distribution data anyway),
+# says to use the definition NTF-G in this case.  This definition
+# is a Molodensky based definition.  Of course, you can change this
+# to whatever datum definition you prefer.  It must be a definition
+# which exists in the Datum Dictionary, which does not rely on a
+# specific grid shift data file.
+#
+# Definitions in the Datum Dictionary are required to define the
+# transformation appropriate for transformation datum coordinates
+# to WGS84.  Therefore, the datum definition listed as a fallback
+# must be a definition that converts NTF to RGF93/WGS84.  This is
+# true even though this GDC file is named 'Rgf93ToNtf.gdc' for the
+# reasons described above.
+Fallback=NTF-G

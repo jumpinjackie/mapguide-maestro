@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DrawingSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DrawingSource-1.0.0.xsd">
+  <SourceName>%MG_DATA_FILE_PATH%SpaceShip.dwf</SourceName>
+  <CoordinateSpace>LL84</CoordinateSpace>
+</DrawingSource>

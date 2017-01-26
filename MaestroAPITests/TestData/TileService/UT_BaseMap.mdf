@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MapDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MapDefinition-1.0.0.xsd">
+  <Name>Base Map</Name>
+  <CoordinateSystem>GEOGCS[&quot;LL84&quot;,DATUM[&quot;WGS 84&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.25722293287],TOWGS84[0,0,0,0,0,0,0]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;Degrees&quot;,0.01745329252]]</CoordinateSystem>
+  <Extents>
+    <MinX>-87.79786601383196</MinX>
+    <MaxX>-87.66452777186925</MaxX>
+    <MinY>43.6868578621819</MinY>
+    <MaxY>43.8037962206133</MaxY>
+  </Extents>
+  <BackgroundColor>FFF7E1D2</BackgroundColor>
+  <MapLayer>
+    <Name>RoadCenterLines</Name>
+    <ResourceId>Library://UnitTests/Layers/RoadCenterLines.LayerDefinition</ResourceId>
+    <Selectable>false</Selectable>
+    <ShowInLegend>true</ShowInLegend>
+    <LegendLabel>Road CenterLines</LegendLabel>
+    <ExpandInLegend>false</ExpandInLegend>
+    <Visible>true</Visible>
+    <Group></Group>
+  </MapLayer>
+  <BaseMapDefinition>
+    <FiniteDisplayScale>200000</FiniteDisplayScale>
+    <FiniteDisplayScale>100000</FiniteDisplayScale>
+    <FiniteDisplayScale>50000</FiniteDisplayScale>
+    <FiniteDisplayScale>25000</FiniteDisplayScale>
+    <FiniteDisplayScale>12500</FiniteDisplayScale>
+    <FiniteDisplayScale>6250</FiniteDisplayScale>
+    <FiniteDisplayScale>3125</FiniteDisplayScale>
+    <FiniteDisplayScale>1562.5</FiniteDisplayScale>
+    <FiniteDisplayScale>781.25</FiniteDisplayScale>
+    <FiniteDisplayScale>390.625</FiniteDisplayScale>
+    <BaseMapLayerGroup>
+      <Name>BaseLayers</Name>
+      <Visible>true</Visible>
+      <ShowInLegend>true</ShowInLegend>
+      <ExpandInLegend>true</ExpandInLegend>
+      <LegendLabel>Base Layers</LegendLabel>
+      <BaseMapLayer>
+        <Name>Parcels</Name>
+        <ResourceId>Library://UnitTests/Layers/Parcels.LayerDefinition</ResourceId>
+        <Selectable>true</Selectable>
+        <ShowInLegend>true</ShowInLegend>
+        <LegendLabel>Parcels</LegendLabel>
+        <ExpandInLegend>false</ExpandInLegend>
+      </BaseMapLayer>
+      <BaseMapLayer>
+        <Name>VotingDistricts</Name>
+        <ResourceId>Library://UnitTests/Layers/VotingDistricts.LayerDefinition</ResourceId>
+        <Selectable>true</Selectable>
+        <ShowInLegend>true</ShowInLegend>
+        <LegendLabel>Voting Districts</LegendLabel>
+        <ExpandInLegend>false</ExpandInLegend>
+      </BaseMapLayer>
+    </BaseMapLayerGroup>
+  </BaseMapDefinition>
+</MapDefinition>

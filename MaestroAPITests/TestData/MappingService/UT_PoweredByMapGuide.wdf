@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<WatermarkDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="WatermarkDefinition-2.3.0.xsd" version="2.3.0">
+  <Content>
+    <SimpleSymbolDefinition>
+      <Name>Watermark Text</Name>
+      <Graphics>
+        <Text>
+          <Content>'Powered by
+MapGuide'</Content>
+          <FontName>'Times New Roman'</FontName>
+          <Bold>True</Bold>
+          <Italic>True</Italic>
+          <Underlined>True</Underlined>
+          <Height>6.35</Height>
+          <HorizontalAlignment>'Left'</HorizontalAlignment>
+          <TextColor>0xFF800000</TextColor>
+        </Text>
+      </Graphics>
+      <PointUsage />
+      <ParameterDefinition />
+    </SimpleSymbolDefinition>
+  </Content>
+  <Appearance>
+    <Transparency>34</Transparency>
+  </Appearance>
+  <Position>
+    <TilePosition>
+      <TileWidth>300</TileWidth>
+      <TileHeight>300</TileHeight>
+      <HorizontalPosition>
+        <Offset>20</Offset>
+        <Unit>Pixels</Unit>
+        <Alignment>Left</Alignment>
+      </HorizontalPosition>
+      <VerticalPosition>
+        <Offset>20</Offset>
+        <Unit>Pixels</Unit>
+        <Alignment>Top</Alignment>
+      </VerticalPosition>
+    </TilePosition>
+  </Position>
+</WatermarkDefinition>

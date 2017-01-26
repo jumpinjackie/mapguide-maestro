@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<MapDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MapDefinition-1.0.0.xsd">
+  <Name>New Map</Name> 
+  <CoordinateSystem>GEOGCS["WGS84 Lat/Long's, Degrees, -180 ==> +180",DATUM["D_WGS_1984",SPHEROID["World_Geodetic_System_of_1984",6378137,298.257222932867]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]</CoordinateSystem> 
+  <Extents>
+    <MinX>-87.770746109180749</MinX> 
+    <MaxX>-87.6957605384125</MaxX> 
+    <MinY>43.686899685828813</MinY> 
+    <MaxY>43.805498742206247</MaxY> 
+  </Extents>
+  <BackgroundColor>FFFFFFFF</BackgroundColor> 
+  <MapLayer>
+    <Name>Rail</Name> 
+    <ResourceId>Library://Test/MappingService/UT_Rail.LayerDefinition</ResourceId> 
+    <Selectable>true</Selectable> 
+    <ShowInLegend>true</ShowInLegend> 
+    <LegendLabel>Rail</LegendLabel> 
+    <ExpandInLegend>true</ExpandInLegend> 
+    <Visible>true</Visible> 
+    <Group /> 
+  </MapLayer>
+</MapDefinition>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LayerDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="LayerDefinition-1.2.0.xsd" version="1.2.0">
+  <VectorLayerDefinition>
+    <ResourceId>Library://UnitTests/Data/HydrographicPolygons.FeatureSource</ResourceId>
+    <FeatureName>SHP_Schema:HydrographicPolygons</FeatureName>
+    <FeatureNameType>FeatureClass</FeatureNameType>
+    <Geometry>SHPGEOM</Geometry>
+    <VectorScaleRange>
+      <AreaTypeStyle>
+        <AreaRule>
+          <LegendLabel/>
+          <AreaSymbolization2D>
+            <Fill>
+              <FillPattern>Line_45</FillPattern>
+              <ForegroundColor>FF0000FF</ForegroundColor>
+              <BackgroundColor>FF008080</BackgroundColor>
+            </Fill>
+            <Stroke>
+              <LineStyle>Solid</LineStyle>
+              <Thickness>0.0</Thickness>
+              <Color>FF000000</Color>
+              <Unit>Centimeters</Unit>
+              <SizeContext>DeviceUnits</SizeContext>
+            </Stroke>
+          </AreaSymbolization2D>
+        </AreaRule>
+      </AreaTypeStyle>
+    </VectorScaleRange>
+  </VectorLayerDefinition>
+</LayerDefinition>
