@@ -24,5 +24,4 @@ build:
 
 test:
   assemblies:
-    - OSGeo.MapGuide.ObjectModels.Tests\bin\$(configuration)\OSGeo.MapGuide.ObjectModels.Tests.dll
-    - OSGeo.MapGuide.MaestroAPI.Tests\bin\$(configuration)\OSGeo.MapGuide.MaestroAPI.Tests.dll
+    - '**\*.Tests.dll'
