@@ -1,6 +1,6 @@
 # MapGuide Maestro
 
-MapGuide Maestro is an Open Source (​LGPL) map authoring application for [MapGuide Open Source](https://mapguide.osgeo.org) and [Autodesk Infrastructure Map Server](http://www.autodesk.com/products/infrastructure-map-server/overview).
+MapGuide Maestro is an Open Source ([LGPL 2.1](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)) map authoring application for [MapGuide Open Source](https://mapguide.osgeo.org) and [Autodesk Infrastructure Map Server](http://www.autodesk.com/products/infrastructure-map-server/overview).
 
 MapGuide Maestro is written in 100% managed C#, targeting the .net Framework. It consists of:
 
