@@ -15,12 +15,12 @@ assembly_info:
 
 # restore NuGet packages before running MSBuild
 before_build:
-  - nuget restore
+  - nuget restore Maestro\Maestro_All.sln
 
 # package Web Application project for Web Deploy
 build:
   parallel: true
-  project: Maestro/Maestro_All.sln
+  project: Maestro\Maestro_All.sln
 
 test:
   assemblies:
