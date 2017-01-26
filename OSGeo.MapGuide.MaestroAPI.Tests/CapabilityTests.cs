@@ -26,9 +26,6 @@ using OSGeo.MapGuide.MaestroAPI.Http;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {

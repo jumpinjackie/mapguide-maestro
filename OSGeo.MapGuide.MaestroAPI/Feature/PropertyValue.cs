@@ -209,7 +209,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Initializes this instance
         /// </summary>
         public ByteValue(byte value)
-            : base()
+            : base(value)
         {
         }
 
@@ -405,7 +405,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             return string.Format("TIMESTAMP '{0}-{1}-{2} {3}:{4}:{5}'", //NOXLATE
                 PadLeft(dt.Year.ToString(), '0', 4), //NOXLATE
                 PadLeft(dt.Month.ToString(), '0', 2), //NOXLATE
-                PadLeft(dt.Year.ToString(), '0', 2), //NOXLATE
+                PadLeft(dt.Day.ToString(), '0', 2), //NOXLATE
                 PadLeft(dt.Hour.ToString(), '0', 2), //NOXLATE
                 PadLeft(dt.Minute.ToString(), '0', 2), //NOXLATE
                 PadLeft(dt.Second.ToString(), '0', 2)); //NOXLATE

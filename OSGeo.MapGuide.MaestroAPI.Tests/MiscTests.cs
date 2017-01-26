@@ -22,9 +22,6 @@
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Internal;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
@@ -84,6 +81,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.IsTrue(parser.IsDefined("whatever"));
             Assert.AreEqual(string.Empty, parser.GetValue("whatever"));
             Assert.AreEqual(parser.GetValue("bar"), "snafu");
+        }
+
+        [Test]
+        public void TestSiteVersions()
+        {
+            foreach (KnownSiteVersions ver in Enum.GetValues(typeof(KnownSiteVersions)))
+            {
+                var version = SiteVersions.GetVersion(ver);
+                Assert.NotNull(version);
+            }
         }
     }
 }

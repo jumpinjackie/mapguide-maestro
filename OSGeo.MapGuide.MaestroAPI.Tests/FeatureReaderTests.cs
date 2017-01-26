@@ -19,7 +19,9 @@
 //
 
 #endregion Disclaimer / License
+using Moq;
 using NUnit.Framework;
+using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Http;
 using System;
 using System.Collections.Generic;
@@ -32,6 +34,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
     [TestFixture]
     public class FeatureReaderTests
     {
+        [Test]
+        public void TestLimitingFeatureReader()
+        {
+            int limit = 5;
+
+            var mockFr = new Mock<IFeatureReader>();
+            mockFr.Setup(r => r.ReadNext()).Returns(true);
+
+            using (var lr = new LimitingFeatureReader(mockFr.Object, limit))
+            {
+                int iterated = 0;
+                while (lr.ReadNext())
+                {
+                    iterated++;
+                }
+                lr.Close();
+                Assert.AreEqual(limit, iterated);
+            }
+        }
+
         [Test]
         public void TestXmlFeatureNullValues()
         {

@@ -23,12 +23,7 @@ using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.ObjectModels.Common;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
