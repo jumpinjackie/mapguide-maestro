@@ -8,3 +8,5 @@ SDK/addin-bin
 SDK/bin
 SDK/LocalNativeProvider
 *.user
+Reports/
+TestResult.xml
