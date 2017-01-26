@@ -19,6 +19,7 @@ before_build:
 
 # package Web Application project for Web Deploy
 build:
+  verbosity: minimal
   parallel: true
   project: Maestro\Maestro_All.sln
 
