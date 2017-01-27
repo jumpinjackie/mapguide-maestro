@@ -19,10 +19,12 @@
 //
 
 #endregion Disclaimer / License
+using Moq;
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.CrossConnection;
 using OSGeo.MapGuide.MaestroAPI.Internal;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
+using OSGeo.MapGuide.MaestroAPI.Tile;
 using System;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests

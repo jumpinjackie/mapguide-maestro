@@ -88,6 +88,7 @@
     <Compile Include="Schema\FeatureSourceDescriptionTests.cs" />
     <Compile Include="Schema\GeometricPropertyDefinitionTests.cs" />
     <Compile Include="TileTests.cs" />
+    <Compile Include="UtilityTests.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="ValidationTests.cs" />
   </ItemGroup>

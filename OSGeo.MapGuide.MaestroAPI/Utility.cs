@@ -155,7 +155,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="sResult"></param>
         /// <returns></returns>
-        public static bool IsSuccessfulConnectionTestResult(string sResult) => (sResult == "No errors" || sResult.ToLower() == "true"); //NOXLATE
+        public static bool IsSuccessfulConnectionTestResult(string sResult) => (sResult == "No errors" || sResult?.ToLower() == "true"); //NOXLATE
 
         /// <summary>
         /// Parses a color in HTML notation (ea. #ffaabbff)
