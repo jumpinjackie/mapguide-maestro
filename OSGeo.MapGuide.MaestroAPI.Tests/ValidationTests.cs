@@ -21,17 +21,20 @@
 #endregion Disclaimer / License
 using Moq;
 using NUnit.Framework;
+using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -273,7 +276,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         public void TestCase_FsValidator_ValidatesOdbcConfigurationIssues()
         {
             var conf = new OdbcConfigurationDocument();
-            var sc = CreateTestSpatialContext();
+            var sc = CreateTestSpatialContext("Default");
 
             var schema = new FeatureSchema("Default", "Default Schema");
             ClassDefinition klass = CreateTestClass(sc.Name);
@@ -423,11 +426,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             return klass;
         }
 
-        private static FdoSpatialContextListSpatialContext CreateTestSpatialContext()
+        private static FdoSpatialContextListSpatialContext CreateTestSpatialContext(string name, string wkt = "")
         {
             var sc = new FdoSpatialContextListSpatialContext();
             sc.CoordinateSystemName = "LL84";
-            sc.CoordinateSystemWkt = "";
+            sc.CoordinateSystemWkt = wkt;
             sc.Description = "Default Spatial Context";
             sc.Extent = new FdoSpatialContextListSpatialContextExtent()
             {
@@ -443,7 +446,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
                 }
             };
             sc.ExtentType = FdoSpatialContextListSpatialContextExtentType.Static;
-            sc.Name = "Default";
+            sc.Name = name;
             sc.XYTolerance = 0.0001;
             sc.ZTolerance = 0.0001;
             return sc;
@@ -456,7 +459,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var dataName = "config.xml";
             var schemaName = "Default";
 
-            var sc = CreateTestSpatialContext();
+            var sc = CreateTestSpatialContext("Default");
             var scList = new FdoSpatialContextList
             {
                 SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>() { sc }
@@ -503,7 +506,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var dataName = "config.xml";
             var schemaName = "Default";
 
-            var sc = CreateTestSpatialContext();
+            var sc = CreateTestSpatialContext("Default");
             var scList = new FdoSpatialContextList
             {
                 SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>() { sc }
@@ -558,7 +561,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var resId = "Library://Test.FeatureSource";
             var dataName = "config.xml";
 
-            var sc = CreateTestSpatialContext();
+            var sc = CreateTestSpatialContext("Default");
             var scList = new FdoSpatialContextList
             {
                 SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>() { sc }
@@ -609,10 +612,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var dataName = "config.xml";
             var schemaName = "Default";
 
-            var sc = CreateTestSpatialContext();
-            var scBogus = CreateTestSpatialContext();
+            var sc = CreateTestSpatialContext("Default");
+            var scBogus = CreateTestSpatialContext("Bogus");
             scBogus.Extent = null;
-            var scOOB = CreateTestSpatialContext();
+            var scOOB = CreateTestSpatialContext("OOB");
             scOOB.Extent = new FdoSpatialContextListSpatialContextExtent()
             {
                 LowerLeftCoordinate = new FdoSpatialContextListSpatialContextExtentLowerLeftCoordinate()
@@ -737,7 +740,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var dataName = "config.xml";
             var schemaName = "Default";
 
-            var sc = CreateTestSpatialContext();
+            var sc = CreateTestSpatialContext("Default");
             var scList = new FdoSpatialContextList
             {
                 SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>() { sc }
@@ -1375,6 +1378,225 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Error_MapDefinition_DuplicateLayerName));
             Assert.AreEqual(2, issues.Count(i => i.StatusCode == ValidationStatusCode.Warning_MapDefinition_MissingSpatialContext));
             Assert.AreEqual(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Warning_MapDefinition_UnselectableLayer));
+        }
+
+        [Test]
+        public void TestCase_MapDefinitionValidator_BaseLayersSC()
+        {
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "Sheboygan");
+            mdf.CoordinateSystem = LL84_WKT;
+            mdf.ResourceID = "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition";
+
+            mdf.InitBaseMap();
+            mdf.BaseMap.AddFiniteDisplayScale(10);
+            var grp = mdf.BaseMap.AddBaseLayerGroup("Test");
+            grp.AddLayer("Layer1", "Library://Samples/Sheboygan/Layers/Roads.LayerDefinition").Selectable = false;
+            grp.AddLayer("Layer2", "Library://Samples/Sheboygan/Layers/Parcels.LayerDefinition").Selectable = false;
+            grp.AddLayer("Layer3", "Library://Samples/Sheboygan/Layers/Districts.LayerDefinition").Selectable = false;
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+            mockFeatSvc.Setup(f => f.GetSpatialExtent(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns<string, string, string>((a, b, c) =>
+            {
+                if (a == "Library://Samples/Sheboygan/Layers/Parcels.FeatureSource" || a == "Library://Samples/Sheboygan/Layers/Districts.FeaturSource")
+                {
+                    return ObjectFactory.CreateEnvelope(90, 0, 270, 180); //Trigger data OOB warning
+                }
+                return ObjectFactory.CreateEnvelope(-10, -10, 10, 10);
+            });
+            mockFeatSvc.Setup(f => f.GetSpatialContextInfo(It.IsAny<string>(), It.IsAny<bool>())).Returns<string, bool>((Func<string, bool, FdoSpatialContextList>)((resId, active) => 
+            {
+                if (resId == "Library://Samples/Sheboygan/Layers/Roads.FeatureSource")
+                {
+                    return new FdoSpatialContextList
+                    {
+                        SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>
+                        {
+                            CreateTestSpatialContext("Default")
+                        }
+                    };
+                }
+                else if (resId == "Library://Samples/Sheboygan/Layers/Parcels.FeatureSource")
+                {
+                    return new FdoSpatialContextList //Trigger multiple SC warning
+                    {
+                        SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>
+                        {
+                            CreateTestSpatialContext("SC1", LL84_WKT),
+                            CreateTestSpatialContext("SC2", LL84_WKT)
+                        }
+                    };
+                }
+                else if (resId == "Library://Samples/Sheboygan/Layers/Districts.FeatureSource")
+                {
+                    return new FdoSpatialContextList
+                    {
+                        SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>
+                        {
+                            CreateTestSpatialContext("Default") //Trigger raster reprojection warning
+                        }
+                    };
+                }
+                return new FdoSpatialContextList
+                {
+                    SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>()
+                };
+            }));
+            mockResSvc.Setup(r => r.GetResource(It.IsAny<string>())).Returns<string>((resId) =>
+            {
+                IResource res = null;
+                if (resId.EndsWith(ResourceTypes.FeatureSource.ToString()))
+                {
+                    var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
+                    fs.ResourceID = resId;
+                    res = fs;
+                }
+                else if (resId.EndsWith(ResourceTypes.LayerDefinition.ToString()))
+                {
+                    if (resId == "Library://Samples/Sheboygan/Layers/Roads.LayerDefinition")
+                    {
+                        var layer = ObjectFactory.CreateDefaultLayer(LayerType.Raster, new Version(1, 0, 0));
+                        layer.ResourceID = resId;
+                        layer.SubLayer.ResourceId = resId.Replace(ResourceTypes.LayerDefinition.ToString(), ResourceTypes.FeatureSource.ToString());
+                        var gl = (IRasterLayerDefinition)layer.SubLayer;
+                        gl.FeatureName = "Test:Class";
+                        res = layer;
+                    }
+                    else
+                    {
+                        var layer = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
+                        layer.ResourceID = resId;
+                        layer.SubLayer.ResourceId = resId.Replace(ResourceTypes.LayerDefinition.ToString(), ResourceTypes.FeatureSource.ToString());
+                        var vl = (IVectorLayerDefinition)layer.SubLayer;
+                        vl.FeatureName = "Test:Class";
+                        vl.Geometry = "Geometry";
+                        res = layer;
+                    }
+                }
+                return res;
+            });
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new MapDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, mdf, false);
+            Assert.AreEqual(3, issues.Count());
+            Assert.AreEqual(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Info_MapDefinition_MultipleSpatialContexts));
+            Assert.AreEqual(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Warning_MapDefinition_LayerReprojection));
+            Assert.AreEqual(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Warning_MapDefinition_DataOutsideMapBounds));
+        }
+        
+        [Test]
+        public void TestCase_AppDefValidator_MissingMap()
+        {
+            var appDef = CreateTestFlexLayout();
+
+            var mockConn = new Mock<IServerConnection>();
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new ApplicationDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, appDef, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Error_Fusion_MissingMap));
+        }
+
+        [Test]
+        public void TestCase_AppDefValidator_NonWebMercatorMdfWithExternalBaseLayer()
+        {
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "Test");
+            mdf.CoordinateSystem = LL84_WKT;
+            mdf.ResourceID = "Library://Test.MapDefinition";
+            mdf.Extents = ObjectFactory.CreateEnvelope(-10, -10, 10, 10);
+
+            var appDef = CreateTestFlexLayout();
+            var mgroup = appDef.AddMapGroup("mapguide", true, "Library://Test.MapDefinition");
+            var goog = mgroup.CreateCmsMapEntry("Google", false, "Google", "Google");
+            mgroup.AddMap(goog);
+
+            var mockConn = new Mock<IServerConnection>();
+
+            var mockCatalog = new Mock<ICoordinateSystemCatalog>();
+            mockCatalog.Setup(cat => cat.ConvertWktToCoordinateSystemCode(It.IsAny<string>())).Returns("LL84");
+
+            var mockResSvc = new Mock<IResourceService>();
+            mockResSvc.Setup(r => r.GetResource(It.Is<string>(arg => arg.EndsWith(".MapDefinition")))).Returns(mdf);
+            mockResSvc.Setup(r => r.ResourceExists(It.IsAny<string>())).Returns(true);
+
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+            mockConn.Setup(c => c.CoordinateSystemCatalog).Returns(mockCatalog.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new ApplicationDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, appDef, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Warning_Fusion_MapCoordSysIncompatibleWithCommericalLayers));
+        }
+
+        [Test]
+        public void TestCase_AppDefValidator_MGMapWithNoMdfId()
+        {
+            var appDef = CreateTestFlexLayout();
+            appDef.AddMapGroup("mapguide", true, "");
+
+            var mockConn = new Mock<IServerConnection>();
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new ApplicationDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, appDef, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Error_Fusion_InvalidMap));
+        }
+
+        [Test]
+        public void TestCase_AppDefValidator_InitialViewOutsideMdfExtents()
+        {
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "Test");
+            mdf.ResourceID = "Library://Test.MapDefinition";
+            mdf.Extents = ObjectFactory.CreateEnvelope(-10, -10, 10, 10);
+
+            var appDef = CreateTestFlexLayout();
+            var mgroup = appDef.AddMapGroup("mapguide", true, "Library://Test.MapDefinition");
+            var view = mgroup.CreateInitialView(40, 40, 4000);
+            mgroup.InitialView = view;
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(r => r.GetResource(It.Is<string>(arg => arg.EndsWith(".MapDefinition")))).Returns(mdf);
+            mockResSvc.Setup(r => r.ResourceExists(It.IsAny<string>())).Returns(true);
+
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new ApplicationDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, appDef, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Warning_Fusion_InitialViewOutsideMapExtents));
+        }
+
+        private static IApplicationDefinition CreateTestFlexLayout()
+        {
+            var appDef = ObjectFactory.DeserializeEmbeddedFlexLayout(SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_5));
+            appDef.ResourceID = "Library://Test.ApplicationDefinition";
+            var removeMaps = new List<IMapGroup>(appDef.MapSet.MapGroups);
+            foreach (var rem in removeMaps)
+            {
+                appDef.MapSet.RemoveGroup(rem);
+            }
+            var removeW = appDef.WidgetSets.ToArray();
+            foreach (var rem in removeW)
+            {
+                appDef.RemoveWidgetSet(rem);
+            }
+
+            return appDef;
         }
     }
 }
