@@ -1245,5 +1245,136 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual(1, issues.Count());
             Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_DrawingSourceSheetLayerNotFound, issues.First().StatusCode);
         }
+
+        [Test]
+        public void TestCase_MapDefinitionValidator_EmptyCS()
+        {
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "Sheboygan");
+            mdf.ResourceID = "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition";
+            var mockConn = new Mock<IServerConnection>();
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new MapDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, mdf, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Warning_MapDefinition_MissingCoordinateSystem, issues.First().StatusCode);
+        }
+
+        const string LL84_WKT = "GEOGCS[\"LL84\",DATUM[\"WGS84\",SPHEROID[\"WGS84\",6378137.000,298.25722293]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.01745329251994]]";
+
+        [Test]
+        public void TestCase_MapDefinitionValidator_GroupSettings()
+        {
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "Sheboygan");
+            mdf.CoordinateSystem = LL84_WKT;
+            mdf.ResourceID = "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition";
+
+            var grp = mdf.AddGroup("Test");
+            grp.LegendLabel = "";
+            grp.ShowInLegend = true;
+
+            var mockConn = new Mock<IServerConnection>();
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new MapDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, mdf, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Info_MapDefinition_GroupMissingLabelInformation, issues.First().StatusCode);
+
+            grp.LegendLabel = "layer group";
+
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new MapDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, mdf, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Info_MapDefinition_GroupHasDefaultLabel, issues.First().StatusCode);
+
+            grp.LegendLabel = "Test Layer Group";
+
+            var grp2 = mdf.AddGroup("Test2");
+            grp2.LegendLabel = "Test Layer Group 2";
+            grp2.Group = "IDontExist";
+
+            context = new ResourceValidationContext(mockConn.Object);
+            validator = new MapDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            issues = validator.Validate(context, mdf, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_MapDefinition_GroupWithNonExistentGroup, issues.First().StatusCode);
+        }
+
+        [Test]
+        public void TestCase_MapDefinitionValidator_NoFiniteScales()
+        {
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "Sheboygan");
+            mdf.CoordinateSystem = LL84_WKT;
+            mdf.ResourceID = "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition";
+
+            mdf.InitBaseMap();
+            mdf.BaseMap.AddBaseLayerGroup("Test");
+
+            var mockConn = new Mock<IServerConnection>();
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new MapDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, mdf, false);
+            Assert.AreEqual(1, issues.Count());
+            Assert.AreEqual(ValidationStatusCode.Error_MapDefinition_NoFiniteDisplayScales, issues.First().StatusCode);
+        }
+
+        [Test]
+        public void TestCase_MapDefinitionValidator_BaseLayers()
+        {
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "Sheboygan");
+            mdf.CoordinateSystem = LL84_WKT;
+            mdf.ResourceID = "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition";
+
+            mdf.InitBaseMap();
+            mdf.BaseMap.AddFiniteDisplayScale(10);
+            var grp = mdf.BaseMap.AddBaseLayerGroup("Test");
+            grp.AddLayer("Layer1", "Library://Samples/Sheboygan/Layers/Parcels.LayerDefinition").Selectable = true;
+            grp.AddLayer("Layer1", "Library://Samples/Sheboygan/Layers/Roads.LayerDefinition").Selectable = false;
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+            mockFeatSvc.Setup(f => f.GetIdentityProperties(It.IsAny<string>(), It.IsAny<string>())).Returns(new string[0]);
+            mockFeatSvc.Setup(f => f.GetSpatialContextInfo(It.IsAny<string>(), It.IsAny<bool>())).Returns(() => new FdoSpatialContextList { SpatialContext = new System.ComponentModel.BindingList<FdoSpatialContextListSpatialContext>() });
+            mockResSvc.Setup(r => r.GetResource(It.IsAny<string>())).Returns<string>((resId) =>
+            {
+                IResource res = null;
+                if (resId.EndsWith(ResourceTypes.FeatureSource.ToString()))
+                {
+                    var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
+                    fs.ResourceID = resId;
+                    res = fs;
+                }
+                else if (resId.EndsWith(ResourceTypes.LayerDefinition.ToString()))
+                {
+                    var layer = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
+                    layer.ResourceID = resId;
+                    layer.SubLayer.ResourceId = resId.Replace(ResourceTypes.LayerDefinition.ToString(), ResourceTypes.FeatureSource.ToString());
+                    var vl = (IVectorLayerDefinition)layer.SubLayer;
+                    vl.FeatureName = "Test:Class";
+                    res = layer;
+                }
+                return res;
+            });
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new MapDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, mdf, false);
+            Assert.AreEqual(4, issues.Count());
+            Assert.AreEqual(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Error_MapDefinition_DuplicateLayerName));
+            Assert.AreEqual(2, issues.Count(i => i.StatusCode == ValidationStatusCode.Warning_MapDefinition_MissingSpatialContext));
+            Assert.AreEqual(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Warning_MapDefinition_UnselectableLayer));
+        }
     }
 }

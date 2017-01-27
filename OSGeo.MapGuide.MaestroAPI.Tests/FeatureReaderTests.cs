@@ -23,8 +23,7 @@ using Moq;
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Http;
-using System;
-using System.Collections.Generic;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -34,6 +33,39 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
     [TestFixture]
     public class FeatureReaderTests
     {
+        [Test]
+        public void TestFeatureArrayReader()
+        {
+            var fcount = 5;
+            var clsDef = new ClassDefinition("Test", "");
+            clsDef.AddProperty(new DataPropertyDefinition("ID", "")
+            {
+                DataType = DataPropertyType.Int32
+            }, true);
+            var features = Enumerable.Range(0, fcount).Select(i =>
+            {
+                var feat = new Mock<IFeature>();
+                feat.Setup(f => f.ClassDefinition).Returns(clsDef);
+                feat.Setup(f => f.FieldCount).Returns(1);
+                feat.Setup(f => f.GetInt32(It.Is<string>(arg => arg == "ID"))).Returns(i);
+                feat.Setup(f => f.GetInt32(It.Is<int>(arg => arg == 0))).Returns(i);
+                return feat.Object;
+            });
+
+            var iterations = 0;
+            var reader = new FeatureArrayReader(features.ToArray());
+            while (reader.ReadNext())
+            {
+                Assert.AreEqual(1, reader.FieldCount);
+                Assert.AreEqual(iterations, reader.GetInt32("ID"));
+                Assert.AreEqual(iterations, reader.GetInt32(0));
+                Assert.AreEqual(PropertyValueType.Int32, reader.GetPropertyType(0));
+                Assert.AreEqual(PropertyValueType.Int32, reader.GetPropertyType("ID"));
+                iterations++;
+            }
+            Assert.AreEqual(fcount, iterations);
+        }
+
         [Test]
         public void TestLimitingFeatureReader()
         {

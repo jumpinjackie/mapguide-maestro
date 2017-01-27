@@ -85,6 +85,7 @@
     <Compile Include="Schema\ClassDefinitionTests.cs" />
     <Compile Include="Schema\DataPropertyDefinitionTests.cs" />
     <Compile Include="Schema\FeatureSchemaTests.cs" />
+    <Compile Include="Schema\FeatureSourceDescriptionTests.cs" />
     <Compile Include="Schema\GeometricPropertyDefinitionTests.cs" />
     <Compile Include="TileTests.cs" />
     <Compile Include="Utils.cs" />
