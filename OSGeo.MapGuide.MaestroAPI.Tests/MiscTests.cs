@@ -20,7 +20,9 @@
 
 #endregion Disclaimer / License
 using NUnit.Framework;
+using OSGeo.MapGuide.MaestroAPI.CrossConnection;
 using OSGeo.MapGuide.MaestroAPI.Internal;
+using OSGeo.MapGuide.MaestroAPI.Mapping;
 using System;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
@@ -81,6 +83,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.IsTrue(parser.IsDefined("whatever"));
             Assert.AreEqual(string.Empty, parser.GetValue("whatever"));
             Assert.AreEqual(parser.GetValue("bar"), "snafu");
+
+            var nvc = parser.GetAllArgumentsWithValues();
+            Assert.IsNull(nvc["foo"]);
+            Assert.AreEqual("snafu", nvc["bar"]);
+            Assert.IsNull(nvc["whatever"]);
         }
 
         [Test]
@@ -91,6 +98,43 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
                 var version = SiteVersions.GetVersion(ver);
                 Assert.NotNull(version);
             }
+        }
+
+        [Test]
+        public void TestPropertyInfo()
+        {
+            var pi = new PropertyInfo("Foo", typeof(string));
+            Assert.AreEqual("Foo", pi.Name);
+            Assert.AreEqual(typeof(string), pi.Type);
+        }
+
+        [Test]
+        public void TestEventArgs()
+        {
+            var args = new ResourceEventArgs("Library://Test.MapDefinition");
+            Assert.AreEqual("Library://Test.MapDefinition", args.ResourceID);
+
+            var args2 = new RequestEventArgs("Foo");
+            Assert.AreEqual("Foo", args2.Data);
+
+            var items = new[] { new LengthyOperationCallbackArgs.LengthyOperationItem("Foo") };
+            var args3 = new LengthyOperationCallbackArgs(items);
+            Assert.IsFalse(args3.Cancel);
+            Assert.AreEqual(0, args3.Index);
+            Assert.AreEqual(items, args3.Items);
+            Assert.AreEqual("Foo", args3.Items[args3.Index].Itempath);
+            Assert.AreEqual(LengthyOperationCallbackArgs.LengthyOperationItem.OperationStatus.None, args3.Items[args3.Index].Status);
+        }
+
+        [Test]
+        public void TestRebaseOptions()
+        {
+            Assert.Throws<ArgumentException>(() => { new RebaseOptions("Library://Foo.FeatureSource", "Library://Bar/"); });
+            Assert.Throws<ArgumentException>(() => { new RebaseOptions("Library://Foo/", "Library://Bar.FeatureSource"); });
+
+            var opts = new RebaseOptions("Library://Foo/", "Library://Bar/");
+            Assert.AreEqual("Library://Foo/", opts.SourceFolder);
+            Assert.AreEqual("Library://Bar/", opts.TargetFolder);
         }
     }
 }

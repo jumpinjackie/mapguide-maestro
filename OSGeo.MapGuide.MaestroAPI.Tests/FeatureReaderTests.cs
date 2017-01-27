@@ -19,11 +19,13 @@
 //
 
 #endregion Disclaimer / License
+using GeoAPI.Geometries;
 using Moq;
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Http;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -63,6 +65,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
                 Assert.AreEqual(PropertyValueType.Int32, reader.GetPropertyType("ID"));
                 iterations++;
             }
+            reader.Close();
             Assert.AreEqual(fcount, iterations);
         }
 
@@ -71,14 +74,74 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         {
             int limit = 5;
 
+            var testBlob = new byte[] { 1, 2, 3 };
+            var testClob = new char[] { 'a', 'b', 'c' };
+
+            var mockGeom = new Mock<IGeometry>();
+            mockGeom.Setup(g => g.AsText()).Returns("POINT (0 0)");
+
             var mockFr = new Mock<IFeatureReader>();
             mockFr.Setup(r => r.ReadNext()).Returns(true);
+
+            mockFr.Setup(r => r.GetBlob(It.Is<string>(arg => arg == "BLOB"))).Returns(testBlob);
+            mockFr.Setup(r => r.GetByte(It.Is<string>(arg => arg == "BYTE"))).Returns(1);
+            mockFr.Setup(r => r.GetBoolean(It.Is<string>(arg => arg == "BOOL"))).Returns(false);
+            mockFr.Setup(r => r.GetClob(It.Is<string>(arg => arg == "CLOB"))).Returns(testClob);
+            mockFr.Setup(r => r.GetDateTime(It.Is<string>(arg => arg == "DATE"))).Returns(new DateTime(2017, 1, 28));
+            mockFr.Setup(r => r.GetDouble(It.Is<string>(arg => arg == "DOUBLE"))).Returns(1.0);
+            mockFr.Setup(r => r.GetFeatureObject(It.Is<string>(arg => arg == "FEATURE"))).Returns(Mock.Of<IFeatureReader>());
+            mockFr.Setup(r => r.GetGeometry(It.Is<string>(arg => arg == "GEOMETRY"))).Returns(mockGeom.Object);
+            mockFr.Setup(r => r.GetInt16(It.Is<string>(arg => arg == "INT16"))).Returns(2);
+            mockFr.Setup(r => r.GetInt32(It.Is<string>(arg => arg == "INT32"))).Returns(3);
+            mockFr.Setup(r => r.GetInt64(It.Is<string>(arg => arg == "INT64"))).Returns(4);
+            mockFr.Setup(r => r.GetSingle(It.Is<string>(arg => arg == "SINGLE"))).Returns(1.0f);
+            mockFr.Setup(r => r.GetString(It.Is<string>(arg => arg == "STRING"))).Returns("Foo");
+
+            mockFr.Setup(r => r.GetBlob(It.Is<int>(arg => arg == 0))).Returns(testBlob);
+            mockFr.Setup(r => r.GetByte(It.Is<int>(arg => arg == 1))).Returns(1);
+            mockFr.Setup(r => r.GetBoolean(It.Is<int>(arg => arg == 2))).Returns(false);
+            mockFr.Setup(r => r.GetClob(It.Is<int>(arg => arg == 3))).Returns(testClob);
+            mockFr.Setup(r => r.GetDateTime(It.Is<int>(arg => arg == 4))).Returns(new DateTime(2017, 1, 28));
+            mockFr.Setup(r => r.GetDouble(It.Is<int>(arg => arg == 5))).Returns(1.0);
+            mockFr.Setup(r => r.GetFeatureObject(It.Is<int>(arg => arg == 6))).Returns(Mock.Of<IFeatureReader>());
+            mockFr.Setup(r => r.GetGeometry(It.Is<int>(arg => arg == 7))).Returns(mockGeom.Object);
+            mockFr.Setup(r => r.GetInt16(It.Is<int>(arg => arg == 8))).Returns(2);
+            mockFr.Setup(r => r.GetInt32(It.Is<int>(arg => arg == 9))).Returns(3);
+            mockFr.Setup(r => r.GetInt64(It.Is<int>(arg => arg == 10))).Returns(4);
+            mockFr.Setup(r => r.GetSingle(It.Is<int>(arg => arg == 11))).Returns(1.0f);
+            mockFr.Setup(r => r.GetString(It.Is<int>(arg => arg == 12))).Returns("Foo");
 
             using (var lr = new LimitingFeatureReader(mockFr.Object, limit))
             {
                 int iterated = 0;
                 while (lr.ReadNext())
                 {
+                    Assert.NotNull(lr.GetBlob(0));
+                    Assert.NotNull(lr.GetBlob("BLOB"));
+                    Assert.AreEqual(1, lr.GetByte(1));
+                    Assert.AreEqual(1, lr.GetByte("BYTE"));
+                    Assert.AreEqual(false, lr.GetBoolean(2));
+                    Assert.AreEqual(false, lr.GetBoolean("BOOL"));
+                    Assert.NotNull(lr.GetClob(3));
+                    Assert.NotNull(lr.GetClob("CLOB"));
+                    Assert.AreEqual(new DateTime(2017, 1, 28), lr.GetDateTime(4));
+                    Assert.AreEqual(new DateTime(2017, 1, 28), lr.GetDateTime("DATE"));
+                    Assert.AreEqual(1.0, lr.GetDouble(5));
+                    Assert.AreEqual(1.0, lr.GetDouble("DOUBLE"));
+                    Assert.IsNotNull(lr.GetFeatureObject(6));
+                    Assert.IsNotNull(lr.GetFeatureObject("FEATURE"));
+                    Assert.AreEqual("POINT (0 0)", lr.GetGeometry(7).AsText());
+                    Assert.AreEqual("POINT (0 0)", lr.GetGeometry("GEOMETRY").AsText());
+                    Assert.AreEqual(2, lr.GetInt16(8));
+                    Assert.AreEqual(2, lr.GetInt16("INT16"));
+                    Assert.AreEqual(3, lr.GetInt32(9));
+                    Assert.AreEqual(3, lr.GetInt32("INT32"));
+                    Assert.AreEqual(4, lr.GetInt64(10));
+                    Assert.AreEqual(4, lr.GetInt64("INT64"));
+                    Assert.AreEqual(1.0f, lr.GetSingle(11));
+                    Assert.AreEqual(1.0f, lr.GetSingle("SINGLE"));
+                    Assert.AreEqual("Foo", lr.GetString(12));
+                    Assert.AreEqual("Foo", lr.GetString("STRING"));
                     iterated++;
                 }
                 lr.Close();

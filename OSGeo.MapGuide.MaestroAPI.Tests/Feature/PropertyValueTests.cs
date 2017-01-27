@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 using GeoAPI.Geometries;
+using Moq;
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Schema;
@@ -183,6 +184,33 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Feature
             Assert.False(value.IsNull);
             Assert.NotNull(value.Value);
             Assert.AreEqual(d, value.Value);
+
+            value.SetNull();
+            Assert.True(value.IsNull);
+            Assert.Throws<Exception>(() => { var v = value.Value; });
+        }
+
+        [Test]
+        public void TestCase_GeometryValue()
+        {
+            var mockGeom = new Mock<IGeometry>();
+            mockGeom.Setup(g => g.AsText()).Returns("POINT (0 0)");
+
+            var value = new GeometryValue();
+            Assert.AreEqual(PropertyDefinitionType.Geometry, value.PropertyDefType);
+            Assert.AreEqual(PropertyValueType.Geometry, value.Type);
+            Assert.True(value.IsNull);
+            Assert.Throws<Exception>(() => { var v = value.Value; });
+            Assert.Throws<Exception>(() => { var v = value.ValueAsString(); });
+            value.Value = mockGeom.Object;
+            Assert.NotNull(value.Value);
+            Assert.AreEqual("POINT (0 0)", value.ValueAsString());
+            Assert.False(value.IsNull);
+
+            value = new GeometryValue(mockGeom.Object);
+            Assert.False(value.IsNull);
+            Assert.NotNull(value.Value);
+            Assert.AreEqual("POINT (0 0)", value.ValueAsString());
 
             value.SetNull();
             Assert.True(value.IsNull);
