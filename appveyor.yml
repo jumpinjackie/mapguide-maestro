@@ -16,6 +16,7 @@ assembly_info:
 
 # restore NuGet packages before running MSBuild
 before_build:
+  - pip install -U sphinx
   - nuget restore Maestro\Maestro_All.sln
 
 environment:
@@ -26,6 +27,21 @@ build:
   verbosity: minimal
   parallel: true
   project: Maestro\Maestro_All.sln
+
+after_build:
+  - if not exist %APPVEYOR_BUILD_FOLDER%\artifacts mkdir %APPVEYOR_BUILD_FOLDER%\artifacts
+  - set PATH=%PATH%;%APPVEYOR_BUILD_FOLDER%\Thirdparty\NSIS
+  - cd /D %APPVEYOR_BUILD_FOLDER%\Doc
+  - msbuild /p:Configuration=%CONFIGURATION% /v:q
+  - move %APPVEYOR_BUILD_FOLDER%\Doc\Help\MaestroAPI.chm %APPVEYOR_BUILD_FOLDER%\SDK\
+  - cd /D %APPVEYOR_BUILD_FOLDER%\UserDoc
+  - call make.bat html
+  - cd /D %APPVEYOR_BUILD_FOLDER%\build\html
+  - xcopy /S /Y *.* %APPVEYOR_BUILD_FOLDER%\out\%CONFIGURATION%\UserDoc\
+  - cd /D %APPVEYOR_BUILD_FOLDER%\Install
+  - makensis.exe /DSLN_CONFIG=%CONFIGURATION% /DCPU=x86 /DRELEASE_VERSION=%APPVEYOR_BUILD_VERSION% Maestro.nsi
+  - cd /D %APPVEYOR_BUILD_FOLDER%\SDK
+  - 7z a %APPVEYOR_BUILD_FOLDER%\artifacts\Maestro-SDK-%APPVEYOR_BUILD_VERSION%.zip *
 
 test_script:
 - ps: >-

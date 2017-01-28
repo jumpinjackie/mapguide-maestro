@@ -4,9 +4,13 @@ obj/
 out/
 *.CSD
 Maestro/packages
+artifacts/
+Doc/Help
 SDK/addin-bin
 SDK/bin
 SDK/LocalNativeProvider
+SDK/MaestroAPI.chm
 *.user
 Reports/
+UserDoc/build
 TestResult.xml
