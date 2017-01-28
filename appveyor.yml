@@ -36,7 +36,7 @@ after_build:
   - move %APPVEYOR_BUILD_FOLDER%\Doc\Help\MaestroAPI.chm %APPVEYOR_BUILD_FOLDER%\SDK\
   - cd /D %APPVEYOR_BUILD_FOLDER%\UserDoc
   - call make.bat html
-  - cd /D %APPVEYOR_BUILD_FOLDER%\build\html
+  - cd /D %APPVEYOR_BUILD_FOLDER%\UserDoc\build\html
   - xcopy /S /Y *.* %APPVEYOR_BUILD_FOLDER%\out\%CONFIGURATION%\UserDoc\
   - cd /D %APPVEYOR_BUILD_FOLDER%\Install
   - makensis.exe /DSLN_CONFIG=%CONFIGURATION% /DCPU=x86 /DRELEASE_VERSION=%APPVEYOR_BUILD_VERSION% Maestro.nsi
