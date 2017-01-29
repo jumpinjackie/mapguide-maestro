@@ -29,6 +29,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 
+#pragma warning disable 0108
+
 namespace OSGeo.MapGuide.ObjectModels.MapDefinition
 {
     /// <summary>

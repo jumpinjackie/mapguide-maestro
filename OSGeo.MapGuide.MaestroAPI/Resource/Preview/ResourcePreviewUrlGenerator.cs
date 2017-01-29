@@ -55,27 +55,29 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Preview
         /// </summary>
         /// <param name="res"></param>
         /// <param name="locale"></param>
+        /// <param name="isNew"></param>
+        /// <param name="sessionID"></param>
         /// <returns></returns>
         public string GeneratePreviewUrl(IResource res, string locale, bool isNew, string sessionID)
         {
             switch (res.ResourceType)
             {
-                case "FeatureSource":
+                case nameof(ResourceTypes.FeatureSource):
                     return GenerateFeatureSourcePreviewUrl(res, locale, isNew, sessionID);
 
-                case "ApplicationDefinition":
+                case nameof(ResourceTypes.ApplicationDefinition):
                     return GenerateFlexLayoutPreviewUrl(res, locale, isNew, sessionID);
 
-                case "LayerDefinition":
+                case nameof(ResourceTypes.LayerDefinition):
                     return GenerateLayerPreviewUrl(res, locale, isNew, sessionID);
 
-                case "MapDefinition":
+                case nameof(ResourceTypes.MapDefinition):
                     return GenerateMapPreviewUrl(res, locale, isNew, sessionID);
 
-                case "WebLayout":
+                case nameof(ResourceTypes.WebLayout):
                     return GenerateWebLayoutPreviewUrl(res, locale, isNew, sessionID);
 
-                case "WatermarkDefinition":
+                case nameof(ResourceTypes.WatermarkDefinition):
                     return GenerateWatermarkPreviewUrl((IWatermarkDefinition)res, locale, isNew, sessionID);
 
                 default:

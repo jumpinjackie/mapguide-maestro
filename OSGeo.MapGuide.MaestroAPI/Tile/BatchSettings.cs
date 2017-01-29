@@ -29,6 +29,9 @@ using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tile
 {
+    /// <summary>
+    /// Tile progress event
+    /// </summary>
     public class TileProgressEventArgs : EventArgs
     {
         /// <summary>
@@ -88,6 +91,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         public bool Cancel { get; set; }
     }
 
+    /// <summary>
+    /// The rendering error event
+    /// </summary>
     public class TileRenderingErrorEventArgs : EventArgs
     {
         /// <summary>
@@ -413,11 +419,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             AddMapDefinitions(maps);
         }
 
+        /// <summary>
+        /// Finalizer
+        /// </summary>
         ~TilingRunCollection()
         {
             Dispose(false);
         }
 
+        /// <summary>
+        /// Dispose of this instance
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
@@ -927,24 +939,94 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// </summary>
     public class TileRunParameters
     {
+        /// <summary>
+        /// The mapagent url
+        /// </summary>
         public const string MAPAGENT = "mapagent"; //NOXLATE
+
+        /// <summary>
+        /// The username
+        /// </summary>
         public const string USERNAME = "username"; //NOXLATE
+
+        /// <summary>
+        /// The password
+        /// </summary>
         public const string PASSWORD = "password"; //NOXLATE
+
+        /// <summary>
+        /// Indicates whether to use a native connection
+        /// </summary>
         public const string NATIVECONNECTION = "native-connection"; //NOXLATE
 
+        /// <summary>
+        /// The list of map definitions
+        /// </summary>
         public const string MAPDEFINITIONS = "mapdefinitions"; //NOXLATE
+
+        /// <summary>
+        /// Limit the number of rows
+        /// </summary>
         public const string LIMITROWS = "limitrows"; //NOXLATE
+
+        /// <summary>
+        /// Limit the number of columns
+        /// </summary>
         public const string LIMITCOLS = "limitcols"; //NOXLATE
+
+        /// <summary>
+        /// The overridden extent
+        /// </summary>
         public const string EXTENTOVERRIDE = "extentoverride"; //NOXLATE
+
+        /// <summary>
+        /// The meters per unit
+        /// </summary>
         public const string METERSPERUNIT = "metersperunit"; //NOXLATE
+
+        /// <summary>
+        /// The base layer groups to generate tiles for
+        /// </summary>
         public const string BASEGROUPS = "basegroups"; //NOXLATE
+        
+        /// <summary>
+        /// The scale index
+        /// </summary>
         public const string SCALEINDEX = "scaleindex"; //NOXLATE
+
+        /// <summary>
+        /// The connection provider
+        /// </summary>
         public const string PROVIDER = "provider"; //NOXLATE
+
+        /// <summary>
+        /// The connection parameters
+        /// </summary>
         public const string CONNECTIONPARAMS = "connection-params"; //NOXLATE
+
+        /// <summary>
+        /// The tile width
+        /// </summary>
         public const string TILEWIDTH = "tilewidth"; //NOXLATE
+
+        /// <summary>
+        /// The tile height
+        /// </summary>
         public const string TILEHEIGHT = "tileheight"; //NOXLATE
+
+        /// <summary>
+        /// The DPI value
+        /// </summary>
         public const string DOTSPERINCH = "DPI"; //NOXLATE
+
+        /// <summary>
+        /// Random tile order
+        /// </summary>
         public const string RANDOMTILEORDER = "random-tile-order"; //NOXLATE
+
+        /// <summary>
+        /// The thread count
+        /// </summary>
         public const string THREADCOUNT = "threadcount"; //NOXLATE
 
         /// <summary>

@@ -28,6 +28,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 
+#pragma warning disable 0108
+
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
 {
     #region core enums

@@ -24,6 +24,8 @@ using GeoAPI.Geometries;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
 
+#pragma warning disable 0108
+
 namespace OSGeo.MapGuide.MaestroAPI.Feature
 {
     /// <summary>

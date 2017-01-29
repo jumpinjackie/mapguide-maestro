@@ -1689,11 +1689,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
             return newMdf;
         }
-
-        public void ComputeCenterAndScale(double x1, double y1, double x2, double y2, int width, int height, out double x, out double y, out double scale)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     /// <summary>

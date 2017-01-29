@@ -179,6 +179,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             new Version(2,5,1,7768)     //MGOS 2.5.1
         };
 
+        /// <summary>
+        /// The list of known site version numbers
+        /// </summary>
         public static Version[] SiteVersionNumbers
         {
             get

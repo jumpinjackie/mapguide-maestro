@@ -28,6 +28,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 {
     // Original Source: http://www.wintellect.com/blogs/jeffreyr/weak-event-handlers
 
+    /// <summary>
+    /// A weak event handler factory
+    /// </summary>
     public static class WeakEventHandler
     {
         private class WeakEventHandlerImpl
@@ -115,21 +118,48 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         // We offer this overload because it is so common
+
+        /// <summary>
+        /// Wraps the given event handler as a weak event
+        /// </summary>
+        /// <param name="eh"></param>
+        /// <param name="cleanup"></param>
+        /// <returns></returns>
         public static EventHandler Wrap(EventHandler eh, Action<EventHandler> cleanup)
         {
             return WeakEventHandlerImpl<EventHandler>.Create(eh, cleanup);
         }
 
+        /// <summary>
+        /// Wraps the given event handler as a weak event
+        /// </summary>
+        /// <typeparam name="TEventHandler"></typeparam>
+        /// <param name="eh"></param>
+        /// <param name="cleanup"></param>
+        /// <returns></returns>
         public static TEventHandler Wrap<TEventHandler>(TEventHandler eh, Action<TEventHandler> cleanup) where TEventHandler : class
         {
             return WeakEventHandlerImpl<TEventHandler>.Create(eh, cleanup);
         }
 
+        /// <summary>
+        /// Wraps the given event handler as a weak event
+        /// </summary>
+        /// <typeparam name="TEventArgs"></typeparam>
+        /// <param name="eh"></param>
+        /// <param name="cleanup"></param>
+        /// <returns></returns>
         public static EventHandler<TEventArgs> Wrap<TEventArgs>(EventHandler<TEventArgs> eh, Action<EventHandler<TEventArgs>> cleanup) where TEventArgs : EventArgs
         {
             return WeakEventHandlerImpl<EventHandler<TEventArgs>>.Create(eh, cleanup);
         }
 
+        /// <summary>
+        /// Returns true if the given weak and strong event handlers match
+        /// </summary>
+        /// <param name="weakEventHandler"></param>
+        /// <param name="strongEventHandler"></param>
+        /// <returns></returns>
         public static Boolean Match(Delegate weakEventHandler, Delegate strongEventHandler)
         {
             return ((WeakEventHandlerImpl)weakEventHandler.Target).Match(strongEventHandler);
