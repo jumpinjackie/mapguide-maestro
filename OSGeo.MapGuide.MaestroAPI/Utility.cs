@@ -1584,21 +1584,54 @@ namespace OSGeo.MapGuide.MaestroAPI
             return Color.FromArgb(color.A, (int)red, (int)green, (int)blue);
         }
 
+        /// <summary>
+        /// Creates a simple symbol definition at the highest supported resource version
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
         public static ISimpleSymbolDefinition CreateSimpleSymbol(IServerConnection conn, string name, string description)
             => ObjectFactory.CreateSimpleSymbol(conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.SymbolDefinition.ToString()), name, description);
         
+        /// <summary>
+        /// Creates a map definition at the highest supported resource version
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static IMapDefinition CreateMapDefinition(IServerConnection conn, string name)
             => ObjectFactory.CreateMapDefinition(conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition.ToString()), name);
-        
+
+        /// <summary>
+        /// Creates a map definition at the highest supported resource version
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="name"></param>
+        /// <param name="csWkt"></param>
+        /// <param name="extent"></param>
+        /// <returns></returns>
         public static IMapDefinition CreateMapDefinition(IServerConnection conn, string name, string csWkt, ObjectModels.Common.IEnvelope extent)
             => ObjectFactory.CreateMapDefinition(conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition.ToString()),
                                                      name,
                                                      csWkt,
                                                      extent);
 
+        /// <summary>
+        /// Creates a layer definition at the highest supported resource version
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="layerType"></param>
+        /// <returns></returns>
         public static ILayerDefinition CreateDefaultLayer(IServerConnection conn, LayerType layerType)
             => ObjectFactory.CreateDefaultLayer(layerType, conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.LayerDefinition.ToString()));
         
+        /// <summary>
+        /// Creates a flexible layout
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="templateName"></param>
+        /// <returns></returns>
         public static IApplicationDefinition CreateFlexibleLayout(IServerConnection conn, string templateName)
         {
             Check.ThatPreconditionIsMet(Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Fusion) >= 0, "Required Fusion service not supported on this connection");

@@ -22,7 +22,7 @@
 
 using System;
 
-#pragma warning disable 1591, 0114, 0108
+#pragma warning disable 1591, 0114, 0108, 0067
 
 namespace OSGeo.MapGuide.ObjectModels
 {

@@ -74,6 +74,7 @@ namespace System.Xml
         /// Gets the XML string of this document
         /// </summary>
         /// <param name="doc"></param>
+        /// <param name="indent"></param>
         /// <returns></returns>
         public static string ToXmlString(this XmlDocument doc, bool indent = false)
         {

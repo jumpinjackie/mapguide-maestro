@@ -9,6 +9,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// </summary>
     public abstract class BaseSymbolDefinitionValidator : IResourceValidator
     {
+        /// <summary>
+        /// The connection to use
+        /// </summary>
         public IServerConnection Connection { get; set; }
 
         /// <summary>

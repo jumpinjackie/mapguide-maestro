@@ -51,6 +51,9 @@ namespace Maestro.Login
 
         #region IDisposable Members
 
+        /// <summary>
+        /// Finalizer
+        /// </summary>
         ~WaitCursor()
         {
             Dispose(false);
