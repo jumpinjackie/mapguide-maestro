@@ -42,6 +42,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// var issues = ResourceValidatorSet.Validate(context, item, false);
     /// ]]>
     /// </code>
+    /// </example>
     public class ResourceValidationContext
     {
         private Dictionary<string, string> _validated;

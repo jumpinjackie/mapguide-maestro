@@ -27,11 +27,25 @@ using System.Linq;
 
 namespace Maestro.Editors.Common.Expression
 {
+    /// <summary>
+    /// Thrown when validation of a FDO expression fails
+    /// </summary>
     [Serializable]
     public class FdoExpressionValidationException : FdoParseException
     {
         private FdoExpressionValidationException(string message) : base(message) { }
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="inner"></param>
         public FdoExpressionValidationException(string message, Exception inner) : base(message, inner) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
         protected FdoExpressionValidationException(
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context)
@@ -42,6 +56,11 @@ namespace Maestro.Editors.Common.Expression
         /// </summary>
         public string Token { get; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="token"></param>
         public FdoExpressionValidationException(string message, string token) 
             : this(message)
         {
@@ -49,6 +68,9 @@ namespace Maestro.Editors.Common.Expression
         }
     }
 
+    /// <summary>
+    /// Performs validation of an FDO expression
+    /// </summary>
     public class FdoExpressionValidator
     {
         private bool IsStylizationFunc(string name)
@@ -56,6 +78,12 @@ namespace Maestro.Editors.Common.Expression
             return OSGeo.MapGuide.MaestroAPI.Utility.GetStylizationFunctions().Any(func => func.Name.ToUpper() == name.ToUpper());
         }
 
+        /// <summary>
+        /// Validates the given FDO expression
+        /// </summary>
+        /// <param name="expr"></param>
+        /// <param name="cls"></param>
+        /// <param name="caps"></param>
         public void ValidateExpression(FdoExpression expr, ClassDefinition cls, IFdoProviderCapabilities caps)
         {
             switch (expr.ExpressionType)
@@ -101,6 +129,12 @@ namespace Maestro.Editors.Common.Expression
                 throw new FdoExpressionValidationException(string.Format(Strings.InvalidExpressionPropertyNotFound, name), name);
         }
 
+        /// <summary>
+        /// Validates the given FDO filter
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="cls"></param>
+        /// <param name="caps"></param>
         public void ValidateFilter(FdoFilter filter, ClassDefinition cls, IFdoProviderCapabilities caps)
         {
             switch (filter.FilterType)

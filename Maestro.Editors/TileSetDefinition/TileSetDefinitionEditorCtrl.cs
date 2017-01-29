@@ -22,8 +22,14 @@
 
 namespace Maestro.Editors.TileSetDefinition
 {
+    /// <summary>
+    /// The Tile Set Definition editor control
+    /// </summary>
     public partial class TileSetDefinitionEditorCtrl : EditorBase
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public TileSetDefinitionEditorCtrl()
         {
             InitializeComponent();
@@ -31,6 +37,12 @@ namespace Maestro.Editors.TileSetDefinition
 
         private IEditorService _edSvc;
 
+        /// <summary>
+        /// Sets the initial state of this editor and sets up any databinding
+        /// within such that user interface changes will propagate back to the
+        /// model.
+        /// </summary>
+        /// <param name="service"></param>
         public override void Bind(IEditorService service)
         {
             _edSvc = service;

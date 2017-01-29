@@ -26,7 +26,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales.SymbolParamEditors
 {
-    public partial class NumberEditor : Form
+    internal partial class NumberEditor : Form
     {
         public NumberEditor()
         {

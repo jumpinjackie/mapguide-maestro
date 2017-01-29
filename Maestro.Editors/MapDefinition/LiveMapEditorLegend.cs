@@ -38,7 +38,7 @@ namespace Maestro.Editors.MapDefinition
     /// <summary>
     /// A Live Map Editor component that displays the legend of the currently edited map
     /// </summary>
-    public partial class LiveMapEditorLegend : UserControl
+    internal partial class LiveMapEditorLegend : UserControl
     {
         /// <summary>
         /// Initializes a new instance

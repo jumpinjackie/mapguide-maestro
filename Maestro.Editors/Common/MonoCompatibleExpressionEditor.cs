@@ -108,6 +108,13 @@ namespace Maestro.Editors.Common
         private IFdoProviderCapabilities _caps;
         private ExpressionEditorMode _mode;
 
+        /// <summary>
+        /// Initializes the expression editor
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="cls"></param>
+        /// <param name="featureSourceId"></param>
+        /// <param name="mode"></param>
         public void Initialize(IServerConnection conn, ClassDefinition cls, string featureSourceId, ExpressionEditorMode mode)
         {
             IFeatureSource fs = (IFeatureSource)conn.ResourceService.GetResource(featureSourceId);

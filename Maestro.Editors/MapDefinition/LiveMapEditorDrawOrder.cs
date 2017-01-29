@@ -36,7 +36,7 @@ namespace Maestro.Editors.MapDefinition
     /// <summary>
     /// A Live Map Editor component that displays the layers of the currently edited map by draw order
     /// </summary>
-    public partial class LiveMapEditorDrawOrder : UserControl
+    internal partial class LiveMapEditorDrawOrder : UserControl
     {
         /// <summary>
         /// Initializes a new instance

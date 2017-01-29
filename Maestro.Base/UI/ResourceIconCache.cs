@@ -70,11 +70,17 @@ namespace Maestro.Base.UI
             _large = new ImageList();
         }
 
+        /// <summary>
+        /// Finalizer
+        /// </summary>
         ~ResourceIconCache()
         {
             Dispose(false);
         }
 
+        /// <summary>
+        /// Dispose of this instance
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);

@@ -68,6 +68,13 @@ namespace Maestro.Editors.Common
         /// <returns></returns>
         System.Windows.Forms.DialogResult ShowDialog();
 
+        /// <summary>
+        /// Initializes the FDO expression editor
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="classDefinition"></param>
+        /// <param name="featureSourceId"></param>
+        /// <param name="mode"></param>
         void Initialize(IServerConnection conn, ClassDefinition classDefinition, string featureSourceId, ExpressionEditorMode mode);
     }
 
@@ -84,8 +91,15 @@ namespace Maestro.Editors.Common
         void InsertText(string text);
     }
 
+    /// <summary>
+    /// A helper factory to create the appropriate <see cref="IExpressionEditor"/> based on the underlying platform
+    /// </summary>
     public static class FdoExpressionEditorFactory
     {
+        /// <summary>
+        /// Creates an <see cref="IExpressionEditor"/>
+        /// </summary>
+        /// <returns></returns>
         public static IExpressionEditor Create()
         {
             if (Platform.IsRunningOnMono)

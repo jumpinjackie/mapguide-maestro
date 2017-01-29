@@ -181,6 +181,7 @@ namespace OSGeo.MapGuide.ObjectModels
                 return string.Empty;
             }
 
+            /// <summary>
             /// Sets the configuration document content
             /// </summary>
             /// <param name="fs"></param>

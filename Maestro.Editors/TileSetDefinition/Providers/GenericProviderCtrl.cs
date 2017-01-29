@@ -29,7 +29,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.TileSetDefinition.Providers
 {
-    public partial class GenericProviderCtrl : UserControl
+    internal partial class GenericProviderCtrl : UserControl
     {
         private GenericProviderCtrl()
         {

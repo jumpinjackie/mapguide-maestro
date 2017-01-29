@@ -24,10 +24,21 @@ using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System.Drawing;
 using System.Windows.Forms;
 
+#pragma warning disable 1591
+
 namespace Maestro.Base.Editor
 {
+    /// <summary>
+    /// A specialized editor for Tile Set Definition resoures
+    /// </summary>
+    /// <remarks>
+    /// Although public, this class is undocumented and reserved for internal use by built-in Maestro AddIns
+    /// </remarks>
     public partial class TileSetEditor : EditorContentBase
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public TileSetEditor()
         {
             InitializeComponent();

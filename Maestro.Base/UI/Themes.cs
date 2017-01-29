@@ -31,20 +31,47 @@ namespace Maestro.Base.UI
     /// </summary>
     public static class Themes
     {
+        /// <summary>
+        /// Gets the current theme
+        /// </summary>
         public static string CurrentTheme { get; internal set; }
 
+        /// <summary>
+        /// The VS2012 blue theme
+        /// </summary>
         public const string VS2012Blue = nameof(VS2012Blue);
         //public const string VS2012Dark = nameof(VS2012Dark);
+
+        /// <summary>
+        /// The VS2012 light theme
+        /// </summary>
         public const string VS2012Light = nameof(VS2012Light);
 
+        /// <summary>
+        /// The VS2013 blue theme
+        /// </summary>
         public const string VS2013Blue = nameof(VS2013Blue);
         //public const string VS2013Dark = nameof(VS2013Dark);
+
+        /// <summary>
+        /// The VS2013 light theme
+        /// </summary>
         public const string VS2013Light = nameof(VS2013Light);
 
+        /// <summary>
+        /// The VS2015 blue theme
+        /// </summary>
         public const string VS2015Blue = nameof(VS2015Blue);
         //public const string VS2015Dark = nameof(VS2015Dark);
+
+        /// <summary>
+        /// The VS2015 light theme
+        /// </summary>
         public const string VS2015Light = nameof(VS2015Light);
 
+        /// <summary>
+        /// The list of available themes
+        /// </summary>
         public static string[] List { get; } = new string[]
         {
             VS2012Blue,
@@ -58,6 +85,11 @@ namespace Maestro.Base.UI
             VS2015Light
         };
 
+        /// <summary>
+        /// Gets the theme for the specific key
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static ThemeBase Get(string key)
         {
             switch (key)

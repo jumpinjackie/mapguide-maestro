@@ -47,8 +47,8 @@ namespace Maestro.Editors.MapDefinition
         /// <summary>
         /// Initializes a new instance of the <see cref="ExtentCalculationDialog"/> class.
         /// </summary>
-        /// <param name="mdf">The Map Definition</param>
-        /// <param name="conn">The server connection</param>
+        /// <param name="conn"></param>
+        /// <param name="coordinateSystem"></param>
         /// <param name="layerIdCollector"></param>
         public ExtentCalculationDialog(IServerConnection conn, string coordinateSystem, Func<IEnumerable<string>> layerIdCollector)
         {

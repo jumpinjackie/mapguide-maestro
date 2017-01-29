@@ -178,7 +178,7 @@ namespace Maestro.Editors.Generic
         /// <summary>
         /// Raised when XML content changes
         /// </summary>
-        public event EventHandler TextChanged
+        public new event EventHandler TextChanged
         {
             add { txtXmlContent.TextChanged += value; }
             remove { txtXmlContent.TextChanged -= value; }

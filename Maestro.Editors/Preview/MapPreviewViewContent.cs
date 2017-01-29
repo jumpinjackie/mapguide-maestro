@@ -31,7 +31,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Preview
 {
-    public partial class MapPreviewViewContent : ViewContentBase
+    internal partial class MapPreviewViewContent : ViewContentBase
     {
         private readonly RuntimeMap _map;
         private readonly IUrlLauncherService _launcher;
