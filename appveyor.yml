@@ -65,7 +65,7 @@ artifacts:
     type: zip
 
 deploy:
-  release: MapGuide Maestro $(appveyor_repo_tag_name) ($(appveyor_build_version))
+  release: $(appveyor_repo_tag_name)
   description: 'Release $(appveyor_repo_tag_name) ($(appveyor_build_version))'
   provider: GitHub
   auth_token:
