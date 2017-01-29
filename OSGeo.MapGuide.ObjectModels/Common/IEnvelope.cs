@@ -175,6 +175,13 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         {
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="minx"></param>
+        /// <param name="miny"></param>
+        /// <param name="maxx"></param>
+        /// <param name="maxy"></param>
         public Envelope(double minx, double miny, double maxx, double maxy)
         {
             this.lowerLeftCoordinateField = new EnvelopeLowerLeftCoordinate() { X = minx, Y = miny };

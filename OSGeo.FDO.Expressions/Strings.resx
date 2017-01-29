@@ -123,7 +123,22 @@
   <data name="FilterParseError" xml:space="preserve">
     <value>Error Parsing Filter: {0}{1}</value>
   </data>
+  <data name="InvalidFdoDateString" xml:space="preserve">
+    <value>Valueis not a valid FDO date string: {0}</value>
+  </data>
+  <data name="InvalidFdoTimestampString" xml:space="preserve">
+    <value>Value is not a valid FDO timestamp string: {0}</value>
+  </data>
+  <data name="InvalidFdoTimeString" xml:space="preserve">
+    <value>Value is not a valid FDO time string: {0}</value>
+  </data>
   <data name="ParserErrorMessage" xml:space="preserve">
     <value>Parser Error</value>
+  </data>
+  <data name="UnknownKeyword" xml:space="preserve">
+    <value>Unknown keyword: {0}</value>
+  </data>
+  <data name="UnknownOperator" xml:space="preserve">
+    <value>Unknown operator: {0}</value>
   </data>
 </root>

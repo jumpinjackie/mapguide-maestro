@@ -23,6 +23,9 @@
 
 namespace OSGeo.MapGuide.ObjectModels.Common
 {
+    /// <summary>
+    /// An FDO expression property source
+    /// </summary>
     public interface IExpressionPropertySource
     {
         /// <summary>

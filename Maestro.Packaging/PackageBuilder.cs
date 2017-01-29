@@ -111,6 +111,9 @@ namespace Maestro.Packaging
     /// <param name="args">Package progress</param>
     public delegate void ProgressDelegate(ProgressEventArgs args);
 
+    /// <summary>
+    /// Package progress
+    /// </summary>
     public class ProgressEventArgs : EventArgs
     {
         /// <summary>

@@ -22,14 +22,29 @@
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// The parseable type
+    /// </summary>
     public enum FdoParseableType
     {
+        /// <summary>
+        /// Expression
+        /// </summary>
         Expression,
+        /// <summary>
+        /// Filter
+        /// </summary>
         Filter
     }
 
+    /// <summary>
+    /// The base class of all parseable FDO expressions
+    /// </summary>
     public abstract class FdoParseable
     {
+        /// <summary>
+        /// The parseable type
+        /// </summary>
         public abstract FdoParseableType ParseableType { get; }
     }
 }

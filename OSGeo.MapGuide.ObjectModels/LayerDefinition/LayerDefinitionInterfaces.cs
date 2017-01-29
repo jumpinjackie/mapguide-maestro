@@ -1912,8 +1912,18 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// </summary>
         void RemoveAllSymbolInstances();
 
+        /// <summary>
+        /// Moves the specified symbol instance up
+        /// </summary>
+        /// <param name="symRef"></param>
+        /// <returns></returns>
         int MoveSymbolInstanceUp(ISymbolInstance symRef);
 
+        /// <summary>
+        /// Moves the specified symbol instance down
+        /// </summary>
+        /// <param name="symRef"></param>
+        /// <returns></returns>
         int MoveSymbolInstanceDown(ISymbolInstance symRef);
     }
 

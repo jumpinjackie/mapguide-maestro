@@ -23,13 +23,22 @@ using Irony.Parsing;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// An FDO null condition
+    /// </summary>
     public class FdoNullCondition : FdoSearchCondition
     {
+        /// <summary>
+        /// The filter type
+        /// </summary>
         public override FilterType FilterType => FilterType.NullCondition;
 
+        /// <summary>
+        /// The identifier
+        /// </summary>
         public FdoIdentifier Identifier { get; }
 
-        public FdoNullCondition(ParseTreeNode node)
+        internal FdoNullCondition(ParseTreeNode node)
         {
             this.Identifier = new FdoIdentifier(node.ChildNodes[0]);
         }

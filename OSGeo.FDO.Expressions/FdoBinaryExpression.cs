@@ -23,25 +23,59 @@ using Irony.Parsing;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// The binary operator
+    /// </summary>
     public enum BinaryOperator
     {
+        /// <summary>
+        /// Addition
+        /// </summary>
         Add,
+        /// <summary>
+        /// Subtraction
+        /// </summary>
         Subtract,
+        /// <summary>
+        /// Multiplication
+        /// </summary>
         Multiply,
+        /// <summary>
+        /// Division
+        /// </summary>
         Divide
     }
 
+    /// <summary>
+    /// A binary expression that consists of a left and right hand side expression and binary operator
+    /// </summary>
     public class FdoBinaryExpression : FdoExpression
     {
+        /// <summary>
+        /// The epxression type
+        /// </summary>
         public override ExpressionType ExpressionType => ExpressionType.BinaryExpression;
 
+        /// <summary>
+        /// The left hand expression
+        /// </summary>
         public FdoExpression Left { get; }
 
+        /// <summary>
+        /// The binary operator
+        /// </summary>
         public BinaryOperator Operator { get; }
 
+        /// <summary>
+        /// The right hand expression
+        /// </summary>
         public FdoExpression Right { get; }
 
-        public FdoBinaryExpression(ParseTreeNode node)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="node"></param>
+        internal FdoBinaryExpression(ParseTreeNode node)
         {
             this.Left = FdoExpression.ParseNode(node.ChildNodes[0]);
             //HACK: Workaround bug in parser or grammar specification where (a - b) produces a: Expression, b: Expression
@@ -119,7 +153,7 @@ namespace OSGeo.FDO.Expressions
                         this.Operator = BinaryOperator.Multiply;
                         break;
                     default:
-                        throw new FdoParseException($"Unknown binary operator: {opStr}"); //LOCALIZEME
+                        throw new FdoParseException(string.Format(Strings.UnknownOperator, opStr));
                 }
                 this.Right = FdoExpression.ParseNode(node.ChildNodes[2]);
             }

@@ -24,27 +24,77 @@ using System.Collections.Generic;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// FDO expression types
+    /// </summary>
     public enum ExpressionType
     {
+        /// <summary>
+        /// Unary expression
+        /// </summary>
         UnaryExpression,
+        /// <summary>
+        /// Binary expression
+        /// </summary>
         BinaryExpression,
+        /// <summary>
+        /// Function
+        /// </summary>
         Function,
+        /// <summary>
+        /// Identifier
+        /// </summary>
         Identifier,
+        /// <summary>
+        /// Parameter
+        /// </summary>
         Parameter,
+        /// <summary>
+        /// Geometry value
+        /// </summary>
         GeometryValue,
+        /// <summary>
+        /// Boolean value
+        /// </summary>
         BooleanValue,
+        /// <summary>
+        /// String value
+        /// </summary>
         StringValue,
+        /// <summary>
+        /// Int32 value
+        /// </summary>
         Int32Value,
+        /// <summary>
+        /// Double value
+        /// </summary>
         DoubleValue,
+        /// <summary>
+        /// DateTime value
+        /// </summary>
         DateTimeValue
     }
 
+    /// <summary>
+    /// The base class of all FDO expressions
+    /// </summary>
     public abstract class FdoExpression : FdoParseable
     {
+        /// <summary>
+        /// The parseable type
+        /// </summary>
         public override FdoParseableType ParseableType => FdoParseableType.Expression;
 
+        /// <summary>
+        /// The expression type
+        /// </summary>
         public abstract ExpressionType ExpressionType { get; }
 
+        /// <summary>
+        /// Parses the given FDO expression string
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static FdoExpression Parse(string str)
         {
             Parser p = new Parser(new FdoExpressionGrammar());

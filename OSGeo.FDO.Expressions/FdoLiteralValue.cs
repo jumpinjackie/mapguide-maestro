@@ -23,14 +23,29 @@ using Irony.Parsing;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// The literal value type
+    /// </summary>
     public enum LiteralValueType
     {
+        /// <summary>
+        /// A data value
+        /// </summary>
         Data,
+        /// <summary>
+        /// A geometry value
+        /// </summary>
         Geometry
     }
 
+    /// <summary>
+    /// An FDO literal value
+    /// </summary>
     public abstract class FdoLiteralValue : FdoValueExpression
     {
+        /// <summary>
+        /// The literal value type
+        /// </summary>
         public LiteralValueType LiteralValueType { get; protected set; }
 
         internal static FdoLiteralValue ParseLiteralNode(ParseTreeNode node)

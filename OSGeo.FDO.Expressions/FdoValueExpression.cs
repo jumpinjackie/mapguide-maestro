@@ -23,6 +23,9 @@ using Irony.Parsing;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// The base class of all value expressions
+    /// </summary>
     public abstract class FdoValueExpression : FdoExpression
     {
         internal static FdoValueExpression ParseValueNode(ParseTreeNode node)

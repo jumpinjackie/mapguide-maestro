@@ -23,28 +23,76 @@ using Irony.Parsing;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// Spatial operators
+    /// </summary>
     public enum SpatialOperations
     {
+        /// <summary>
+        /// Contains
+        /// </summary>
         Contains,
+        /// <summary>
+        /// Crosses
+        /// </summary>
         Crosses,
+        /// <summary>
+        /// Disjoint
+        /// </summary>
         Disjoint,
+        /// <summary>
+        /// Equals
+        /// </summary>
         Equals,
+        /// <summary>
+        /// Intersects
+        /// </summary>
         Intersects,
+        /// <summary>
+        /// Overlaps
+        /// </summary>
         Overlaps,
+        /// <summary>
+        /// Touches
+        /// </summary>
         Touches,
+        /// <summary>
+        /// Within
+        /// </summary>
         Within,
+        /// <summary>
+        /// Covered by
+        /// </summary>
         CoveredBy,
+        /// <summary>
+        /// Inside
+        /// </summary>
         Inside
     }
 
+    /// <summary>
+    /// An FDO spatial condition
+    /// </summary>
     public class FdoSpatialCondition : FdoGeometricCondition
     {
+        /// <summary>
+        /// The filter type
+        /// </summary>
         public override FilterType FilterType => FilterType.SpatialCondition;
 
+        /// <summary>
+        /// The geometry identifier
+        /// </summary>
         public FdoIdentifier Identifier { get; }
 
+        /// <summary>
+        /// The spatial operator
+        /// </summary>
         public SpatialOperations Operator { get; }
 
+        /// <summary>
+        /// The geometric expression
+        /// </summary>
         public FdoExpression Expression { get; }
 
         internal FdoSpatialCondition(ParseTreeNode node)
@@ -84,7 +132,7 @@ namespace OSGeo.FDO.Expressions
                     this.Operator = SpatialOperations.Inside;
                     break;
                 default:
-                    throw new FdoParseException($"Unknown operator: {opName}"); //LOCALIZEME
+                    throw new FdoParseException(string.Format(Strings.UnknownOperator, opName));
             }
             this.Expression = FdoExpression.ParseNode(node.ChildNodes[2]);
         }

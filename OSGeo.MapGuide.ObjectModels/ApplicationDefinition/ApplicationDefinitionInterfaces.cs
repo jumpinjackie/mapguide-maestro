@@ -327,105 +327,255 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
     /// </summary>
     public static class KnownWidgetNames
     {
-        public const string About = "About"; //NOXLATE
+        /// <summary>
+        /// About
+        /// </summary>
+        public const string About = nameof(About);
 
-        public const string ActivityIndicator = "ActivityIndicator"; //NOXLATE
+        /// <summary>
+        /// ActivityIndicator
+        /// </summary>
+        public const string ActivityIndicator = nameof(ActivityIndicator);
 
-        public const string BasemapSwitcher = "BasemapSwitcher"; //NOXLATE
+        /// <summary>
+        /// BasemapSwitcher
+        /// </summary>
+        public const string BasemapSwitcher = nameof(BasemapSwitcher);
 
-        public const string Buffer = "Buffer"; //NOXLATE
+        /// <summary>
+        /// Buffer
+        /// </summary>
+        public const string Buffer = nameof(Buffer);
 
-        public const string BufferPanel = "BufferPanel"; //NOXLATE
+        /// <summary>
+        /// BufferPanel
+        /// </summary>
+        public const string BufferPanel = nameof(BufferPanel);
 
-        public const string CenterSelection = "CenterSelection"; //NOXLATE
+        /// <summary>
+        /// CenterSelection
+        /// </summary>
+        public const string CenterSelection = nameof(CenterSelection);
 
-        public const string ClearSelection = "ClearSelection"; //NOXLATE
+        /// <summary>
+        /// ClearSelection
+        /// </summary>
+        public const string ClearSelection = nameof(ClearSelection);
 
-        public const string ColorPicker = "ColorPicker"; //NOXLATE
+        /// <summary>
+        /// ColorPicker
+        /// </summary>
+        public const string ColorPicker = nameof(ColorPicker);
 
-        public const string CTRLClick = "CTRLClick"; //NOXLATE
+        /// <summary>
+        /// CTRLClick
+        /// </summary>
+        public const string CTRLClick = nameof(CTRLClick);
 
-        public const string CursorPosition = "CursorPosition"; //NOXLATE
+        /// <summary>
+        /// CursorPosition
+        /// </summary>
+        public const string CursorPosition = nameof(CursorPosition);
 
-        public const string EditableScale = "EditableScale"; //NOXLATE
+        /// <summary>
+        /// EditableScale
+        /// </summary>
+        public const string EditableScale = nameof(EditableScale);
 
-        public const string ExtentHistory = "ExtentHistory"; //NOXLATE
+        /// <summary>
+        /// ExtentHistory
+        /// </summary>
+        public const string ExtentHistory = nameof(ExtentHistory);
 
-        public const string FeatureInfo = "FeatureInfo"; //NOXLATE
+        /// <summary>
+        /// FeatureInfo
+        /// </summary>
+        public const string FeatureInfo = nameof(FeatureInfo);
 
-        public const string Help = "Help"; //NOXLATE
+        /// <summary>
+        /// Help
+        /// </summary>
+        public const string Help = nameof(Help);
 
-        public const string InitialMapView = "InitialMapView"; //NOXLATE
+        /// <summary>
+        /// InitialMapView
+        /// </summary>
+        public const string InitialMapView = nameof(InitialMapView);
 
-        public const string InvokeScript = "InvokeScript"; //NOXLATE
+        /// <summary>
+        /// InvokeScript
+        /// </summary>
+        public const string InvokeScript = nameof(InvokeScript);
 
-        public const string InvokeURL = "InvokeURL"; //NOXLATE
+        /// <summary>
+        /// InvokeURL
+        /// </summary>
+        public const string InvokeURL = nameof(InvokeURL);
 
-        public const string LayerManager = "LayerManager"; //NOXLATE
+        /// <summary>
+        /// LayerManager
+        /// </summary>
+        public const string LayerManager = nameof(LayerManager);
 
-        public const string Legend = "Legend"; //NOXLATE
+        /// <summary>
+        /// Legend
+        /// </summary>
+        public const string Legend = nameof(Legend);
 
-        public const string LinkToView = "LinkToView"; //NOXLATE
+        /// <summary>
+        /// LinkToView
+        /// </summary>
+        public const string LinkToView = nameof(LinkToView);
 
-        public const string MapMenu = "MapMenu"; //NOXLATE
+        /// <summary>
+        /// MapMenu
+        /// </summary>
+        public const string MapMenu = nameof(MapMenu);
 
-        public const string Maptip = "Maptip"; //NOXLATE
+        /// <summary>
+        /// Maptip
+        /// </summary>
+        public const string Maptip = nameof(Maptip);
 
-        public const string Measure = "Measure"; //NOXLATE
+        /// <summary>
+        /// Measure
+        /// </summary>
+        public const string Measure = nameof(Measure);
 
-        public const string Navigator = "Navigator"; //NOXLATE
+        /// <summary>
+        /// Navigator
+        /// </summary>
+        public const string Navigator = nameof(Navigator);
 
-        public const string OverviewMap = "OverviewMap"; //NOXLATE
+        /// <summary>
+        /// OverviewMap
+        /// </summary>
+        public const string OverviewMap = nameof(OverviewMap);
 
-        public const string Pan = "Pan"; //NOXLATE
+        /// <summary>
+        /// Pan
+        /// </summary>
+        public const string Pan = nameof(Pan);
 
-        public const string PanOnClick = "PanOnClick"; //NOXLATE
+        /// <summary>
+        /// PanOnClick
+        /// </summary>
+        public const string PanOnClick = nameof(PanOnClick);
 
-        public const string PanQuery = "PanQuery"; //NOXLATE
+        /// <summary>
+        /// PanQuery
+        /// </summary>
+        public const string PanQuery = nameof(PanQuery);
 
-        public const string Print = "Print"; //NOXLATE
+        /// <summary>
+        /// Print
+        /// </summary>
+        public const string Print = nameof(Print);
 
-        public const string Query = "Query"; //NOXLATE
+        /// <summary>
+        /// Query
+        /// </summary>
+        public const string Query = nameof(Query);
 
-        public const string QuickPlot = "QuickPlot"; //NOXLATE
+        /// <summary>
+        /// QuickPlot
+        /// </summary>
+        public const string QuickPlot = nameof(QuickPlot);
 
-        public const string Redline = "Redline"; //NOXLATE
+        /// <summary>
+        /// Redline
+        /// </summary>
+        public const string Redline = nameof(Redline);
 
-        public const string RefreshMap = "RefreshMap"; //NOXLATE
+        /// <summary>
+        /// RefreshMap
+        /// </summary>
+        public const string RefreshMap = nameof(RefreshMap);
 
-        public const string SaveMap = "SaveMap"; //NOXLATE
+        /// <summary>
+        /// SaveMap
+        /// </summary>
+        public const string SaveMap = nameof(SaveMap);
 
-        public const string Scalebar = "Scalebar"; //NOXLATE
+        /// <summary>
+        /// Scalebar
+        /// </summary>
+        public const string Scalebar = nameof(Scalebar);
 
-        public const string ScalebarDual = "ScalebarDual"; //NOXLATE
+        /// <summary>
+        /// ScalebarDual
+        /// </summary>
+        public const string ScalebarDual = nameof(ScalebarDual);
 
-        public const string Search = "Search"; //NOXLATE
+        /// <summary>
+        /// Search
+        /// </summary>
+        public const string Search = nameof(Search);
 
-        public const string Select = "Select"; //NOXLATE
+        /// <summary>
+        /// Select
+        /// </summary>
+        public const string Select = nameof(Select);
 
-        public const string SelectionInfo = "SelectionInfo"; //NOXLATE
+        /// <summary>
+        /// SelectionInfo
+        /// </summary>
+        public const string SelectionInfo = nameof(SelectionInfo);
 
-        public const string SelectPolygon = "SelectPolygon"; //NOXLATE
+        /// <summary>
+        /// SelectPolygon
+        /// </summary>
+        public const string SelectPolygon = nameof(SelectPolygon);
 
-        public const string SelectRadius = "SelectRadius"; //NOXLATE
+        /// <summary>
+        /// SelectRadius
+        /// </summary>
+        public const string SelectRadius = nameof(SelectRadius);
 
-        public const string SelectRadiusValue = "SelectRadiusValue"; //NOXLATE
+        /// <summary>
+        /// SelectRadiusValue
+        /// </summary>
+        public const string SelectRadiusValue = nameof(SelectRadiusValue);
 
-        public const string SelectWithin = "SelectWithin"; //NOXLATE
+        /// <summary>
+        /// SelectWithin
+        /// </summary>
+        public const string SelectWithin = nameof(SelectWithin);
 
-        public const string TaskPane = "TaskPane"; //NOXLATE
+        /// <summary>
+        /// TaskPane
+        /// </summary>
+        public const string TaskPane = nameof(TaskPane);
 
-        public const string Theme = "Theme"; //NOXLATE
+        /// <summary>
+        /// Theme
+        /// </summary>
+        public const string Theme = nameof(Theme);
 
-        public const string ViewOptions = "ViewOptions"; //NOXLATE
+        /// <summary>
+        /// ViewOptions
+        /// </summary>
+        public const string ViewOptions = nameof(ViewOptions);
 
-        public const string ViewSize = "ViewSize"; //NOXLATE
+        /// <summary>
+        /// ViewSize
+        /// </summary>
+        public const string ViewSize = nameof(ViewSize);
 
-        public const string Zoom = "Zoom"; //NOXLATE
+        /// <summary>
+        /// Zoom
+        /// </summary>
+        public const string Zoom = nameof(Zoom);
 
-        public const string ZoomOnClick = "ZoomOnClick"; //NOXLATE
+        /// <summary>
+        /// ZoomOnClick
+        /// </summary>
+        public const string ZoomOnClick = nameof(ZoomOnClick);
 
-        public const string ZoomToSelection = "ZoomToSelection"; //NOXLATE
+        /// <summary>
+        /// ZoomToSelection
+        /// </summary>
+        public const string ZoomToSelection = nameof(ZoomToSelection);
     }
 
     /// <summary>
@@ -1102,80 +1252,222 @@ public class ArbitraryWidgetValue : WidgetValue
 }
     */
 
+    /// <summary>
+    /// Describes the map set of the Flexible Layout
+    /// </summary>
     public interface IMapSet
     {
+        /// <summary>
+        /// The map groups
+        /// </summary>
         IEnumerable<IMapGroup> MapGroups { get; }
 
+        /// <summary>
+        /// The number of map groups
+        /// </summary>
         int MapGroupCount { get; }
 
+        /// <summary>
+        /// Gets the map group at the given index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         IMapGroup GetGroupAt(int index);
 
+        /// <summary>
+        /// Adds a map group
+        /// </summary>
+        /// <param name="group"></param>
         void AddGroup(IMapGroup group);
 
+        /// <summary>
+        /// Removes the given map group
+        /// </summary>
+        /// <param name="group"></param>
         void RemoveGroup(IMapGroup group);
     }
 
+    /// <summary>
+    /// Describes a Map Group in a Flexible Layout. A MapGroup consists of a
+    /// MapGuide Map Definition and zero or more external base layers
+    /// </summary>
     public interface IMapGroup : IExtensibleElement, INotifyPropertyChanged
     {
+        /// <summary>
+        /// The map group id
+        /// </summary>
         string id { get; set; }
 
+        /// <summary>
+        /// The initial map view
+        /// </summary>
         IMapView InitialView { get; set; }
 
+        /// <summary>
+        /// The list of map entries
+        /// </summary>
         IEnumerable<IMap> Map { get; }
 
+        /// <summary>
+        /// Adds a map entr
+        /// </summary>
+        /// <param name="map"></param>
         void AddMap(IMap map);
 
+        /// <summary>
+        /// Removes the given map entr
+        /// </summary>
+        /// <param name="map"></param>
         void RemoveMap(IMap map);
 
+        /// <summary>
+        /// Gets the count of map entries
+        /// </summary>
         int MapCount { get; }
 
+        /// <summary>
+        /// Gets the map entry at the given index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         IMap GetMapAt(int index);
 
+        /// <summary>
+        /// Creates an initial map view
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="scale"></param>
+        /// <returns></returns>
         IMapView CreateInitialView(double x, double y, double scale);
 
+        /// <summary>
+        /// Creates a MapGuide map entry
+        /// </summary>
+        /// <param name="mapDefinition"></param>
+        /// <returns></returns>
         IMap CreateMapGuideEntry(string mapDefinition);
 
+        /// <summary>
+        /// Creates a external base layer map entry
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="singleTile"></param>
+        /// <param name="name"></param>
+        /// <param name="olType"></param>
+        /// <returns></returns>
         IMap CreateCmsMapEntry(string type, bool singleTile, string name, string olType);
 
+        /// <summary>
+        /// Creates a generic map entry
+        /// </summary>
+        /// <returns></returns>
         IMap CreateGenericEntry();
 
+        /// <summary>
+        /// Moves the given map entry up
+        /// </summary>
+        /// <param name="map"></param>
+        /// <returns></returns>
         bool MoveUp(IMap map);
 
+        /// <summary>
+        /// Moves the given map entry down
+        /// </summary>
+        /// <param name="map"></param>
+        /// <returns></returns>
         bool MoveDown(IMap map);
     }
 
+    /// <summary>
+    /// Describes a map entry in a map group
+    /// </summary>
     public interface IMap : INotifyPropertyChanged, IExtensibleElement
     {
+        /// <summary>
+        /// The type of map
+        /// </summary>
         string Type { get; set; }
 
+        /// <summary>
+        /// Indicates if it is single tile
+        /// </summary>
         bool SingleTile { get; set; }
 
+        /// <summary>
+        /// MapGuide overlay options
+        /// </summary>
         IMapGuideOverlayOptions OverlayOptions { get; set; }
 
+        /// <summary>
+        /// Creates MapGuide overlay options
+        /// </summary>
+        /// <param name="isBaseLayer"></param>
+        /// <param name="useOverlay"></param>
+        /// <param name="projection"></param>
+        /// <returns></returns>
         IMapGuideOverlayOptions CreateOverlayOptions(bool isBaseLayer, bool useOverlay, string projection);
 
+        /// <summary>
+        /// External base layer options
+        /// </summary>
         ICmsMapOptions CmsMapOptions { get; set; }
-
+        
+        /// <summary>
+        /// Creates external base layer options
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         ICmsMapOptions CreateOptions(string name, string type);
 
+        /// <summary>
+        /// Outputs to XML
+        /// </summary>
+        /// <returns></returns>
         string AsXml();
 
+        /// <summary>
+        /// Initialize from XML
+        /// </summary>
+        /// <param name="xml"></param>
         void FromXml(string xml);
     }
 
+    /// <summary>
+    /// Describes MapGuide overlay options
+    /// </summary>
     public interface IMapGuideOverlayOptions
     {
+        /// <summary>
+        /// Indicates if this is a base layer
+        /// </summary>
         bool IsBaseLayer { get; set; }
 
+        /// <summary>
+        /// Indicates if selection overlay should be used
+        /// </summary>
         bool UseOverlay { get; set; }
 
+        /// <summary>
+        /// Indicates the projection
+        /// </summary>
         string Projection { get; set; }
     }
 
+    /// <summary>
+    /// Describes external base layer options
+    /// </summary>
     public interface ICmsMapOptions
     {
+        /// <summary>
+        /// The name of the external base layer
+        /// </summary>
         string Name { get; set; }
 
+        /// <summary>
+        /// The type of the external base layer
+        /// </summary>
         string Type { get; set; }
     }
 
@@ -1184,22 +1476,53 @@ public class ArbitraryWidgetValue : WidgetValue
     /// </summary>
     public interface IWidgetSet
     {
+        /// <summary>
+        /// The list of widget containers
+        /// </summary>
         IEnumerable<IWidgetContainer> Containers { get; }
 
+        /// <summary>
+        /// The number of widget containers
+        /// </summary>
         int ContainerCount { get; }
 
+        /// <summary>
+        /// Adds a widget container
+        /// </summary>
+        /// <param name="container"></param>
         void AddContainer(IWidgetContainer container);
 
+        /// <summary>
+        /// Removes the given widget container
+        /// </summary>
+        /// <param name="container"></param>
         void RemoveContainer(IWidgetContainer container);
 
+        /// <summary>
+        /// Gets the designated map widget
+        /// </summary>
         IMapWidget MapWidget { get; }
 
+        /// <summary>
+        /// Gets the total number of widgets in this widget set
+        /// </summary>
         int WidgetCount { get; }
 
+        /// <summary>
+        /// Gets the list of widgets
+        /// </summary>
         IEnumerable<IWidget> Widgets { get; }
 
+        /// <summary>
+        /// Adds a widget
+        /// </summary>
+        /// <param name="widget"></param>
         void AddWidget(IWidget widget);
-
+        
+        /// <summary>
+        /// Removes the specified widget
+        /// </summary>
+        /// <param name="widget"></param>
         void RemoveWidget(IWidget widget);
     }
 
@@ -1208,10 +1531,19 @@ public class ArbitraryWidgetValue : WidgetValue
     /// </summary>
     public interface IWidgetContainer : INotifyPropertyChanged, IExtensibleElement
     {
+        /// <summary>
+        /// The name of the widget container
+        /// </summary>
         string Name { get; set; }
 
+        /// <summary>
+        /// The type of the widget container
+        /// </summary>
         string Type { get; set; }
 
+        /// <summary>
+        /// The position of the widget container
+        /// </summary>
         string Position { get; set; }
     }
 
@@ -1296,24 +1628,51 @@ public class ArbitraryWidgetValue : WidgetValue
         Flyout,
     }
 
+    /// <summary>
+    /// Represents a UI toolbar/menu item
+    /// </summary>
     public interface IUIItem : INotifyPropertyChanged
     {
+        /// <summary>
+        /// The parent menu
+        /// </summary>
         IMenu Parent { get; }
 
+        /// <summary>
+        /// The item function
+        /// </summary>
         UiItemFunctionType Function { get; }
     }
 
+    /// <summary>
+    /// Represents a toolbar/menu flyout item
+    /// </summary>
     public interface IFlyoutItem : IUIItem, IMenu, INotifyPropertyChanged
     {
+        /// <summary>
+        /// The label
+        /// </summary>
         string Label { get; set; }
 
+        /// <summary>
+        /// The tooltip
+        /// </summary>
         string Tooltip { get; set; }
 
+        /// <summary>
+        /// The image url
+        /// </summary>
         string ImageUrl { get; set; }
 
+        /// <summary>
+        /// The image CSS class
+        /// </summary>
         string ImageClass { get; set; }
     }
 
+    /// <summary>
+    /// Represents a menu/toolbar separator
+    /// </summary>
     public interface ISeparator : IUIItem
     {
     }
@@ -1323,6 +1682,9 @@ public class ArbitraryWidgetValue : WidgetValue
     /// </summary>
     public interface IWidgetItem : IUIItem
     {
+        /// <summary>
+        /// The widget name
+        /// </summary>
         string Widget { get; set; }
     }
 
@@ -1358,23 +1720,51 @@ public class ArbitraryWidgetValue : WidgetValue
     /// </summary>
     public interface IMapWidget : IWidget
     {
+        /// <summary>
+        /// The map group id
+        /// </summary>
         string MapId { get; set; }
     }
 
+    /// <summary>
+    /// Represents a widget definition that is accessible from a menu or toolbar
+    /// </summary>
     public interface IUIWidget : IWidget
     {
+        /// <summary>
+        /// The image icon URL
+        /// </summary>
         string ImageUrl { get; set; }
 
+        /// <summary>
+        /// The image icon CSS class
+        /// </summary>
         string ImageClass { get; set; }
 
+        /// <summary>
+        /// The label
+        /// </summary>
         string Label { get; set; }
 
+        /// <summary>
+        /// The tooltip
+        /// </summary>
         string Tooltip { get; set; }
 
+        /// <summary>
+        /// The status bar text
+        /// </summary>
         string StatusText { get; set; }
 
+        /// <summary>
+        /// Indicates if it is disabled
+        /// </summary>
         string Disabled { get; set; }
 
+        /// <summary>
+        /// Clones this instance
+        /// </summary>
+        /// <returns></returns>
         IUIWidget Clone();
     }
 

@@ -915,13 +915,23 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     {
     }
 
+    /// <summary>
+    /// Event args for a command
+    /// </summary>
     public class CommandEventArgs : EventArgs
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="cmd"></param>
         public CommandEventArgs(ICommand cmd)
         {
             this.Command = cmd;
         }
 
+        /// <summary>
+        /// The command
+        /// </summary>
         public ICommand Command { get; }
     }
 

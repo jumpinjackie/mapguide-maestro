@@ -24,15 +24,27 @@ using System.Collections.Generic;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// An FDO IN condition
+    /// </summary>
     public class FdoInCondition : FdoSearchCondition
     {
+        /// <summary>
+        /// The filter type
+        /// </summary>
         public override FilterType FilterType => FilterType.InCondition;
 
+        /// <summary>
+        /// The identifier
+        /// </summary>
         public FdoIdentifier Identifier { get; }
 
+        /// <summary>
+        /// The list of values to compare against
+        /// </summary>
         public List<FdoValueExpression> ValueList { get; }
 
-        public FdoInCondition(ParseTreeNode node)
+        internal FdoInCondition(ParseTreeNode node)
         {
             this.Identifier = new FdoIdentifier(node.ChildNodes[0]);
             this.ValueList = new List<FdoValueExpression>();

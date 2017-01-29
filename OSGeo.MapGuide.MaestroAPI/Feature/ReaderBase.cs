@@ -31,6 +31,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public abstract class ReaderBase : IReader
     {
+        /// <summary>
+        /// Finalizer
+        /// </summary>
         ~ReaderBase()
         {
             Dispose(false);
@@ -97,6 +100,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        /// Dispose of this instance
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
 

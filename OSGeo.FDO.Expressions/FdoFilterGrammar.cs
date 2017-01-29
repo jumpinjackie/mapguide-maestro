@@ -24,7 +24,7 @@ using Irony.Parsing;
 namespace OSGeo.FDO.Expressions
 {
     [Language("FDO Filter", "1.0", "FDO Filter Grammar")]
-    public class FdoFilterGrammar : Grammar
+    internal class FdoFilterGrammar : Grammar
     {
         public FdoFilterGrammar()
             : base(false)

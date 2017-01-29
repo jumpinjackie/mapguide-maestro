@@ -140,6 +140,11 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             }
         }
 
+        /// <summary>
+        /// Writes to XML
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             //Can't write dynamic extents
@@ -225,6 +230,11 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             currentNode.AppendChild(crs);
         }
 
+        /// <summary>
+        /// Initialize from the given XML node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (!node.Name.Equals("gml:DerivedCRS")) //NOXLATE

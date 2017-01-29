@@ -23,6 +23,9 @@ using Irony.Parsing;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// An FDO logical operator
+    /// </summary>
     public abstract class FdoLogicalOperator : FdoFilter
     {
         internal static FdoLogicalOperator ParseLogicalOperatorNode(ParseTreeNode node)

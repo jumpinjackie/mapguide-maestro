@@ -98,6 +98,9 @@ namespace OSGeo.MapGuide.ObjectModels
             Init();
         }
 
+        /// <summary>
+        /// Resets the object factory by clearing all registered factories
+        /// </summary>
         public static void Reset()
         {
             _layerFactories.Clear();
@@ -293,8 +296,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Registers a resource serializer
         /// </summary>
         /// <param name="resourceType">The resource type descriptor.</param>
-        /// <param name="serializeMethod">The serialize method.</param>
-        /// <param name="deserializeMethod">The deserialize method.</param>
+        /// <param name="serializer">The serialize method.</param>
+        /// <param name="deserializer">The deserialize method.</param>
         public static void RegisterResourceSerializer(ResourceTypeDescriptor resourceType, Func<IResource, Stream> serializer, Func<string, IResource> deserializer)
         {
             Check.ArgumentNotNull(resourceType, nameof(resourceType));
@@ -744,8 +747,6 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Creates the tile set definition using the default provider
         /// </summary>
         /// <param name="version"></param>
-        /// <param name="name"></param>
-        /// <param name="coordinateSystemWkt"></param>
         /// <param name="extents"></param>
         /// <returns></returns>
         public static ITileSetDefinition CreateTileSetDefinition(Version version, IEnvelope extents)
@@ -771,6 +772,11 @@ namespace OSGeo.MapGuide.ObjectModels
             return wl;
         }
 
+        /// <summary>
+        /// Returns a deserialized copy of an embedded Flexible Layout
+        /// </summary>
+        /// <param name="siteVersion"></param>
+        /// <returns></returns>
         public static IApplicationDefinition DeserializeEmbeddedFlexLayout(Version siteVersion)
         {
             Check.ArgumentNotNull(siteVersion, nameof(siteVersion));
@@ -1492,7 +1498,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// Serializes the specified resource.
         /// </summary>
-        /// <param name="res">The resource.</param>
+        /// <param name="resource">The resource.</param>
         /// <returns></returns>
         public static Stream Serialize(IResource resource)
         {
@@ -1502,7 +1508,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// Serializes the specified resource.
         /// </summary>
-        /// <param name="res"></param>
+        /// <param name="resource"></param>
         /// <returns></returns>
         public static string SerializeAsString(IResource resource)
         {

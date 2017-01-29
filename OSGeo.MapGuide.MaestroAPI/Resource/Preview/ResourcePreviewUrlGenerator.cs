@@ -31,12 +31,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Preview
     /// </summary>
     public abstract class ResourcePreviewUrlGenerator : IResourcePreviewUrlGenerator
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         protected ResourcePreviewUrlGenerator()
         {
             this.AddDebugWatermark = true;
             this.UseAjaxViewer = true;
         }
 
+        /// <summary>
+        /// Gets the locale
+        /// </summary>
+        /// <param name="locale"></param>
+        /// <returns></returns>
         protected static string GetLocale(string locale)
         {
             return string.IsNullOrEmpty(locale) ? "en" : locale; //NOXLATE
@@ -75,26 +83,85 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Preview
             }
         }
 
+        /// <summary>
+        /// Generates a preview URL for watermarks
+        /// </summary>
+        /// <param name="watermarkDefinition"></param>
+        /// <param name="locale"></param>
+        /// <param name="isNew"></param>
+        /// <param name="sessionID"></param>
+        /// <returns></returns>
         protected abstract string GenerateWatermarkPreviewUrl(IWatermarkDefinition watermarkDefinition, string locale, bool isNew, string sessionID);
 
+        /// <summary>
+        /// Generates a preview URL for Web Layouts
+        /// </summary>
+        /// <param name="res"></param>
+        /// <param name="locale"></param>
+        /// <param name="isNew"></param>
+        /// <param name="sessionID"></param>
+        /// <returns></returns>
         protected abstract string GenerateWebLayoutPreviewUrl(IResource res, string locale, bool isNew, string sessionID);
 
+        /// <summary>
+        /// Generates a preview URL for Map Definitions
+        /// </summary>
+        /// <param name="res"></param>
+        /// <param name="locale"></param>
+        /// <param name="isNew"></param>
+        /// <param name="sessionID"></param>
+        /// <returns></returns>
         protected abstract string GenerateMapPreviewUrl(IResource res, string locale, bool isNew, string sessionID);
 
+        /// <summary>
+        /// Generates a preview URL for layer definitions
+        /// </summary>
+        /// <param name="res"></param>
+        /// <param name="locale"></param>
+        /// <param name="isNew"></param>
+        /// <param name="sessionID"></param>
+        /// <returns></returns>
         protected abstract string GenerateLayerPreviewUrl(IResource res, string locale, bool isNew, string sessionID);
 
+        /// <summary>
+        /// Generates a preview URL for Flexible Layouts
+        /// </summary>
+        /// <param name="res"></param>
+        /// <param name="locale"></param>
+        /// <param name="isNew"></param>
+        /// <param name="sessionID"></param>
+        /// <returns></returns>
         protected abstract string GenerateFlexLayoutPreviewUrl(IResource res, string locale, bool isNew, string sessionID);
 
+        /// <summary>
+        /// Generates a preview URL for Feature Sources
+        /// </summary>
+        /// <param name="res"></param>
+        /// <param name="locale"></param>
+        /// <param name="isNew"></param>
+        /// <param name="sessionID"></param>
+        /// <returns></returns>
         protected abstract string GenerateFeatureSourcePreviewUrl(IResource res, string locale, bool isNew, string sessionID);
 
+        /// <summary>
+        /// Indicates if the given resource type is previewable
+        /// </summary>
+        /// <param name="resourceType"></param>
+        /// <returns></returns>
         public abstract bool IsPreviewableType(string resourceType);
 
+        /// <summary>
+        /// Gets or sets whether to use the AJAX viewer for previews
+        /// </summary>
         public bool UseAjaxViewer
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Gets or sets whether to insert a debugging watermark for generated previews
+        /// </summary>
         public bool AddDebugWatermark
         {
             get;

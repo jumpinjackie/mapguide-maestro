@@ -23,28 +23,71 @@ using Irony.Parsing;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// Comparison operator
+    /// </summary>
     public enum ComparisonOperations
     {
+        /// <summary>
+        /// Equals
+        /// </summary>
         EqualsTo,
+        /// <summary>
+        /// Not equals
+        /// </summary>
         NotEqualsTo,
+        /// <summary>
+        /// Greater than
+        /// </summary>
         GreaterThan,
+        /// <summary>
+        /// Greater than or equal
+        /// </summary>
         GreaterThanOrEqualTo,
+        /// <summary>
+        /// Less than
+        /// </summary>
         LessThan,
+        /// <summary>
+        /// Less than or equal
+        /// </summary>
         LessThanOrEqualTo,
+        /// <summary>
+        /// Like
+        /// </summary>
         Like
     }
 
+    /// <summary>
+    /// A comparison condition
+    /// </summary>
     public class FdoComparisonCondition : FdoSearchCondition
     {
+        /// <summary>
+        /// The filter type
+        /// </summary>
         public override FilterType FilterType => FilterType.ComparisonCondition;
-
+        
+        /// <summary>
+        /// The left-hand expression
+        /// </summary>
         public FdoExpression Left { get; }
 
+        /// <summary>
+        /// The comparison operator
+        /// </summary>
         public ComparisonOperations Operator { get; }
 
+        /// <summary>
+        /// The right-hand expression
+        /// </summary>
         public FdoExpression Right { get; }
 
-        public FdoComparisonCondition(ParseTreeNode node)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="node"></param>
+        internal FdoComparisonCondition(ParseTreeNode node)
         {
             this.Left = FdoExpression.ParseNode(node.ChildNodes[0]);
             var opName = node.ChildNodes[1].ChildNodes[0].Token.ValueString;

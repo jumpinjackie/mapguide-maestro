@@ -36,7 +36,7 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0
 #endif
 {
     /// <summary>
-    /// Helper class for registration with <see cref="OSGeo.MapGuide.ObjectModels.ObjectFactory"/> and <see cref="OSGeo.MapGuide.MaestroAPI.ResourceTypeRegistry"/> classes
+    /// Helper class for registration with <see cref="ObjectFactory"/> and <see cref="ResourceTypeRegistry"/> classes
     /// </summary>
     public static class LoadProcEntryPoint
     {

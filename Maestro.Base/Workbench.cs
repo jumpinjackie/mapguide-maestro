@@ -55,6 +55,10 @@ namespace Maestro.Base
 
         private static bool _init = false;
 
+        /// <summary>
+        /// Applies the current theme to the given toolstrip
+        /// </summary>
+        /// <param name="ts"></param>
         public void ApplyThemeTo(ToolStrip ts)
         {
             this.Theme?.ApplyTo(ts);
@@ -99,6 +103,10 @@ namespace Maestro.Base
             }
         }
 
+        /// <summary>
+        /// Applies the given theme to this workbench
+        /// </summary>
+        /// <param name="theme"></param>
         public override void ApplyTheme(ThemeBase theme)
         {
             base.ApplyTheme(theme);

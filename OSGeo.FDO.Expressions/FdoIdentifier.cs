@@ -23,10 +23,19 @@ using Irony.Parsing;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// An FDO identifier
+    /// </summary>
     public class FdoIdentifier : FdoExpression
     {
+        /// <summary>
+        /// The expression type
+        /// </summary>
         public override ExpressionType ExpressionType => ExpressionType.Identifier;
 
+        /// <summary>
+        /// The name
+        /// </summary>
         public string Name { get; }
 
         internal FdoIdentifier(ParseTreeNode node)

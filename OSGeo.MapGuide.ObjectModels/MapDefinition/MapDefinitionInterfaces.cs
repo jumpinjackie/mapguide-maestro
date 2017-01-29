@@ -31,15 +31,33 @@ using System.Linq;
 
 namespace OSGeo.MapGuide.ObjectModels.MapDefinition
 {
+    /// <summary>
+    /// Describes the extent of a given layer
+    /// </summary>
     public class LayerExtent
     {
+        /// <summary>
+        /// The extent of the layer
+        /// </summary>
         public IEnvelope Extent { get; set; }
 
+        /// <summary>
+        /// The layer's coordinate system
+        /// </summary>
         public string LayerCoordinateSystem { get; set; }
     }
 
+    /// <summary>
+    /// Computes the extent for a given layer definition
+    /// </summary>
     public interface ILayerExtentCalculator
     {
+        /// <summary>
+        /// Gets the extent of the given layer definition
+        /// </summary>
+        /// <param name="resourceID"></param>
+        /// <param name="mapCoordSys"></param>
+        /// <returns></returns>
         LayerExtent GetLayerExtent(string resourceID, string mapCoordSys);
     }
 
@@ -138,6 +156,9 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// <value>The map layers.</value>
         IEnumerable<IMapLayer> MapLayer { get; }
 
+        /// <summary>
+        /// Gets or sets a layer extent calculator
+        /// </summary>
         ILayerExtentCalculator ExtentCalculator { get; set; }
 
         /// <summary>
@@ -625,9 +646,10 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         }
 
         /// <summary>
-        /// 
+        /// Convers the given base map section to a Tile Set Definition reference
         /// </summary>
         /// <param name="map"></param>
+        /// <param name="schemaVersion"></param>
         /// <returns></returns>
         public static ITileSetDefinition ConvertToTileSet(this IMapDefinition map, Version schemaVersion)
         {

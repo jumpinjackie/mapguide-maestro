@@ -19,7 +19,7 @@
 //
 
 #endregion Disclaimer / License
-
+#pragma warning disable 1591, 0114, 0108, 0114, 0108
 #define WDF_240
 
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;

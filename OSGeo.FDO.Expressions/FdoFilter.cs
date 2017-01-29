@@ -24,23 +24,61 @@ using System.Collections.Generic;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// Filter types
+    /// </summary>
     public enum FilterType
     {
+        /// <summary>
+        /// Unary logical
+        /// </summary>
         UnaryLogicalOperator,
+        /// <summary>
+        /// Null condition
+        /// </summary>
         NullCondition,
+        /// <summary>
+        /// In condition
+        /// </summary>
         InCondition,
+        /// <summary>
+        /// Binary logical
+        /// </summary>
         BinaryLogicalOperator,
+        /// <summary>
+        /// Distance condition
+        /// </summary>
         DistanceCondition,
+        /// <summary>
+        /// Comparison condition
+        /// </summary>
         ComparisonCondition,
+        /// <summary>
+        /// Spatial condition
+        /// </summary>
         SpatialCondition
     }
 
+    /// <summary>
+    /// The base class of all FDO filter expressions
+    /// </summary>
     public abstract class FdoFilter : FdoParseable
     {
+        /// <summary>
+        /// The parseable type
+        /// </summary>
         public override FdoParseableType ParseableType => FdoParseableType.Filter;
 
+        /// <summary>
+        /// The filter type
+        /// </summary>
         public abstract FilterType FilterType { get; }
 
+        /// <summary>
+        /// Parses the given FDO filter string
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static FdoFilter Parse(string str)
         {
             Parser p = new Parser(new FdoFilterGrammar());

@@ -23,6 +23,9 @@ using Irony.Parsing;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// An FDO geometric condition expression
+    /// </summary>
     public abstract class FdoGeometricCondition : FdoSearchCondition
     {
         internal static FdoSearchCondition ParseGeometricNode(ParseTreeNode node)

@@ -21,7 +21,7 @@
 #endregion Disclaimer / License
 
 using System.Xml.Serialization;
-
+#pragma warning disable 1591, 0114, 0108, 0114, 0108
 namespace OSGeo.MapGuide.ObjectModels.Common
 {
     partial class UnmanagedDataListUnmanagedDataFile

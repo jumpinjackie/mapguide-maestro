@@ -32,6 +32,9 @@ using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
+    /// <summary>
+    /// Extension methods
+    /// </summary>
     public static class ExtensionMethods
     {
         /// <summary>
@@ -62,6 +65,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 namespace System.Xml
 {
+    /// <summary>
+    /// XML Document extension methods
+    /// </summary>
     public static class ExtensionMethods
     {
         /// <summary>
@@ -87,6 +93,9 @@ namespace System.Xml
 
 namespace OSGeo.MapGuide.ObjectModels
 {
+    /// <summary>
+    /// Extension Methods
+    /// </summary>
     public static class ExtensionMethods
     {
         /// <summary>
@@ -155,6 +164,9 @@ namespace OSGeo.MapGuide.ObjectModels
 
     namespace FeatureSource
     {
+        /// <summary>
+        /// Extension methods
+        /// </summary>
         public static class ExtensionMethods
         {
             /// <summary>
@@ -253,6 +265,9 @@ namespace OSGeo.MapGuide.ObjectModels
 
     namespace DrawingSource
     {
+        /// <summary>
+        /// Extension methods
+        /// </summary>
         public static class ExtensionMethods
         {
             /// <summary>
@@ -355,6 +370,9 @@ namespace OSGeo.MapGuide.ObjectModels
 
     namespace LayerDefinition
     {
+        /// <summary>
+        /// Extension methods
+        /// </summary>
         public static class ExtensionMethods
         {
             private static IFdoSpatialContext FindSpatialContext(FdoSpatialContextList spatialContexts, string scName)

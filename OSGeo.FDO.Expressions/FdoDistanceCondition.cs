@@ -23,22 +23,49 @@ using Irony.Parsing;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// The distance operator
+    /// </summary>
     public enum DistanceOperations
     {
+        /// <summary>
+        /// Beyond
+        /// </summary>
         Beyond,
+        /// <summary>
+        /// Within distance
+        /// </summary>
         WithinDistance
     }
 
+    /// <summary>
+    /// An FDO distance condition
+    /// </summary>
     public class FdoDistanceCondition : FdoGeometricCondition
     {
+        /// <summary>
+        /// The filter type
+        /// </summary>
         public override FilterType FilterType => FilterType.DistanceCondition;
 
+        /// <summary>
+        /// The geometry identifier
+        /// </summary>
         public FdoIdentifier Identifier { get; }
 
+        /// <summary>
+        /// The distance operator
+        /// </summary>
         public DistanceOperations Operator { get; }
 
+        /// <summary>
+        /// The target expression
+        /// </summary>
         public FdoExpression Expression { get; }
 
+        /// <summary>
+        /// The distance value
+        /// </summary>
         public FdoDataValue Distance { get; }
 
         internal FdoDistanceCondition(ParseTreeNode node)
@@ -54,7 +81,7 @@ namespace OSGeo.FDO.Expressions
                     this.Operator = DistanceOperations.Beyond;
                     break;
                 default:
-                    throw new FdoParseException($"Unknown operator: {opName}"); //LOCALIZEME
+                    throw new FdoParseException(string.Format(Strings.UnknownOperator, opName));
             }
             this.Expression = FdoExpression.ParseNode(node.ChildNodes[2]);
             this.Distance = FdoDataValue.ParseDataNode(node.ChildNodes[3].ChildNodes[0]);

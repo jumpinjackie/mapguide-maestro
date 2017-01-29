@@ -25,21 +25,44 @@ using System.Xml.Serialization;
 
 namespace OSGeo.MapGuide.ObjectModels
 {
+    /// <summary>
+    /// The base class of all serializable resource types
+    /// </summary>
     public abstract class BaseSerializable
     {
+        /// <summary>
+        /// Performs a normalized serialization
+        /// </summary>
+        /// <param name="serializer"></param>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         protected virtual string NormalizedSerialize(XmlSerializer serializer, object obj)
         {
             return Utils.NormalizedSerialize(serializer, obj);
         }
     }
 
+    /// <summary>
+    /// The base class of all serializable map definition types
+    /// </summary>
     public class BaseSerializableMapDefinition : BaseSerializable
     {
+        /// <summary>
+        /// Serializes the given color
+        /// </summary>
+        /// <param name="color"></param>
+        /// <param name="bIncludeAlpha"></param>
+        /// <returns></returns>
         protected string SerializeHTMLColor(Color color, bool bIncludeAlpha)
         {
             return Utils.SerializeHTMLColor(color, bIncludeAlpha);
         }
 
+        /// <summary>
+        /// Parses the given HTML color
+        /// </summary>
+        /// <param name="strColor"></param>
+        /// <returns></returns>
         protected Color ParseHTMLColor(string strColor)
         {
             return Utils.ParseHTMLColor(strColor);

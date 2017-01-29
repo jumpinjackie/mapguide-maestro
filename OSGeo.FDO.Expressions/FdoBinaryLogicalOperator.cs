@@ -22,23 +22,51 @@
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// The binary logical operator
+    /// </summary>
     public enum BinaryLogicalOperations
     {
+        /// <summary>
+        /// Logical AND
+        /// </summary>
         And,
+        /// <summary>
+        /// Logical OR
+        /// </summary>
         Or
     }
 
+    /// <summary>
+    /// A binary logical operator
+    /// </summary>
     public class FdoBinaryLogicalOperator : FdoLogicalOperator
     {
+        /// <summary>
+        /// The filter type
+        /// </summary>
         public override FilterType FilterType => FilterType.BinaryLogicalOperator;
 
+        /// <summary>
+        /// The left-hand side expression
+        /// </summary>
         public FdoFilter Left { get; }
 
+        /// <summary>
+        /// The logical operator
+        /// </summary>
         public BinaryLogicalOperations Operator { get; }
 
+        /// <summary>
+        /// The right-hand side expression
+        /// </summary>
         public FdoFilter Right { get; }
 
-        public FdoBinaryLogicalOperator(Irony.Parsing.ParseTreeNode node)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="node"></param>
+        internal FdoBinaryLogicalOperator(Irony.Parsing.ParseTreeNode node)
         {
             this.Left = FdoFilter.ParseNode(node.ChildNodes[0]);
             var opName = node.ChildNodes[1].ChildNodes[0].Token.ValueString;

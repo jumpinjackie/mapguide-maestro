@@ -24,12 +24,24 @@ using System.Collections.Generic;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// An FDO function expression
+    /// </summary>
     public class FdoFunction : FdoExpression
     {
+        /// <summary>
+        /// The expression type
+        /// </summary>
         public override ExpressionType ExpressionType => ExpressionType.Function;
 
+        /// <summary>
+        /// The name of the function
+        /// </summary>
         public FdoIdentifier Identifier { get; }
 
+        /// <summary>
+        /// The list of arguments passed in
+        /// </summary>
         public List<FdoExpression> Arguments { get; }
 
         internal FdoFunction(ParseTreeNode node)

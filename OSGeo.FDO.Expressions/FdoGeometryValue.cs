@@ -23,10 +23,19 @@ using Irony.Parsing;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// An FDO geometry value
+    /// </summary>
     public class FdoGeometryValue : FdoLiteralValue
     {
+        /// <summary>
+        /// The expression type
+        /// </summary>
         public override ExpressionType ExpressionType => ExpressionType.GeometryValue;
 
+        /// <summary>
+        /// The goemetry WKT
+        /// </summary>
         public string GeometryWkt { get; }
 
         internal FdoGeometryValue(ParseTreeNode node)

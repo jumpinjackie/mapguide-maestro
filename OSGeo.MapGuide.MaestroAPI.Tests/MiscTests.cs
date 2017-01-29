@@ -25,6 +25,7 @@ using OSGeo.MapGuide.MaestroAPI.CrossConnection;
 using OSGeo.MapGuide.MaestroAPI.Internal;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.MaestroAPI.Tile;
+using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
@@ -126,6 +127,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual(items, args3.Items);
             Assert.AreEqual("Foo", args3.Items[args3.Index].Itempath);
             Assert.AreEqual(LengthyOperationCallbackArgs.LengthyOperationItem.OperationStatus.None, args3.Items[args3.Index].Status);
+
+            var cmd = new Mock<ICommand>();
+            var args4 = new CommandEventArgs(cmd.Object);
+            Assert.NotNull(args4.Command);
         }
 
         [Test]

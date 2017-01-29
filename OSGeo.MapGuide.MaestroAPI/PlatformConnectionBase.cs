@@ -340,6 +340,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             set { m_cachedSchemas = value; }
         }
 
+        /// <summary>
+        /// Finalizer
+        /// </summary>
         ~PlatformConnectionBase()
         {
             Dispose(false);
@@ -354,6 +357,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        /// Dispose of this instance
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing) { }
 
         /// <summary>

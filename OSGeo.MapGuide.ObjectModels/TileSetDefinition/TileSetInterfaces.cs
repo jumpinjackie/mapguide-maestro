@@ -30,30 +30,71 @@ using System.Linq;
 
 namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
 {
+    /// <summary>
+    /// Describes a Tile Set Definition
+    /// </summary>
     public interface ITileSetDefinition : IResource, ITileSetAbstract
     {
+        /// <summary>
+        /// The configuration parameters
+        /// </summary>
         ITileStoreParameters TileStoreParameters { get; }
 
+        /// <summary>
+        /// The extents of this tile set
+        /// </summary>
         IEnvelope Extents { get; set; }
     }
 
+    /// <summary>
+    /// Describes configuration parameters for a Tile Set Definition
+    /// </summary>
     public interface ITileStoreParameters
     {
+        /// <summary>
+        /// The tile provider name
+        /// </summary>
         string TileProvider { get; set; }
 
+        /// <summary>
+        /// Adds a configuration parameter
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
         void AddParameter(string name, string value);
 
+        /// <summary>
+        /// Sets the value for a configuration parameter
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
         void SetParameter(string name, string value);
 
+        /// <summary>
+        /// Gets all the configuration parameters
+        /// </summary>
         IEnumerable<INameStringPair> Parameters { get; }
 
+        /// <summary>
+        /// Clears all configuration parameters
+        /// </summary>
         void ClearParameters();
 
+        /// <summary>
+        /// Raised when a configuration parameter has changed
+        /// </summary>
         event EventHandler ParametersChanged;
     }
 
+    /// <summary>
+    /// An abstraction that works with both Tile Set Definitions and the base map section of a Map Definition
+    /// </summary>
     public interface ITileSetAbstract
     {
+        /// <summary>
+        /// Sets the finite display scale list
+        /// </summary>
+        /// <param name="scales"></param>
         void SetFiniteDisplayScales(IEnumerable<double> scales);
 
         /// <summary>
@@ -92,6 +133,9 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// </summary>
         void RemoveAllScales();
 
+        /// <summary>
+        /// The finite display scale list
+        /// </summary>
         IEnumerable<double> FiniteDisplayScale { get; }
 
         /// <summary>
@@ -107,8 +151,16 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// </summary>
         bool SupportsCustomFiniteDisplayScales { get; }
 
+        /// <summary>
+        /// The base map layer groups
+        /// </summary>
         IEnumerable<IBaseMapGroup> BaseMapLayerGroups { get; }
 
+        /// <summary>
+        /// Gets the layer for the given base layer group name
+        /// </summary>
+        /// <param name="groupName"></param>
+        /// <returns></returns>
         IEnumerable<IBaseMapLayer> GetLayersForGroup(string groupName);
 
         /// <summary>
@@ -138,6 +190,9 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         void RemoveBaseLayerGroup(IBaseMapGroup group);
     }
 
+    /// <summary>
+    /// Extension methods
+    /// </summary>
     public static class ExtensionMethods
     {
         /// <summary>
@@ -353,7 +408,6 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// </summary>
         /// <param name="map"></param>
         /// <param name="group"></param>
-        /// <param name="bDetachIfEmpty"></param>
         public static void RemoveBaseLayerGroup(this ITileSetDefinition map, IBaseMapGroup group)
         {
             Check.ArgumentNotNull(map, nameof(map));

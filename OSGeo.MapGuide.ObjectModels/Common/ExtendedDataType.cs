@@ -22,7 +22,7 @@
 
 using System.ComponentModel;
 using System.IO;
-
+#pragma warning disable 1591, 0114, 0108, 0114, 0108
 namespace OSGeo.MapGuide.ObjectModels.Common
 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.3.0.33572")] //NOXLATE

@@ -23,13 +23,22 @@ using Irony.Parsing;
 
 namespace OSGeo.FDO.Expressions
 {
+    /// <summary>
+    /// An FDO unary logical operator
+    /// </summary>
     public class FdoUnaryLogicalOperator : FdoLogicalOperator
     {
+        /// <summary>
+        /// The filter type
+        /// </summary>
         public override FilterType FilterType => FilterType.UnaryLogicalOperator;
 
+        /// <summary>
+        /// The negated filter
+        /// </summary>
         public FdoFilter NegatedFilter { get; }
 
-        public FdoUnaryLogicalOperator(ParseTreeNode node)
+        internal FdoUnaryLogicalOperator(ParseTreeNode node)
         {
             this.NegatedFilter = FdoFilter.ParseNode(node.ChildNodes[1]);
         }

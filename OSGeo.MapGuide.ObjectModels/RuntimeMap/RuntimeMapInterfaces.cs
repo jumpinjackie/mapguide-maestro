@@ -105,10 +105,19 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
     /// </summary>
     public interface IRuntimeMapInfo2 : IRuntimeMapInfo
     {
+        /// <summary>
+        /// The referenced tile set definition
+        /// </summary>
         string TileSetDefinition { get; set; }
 
+        /// <summary>
+        /// The tile width
+        /// </summary>
         int? TileWidth { get; set; }
 
+        /// <summary>
+        /// The tile height
+        /// </summary>
         int? TileHeight { get; set; }
     }
 
