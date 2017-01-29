@@ -51,3 +51,14 @@ test_script:
     $coveralls = (Resolve-Path "Maestro/packages/coveralls.net.*/tools/csmacnz.coveralls.exe").ToString()
     
     & $coveralls --opencover -i OpenCoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
+- ps: >-
+    $wc = New-Object 'System.Net.WebClient'
+    $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\xunit-results.xml))
+
+artifacts:
+  - path: $(appveyor_build_folder)\artifacts\MapGuideMaestro-$(configuration)-$(appveyor_build_version)-Setup.exe
+    name: MapGuide Maestro Windows Installer
+
+  - path: $(appveyor_build_folder)\artifacts\Maestro-SDK-$(appveyor_build_version).zip
+    name: MapGuide Maestro SDK
+    type: zip
