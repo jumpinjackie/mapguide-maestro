@@ -42,6 +42,7 @@ after_build:
   - makensis.exe /DSLN_CONFIG=%CONFIGURATION% /DCPU=x86 /DRELEASE_VERSION=%APPVEYOR_BUILD_VERSION% Maestro.nsi
   - cd /D %APPVEYOR_BUILD_FOLDER%\SDK
   - 7z a %APPVEYOR_BUILD_FOLDER%\artifacts\Maestro-SDK-%APPVEYOR_BUILD_VERSION%.zip *
+  - cd %APPVEYOR_BUILD_FOLDER%
 
 test_script:
 - ps: >-
