@@ -24,6 +24,8 @@ using ICSharpCode.Core;
 using Maestro.Base.Editor;
 using Maestro.Base.Services;
 using Maestro.Editors.Common;
+using OSGeo.MapGuide.ObjectModels.Common;
+using System;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -40,38 +42,54 @@ namespace Maestro.Base.Commands.SiteExplorer
             {
                 int replaced = 0;
                 var diag = new FindReplaceDialog();
+                Action<string> DoRun = (string resourceId) =>
+                {
+                    //To maintain resource integrity, we don't modify any open resources. So we
+                    //ask if they want to close down first. If they say no, omit this resource from
+                    //the find/replace
+                    if (omgr.IsOpen(resourceId, conn))
+                    {
+                        omgr.CloseEditors(conn, resourceId, false);
+                        //Still open. Must've said no
+                        if (omgr.IsOpen(resourceId, conn))
+                        {
+                            LoggingService.Info(string.Format(Strings.SkippingResource, resourceId));
+                            return;
+                        }
+                    }
+
+                    //Re-open in XML editor for user review
+                    var ed = (XmlEditor)omgr.Open(resourceId, conn, true, wb.ActiveSiteExplorer);
+
+                    //Do the find/replace. Dirty state would be triggered if any replacements were made
+                    //It is then up to the user to review the change and decide whether to save or not
+                    ed.FindAndReplace(diag.FindToken, diag.ReplaceToken);
+
+                    replaced++;
+                };
                 if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     foreach (var item in exp.SelectedItems)
                     {
                         if (item.IsFolder)
-                            continue;
-
-                        //To maintain resource integrity, we don't modify any open resources. So we
-                        //ask if they want to close down first. If they say no, omit this resource from
-                        //the find/replace
-                        if (omgr.IsOpen(item.ResourceId, conn))
                         {
-                            omgr.CloseEditors(conn, item.ResourceId, false);
-                            //Still open. Must've said no
-                            if (omgr.IsOpen(item.ResourceId, conn))
+                            var resources = conn.ResourceService.GetRepositoryResources(item.ResourceId);
+                            foreach (IRepositoryItem resource in resources.Items)
                             {
-                                LoggingService.Info(string.Format(Strings.SkippingResource, item.ResourceId));
-                                continue;
+                                if (resource.ResourceType != "Folder")
+                                {
+                                    DoRun(resource.ResourceId);
+                                }
                             }
                         }
-
-                        //Re-open in XML editor for user review
-                        var ed = (XmlEditor)omgr.Open(item.ResourceId, conn, true, wb.ActiveSiteExplorer);
-
-                        //Do the find/replace. Dirty state would be triggered if any replacements were made
-                        //It is then up to the user to review the change and decide whether to save or not
-                        ed.FindAndReplace(diag.FindToken, diag.ReplaceToken);
-
-                        replaced++;
+                        else
+                        {
+                            DoRun(item.ResourceId);
+                        }
                     }
                 }
             }
         }
+
     }
 }
