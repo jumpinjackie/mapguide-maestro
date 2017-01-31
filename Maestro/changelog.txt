@@ -11,6 +11,7 @@
  - Fix: Editing Fusion widget XML does not trigger dirty state
  - Fix: Incorrect total tile counts for tiling runs with custom extents
  - Fix: mapguide-rest addin generates incorrect representations node in configuration editor
+ - XML find/replace context menu now also applies for resources under selected folders (pull request by: https://github.com/Noobud)
  - Added validation rules for ODBC configuration documents
  - MgCooker now supports a map-viewer-based extent selection mode
  - Local Map Previews are now non-modal
