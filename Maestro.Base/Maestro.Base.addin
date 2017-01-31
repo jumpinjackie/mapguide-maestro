@@ -440,6 +440,11 @@
                       label="${res:SiteExplorer_SelectedFolder_CreatePackage}"
                       class="Maestro.Base.Commands.CreatePackageCommand" />
             <MenuItem type="Separator" />
+            <MenuItem id="FindReplaceXml"
+                      label="${res:SiteExplorer_FindReplaceXml}"
+                      class="Maestro.Base.Commands.SiteExplorer.FindReplaceXmlContentCommand" />
+            <MenuItem type="Separator" />
+
             <Condition action="Disable" name="IsNotRoot">
                 <Condition action="Disable" name="CanCutOrCopy">
                     <MenuItem id="CopyResourceIds"
@@ -515,6 +520,11 @@
                       icon="cross_script"
                       label="${res:SiteExplorer_SelectedItem_Delete}"
                       class="Maestro.Base.Commands.SiteExplorer.DeleteSelectedItemsCommand" />
+            <MenuItem type="Separator" />
+            <MenuItem id="FindReplaceXml"
+                label="${res:SiteExplorer_FindReplaceXml}"
+                class="Maestro.Base.Commands.SiteExplorer.FindReplaceXmlContentCommand" />
+
         </Condition>
     </Path>
 
