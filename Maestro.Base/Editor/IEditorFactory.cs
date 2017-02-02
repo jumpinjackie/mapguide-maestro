@@ -42,7 +42,7 @@ namespace Maestro.Base.Editor
         /// <summary>
         /// Creates an instance of this resource editor
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The editor instance</returns>
         IEditorViewContent Create();
     }
 

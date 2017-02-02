@@ -106,8 +106,15 @@ namespace Maestro.Shared.UI
             Application.Idle += OnApplicationIdle;
         }
 
+        /// <summary>
+        /// The currently applied theme
+        /// </summary>
         public ThemeBase Theme => contentPanel.Theme;
 
+        /// <summary>
+        /// Applies the specific theme
+        /// </summary>
+        /// <param name="theme"></param>
         public virtual void ApplyTheme(ThemeBase theme)
         {
             contentPanel.Theme = theme;
@@ -156,8 +163,8 @@ namespace Maestro.Shared.UI
         /// <summary>
         /// Called when a view content has been activated
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="content"></param>
+        /// <param name="sender">The sender</param>
+        /// <param name="content">The view content</param>
         protected virtual void OnViewActivated(object sender, IViewContent content)
         {
         }
@@ -347,7 +354,7 @@ namespace Maestro.Shared.UI
         /// <summary>
         /// Shows the content.
         /// </summary>
-        /// <param name="vc">The vc.</param>
+        /// <param name="vc">The view content.</param>
         internal void ShowContent(IViewContent vc)
         {
             DockContent content = new DockContent();

@@ -73,9 +73,9 @@ namespace System.Xml
         /// <summary>
         /// Gets the XML string of this document
         /// </summary>
-        /// <param name="doc"></param>
-        /// <param name="indent"></param>
-        /// <returns></returns>
+        /// <param name="doc">The XML document</param>
+        /// <param name="indent">If true, will indent the XML content, false otherwise</param>
+        /// <returns>The XML string</returns>
         public static string ToXmlString(this XmlDocument doc, bool indent = false)
         {
             Check.ArgumentNotNull(doc, nameof(doc));
@@ -173,9 +173,9 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <summary>
             /// Gets the configuration document content
             /// </summary>
-            /// <param name="fs"></param>
-            /// <param name="conn"></param>
-            /// <returns></returns>
+            /// <param name="fs">The Feature Source</param>
+            /// <param name="conn">The Server Connection</param>
+            /// <returns>The configuration document XML content</returns>
             public static string GetConfigurationContent(this IFeatureSource fs, IServerConnection conn)
             {
                 Check.ArgumentNotNull(fs, nameof(fs));
@@ -197,9 +197,9 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <summary>
             /// Sets the configuration document content
             /// </summary>
-            /// <param name="fs"></param>
-            /// <param name="conn"></param>
-            /// <param name="xmlContent"></param>
+            /// <param name="fs">The feature source</param>
+            /// <param name="conn">The server connection</param>
+            /// <param name="xmlContent">The confiugration document XML content</param>
             public static void SetConfigurationContent(this IFeatureSource fs, IServerConnection conn, string xmlContent)
             {
                 Check.ArgumentNotNull(fs, nameof(fs));
@@ -238,7 +238,7 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <param name="fs">The feature source</param>
             /// <param name="conn">The server connection</param>
             /// <param name="className">Name of the class.</param>
-            /// <returns></returns>
+            /// <returns>The array of identity properties</returns>
             public static string[] GetIdentityProperties(this IFeatureSource fs, IServerConnection conn, string className)
             {
                 Check.ArgumentNotNull(fs, nameof(fs));
@@ -274,8 +274,8 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <summary>
             /// Regenerates the sheet list in this drawing source.
             /// </summary>
-            /// <param name="source"></param>
-            /// <param name="conn"></param>
+            /// <param name="source">The drawing source</param>
+            /// <param name="conn">The server connection</param>
             /// <returns>True if sheets were regenerated. False otherwise</returns>
             public static bool RegenerateSheetList(this IDrawingSource source, IServerConnection conn)
             {
@@ -300,8 +300,8 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <summary>
             /// Updates the extents of all sheets based on their respective AutoCAD Viewport Data in the embedded PIA resource
             /// </summary>
-            /// <param name="source"></param>
-            /// <param name="conn"></param>
+            /// <param name="source">The drawing source</param>
+            /// <param name="conn">The server connection</param>
             public static void UpdateExtents(this IDrawingSource source, IServerConnection conn)
             {
                 Check.ArgumentNotNull(source, nameof(source));
@@ -389,9 +389,9 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <summary>
             /// Returns the associated spatial context for this Layer Definition
             /// </summary>
-            /// <param name="layer"></param>
-            /// <param name="conn"></param>
-            /// <returns></returns>
+            /// <param name="layer">The layer definition</param>
+            /// <param name="conn">The server connection</param>
+            /// <returns>The associated spatial context</returns>
             public static IFdoSpatialContext GetSpatialContext(this ILayerDefinition layer, IServerConnection conn)
             {
                 Check.ArgumentNotNull(layer, nameof(layer));
@@ -447,7 +447,7 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <param name="conn">The server connection</param>
             /// <param name="allowFallbackToContextInformation">If true, will default to the extents of the active spatial context.</param>
             /// <param name="csWkt">The coordinate system WKT that this extent corresponds to</param>
-            /// <returns></returns>
+            /// <returns>The spatial extent</returns>
             public static IEnvelope GetSpatialExtent(this ILayerDefinition layer, IServerConnection conn, bool allowFallbackToContextInformation, out string csWkt)
             {
                 csWkt = null;
@@ -539,9 +539,9 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <summary>
             /// Gets the name of the active spatial context used by the given layer definition
             /// </summary>
-            /// <param name="ldf"></param>
-            /// <param name="conn"></param>
-            /// <returns></returns>
+            /// <param name="ldf">The layer definition</param>
+            /// <param name="conn">The server connection</param>
+            /// <returns>The name of the active spatial context</returns>
             public static string GetLayerSpatialContextName(this ILayerDefinition ldf, IServerConnection conn)
             {
                 var rl = ldf.SubLayer as IRasterLayerDefinition;
@@ -566,8 +566,8 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <summary>
             /// Creates a default point composite rule
             /// </summary>
-            /// <param name="fact"></param>
-            /// <returns></returns>
+            /// <param name="fact">The layer element factory</param>
+            /// <returns>The default point composite rule</returns>
             public static ICompositeRule CreateDefaultPointCompositeRule(this ILayerElementFactory fact)
             {
                 Check.ArgumentNotNull(fact, nameof(fact));
@@ -622,8 +622,8 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <summary>
             /// Creates a default line composite rule
             /// </summary>
-            /// <param name="fact"></param>
-            /// <returns></returns>
+            /// <param name="fact">The layer element factory</param>
+            /// <returns>The default line composite rule</returns>
             public static ICompositeRule CreateDefaultLineCompositeRule(this ILayerElementFactory fact)
             {
                 Check.ArgumentNotNull(fact, nameof(fact));
@@ -673,8 +673,8 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <summary>
             /// Creates a default area composite rule
             /// </summary>
-            /// <param name="fact"></param>
-            /// <returns></returns>
+            /// <param name="fact">The layer element factory</param>
+            /// <returns>The default area composite rule</returns>
             public static ICompositeRule CreateDefaultAreaCompositeRule(this ILayerElementFactory fact)
             {
                 Check.ArgumentNotNull(fact, nameof(fact));
@@ -750,8 +750,8 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <summary>
             /// Creates a default point composite style
             /// </summary>
-            /// <param name="fact"></param>
-            /// <returns></returns>
+            /// <param name="fact">The layer element factory</param>
+            /// <returns>The default point composite style</returns>
             public static ICompositeTypeStyle CreateDefaultPointCompositeStyle(this ILayerElementFactory fact)
             {
                 Check.ArgumentNotNull(fact, nameof(fact));
@@ -764,8 +764,8 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <summary>
             /// Creates a default line composite style
             /// </summary>
-            /// <param name="fact"></param>
-            /// <returns></returns>
+            /// <param name="fact">The layer element factory</param>
+            /// <returns>The default line composite style</returns>
             public static ICompositeTypeStyle CreateDefaultLineCompositeStyle(this ILayerElementFactory fact)
             {
                 Check.ArgumentNotNull(fact, nameof(fact));
@@ -778,8 +778,8 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <summary>
             /// Creates a default area composite style
             /// </summary>
-            /// <param name="fact"></param>
-            /// <returns></returns>
+            /// <param name="fact">The layer element factory</param>
+            /// <returns>The default area composite style</returns>
             public static ICompositeTypeStyle CreateDefaultAreaCompositeStyle(this ILayerElementFactory fact)
             {
                 Check.ArgumentNotNull(fact, nameof(fact));

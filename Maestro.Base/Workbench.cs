@@ -67,6 +67,7 @@ namespace Maestro.Base
         /// <summary>
         /// Initializes the workbench.
         /// </summary>
+        /// <param name="init">The initializer</param>
         public static void InitializeWorkbench(IWorkbenchInitializer init)
         {
             if (!_init)
@@ -106,7 +107,7 @@ namespace Maestro.Base
         /// <summary>
         /// Applies the given theme to this workbench
         /// </summary>
-        /// <param name="theme"></param>
+        /// <param name="theme">The theme to apply</param>
         public override void ApplyTheme(ThemeBase theme)
         {
             base.ApplyTheme(theme);

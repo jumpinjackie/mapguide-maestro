@@ -69,6 +69,7 @@
       <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.MapDefinition.v2_4_0" isExposed="False" />
       <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.PrintLayout.v1_0_0" isExposed="False" />
       <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0" isExposed="False" />
+      <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.RuntimeMap.v3_0_0" isExposed="False" />
       <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0" isExposed="False" />
       <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0" isExposed="False" />
       <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0" isExposed="False" />
@@ -79,6 +80,7 @@
       <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.WebLayout.v1_1_0" isExposed="False" />
       <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.WebLayout.v2_4_0" isExposed="False" />
       <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.WebLayout.v2_6_0" isExposed="False" />
+      <Filter entryType="Namespace" fullName="OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0" isExposed="False" />
     </ApiFilter>
     <SdkLinkType>None</SdkLinkType>
     <FeedbackEMailAddress>jumpinjackie%40gmail.com</FeedbackEMailAddress>

@@ -57,7 +57,7 @@ namespace Maestro.Base.Editor
         /// <summary>
         /// Gets the XML content of the edited resource
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The XML content</returns>
         string GetXmlContent();
 
         /// <summary>

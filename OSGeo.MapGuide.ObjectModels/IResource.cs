@@ -52,7 +52,7 @@ namespace OSGeo.MapGuide.ObjectModels
 
         /// <summary>
         /// Serializes this instance to XML and returns the XML content. It is not recommended to call this method directly
-        /// instead use <see cref="M:OSGeo.MapGuide.MaestroAPI.ResourceTypeRegistry.Serialize"/> as that will invoke any pre-serialization
+        /// instead use <see cref="M:OSGeo.MapGuide.ObjectModels.ResourceTypeRegistry.Serialize"/> as that will invoke any pre-serialization
         /// hooks that may have been set up for this particular resource.
         /// </summary>
         /// <returns></returns>
@@ -74,8 +74,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// Serializes to stream.
         /// </summary>
-        /// <param name="res">The res.</param>
-        /// <returns></returns>
+        /// <param name="res">The resource</param>
+        /// <returns>The serialized stream</returns>
         public static Stream SerializeToStream(this IResource res)
         {
             string str = res.Serialize();
@@ -86,7 +86,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Gets the resource type descriptor.
         /// </summary>
         /// <param name="res">The res.</param>
-        /// <returns></returns>
+        /// <returns>The resource type descriptor</returns>
         public static ResourceTypeDescriptor GetResourceTypeDescriptor(this IResource res)
         {
             return new ResourceTypeDescriptor(res.ResourceType, res.ResourceVersion.ToString());

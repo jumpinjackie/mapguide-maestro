@@ -349,15 +349,15 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
         /// <summary>
         /// Exports the specified commands to the specified file
         /// </summary>
-        /// <param name="file"></param>
-        /// <param name="cmdNames"></param>
+        /// <param name="file">The file to export to</param>
+        /// <param name="cmdNames">The specified commands</param>
         void ExportCustomCommands(string file, string[] cmdNames);
 
         /// <summary>
         /// Imports commands from the specified file
         /// </summary>
-        /// <param name="file"></param>
-        /// <returns></returns>
+        /// <param name="file">The file to import from</param>
+        /// <returns>The imported commands</returns>
         ImportedCommandResult[] ImportCustomCommands(string file);
 
         /// <summary>
@@ -365,26 +365,27 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="region">The region.</param>
+        /// <returns>True if referenced. False otherwise</returns>
         bool IsCommandReferenced(string name, out WebLayoutRegion[] region);
 
         /// <summary>
         /// Removes all references to the specified command name
         /// </summary>
         /// <param name="cmdName">Name of the command.</param>
-        /// <returns></returns>
+        /// <returns>The number removed</returns>
         int RemoveAllReferences(string cmdName);
 
         /// <summary>
         /// Gets a command by its name
         /// </summary>
         /// <param name="cmdName">Name of the command.</param>
-        /// <returns></returns>
+        /// <returns>The command</returns>
         ICommand GetCommandByName(string cmdName);
 
         /// <summary>
         /// Gets the custom commands.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The enumerable of commands</returns>
         IEnumerable<ICommand> GetCustomCommands();
 
         /// <summary>
@@ -392,7 +393,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="menu">The menu.</param>
-        /// <returns></returns>
+        /// <returns>True if found. False otherwise</returns>
         bool FindCommand(string name, IMenu menu);
 
         /// <summary>
@@ -404,7 +405,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
         /// <summary>
         /// Creates the default view.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The default view</returns>
         IMapView CreateDefaultView();
 
         /// <summary>
@@ -464,7 +465,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
         /// <param name="iconName">Name of the icon.</param>
         /// <param name="targets">The targets.</param>
         /// <param name="action">The action.</param>
-        /// <returns></returns>
+        /// <returns>The basic command</returns>
         IBasicCommand CreateBasicCommand(string label, string tooltip, string description, string iconName, TargetViewerType targets, BasicCommandActionType action);
 
         /// <summary>
@@ -476,7 +477,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
         /// <param name="imageUrl">The image URL.</param>
         /// <param name="disabledImageUrl">The disabled image URL.</param>
         /// <param name="subItems">The sub items.</param>
-        /// <returns></returns>
+        /// <returns>The flyout</returns>
         IFlyoutItem CreateFlyout(
             string label,
             string tooltip,
@@ -497,38 +498,38 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
         /// <param name="targets">The targets.</param>
         /// <param name="target">The target.</param>
         /// <param name="targetFrame">The target frame.</param>
-        /// <returns></returns>
+        /// <returns>The targeted command</returns>
         T CreateTargetedCommand<T>(string name, string label, string tooltip, string description, string iconName, TargetViewerType targets, TargetType target, string targetFrame) where T : ITargetedCommand, new();
 
         /// <summary>
         /// Creates the command item.
         /// </summary>
-        /// <param name="cmdName">Name of the CMD.</param>
-        /// <returns></returns>
+        /// <param name="cmdName">Name of the command.</param>
+        /// <returns>The command item</returns>
         ICommandItem CreateCommandItem(string cmdName);
 
         /// <summary>
         /// Creates the invoke URL command.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The invoke URL command</returns>
         IInvokeUrlCommand CreateInvokeUrlCommand();
 
         /// <summary>
         /// Creates the search command.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The search command</returns>
         ISearchCommand CreateSearchCommand();
 
         /// <summary>
         /// Creates the invoke script command.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The invoke script command</returns>
         IInvokeScriptCommand CreateInvokeScriptCommand();
 
         /// <summary>
         /// Creates the separator.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The separator</returns>
         ISeparatorItem CreateSeparator();
     }
 
@@ -796,8 +797,8 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
         /// <summary>
         /// Adds items to the menu
         /// </summary>
-        /// <param name="mnu"></param>
-        /// <param name="items"></param>
+        /// <param name="mnu">The menu</param>
+        /// <param name="items">The items to add</param>
         public static void AddItems(this IMenu mnu, params IUIItem[] items)
         {
             Check.ArgumentNotNull(mnu, nameof(mnu));

@@ -207,7 +207,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="resourceType">Type of the resource.</param>
         /// <param name="stream">The stream.</param>
-        /// <returns></returns>
+        /// <returns>The deserialized resource</returns>
         public static IResource Deserialize(string resourceType, Stream stream)
         {
             //UGLY: We have to peek inside the stream to determine the version number
@@ -238,7 +238,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Serializes the specified resource.
         /// </summary>
         /// <param name="res">The resource.</param>
-        /// <returns></returns>
+        /// <returns>The serialized stream</returns>
         public static Stream Serialize(IResource res)
         {
             var rd = res.GetResourceTypeDescriptor();
@@ -256,8 +256,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// Serializes the specified resource.
         /// </summary>
-        /// <param name="res"></param>
-        /// <returns></returns>
+        /// <param name="res">The resource to serialize</param>
+        /// <returns>The XML content string</returns>
         public static string SerializeAsString(IResource res)
         {
             using (var stream = Serialize(res))
@@ -273,7 +273,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Deserializes the specified XML.
         /// </summary>
         /// <param name="xml">The XML.</param>
-        /// <returns></returns>
+        /// <returns>The deserialized resource</returns>
         public static IResource Deserialize(string xml)
         {
             var checker = new ResourceContentVersionChecker(xml);

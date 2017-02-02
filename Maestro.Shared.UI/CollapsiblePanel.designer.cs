@@ -94,6 +94,10 @@
         private System.Windows.Forms.Label lblHeaderText;
         private System.Windows.Forms.Button btnExpand;
         private System.Windows.Forms.Button btnCollapse;
+        
+        /// <summary>
+        /// The content panel
+        /// </summary>
         public System.Windows.Forms.Panel contentPanel;
     }
 }

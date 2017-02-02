@@ -132,7 +132,7 @@ namespace Maestro.Base.Editor
         /// <summary>
         /// Gets the XML content of the edited resource
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The XML content</returns>
         public virtual string GetXmlContent()
         {
             using (var sr = new System.IO.StreamReader(ObjectFactory.Serialize(this.Resource)))
@@ -288,7 +288,7 @@ namespace Maestro.Base.Editor
         /// and XML edit of this resource). Thus subclasses must take this scenario into
         /// account when implementing
         /// </summary>
-        /// <param name="service"></param>
+        /// <param name="service">The editor service</param>
         protected virtual void Bind(IEditorService service)
         {
             throw new NotImplementedException();
@@ -342,7 +342,7 @@ namespace Maestro.Base.Editor
         }
 
         /// <summary>
-        /// Gets whether this resource can be previewed
+        /// Gets whether this resource can be profiled
         /// </summary>
         public virtual bool CanProfile
         {

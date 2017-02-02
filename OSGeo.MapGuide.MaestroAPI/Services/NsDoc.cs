@@ -27,8 +27,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
     /// <summary>
     /// The <c>OSGeo.MapGuide.MaestroAPI.Services</c> namespace defines the core MapGuide Service APIs as
     /// interfaces. All implementations of <see cref="T:OSGeo.MapGuide.MaestroAPI.IServerConnection"/> are
-    /// guaranteed to implement at least the <see cref="T:OSGeo.MapGuide.MaestroAPI.IFeatureService"/> and
-    /// <see cref="T:OSGeo.MapGuide.MaestroAPI.IResourceService"/> interfaces. You can use the connection
+    /// guaranteed to implement at least the <see cref="T:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService"/> and
+    /// <see cref="T:OSGeo.MapGuide.MaestroAPI.Services.IResourceService"/> interfaces. You can use the connection
     /// capabilities to determine if additional service interfaces are implemented.
     /// </summary>
     [CompilerGenerated]

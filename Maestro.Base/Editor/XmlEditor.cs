@@ -48,6 +48,9 @@ namespace Maestro.Base.Editor
     /// </remarks>
     public partial class XmlEditor : EditorContentBase
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public XmlEditor()
         {
             InitializeComponent();
@@ -68,6 +71,16 @@ namespace Maestro.Base.Editor
 
         private IEditorService _edSvc;
 
+        /// <summary>
+        /// Binds the specified resource to this control. This effectively initializes
+        /// all the fields in this control and sets up databinding on all fields. All
+        /// subclasses *must* override this method.
+        ///
+        /// Also note that this method may be called more than once (e.g. Returning from
+        /// and XML edit of this resource). Thus subclasses must take this scenario into
+        /// account when implementing
+        /// </summary>
+        /// <param name="service">The editor service</param>
         protected override void Bind(IEditorService service)
         {
             //NOTE: This is exempt from #1656 requirements because this will never be called when returing

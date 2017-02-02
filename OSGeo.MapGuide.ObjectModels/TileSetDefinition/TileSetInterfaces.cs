@@ -59,15 +59,15 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Adds a configuration parameter
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
+        /// <param name="name">The parameter name</param>
+        /// <param name="value">The parameter value</param>
         void AddParameter(string name, string value);
 
         /// <summary>
         /// Sets the value for a configuration parameter
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
+        /// <param name="name">The parameter name</param>
+        /// <param name="value">The parameter value</param>
         void SetParameter(string name, string value);
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Sets the finite display scale list
         /// </summary>
-        /// <param name="scales"></param>
+        /// <param name="scales">The scales to set</param>
         void SetFiniteDisplayScales(IEnumerable<double> scales);
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// Gets the scale at the specified index
         /// </summary>
         /// <param name="index">The index.</param>
-        /// <returns></returns>
+        /// <returns>The scale</returns>
         double GetScaleAt(int index);
 
         /// <summary>
@@ -173,14 +173,14 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// Gets the group at the specified index
         /// </summary>
         /// <param name="index">The index.</param>
-        /// <returns></returns>
+        /// <returns>The group</returns>
         IBaseMapGroup GetGroupAt(int index);
 
         /// <summary>
         /// Adds the base layer group.
         /// </summary>
         /// <param name="name">The name.</param>
-        /// <returns></returns>
+        /// <returns>The group</returns>
         IBaseMapGroup AddBaseLayerGroup(string name);
 
         /// <summary>
@@ -198,8 +198,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets the number of base layers
         /// </summary>
-        /// <param name="map"></param>
-        /// <returns></returns>
+        /// <param name="map">The map</param>
+        /// <returns>The count</returns>
         public static int GetBaseLayerCount(this ITileSetAbstract map)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -209,8 +209,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets the minimum finite display scale
         /// </summary>
-        /// <param name="map"></param>
-        /// <returns></returns>
+        /// <param name="map">The map</param>
+        /// <returns>The minimum scale</returns>
         public static double GetMinScale(this ITileSetAbstract map)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -223,8 +223,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets the maximum finite display scale
         /// </summary>
-        /// <param name="map"></param>
-        /// <returns></returns>
+        /// <param name="map">The map</param>
+        /// <returns>The maximum scale</returns>
         public static double GetMaxScale(this ITileSetAbstract map)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -237,9 +237,9 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets the parent group for the specified layer
         /// </summary>
-        /// <param name="map"></param>
-        /// <param name="layer"></param>
-        /// <returns></returns>
+        /// <param name="map">The map</param>
+        /// <param name="layer">The layer</param>
+        /// <returns>The parent group</returns>
         public static IBaseMapGroup GetGroupForLayer(this ITileSetAbstract map, IBaseMapLayer layer)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -257,8 +257,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets whether this base map group has tiled layers
         /// </summary>
-        /// <param name="grp"></param>
-        /// <returns></returns>
+        /// <param name="grp">The group</param>
+        /// <returns>True if it has tiled layers. False otherwise</returns>
         public static bool HasLayers(this IBaseMapGroup grp)
         {
             Check.ArgumentNotNull(grp, nameof(grp));
@@ -268,8 +268,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets whether this base map has tiled layers
         /// </summary>
-        /// <param name="map"></param>
-        /// <returns></returns>
+        /// <param name="map">The map</param>
+        /// <returns>True if it has tiled layers. False otherwise</returns>
         public static bool HasLayers(this ITileSetAbstract map)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -287,8 +287,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets whether this base map has groups
         /// </summary>
-        /// <param name="map"></param>
-        /// <returns></returns>
+        /// <param name="map">The map</param>
+        /// <returns>True if it has groups. False otherwise</returns>
         public static bool HasGroups(this ITileSetAbstract map)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -298,8 +298,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets the first base map group
         /// </summary>
-        /// <param name="map"></param>
-        /// <returns></returns>
+        /// <param name="map">The map</param>
+        /// <returns>The first base map group</returns>
         public static IBaseMapGroup GetFirstGroup(this ITileSetAbstract map)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -312,9 +312,9 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets the base layer of the specified name
         /// </summary>
-        /// <param name="map"></param>
-        /// <param name="layerName"></param>
-        /// <returns></returns>
+        /// <param name="map">The map</param>
+        /// <param name="layerName">The layer name</param>
+        /// <returns>The base layer</returns>
         public static IBaseMapLayer GetBaseLayerByName(this ITileSetAbstract map, string layerName)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -334,9 +334,9 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets whether a base layer of the specified name exists.
         /// </summary>
-        /// <param name="map"></param>
-        /// <param name="layerName"></param>
-        /// <returns></returns>
+        /// <param name="map">The map</param>
+        /// <param name="layerName">The layer name</param>
+        /// <returns>True if it exists. False otherwise</returns>
         public static bool LayerExists(this ITileSetAbstract map, string layerName)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -348,9 +348,9 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets the base map group of the specified name
         /// </summary>
-        /// <param name="map"></param>
-        /// <param name="groupName"></param>
-        /// <returns></returns>
+        /// <param name="map">The map</param>
+        /// <param name="groupName">The group name</param>
+        /// <returns>The base map group</returns>
         public static IBaseMapGroup GetGroup(this ITileSetAbstract map, string groupName)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -366,9 +366,9 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets whether the specified base map group exists
         /// </summary>
-        /// <param name="map"></param>
-        /// <param name="groupName"></param>
-        /// <returns></returns>
+        /// <param name="map">The map</param>
+        /// <param name="groupName">The group name</param>
+        /// <returns>True if it exists. False otherwise</returns>
         public static bool GroupExists(this ITileSetAbstract map, string groupName)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -384,9 +384,9 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets the tiled layers for the specified base map group
         /// </summary>
-        /// <param name="map"></param>
-        /// <param name="groupName"></param>
-        /// <returns></returns>
+        /// <param name="map">The map</param>
+        /// <param name="groupName">The group name</param>
+        /// <returns>The tiled layers</returns>
         public static IEnumerable<IBaseMapLayer> GetLayersForGroup(this ITileSetAbstract map, string groupName)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -406,8 +406,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Removes the given base layer group from the Map Definition
         /// </summary>
-        /// <param name="map"></param>
-        /// <param name="group"></param>
+        /// <param name="map">The map</param>
+        /// <param name="group">The group to remove</param>
         public static void RemoveBaseLayerGroup(this ITileSetDefinition map, IBaseMapGroup group)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -420,9 +420,9 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets whether the specified base group exists in the tile set
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <param name="groupName"></param>
-        /// <returns></returns>
+        /// <param name="tileSet">The tile set</param>
+        /// <param name="groupName">The group name</param>
+        /// <returns>True if the group exists. False otherwise</returns>
         public static bool GroupExists(this ITileSetDefinition tileSet, string groupName)
         {
             Check.ArgumentNotNull(tileSet, nameof(tileSet));
@@ -438,9 +438,9 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets the tile set parameter of the specified name
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="tileSet">The tile set</param>
+        /// <param name="name">The name</param>
+        /// <returns>The parameter</returns>
         public static INameStringPair GetParameter(this ITileSetDefinition tileSet, string name)
         {
             Check.ArgumentNotNull(tileSet, nameof(tileSet));
@@ -451,8 +451,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets the coordinate system of this tile set. Must be using the default tile provider
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <returns></returns>
+        /// <param name="tileSet">The tile set</param>
+        /// <returns>The coordinate system</returns>
         public static string GetDefaultCoordinateSystem(this ITileSetDefinition tileSet)
         {
             Check.ArgumentNotNull(tileSet, nameof(tileSet));
@@ -466,8 +466,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Sets the coordinate system of this tile set. Must be using the default tile provider.
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <param name="coordinateSystem"></param>
+        /// <param name="tileSet">The tile set</param>
+        /// <param name="coordinateSystem">The coordinate system</param>
         public static void SetDefaultCoordinateSystem(this ITileSetDefinition tileSet, string coordinateSystem)
         {
             Check.ArgumentNotNull(tileSet, nameof(tileSet));
@@ -482,8 +482,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets the finite scale list of this tile set. Must be using the default tile provider.
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <returns></returns>
+        /// <param name="tileSet">The tile set</param>
+        /// <returns>The array of finite scales</returns>
         public static double[] GetDefaultFiniteScaleList(this ITileSetDefinition tileSet)
         {
             Check.ArgumentNotNull(tileSet, nameof(tileSet));
@@ -496,8 +496,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Sets the finite scale list of this tile set. Must be using the default tile provider.
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <param name="scales"></param>
+        /// <param name="tileSet">The tile set</param>
+        /// <param name="scales">The finite sclae list</param>
         public static void SetDefaultFiniteScaleList(this ITileSetDefinition tileSet, IEnumerable<double> scales)
         {
             Check.ArgumentNotNull(tileSet, nameof(tileSet));
@@ -513,8 +513,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets the tile path of this tile set
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <returns></returns>
+        /// <param name="tileSet">The tile set</param>
+        /// <returns>The tile path</returns>
         public static string GetTilePath(this ITileSetDefinition tileSet)
         {
             Check.ArgumentNotNull(tileSet, nameof(tileSet));
@@ -527,8 +527,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Sets the path of this tile set
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <param name="path"></param>
+        /// <param name="tileSet">The tile set</param>
+        /// <param name="path">The tile path</param>
         public static void SetTilePath(this ITileSetDefinition tileSet, string path)
         {
             Check.ArgumentNotNull(tileSet, nameof(tileSet));
@@ -539,8 +539,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets the width of this tile set. Must be using the default tile provider.
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <returns></returns>
+        /// <param name="tileSet">The tile set</param>
+        /// <returns>The width of this tile set</returns>
         public static int? GetDefaultTileWidth(this ITileSetDefinition tileSet)
         {
             Check.ArgumentNotNull(tileSet, nameof(tileSet));
@@ -553,8 +553,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Sets the width of this tile set. Must be using the default tile provider.
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <param name="value"></param>
+        /// <param name="tileSet">The tile set</param>
+        /// <param name="value">The width of this tile set</param>
         public static void SetDefaultTileWidth(this ITileSetDefinition tileSet, int value)
         {
             Check.ArgumentNotNull(tileSet, nameof(tileSet));
@@ -564,10 +564,10 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         }
 
         /// <summary>
-        /// Gets the width of this tile set. Must be using the default tile provider.
+        /// Gets the height of this tile set. Must be using the default tile provider.
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <returns></returns>
+        /// <param name="tileSet">The tile set</param>
+        /// <returns>The height of this tile set</returns>
         public static int? GetDefaultTileHeight(this ITileSetDefinition tileSet)
         {
             Check.ArgumentNotNull(tileSet, nameof(tileSet));
@@ -580,8 +580,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Sets the height of this tile set. Must be using the default tile provider.
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <param name="value"></param>
+        /// <param name="tileSet">The tile set</param>
+        /// <param name="value">The height</param>
         public static void SetDefaultTileHeight(this ITileSetDefinition tileSet, int value)
         {
             Check.ArgumentNotNull(tileSet, nameof(tileSet));
@@ -593,8 +593,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Gets the image format of this tile set
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <returns></returns>
+        /// <param name="tileSet">The tile set</param>
+        /// <returns>The image format</returns>
         public static string GetTileFormat(this ITileSetDefinition tileSet)
         {
             Check.ArgumentNotNull(tileSet, nameof(tileSet));
@@ -607,8 +607,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Sets the image format of this tile set
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <param name="format"></param>
+        /// <param name="tileSet">The tile set</param>
+        /// <param name="format">The image format</param>
         public static void SetTileFormat(this ITileSetDefinition tileSet, string format)
         {
             Check.ArgumentNotNull(tileSet, nameof(tileSet));
@@ -619,9 +619,9 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Sets XYZ provider parameters. Any existing parameters are cleared
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <param name="tileFormat"></param>
-        /// <param name="tilePath"></param>
+        /// <param name="tileSet">The tile set</param>
+        /// <param name="tileFormat">The image format</param>
+        /// <param name="tilePath">The tile path</param>
         public static void SetXYZProviderParameters(this ITileSetDefinition tileSet,
                                                     string tileFormat = "PNG",
                                                     string tilePath = "%MG_TILE_CACHE_PATH%")
@@ -639,13 +639,13 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <summary>
         /// Sets default provider parameters. Any existing parameters are cleared
         /// </summary>
-        /// <param name="tileSet"></param>
-        /// <param name="tileWidth"></param>
-        /// <param name="tileHeight"></param>
-        /// <param name="coordinateSystem"></param>
-        /// <param name="finiteScaleList"></param>
-        /// <param name="tileFormat"></param>
-        /// <param name="tilePath"></param>
+        /// <param name="tileSet">The tile set</param>
+        /// <param name="tileWidth">Tile width</param>
+        /// <param name="tileHeight">Tile height</param>
+        /// <param name="coordinateSystem">Coordinate system</param>
+        /// <param name="finiteScaleList">The finite scale list</param>
+        /// <param name="tileFormat">Image format</param>
+        /// <param name="tilePath">Tile path</param>
         public static void SetDefaultProviderParameters(this ITileSetDefinition tileSet, 
                                                         int tileWidth,
                                                         int tileHeight,

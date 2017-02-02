@@ -42,6 +42,9 @@ namespace Maestro.Base.Editor
     /// </remarks>
     public partial class MapDefinitionEditor : EditorContentBase
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MapDefinitionEditor()
         {
             InitializeComponent();
@@ -51,6 +54,16 @@ namespace Maestro.Base.Editor
         private IEditorService _edsvc;
         private bool _init = false;
 
+        /// <summary>
+        /// Binds the specified resource to this control. This effectively initializes
+        /// all the fields in this control and sets up databinding on all fields. All
+        /// subclasses *must* override this method.
+        ///
+        /// Also note that this method may be called more than once (e.g. Returning from
+        /// and XML edit of this resource). Thus subclasses must take this scenario into
+        /// account when implementing
+        /// </summary>
+        /// <param name="service">The editor service</param>
         protected override void Bind(IEditorService service)
         {
             if (!_init)
@@ -106,6 +119,9 @@ namespace Maestro.Base.Editor
             base.OnBeforeSave(sender, e);
         }
 
+        /// <summary>
+        /// Gets whether this resource can be profiled
+        /// </summary>
         public override bool CanProfile
         {
             get

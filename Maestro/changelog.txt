@@ -4,6 +4,7 @@
  - Fix: MgCooker - InvalidCastException when editing override coordinates for a selected TileSetDefinition
  - Fix: API - Infinite recursive call in CreateMapLayer
  - Fix: Upgrading WebLayout to >= 2.4 schema does not add MapTip command
+ - Fix: Upgrading Layer Definitions to >= 2.4 schema discards Url 
  - Fix: NRE adding or opening MapGroups beyond the first in Fusion editor
  - Fix: FDO stylization functions falsely reported by expression validator as unsupported
  - Fix: XML editor opens with trailing null characters, causing bogus content validation errors when saving
