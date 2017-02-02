@@ -139,6 +139,7 @@ namespace Maestro.Base.UI.Preferences
 
         internal static void ApplyGeneralDefaults()
         {
+            Props.Set(ConfigProperties.SelectedTheme, DefaultSelectedTheme);
             Props.Set(ConfigProperties.PreviewViewerType, DefaultPreviewViewerType);
             Props.Set(ConfigProperties.UserTemplatesDirectory, DefaultUserTemplatesDirectory);
             Props.Set(ConfigProperties.ShowMessages, DefaultShowMessages);
@@ -151,6 +152,11 @@ namespace Maestro.Base.UI.Preferences
             Props.Set(ConfigProperties.ShowTipOfTheDay, DefaultShowTipOfTheDay);
             Props.Set(ConfigProperties.LiveMapEditorPath, DefaultLiveMapEditorPath);
         }
+
+        /// <summary>
+        /// Default theme setting
+        /// </summary>
+        public static string DefaultSelectedTheme => "(none)"; //NOXLATE
 
         /// <summary>
         /// Default locale setting for web-based resource previews

@@ -29,6 +29,7 @@ using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
+using System.Linq;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
@@ -153,6 +154,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             using (var fs = Utils.OpenTempWrite("LayerDef_230.xml"))
             {
                 using (var src = ObjectFactory.Serialize(ldf4))
+                {
+                    Utility.CopyStream(src, fs);
+                }
+            }
+
+            var vl4 = ldf4.SubLayer as IVectorLayerDefinition;
+            vl4.Url = "http://www.google.com";
+
+            var ldf5 = (ILayerDefinition)conv.Convert(ldf4, new Version(2, 4, 0));
+
+            Assert.AreEqual("2.4.0", ldf5.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("LayerDefinition-2.4.0.xsd", ldf5.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("LayerDefinition-2.4.0.xsd", ldf5.ValidatingSchema);
+            Assert.AreEqual(new Version(2, 4, 0), ldf5.ResourceVersion);
+            Assert.IsTrue(ldf5.SubLayer is ISubLayerDefinition2);
+
+            var vl5 = ldf5.SubLayer as IVectorLayerDefinition;
+            Assert.AreEqual("http://www.google.com", vl5.Url);
+
+            using (var fs = Utils.OpenTempWrite("LayerDef_240.xml"))
+            {
+                using (var src = ObjectFactory.Serialize(ldf5))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -459,6 +482,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
                     Utility.CopyStream(src, fs);
                 }
             }
+
+            var maptip = wl.CommandSet.Commands.OfType<IBasicCommand>().Where(cmd => cmd.Action == BasicCommandActionType.MapTip);
+            Assert.False(maptip.Any());
+
+            var wl3 = (IWebLayout)conv.Convert(wl, new Version(2, 4, 0));
+            Assert.AreEqual("2.4.0", wl3.GetResourceTypeDescriptor().Version);
+            Assert.AreEqual("WebLayout-2.4.0.xsd", wl3.GetResourceTypeDescriptor().XsdName);
+            Assert.AreEqual("WebLayout-2.4.0.xsd", wl3.ValidatingSchema);
+            Assert.AreEqual(new Version(2, 4, 0), wl3.ResourceVersion);
+
+            maptip = wl3.CommandSet.Commands.OfType<IBasicCommand>().Where(cmd => cmd.Action == BasicCommandActionType.MapTip);
+            Assert.True(maptip.Any());
         }
 
         [Test]

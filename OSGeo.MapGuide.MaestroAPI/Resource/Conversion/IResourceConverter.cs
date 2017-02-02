@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
 using System.IO;
@@ -81,6 +82,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
             var dstVer = $"{targetVersion.Major}.{targetVersion.Minor}.{targetVersion.Build}"; //NOXLATE
             var dstXsd = resource.ValidatingSchema.Replace(resVer, dstVer);
 
+            //If upgrading to 2.4, we need to keep the old URL as it will be lost in the XML funnelling as 2.4
+            //introduces a non-additive schema change (<Url> becomes <UrlData>)
+            string restoreLdfUrl = null;
+            if (resource.ResourceType == ResourceTypes.LayerDefinition.ToString() && targetVersion >= new Version(2, 4, 0))
+            {
+                var ldf = (ILayerDefinition)resource;
+                var vl = ldf.SubLayer as IVectorLayerDefinition;
+                if (vl != null && !string.IsNullOrEmpty(vl.Url))
+                {
+                    restoreLdfUrl = vl.Url;
+                }
+            }
+
             using (var sr = ObjectFactory.Serialize(resource))
             {
                 using (var str = new StreamReader(sr))
@@ -91,7 +105,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
 
                     var convRes = ObjectFactory.DeserializeXml(xml.ToString());
                     convRes.ResourceID = resource.ResourceID;
-
+                    
                     //If upgraded to WebLayout 2.4 or higher need to add MapTip to command set
                     var wl = convRes as IWebLayout;
                     if (wl != null && wl.ResourceVersion >= new Version(2, 4, 0))
@@ -102,7 +116,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
                             wl.CommandSet.AddCommand(maptip);
                         }
                     }
-
+                    else if (convRes.ResourceType == ResourceTypes.LayerDefinition.ToString() && convRes.IsStronglyTyped && restoreLdfUrl != null)
+                    {
+                        var ldf = (ILayerDefinition)convRes;
+                        var vl = ldf.SubLayer as IVectorLayerDefinition;
+                        if (vl != null)
+                        {
+                            //The 2.4+ implementation will internally create the new UrlData element
+                            vl.Url = restoreLdfUrl;
+                        }
+                    }
                     return convRes;
                 }
             }

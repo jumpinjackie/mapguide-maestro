@@ -50,8 +50,8 @@ namespace Maestro.Base.UI.Preferences
             else
                 rdFusion.Checked = true;
 
-            cmbTheme.DataSource = new string[] { "(none)" }.Concat(Themes.List).ToArray();
-            cmbTheme.SelectedItem = Props.Get<string>(ConfigProperties.SelectedTheme, null);
+            cmbTheme.DataSource = new string[] { ConfigProperties.DefaultSelectedTheme }.Concat(Themes.List).ToArray();
+            cmbTheme.SelectedItem = Props.Get<string>(ConfigProperties.SelectedTheme, ConfigProperties.DefaultSelectedTheme);
 
             var path = Props.Get(ConfigProperties.UserTemplatesDirectory, Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates")); //NOXLATE
             txtTemplatePath.Text = path;
