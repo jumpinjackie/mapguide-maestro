@@ -157,6 +157,7 @@ namespace Maestro.Editors.Fusion
                             }
                         }
                     }
+                    _edSvc.HasChanged();
                 });
             }
         }

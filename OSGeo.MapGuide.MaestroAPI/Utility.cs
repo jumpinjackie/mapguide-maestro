@@ -40,6 +40,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -290,6 +291,20 @@ namespace OSGeo.MapGuide.MaestroAPI
             res += color.G.ToString("x02"); //NOXLATE
             res += color.B.ToString("x02"); //NOXLATE
             return res;
+        }
+
+        /// <summary>
+        /// Parses the given query string to a dictionary
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns></returns>
+        public static IDictionary<string, string> ParseQueryString(string queryString)
+        {
+            return queryString
+                .Split('&')
+                .Where(s => !string.IsNullOrEmpty(s))
+                .Select(s => s.Split('='))
+                .ToDictionary(s => s[0], s => s.Length > 1 ? s[1] : "");
         }
 
         /// <summary>

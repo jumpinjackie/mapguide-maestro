@@ -103,5 +103,29 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.False(Utility.IsSuccessfulConnectionTestResult(""));
             Assert.False(Utility.IsSuccessfulConnectionTestResult(null));
         }
+
+        [Test]
+        public void Utility_ParseQueryString()
+        {
+            var param = Utility.ParseQueryString("a=b&c=d");
+            Assert.AreEqual(2, param.Count);
+            Assert.AreEqual("b", param["a"]);
+            Assert.AreEqual("d", param["c"]);
+
+            param = Utility.ParseQueryString("a=b&c=d&");
+            Assert.AreEqual(2, param.Count);
+            Assert.AreEqual("b", param["a"]);
+            Assert.AreEqual("d", param["c"]);
+
+            param = Utility.ParseQueryString("a=&c=d&");
+            Assert.AreEqual(2, param.Count);
+            Assert.AreEqual("", param["a"]);
+            Assert.AreEqual("d", param["c"]);
+
+            param = Utility.ParseQueryString("a=b &c=d&");
+            Assert.AreEqual(2, param.Count);
+            Assert.AreEqual("b ", param["a"]);
+            Assert.AreEqual("d", param["c"]);
+        }
     }
 }

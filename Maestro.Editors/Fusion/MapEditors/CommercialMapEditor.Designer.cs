@@ -34,6 +34,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtType = new System.Windows.Forms.TextBox();
             this.txtSubType = new System.Windows.Forms.TextBox();
+            this.txtGoogleMapsApiKey = new System.Windows.Forms.TextBox();
+            this.btnSetApiKey = new System.Windows.Forms.Button();
+            this.grpGoogleApiKey = new System.Windows.Forms.GroupBox();
+            this.grpGoogleApiKey.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -93,10 +97,47 @@
             this.txtSubType.Size = new System.Drawing.Size(312, 20);
             this.txtSubType.TabIndex = 6;
             // 
+            // txtGoogleMapsApiKey
+            // 
+            this.txtGoogleMapsApiKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGoogleMapsApiKey.Location = new System.Drawing.Point(6, 18);
+            this.txtGoogleMapsApiKey.Multiline = true;
+            this.txtGoogleMapsApiKey.Name = "txtGoogleMapsApiKey";
+            this.txtGoogleMapsApiKey.Size = new System.Drawing.Size(372, 34);
+            this.txtGoogleMapsApiKey.TabIndex = 8;
+            this.txtGoogleMapsApiKey.TextChanged += new System.EventHandler(this.txtGoogleMapsApiKey_TextChanged);
+            // 
+            // btnSetApiKey
+            // 
+            this.btnSetApiKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSetApiKey.Enabled = false;
+            this.btnSetApiKey.Location = new System.Drawing.Point(303, 58);
+            this.btnSetApiKey.Name = "btnSetApiKey";
+            this.btnSetApiKey.Size = new System.Drawing.Size(75, 23);
+            this.btnSetApiKey.TabIndex = 9;
+            this.btnSetApiKey.Text = "Set API Key";
+            this.btnSetApiKey.UseVisualStyleBackColor = true;
+            this.btnSetApiKey.Click += new System.EventHandler(this.btnSetApiKey_Click);
+            // 
+            // grpGoogleApiKey
+            // 
+            this.grpGoogleApiKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpGoogleApiKey.Controls.Add(this.txtGoogleMapsApiKey);
+            this.grpGoogleApiKey.Controls.Add(this.btnSetApiKey);
+            this.grpGoogleApiKey.Location = new System.Drawing.Point(13, 104);
+            this.grpGoogleApiKey.Name = "grpGoogleApiKey";
+            this.grpGoogleApiKey.Size = new System.Drawing.Size(384, 90);
+            this.grpGoogleApiKey.TabIndex = 10;
+            this.grpGoogleApiKey.TabStop = false;
+            this.grpGoogleApiKey.Text = "Google Maps API key";
+            // 
             // CommercialMapEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grpGoogleApiKey);
             this.Controls.Add(this.txtSubType);
             this.Controls.Add(this.txtType);
             this.Controls.Add(this.label3);
@@ -104,7 +145,9 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
             this.Name = "CommercialMapEditor";
-            this.Size = new System.Drawing.Size(417, 102);
+            this.Size = new System.Drawing.Size(417, 280);
+            this.grpGoogleApiKey.ResumeLayout(false);
+            this.grpGoogleApiKey.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,5 +161,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtType;
         private System.Windows.Forms.TextBox txtSubType;
+        private System.Windows.Forms.TextBox txtGoogleMapsApiKey;
+        private System.Windows.Forms.Button btnSetApiKey;
+        private System.Windows.Forms.GroupBox grpGoogleApiKey;
     }
 }

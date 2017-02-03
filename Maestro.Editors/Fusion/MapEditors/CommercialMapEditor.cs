@@ -20,9 +20,12 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Maestro.Editors.Fusion.MapEditors
@@ -46,6 +49,22 @@ namespace Maestro.Editors.Fusion.MapEditors
                 Debug.Assert(opts != null);
                 txtName.Text = opts.Name;
                 txtSubType.Text = opts.Type;
+
+                var appDef = (IApplicationDefinition)_edSvc.GetEditedResource();
+                var googleMapsUrl = appDef.GetValue("GoogleScript");
+                if (!string.IsNullOrEmpty(googleMapsUrl))
+                {
+                    var uri = new Uri(googleMapsUrl);
+                    var param = Utility.ParseQueryString(uri.Query);
+                    if (param.ContainsKey("key"))
+                        txtGoogleMapsApiKey.Text = param["key"];
+
+                    btnSetApiKey.Enabled = false;
+                }
+                else
+                {
+                    grpGoogleApiKey.Visible = false;
+                }
             }
             finally
             {
@@ -60,6 +79,31 @@ namespace Maestro.Editors.Fusion.MapEditors
 
             _map.CmsMapOptions.Name = txtName.Text;
             _edSvc.HasChanged();
+        }
+
+        private void btnSetApiKey_Click(object sender, EventArgs e)
+        {
+            var appDef = (IApplicationDefinition)_edSvc.GetEditedResource();
+            var googleMapsUrl = appDef.GetValue("GoogleScript");
+            if (string.IsNullOrEmpty(googleMapsUrl))
+                googleMapsUrl = EditorFactory.GOOGLE_URL;
+
+            var tokens = new HashSet<string>();
+            var uri = new Uri(googleMapsUrl);
+            var param = Utility.ParseQueryString(uri.Query);
+            param["key"] = txtGoogleMapsApiKey.Text;
+
+            googleMapsUrl = googleMapsUrl.Substring(0, googleMapsUrl.IndexOf("?"));
+            googleMapsUrl += string.Join("&", param.Select(kvp => $"{kvp.Key}={kvp.Value}"));
+
+            appDef.SetValue("GoogleScript", googleMapsUrl); //NOXLATE
+            _edSvc.HasChanged();
+            btnSetApiKey.Enabled = false;
+        }
+
+        private void txtGoogleMapsApiKey_TextChanged(object sender, EventArgs e)
+        {
+            btnSetApiKey.Enabled = true;
         }
     }
 }
