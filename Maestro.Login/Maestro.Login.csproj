@@ -72,6 +72,17 @@
     <Compile Include="..\Properties\SignedAssemblyInfo2.cs">
       <Link>SignedAssemblyInfo2.cs</Link>
     </Compile>
+    <Compile Include="ConnectionErrorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectionErrorDialog.Designer.cs">
+      <DependentUpon>ConnectionErrorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Images.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Images.resx</DependentUpon>
+    </Compile>
     <Compile Include="LocalLoginCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -121,6 +132,13 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ConnectionErrorDialog.resx">
+      <DependentUpon>ConnectionErrorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="LocalLoginCtrl.resx">
       <DependentUpon>LocalLoginCtrl.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +195,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\server-567943_640.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\client-98525_640.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\computer-156951_640.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

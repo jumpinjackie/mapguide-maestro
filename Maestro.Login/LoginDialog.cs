@@ -313,12 +313,18 @@ namespace Maestro.Login
                 {
                     //We don't care about the outer exception
                     string msg = ex.InnerException.Message;
-                    MessageBox.Show(this, string.Format(Strings.ConnectionFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (msg.IndexOf("MgConnectionFailedException") >= 0)
+                        new ConnectionErrorDialog().ShowDialog();
+                    else
+                        MessageBox.Show(this, string.Format(Strings.ConnectionFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    MessageBox.Show(this, string.Format(Strings.ConnectionFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (msg.IndexOf("MgConnectionFailedException") >= 0)
+                        new ConnectionErrorDialog().ShowDialog();
+                    else
+                        MessageBox.Show(this, string.Format(Strings.ConnectionFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
