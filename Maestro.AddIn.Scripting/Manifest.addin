@@ -1,6 +1,6 @@
 ﻿<AddIn name="Maestro.AddIn.Scripting"
        author="Jackie Ng"
-       url="http://trac.osgeo.org/mapguide/wiki/maestro"
+       url="https://github.com/jumpinjackie/mapguide-maestro"
        description="MapGuide Maestro AddIn for providing scripting/automation capabilities via the IronPython scripting language"
        addInManagerHidden="preinstalled">
 

@@ -1,7 +1,7 @@
 ﻿#region Disclaimer / License
 
 // Copyright (C) 2013, Jackie Ng
-// http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
+// https://github.com/jumpinjackie/mapguide-maestro
 //
 // Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
 // Copyright 2002-2010 by

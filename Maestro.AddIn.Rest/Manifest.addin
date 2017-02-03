@@ -1,6 +1,6 @@
 ﻿<AddIn name="Maestro.AddIn.Rest"
        author="Jackie Ng"
-       url="http://trac.osgeo.org/mapguide/wiki/maestro"
+       url="https://github.com/jumpinjackie/mapguide-maestro"
        description="MapGuide Maestro AddIn to support publishing spatial data to a mapguide-rest instance"
        addInManagerHidden="preinstalled">
 

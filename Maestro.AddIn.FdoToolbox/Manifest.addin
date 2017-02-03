@@ -1,6 +1,6 @@
 ﻿<AddIn name="Maestro.AddIn.FdoToolbox"
        author="Jackie Ng"
-       url="http://trac.osgeo.org/mapguide/wiki/maestro"
+       url="https://github.com/jumpinjackie/mapguide-maestro"
        description="AddIn for MapGuide Maestro for performing feature manipulation operations"
        addInManagerHidden="preinstalled">
 

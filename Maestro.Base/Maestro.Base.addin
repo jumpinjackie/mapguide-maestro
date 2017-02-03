@@ -1,6 +1,6 @@
 ﻿<AddIn name="Maestro.Base"
        author="Jackie Ng"
-       url="http://trac.osgeo.org/mapguide/wiki/maestro"
+       url="https://github.com/jumpinjackie/mapguide-maestro"
        description="Base Component for MapGuide Maestro"
        addInManagerHidden="true">
 

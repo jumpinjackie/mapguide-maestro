@@ -1,6 +1,6 @@
 ﻿<AddIn name="Add-In Manager"
        author="Jackie Ng"
-       url="http://trac.osgeo.org/mapguide/wiki/maestro"
+       url="https://github.com/jumpinjackie/mapguide-maestro"
        description="Add-In Manager"
        addInManagerHidden="true">
 

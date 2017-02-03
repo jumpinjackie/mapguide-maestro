@@ -63,7 +63,7 @@ namespace ProviderTemplate.Properties
         /// <summary>
         ///   Looks up a localized string similar to #region Disclaimer / License
         ///// Copyright (C) 2010, Jackie Ng
-        ///// http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
+        ///// https://github.com/jumpinjackie/mapguide-maestro
         ///// 
         ///// This library is free software; you can redistribute it and/or
         ///// modify it under the terms of the GNU Lesser General Public
