@@ -12,6 +12,7 @@
  - Fix: Editing Fusion widget XML does not trigger dirty state
  - Fix: Incorrect total tile counts for tiling runs with custom extents
  - Fix: mapguide-rest addin generates incorrect representations node in configuration editor
+ - Added missing known versions of MGOS
  - Added friendlier connnection error dialog for login
  - Fusion Editor: Added UI for entering Google Maps API key
  - XML find/replace context menu now also applies for resources under selected folders (pull request by: https://github.com/Noobud)

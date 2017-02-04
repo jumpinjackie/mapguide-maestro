@@ -143,6 +143,31 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// MapGuide Open Source 2.5.1
         /// </summary>
         MapGuideOS2_5_1,
+
+        /// <summary>
+        /// MapGuide Open Source 2.5.2
+        /// </summary>
+        MapGuideOS2_5_2,
+
+        /// <summary>
+        /// MapGuide Open Source 2.6
+        /// </summary>
+        MapGuideOS2_6,
+
+        /// <summary>
+        /// MapGuide Open Source 2.6.1
+        /// </summary>
+        MapGuideOS2_6_1,
+
+        /// <summary>
+        /// MapGuide Open Source 3.0
+        /// </summary>
+        MapGuideOS3_0,
+
+        /// <summary>
+        /// MapGuide Open Source 3.1
+        /// </summary>
+        MapGuideOS3_1,
     }
 
     /// <summary>
@@ -176,7 +201,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             new Version(2,5,0,7449),    //MGOS 2.5.0
             new Version(2,5,1,7601),    //AIMS 2014
             new Version(2,4,1,7767),    //MGOS 2.4.1
-            new Version(2,5,1,7768)     //MGOS 2.5.1
+            new Version(2,5,1,7768),    //MGOS 2.5.1
+            new Version(2,5,2,7949),    //MGOS 2.5.2
+            new Version(2,6,0,8316),    //MGOS 2.6
+            new Version(2,6,1,8732),    //MGOS 2.6.1
+            new Version(3,0,0,8701),    //MGOS 3.0
+            new Version(3,1,0,9064),    //MGOS 3.1
         };
 
         /// <summary>
