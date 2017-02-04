@@ -33,7 +33,7 @@ namespace Maestro.Base
     /// <summary>
     /// A dialog for displaying validation results
     /// </summary>
-    internal partial class ValidationResultsDialog : Form
+    public partial class ValidationResultsDialog : Form
     {
         private List<KeyValuePair<string, ValidationIssue[]>> m_issues = new List<KeyValuePair<string, ValidationIssue[]>>();
 
