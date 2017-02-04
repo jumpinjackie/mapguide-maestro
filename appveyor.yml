@@ -16,6 +16,18 @@ assembly_info:
 
 # restore NuGet packages before running MSBuild
 before_build:
+  - echo APPVEYOR_PROJECT_NAME          %APPVEYOR_PROJECT_NAME%
+  - echo APPVEYOR_PROJECT_SLUG          %APPVEYOR_PROJECT_SLUG%
+  - echo APPVEYOR_BUILD_FOLDER          %APPVEYOR_BUILD_FOLDER%
+  - echo APPVEYOR_BUILD_ID              %APPVEYOR_BUILD_ID%
+  - echo APPVEYOR_BUILD_NUMBER          %APPVEYOR_BUILD_NUMBER%
+  - echo APPVEYOR_BUILD_VERSION         %APPVEYOR_BUILD_VERSION%
+  - echo APPVEYOR_REPO_NAME             %APPVEYOR_REPO_NAME%
+  - echo APPVEYOR_REPO_BRANCH           %APPVEYOR_REPO_BRANCH%
+  - echo APPVEYOR_REPO_TAG              %APPVEYOR_REPO_TAG%
+  - echo APPVEYOR_REPO_TAG_NAME         %APPVEYOR_REPO_TAG_NAME%
+  - echo APPVEYOR_REPO_COMMIT           %APPVEYOR_REPO_COMMIT%
+  - echo APPVEYOR_REPO_COMMIT_TIMESTAMP %APPVEYOR_REPO_COMMIT_TIMESTAMP%
   - pip install -U sphinx
   - nuget restore Maestro\Maestro_All.sln
 
@@ -47,13 +59,13 @@ after_build:
 test_script:
 - ps: >-
     .\Maestro\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:"Maestro\packages\NUnit.ConsoleRunner.3.6.0\tools\nunit3-console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\Release\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModel.Tests\bin\Release\OSGeo.MapGuide.ObjectModels.Tests.dll" -output:OpenCoverCoverage.xml
-    
+
     $coveralls = (Resolve-Path "Maestro/packages/coveralls.net.*/tools/csmacnz.coveralls.exe").ToString()
-    
+
     & $coveralls --opencover -i OpenCoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
-    
+
     $wc = New-Object 'System.Net.WebClient'
-    
+
     $wc.UploadFile("https://ci.appveyor.com/api/testresults/nunit3/$env:APPVEYOR_JOB_ID", (Resolve-Path .\TestResult.xml))
 
 artifacts:
