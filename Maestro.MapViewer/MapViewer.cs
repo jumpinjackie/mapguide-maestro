@@ -177,6 +177,7 @@ namespace Maestro.MapViewer
         /// </summary>
         public MapViewer()
         {
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             _viewHistory = new List<MapViewHistoryEntry>();
             _viewHistoryIndex = -1;
             this.ShowVertexCoordinatesWhenDigitizing = false;

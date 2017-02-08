@@ -1,4 +1,8 @@
-﻿6.0m6
+﻿6.0m7
+=====
+ - Fix: Cannot preview maps in local previewer if map has transparent background color
+
+6.0m6
 =====
 
  - Fix: MgCooker - InvalidCastException when editing override coordinates for a selected TileSetDefinition
