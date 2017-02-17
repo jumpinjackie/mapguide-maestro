@@ -5,6 +5,8 @@
 ; Author: Jackie Ng (jumpinjackie@gmail.com) 
 ;----------------------------------------------------------------------
 
+!addplugindir .\NSISPlugins
+
 ;TODO: Figure out how to brand this installer
 
 ;----------------------
