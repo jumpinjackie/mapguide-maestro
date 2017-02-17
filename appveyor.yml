@@ -44,7 +44,7 @@ after_build:
   - set ARTIFACT_RELEASE_LABEL=%APPVEYOR_BUILD_VERSION%
   - if "%APPVEYOR_REPO_TAG%" == "true" set ARTIFACT_RELEASE_LABEL=%APPVEYOR_REPO_TAG_NAME%
   - if not exist %APPVEYOR_BUILD_FOLDER%\artifacts mkdir %APPVEYOR_BUILD_FOLDER%\artifacts
-  - set PATH=%PATH%;%APPVEYOR_BUILD_FOLDER%\Thirdparty\NSIS
+  - set PATH=%PATH%;%APPVEYOR_BUILD_FOLDER%\Maestro\packages\NSIS.2.51\tools
   - cd /D %APPVEYOR_BUILD_FOLDER%\Doc
   - msbuild /p:Configuration=%CONFIGURATION% /v:q
   - move %APPVEYOR_BUILD_FOLDER%\Doc\Help\MaestroAPI.chm %APPVEYOR_BUILD_FOLDER%\SDK\
