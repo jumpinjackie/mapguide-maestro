@@ -22,9 +22,13 @@
 
 using OSGeo.MapGuide.ObjectModels.Common;
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -542,6 +546,236 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("SQL", sql);
 
             return m_hosturi + "?" + EncodeParameters(param);
+        }
+
+        public async Task<string> QueryMapFeaturesAsync(HttpClient httpClient, string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, Services.QueryMapOptions extraOptions)
+        {
+            var param = new Dictionary<string, string>();
+            param.Add("OPERATION", "QUERYMAPFEATURES");
+            param.Add("VERSION", "1.0.0");
+            param.Add("PERSIST", persist ? "1" : "0");
+            param.Add("MAPNAME", runtimeMapName);
+            param.Add("SESSION", m_sessionID);
+            param.Add("GEOMETRY", wkt);
+            param.Add("SELECTIONVARIANT", selectionVariant);
+            param.Add("MAXFEATURES", maxFeatures.ToString(CultureInfo.InvariantCulture));
+            if (extraOptions != null)
+            {
+                param.Add("LAYERATTRIBUTEFILTER", ((int)extraOptions.LayerAttributeFilter).ToString());
+                if (!string.IsNullOrEmpty(extraOptions.FeatureFilter))
+                    param.Add("FEATUREFILTER", extraOptions.FeatureFilter);
+                if (extraOptions.LayerNames != null && extraOptions.LayerNames.Length > 0)
+                    param.Add("LAYERNAMES", string.Join(",", extraOptions.LayerNames));
+            }
+            param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", m_userAgent);
+
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            var fpd = new FormUrlEncodedContent(param);
+            var result = await httpClient.PostAsync(this.HostURI, fpd).ConfigureAwait(false);
+            result.EnsureSuccessStatusCode();
+            return await result.Content.ReadAsStringAsync().ConfigureAwait(false);
+        }
+
+        public async Task<Stream> GetDynamicMapOverlayImageAsync(HttpClient httpClient, string mapname, string selectionXml, string format, Color? selectionColor = null, int? behavior = null)
+        {
+            var param = new Dictionary<string, string>();
+            param.Add("OPERATION", "GETDYNAMICMAPOVERLAYIMAGE");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("MAPNAME", mapname);
+            param.Add("CLIENTAGENT", m_userAgent);
+            if (format != null && format.Length != 0)
+                param.Add("FORMAT", format);
+            if (selectionXml != null && selectionXml.Length != 0)
+                param.Add("SELECTION", selectionXml);
+            if (selectionColor.HasValue)
+                param.Add("SELECTIONCOLOR", Utility.SerializeHTMLColorRGBA(selectionColor.Value, true));
+            if (behavior.HasValue)
+                param.Add("BEHAVIOR", behavior.Value.ToString(CultureInfo.InvariantCulture));
+
+            var fpc = new FormUrlEncodedContent(param);
+            var result = await httpClient.PostAsync(this.HostURI, fpc).ConfigureAwait(false);
+            result.EnsureSuccessStatusCode();
+
+            return await result.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        }
+
+        public async Task ApplyPackageAsync(HttpClient httpClient, FileStream fs, Utility.StreamCopyProgressDelegate callback)
+        {
+            if (m_sessionID == null)
+                throw new Exception("Connection is not yet logged in");
+
+            var param = new Dictionary<string, string>();
+            param.Add("OPERATION", "APPLYRESOURCEPACKAGE");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("MAX_FILE_SIZE", "100000000");
+            param.Add("CLIENTAGENT", m_userAgent);
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            var mpfd = new MultipartFormDataContent();
+            foreach (var p in param)
+            {
+                mpfd.Add(new StringContent(p.Value), p.Key);
+            }
+            mpfd.Add(new StreamContent(fs), "PACKAGE");
+
+            var result = await httpClient.PostAsync(this.HostURI, mpfd).ConfigureAwait(false);
+            result.EnsureSuccessStatusCode();
+
+            var resStream = await result.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            using (resStream)
+            {
+                resStream.ReadByte();
+            }
+        }
+
+        public async Task SetResourceDataAsync(HttpClient httpClient, string resourceid, string dataname, ResourceDataType datatype, Stream stream, Utility.StreamCopyProgressDelegate callback)
+        {
+            var param = new Dictionary<string, string>();
+            param.Add("OPERATION", "SETRESOURCEDATA");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("CLIENTAGENT", m_userAgent);
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            param.Add("RESOURCEID", resourceid);
+            param.Add("DATANAME", dataname);
+            param.Add("DATATYPE", datatype.ToString());
+
+            //This does not appear to be used anywhere in the MG WebTier code
+            //anyway, set this if stream supports seeking
+            if (stream.CanSeek)
+                param.Add("DATALENGTH", stream.Length.ToString());
+
+            var mpfd = new MultipartFormDataContent();
+            foreach (var p in param)
+            {
+                mpfd.Add(new StringContent(p.Value), p.Key);
+            }
+            if (stream != null)
+                mpfd.Add(new StreamContent(stream), "DATA");
+
+            var result = await httpClient.PostAsync(this.HostURI, mpfd).ConfigureAwait(false);
+            result.EnsureSuccessStatusCode();
+
+            var resStream = await result.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            using (resStream)
+            {
+                resStream.ReadByte();
+            }
+        }
+
+        public async Task UpdateRepositoryAsync(HttpClient httpClient, string resourceId, Stream header)
+        {
+            var param = new Dictionary<string, string>();
+            param.Add("OPERATION", "UPDATEREPOSITORY");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("RESOURCEID", resourceId);
+            param.Add("CLIENTAGENT", m_userAgent);
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            var mpfd = new MultipartFormDataContent();
+            foreach (var p in param)
+            {
+                mpfd.Add(new StringContent(p.Value), p.Key);
+            }
+            if (header != null)
+                mpfd.Add(new StreamContent(header), "HEADER");
+
+            var result = await httpClient.PostAsync(this.HostURI, mpfd).ConfigureAwait(false);
+            result.EnsureSuccessStatusCode();
+
+            var resStream = await result.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            using (resStream)
+            {
+                resStream.ReadByte();
+            }
+        }
+
+        public async Task SetResourceAsync(HttpClient httpClient, string resourceId, Stream content, Stream header)
+        {
+            var param = new Dictionary<string, string>();
+            param.Add("OPERATION", "SETRESOURCE");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("CLIENTAGENT", m_userAgent);
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            param.Add("RESOURCEID", resourceId);
+
+            var mpfd = new MultipartFormDataContent();
+            foreach (var p in param)
+            {
+                mpfd.Add(new StringContent(p.Value), p.Key);
+            }
+            if (content != null)
+                mpfd.Add(new StreamContent(content), "CONTENT");
+            if (header != null)
+                mpfd.Add(new StreamContent(header), "HEADER");
+
+            var result = await httpClient.PostAsync(this.HostURI, mpfd).ConfigureAwait(false);
+            result.EnsureSuccessStatusCode();
+
+            var resStream = await result.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            using (resStream)
+            {
+                resStream.ReadByte();
+            }
+        }
+
+        public async Task<Stream> SelectFeaturesAsync(HttpClient httpClient, bool aggregate, string resourceId, string classname, string filter, string[] columns, NameValueCollection computedProperties)
+        {
+            var param = new Dictionary<string, string>();
+            if (aggregate)
+                param.Add("OPERATION", "SELECTAGGREGATES");
+            else
+                param.Add("OPERATION", "SELECTFEATURES");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", m_userAgent);
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            param.Add("RESOURCEID", resourceId);
+            param.Add("CLASSNAME", classname);
+
+            //Using the very standard TAB character for column seperation
+            //  ... nice if your data has "," or ";" in the column names :)
+            if (columns != null)
+                param.Add("PROPERTIES", string.Join("\t", columns));
+
+            if (computedProperties != null && computedProperties.Count > 0)
+            {
+                var keys = new List<string>();
+                var values = new List<string>();
+
+                foreach (string s in computedProperties.Keys)
+                {
+                    keys.Add(s);
+                    values.Add(computedProperties[s]);
+                }
+
+                param.Add("COMPUTED_ALIASES", string.Join("\t", keys.ToArray()));
+                param.Add("COMPUTED_PROPERTIES", string.Join("\t", values.ToArray()));
+            }
+            if (filter != null)
+                param.Add("FILTER", filter);
+
+            var content = new FormUrlEncodedContent(param);
+            var result = await httpClient.PostAsync(this.HostURI, content).ConfigureAwait(false);
+            result.EnsureSuccessStatusCode();
+
+            return await result.Content.ReadAsStreamAsync().ConfigureAwait(false);
         }
 
         public System.Net.WebRequest SelectFeatures(bool aggregate, string resourceId, string classname, string filter, string[] columns, NameValueCollection computedProperties, System.IO.Stream outStream)

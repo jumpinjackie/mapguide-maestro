@@ -4,7 +4,7 @@
         <Name>Maestro.Http</Name>
         <Description>Connection using the mapagent http API</Description>
         <Assembly>OSGeo.MapGuide.MaestroAPI.Http.dll</Assembly>
-        <Type>OSGeo.MapGuide.MaestroAPI.HttpServerConnection</Type>
+        <Type>OSGeo.MapGuide.MaestroAPI.NeoHttpServerConnection</Type>
     </ConnectionProvider>
     <ConnectionProvider>
         <Name>Maestro.Rest</Name>

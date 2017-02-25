@@ -55,6 +55,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     public class HttpServerConnection : MgServerConnectionBase,
                                         IServerConnection,
                                         IDisposable,
+                                        IHttpRequest,
                                         IFeatureService,
                                         IResourceService,
                                         ITileService,
@@ -404,7 +405,6 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public override Stream GetResourceXmlData(string resourceID)
         {
-            ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
             string req = m_reqBuilder.GetResourceContent(resourceID);
             return this.OpenRead(req);
         }
@@ -1273,6 +1273,16 @@ namespace OSGeo.MapGuide.MaestroAPI
                     return false;
             }
         }
+
+        void IHttpRequest.SendRequestSync(string req)
+        {
+            using (var stream = OpenRead(req))
+                stream.ReadByte();
+        }
+
+        Stream IHttpRequest.OpenReadSync(string req) => OpenRead(req);
+
+        byte[] IHttpRequest.DownloadDataSync(string req) => DownloadData(req);
 
         /// <summary>
         /// Downloads data as a byte array. Wrapper function that automatically recreates the session if it has expired.
