@@ -68,6 +68,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
         private ConcurrentDictionary<string, object> _properties;
         private Lazy<ICoordinateSystemCatalog> _catalog;
         private Lazy<GroupList> _userGroups;
+        private Lazy<FeatureProviderRegistry> _fdoProviders;
 
         private NeoHttpServerConnection()
             : base()
@@ -82,6 +83,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             {
                 var req = _reqBuilder.EnumerateGroups();
                 return OpenReadSync<GroupList>(req);
+            });
+            _fdoProviders = new Lazy<FeatureProviderRegistry>(() =>
+            {
+                var req = _reqBuilder.GetFeatureProviders();
+                return OpenReadSync<FeatureProviderRegistry>(req);
             });
         }
 
@@ -283,7 +289,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
 
         public override string SessionID => _reqBuilder.SessionID;
 
-        public override FeatureProviderRegistryFeatureProvider[] FeatureProviders => throw new NotImplementedException();
+        public override FeatureProviderRegistryFeatureProvider[] FeatureProviders
+        {
+            get
+            {
+                var providers = _fdoProviders.Value;
+                return providers.FeatureProvider.ToArray();
+            }
+        }
 
         public override Version SiteVersion
         {
