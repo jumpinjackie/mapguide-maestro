@@ -60,17 +60,14 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GeoAPI, Version=1.7.3.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
-      <HintPath>..\Maestro\packages\GeoAPI.1.7.3.1\lib\net45\GeoAPI.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="GeoAPI, Version=1.7.4.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <HintPath>..\Maestro\packages\GeoAPI.1.7.4\lib\net45\GeoAPI.dll</HintPath>
     </Reference>
-    <Reference Include="NetTopologySuite, Version=1.13.3.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
-      <HintPath>..\Maestro\packages\NetTopologySuite.1.13.3.2\lib\net45\NetTopologySuite.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="NetTopologySuite, Version=1.14.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
+      <HintPath>..\Maestro\packages\NetTopologySuite.1.14\lib\net45\NetTopologySuite.dll</HintPath>
     </Reference>
     <Reference Include="PowerCollections, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2573bf8a1bdddcd5, processorArchitecture=MSIL">
-      <HintPath>..\Maestro\packages\NetTopologySuite.1.13.3.2\lib\net45\PowerCollections.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\Maestro\packages\NetTopologySuite.1.14\lib\net45\PowerCollections.dll</HintPath>
     </Reference>
     <Reference Include="ProjNet, Version=1.3.0.3, Culture=neutral, PublicKeyToken=a1f5bdcd9c6f5740, processorArchitecture=MSIL">
       <HintPath>..\Maestro\packages\ProjNET4GeoAPI.1.3.0.4\lib\net45-client\ProjNet.dll</HintPath>
