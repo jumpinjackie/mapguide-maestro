@@ -66,4 +66,44 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
 
         public override bool IsMultithreaded => false;
     }
+
+    internal class NeoHttpCapabilities : ConnectionCapabilities
+    {
+        private NeoHttpServerConnection _implConn;
+
+        internal NeoHttpCapabilities(IServerConnection parent)
+            : base(parent)
+        {
+            _implConn = parent as NeoHttpServerConnection;
+        }
+
+        public override int[] SupportedCommands
+        {
+            get
+            {
+                List<int> cmds = new List<int>();
+                //TODO: Work out what this can/can't do
+                cmds.Add((int)CommandType.GetResourceContents);
+                cmds.Add((int)CommandType.GetFdoCacheInfo);
+
+                //Create/Describe Runtime Map available with 2.6
+                if (_implConn.SiteVersion >= new Version(2, 6))
+                {
+                    cmds.Add((int)CommandType.CreateRuntimeMap);
+                    cmds.Add((int)CommandType.DescribeRuntimeMap);
+                }
+
+                //GetTileProviders available with 3.0
+                if (_implConn.SiteVersion >= new Version(3, 0))
+                {
+                    cmds.Add((int)CommandType.GetTileProviders);
+                }
+                return cmds.ToArray();
+            }
+        }
+
+        public override bool SupportsResourcePreviews => true;
+
+        public override bool IsMultithreaded => true;
+    }
 }

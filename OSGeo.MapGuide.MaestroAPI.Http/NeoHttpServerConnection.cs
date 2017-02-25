@@ -220,7 +220,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
 
         public IResourceService ResourceService => this;
 
-        public IConnectionCapabilities Capabilities => throw new NotImplementedException();
+        public IConnectionCapabilities Capabilities => new NeoHttpCapabilities(this);
 
         public ICoordinateSystemCatalog CoordinateSystemCatalog
         {
