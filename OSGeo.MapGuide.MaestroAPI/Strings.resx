@@ -909,4 +909,10 @@
   <data name="LDF_MissingFeatureName" xml:space="preserve">
     <value>Layer Definition does not specify a class name</value>
   </data>
+  <data name="ADF_BingMapsMissingApiKey" xml:space="preserve">
+    <value>The Bing Maps v6/7 API was deprecated on June 30th 2017. To use the current Bing Maps API, an API key is required</value>
+  </data>
+  <data name="ADF_BingMapsHybridLayerNoLongerAvailable" xml:space="preserve">
+    <value>The "Hybrid" base layer type no longer exists in the current version of the Bing Maps API. The closes equivalent layer type is "AerialsWithLabels"</value>
+  </data>
 </root>

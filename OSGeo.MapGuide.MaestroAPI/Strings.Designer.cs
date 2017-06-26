@@ -61,6 +61,24 @@ namespace OSGeo.MapGuide.MaestroAPI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The &quot;Hybrid&quot; base layer type no longer exists in the current version of the Bing Maps API. The closes equivalent layer type is &quot;AerialsWithLabels&quot;.
+        /// </summary>
+        public static string ADF_BingMapsHybridLayerNoLongerAvailable {
+            get {
+                return ResourceManager.GetString("ADF_BingMapsHybridLayerNoLongerAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Bing Maps v6/7 API was deprecated on June 30th 2017. To use the current Bing Maps API, an API key is required.
+        /// </summary>
+        public static string ADF_BingMapsMissingApiKey {
+            get {
+                return ResourceManager.GetString("ADF_BingMapsMissingApiKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A non-existent widget by the id of {0} is being referenced from a menu/container : {1}.
         /// </summary>
         public static string ADF_InvalidWidgetReferenceInContainer {

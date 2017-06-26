@@ -79,6 +79,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         {
                             checkCmsProjection = true;
                         }
+                        if (map.Type.ToLower() == "virtualearth")
+                        {
+                            //As of July 1, 2017 we need an API key on Bing Maps
+                            var bingMapsKey = fusionApp.GetValue("BingMapKey");
+                            if (string.IsNullOrEmpty(bingMapsKey))
+                            {
+                                issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, ValidationStatusCode.Error_Fusion_BingMapsMissingApiKey, Strings.ADF_BingMapsMissingApiKey));
+                            }
+
+                            //If this is still referencing the "Hybrid" base layer type, that no longer exists in the v8 API
+                            if (map.CmsMapOptions.Type == "Hybrid")
+                            {
+                                issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, ValidationStatusCode.Error_Fusion_BingMapsHybridBaseLayerNoLongerAvailable, Strings.ADF_BingMapsHybridLayerNoLongerAvailable));
+                            }
+                        }
                         try
                         {
                             if (map.Type.ToLower() == "mapguide") //NOXLATE

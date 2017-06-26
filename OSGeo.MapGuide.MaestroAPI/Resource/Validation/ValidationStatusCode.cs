@@ -348,6 +348,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Error_Fusion_InvalidWidgetReference,
 
         /// <summary>
+        /// The Bing Maps v6/7 API was deprecated on June 30th 2017. To use the current Bing Maps API, an API key is required
+        /// </summary>
+        Error_Fusion_BingMapsMissingApiKey,
+
+        /// <summary>
+        /// The "Hybrid" base layer type no longer exists in the current version of the Bing Maps API. The closes equivalent layer type is "AerialsWithLabels"
+        /// </summary>
+        Error_Fusion_BingMapsHybridBaseLayerNoLongerAvailable,
+
+        /// <summary>
         /// Unclassifed validation error
         /// </summary>
         Error_LayerDefinition_Generic = 5401,

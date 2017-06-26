@@ -1581,6 +1581,43 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Warning_Fusion_InitialViewOutsideMapExtents));
         }
 
+        [Test]
+        public void TestCase_AppDefValidator_BingMapsChanges1July2017()
+        {
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "Test");
+            mdf.ResourceID = "Library://Test.MapDefinition";
+            mdf.Extents = ObjectFactory.CreateEnvelope(-10, -10, 10, 10);
+
+            var appDef = CreateTestFlexLayout();
+            var mgroup = appDef.AddMapGroup("mapguide", true, "Library://Test.MapDefinition");
+            var view = mgroup.CreateInitialView(0, 0, 4000);
+
+            var bingHybrid = mgroup.CreateCmsMapEntry("VirtualEarth", false, "Bing Hybrid", "Hybrid");
+            mgroup.AddMap(bingHybrid);
+
+            mgroup.InitialView = view;
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(r => r.GetResource(It.Is<string>(arg => arg.EndsWith(".MapDefinition")))).Returns(mdf);
+            mockResSvc.Setup(r => r.ResourceExists(It.IsAny<string>())).Returns(true);
+
+            var mockCatalog = new Mock<ICoordinateSystemCatalog>();
+            mockCatalog.Setup(cat => cat.ConvertWktToCoordinateSystemCode(It.IsAny<string>())).Returns("WGS84.PseudoMercator");
+
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+            mockConn.Setup(c => c.CoordinateSystemCatalog).Returns(mockCatalog.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = new ApplicationDefinitionValidator();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, appDef, false);
+            Assert.AreEqual(2, issues.Count());
+            Assert.AreEqual(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Error_Fusion_BingMapsHybridBaseLayerNoLongerAvailable));
+            Assert.AreEqual(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Error_Fusion_BingMapsMissingApiKey));
+        }
+
         private static IApplicationDefinition CreateTestFlexLayout()
         {
             var appDef = ObjectFactory.DeserializeEmbeddedFlexLayout(SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_5));
