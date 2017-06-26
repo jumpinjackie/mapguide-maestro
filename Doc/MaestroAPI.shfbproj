@@ -23,7 +23,7 @@
     <PresentationStyle>VS2013</PresentationStyle>
     <SandcastlePath>
     </SandcastlePath>
-    <SHFBROOT>$(MSBuildThisFileDirectory)..\Maestro\packages\EWSoftware.SHFB.2017.1.28.0\Tools\</SHFBROOT>
+    <SHFBROOT>$(MSBuildThisFileDirectory)..\Maestro\packages\EWSoftware.SHFB.2017.5.15.0\Tools\</SHFBROOT>
     <ComponentPath>$(MSBuildThisFileDirectory)..\Maestro\packages\</ComponentPath>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\SDK\addin-bin\Maestro.Base.dll" />
