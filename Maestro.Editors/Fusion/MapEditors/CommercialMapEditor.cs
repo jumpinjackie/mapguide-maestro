@@ -36,6 +36,9 @@ namespace Maestro.Editors.Fusion.MapEditors
         private readonly IMap _map;
         private readonly bool _init;
 
+        const string GOOGLE_MAPS_EXTENSION_NAME = "GoogleScript";
+        const string BING_MAPS_EXTENSION_NAME = "BingMapKey";
+
         public CommercialMapEditor(IEditorService edSvc, IMap map, string[] types)
         {
             InitializeComponent();
@@ -51,7 +54,7 @@ namespace Maestro.Editors.Fusion.MapEditors
                 txtSubType.Text = opts.Type;
 
                 var appDef = (IApplicationDefinition)_edSvc.GetEditedResource();
-                var googleMapsUrl = appDef.GetValue("GoogleScript");
+                var googleMapsUrl = appDef.GetValue(GOOGLE_MAPS_EXTENSION_NAME);
                 if (!string.IsNullOrEmpty(googleMapsUrl))
                 {
                     var uri = new Uri(googleMapsUrl);
@@ -59,11 +62,14 @@ namespace Maestro.Editors.Fusion.MapEditors
                     if (param.ContainsKey("key"))
                         txtGoogleMapsApiKey.Text = param["key"];
 
-                    btnSetApiKey.Enabled = false;
+                    btnSetGoogleMapsApiKey.Enabled = false;
                 }
-                else
+
+                var bingMapsKey = appDef.GetValue(BING_MAPS_EXTENSION_NAME);
+                if (!string.IsNullOrEmpty(bingMapsKey))
                 {
-                    grpGoogleApiKey.Visible = false;
+                    txtBingMapsApiKey.Text = bingMapsKey;
+                    btnSetBingMapsApiKey.Enabled = false;
                 }
             }
             finally
@@ -81,10 +87,18 @@ namespace Maestro.Editors.Fusion.MapEditors
             _edSvc.HasChanged();
         }
 
-        private void btnSetApiKey_Click(object sender, EventArgs e)
+        private void btnSetBingMapsApiKey_Click(object sender, EventArgs e)
         {
             var appDef = (IApplicationDefinition)_edSvc.GetEditedResource();
-            var googleMapsUrl = appDef.GetValue("GoogleScript");
+            appDef.SetValue(BING_MAPS_EXTENSION_NAME, txtBingMapsApiKey.Text); //NOXLATE
+            _edSvc.HasChanged();
+            btnSetBingMapsApiKey.Enabled = false;
+        }
+
+        private void btnSetGoogleMapsApiKey_Click(object sender, EventArgs e)
+        {
+            var appDef = (IApplicationDefinition)_edSvc.GetEditedResource();
+            var googleMapsUrl = appDef.GetValue(GOOGLE_MAPS_EXTENSION_NAME);
             if (string.IsNullOrEmpty(googleMapsUrl))
                 googleMapsUrl = EditorFactory.GOOGLE_URL;
 
@@ -96,14 +110,19 @@ namespace Maestro.Editors.Fusion.MapEditors
             googleMapsUrl = googleMapsUrl.Substring(0, googleMapsUrl.IndexOf("?"));
             googleMapsUrl += string.Join("&", param.Select(kvp => $"{kvp.Key}={kvp.Value}"));
 
-            appDef.SetValue("GoogleScript", googleMapsUrl); //NOXLATE
+            appDef.SetValue(GOOGLE_MAPS_EXTENSION_NAME, googleMapsUrl); //NOXLATE
             _edSvc.HasChanged();
-            btnSetApiKey.Enabled = false;
+            btnSetGoogleMapsApiKey.Enabled = false;
         }
 
         private void txtGoogleMapsApiKey_TextChanged(object sender, EventArgs e)
         {
-            btnSetApiKey.Enabled = true;
+            btnSetGoogleMapsApiKey.Enabled = true;
+        }
+
+        private void txtBingMapsApiKey_TextChanged(object sender, EventArgs e)
+        {
+            btnSetBingMapsApiKey.Enabled = true;
         }
     }
 }

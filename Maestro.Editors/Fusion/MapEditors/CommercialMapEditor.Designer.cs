@@ -35,9 +35,13 @@
             this.txtType = new System.Windows.Forms.TextBox();
             this.txtSubType = new System.Windows.Forms.TextBox();
             this.txtGoogleMapsApiKey = new System.Windows.Forms.TextBox();
-            this.btnSetApiKey = new System.Windows.Forms.Button();
+            this.btnSetGoogleMapsApiKey = new System.Windows.Forms.Button();
             this.grpGoogleApiKey = new System.Windows.Forms.GroupBox();
+            this.grpBingMapsKey = new System.Windows.Forms.GroupBox();
+            this.txtBingMapsApiKey = new System.Windows.Forms.TextBox();
+            this.btnSetBingMapsApiKey = new System.Windows.Forms.Button();
             this.grpGoogleApiKey.SuspendLayout();
+            this.grpBingMapsKey.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -108,24 +112,24 @@
             this.txtGoogleMapsApiKey.TabIndex = 8;
             this.txtGoogleMapsApiKey.TextChanged += new System.EventHandler(this.txtGoogleMapsApiKey_TextChanged);
             // 
-            // btnSetApiKey
+            // btnSetGoogleMapsApiKey
             // 
-            this.btnSetApiKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSetApiKey.Enabled = false;
-            this.btnSetApiKey.Location = new System.Drawing.Point(303, 58);
-            this.btnSetApiKey.Name = "btnSetApiKey";
-            this.btnSetApiKey.Size = new System.Drawing.Size(75, 23);
-            this.btnSetApiKey.TabIndex = 9;
-            this.btnSetApiKey.Text = "Set API Key";
-            this.btnSetApiKey.UseVisualStyleBackColor = true;
-            this.btnSetApiKey.Click += new System.EventHandler(this.btnSetApiKey_Click);
+            this.btnSetGoogleMapsApiKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSetGoogleMapsApiKey.Enabled = false;
+            this.btnSetGoogleMapsApiKey.Location = new System.Drawing.Point(303, 58);
+            this.btnSetGoogleMapsApiKey.Name = "btnSetGoogleMapsApiKey";
+            this.btnSetGoogleMapsApiKey.Size = new System.Drawing.Size(75, 23);
+            this.btnSetGoogleMapsApiKey.TabIndex = 9;
+            this.btnSetGoogleMapsApiKey.Text = "Set API Key";
+            this.btnSetGoogleMapsApiKey.UseVisualStyleBackColor = true;
+            this.btnSetGoogleMapsApiKey.Click += new System.EventHandler(this.btnSetGoogleMapsApiKey_Click);
             // 
             // grpGoogleApiKey
             // 
             this.grpGoogleApiKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpGoogleApiKey.Controls.Add(this.txtGoogleMapsApiKey);
-            this.grpGoogleApiKey.Controls.Add(this.btnSetApiKey);
+            this.grpGoogleApiKey.Controls.Add(this.btnSetGoogleMapsApiKey);
             this.grpGoogleApiKey.Location = new System.Drawing.Point(13, 104);
             this.grpGoogleApiKey.Name = "grpGoogleApiKey";
             this.grpGoogleApiKey.Size = new System.Drawing.Size(384, 90);
@@ -133,10 +137,47 @@
             this.grpGoogleApiKey.TabStop = false;
             this.grpGoogleApiKey.Text = "Google Maps API key";
             // 
+            // grpBingMapsKey
+            // 
+            this.grpBingMapsKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBingMapsKey.Controls.Add(this.txtBingMapsApiKey);
+            this.grpBingMapsKey.Controls.Add(this.btnSetBingMapsApiKey);
+            this.grpBingMapsKey.Location = new System.Drawing.Point(13, 200);
+            this.grpBingMapsKey.Name = "grpBingMapsKey";
+            this.grpBingMapsKey.Size = new System.Drawing.Size(384, 90);
+            this.grpBingMapsKey.TabIndex = 11;
+            this.grpBingMapsKey.TabStop = false;
+            this.grpBingMapsKey.Text = "Bing Maps API key";
+            // 
+            // txtBingMapsApiKey
+            // 
+            this.txtBingMapsApiKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBingMapsApiKey.Location = new System.Drawing.Point(6, 18);
+            this.txtBingMapsApiKey.Multiline = true;
+            this.txtBingMapsApiKey.Name = "txtBingMapsApiKey";
+            this.txtBingMapsApiKey.Size = new System.Drawing.Size(372, 34);
+            this.txtBingMapsApiKey.TabIndex = 8;
+            this.txtBingMapsApiKey.TextChanged += new System.EventHandler(this.txtBingMapsApiKey_TextChanged);
+            // 
+            // btnSetBingMapsApiKey
+            // 
+            this.btnSetBingMapsApiKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSetBingMapsApiKey.Enabled = false;
+            this.btnSetBingMapsApiKey.Location = new System.Drawing.Point(303, 58);
+            this.btnSetBingMapsApiKey.Name = "btnSetBingMapsApiKey";
+            this.btnSetBingMapsApiKey.Size = new System.Drawing.Size(75, 23);
+            this.btnSetBingMapsApiKey.TabIndex = 9;
+            this.btnSetBingMapsApiKey.Text = "Set API Key";
+            this.btnSetBingMapsApiKey.UseVisualStyleBackColor = true;
+            this.btnSetBingMapsApiKey.Click += new System.EventHandler(this.btnSetBingMapsApiKey_Click);
+            // 
             // CommercialMapEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grpBingMapsKey);
             this.Controls.Add(this.grpGoogleApiKey);
             this.Controls.Add(this.txtSubType);
             this.Controls.Add(this.txtType);
@@ -145,9 +186,11 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
             this.Name = "CommercialMapEditor";
-            this.Size = new System.Drawing.Size(417, 280);
+            this.Size = new System.Drawing.Size(417, 301);
             this.grpGoogleApiKey.ResumeLayout(false);
             this.grpGoogleApiKey.PerformLayout();
+            this.grpBingMapsKey.ResumeLayout(false);
+            this.grpBingMapsKey.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,7 +205,10 @@
         private System.Windows.Forms.TextBox txtType;
         private System.Windows.Forms.TextBox txtSubType;
         private System.Windows.Forms.TextBox txtGoogleMapsApiKey;
-        private System.Windows.Forms.Button btnSetApiKey;
+        private System.Windows.Forms.Button btnSetGoogleMapsApiKey;
         private System.Windows.Forms.GroupBox grpGoogleApiKey;
+        private System.Windows.Forms.GroupBox grpBingMapsKey;
+        private System.Windows.Forms.TextBox txtBingMapsApiKey;
+        private System.Windows.Forms.Button btnSetBingMapsApiKey;
     }
 }

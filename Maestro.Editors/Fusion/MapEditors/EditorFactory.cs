@@ -36,7 +36,11 @@ namespace Maestro.Editors.Fusion.MapEditors
 
         private const string BING_ROAD = "Road"; //NOXLATE
         private const string BING_AERIAL = "Aerial"; //NOXLATE
+        /// <summary>
+        /// Deprecated as of 30th June 2017 with the retirement of the V7 API. Do not use. 
+        /// </summary>
         private const string BING_HYBRID = "Hybrid"; //NOXLATE
+        private const string BING_AERIAL_WITH_LABELS = "AerialWithLabels"; //NOXLATE
 
         internal const string Type_Google = "Google"; //NOXLATE
         internal const string Type_Bing = "VirtualEarth"; //NOXLATE
@@ -66,7 +70,7 @@ namespace Maestro.Editors.Fusion.MapEditors
                     return new CommercialMapEditor(edSvc, map, new string[] { G_NORMAL_MAP, G_SATELLITE_MAP, G_HYBRID_MAP, G_PHYSICAL_MAP });
 
                 case Type_Bing:
-                    return new CommercialMapEditor(edSvc, map, new string[] { BING_ROAD, BING_AERIAL, BING_HYBRID });
+                    return new CommercialMapEditor(edSvc, map, new string[] { BING_ROAD, BING_AERIAL, BING_AERIAL_WITH_LABELS });
 
                 case Type_OSM:
                     return new CommercialMapEditor(edSvc, map, new string[] { OSM_MAP_MAPNIK, OSM_MAP_CYCLEMAP, OSM_MAP_TRANSPORTMAP });
@@ -145,12 +149,22 @@ namespace Maestro.Editors.Fusion.MapEditors
                     return group.CreateCmsMapEntry(Type_Bing, false, Strings.CmsBingSatellite, BING_AERIAL);
                 }
             };
+            /*
             yield return new EditorInvoker()
             {
                 Name = Strings.CmsBingHybrid,
                 Action = () =>
                 {
                     return group.CreateCmsMapEntry(Type_Bing, false, Strings.CmsBingHybrid, BING_HYBRID);
+                }
+            };
+            */
+            yield return new EditorInvoker()
+            {
+                Name = Strings.CmsBingAerialsWithLabels,
+                Action = () =>
+                {
+                    return group.CreateCmsMapEntry(Type_Bing, false, Strings.CmsBingAerialsWithLabels, BING_AERIAL_WITH_LABELS);
                 }
             };
             yield return new EditorInvoker()

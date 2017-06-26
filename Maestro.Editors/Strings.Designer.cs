@@ -160,6 +160,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bing Maps Aerials (with Labels).
+        /// </summary>
+        internal static string CmsBingAerialsWithLabels {
+            get {
+                return ResourceManager.GetString("CmsBingAerialsWithLabels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bing Maps Hybrid.
         /// </summary>
         internal static string CmsBingHybrid {
@@ -169,7 +178,7 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bing Maps Satellite.
+        ///   Looks up a localized string similar to Bing Maps Aerials.
         /// </summary>
         internal static string CmsBingSatellite {
             get {
