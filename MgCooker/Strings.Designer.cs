@@ -333,7 +333,7 @@ namespace MgCooker {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have no selected any Map Definitions or Tile Sets.
+        ///   Looks up a localized string similar to You have no checked any Map Definitions or Tile Sets.
         /// </summary>
         internal static string NoMapsOrTileSetsSelected {
             get {
