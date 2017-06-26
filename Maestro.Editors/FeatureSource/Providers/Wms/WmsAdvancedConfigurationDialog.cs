@@ -257,6 +257,21 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             try
             {
                 _config = (WmsConfigurationDocument)_service.CurrentConnection.FeatureService.GetSchemaMapping("OSGeo.WMS", _fs.ConnectionString); //NOXLATE
+                foreach (var sc in _config.SpatialContexts)
+                {
+                    if (sc.Name.StartsWith("EPSG:"))
+                    {
+                        var tokens = sc.Name.Split(':');
+                        try
+                        {
+                            sc.CoordinateSystemWkt = _service.CurrentConnection.CoordinateSystemCatalog.ConvertEpsgCodeToWkt(tokens[1]);
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+                }
                 string defaultScName = _config.GetDefaultSpatialContext(_fs, _service.CurrentConnection);
                 _config.EnsureRasterProperties(defaultScName);
                 _config.EnsureConsistency();
