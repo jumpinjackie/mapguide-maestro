@@ -1,6 +1,14 @@
 ﻿6.0m7
 =====
+
+ - WMS Advanced Configuration dialog now auto-infers coordinate systems for discovered spatial contexts whose name matches the pattern 'EPSG:XXXX'
+ - Refine MgCooker error message when attempting to calculate MPU
  - Fix: Cannot preview maps in local previewer if map has transparent background color
+ - Fix: Bing Maps support in Fusion Editor in anticipation of the June 30 2017 shutdown of the v6/7 APIs
+   - New Fusion validation rules to catch Application Definitions using the old bing layers or having Bing layers, but no API key
+ - Various external library updates
+   - Newtonsoft.Json 10.0
+   - DockPanel 2.15
 
 6.0m6
 =====
