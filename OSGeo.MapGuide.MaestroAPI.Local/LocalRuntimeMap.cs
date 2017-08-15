@@ -110,7 +110,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 var bgColor = _impl.GetBackgroundColor();
                 if (bgColor.Length == 8 || bgColor.Length == 6)
                 {
-                    return ColorTranslator.FromHtml("#" + bgColor);
+                    return Utility.ParseHTMLColor(bgColor);
                 }
                 throw new InvalidOperationException("Unsure how to convert color: " + bgColor);
             }
