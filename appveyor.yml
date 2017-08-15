@@ -60,7 +60,7 @@ after_build:
 
 test_script:
 - ps: >-
-    .\Maestro\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:"Maestro\packages\NUnit.ConsoleRunner.3.6.1\tools\nunit3-console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\Release\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModel.Tests\bin\Release\OSGeo.MapGuide.ObjectModels.Tests.dll" -output:OpenCoverCoverage.xml
+    .\Maestro\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:"Maestro\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\Release\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModel.Tests\bin\Release\OSGeo.MapGuide.ObjectModels.Tests.dll" -output:OpenCoverCoverage.xml
 
     $coveralls = (Resolve-Path "Maestro/packages/coveralls.net.*/tools/csmacnz.coveralls.exe").ToString()
 
