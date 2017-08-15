@@ -27,7 +27,6 @@ namespace OSGeo.FDO.Expressions
     /// <summary>
     /// Thrown when an exception occurs parsing an FDO expression or filter
     /// </summary>
-    [Serializable]
     public class FdoParseException : Exception
     {
         /// <summary>
@@ -47,16 +46,6 @@ namespace OSGeo.FDO.Expressions
         /// <param name="message"></param>
         /// <param name="inner"></param>
         public FdoParseException(string message, Exception inner) : base(message, inner) { }
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="info"></param>
-        /// <param name="context"></param>
-        protected FdoParseException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context)
-            : base(info, context) { }
     }
     
     /// <summary>
@@ -90,7 +79,6 @@ namespace OSGeo.FDO.Expressions
     /// <summary>
     /// Thrown when a malformed FDO expression is encountered
     /// </summary>
-    [Serializable]
     public class FdoMalformedExpressionException : FdoParseException
     {
         /// <summary>
@@ -111,15 +99,5 @@ namespace OSGeo.FDO.Expressions
 
         private FdoMalformedExpressionException(string message) : base(message) { }
         private FdoMalformedExpressionException(string message, Exception inner) : base(message, inner) { }
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="info"></param>
-        /// <param name="context"></param>
-        protected FdoMalformedExpressionException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context)
-            : base(info, context) { }
     }
 }
