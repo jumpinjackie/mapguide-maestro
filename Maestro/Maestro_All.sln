@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26127.3
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.Core", "..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj", "{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}"
 EndProject
@@ -108,6 +108,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.FDO.Expressions", "..\OSGeo.FDO.Expressions\OSGeo.FDO.Expressions.csproj", "{DA2CC031-200B-4F99-A0A9-2E95374BE78F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.Rest", "..\Maestro.AddIn.Rest\Maestro.AddIn.Rest.csproj", "{2BFC5B13-3179-4FF9-9877-0D6CE9911A74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.FxBridge", "..\OSGeo.MapGuide.MaestroAPI.FxBridge\OSGeo.MapGuide.MaestroAPI.FxBridge.csproj", "{F7FAB7B1-5A96-496E-A74B-428B3EC8E98B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -251,6 +253,10 @@ Global
 		{2BFC5B13-3179-4FF9-9877-0D6CE9911A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BFC5B13-3179-4FF9-9877-0D6CE9911A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BFC5B13-3179-4FF9-9877-0D6CE9911A74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7FAB7B1-5A96-496E-A74B-428B3EC8E98B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7FAB7B1-5A96-496E-A74B-428B3EC8E98B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7FAB7B1-5A96-496E-A74B-428B3EC8E98B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7FAB7B1-5A96-496E-A74B-428B3EC8E98B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -289,5 +295,9 @@ Global
 		{D32BE7DB-D0C3-4805-A057-18312370C57E} = {7507E52A-413B-4E0D-A1FF-7D293E462C1B}
 		{DA2CC031-200B-4F99-A0A9-2E95374BE78F} = {0DA73D0B-B89E-464B-AD24-CD370242F641}
 		{2BFC5B13-3179-4FF9-9877-0D6CE9911A74} = {D5A5B73D-6F2D-4199-8F1E-6786CE41B83D}
+		{F7FAB7B1-5A96-496E-A74B-428B3EC8E98B} = {0DA73D0B-B89E-464B-AD24-CD370242F641}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {07AF1A6E-A15C-4ADB-966A-9B6689E73F5F}
 	EndGlobalSection
 EndGlobal

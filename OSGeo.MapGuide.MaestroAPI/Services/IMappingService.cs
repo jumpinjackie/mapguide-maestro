@@ -624,8 +624,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="layerdefinition">The layer definition resource id</param>
         /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
         /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
-        /// <returns>The minature bitmap</returns>
-        System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type);
+        /// <returns>The legend image stream</returns>
+        System.IO.Stream GetLegendImage(double scale, string layerdefinition, int themeIndex, int type);
 
         /// <summary>
         /// Renders a minature bitmap of the layers style
@@ -637,8 +637,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="width">The width of the image to request.</param>
         /// <param name="height">The height of the image to request.</param>
         /// <param name="format">The image format (PNG, JPG or GIF).</param>
-        /// <returns></returns>
-        System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format);
+        /// <returns>The legend image stream</returns>
+        System.IO.Stream GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format);
 
         /// <summary>
         /// Identifies features that meet the specified spatial selection criteria. These features can be persisted as selected features in a map.

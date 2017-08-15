@@ -1558,7 +1558,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="geomType"></param>
         /// <param name="themeCategory"></param>
         /// <returns></returns>
-        public Image GetLegendImage(string layerDefinitionID, double scale, int width, int height, string format, int geomType, int themeCategory)
+        public System.IO.Stream GetLegendImage(string layerDefinitionID, double scale, int width, int height, string format, int geomType, int themeCategory)
         {
             if (_mapSvc == null)
                 throw new NotSupportedException();

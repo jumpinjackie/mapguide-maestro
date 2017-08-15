@@ -914,19 +914,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 return Single;
             else if (type == typeof(double))
                 return Double;
-            else if (type == Utility.GeometryType)
+            else if (IsGeometryType(type))
                 return Geometry;
             else if (type == typeof(string))
                 return String;
             else if (type == typeof(DateTime))
                 return DateTime;
-            else if (type == Utility.RasterType)
-                return Raster;
+            //else if (IsRasterType(type))
+            //    return Raster;
             else if (type == typeof(byte[]))
                 return Blob;
 
             throw new Exception($"Failed to find type for: {type.FullName.ToString()}"); //LOCALIZEME
         }
+
+        //static bool IsRasterType(Type type) => type.Name == "Bitmap";
+
+        static bool IsGeometryType(Type type) => typeof(GeoAPI.Geometries.IGeometry).IsAssignableFrom(type);
 
         private static Type ConvertMgTypeToNetType(short idType)
         {
@@ -954,7 +958,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     return typeof(bool);
 
                 case Geometry:
-                    return Utility.GeometryType;
+                    return typeof(GeoAPI.Geometries.IGeometry);
 
                 case String:
                     return typeof(string);
@@ -962,8 +966,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 case DateTime:
                     return typeof(DateTime);
 
-                case Raster:
-                    return Utility.RasterType;
+                //case Raster:
+                //    return Utility.RasterType;
 
                 case Blob:
                     return typeof(byte[]);

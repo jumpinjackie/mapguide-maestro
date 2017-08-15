@@ -620,17 +620,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Returns a type used to define an unknown column type in a feature reader
         /// </summary>
-        public static Type UnmappedType => typeof(UnmappedDataType);
-
-        /// <summary>
-        /// Returns a type used to define a raster column in a feature reader
-        /// </summary>
-        public static Type RasterType => typeof(Bitmap);
-
-        /// <summary>
-        /// Returns the type used to define a geometry column in a feature reader
-        /// </summary>
-        public static Type GeometryType => typeof(IGeometry);
+        //public static Type UnmappedType => typeof(UnmappedDataType);
 
         /// <summary>
         /// This method tries to extract the html content of a WebException.

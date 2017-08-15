@@ -1038,7 +1038,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public Stream RenderMapLegend(RuntimeMap map, int width, int height, Color backgroundColor, string format)
         {
             var ms = new MemoryStream();
-            string req = m_reqBuilder.RenderMapLegend(map.Name, width, height, ColorTranslator.ToHtml(backgroundColor), format);
+            string req = m_reqBuilder.RenderMapLegend(map.Name, width, height, Utility.SerializeHTMLColorARGB(backgroundColor, true), format);
 
             return this.OpenRead(req);
         }
@@ -1420,10 +1420,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
         /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
         /// <returns>The minature bitmap</returns>
-        public override Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
+        public override System.IO.Stream GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
         {
             string param = m_reqBuilder.GetLegendImage(scale, layerdefinition, themeIndex, type, width, height, format);
-            return new Bitmap(this.OpenRead(param));
+            return this.OpenRead(param);
         }
 
         /// <summary>
