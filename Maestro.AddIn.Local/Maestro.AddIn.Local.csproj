@@ -60,27 +60,21 @@
   <ItemGroup>
     <Reference Include="OSGeo.MapGuide.Desktop, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=e75f9fd7cf82dc3f, processorArchitecture=x86">
       <HintPath>..\Maestro\packages\mg-desktop-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Desktop.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="OSGeo.MapGuide.Foundation, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
       <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Foundation.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="OSGeo.MapGuide.Geometry, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
       <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Geometry.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="OSGeo.MapGuide.PlatformBase, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
       <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.PlatformBase.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="OSGeo.MapGuide.Viewer, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=e75f9fd7cf82dc3f, processorArchitecture=MSIL">
       <HintPath>..\Maestro\packages\mg-desktop-viewer-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Viewer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="OSGeo.MapGuide.Viewer.Desktop, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=e75f9fd7cf82dc3f, processorArchitecture=MSIL">
       <HintPath>..\Maestro\packages\mg-desktop-viewer-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Viewer.Desktop.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

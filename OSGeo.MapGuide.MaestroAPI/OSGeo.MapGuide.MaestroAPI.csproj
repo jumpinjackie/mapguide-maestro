@@ -6,6 +6,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ConnectionProviders.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Properties\CodeAnalysisRules.cs" Link="CodeAnalysisRules.cs" />
+    <Compile Include="..\Properties\GlobalAssemblyInfo.cs" Link="GlobalAssemblyInfo.cs" />
+    <Compile Include="..\Properties\SignedAssemblyInfo2.cs" Link="SignedAssemblyInfo2.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ConnectionProviders.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="GeoAPI" Version="1.7.4" />
     <PackageReference Include="NetTopologySuite" Version="1.14" />
     <PackageReference Include="ProjNET4GeoAPI" Version="1.3.0.4" />

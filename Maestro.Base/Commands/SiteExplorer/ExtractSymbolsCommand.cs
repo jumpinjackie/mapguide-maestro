@@ -22,6 +22,7 @@
 
 using ICSharpCode.Core;
 using Maestro.Base.Services;
+using Maestro.Editors;
 using Maestro.Editors.SymbolDefinition;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
@@ -72,7 +73,7 @@ namespace Maestro.Base.Commands.SiteExplorer
             List<string> symbols = (List<string>)args[2];
             string targetFolder = (string)args[3];
 
-            ImageSymbolConverter conv = new ImageSymbolConverter(conn, symbolLib);
+            var conv = new ImageSymbolConverter(conn, symbolLib);
             conv.ExtractSymbols(targetFolder, symbols, (count, total) =>
             {
                 processed = count;

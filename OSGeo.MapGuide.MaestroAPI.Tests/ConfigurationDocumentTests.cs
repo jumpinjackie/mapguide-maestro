@@ -277,7 +277,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var item = new RasterWmsItem(schema.Name, cls.Name, "Image");
             item.ImageFormat = RasterWmsItem.WmsImageFormat.PNG;
             item.IsTransparent = true;
-            item.BackgroundColor = ColorTranslator.FromHtml("#FFFFFF");
+            item.BackgroundColor = Utility.ParseHTMLColor("FFFFFF");
             item.Time = "current";
             item.ElevationDimension = "0";
             item.SpatialContextName = "EPSG:4326";
