@@ -1420,7 +1420,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
         /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
         /// <returns>The minature bitmap</returns>
-        public override System.IO.Stream GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
+        public override System.IO.Stream GetLegendImageStream(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
         {
             string param = m_reqBuilder.GetLegendImage(scale, layerdefinition, themeIndex, type, width, height, format);
             return this.OpenRead(param);

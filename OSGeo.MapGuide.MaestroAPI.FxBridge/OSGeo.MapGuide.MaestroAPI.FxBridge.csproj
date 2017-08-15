@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ImageSymbolConverter.cs" />
     <Compile Include="Polyfills.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

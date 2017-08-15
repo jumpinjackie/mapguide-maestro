@@ -1558,12 +1558,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="geomType"></param>
         /// <param name="themeCategory"></param>
         /// <returns></returns>
-        public System.IO.Stream GetLegendImage(string layerDefinitionID, double scale, int width, int height, string format, int geomType, int themeCategory)
+        public System.IO.Stream GetLegendImageStream(string layerDefinitionID, double scale, int width, int height, string format, int geomType, int themeCategory)
         {
             if (_mapSvc == null)
                 throw new NotSupportedException();
 
-            return _mapSvc.GetLegendImage(scale, layerDefinitionID, themeCategory, geomType, width, height, format);
+            return _mapSvc.GetLegendImageStream(scale, layerDefinitionID, themeCategory, geomType, width, height, format);
         }
 
         #endregion convenience methods

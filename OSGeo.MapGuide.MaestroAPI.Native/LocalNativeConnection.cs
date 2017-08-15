@@ -908,7 +908,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         /// <returns>
         /// The minature bitmap
         /// </returns>
-        public override Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
+        public override System.IO.Stream GetLegendImageStream(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
         {
             MgMappingService ms = this.Connection.CreateService(MgServiceType.MappingService) as MgMappingService;
             GetByteReaderMethod fetch = () =>
@@ -917,7 +917,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 return ms.GenerateLegendImage(ldef, scale, width, height, format, type, themeIndex);
             };
             LogMethodCall("MgMappingService::GetLegendImage", true, scale.ToString(), layerdefinition, themeIndex.ToString(), type.ToString());
-            return new Bitmap(new MgReadOnlyStream(fetch));
+            return new MgReadOnlyStream(fetch);
         }
 
         public IFeatureService FeatureService => this;
