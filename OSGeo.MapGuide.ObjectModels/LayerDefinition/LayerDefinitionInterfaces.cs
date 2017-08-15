@@ -2206,7 +2206,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// </summary>
         /// <param name="sym"></param>
         /// <param name="f"></param>
-        public static void Apply(this IFontSymbol sym, Font f)
+        public static void Apply(this IFontSymbol sym, FontInfo f)
         {
             Check.ArgumentNotNull(sym, nameof(sym));
             sym.FontName = f.Name;
@@ -2373,7 +2373,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// </summary>
         /// <param name="sym"></param>
         /// <param name="f"></param>
-        public static void Apply(this ITextSymbol sym, Font f)
+        public static void Apply(this ITextSymbol sym, FontInfo f)
         {
             Check.ArgumentNotNull(sym, nameof(sym));
             sym.FontName = f.Name;
