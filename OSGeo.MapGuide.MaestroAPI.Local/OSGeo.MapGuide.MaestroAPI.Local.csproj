@@ -10,6 +10,10 @@
     <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0;LOCAL_API</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;LOCAL_API;NETSTANDARD2_0</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\Commands\FeatureCommandsImpl.cs" Link="FeatureCommandsImpl.cs" />
     <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\Commands\LocalGetResourceContents.cs" Link="LocalGetResourceContents.cs" />
