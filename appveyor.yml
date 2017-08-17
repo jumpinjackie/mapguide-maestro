@@ -34,6 +34,8 @@ before_build:
   - nuget update -self
   - choco install dotnetcore-sdk
   - appveyor DownloadFile https://dist.nuget.org/win-x86-commandline/v4.3.0/nuget.exe -FileName "%APPVEYOR_BUILD_FOLDER%\nuget.exe"
+  - echo %CD%
+  - nuget update -self
   - set PATH=%PATH%;%APPVEYOR_BUILD_FOLDER%\Maestro\packages\NSIS.2.51\tools
   - nuget restore Maestro\Maestro_All.sln
   - pip install -U sphinx
