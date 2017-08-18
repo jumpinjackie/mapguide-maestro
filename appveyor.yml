@@ -32,9 +32,10 @@ before_build:
   - echo APPVEYOR_REPO_TAG_NAME         %APPVEYOR_REPO_TAG_NAME%
   - echo APPVEYOR_REPO_COMMIT           %APPVEYOR_REPO_COMMIT%
   - echo APPVEYOR_REPO_COMMIT_TIMESTAMP %APPVEYOR_REPO_COMMIT_TIMESTAMP%
-  - nuget update -self
+  - nuget
   - appveyor download https://dist.nuget.org/win-x86-commandline/v4.3.0/nuget.exe -FileName %APPVEYOR_BUILD_FOLDER%\nuget.exe
   - nuget sources update -Name nuget.org -Source https://api.nuget.org/v3/index.json
+  - nuget
   - nuget restore Maestro\Maestro_All.sln
   - pip install -U sphinx
 
