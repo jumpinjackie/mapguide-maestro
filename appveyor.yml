@@ -35,6 +35,7 @@ before_build:
   - nuget
   - appveyor download https://dist.nuget.org/win-x86-commandline/v4.3.0/nuget.exe -FileName %APPVEYOR_BUILD_FOLDER%\nuget.exe
   - nuget sources update -Name nuget.org -Source https://api.nuget.org/v3/index.json
+  - set PATH=%APPVEYOR_BUILD_FOLDER%;%PATH%
   - nuget
   - nuget restore Maestro\Maestro_All.sln
   - pip install -U sphinx
