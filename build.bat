@@ -2,9 +2,9 @@
 SET TYPEACTION=build
 SET TYPEBUILD=Release
 SET PLATFORM=Any CPU
-SET RELEASE_VERSION=6.0m7
+SET RELEASE_VERSION=6.0m8
 SET OLDPATH=%PATH%
-SET PATH=%PATH%;%CD%\Maestro\packages\NSIS.2.51\tools;C:\Windows\Microsoft.NET\Framework\v4.0.30319
+SET PATH=%PATH%;%CD%\Maestro\packages\NSIS.2.51\tools
 SET SLNDIR=%CD%
 
 :study_params

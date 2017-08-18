@@ -6,6 +6,10 @@
     <DebugType>full</DebugType>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\OSGeo.MapGuide.MaestroAPI.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="ConnectionProviders.xml" />
   </ItemGroup>
