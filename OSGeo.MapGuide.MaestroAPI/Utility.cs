@@ -22,6 +22,7 @@
 
 using GeoAPI.Geometries;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;

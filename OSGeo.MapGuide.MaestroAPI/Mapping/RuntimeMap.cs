@@ -1307,6 +1307,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
+        /// Convers all tiled groups in this map to untiled groups. All layers within these groups
+        /// are convered to dynamic layers
+        /// </summary>
+        public void ConvertTiledGroupsToNonTiled()
+        {
+            var groups = this.Groups;
+            for (int i = 0; i < groups.Count; i++)
+            {
+                var group = groups[i];
+                group.Type = RuntimeMapGroup.kNormal;
+
+                var layers = this.GetLayersOfGroup(group.Name);
+                for (int j = 0; j < layers.Length; j++)
+                {
+                    layers[j].Type = RuntimeMapLayer.kDynamic;
+                }
+            }
+        }
+
+        /// <summary>
         /// Gets whether this instance has state changes which require a call to <see cref="M:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Save"/>
         /// </summary>
         /// <value>
@@ -1568,7 +1588,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         #endregion convenience methods
 
-        internal bool StrictSelection { get; set; }
+        /// <summary>
+        /// If true, any selections made against this map are validated to ensure the layer(s) being selected 
+        /// have identity properties
+        /// </summary>
+        public bool StrictSelection { get; set; }
 
         /// <summary>
         /// Updates and replaces the layer/group structure of the specified Map Definition with the

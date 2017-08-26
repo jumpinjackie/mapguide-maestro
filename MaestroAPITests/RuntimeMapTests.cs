@@ -356,8 +356,8 @@ namespace MaestroAPITests
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
             double metersPerUnit = 111319.490793274;
-            var cs = CoordinateSystemBase.Create(mdf.CoordinateSystem);
-            metersPerUnit = cs.MetersPerUnitX;
+            var cs = _conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
+            metersPerUnit = cs.MetersPerUnit;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
             var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestRender75k.Map";
@@ -580,8 +580,8 @@ namespace MaestroAPITests
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
             double metersPerUnit = 111319.490793274;
-            var cs = CoordinateSystemBase.Create(mdf.CoordinateSystem);
-            metersPerUnit = cs.MetersPerUnitX;
+            var cs = _conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
+            metersPerUnit = cs.MetersPerUnit;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
             var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestLegendIconRendering.Map";
@@ -647,8 +647,8 @@ namespace MaestroAPITests
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
             double metersPerUnit = 111319.490793274;
-            var cs = CoordinateSystemBase.Create(mdf.CoordinateSystem);
-            metersPerUnit = cs.MetersPerUnitX;
+            var cs = _conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
+            metersPerUnit = cs.MetersPerUnit;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
             var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestRender12k.Map";
@@ -720,8 +720,8 @@ namespace MaestroAPITests
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
             double metersPerUnit = 111319.490793274;
-            var cs = CoordinateSystemBase.Create(mdf.CoordinateSystem);
-            metersPerUnit = cs.MetersPerUnitX;
+            var cs = _conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
+            metersPerUnit = cs.MetersPerUnit;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
             var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestMapManipulation.Map";
@@ -813,8 +813,8 @@ namespace MaestroAPITests
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
             double metersPerUnit = 111319.490793274;
-            var cs = CoordinateSystemBase.Create(mdf.CoordinateSystem);
-            metersPerUnit = cs.MetersPerUnitX;
+            var cs = _conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
+            metersPerUnit = cs.MetersPerUnit;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
             //Empty the layer/group list because we will add them individually
@@ -942,8 +942,8 @@ namespace MaestroAPITests
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
             double metersPerUnit = 111319.490793274;
-            var cs = CoordinateSystemBase.Create(mdf.CoordinateSystem);
-            metersPerUnit = cs.MetersPerUnitX;
+            var cs = _conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
+            metersPerUnit = cs.MetersPerUnit;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
             //Empty the layer/group list because we will add them individually

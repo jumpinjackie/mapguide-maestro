@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
 using System.Globalization;
@@ -501,7 +502,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// <summary>
     /// Stores geometry data
     /// </summary>
-    public class GeometryValue : ReferenceTypePropertyValue<IGeometry>
+    public class GeometryValue : ReferenceTypePropertyValue<IGeometryRef>
     {
         /// <summary>
         /// Initializes a new instance
@@ -514,7 +515,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public GeometryValue(IGeometry value)
+        public GeometryValue(IGeometryRef value)
             : base(value)
         {
         }

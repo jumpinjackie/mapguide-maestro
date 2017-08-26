@@ -112,9 +112,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         //From MgLayerType
-        internal const int kBaseMap = 2;
+        public const int kBaseMap = 2;
 
-        internal const int kDynamic = 1;
+        public const int kDynamic = 1;
 
         private const double InfinityScale = double.MaxValue;
 

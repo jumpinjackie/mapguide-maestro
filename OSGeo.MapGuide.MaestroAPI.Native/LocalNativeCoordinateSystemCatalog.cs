@@ -98,5 +98,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         public override CoordinateSystemDefinitionBase CreateEmptyCoordinateSystem() => new LocalNativeCoordinateSystemDefinition();
 
         public override ISimpleTransform CreateTransform(string sourceWkt, string targetWkt) => new LocalNativeSimpleTransform(sourceWkt, targetWkt);
+
+        class LocalCSRef : ICoordinateSystemRef
+        {
+            readonly MgCoordinateSystem _cs;
+
+            public LocalCSRef(MgCoordinateSystem cs)
+            {
+                _cs = cs;
+            }
+
+            public double MetersPerUnit => _cs.ConvertCoordinateSystemUnitsToMeters(1.0);
+        }
+
+        public override ICoordinateSystemRef CreateCoordinateSystem(string wkt)
+        {
+            var cs = m_cf.Create(wkt);
+            return new LocalCSRef(cs);
+        }
     }
 }

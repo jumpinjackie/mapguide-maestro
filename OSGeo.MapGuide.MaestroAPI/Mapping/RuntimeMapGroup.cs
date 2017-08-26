@@ -33,9 +33,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     public class RuntimeMapGroup : MapObservable
     {
         //From MgLayerGroupType
-        internal const int kBaseMap = 2;
+        public const int kBaseMap = 2;
 
-        internal const int kNormal = 1;
+        public const int kNormal = 1;
 
         internal RuntimeMapGroup()
         {

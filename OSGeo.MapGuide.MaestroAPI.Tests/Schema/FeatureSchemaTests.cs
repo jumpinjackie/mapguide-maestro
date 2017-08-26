@@ -34,12 +34,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
         [Test]
         public void FeatureSchemaTest()
         {
-            var fs = new FeatureSchema();
-            Assert.True(String.IsNullOrEmpty(fs.Name));
-            Assert.True(String.IsNullOrEmpty(fs.Description));
-            Assert.AreEqual(0, fs.Classes.Count);
-
-            fs = new FeatureSchema("Foo", "");
+            var fs = new FeatureSchema("Foo", "");
             Assert.AreEqual("Foo", fs.Name);
             Assert.True(String.IsNullOrEmpty(fs.Description));
             Assert.AreEqual(0, fs.Classes.Count);

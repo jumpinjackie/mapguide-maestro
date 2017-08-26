@@ -150,5 +150,23 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         {
             return new DefaultSimpleTransform(sourceWkt, targetWkt);
         }
+
+        class CSRef : ICoordinateSystemRef
+        {
+            readonly CoordinateSystemBase _cs;
+
+            public CSRef(CoordinateSystemBase cs)
+            {
+                _cs = cs;
+            }
+
+            public double MetersPerUnit => _cs.MetersPerUnitX;
+        }
+
+        public virtual ICoordinateSystemRef CreateCoordinateSystem(string wkt)
+        {
+            var cs = CoordinateSystemBase.Create(wkt);
+            return new CSRef(cs);
+        }
     }
 }

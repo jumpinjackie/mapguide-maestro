@@ -20,7 +20,7 @@
 
 #endregion Disclaimer / License
 
-using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
 using System.Drawing;
@@ -66,7 +66,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         /// <summary>
         /// Returns the type used to define a geometry column in a feature reader
         /// </summary>
-        public static Type GeometryType => typeof(IGeometry);
+        public static Type GeometryType => typeof(IGeometryRef);
 
         /// <summary>
         /// Gets the type of an item, given the MapGuide type id

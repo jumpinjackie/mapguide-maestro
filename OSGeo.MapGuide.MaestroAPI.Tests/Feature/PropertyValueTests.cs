@@ -19,10 +19,10 @@
 //
 
 #endregion Disclaimer / License
-using GeoAPI.Geometries;
 using Moq;
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
 
@@ -193,7 +193,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Feature
         [Test]
         public void TestCase_GeometryValue()
         {
-            var mockGeom = new Mock<IGeometry>();
+            var mockGeom = new Mock<IGeometryRef>();
             mockGeom.Setup(g => g.AsText()).Returns("POINT (0 0)");
 
             var value = new GeometryValue();
@@ -430,7 +430,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Feature
             Assert.AreEqual(typeof(string), ClrFdoTypeMap.GetClrType(dp));
 
             var gp = new GeometricPropertyDefinition("Geom", "");
-            Assert.AreEqual(typeof(IGeometry), ClrFdoTypeMap.GetClrType(gp));
+            Assert.AreEqual(typeof(IGeometryRef), ClrFdoTypeMap.GetClrType(gp));
 
             var op = new RasterPropertyDefinition("Raster", "");
             Assert.Throws<ArgumentException>(() => { var t = ClrFdoTypeMap.GetClrType(op); });
@@ -442,7 +442,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Feature
             Assert.AreEqual(typeof(DateTime), ClrFdoTypeMap.GetClrType(PropertyValueType.DateTime));
             Assert.AreEqual(typeof(double), ClrFdoTypeMap.GetClrType(PropertyValueType.Double));
             Assert.AreEqual(typeof(IFeature[]), ClrFdoTypeMap.GetClrType(PropertyValueType.Feature));
-            Assert.AreEqual(typeof(IGeometry), ClrFdoTypeMap.GetClrType(PropertyValueType.Geometry));
+            Assert.AreEqual(typeof(IGeometryRef), ClrFdoTypeMap.GetClrType(PropertyValueType.Geometry));
             Assert.AreEqual(typeof(short), ClrFdoTypeMap.GetClrType(PropertyValueType.Int16));
             Assert.AreEqual(typeof(int), ClrFdoTypeMap.GetClrType(PropertyValueType.Int32));
             Assert.AreEqual(typeof(long), ClrFdoTypeMap.GetClrType(PropertyValueType.Int64));

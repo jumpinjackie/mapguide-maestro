@@ -25,6 +25,7 @@ using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
@@ -45,6 +46,19 @@ using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
+    public struct ConnectionCacheStats
+    {
+        public int FeatureSources { get; }
+
+        public int ClassDefinitions { get; }
+
+        public ConnectionCacheStats(int featureSources, int classDefs)
+        {
+            this.FeatureSources = featureSources;
+            this.ClassDefinitions = classDefs;
+        }
+    }
+
     /// <summary>
     /// Base class of all connection classes. Covers functionality encompassed by
     /// the MapGuide Geospatial Platform API (ie. Feature Service and Resource Service)
@@ -1592,6 +1606,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal int CachedClassDefinitions => m_classDefinitionCache.Count;
 
+        public ConnectionCacheStats CacheStats => new ConnectionCacheStats(CachedFeatureSources, CachedClassDefinitions);
+
         /// <summary>
         /// Resets the feature source schema cache.
         /// </summary>
@@ -1686,19 +1702,14 @@ namespace OSGeo.MapGuide.MaestroAPI
                         if (fsr.IsNull("EXTENT")) //NOXLATE
                             throw new NullExtentException();
 
-                        IGeometry geom = fsr["EXTENT"] as IGeometry; //NOXLATE
+                        IGeometryRef geom = fsr["EXTENT"] as IGeometryRef; //NOXLATE
                         if (geom == null)
                         {
                             throw new NullExtentException();
                         }
                         else
                         {
-                            var env = geom.EnvelopeInternal;
-                            return ObjectFactory.CreateEnvelope(
-                                env.MinX,
-                                env.MinY,
-                                env.MaxX,
-                                env.MaxY);
+                            return geom.GetEnvelope();
                         }
                     }
                     else
