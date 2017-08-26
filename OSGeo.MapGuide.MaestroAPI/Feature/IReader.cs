@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
 using System.Collections.Generic;
@@ -241,7 +242,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        IGeometry GetGeometry(string name);
+        IGeometryRef GetGeometry(string name);
 
         /// <summary>
         /// Gets the boolean value at the specified index
@@ -325,7 +326,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        IGeometry GetGeometry(int index);
+        IGeometryRef GetGeometry(int index);
 
         //byte[] GetRaster(string name);
         //byte[] GetRaster(int index);
@@ -489,7 +490,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <param name="name"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        void SetGeometry(string name, IGeometry value);
+        void SetGeometry(string name, IGeometryRef value);
 
         /// <summary>
         /// Sets the boolean value at the specified index
@@ -585,6 +586,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <param name="index"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        void SetGeometry(int index, IGeometry value);
+        void SetGeometry(int index, IGeometryRef value);
     }
 }

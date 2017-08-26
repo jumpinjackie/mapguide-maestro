@@ -22,6 +22,7 @@
 
 using GeoAPI.Geometries;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
@@ -630,7 +631,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Returns the type used to define a geometry column in a feature reader
         /// </summary>
-        public static Type GeometryType => typeof(IGeometry);
+        public static Type GeometryType => typeof(IGeometryRef);
 
         /// <summary>
         /// This method tries to extract the html content of a WebException.

@@ -25,6 +25,7 @@ using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
@@ -1686,19 +1687,14 @@ namespace OSGeo.MapGuide.MaestroAPI
                         if (fsr.IsNull("EXTENT")) //NOXLATE
                             throw new NullExtentException();
 
-                        IGeometry geom = fsr["EXTENT"] as IGeometry; //NOXLATE
+                        IGeometryRef geom = fsr["EXTENT"] as IGeometryRef; //NOXLATE
                         if (geom == null)
                         {
                             throw new NullExtentException();
                         }
                         else
                         {
-                            var env = geom.EnvelopeInternal;
-                            return ObjectFactory.CreateEnvelope(
-                                env.MinX,
-                                env.MinY,
-                                env.MaxX,
-                                env.MaxY);
+                            return geom.GetEnvelope();
                         }
                     }
                     else

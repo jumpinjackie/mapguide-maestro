@@ -136,6 +136,8 @@
     <Compile Include="Feature\PropertyValue.cs" />
     <Compile Include="Feature\ReaderBase.cs" />
     <Compile Include="Feature\RecordBase.cs" />
+    <Compile Include="Geometry\GeoAPIGeometryRef.cs" />
+    <Compile Include="Geometry\IGeometryRef.cs" />
     <Compile Include="Internal\FixedWKTReader.cs" />
     <Compile Include="Mapping\Collections.cs" />
     <Compile Include="Mapping\NsDoc.cs" />

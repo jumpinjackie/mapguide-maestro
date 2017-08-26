@@ -19,10 +19,10 @@
 //
 
 #endregion Disclaimer / License
-using GeoAPI.Geometries;
 using Moq;
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Http;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
@@ -77,7 +77,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var testBlob = new byte[] { 1, 2, 3 };
             var testClob = new char[] { 'a', 'b', 'c' };
 
-            var mockGeom = new Mock<IGeometry>();
+            var mockGeom = new Mock<IGeometryRef>();
             mockGeom.Setup(g => g.AsText()).Returns("POINT (0 0)");
 
             var mockFr = new Mock<IFeatureReader>();

@@ -20,12 +20,41 @@
 
 #endregion Disclaimer / License
 
-using GeoAPI.Geometries;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Internal;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ObjectModels;
 using System;
+
+namespace OSGeo.MapGuide.MaestroAPI
+{
+    internal class MgGeometryRef : IGeometryRef
+    {
+        readonly MgGeometry _geom;
+        readonly MgWktReaderWriter _wktRw;
+
+        public MgGeometryRef(MgGeometry geom, MgWktReaderWriter wktRw)
+        {
+            _geom = geom;
+            _wktRw = wktRw;
+        }
+
+        public string AsText()
+        {
+            return _wktRw.Write(_geom);
+        }
+
+        public ObjectModels.Common.IEnvelope GetEnvelope()
+        {
+            var env = _geom.Envelope();
+            var ll = env.GetLowerLeftCoordinate();
+            var ur = env.GetUpperRightCoordinate();
+            return ObjectFactory.CreateEnvelope(ll.X, ll.Y, ur.X, ur.Y);
+        }
+    }
+}
 
 #if LOCAL_API
 
@@ -82,7 +111,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
             _reader = new FixedWKTReader();
         }
 
-        public static MgByteReader GetAgf(IGeometry geom)
+        public static MgByteReader GetAgf(IGeometryRef geom)
         {
             MgGeometry mgeom = _wktRw.Read(geom.AsText());
             return _agfRw.Write(mgeom);
@@ -93,10 +122,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
             return _wktRw.Write(geom);
         }
 
-        public static IGeometry GetGeometry(MgByteReader agf)
+        public static IGeometryRef GetGeometry(MgByteReader agf)
         {
             MgGeometry mgeom = _agfRw.Read(agf);
-            return _reader.Read(GetWkt(mgeom));
+            return new MgGeometryRef(mgeom, _wktRw);
         }
     }
 

@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using System;
 using System.Collections.Generic;
 
@@ -73,7 +74,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public long GetInt64(string name) => _reader.GetInt64(name);
         public float GetSingle(string name) => _reader.GetSingle(name);
         public string GetString(string name) => _reader.GetString(name);
-        public GeoAPI.Geometries.IGeometry GetGeometry(string name) => _reader.GetGeometry(name);
+        public IGeometryRef GetGeometry(string name) => _reader.GetGeometry(name);
         public bool GetBoolean(int index) => _reader.GetBoolean(index);
         public byte GetByte(int index) => _reader.GetByte(index);
         public byte[] GetBlob(int index) => _reader.GetBlob(index);
@@ -85,7 +86,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public long GetInt64(int index) => _reader.GetInt64(index);
         public float GetSingle(int index) => _reader.GetSingle(index);
         public string GetString(int index) => _reader.GetString(index);
-        public GeoAPI.Geometries.IGeometry GetGeometry(int index) => _reader.GetGeometry(index);
+        public IGeometryRef GetGeometry(int index) => _reader.GetGeometry(index);
 
         public object this[int index] => _reader[index];
 

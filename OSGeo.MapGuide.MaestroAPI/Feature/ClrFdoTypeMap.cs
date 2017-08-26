@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
 
@@ -107,7 +108,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
                     return typeof(IFeature[]);
 
                 case PropertyValueType.Geometry:
-                    return typeof(IGeometry);
+                    return typeof(IGeometryRef);
 
                 case PropertyValueType.Int16:
                     return typeof(short);
@@ -142,7 +143,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
                         return GetClrType(dp.DataType);
                     };
                 case PropertyDefinitionType.Geometry:
-                    return typeof(IGeometry);
+                    return typeof(IGeometryRef);
 
                 case PropertyDefinitionType.Object:
                     return typeof(IFeature[]);

@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using System;
 
 namespace OSGeo.MapGuide.MaestroAPI.Feature
@@ -213,7 +214,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public IGeometry GetGeometry(string name) => this.Current.GetGeometry(name);
+        public IGeometryRef GetGeometry(string name) => this.Current.GetGeometry(name);
 
         /// <summary>
         /// Gets the boolean value at the specified index
@@ -297,7 +298,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public IGeometry GetGeometry(int index) => this.Current.GetGeometry(index);
+        public IGeometryRef GetGeometry(int index) => this.Current.GetGeometry(index);
 
         /// <summary>
         /// Gets the <see cref="System.Object"/> at the specified index.

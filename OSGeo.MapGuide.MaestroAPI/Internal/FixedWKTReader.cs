@@ -23,6 +23,7 @@
 using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Utilities;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using RTools_NTS.Util;
 using System;
 using System.Collections;
@@ -69,7 +70,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// <returns>
         /// A <c>Geometry</c> specified by <c>wellKnownText</c>
         /// </returns>
-        public IGeometry Read(string wellKnownText)
+        public IGeometryRef Read(string wellKnownText)
         {
             using (StringReader reader = new StringReader(wellKnownText))
             {
@@ -86,7 +87,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// </param>
         /// <returns>A <c>Geometry</c> read from <c>reader</c>.
         /// </returns>
-        public IGeometry Read(TextReader reader)
+        public IGeometryRef Read(TextReader reader)
         {
             StreamTokenizer tokenizer = new StreamTokenizer(reader);
             var tokens = new List<Token>();
@@ -95,7 +96,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
 
             try
             {
-                return ReadGeometryTaggedText(tokens);
+                var geom = ReadGeometryTaggedText(tokens);
+                return new GeoAPIGeometryRef(geom);
             }
             catch (IOException e)
             {

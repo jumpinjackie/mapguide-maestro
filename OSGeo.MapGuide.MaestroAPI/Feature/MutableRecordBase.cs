@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
 
@@ -210,7 +211,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
                         break;
 
                     case PropertyValueType.Geometry:
-                        SetGeometry(name, (IGeometry)value);
+                        SetGeometry(name, (IGeometryRef)value);
                         break;
 
                     case PropertyValueType.Int16:
@@ -414,7 +415,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// </summary>
         /// <param name="name"></param>
         /// <param name="value"></param>
-        public void SetGeometry(string name, IGeometry value)
+        public void SetGeometry(string name, IGeometryRef value)
         {
             var propVal = _values[name] as GeometryValue;
             if (propVal == null)
@@ -538,7 +539,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// </summary>
         /// <param name="index"></param>
         /// <param name="value"></param>
-        public void SetGeometry(int index, IGeometry value)
+        public void SetGeometry(int index, IGeometryRef value)
         {
             SetGeometry(_ordinalMap[index], value);
         }
