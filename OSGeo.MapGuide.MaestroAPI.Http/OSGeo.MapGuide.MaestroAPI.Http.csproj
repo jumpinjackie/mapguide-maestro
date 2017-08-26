@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GeoAPI" Version="1.7.4" />
+    <PackageReference Include="GeoAPI" Version="1.7.5-pre4" />
   </ItemGroup>
 
   <ItemGroup>

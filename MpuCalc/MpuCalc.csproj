@@ -14,6 +14,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\Maestro\</SolutionDir>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -37,15 +38,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OSGeo.MapGuide.Foundation, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Foundation.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.MapGuide.Geometry, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Geometry.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.MapGuide.PlatformBase, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.PlatformBase.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,7 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="mapguide-api-base-x86">
+      <Version>3.0.0.8701</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
