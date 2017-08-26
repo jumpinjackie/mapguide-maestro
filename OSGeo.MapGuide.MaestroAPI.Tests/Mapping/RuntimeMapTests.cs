@@ -22,7 +22,6 @@
 
 using Moq;
 using NUnit.Framework;
-using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI.Tests;
 using OSGeo.MapGuide.ObjectModels;
@@ -31,15 +30,52 @@ using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
+using System.Reflection;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
 {
+    public static class ReflectionExtensions
+    {
+        public static ConstructorInfo GetInternalConstructor(this Type type, Type[] types)
+        {
+            return type.GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null, types, null);
+        }
+    }
+
     [TestFixture]
     public class RuntimeMapTests
     {
+        static RuntimeMap CreateMap(IServerConnection conn, IMapDefinition mdf, double val, bool b)
+        {
+            var ctor = typeof(RuntimeMap).GetInternalConstructor(new[] { typeof(IServerConnection), typeof(IMapDefinition), typeof(double), typeof(bool) });
+            return ctor.Invoke(new object[] { conn, mdf, val, b }) as RuntimeMap;
+        }
+
+        static RuntimeMapLayer CreateLayer(RuntimeMap map, string name, string ldfId)
+        {
+            var ctor = typeof(RuntimeMapLayer).GetInternalConstructor(new[] { typeof(RuntimeMap) });
+            var layer =  ctor.Invoke(new[] { map }) as RuntimeMapLayer;
+            layer.Name = name;
+            var pi = layer.GetType().GetProperty(nameof(layer.LayerDefinitionID));
+            pi.SetValue(layer, ldfId);
+            return layer;
+        }
+
+        static RuntimeMapGroup CreateGroup(RuntimeMap map, IBaseMapGroup grp)
+        {
+            var ctor = typeof(RuntimeMapGroup).GetInternalConstructor(new[] { typeof(RuntimeMap), typeof(IBaseMapGroup) });
+            var group = ctor.Invoke(new object[] { map, grp }) as RuntimeMapGroup;
+            return group;
+        }
+
+        static RuntimeMapGroup CreateGroup(RuntimeMap map, string name)
+        {
+            var ctor = typeof(RuntimeMapGroup).GetInternalConstructor(new[] { typeof(RuntimeMap), typeof(string) });
+            var group = ctor.Invoke(new object[] { map, name }) as RuntimeMapGroup;
+            return group;
+        }
+
         private static RuntimeMap CreateTestMap()
         {
             var layers = new Dictionary<string, ILayerDefinition>();
@@ -65,12 +101,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             foreach (var kvp in layers)
             {
                 mapSvc.Setup(m => m.CreateMapLayer(It.IsAny<RuntimeMap>(), It.IsAny<IBaseMapLayer>()))
-                      .Returns((RuntimeMap rtMap, IBaseMapLayer rl) => new RuntimeMapLayer(rtMap) { Name = rl.Name, LayerDefinitionID = kvp.Key });
+                      .Returns((RuntimeMap rtMap, IBaseMapLayer rl) => CreateLayer(rtMap, rl.Name, kvp.Key));
             }
             mapSvc.Setup(m => m.CreateMapGroup(It.IsAny<RuntimeMap>(), It.IsAny<IBaseMapGroup>()))
-                  .Returns((RuntimeMap rtMap, IBaseMapGroup grp) => new RuntimeMapGroup(rtMap, grp));
+                  .Returns((RuntimeMap rtMap, IBaseMapGroup grp) => CreateGroup(rtMap, grp));
             mapSvc.Setup(m => m.CreateMapGroup(It.IsAny<RuntimeMap>(), It.IsAny<string>()))
-                  .Returns((RuntimeMap rtMap, string name) => new RuntimeMapGroup(rtMap, name));
+                  .Returns((RuntimeMap rtMap, string name) => CreateGroup(rtMap, name));
             
             caps.Setup(c => c.SupportedServices).Returns(new int[] { (int)ServiceType.Mapping });
             caps.Setup(c => c.SupportedCommands).Returns(new int[0]);
@@ -80,7 +116,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             conn.Setup(c => c.ResourceService).Returns(resSvc.Object);
             conn.Setup(c => c.GetService((int)ServiceType.Mapping)).Returns(mapSvc.Object);
 
-            var map = new RuntimeMap(conn.Object, mdf, 1.0, true);
+            var map = CreateMap(conn.Object, mdf, 1.0, true);
             Assert.AreEqual(15, map.FiniteDisplayScaleCount);
             Assert.NotNull(map.Layers);
             Assert.NotNull(map.Groups);
@@ -97,7 +133,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             caps.Setup(c => c.SupportedCommands).Returns(new int[0]);
             conn.Setup(c => c.Capabilities).Returns(caps.Object);
 
-            Assert.Throws<NotSupportedException>(() => new RuntimeMap(conn.Object, res, 1.0, true));
+            Assert.Throws<NotSupportedException>(() =>
+            {
+                try
+                {
+                    CreateMap(conn.Object, res, 1.0, true);
+                }
+                catch (TargetInvocationException ex)
+                {
+                    throw ex.InnerException;
+                }
+            });
         }
 
         [Test]

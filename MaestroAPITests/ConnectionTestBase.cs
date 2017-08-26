@@ -117,18 +117,21 @@ namespace MaestroAPITests
             var pc = (PlatformConnectionBase)conn;
             pc.ResetFeatureSourceSchemaCache();
 
-            Assert.AreEqual(0, pc.CachedClassDefinitions);
-            Assert.AreEqual(0, pc.CachedFeatureSources);
+            var stats = pc.CacheStats;
+            Assert.AreEqual(0, stats.ClassDefinitions);
+            Assert.AreEqual(0, stats.FeatureSources);
 
             var fsd = conn.FeatureService.DescribeFeatureSource(fsId);
 
-            Assert.AreEqual(1, pc.CachedFeatureSources);
-            Assert.AreEqual(1, pc.CachedClassDefinitions);
+            stats = pc.CacheStats;
+            Assert.AreEqual(1, stats.FeatureSources);
+            Assert.AreEqual(1, stats.ClassDefinitions);
 
             var fsd2 = conn.FeatureService.DescribeFeatureSource(fsId);
 
-            Assert.AreEqual(1, pc.CachedFeatureSources);
-            Assert.AreEqual(1, pc.CachedClassDefinitions);
+            stats = pc.CacheStats;
+            Assert.AreEqual(1, stats.FeatureSources);
+            Assert.AreEqual(1, stats.ClassDefinitions);
             //Each cached instance returned is a clone
             Assert.False(object.ReferenceEquals(fsd, fsd2));
         }
@@ -152,18 +155,21 @@ namespace MaestroAPITests
             var pc = (PlatformConnectionBase)conn;
             pc.ResetFeatureSourceSchemaCache();
 
-            Assert.AreEqual(0, pc.CachedClassDefinitions);
-            Assert.AreEqual(0, pc.CachedFeatureSources);
+            var stats = pc.CacheStats;
+            Assert.AreEqual(0, stats.ClassDefinitions);
+            Assert.AreEqual(0, stats.FeatureSources);
 
             var cls = conn.FeatureService.GetClassDefinition(fsId, "SHP_Schema:Parcels");
 
-            Assert.AreEqual(0, pc.CachedFeatureSources);
-            Assert.AreEqual(1, pc.CachedClassDefinitions);
+            stats = pc.CacheStats;
+            Assert.AreEqual(0, stats.ClassDefinitions);
+            Assert.AreEqual(0, stats.FeatureSources);
 
             var cls2 = conn.FeatureService.GetClassDefinition(fsId, "SHP_Schema:Parcels");
 
-            Assert.AreEqual(0, pc.CachedFeatureSources);
-            Assert.AreEqual(1, pc.CachedClassDefinitions);
+            stats = pc.CacheStats;
+            Assert.AreEqual(0, stats.ClassDefinitions);
+            Assert.AreEqual(0, stats.FeatureSources);
             //Each cached instance returned is a clone
             Assert.False(object.ReferenceEquals(cls, cls2));
         }

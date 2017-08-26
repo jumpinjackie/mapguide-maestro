@@ -19,7 +19,6 @@
 //
 
 #endregion Disclaimer / License
-using GeoAPI.Geometries;
 using Moq;
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Feature;

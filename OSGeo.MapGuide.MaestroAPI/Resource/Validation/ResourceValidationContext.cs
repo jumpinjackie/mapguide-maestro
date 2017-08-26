@@ -70,7 +70,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <summary>
         /// Clears all cached items and validated resources
         /// </summary>
-        internal void Reset()
+        public void Reset()
         {
             _validated.Clear();
             _resources.Clear();

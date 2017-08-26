@@ -37,6 +37,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Xml;
 
@@ -167,6 +168,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual(1, set.GetAllIssues().Length);
         }
 
+        static T CreateInstance<T>() where T : class
+        {
+            var bf = BindingFlags.OptionalParamBinding | BindingFlags.Instance | BindingFlags.NonPublic;
+            var ctor = typeof(T).GetConstructor(bf, null, new[] { typeof(string) }, null);
+
+            //var ctor = typeof(T).GetInternalConstructor(new Type[0]);
+            //return ctor.Invoke(new object[0]) as T;
+            return ctor.Invoke(BindingFlags.OptionalParamBinding | BindingFlags.InvokeMethod | BindingFlags.CreateInstance, null, new[] { Type.Missing }, null) as T;
+        }
+
         [Test]
         public void TestLayerScaleRangeOverlap()
         {
@@ -193,7 +204,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var featSvc = new Mock<IFeatureService>();
             var resSvc = new Mock<IResourceService>();
 
-            var validator = new LayerDefinitionValidator();
+            var validator = CreateInstance<LayerDefinitionValidator>();
 
             var context = new ResourceValidationContext(conn.Object);
             var issues = validator.Validate(context, ldf1, false);
@@ -251,7 +262,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         {
             //This test case is for ticket 1896: Maestro layer validation incorrectly report missing primary key
 
-            var fs = new FeatureSchema();
+            var fs = new FeatureSchema("Test", "");
             var doc = new XmlDocument();
 
             doc.Load(Utils.ResolvePath("UserTestData\\1896.xml"));
@@ -332,7 +343,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             //XYZ column misconfigurations
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new FeatureSourceValidator();
+            var validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mockFs.Object, false);
             Assert.AreEqual(1, issues.Count());
@@ -342,7 +353,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             odbcTable.YColumn = "Y";
 
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new FeatureSourceValidator();
+            validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
             Assert.AreEqual(1, issues.Count());
@@ -353,7 +364,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             odbcTable.ZColumn = "Z";
 
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new FeatureSourceValidator();
+            validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
             Assert.AreEqual(1, issues.Count());
@@ -364,7 +375,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             odbcTable.ZColumn = "Z";
 
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new FeatureSourceValidator();
+            validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
             Assert.AreEqual(1, issues.Count());
@@ -374,7 +385,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             odbcTable.YColumn = "Y";
 
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new FeatureSourceValidator();
+            validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
             Assert.AreEqual(0, issues.Count());
@@ -383,7 +394,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             odbcTable.ClassName = "IDontExist";
 
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new FeatureSourceValidator();
+            validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
             Assert.AreEqual(1, issues.Count());
@@ -394,7 +405,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             geom.GeometricTypes = FeatureGeometricType.Surface;
 
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new FeatureSourceValidator();
+            validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
             Assert.AreEqual(1, issues.Count());
@@ -403,7 +414,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             //All good
             geom.GeometricTypes = FeatureGeometricType.Point;
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new FeatureSourceValidator();
+            validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
             Assert.AreEqual(0, issues.Count());
@@ -492,7 +503,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockFs.Setup(fs => fs.Serialize()).Returns(string.Empty);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new FeatureSourceValidator();
+            var validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mockFs.Object, false);
             Assert.AreEqual(1, issues.Count());
@@ -537,7 +548,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockFs.SetConnectionProperty("Password", "password");
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new FeatureSourceValidator();
+            var validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mockFs, false);
             Assert.AreEqual(1, issues.Count());
@@ -547,7 +558,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockFs.SetConnectionProperty("Password", StringConstants.MgPasswordPlaceholder);
 
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new FeatureSourceValidator();
+            validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs, false);
             Assert.AreEqual(2, issues.Count());
@@ -594,7 +605,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockFs.Setup(fs => fs.Serialize()).Returns(string.Empty);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new FeatureSourceValidator();
+            var validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mockFs.Object, false);
             Assert.AreEqual(1, issues.Count());
@@ -706,28 +717,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockFs5.Setup(fs => fs.Serialize()).Returns(string.Empty);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new FeatureSourceValidator();
+            var validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mockFs2.Object, false);
             Assert.AreEqual(1, issues.Count());
             Assert.AreEqual(ValidationStatusCode.Warning_FeatureSource_NoSpatialContext, issues.First().StatusCode);
 
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new FeatureSourceValidator();
+            validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs3.Object, false);
             Assert.AreEqual(1, issues.Count());
             Assert.AreEqual(ValidationStatusCode.Warning_FeatureSource_EmptySpatialContext, issues.First().StatusCode);
 
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new FeatureSourceValidator();
+            validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs4.Object, false);
             Assert.AreEqual(1, issues.Count());
             Assert.AreEqual(ValidationStatusCode.Warning_FeatureSource_DefaultSpatialContext, issues.First().StatusCode);
 
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new FeatureSourceValidator();
+            validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs5.Object, false);
             Assert.AreEqual(0, issues.Count());
@@ -773,7 +784,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockFs.Setup(fs => fs.Serialize()).Returns(string.Empty);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new FeatureSourceValidator();
+            var validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mockFs.Object, false);
             Assert.AreEqual(1, issues.Count());
@@ -814,7 +825,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new LayerDefinitionValidator();
+            var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
             Assert.AreEqual(1, issues.Count());
@@ -856,7 +867,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new LayerDefinitionValidator();
+            var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
             Assert.AreEqual(1, issues.Count());
@@ -900,7 +911,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new LayerDefinitionValidator();
+            var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
             Assert.AreEqual(1, issues.Count());
@@ -956,7 +967,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new LayerDefinitionValidator();
+            var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
             Assert.AreEqual(2, issues.Count());
@@ -964,7 +975,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_MissingFeatureName, issues.Last().StatusCode);
 
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new LayerDefinitionValidator();
+            validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, gldf, false);
             Assert.AreEqual(2, issues.Count());
@@ -1017,7 +1028,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new LayerDefinitionValidator();
+            var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
             Assert.AreEqual(2, issues.Count());
@@ -1025,7 +1036,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual(ValidationStatusCode.Error_LayerDefinition_MissingGeometry, issues.Last().StatusCode);
 
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new LayerDefinitionValidator();
+            validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, gldf, false);
             Assert.AreEqual(2, issues.Count());
@@ -1071,7 +1082,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new LayerDefinitionValidator();
+            var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
             Assert.AreEqual(1, issues.Count());
@@ -1121,7 +1132,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new LayerDefinitionValidator();
+            var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
             Assert.AreEqual(1, issues.Count());
@@ -1179,7 +1190,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockConn.Setup(c => c.GetService(It.Is<int>(arg => arg == (int)ServiceType.Drawing))).Returns(mockDrawSvc.Object);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new LayerDefinitionValidator();
+            var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
             Assert.AreEqual(1, issues.Count());
@@ -1242,7 +1253,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockConn.Setup(c => c.GetService(It.Is<int>(arg => arg == (int)ServiceType.Drawing))).Returns(mockDrawSvc.Object);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new LayerDefinitionValidator();
+            var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
             Assert.AreEqual(1, issues.Count());
@@ -1257,7 +1268,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var mockConn = new Mock<IServerConnection>();
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new MapDefinitionValidator();
+            var validator = CreateInstance<MapDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mdf, false);
             Assert.AreEqual(1, issues.Count());
@@ -1280,7 +1291,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var mockConn = new Mock<IServerConnection>();
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new MapDefinitionValidator();
+            var validator = CreateInstance<MapDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mdf, false);
             Assert.AreEqual(1, issues.Count());
@@ -1289,7 +1300,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             grp.LegendLabel = "layer group";
 
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new MapDefinitionValidator();
+            validator = CreateInstance<MapDefinitionValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mdf, false);
             Assert.AreEqual(1, issues.Count());
@@ -1302,7 +1313,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             grp2.Group = "IDontExist";
 
             context = new ResourceValidationContext(mockConn.Object);
-            validator = new MapDefinitionValidator();
+            validator = CreateInstance<MapDefinitionValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mdf, false);
             Assert.AreEqual(1, issues.Count());
@@ -1322,7 +1333,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var mockConn = new Mock<IServerConnection>();
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new MapDefinitionValidator();
+            var validator = CreateInstance<MapDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mdf, false);
             Assert.AreEqual(1, issues.Count());
@@ -1371,7 +1382,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new MapDefinitionValidator();
+            var validator = CreateInstance<MapDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mdf, false);
             Assert.AreEqual(4, issues.Count());
@@ -1480,7 +1491,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
 
             var context = new ResourceValidationContext(mockConn.Object);
-            var validator = new MapDefinitionValidator();
+            var validator = CreateInstance<MapDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mdf, false);
             Assert.AreEqual(3, issues.Count());

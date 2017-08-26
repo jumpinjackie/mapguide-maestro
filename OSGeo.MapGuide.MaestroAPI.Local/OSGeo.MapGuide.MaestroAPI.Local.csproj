@@ -58,9 +58,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GeoAPI, Version=1.7.4.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
-      <HintPath>..\Maestro\packages\GeoAPI.1.7.4\lib\net45\GeoAPI.dll</HintPath>
-    </Reference>
     <Reference Include="OSGeo.MapGuide.Desktop, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=e75f9fd7cf82dc3f, processorArchitecture=x86">
       <HintPath>..\Maestro\packages\mg-desktop-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Desktop.dll</HintPath>
       <Private>True</Private>

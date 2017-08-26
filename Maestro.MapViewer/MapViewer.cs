@@ -1177,18 +1177,7 @@ namespace Maestro.MapViewer
 
             if (this.ConvertTiledGroupsToNonTiled)
             {
-                var groups = _map.Groups;
-                for (int i = 0; i < groups.Count; i++)
-                {
-                    var group = groups[i];
-                    group.Type = RuntimeMapGroup.kNormal;
-
-                    var layers = _map.GetLayersOfGroup(group.Name);
-                    for (int j = 0; j < layers.Length; j++)
-                    {
-                        layers[j].Type = RuntimeMapLayer.kDynamic;
-                    }
-                }
+                _map.ConvertTiledGroupsToNonTiled();
             }
 
 #if VIEWER_DEBUG

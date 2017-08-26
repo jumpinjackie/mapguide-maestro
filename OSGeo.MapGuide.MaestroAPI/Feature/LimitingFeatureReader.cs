@@ -26,7 +26,10 @@ using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI.Feature
 {
-    internal class LimitingFeatureReader : IFeatureReader
+    /// <summary>
+    /// Wraps a <see cref="IFeatureReader"/> to only allow up the specified number of iterations
+    /// </summary>
+    public class LimitingFeatureReader : IFeatureReader
     {
         private IFeatureReader _reader;
         private int _limit;

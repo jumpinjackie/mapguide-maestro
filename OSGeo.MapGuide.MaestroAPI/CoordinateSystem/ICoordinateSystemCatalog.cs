@@ -133,5 +133,12 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="targetWkt"></param>
         /// <returns></returns>
         ISimpleTransform CreateTransform(string sourceWkt, string targetWkt);
+
+        /// <summary>
+        /// Creates a coordiante system from the given WKT
+        /// </summary>
+        /// <param name="wkt"></param>
+        /// <returns></returns>
+        ICoordinateSystemRef CreateCoordinateSystem(string wkt);
     }
 }

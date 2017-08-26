@@ -106,6 +106,7 @@
     <Compile Include="CoordinateSystem\DegreeBasedCoordinateSystem.cs" />
     <Compile Include="CoordinateSystem\CoordinateSystemBase.cs" />
     <Compile Include="CoordinateSystem\FeetBasedCoordinateSystem.cs" />
+    <Compile Include="CoordinateSystem\ICoordinateSystemRef.cs" />
     <Compile Include="CoordinateSystem\ISimpleTransform.cs" />
     <Compile Include="CoordinateSystem\MeterBasedCoordinateSystem.cs" />
     <Compile Include="CoordinateSystem\NsDoc.cs" />
