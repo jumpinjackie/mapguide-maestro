@@ -24,6 +24,8 @@ MapGuide Maestro is written in 100% managed C#, targeting the .net Framework. It
 
 MapGuide Maestro is designed with flexiblity in mind. The application tries very hard not to take any options away, and always allows you to edit the internal XML representation of any resources you are working with. This ensures that features that are missing from the specialized editor user interfaces can still be accessed, and allows Maestro to be future-proofed against any new resource types that MapGuide/AIMS may introduce in the future.
 
+This project is not affiliated with Autodesk or OSGeo.
+
 ## Unsupported Features
 
 MapGuide Maestro aims to support most of the features avalible in MapGuide Open Source and AIMS, but a few things are not (and will not) be supported:
