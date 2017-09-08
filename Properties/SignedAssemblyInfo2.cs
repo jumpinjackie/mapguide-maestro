@@ -24,5 +24,5 @@
 using System.Reflection;
 
 [assembly: AssemblyDelaySign(false)]
-[assembly: AssemblyKeyFile("..\\Properties\\maestroapi.key")]
+[assembly: AssemblyKeyFile("../Properties/maestroapi.key")]
 [assembly: AssemblyKeyName("")]
