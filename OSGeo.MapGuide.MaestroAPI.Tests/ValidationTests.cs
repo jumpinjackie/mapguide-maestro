@@ -265,7 +265,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var fs = new FeatureSchema("Test", "");
             var doc = new XmlDocument();
 
-            doc.Load(Utils.ResolvePath("UserTestData\\1896.xml"));
+            doc.Load(TestData._1896.AsStream());
 
             var mgr = new XmlNamespaceManager(doc.NameTable);
             mgr.AddNamespace("xs", XmlNamespaces.XS);
