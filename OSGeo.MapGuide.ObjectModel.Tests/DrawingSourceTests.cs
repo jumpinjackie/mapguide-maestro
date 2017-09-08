@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI.Tests;
 using OSGeo.MapGuide.ObjectModels.DrawingSource;
 using System;
 using Xunit;
@@ -31,7 +32,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Fact]
         public void DrawingSourceDeserializationWithFullContentModel()
         {
-            IResource res = ObjectFactory.DeserializeXml(TestData.DrawingSource_1_0_0);
+            IResource res = ObjectFactory.DeserializeXml(Utils.ReadAllText($"Resources{System.IO.Path.DirectorySeparatorChar}DrawingSource_1_0_0.txt"));
             Assert.NotNull(res);
             Assert.Equal(res.ResourceType, "DrawingSource");
             Assert.Equal(res.ResourceVersion, new Version(1, 0, 0));

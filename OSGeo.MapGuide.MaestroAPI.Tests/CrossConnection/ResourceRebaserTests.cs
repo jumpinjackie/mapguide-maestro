@@ -44,7 +44,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
         [Fact]
         public void RebaseTest()
         {
-            var res = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), TestData.TestTiledMap.AsStream());
+            var res = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}TestTiledMap.xml"));
             res.ResourceID = "Library://Test.MapDefinition";
             var rbaser = new ResourceRebaser(res);
             var rbres = rbaser.Rebase("Library://UnitTests/Layers/", "Library://Rebased/Layers/");

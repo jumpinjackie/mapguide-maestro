@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI.Tests;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
@@ -66,7 +67,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Fact]
         public void DeserializationTest_V30()
         {
-            var res = ObjectFactory.DeserializeXml(TestData.UT_LinkedTileSet);
+            var res = ObjectFactory.DeserializeXml(Utils.ReadAllText($"Resources{System.IO.Path.DirectorySeparatorChar}UT_LinkedTileSet.mdf"));
             Assert.IsAssignableFrom<IMapDefinition3>(res);
             IMapDefinition3 mdf = (IMapDefinition3)res;
             Assert.Equal("Base Map linked to Tile Set", mdf.Name);
@@ -86,7 +87,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Fact]
         public void ConvertToTileSetTest()
         {
-            var res = ObjectFactory.DeserializeXml(TestData.OldTiledMap);
+            var res = ObjectFactory.DeserializeXml(Utils.ReadAllText($"Resources{System.IO.Path.DirectorySeparatorChar}OldTiledMap.txt"));
             Assert.IsAssignableFrom<IMapDefinition>(res);
             var mdf = (IMapDefinition)res;
 

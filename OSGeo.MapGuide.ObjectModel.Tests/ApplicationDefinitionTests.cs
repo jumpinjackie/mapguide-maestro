@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI.Tests;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using System;
 using Xunit;
@@ -31,7 +32,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Fact]
         public void ApplicationDefinitionDeserializationWithFullContentModel()
         {
-            IResource res = ObjectFactory.DeserializeXml(TestData.AppDef_1_0);
+            IResource res = ObjectFactory.DeserializeXml(Utils.ReadAllText($"Resources{System.IO.Path.DirectorySeparatorChar}AppDef-1.0.txt"));
             Assert.NotNull(res);
             Assert.Equal(res.ResourceType, "ApplicationDefinition");
             Assert.Equal(res.ResourceVersion, new Version(1, 0, 0));

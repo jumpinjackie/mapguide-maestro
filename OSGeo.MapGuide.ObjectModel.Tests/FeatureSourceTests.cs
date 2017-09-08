@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI.Tests;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.Collections.Specialized;
@@ -32,7 +33,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Fact]
         public void FeatureSourceDeserializationWithFullContentModel()
         {
-            IResource res = ObjectFactory.DeserializeXml(TestData.FeatureSource_1_0_0);
+            IResource res = ObjectFactory.DeserializeXml(Utils.ReadAllText($"Resources{System.IO.Path.DirectorySeparatorChar}FeatureSource-1.0.0.txt"));
             Assert.NotNull(res);
             Assert.Equal(res.ResourceType, "FeatureSource");
             Assert.Equal(res.ResourceVersion, new Version(1, 0, 0));

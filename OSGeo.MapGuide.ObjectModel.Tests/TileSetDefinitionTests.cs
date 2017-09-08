@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI.Tests;
 using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
 using System.Linq;
@@ -81,7 +82,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Fact]
         public void DeserializationTest()
         {
-            var tsd = ObjectFactory.DeserializeXml(TestData.UT_BaseMap) as ITileSetDefinition;
+            var tsd = ObjectFactory.DeserializeXml(Utils.ReadAllText($"Resources{System.IO.Path.DirectorySeparatorChar}UT_BaseMap.tsd")) as ITileSetDefinition;
             Assert.NotNull(tsd);
             Assert.Equal("%MG_TILE_CACHE_PATH%", tsd.GetTilePath());
             Assert.Equal(256, tsd.GetDefaultTileWidth());

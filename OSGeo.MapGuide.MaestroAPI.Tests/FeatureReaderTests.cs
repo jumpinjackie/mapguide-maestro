@@ -165,8 +165,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         public void TestXmlFeatureNullValues()
         {
             //Simulate post-#708 SELECTFEATURES and verify reader properly handles null values in response
-            var bytes = Encoding.UTF8.GetBytes(TestData.SelectFeatureSample);
-            var reader = CreateXmlFeatureReader(new MemoryStream(bytes));
+
+            var reader = CreateXmlFeatureReader(Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}SelectFeatureSample.xml"));
 
             Assert.Equal(3, reader.FieldCount);
 
@@ -191,7 +191,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.False(reader.ReadNext()); //end of stream
 
             //Test the IEnumerable approach
-            reader = CreateXmlFeatureReader(new MemoryStream(bytes));
+            reader = CreateXmlFeatureReader(Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}SelectFeatureSample.xml"));
 
             int i = 0;
             foreach (var feat in reader)
@@ -223,8 +223,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         [Fact]
         public void TestXmlFeatureJoinValues()
         {
-            var bytes = Encoding.UTF8.GetBytes(TestData.FeatureJoinSelectSample);
-            var reader = CreateXmlFeatureReader(new MemoryStream(bytes));
+            var reader = CreateXmlFeatureReader(Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}FeatureJoinSelectSample.xml"));
 
             Assert.Equal(40, reader.FieldCount);
 
@@ -240,8 +239,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         public void TestXmlAggregateNullValues()
         {
             //Simulate post-#708 SELECTAGGREGATES and verify reader properly handles null values in response
-            var bytes = Encoding.UTF8.GetBytes(TestData.SelectAggregatesSample);
-            var reader = CreateXmlDataReader(new MemoryStream(bytes));
+            var reader = CreateXmlDataReader(Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}SelectAggregatesSample.xml"));
 
             Assert.Equal(3, reader.FieldCount);
 
@@ -266,7 +264,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.False(reader.ReadNext()); //end of stream
 
             //Test the IEnumerable approach
-            reader = CreateXmlDataReader(new MemoryStream(bytes));
+            reader = CreateXmlDataReader(Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}SelectAggregatesSample.xml"));
 
             int i = 0;
             while (reader.ReadNext())

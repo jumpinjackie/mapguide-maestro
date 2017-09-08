@@ -33,7 +33,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         [Fact]
         public void TestMySqlSchema()
         {
-            var fds = new FeatureSourceDescription(TestData.gen_default1_MySql_master.AsStream());
+            var fds = new FeatureSourceDescription(Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}gen_default1_MySql_master.xml"));
             Assert.Equal(1, fds.Schemas.Length);
 
             var fs = fds.GetSchema("AutoGen");
@@ -125,14 +125,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         [Fact]
         public void TestOdbcLoad()
         {
-            var conf = ConfigurationDocument.LoadXml(TestData.odbc_example_config) as OdbcConfigurationDocument;
+            var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText($"UserTestData{System.IO.Path.DirectorySeparatorChar}odbc_example_config.xml")) as OdbcConfigurationDocument;
             Assert.NotNull(conf);
         }
 
         [Fact]
         public void TestOdbcLoad2()
         {
-            var conf = ConfigurationDocument.LoadXml(TestData.odbc_example_config2) as OdbcConfigurationDocument;
+            var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText($"UserTestData{System.IO.Path.DirectorySeparatorChar}odbc_example_config2.xml")) as OdbcConfigurationDocument;
             Assert.NotNull(conf);
         }
 
@@ -232,21 +232,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         [Fact]
         public void TestWmsLoad()
         {
-            var conf = ConfigurationDocument.LoadXml(TestData.NASA_WMS_config_doc) as WmsConfigurationDocument;
+            var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText($"UserTestData{System.IO.Path.DirectorySeparatorChar}NASA_WMS_config_doc.xml")) as WmsConfigurationDocument;
             Assert.NotNull(conf);
         }
 
         [Fact]
         public void TestWmsLoad2()
         {
-            var conf = ConfigurationDocument.LoadXml(TestData.wms_config_example1) as WmsConfigurationDocument;
+            var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText($"UserTestData{System.IO.Path.DirectorySeparatorChar}wms_config_example1.xml")) as WmsConfigurationDocument;
             Assert.NotNull(conf);
         }
 
         [Fact]
         public void TestWmsLoad3()
         {
-            var conf = ConfigurationDocument.LoadXml(TestData.wms_config_example2) as WmsConfigurationDocument;
+            var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText($"UserTestData{System.IO.Path.DirectorySeparatorChar}wms_config_example2.xml")) as WmsConfigurationDocument;
             Assert.NotNull(conf);
         }
 
