@@ -19,19 +19,18 @@
 //
 
 #endregion Disclaimer / License
-using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System.IO;
 using System.Xml;
+using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests.Schema
 {
-    [TestFixture]
     public class FeatureSourceDescriptionTests
     {
-        [Test]
+        [Fact]
         public void TestLoadFromStream()
         {
             var spatialContext = new FdoSpatialContextListSpatialContext()
@@ -98,23 +97,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Schema
                 ms.Position = 0L;
 
                 var fsd = new FeatureSourceDescription(ms);
-                Assert.AreEqual(1, fsd.SchemaNames.Length);
+                Assert.Equal(1, fsd.SchemaNames.Length);
                 foreach (var sn in fsd.SchemaNames)
                 {
                     var sch1 = fsd.GetSchema(sn);
                     Assert.NotNull(sch1);
 
-                    Assert.AreEqual(schema.Name, sch1.Name);
+                    Assert.Equal(schema.Name, sch1.Name);
 
                     foreach (var klass in schema.Classes)
                     {
                         var c1 = fsd.GetClass($"{schema.Name}:{klass.Name}");
                         var c2 = fsd.GetClass(schema.Name, klass.Name);
-                        Assert.AreEqual(klass.Name, c1.Name);
-                        Assert.AreEqual(c1.Name, c2.Name);
-                        Assert.AreEqual(3, klass.Properties.Count);
-                        Assert.AreEqual(klass.Properties.Count, c1.Properties.Count);
-                        Assert.AreEqual(c1.Properties.Count, c2.Properties.Count);
+                        Assert.Equal(klass.Name, c1.Name);
+                        Assert.Equal(c1.Name, c2.Name);
+                        Assert.Equal(3, klass.Properties.Count);
+                        Assert.Equal(klass.Properties.Count, c1.Properties.Count);
+                        Assert.Equal(c1.Properties.Count, c2.Properties.Count);
                     }
                 }
             }

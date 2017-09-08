@@ -1,10 +1,10 @@
 ﻿using Moq;
-using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI.Tile;
 using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Linq;
+using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
@@ -12,7 +12,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
     {
         static readonly double[] SCALE_LIST = { 200000, 100000, 50000, 25000, 12500, 6250, 3125, 1562.5, 781.25, 390.625 };
 
-        [Test]
+        [Fact]
         public void Test_MapTilingConfiguration_TotalCalculation()
         {
             var mdfId = "Library://Samples/Sheboygan/MapsTiled/Sheboygan.MapDefinition";
@@ -50,10 +50,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             tileRuns.Maps.Add(tileConf);
 
-            Assert.AreEqual(127472, tileConf.TotalTiles);
+            Assert.Equal(127472, tileConf.TotalTiles);
         }
 
-        [Test]
+        [Fact]
         public void Test_MapTilingConfiguration_WithCustomBounds_TotalCalculation()
         {
             var mdfId = "Library://Samples/Sheboygan/MapsTiled/Sheboygan.MapDefinition";
@@ -93,18 +93,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             tileRuns.Maps.Add(tileConf);
 
-            Assert.AreEqual(127472, tileConf.TotalTiles);
+            Assert.Equal(127472, tileConf.TotalTiles);
 
             customExtents = ObjectFactory.CreateEnvelope(-87.7278601614039, 43.7443959276596, -87.7135994943579, 43.7592852552018);
             tileConf.SetScalesAndExtend(Enumerable.Range(0, 10).ToArray(), customExtents);
 
             //I don't know the exact number here, but it should be less than the original and
             //greater than the bogus amount of 10 tiles
-            Assert.Less(tileConf.TotalTiles, 127472);
-            Assert.Greater(tileConf.TotalTiles, 10);
+            Assert.True(tileConf.TotalTiles < 127472);
+            Assert.True(tileConf.TotalTiles > 10);
         }
 
-        [Test]
+        [Fact]
         public void Test_TileEventArgs()
         {
             var mdfId = "Library://Samples/Sheboygan/MapsTiled/Sheboygan.MapDefinition";
@@ -140,23 +140,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var tileRun = new TilingRunCollection(conn.Object);
             var conf = new MapTilingConfiguration(tileRun, mdfId);
             var args4 = new TileProgressEventArgs(CallbackStates.StartRenderTile, conf, "Base Layer Group", 1, 2, 3, false);
-            Assert.AreEqual(CallbackStates.StartRenderTile, args4.State);
-            Assert.AreEqual(conf, args4.Map);
-            Assert.AreEqual("Base Layer Group", args4.Group);
-            Assert.AreEqual(1, args4.ScaleIndex);
-            Assert.AreEqual(2, args4.Row);
-            Assert.AreEqual(3, args4.Column);
-            Assert.IsFalse(args4.Cancel);
+            Assert.Equal(CallbackStates.StartRenderTile, args4.State);
+            Assert.Equal(conf, args4.Map);
+            Assert.Equal("Base Layer Group", args4.Group);
+            Assert.Equal(1, args4.ScaleIndex);
+            Assert.Equal(2, args4.Row);
+            Assert.Equal(3, args4.Column);
+            Assert.False(args4.Cancel);
 
             var args5 = new TileRenderingErrorEventArgs(CallbackStates.StartRenderAllMaps, conf, "Base Layer Group", 1, 2, 3, new Exception("uh-oh"));
-            Assert.AreEqual(CallbackStates.StartRenderAllMaps, args5.State);
-            Assert.AreEqual(conf, args5.Map);
-            Assert.AreEqual("Base Layer Group", args5.Group);
-            Assert.AreEqual(1, args5.ScaleIndex);
-            Assert.AreEqual(2, args5.Row);
-            Assert.AreEqual(3, args5.Column);
-            Assert.IsNotNull(args5.Error);
-            Assert.AreEqual("uh-oh", args5.Error.Message);
+            Assert.Equal(CallbackStates.StartRenderAllMaps, args5.State);
+            Assert.Equal(conf, args5.Map);
+            Assert.Equal("Base Layer Group", args5.Group);
+            Assert.Equal(1, args5.ScaleIndex);
+            Assert.Equal(2, args5.Row);
+            Assert.Equal(3, args5.Column);
+            Assert.NotNull(args5.Error);
+            Assert.Equal("uh-oh", args5.Error.Message);
         }
     }
 }

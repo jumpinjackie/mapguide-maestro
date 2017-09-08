@@ -21,8 +21,6 @@
 #endregion Disclaimer / License
 
 using Moq;
-using NUnit.Framework;
-using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
@@ -32,30 +30,26 @@ using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
-using System.Text;
+using Xunit;
 
 namespace OSGeo.MapGuide.ObjectModels.Tests
 {
-    [TestFixture]
-    public class ObjectFactoryTests
+    public class ObjectFactoryTests : IDisposable
     {
-        [SetUp]
-        public void Setup()
+        public ObjectFactoryTests()
+        {
+            ObjectFactory.Reset();
+        }
+        
+        public void Dispose()
         {
             ObjectFactory.Reset();
         }
 
-        [TearDown]
-        public void Teardown()
-        {
-            ObjectFactory.Reset();
-        }
-
-        [Test]
+        [Fact]
         public void RegisterResourceTest()
         {
             var ser = new Mock<ResourceSerializer>();
@@ -64,10 +58,10 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterResource(new ResourceTypeDescriptor("MyNewResourceType", "1.0.0"), null));
             //Already exists
             Assert.Throws<ArgumentException>(() => ObjectFactory.RegisterResource(new ResourceTypeDescriptor("FeatureSource", "1.0.0"), ser.Object));
-            Assert.DoesNotThrow(() => ObjectFactory.RegisterResource(new ResourceTypeDescriptor("MyNewResourceType", "1.0.0"), ser.Object));
+            ObjectFactory.RegisterResource(new ResourceTypeDescriptor("MyNewResourceType", "1.0.0"), ser.Object);
         }
 
-        [Test]
+        [Fact]
         public void RegisterResourceSerializerTest()
         {
             Func<IResource, Stream> serFunc = (res) => null;
@@ -80,10 +74,10 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterResourceSerializer(new ResourceTypeDescriptor("FeatureSource", "1.0.0"), null, deserFunc));
             //Already exists
             Assert.Throws<ArgumentException>(() => ObjectFactory.RegisterResourceSerializer(new ResourceTypeDescriptor("FeatureSource", "1.0.0"), serFunc, deserFunc));
-            Assert.DoesNotThrow(() => ObjectFactory.RegisterResourceSerializer(new ResourceTypeDescriptor("MyNewResourceType", "1.0.0"), serFunc, deserFunc));
+            ObjectFactory.RegisterResourceSerializer(new ResourceTypeDescriptor("MyNewResourceType", "1.0.0"), serFunc, deserFunc);
         }
 
-        [Test]
+        [Fact]
         public void RegisterCompoundSymbolFactoryMethodTest()
         {
             Func<ICompoundSymbolDefinition> func = () => null;
@@ -92,10 +86,10 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterCompoundSymbolFactoryMethod(null, func));
             //Already exists
             Assert.Throws<ArgumentException>(() => ObjectFactory.RegisterCompoundSymbolFactoryMethod(new Version(1, 0, 0), func));
-            Assert.DoesNotThrow(() => ObjectFactory.RegisterCompoundSymbolFactoryMethod(new Version(3, 0, 0), func));
+            ObjectFactory.RegisterCompoundSymbolFactoryMethod(new Version(3, 0, 0), func);
         }
 
-        [Test]
+        [Fact]
         public void RegisterSimpleSymbolFactoryMethodTest()
         {
             Func<ISimpleSymbolDefinition> func = () => null;
@@ -104,10 +98,10 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterSimpleSymbolFactoryMethod(null, func));
             //Already exists
             Assert.Throws<ArgumentException>(() => ObjectFactory.RegisterSimpleSymbolFactoryMethod(new Version(1, 0, 0), func));
-            Assert.DoesNotThrow(() => ObjectFactory.RegisterSimpleSymbolFactoryMethod(new Version(3, 0, 0), func));
+            ObjectFactory.RegisterSimpleSymbolFactoryMethod(new Version(3, 0, 0), func);
         }
 
-        [Test]
+        [Fact]
         public void RegisterLayerFactoryMethodTest()
         {
             Func<LayerType, ILayerDefinition> func = (lt) => null;
@@ -116,10 +110,10 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterLayerFactoryMethod(null, func));
             //Already exists
             Assert.Throws<ArgumentException>(() => ObjectFactory.RegisterLayerFactoryMethod(new Version(1, 0, 0), func));
-            Assert.DoesNotThrow(() => ObjectFactory.RegisterLayerFactoryMethod(new Version(3, 0, 0), func));
+            ObjectFactory.RegisterLayerFactoryMethod(new Version(3, 0, 0), func);
         }
 
-        [Test]
+        [Fact]
         public void RegisterLoadProcedureFactoryMethodTest()
         {
             Func<ILoadProcedure> func = () => null;
@@ -129,7 +123,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test]
+        [Fact]
         public void RegisterWebLayoutFactoryMethodTest()
         {
             Func<string, IWebLayout> func = (mdfId) => null;
@@ -138,10 +132,10 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(1, 0, 0), null));
             //Already exists
             Assert.Throws<ArgumentException>(() => ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(1, 0, 0), func));
-            Assert.DoesNotThrow(() => ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(3, 0, 0), func));
+            ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(3, 0, 0), func);
         }
 
-        [Test]
+        [Fact]
         public void RegisterMapDefinitionFactoryMethodTest()
         {
             Func<IMapDefinition> func = () => null;
@@ -150,10 +144,10 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(1, 0, 0), null));
             //Already exists
             Assert.Throws<ArgumentException>(() => ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(1, 0, 0), func));
-            Assert.DoesNotThrow(() => ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(4, 0, 0), func));
+            ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(4, 0, 0), func);
         }
 
-        [Test]
+        [Fact]
         public void RegisterWatermarkDefinitionFactoryMethodTest()
         {
             Func<SymbolDefinitionType, IWatermarkDefinition> func = (st) => null;
@@ -162,10 +156,10 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(new Version(1, 0, 0), null));
             //Already exists
             Assert.Throws<ArgumentException>(() => ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(new Version(2, 3, 0), func));
-            Assert.DoesNotThrow(() => ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(new Version(4, 0, 0), func));
+            ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(new Version(4, 0, 0), func);
         }
 
-        [Test]
+        [Fact]
         public void RegisterTileSetDefinitionFactoryMethodTest()
         {
             Func<ITileSetDefinition> func = () => null;
@@ -174,27 +168,27 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterTileSetDefinitionFactoryMethod(new Version(1, 0, 0), null));
             //Already exists
             Assert.Throws<ArgumentException>(() => ObjectFactory.RegisterTileSetDefinitionFactoryMethod(new Version(3, 0, 0), func));
-            Assert.DoesNotThrow(() => ObjectFactory.RegisterTileSetDefinitionFactoryMethod(new Version(4, 0, 0), func));
+            ObjectFactory.RegisterTileSetDefinitionFactoryMethod(new Version(4, 0, 0), func);
         }
 
-        [Test]
+        [Fact]
         public void CreateMetadataTest()
         {
             var meta = ObjectFactory.CreateMetadata();
             Assert.NotNull(meta);
             Assert.NotNull(meta.Simple);
-            Assert.AreEqual(0, meta.Simple.Property.Count);
+            Assert.Equal(0, meta.Simple.Property.Count);
         }
 
-        [Test]
+        [Fact]
         public void CreateSecurityUserTest()
         {
             var user = ObjectFactory.CreateSecurityUser();
             Assert.NotNull(user);
-            Assert.AreEqual(0, user.User.Count);
+            Assert.Equal(0, user.User.Count);
         }
 
-        [Test]
+        [Fact]
         public void CreateSecurityGroupTest()
         {
             var group = ObjectFactory.CreateSecurityGroup();
@@ -202,37 +196,37 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.NotNull(group.Group);
         }
 
-        [Test]
+        [Fact]
         public void CreateFeatureSourceExtensionTest()
         {
             var ext = ObjectFactory.CreateFeatureSourceExtension("Foo", "Bar");
-            Assert.AreEqual("Bar", ext.FeatureClass);
-            Assert.AreEqual("Foo", ext.Name);
+            Assert.Equal("Bar", ext.FeatureClass);
+            Assert.Equal("Foo", ext.Name);
             Assert.NotNull(ext.AttributeRelate);
             Assert.NotNull(ext.CalculatedProperty);
-            Assert.AreEqual(0, ext.AttributeRelate.Count());
-            Assert.AreEqual(0, ext.CalculatedProperty.Count());
+            Assert.Equal(0, ext.AttributeRelate.Count());
+            Assert.Equal(0, ext.CalculatedProperty.Count());
         }
 
-        [Test]
+        [Fact]
         public void CreateCalculatedPropertyTest()
         {
             var calc = ObjectFactory.CreateCalculatedProperty("Foo", "Bar");
-            Assert.AreEqual("Foo", calc.Name);
-            Assert.AreEqual("Bar", calc.Expression);
+            Assert.Equal("Foo", calc.Name);
+            Assert.Equal("Bar", calc.Expression);
         }
 
-        [Test]
+        [Fact]
         public void CreateAttributeRelationTest()
         {
             var rel = ObjectFactory.CreateAttributeRelation();
-            Assert.AreEqual(RelateTypeEnum.LeftOuter, rel.RelateType);
+            Assert.Equal(RelateTypeEnum.LeftOuter, rel.RelateType);
             Assert.False(rel.ForceOneToOne);
             Assert.NotNull(rel.RelateProperty);
-            Assert.AreEqual(0, rel.RelatePropertyCount);
+            Assert.Equal(0, rel.RelatePropertyCount);
         }
 
-        [Test]
+        [Fact]
         public void CreateEnvelopeTest()
         {
             Assert.Throws<ArgumentException>(() => ObjectFactory.CreateEnvelope(.1, -.1, -.1, .1));
@@ -240,13 +234,13 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Throws<ArgumentException>(() => ObjectFactory.CreateEnvelope(.1, .1, -.1, -.1));
             var env = ObjectFactory.CreateEnvelope(-1, -1, 1, 1);
             Assert.NotNull(env);
-            Assert.AreEqual(-1, env.MinX);
-            Assert.AreEqual(-1, env.MinY);
-            Assert.AreEqual(1, env.MaxX);
-            Assert.AreEqual(1, env.MaxY);
+            Assert.Equal(-1, env.MinX);
+            Assert.Equal(-1, env.MinY);
+            Assert.Equal(1, env.MaxX);
+            Assert.Equal(1, env.MaxY);
         }
 
-        [Test]
+        [Fact]
         public void CreateDefaultLayerTest()
         {
             var versions = new Version[]
@@ -269,30 +263,30 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
                 Assert.NotNull(gl);
                 Assert.NotNull(vl);
 
-                Assert.AreEqual(version, dl.ResourceVersion);
-                Assert.AreEqual(version, gl.ResourceVersion);
-                Assert.AreEqual(version, vl.ResourceVersion);
+                Assert.Equal(version, dl.ResourceVersion);
+                Assert.Equal(version, gl.ResourceVersion);
+                Assert.Equal(version, vl.ResourceVersion);
 
-                Assert.AreEqual(LayerDefinition.LayerType.Drawing, dl.SubLayer.LayerType);
-                Assert.AreEqual(LayerDefinition.LayerType.Raster, gl.SubLayer.LayerType);
-                Assert.AreEqual(LayerDefinition.LayerType.Vector, vl.SubLayer.LayerType);
+                Assert.Equal(LayerDefinition.LayerType.Drawing, dl.SubLayer.LayerType);
+                Assert.Equal(LayerDefinition.LayerType.Raster, gl.SubLayer.LayerType);
+                Assert.Equal(LayerDefinition.LayerType.Vector, vl.SubLayer.LayerType);
 
                 //TODO: Verify content model satisfaction when saving back to XML
             }
         }
 
-        [Test]
+        [Fact]
         public void CreateDrawingSourceTest()
         {
             var ds = ObjectFactory.CreateDrawingSource();
             Assert.NotNull(ds);
             Assert.NotNull(ds.Sheet);
-            Assert.AreEqual(0, ds.Sheet.Count());
+            Assert.Equal(0, ds.Sheet.Count());
             Assert.True(String.IsNullOrEmpty(ds.SourceName));
             Assert.True(String.IsNullOrEmpty(ds.CoordinateSpace));
         }
 
-        [Test]
+        [Fact]
         public void CreateVectorLayerDefinitionTest()
         {
             var ldf100 = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
@@ -309,40 +303,40 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             var vl230 = (IVectorLayerDefinition)ldf230.SubLayer;
             var vl240 = (IVectorLayerDefinition)ldf240.SubLayer;
 
-            Assert.AreEqual(0, vl100.PropertyMapping.Count());
-            Assert.AreEqual(0, vl110.PropertyMapping.Count());
-            Assert.AreEqual(0, vl120.PropertyMapping.Count());
-            Assert.AreEqual(0, vl130.PropertyMapping.Count());
-            Assert.AreEqual(0, vl230.PropertyMapping.Count());
-            Assert.AreEqual(0, vl240.PropertyMapping.Count());
+            Assert.Equal(0, vl100.PropertyMapping.Count());
+            Assert.Equal(0, vl110.PropertyMapping.Count());
+            Assert.Equal(0, vl120.PropertyMapping.Count());
+            Assert.Equal(0, vl130.PropertyMapping.Count());
+            Assert.Equal(0, vl230.PropertyMapping.Count());
+            Assert.Equal(0, vl240.PropertyMapping.Count());
 
-            Assert.AreEqual(1, vl100.VectorScaleRange.Count());
-            Assert.AreEqual(1, vl110.VectorScaleRange.Count());
-            Assert.AreEqual(1, vl120.VectorScaleRange.Count());
-            Assert.AreEqual(1, vl130.VectorScaleRange.Count());
-            Assert.AreEqual(1, vl230.VectorScaleRange.Count());
-            Assert.AreEqual(1, vl240.VectorScaleRange.Count());
+            Assert.Equal(1, vl100.VectorScaleRange.Count());
+            Assert.Equal(1, vl110.VectorScaleRange.Count());
+            Assert.Equal(1, vl120.VectorScaleRange.Count());
+            Assert.Equal(1, vl130.VectorScaleRange.Count());
+            Assert.Equal(1, vl230.VectorScaleRange.Count());
+            Assert.Equal(1, vl240.VectorScaleRange.Count());
         }
 
-        [Test]
+        [Fact]
         public void CreateFeatureSourceTest()
         {
             var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
             Assert.NotNull(fs);
-            Assert.AreEqual("OSGeo.SDF", fs.Provider);
+            Assert.Equal("OSGeo.SDF", fs.Provider);
             Assert.False(fs.UsesAliasedDataFiles);
             Assert.False(fs.UsesEmbeddedDataFiles);
             var sc = fs.SupplementalSpatialContextInfo;
             Assert.NotNull(sc);
-            Assert.AreEqual(0, sc.Count());
+            Assert.Equal(0, sc.Count());
             var ext = fs.Extension;
             Assert.NotNull(ext);
-            Assert.AreEqual(0, ext.Count());
+            Assert.Equal(0, ext.Count());
             Assert.True(String.IsNullOrEmpty(fs.ConfigurationDocument));
-            Assert.AreEqual(0, fs.ConnectionPropertyNames.Length);
+            Assert.Equal(0, fs.ConnectionPropertyNames.Length);
         }
 
-        [Test]
+        [Fact]
         public void CreateFeatureSourceTestWithParameters()
         {
             var param = new NameValueCollection();
@@ -351,26 +345,26 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
 
             var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF", param);
             Assert.NotNull(fs);
-            Assert.AreEqual("OSGeo.SDF", fs.Provider);
+            Assert.Equal("OSGeo.SDF", fs.Provider);
             Assert.False(fs.UsesAliasedDataFiles);
             Assert.False(fs.UsesEmbeddedDataFiles);
             var sc = fs.SupplementalSpatialContextInfo;
             Assert.NotNull(sc);
-            Assert.AreEqual(0, sc.Count());
+            Assert.Equal(0, sc.Count());
             var ext = fs.Extension;
             Assert.NotNull(ext);
-            Assert.AreEqual(0, ext.Count());
+            Assert.Equal(0, ext.Count());
             Assert.True(String.IsNullOrEmpty(fs.ConfigurationDocument));
-            Assert.AreEqual(2, fs.ConnectionPropertyNames.Length);
+            Assert.Equal(2, fs.ConnectionPropertyNames.Length);
             Assert.False(String.IsNullOrEmpty(fs.GetConnectionProperty("File")));
             Assert.False(String.IsNullOrEmpty(fs.GetConnectionProperty("ReadOnly")));
             var param2 = fs.GetConnectionProperties();
-            Assert.AreEqual(2, param2.Count);
+            Assert.Equal(2, param2.Count);
             Assert.NotNull(param2["File"]);
             Assert.NotNull(param2["ReadOnly"]);
         }
 
-        [Test]
+        [Fact]
         public void CreateWatermarkTest()
         {
             var versions = new Version[]
@@ -387,21 +381,21 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
                 Assert.NotNull(simpWmd);
                 Assert.NotNull(compWmd);
 
-                Assert.AreEqual(version, simpWmd.ResourceVersion);
-                Assert.AreEqual(version, compWmd.ResourceVersion);
+                Assert.Equal(version, simpWmd.ResourceVersion);
+                Assert.Equal(version, compWmd.ResourceVersion);
             }
         }
 
-        [Test]
+        [Fact]
         public void CreateSymbolLibraryTest()
         {
             var lib = ObjectFactory.CreateSymbolLibrary();
             Assert.NotNull(lib);
             Assert.NotNull(lib.Symbol);
-            Assert.AreEqual(0, lib.Symbol.Count());
+            Assert.Equal(0, lib.Symbol.Count());
         }
 
-        [Test]
+        [Fact]
         public void CreateLoadProcedureTest()
         {
             foreach (LoadType lt in Enum.GetValues(typeof(LoadType)))
@@ -412,11 +406,11 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
                 var lp = ObjectFactory.CreateLoadProcedure(lt);
                 Assert.NotNull(lp);
                 Assert.NotNull(lp.SubType);
-                Assert.AreEqual(0, lp.SubType.SourceFile.Count);
+                Assert.Equal(0, lp.SubType.SourceFile.Count);
             }
         }
 
-        [Test]
+        [Fact]
         public void CreateLoadProcedureTestWithFileNames()
         {
             foreach (LoadType lt in Enum.GetValues(typeof(LoadType)))
@@ -432,13 +426,13 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
                 var lp = ObjectFactory.CreateLoadProcedure(lt, files);
                 Assert.NotNull(lp);
                 Assert.NotNull(lp.SubType);
-                Assert.AreEqual(2, lp.SubType.SourceFile.Count);
+                Assert.Equal(2, lp.SubType.SourceFile.Count);
                 Assert.True(lp.SubType.SourceFile.Contains("C:\\Temp\\Foo.bin"));
                 Assert.True(lp.SubType.SourceFile.Contains("C:\\Temp\\Bar.bin"));
             }
         }
 
-        [Test]
+        [Fact]
         public void CreateMapDefinitionTestWithName()
         {
             var versions = new Version[]
@@ -451,18 +445,18 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             foreach (var version in versions)
             {
                 var mdf = ObjectFactory.CreateMapDefinition(version, "Test");
-                Assert.AreEqual("Test", mdf.Name);
+                Assert.Equal("Test", mdf.Name);
                 Assert.True(String.IsNullOrEmpty(mdf.CoordinateSystem));
                 Assert.Null(mdf.ExtentCalculator);
                 Assert.Null(mdf.BaseMap);
                 Assert.NotNull(mdf.MapLayer);
-                Assert.AreEqual(0, mdf.MapLayer.Count());
+                Assert.Equal(0, mdf.MapLayer.Count());
                 Assert.NotNull(mdf.MapLayerGroup);
-                Assert.AreEqual(0, mdf.MapLayerGroup.Count());
+                Assert.Equal(0, mdf.MapLayerGroup.Count());
             }
         }
 
-        [Test]
+        [Fact]
         public void CreateMapDefinitionTestWithNameAndCoordSys()
         {
             var versions = new Version[]
@@ -475,18 +469,18 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             foreach (var version in versions)
             {
                 var mdf = ObjectFactory.CreateMapDefinition(version, "Test", "CoordSys");
-                Assert.AreEqual("Test", mdf.Name);
-                Assert.AreEqual("CoordSys", mdf.CoordinateSystem);
+                Assert.Equal("Test", mdf.Name);
+                Assert.Equal("CoordSys", mdf.CoordinateSystem);
                 Assert.Null(mdf.ExtentCalculator);
                 Assert.Null(mdf.BaseMap);
                 Assert.NotNull(mdf.MapLayer);
-                Assert.AreEqual(0, mdf.MapLayer.Count());
+                Assert.Equal(0, mdf.MapLayer.Count());
                 Assert.NotNull(mdf.MapLayerGroup);
-                Assert.AreEqual(0, mdf.MapLayerGroup.Count());
+                Assert.Equal(0, mdf.MapLayerGroup.Count());
             }
         }
 
-        [Test]
+        [Fact]
         public void CreateMapDefinitionTestWithNameAndCoordSysAndExtent()
         {
             var versions = new Version[]
@@ -500,22 +494,22 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             foreach (var version in versions)
             {
                 var mdf = ObjectFactory.CreateMapDefinition(version, "Test", "CoordSys", extent);
-                Assert.AreEqual("Test", mdf.Name);
-                Assert.AreEqual("CoordSys", mdf.CoordinateSystem);
-                Assert.AreEqual(extent.MinX, mdf.Extents.MinX);
-                Assert.AreEqual(extent.MinY, mdf.Extents.MinY);
-                Assert.AreEqual(extent.MaxX, mdf.Extents.MaxX);
-                Assert.AreEqual(extent.MaxY, mdf.Extents.MaxY);
+                Assert.Equal("Test", mdf.Name);
+                Assert.Equal("CoordSys", mdf.CoordinateSystem);
+                Assert.Equal(extent.MinX, mdf.Extents.MinX);
+                Assert.Equal(extent.MinY, mdf.Extents.MinY);
+                Assert.Equal(extent.MaxX, mdf.Extents.MaxX);
+                Assert.Equal(extent.MaxY, mdf.Extents.MaxY);
                 Assert.Null(mdf.ExtentCalculator);
                 Assert.Null(mdf.BaseMap);
                 Assert.NotNull(mdf.MapLayer);
-                Assert.AreEqual(0, mdf.MapLayer.Count());
+                Assert.Equal(0, mdf.MapLayer.Count());
                 Assert.NotNull(mdf.MapLayerGroup);
-                Assert.AreEqual(0, mdf.MapLayerGroup.Count());
+                Assert.Equal(0, mdf.MapLayerGroup.Count());
             }
         }
 
-        [Test]
+        [Fact]
         public void CreateSimpleLabelTest()
         {
             var versions = new Version[]
@@ -542,7 +536,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test]
+        [Fact]
         public void CreateSimplePointTest()
         {
             var versions = new Version[]
@@ -562,7 +556,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test]
+        [Fact]
         public void CreateSimpleSolidLineTest()
         {
             var versions = new Version[]
@@ -582,7 +576,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test]
+        [Fact]
         public void CreateSimpleSolidFillTest()
         {
             var versions = new Version[]
@@ -602,7 +596,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test]
+        [Fact]
         public void CreateSimpleSymbolTest()
         {
             var versions = new Version[]
@@ -619,12 +613,12 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
                 var simp = ObjectFactory.CreateSimpleSymbol(version, "Foo", "Bar");
 
                 Assert.NotNull(simp);
-                Assert.AreEqual("Foo", simp.Name);
-                Assert.AreEqual("Bar", simp.Description);
+                Assert.Equal("Foo", simp.Name);
+                Assert.Equal("Bar", simp.Description);
             }
         }
 
-        [Test]
+        [Fact]
         public void CreateCompoundSymbolTest()
         {
             var versions = new Version[]
@@ -641,14 +635,14 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
                 var comp = ObjectFactory.CreateCompoundSymbol(version, "Foo", "Bar");
 
                 Assert.NotNull(comp);
-                Assert.AreEqual("Foo", comp.Name);
-                Assert.AreEqual("Bar", comp.Description);
+                Assert.Equal("Foo", comp.Name);
+                Assert.Equal("Bar", comp.Description);
                 Assert.NotNull(comp.SimpleSymbol);
-                Assert.AreEqual(0, comp.SimpleSymbol.Count());
+                Assert.Equal(0, comp.SimpleSymbol.Count());
             }
         }
 
-        [Test]
+        [Fact]
         public void CreatePrintLayoutTest()
         {
             var pl = ObjectFactory.CreatePrintLayout();
@@ -659,21 +653,21 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.NotNull(pl.CustomText);
         }
 
-        [Test]
+        [Fact]
         public void CreatePoint2DTest()
         {
             var pt = ObjectFactory.CreatePoint2D(1, 2);
-            Assert.AreEqual(1, pt.X);
-            Assert.AreEqual(2, pt.Y);
+            Assert.Equal(1, pt.X);
+            Assert.Equal(2, pt.Y);
         }
 
-        [Test]
+        [Fact]
         public void CreatePoint3DTest()
         {
             var pt = ObjectFactory.CreatePoint3D(1, 2, 3);
-            Assert.AreEqual(1, pt.X);
-            Assert.AreEqual(2, pt.Y);
-            Assert.AreEqual(3, pt.Z);
+            Assert.Equal(1, pt.X);
+            Assert.Equal(2, pt.Y);
+            Assert.Equal(3, pt.Z);
         }
     }
 }

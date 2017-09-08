@@ -20,22 +20,18 @@
 
 #endregion Disclaimer / License
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.CrossConnection;
-using NUnit.Framework;
 using Moq;
-using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
+using System;
+using Xunit;
+
 namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
 {
-    [TestFixture]
     public class ResourceMigratorTests
     {
-        [Test]
+        [Fact]
         public void ResourceMigratorTest()
         {
             var source = new Mock<IServerConnection>();
@@ -50,7 +46,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             Assert.NotNull(mig.Target);
         }
 
-        [Test]
+        [Fact]
         public void CopyResourcesWithOverwriteTest()
         {
             var sr = new Mock<IResourceService>();
@@ -101,7 +97,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             Assert.NotNull(mig.Target);
 
             int migrated = mig.CopyResources(resources, "Library://Migrated/", true, null);
-            Assert.AreEqual(5, migrated);
+            Assert.Equal(5, migrated);
 
             sr.Verify(c => c.GetResource(resources[0]), Times.Once);
             sr.Verify(c => c.GetResource(resources[1]), Times.Once);
@@ -118,7 +114,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             tr.Verify(c => c.SaveResourceAs(It.IsAny<IResource>(), It.IsAny<string>()), Times.Exactly(5));
         }
 
-        [Test]
+        [Fact]
         public void CopyResourcesWithoutOverwriteTest()
         {
             var sr = new Mock<IResourceService>();
@@ -174,7 +170,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             Assert.NotNull(mig.Target);
 
             int migrated = mig.CopyResources(resources, "Library://Migrated/", false, null);
-            Assert.AreEqual(3, migrated);
+            Assert.Equal(3, migrated);
 
             sr.Verify(c => c.GetResource(resources[0]), Times.Once);
             sr.Verify(c => c.GetResource(resources[1]), Times.Never);
@@ -195,7 +191,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             tr.Verify(c => c.SaveResourceAs(It.IsAny<IResource>(), "Library://Migrated/Data4.FeatureSource"), Times.Once);
         }
 
-        [Test]
+        [Fact]
         public void MoveResourcesWithOverwriteTest()
         {
             var sr = new Mock<IResourceService>();
@@ -246,7 +242,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             Assert.NotNull(mig.Target);
 
             int migrated = mig.MoveResources(resources, "Library://Migrated/", true, null);
-            Assert.AreEqual(5, migrated);
+            Assert.Equal(5, migrated);
 
             sr.Verify(c => c.GetResource(resources[0]), Times.Once);
             sr.Verify(c => c.GetResource(resources[1]), Times.Once);
@@ -269,7 +265,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             sr.Verify(c => c.DeleteResource(resources[4]), Times.Once);
         }
 
-        [Test]
+        [Fact]
         public void MoveResourcesWithoutOverwriteTest()
         {
             var sr = new Mock<IResourceService>();
@@ -325,7 +321,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             Assert.NotNull(mig.Target);
 
             int migrated = mig.MoveResources(resources, "Library://Migrated/", false, null);
-            Assert.AreEqual(3, migrated);
+            Assert.Equal(3, migrated);
 
             sr.Verify(c => c.GetResource(resources[0]), Times.Once);
             sr.Verify(c => c.GetResource(resources[1]), Times.Never);
@@ -352,10 +348,10 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             sr.Verify(c => c.DeleteResource(resources[4]), Times.Once);
         }
 
-        //[Test]
+        //[Fact]
         //public void MigrateResourceTest()
         //{
-        //    Assert.Fail();
+        //    Assert.True(false, );
         //}
     }
 }

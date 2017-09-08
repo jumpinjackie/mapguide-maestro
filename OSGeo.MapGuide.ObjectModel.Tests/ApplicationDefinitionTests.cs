@@ -20,26 +20,21 @@
 
 #endregion Disclaimer / License
 
-using NUnit.Framework;
-using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Xunit;
 
 namespace OSGeo.MapGuide.ObjectModels.Tests
 {
-    [TestFixture]
     public class ApplicationDefinitionTests
     {
-        [Test]
+        [Fact]
         public void ApplicationDefinitionDeserializationWithFullContentModel()
         {
             IResource res = ObjectFactory.DeserializeXml(Properties.Resources.AppDef_1_0_0);
             Assert.NotNull(res);
-            Assert.AreEqual(res.ResourceType, "ApplicationDefinition");
-            Assert.AreEqual(res.ResourceVersion, new Version(1, 0, 0));
+            Assert.Equal(res.ResourceType, "ApplicationDefinition");
+            Assert.Equal(res.ResourceVersion, new Version(1, 0, 0));
             IApplicationDefinition appDef = res as IApplicationDefinition;
             Assert.NotNull(appDef);
         }

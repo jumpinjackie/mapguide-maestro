@@ -19,29 +19,27 @@
 //
 
 #endregion Disclaimer / License
-using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.ObjectModels.Common;
-using System.Drawing;
+using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
-    [TestFixture]
     public class ConfigurationDocumentTests
     {
         //These tests are to verify that we can read FDO XML configuration and schema documents without problems
 
-        [Test]
+        [Fact]
         public void TestMySqlSchema()
         {
             var fds = new FeatureSourceDescription(Utils.OpenFile("UserTestData\\gen_default1_MySql_master.xml"));
-            Assert.AreEqual(1, fds.Schemas.Length);
+            Assert.Equal(1, fds.Schemas.Length);
 
             var fs = fds.GetSchema("AutoGen");
-            Assert.IsNotNull(fs);
+            Assert.NotNull(fs);
 
-            Assert.AreEqual(12, fs.Classes.Count);
+            Assert.Equal(12, fs.Classes.Count);
 
             var c1 = fds.GetClass("AutoGen:rtable1");
             var c2 = fds.GetClass("AutoGen:rtable2");
@@ -69,76 +67,76 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.NotNull(c11);
             Assert.NotNull(c12);
 
-            Assert.AreEqual(1, c1.IdentityProperties.Count);
-            Assert.AreEqual(1, c2.IdentityProperties.Count);
-            Assert.AreEqual(1, c3.IdentityProperties.Count);
-            Assert.AreEqual(1, c4.IdentityProperties.Count);
-            Assert.AreEqual(1, c5.IdentityProperties.Count);
-            Assert.AreEqual(1, c6.IdentityProperties.Count);
-            Assert.AreEqual(2, c7.IdentityProperties.Count);
-            Assert.AreEqual(1, c8.IdentityProperties.Count);
-            Assert.AreEqual(1, c9.IdentityProperties.Count);
-            Assert.AreEqual(2, c10.IdentityProperties.Count);
-            Assert.AreEqual(1, c11.IdentityProperties.Count);
-            Assert.AreEqual(0, c12.IdentityProperties.Count);
+            Assert.Equal(1, c1.IdentityProperties.Count);
+            Assert.Equal(1, c2.IdentityProperties.Count);
+            Assert.Equal(1, c3.IdentityProperties.Count);
+            Assert.Equal(1, c4.IdentityProperties.Count);
+            Assert.Equal(1, c5.IdentityProperties.Count);
+            Assert.Equal(1, c6.IdentityProperties.Count);
+            Assert.Equal(2, c7.IdentityProperties.Count);
+            Assert.Equal(1, c8.IdentityProperties.Count);
+            Assert.Equal(1, c9.IdentityProperties.Count);
+            Assert.Equal(2, c10.IdentityProperties.Count);
+            Assert.Equal(1, c11.IdentityProperties.Count);
+            Assert.Equal(0, c12.IdentityProperties.Count);
 
-            Assert.AreEqual(c1.Properties.Count, 3);
-            Assert.AreEqual(c2.Properties.Count, 5);
-            Assert.AreEqual(c3.Properties.Count, 3);
-            Assert.AreEqual(c4.Properties.Count, 4);
-            Assert.AreEqual(c5.Properties.Count, 3);
-            Assert.AreEqual(c6.Properties.Count, 47);
-            Assert.AreEqual(c7.Properties.Count, 3);
-            Assert.AreEqual(c8.Properties.Count, 4);
-            Assert.AreEqual(c9.Properties.Count, 2);
-            Assert.AreEqual(c10.Properties.Count, 3);
-            Assert.AreEqual(c11.Properties.Count, 2);
-            Assert.AreEqual(c12.Properties.Count, 3);
+            Assert.Equal(c1.Properties.Count, 3);
+            Assert.Equal(c2.Properties.Count, 5);
+            Assert.Equal(c3.Properties.Count, 3);
+            Assert.Equal(c4.Properties.Count, 4);
+            Assert.Equal(c5.Properties.Count, 3);
+            Assert.Equal(c6.Properties.Count, 47);
+            Assert.Equal(c7.Properties.Count, 3);
+            Assert.Equal(c8.Properties.Count, 4);
+            Assert.Equal(c9.Properties.Count, 2);
+            Assert.Equal(c10.Properties.Count, 3);
+            Assert.Equal(c11.Properties.Count, 2);
+            Assert.Equal(c12.Properties.Count, 3);
 
-            Assert.AreEqual(c1, fds.GetClass("AutoGen", "rtable1"));
-            Assert.AreEqual(c2, fds.GetClass("AutoGen", "rtable2"));
-            Assert.AreEqual(c3, fds.GetClass("AutoGen", "rtable5"));
-            Assert.AreEqual(c4, fds.GetClass("AutoGen", "rtable6"));
-            Assert.AreEqual(c5, fds.GetClass("AutoGen", "rtable7"));
-            Assert.AreEqual(c6, fds.GetClass("AutoGen", "table1"));
-            Assert.AreEqual(c7, fds.GetClass("AutoGen", "table3"));
-            Assert.AreEqual(c8, fds.GetClass("AutoGen", "table4"));
-            Assert.AreEqual(c9, fds.GetClass("AutoGen", "table5"));
-            Assert.AreEqual(c10, fds.GetClass("AutoGen", "table6"));
-            Assert.AreEqual(c11, fds.GetClass("AutoGen", "table7"));
-            Assert.AreEqual(c12, fds.GetClass("AutoGen", "view1"));
+            Assert.Equal(c1, fds.GetClass("AutoGen", "rtable1"));
+            Assert.Equal(c2, fds.GetClass("AutoGen", "rtable2"));
+            Assert.Equal(c3, fds.GetClass("AutoGen", "rtable5"));
+            Assert.Equal(c4, fds.GetClass("AutoGen", "rtable6"));
+            Assert.Equal(c5, fds.GetClass("AutoGen", "rtable7"));
+            Assert.Equal(c6, fds.GetClass("AutoGen", "table1"));
+            Assert.Equal(c7, fds.GetClass("AutoGen", "table3"));
+            Assert.Equal(c8, fds.GetClass("AutoGen", "table4"));
+            Assert.Equal(c9, fds.GetClass("AutoGen", "table5"));
+            Assert.Equal(c10, fds.GetClass("AutoGen", "table6"));
+            Assert.Equal(c11, fds.GetClass("AutoGen", "table7"));
+            Assert.Equal(c12, fds.GetClass("AutoGen", "view1"));
 
-            Assert.IsTrue(string.IsNullOrEmpty(c1.DefaultGeometryPropertyName));
-            Assert.IsTrue(string.IsNullOrEmpty(c2.DefaultGeometryPropertyName));
-            Assert.IsTrue(string.IsNullOrEmpty(c3.DefaultGeometryPropertyName));
-            Assert.IsTrue(string.IsNullOrEmpty(c4.DefaultGeometryPropertyName));
-            Assert.IsTrue(string.IsNullOrEmpty(c5.DefaultGeometryPropertyName));
+            Assert.True(string.IsNullOrEmpty(c1.DefaultGeometryPropertyName));
+            Assert.True(string.IsNullOrEmpty(c2.DefaultGeometryPropertyName));
+            Assert.True(string.IsNullOrEmpty(c3.DefaultGeometryPropertyName));
+            Assert.True(string.IsNullOrEmpty(c4.DefaultGeometryPropertyName));
+            Assert.True(string.IsNullOrEmpty(c5.DefaultGeometryPropertyName));
             //Though this feature class has geometries, the XML schema says none
             //are designated
-            Assert.IsTrue(string.IsNullOrEmpty(c6.DefaultGeometryPropertyName));
-            Assert.IsTrue(string.IsNullOrEmpty(c7.DefaultGeometryPropertyName));
-            Assert.IsFalse(string.IsNullOrEmpty(c8.DefaultGeometryPropertyName));
-            Assert.IsTrue(string.IsNullOrEmpty(c9.DefaultGeometryPropertyName));
-            Assert.IsTrue(string.IsNullOrEmpty(c10.DefaultGeometryPropertyName));
-            Assert.IsTrue(string.IsNullOrEmpty(c11.DefaultGeometryPropertyName));
-            Assert.IsTrue(string.IsNullOrEmpty(c12.DefaultGeometryPropertyName));
+            Assert.True(string.IsNullOrEmpty(c6.DefaultGeometryPropertyName));
+            Assert.True(string.IsNullOrEmpty(c7.DefaultGeometryPropertyName));
+            Assert.False(string.IsNullOrEmpty(c8.DefaultGeometryPropertyName));
+            Assert.True(string.IsNullOrEmpty(c9.DefaultGeometryPropertyName));
+            Assert.True(string.IsNullOrEmpty(c10.DefaultGeometryPropertyName));
+            Assert.True(string.IsNullOrEmpty(c11.DefaultGeometryPropertyName));
+            Assert.True(string.IsNullOrEmpty(c12.DefaultGeometryPropertyName));
         }
 
-        [Test]
+        [Fact]
         public void TestOdbcLoad()
         {
             var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText("UserTestData\\odbc_example_config.xml")) as OdbcConfigurationDocument;
             Assert.NotNull(conf);
         }
 
-        [Test]
+        [Fact]
         public void TestOdbcLoad2()
         {
             var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText("UserTestData\\odbc_example_config2.xml")) as OdbcConfigurationDocument;
             Assert.NotNull(conf);
         }
 
-        [Test]
+        [Fact]
         public void TestOdbcSaveLoad()
         {
             var schema = new FeatureSchema("Default", "Test schema");
@@ -224,35 +222,35 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             ov = conf.GetOverride("Default", "Cities");
             Assert.NotNull(ov);
-            Assert.AreEqual("Default", ov.SchemaName);
-            Assert.AreEqual("Cities", ov.ClassName);
-            Assert.AreEqual(sc.Name, ov.SpatialContextName);
-            Assert.AreEqual("Lon", ov.XColumn);
-            Assert.AreEqual("Lat", ov.YColumn);
+            Assert.Equal("Default", ov.SchemaName);
+            Assert.Equal("Cities", ov.ClassName);
+            Assert.Equal(sc.Name, ov.SpatialContextName);
+            Assert.Equal("Lon", ov.XColumn);
+            Assert.Equal("Lat", ov.YColumn);
         }
 
-        [Test]
+        [Fact]
         public void TestWmsLoad()
         {
             var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText("UserTestData\\NASA_WMS_config_doc.xml")) as WmsConfigurationDocument;
             Assert.NotNull(conf);
         }
 
-        [Test]
+        [Fact]
         public void TestWmsLoad2()
         {
             var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText("UserTestData\\wms_config_example1.xml")) as WmsConfigurationDocument;
             Assert.NotNull(conf);
         }
 
-        [Test]
+        [Fact]
         public void TestWmsLoad3()
         {
             var conf = ConfigurationDocument.LoadXml(Utils.ReadAllText("UserTestData\\wms_config_example2.xml")) as WmsConfigurationDocument;
             Assert.NotNull(conf);
         }
 
-        [Test]
+        [Fact]
         public void TestWmsSaveLoad()
         {
             var conf = new WmsConfigurationDocument();
@@ -297,34 +295,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             conf = ConfigurationDocument.LoadXml(xml) as WmsConfigurationDocument;
             Assert.NotNull(conf);
 
-            Assert.AreEqual(1, conf.RasterOverrides.Length);
+            Assert.Equal(1, conf.RasterOverrides.Length);
 
             var ritem = conf.RasterOverrides[0];
             cls = conf.GetClass("WMS", "NASAWMSGlobalPan");
 
             Assert.NotNull(cls);
             Assert.NotNull(cls.Parent);
-            Assert.AreEqual("WMS", cls.Parent.Name);
-            Assert.AreEqual("WMS Test Schema", cls.Parent.Description);
-            Assert.AreEqual("NASAWMSGlobalPan", cls.Name);
-            Assert.AreEqual("WMS Test Class", cls.Description);
+            Assert.Equal("WMS", cls.Parent.Name);
+            Assert.Equal("WMS Test Schema", cls.Parent.Description);
+            Assert.Equal("NASAWMSGlobalPan", cls.Name);
+            Assert.Equal("WMS Test Class", cls.Description);
             var prop = cls.FindProperty("Id");
             Assert.NotNull(prop);
-            Assert.AreEqual("Id", prop.Name);
-            Assert.AreEqual("ID Property", prop.Description);
+            Assert.Equal("Id", prop.Name);
+            Assert.Equal("ID Property", prop.Description);
             prop = cls.FindProperty("Image");
             Assert.NotNull(prop);
-            Assert.AreEqual("Image", prop.Name);
-            Assert.AreEqual("Raster Property", prop.Description);
+            Assert.Equal("Image", prop.Name);
+            Assert.Equal("Raster Property", prop.Description);
 
-            Assert.AreEqual(item.ImageFormat, ritem.ImageFormat);
-            Assert.AreEqual(item.IsTransparent, ritem.IsTransparent);
-            Assert.AreEqual(item.BackgroundColor, ritem.BackgroundColor);
-            Assert.AreEqual(item.Time, ritem.Time);
-            Assert.AreEqual(item.ElevationDimension, ritem.ElevationDimension);
-            Assert.AreEqual(item.SpatialContextName, ritem.SpatialContextName);
+            Assert.Equal(item.ImageFormat, ritem.ImageFormat);
+            Assert.Equal(item.IsTransparent, ritem.IsTransparent);
+            Assert.Equal(item.BackgroundColor, ritem.BackgroundColor);
+            Assert.Equal(item.Time, ritem.Time);
+            Assert.Equal(item.ElevationDimension, ritem.ElevationDimension);
+            Assert.Equal(item.SpatialContextName, ritem.SpatialContextName);
 
-            Assert.AreEqual(5, item.Layers.Length);
+            Assert.Equal(5, item.Layers.Length);
         }
     }
 }

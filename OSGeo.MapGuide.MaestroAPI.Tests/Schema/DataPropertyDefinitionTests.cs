@@ -20,33 +20,28 @@
 
 #endregion Disclaimer / License
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using NUnit.Framework;
+using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
 {
-    [TestFixture]
     public class DataPropertyDefinitionTests
     {
-        [Test]
+        [Fact]
         public void DataPropertyDefinitionTest()
         {
             var prop = new DataPropertyDefinition("Foo", "Bar");
-            Assert.AreEqual("Foo", prop.Name);
-            Assert.AreEqual("Bar", prop.Description);
-            Assert.AreEqual(DataPropertyType.String, prop.DataType);
+            Assert.Equal("Foo", prop.Name);
+            Assert.Equal("Bar", prop.Description);
+            Assert.Equal(DataPropertyType.String, prop.DataType);
         }
 
-        [Test]
+        [Fact]
         public void IsNumericTypeTest()
         {
             var prop = new DataPropertyDefinition("Foo", "Bar");
-            Assert.AreEqual("Foo", prop.Name);
-            Assert.AreEqual("Bar", prop.Description);
-            Assert.AreEqual(DataPropertyType.String, prop.DataType);
+            Assert.Equal("Foo", prop.Name);
+            Assert.Equal("Bar", prop.Description);
+            Assert.Equal(DataPropertyType.String, prop.DataType);
 
             foreach (DataPropertyType dt in Enum.GetValues(typeof(DataPropertyType)))
             {

@@ -20,20 +20,18 @@
 
 #endregion Disclaimer / License
 using Moq;
-using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.CrossConnection;
 using OSGeo.MapGuide.MaestroAPI.Internal;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
-using OSGeo.MapGuide.MaestroAPI.Tile;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
+using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
-    [TestFixture]
     public class MiscTests
     {
-        [Test]
+        [Fact]
         public void TestParse3dWkt()
         {
             var wkt1 = "LINESTRING XYZ (218941.59990888927 173858.42946731683 0, 218931.73921854934 173868.56834443274 0)";
@@ -46,7 +44,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.NotNull(geom2);
         }
 
-        [Test]
+        [Fact]
         public void TestParseXyzmWkt()
         {
             var wkt1 = "POINT XYZM (1 2 3 4)";
@@ -56,7 +54,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.NotNull(geom);
         }
 
-        [Test]
+        [Fact]
         public void TestConnectionString()
         {
             System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
@@ -66,34 +64,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             builder["Whatever"] = "asjd=gjh;sdgj"; //Note the ; and = in the value
 
             var values = ConnectionProviderRegistry.ParseConnectionString(builder.ToString());
-            Assert.AreEqual(values.Count, 4);
+            Assert.Equal(values.Count, 4);
 
-            Assert.AreEqual(builder["Foo"].ToString(), values["Foo"]);
-            Assert.AreEqual(builder["Bar"].ToString(), values["Bar"]);
-            Assert.AreEqual(builder["Snafu"].ToString(), values["Snafu"]);
-            Assert.AreEqual(builder["Whatever"].ToString(), values["Whatever"]);
+            Assert.Equal(builder["Foo"].ToString(), values["Foo"]);
+            Assert.Equal(builder["Bar"].ToString(), values["Bar"]);
+            Assert.Equal(builder["Snafu"].ToString(), values["Snafu"]);
+            Assert.Equal(builder["Whatever"].ToString(), values["Whatever"]);
         }
 
-        [Test]
+        [Fact]
         public void TestArgParser()
         {
             string[] args = { "-foo", "-bar:snafu", "-whatever:" };
 
             var parser = new ArgumentParser(args);
-            Assert.IsFalse(parser.IsDefined("snafu"));
-            Assert.IsTrue(parser.IsDefined("foo"));
-            Assert.IsTrue(parser.IsDefined("bar"));
-            Assert.IsTrue(parser.IsDefined("whatever"));
-            Assert.AreEqual(string.Empty, parser.GetValue("whatever"));
-            Assert.AreEqual(parser.GetValue("bar"), "snafu");
+            Assert.False(parser.IsDefined("snafu"));
+            Assert.True(parser.IsDefined("foo"));
+            Assert.True(parser.IsDefined("bar"));
+            Assert.True(parser.IsDefined("whatever"));
+            Assert.Equal(string.Empty, parser.GetValue("whatever"));
+            Assert.Equal(parser.GetValue("bar"), "snafu");
 
             var nvc = parser.GetAllArgumentsWithValues();
-            Assert.IsNull(nvc["foo"]);
-            Assert.AreEqual("snafu", nvc["bar"]);
-            Assert.IsNull(nvc["whatever"]);
+            Assert.Null(nvc["foo"]);
+            Assert.Equal("snafu", nvc["bar"]);
+            Assert.Null(nvc["whatever"]);
         }
 
-        [Test]
+        [Fact]
         public void TestSiteVersions()
         {
             foreach (KnownSiteVersions ver in Enum.GetValues(typeof(KnownSiteVersions)))
@@ -103,45 +101,45 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             }
         }
 
-        [Test]
+        [Fact]
         public void TestPropertyInfo()
         {
             var pi = new PropertyInfo("Foo", typeof(string));
-            Assert.AreEqual("Foo", pi.Name);
-            Assert.AreEqual(typeof(string), pi.Type);
+            Assert.Equal("Foo", pi.Name);
+            Assert.Equal(typeof(string), pi.Type);
         }
 
-        [Test]
+        [Fact]
         public void TestEventArgs()
         {
             var args = new ResourceEventArgs("Library://Test.MapDefinition");
-            Assert.AreEqual("Library://Test.MapDefinition", args.ResourceID);
+            Assert.Equal("Library://Test.MapDefinition", args.ResourceID);
 
             var args2 = new RequestEventArgs("Foo");
-            Assert.AreEqual("Foo", args2.Data);
+            Assert.Equal("Foo", args2.Data);
 
             var items = new[] { new LengthyOperationCallbackArgs.LengthyOperationItem("Foo") };
             var args3 = new LengthyOperationCallbackArgs(items);
-            Assert.IsFalse(args3.Cancel);
-            Assert.AreEqual(0, args3.Index);
-            Assert.AreEqual(items, args3.Items);
-            Assert.AreEqual("Foo", args3.Items[args3.Index].Itempath);
-            Assert.AreEqual(LengthyOperationCallbackArgs.LengthyOperationItem.OperationStatus.None, args3.Items[args3.Index].Status);
+            Assert.False(args3.Cancel);
+            Assert.Equal(0, args3.Index);
+            Assert.Equal(items, args3.Items);
+            Assert.Equal("Foo", args3.Items[args3.Index].Itempath);
+            Assert.Equal(LengthyOperationCallbackArgs.LengthyOperationItem.OperationStatus.None, args3.Items[args3.Index].Status);
 
             var cmd = new Mock<ICommand>();
             var args4 = new CommandEventArgs(cmd.Object);
             Assert.NotNull(args4.Command);
         }
 
-        [Test]
+        [Fact]
         public void TestRebaseOptions()
         {
             Assert.Throws<ArgumentException>(() => { new RebaseOptions("Library://Foo.FeatureSource", "Library://Bar/"); });
             Assert.Throws<ArgumentException>(() => { new RebaseOptions("Library://Foo/", "Library://Bar.FeatureSource"); });
 
             var opts = new RebaseOptions("Library://Foo/", "Library://Bar/");
-            Assert.AreEqual("Library://Foo/", opts.SourceFolder);
-            Assert.AreEqual("Library://Bar/", opts.TargetFolder);
+            Assert.Equal("Library://Foo/", opts.SourceFolder);
+            Assert.Equal("Library://Bar/", opts.TargetFolder);
         }
     }
 }

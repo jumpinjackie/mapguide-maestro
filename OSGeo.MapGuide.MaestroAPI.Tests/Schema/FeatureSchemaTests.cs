@@ -20,75 +20,71 @@
 
 #endregion Disclaimer / License
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using NUnit.Framework;
 using System.Xml;
+using Xunit;
+
 namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
 {
-    [TestFixture]
     public class FeatureSchemaTests
     {
-        [Test]
+        [Fact]
         public void FeatureSchemaTest()
         {
             var fs = new FeatureSchema("Foo", "");
-            Assert.AreEqual("Foo", fs.Name);
+            Assert.Equal("Foo", fs.Name);
             Assert.True(String.IsNullOrEmpty(fs.Description));
-            Assert.AreEqual(0, fs.Classes.Count);
+            Assert.Equal(0, fs.Classes.Count);
 
             fs = new FeatureSchema("Foo", "Bar");
-            Assert.AreEqual("Foo", fs.Name);
-            Assert.AreEqual("Bar", fs.Description);
-            Assert.AreEqual(0, fs.Classes.Count);
+            Assert.Equal("Foo", fs.Name);
+            Assert.Equal("Bar", fs.Description);
+            Assert.Equal(0, fs.Classes.Count);
         }
 
-        [Test]
+        [Fact]
         public void AddClassTest()
         {
             var fs = new FeatureSchema("Foo", "Bar");
-            Assert.AreEqual("Foo", fs.Name);
-            Assert.AreEqual("Bar", fs.Description);
-            Assert.AreEqual(0, fs.Classes.Count);
+            Assert.Equal("Foo", fs.Name);
+            Assert.Equal("Bar", fs.Description);
+            Assert.Equal(0, fs.Classes.Count);
 
             var cls = new ClassDefinition("Class1", "Test Class");
             fs.AddClass(cls);
-            Assert.AreEqual(1, fs.Classes.Count);
+            Assert.Equal(1, fs.Classes.Count);
         }
 
-        [Test]
+        [Fact]
         public void RemoveClassTest()
         {
             var fs = new FeatureSchema("Foo", "Bar");
-            Assert.AreEqual("Foo", fs.Name);
-            Assert.AreEqual("Bar", fs.Description);
-            Assert.AreEqual(0, fs.Classes.Count);
+            Assert.Equal("Foo", fs.Name);
+            Assert.Equal("Bar", fs.Description);
+            Assert.Equal(0, fs.Classes.Count);
 
             var cls = new ClassDefinition("Class1", "Test Class");
             fs.AddClass(cls);
-            Assert.AreEqual(1, fs.Classes.Count);
+            Assert.Equal(1, fs.Classes.Count);
 
             fs.RemoveClass("asdgsdf");
-            Assert.AreEqual(1, fs.Classes.Count);
+            Assert.Equal(1, fs.Classes.Count);
 
             Assert.True(fs.RemoveClass(cls));
-            Assert.AreEqual(0, fs.Classes.Count);
+            Assert.Equal(0, fs.Classes.Count);
 
             fs.AddClass(cls);
-            Assert.AreEqual(1, fs.Classes.Count);
+            Assert.Equal(1, fs.Classes.Count);
             fs.RemoveClass("Class1");
-            Assert.AreEqual(0, fs.Classes.Count);
+            Assert.Equal(0, fs.Classes.Count);
         }
 
-        [Test]
+        [Fact]
         public void GetClassTest()
         {
             var fs = new FeatureSchema("Foo", "Bar");
-            Assert.AreEqual("Foo", fs.Name);
-            Assert.AreEqual("Bar", fs.Description);
-            Assert.AreEqual(0, fs.Classes.Count);
+            Assert.Equal("Foo", fs.Name);
+            Assert.Equal("Bar", fs.Description);
+            Assert.Equal(0, fs.Classes.Count);
 
             var cls = new ClassDefinition("Class1", "Test Class");
             fs.AddClass(cls);
@@ -96,29 +92,29 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.NotNull(fs.GetClass("Class1"));
         }
 
-        [Test]
+        [Fact]
         public void IndexOfTest()
         {
             var fs = new FeatureSchema("Foo", "Bar");
-            Assert.AreEqual("Foo", fs.Name);
-            Assert.AreEqual("Bar", fs.Description);
-            Assert.AreEqual(0, fs.Classes.Count);
+            Assert.Equal("Foo", fs.Name);
+            Assert.Equal("Bar", fs.Description);
+            Assert.Equal(0, fs.Classes.Count);
 
             var cls = new ClassDefinition("Class1", "Test Class");
             fs.AddClass(cls);
 
-            Assert.GreaterOrEqual(fs.IndexOf(cls), 0);
+            Assert.True(fs.IndexOf(cls) >= 0);
             Assert.True(fs.RemoveClass(cls));
-            Assert.Less(fs.IndexOf(cls), 0);
+            Assert.True(fs.IndexOf(cls) < 0);
         }
 
-        [Test]
+        [Fact]
         public void GetItemTest()
         {
             var fs = new FeatureSchema("Foo", "Bar");
-            Assert.AreEqual("Foo", fs.Name);
-            Assert.AreEqual("Bar", fs.Description);
-            Assert.AreEqual(0, fs.Classes.Count);
+            Assert.Equal("Foo", fs.Name);
+            Assert.Equal("Bar", fs.Description);
+            Assert.Equal(0, fs.Classes.Count);
 
             var cls = new ClassDefinition("Class1", "Test Class");
             fs.AddClass(cls);
@@ -130,13 +126,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.Throws<ArgumentOutOfRangeException>(() => fs.GetItem(0));
         }
 
-        [Test]
+        [Fact]
         public void WriteXmlTest()
         {
             var fs = new FeatureSchema("Foo", "Bar");
-            Assert.AreEqual("Foo", fs.Name);
-            Assert.AreEqual("Bar", fs.Description);
-            Assert.AreEqual(0, fs.Classes.Count);
+            Assert.Equal("Foo", fs.Name);
+            Assert.Equal("Bar", fs.Description);
+            Assert.Equal(0, fs.Classes.Count);
 
             var cls = new ClassDefinition("Class1", "Test Class");
             var id = new DataPropertyDefinition("ID", "");
@@ -154,13 +150,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.False(String.IsNullOrEmpty(xml));
         }
 
-        [Test]
+        [Fact]
         public void CloneTest()
         {
             var fs = new FeatureSchema("Foo", "Bar");
-            Assert.AreEqual("Foo", fs.Name);
-            Assert.AreEqual("Bar", fs.Description);
-            Assert.AreEqual(0, fs.Classes.Count);
+            Assert.Equal("Foo", fs.Name);
+            Assert.Equal("Bar", fs.Description);
+            Assert.Equal(0, fs.Classes.Count);
 
             var cls = new ClassDefinition("Class1", "Test Class");
             var id = new DataPropertyDefinition("ID", "");
@@ -172,10 +168,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             fs.AddClass(cls);
 
             var fs2 = FeatureSchema.Clone(fs);
-            Assert.AreEqual(fs.Name, fs2.Name);
-            Assert.AreEqual(fs.Description, fs2.Description);
-            Assert.AreEqual(fs.Classes.Count, fs2.Classes.Count);
-            Assert.AreNotSame(fs, fs2);
+            Assert.Equal(fs.Name, fs2.Name);
+            Assert.Equal(fs.Description, fs2.Description);
+            Assert.Equal(fs.Classes.Count, fs2.Classes.Count);
+            Assert.NotEqual(fs, fs2);
         }
     }
 }

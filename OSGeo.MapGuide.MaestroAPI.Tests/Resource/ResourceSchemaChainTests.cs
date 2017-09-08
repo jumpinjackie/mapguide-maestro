@@ -20,19 +20,13 @@
 
 #endregion Disclaimer / License
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using NUnit.Framework;
+using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Tests
 {
-    [TestFixture]
     public class ResourceSchemaChainTests
     {
-        [Test]
+        [Fact]
         public void GetValidatingSchemasTest()
         {
             var schemas = ResourceSchemaChain.GetValidatingSchemas("LayerDefinition-1.0.0.xsd");

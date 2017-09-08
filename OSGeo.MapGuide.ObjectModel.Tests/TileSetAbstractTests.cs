@@ -19,22 +19,18 @@
 //
 
 #endregion Disclaimer / License
-using NUnit.Framework;
 using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Xunit;
 
 namespace OSGeo.MapGuide.ObjectModels.Tests
 {
     // This test suite exercises known implementations of ITileSetAbstract to ensure consistent behaviour
 
-    [TestFixture]
     public class TileSetAbstractTests
     {
-        [Test]
+        [Fact]
         public void FiniteScalesTest()
         {
             var mdf = ObjectFactory.CreateMapDefinition(new Version(3, 0, 0), "Test");
@@ -52,104 +48,104 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             tsMapDef.SetFiniteDisplayScales(new double[] { 1.0, 2.0, 4.0 });
             tsTileSet.SetFiniteDisplayScales(new double[] { 1.0, 2.0, 4.0 });
 
-            Assert.AreEqual(3, tsMapDef.ScaleCount);
-            Assert.AreEqual(3, tsTileSet.ScaleCount);
+            Assert.Equal(3, tsMapDef.ScaleCount);
+            Assert.Equal(3, tsTileSet.ScaleCount);
 
             tsMapDef.SetFiniteDisplayScales(new double[] { 1.0, 2.0, 4.0, 8.0, 16.0 });
             tsTileSet.SetFiniteDisplayScales(new double[] { 1.0, 2.0, 4.0, 8.0, 16.0 });
 
-            Assert.AreEqual(5, tsMapDef.ScaleCount);
-            Assert.AreEqual(5, tsTileSet.ScaleCount);
+            Assert.Equal(5, tsMapDef.ScaleCount);
+            Assert.Equal(5, tsTileSet.ScaleCount);
 
-            Assert.AreEqual(1.0, tsMapDef.GetScaleAt(0));
-            Assert.AreEqual(1.0, tsTileSet.GetScaleAt(0));
+            Assert.Equal(1.0, tsMapDef.GetScaleAt(0));
+            Assert.Equal(1.0, tsTileSet.GetScaleAt(0));
 
-            Assert.AreEqual(2.0, tsMapDef.GetScaleAt(1));
-            Assert.AreEqual(2.0, tsTileSet.GetScaleAt(1));
+            Assert.Equal(2.0, tsMapDef.GetScaleAt(1));
+            Assert.Equal(2.0, tsTileSet.GetScaleAt(1));
 
-            Assert.AreEqual(4.0, tsMapDef.GetScaleAt(2));
-            Assert.AreEqual(4.0, tsTileSet.GetScaleAt(2));
+            Assert.Equal(4.0, tsMapDef.GetScaleAt(2));
+            Assert.Equal(4.0, tsTileSet.GetScaleAt(2));
 
-            Assert.AreEqual(8.0, tsMapDef.GetScaleAt(3));
-            Assert.AreEqual(8.0, tsTileSet.GetScaleAt(3));
+            Assert.Equal(8.0, tsMapDef.GetScaleAt(3));
+            Assert.Equal(8.0, tsTileSet.GetScaleAt(3));
 
-            Assert.AreEqual(16.0, tsMapDef.GetScaleAt(4));
-            Assert.AreEqual(16.0, tsTileSet.GetScaleAt(4));
+            Assert.Equal(16.0, tsMapDef.GetScaleAt(4));
+            Assert.Equal(16.0, tsTileSet.GetScaleAt(4));
 
             tsMapDef.RemoveScaleAt(3);
             tsTileSet.RemoveScaleAt(3);
 
-            Assert.AreEqual(1.0, tsMapDef.GetScaleAt(0));
-            Assert.AreEqual(1.0, tsTileSet.GetScaleAt(0));
+            Assert.Equal(1.0, tsMapDef.GetScaleAt(0));
+            Assert.Equal(1.0, tsTileSet.GetScaleAt(0));
 
-            Assert.AreEqual(2.0, tsMapDef.GetScaleAt(1));
-            Assert.AreEqual(2.0, tsTileSet.GetScaleAt(1));
+            Assert.Equal(2.0, tsMapDef.GetScaleAt(1));
+            Assert.Equal(2.0, tsTileSet.GetScaleAt(1));
 
-            Assert.AreEqual(4.0, tsMapDef.GetScaleAt(2));
-            Assert.AreEqual(4.0, tsTileSet.GetScaleAt(2));
+            Assert.Equal(4.0, tsMapDef.GetScaleAt(2));
+            Assert.Equal(4.0, tsTileSet.GetScaleAt(2));
 
-            Assert.AreEqual(16.0, tsMapDef.GetScaleAt(3));
-            Assert.AreEqual(16.0, tsTileSet.GetScaleAt(3));
+            Assert.Equal(16.0, tsMapDef.GetScaleAt(3));
+            Assert.Equal(16.0, tsTileSet.GetScaleAt(3));
 
             tsMapDef.RemoveScaleAt(0);
             tsTileSet.RemoveScaleAt(0);
 
-            Assert.AreEqual(2.0, tsMapDef.GetScaleAt(0));
-            Assert.AreEqual(2.0, tsTileSet.GetScaleAt(0));
+            Assert.Equal(2.0, tsMapDef.GetScaleAt(0));
+            Assert.Equal(2.0, tsTileSet.GetScaleAt(0));
 
-            Assert.AreEqual(4.0, tsMapDef.GetScaleAt(1));
-            Assert.AreEqual(4.0, tsTileSet.GetScaleAt(1));
+            Assert.Equal(4.0, tsMapDef.GetScaleAt(1));
+            Assert.Equal(4.0, tsTileSet.GetScaleAt(1));
 
-            Assert.AreEqual(16.0, tsMapDef.GetScaleAt(2));
-            Assert.AreEqual(16.0, tsTileSet.GetScaleAt(2));
+            Assert.Equal(16.0, tsMapDef.GetScaleAt(2));
+            Assert.Equal(16.0, tsTileSet.GetScaleAt(2));
 
             tsMapDef.RemoveScaleAt(2);
             tsTileSet.RemoveScaleAt(2);
 
-            Assert.AreEqual(2.0, tsMapDef.GetScaleAt(0));
-            Assert.AreEqual(2.0, tsTileSet.GetScaleAt(0));
+            Assert.Equal(2.0, tsMapDef.GetScaleAt(0));
+            Assert.Equal(2.0, tsTileSet.GetScaleAt(0));
 
-            Assert.AreEqual(4.0, tsMapDef.GetScaleAt(1));
-            Assert.AreEqual(4.0, tsTileSet.GetScaleAt(1));
+            Assert.Equal(4.0, tsMapDef.GetScaleAt(1));
+            Assert.Equal(4.0, tsTileSet.GetScaleAt(1));
 
-            Assert.AreEqual(2.0, tsMapDef.GetMinScale());
-            Assert.AreEqual(2.0, tsTileSet.GetMinScale());
+            Assert.Equal(2.0, tsMapDef.GetMinScale());
+            Assert.Equal(2.0, tsTileSet.GetMinScale());
 
             tsMapDef.RemoveFiniteDisplayScale(1.2);
             tsTileSet.RemoveFiniteDisplayScale(1.2);
 
-            Assert.AreEqual(2.0, tsMapDef.GetScaleAt(0));
-            Assert.AreEqual(2.0, tsTileSet.GetScaleAt(0));
+            Assert.Equal(2.0, tsMapDef.GetScaleAt(0));
+            Assert.Equal(2.0, tsTileSet.GetScaleAt(0));
 
-            Assert.AreEqual(4.0, tsMapDef.GetScaleAt(1));
-            Assert.AreEqual(4.0, tsTileSet.GetScaleAt(1));
+            Assert.Equal(4.0, tsMapDef.GetScaleAt(1));
+            Assert.Equal(4.0, tsTileSet.GetScaleAt(1));
 
             Assert.Throws<ArgumentOutOfRangeException>(() => tsMapDef.RemoveScaleAt(6));
             Assert.Throws<ArgumentOutOfRangeException>(() => tsTileSet.RemoveScaleAt(6));
 
-            Assert.AreEqual(2.0, tsMapDef.GetScaleAt(0));
-            Assert.AreEqual(2.0, tsTileSet.GetScaleAt(0));
+            Assert.Equal(2.0, tsMapDef.GetScaleAt(0));
+            Assert.Equal(2.0, tsTileSet.GetScaleAt(0));
 
-            Assert.AreEqual(4.0, tsMapDef.GetScaleAt(1));
-            Assert.AreEqual(4.0, tsTileSet.GetScaleAt(1));
+            Assert.Equal(4.0, tsMapDef.GetScaleAt(1));
+            Assert.Equal(4.0, tsTileSet.GetScaleAt(1));
 
             tsMapDef.AddFiniteDisplayScale(3.0);
             tsTileSet.AddFiniteDisplayScale(3.0);
 
-            Assert.AreEqual(3, tsMapDef.ScaleCount);
-            Assert.AreEqual(3, tsTileSet.ScaleCount);
+            Assert.Equal(3, tsMapDef.ScaleCount);
+            Assert.Equal(3, tsTileSet.ScaleCount);
 
-            Assert.AreEqual(3.0, tsMapDef.GetScaleAt(1));
-            Assert.AreEqual(3.0, tsTileSet.GetScaleAt(1));
+            Assert.Equal(3.0, tsMapDef.GetScaleAt(1));
+            Assert.Equal(3.0, tsTileSet.GetScaleAt(1));
 
             tsMapDef.RemoveAllScales();
             tsTileSet.RemoveAllScales();
 
-            Assert.AreEqual(0, tsMapDef.ScaleCount);
-            Assert.AreEqual(0, tsTileSet.ScaleCount);
+            Assert.Equal(0, tsMapDef.ScaleCount);
+            Assert.Equal(0, tsTileSet.ScaleCount);
         }
 
-        [Test]
+        [Fact]
         public void TestUnsupportedScaleOperations()
         {
             var tsd = ObjectFactory.CreateTileSetDefinition(new Version(3, 0, 0));
@@ -167,11 +163,11 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Throws<InvalidOperationException>(() => tsTileSet.GetScaleAt(0));
             Assert.Throws<InvalidOperationException>(() => tsTileSet.RemoveScaleAt(3));
             Assert.Throws<InvalidOperationException>(() => tsTileSet.RemoveFiniteDisplayScale(1.2));
-            Assert.Throws<InvalidOperationException>(tsTileSet.RemoveAllScales);
+            Assert.Throws<InvalidOperationException>(() => tsTileSet.RemoveAllScales());
             Assert.Throws<InvalidOperationException>(() => tsTileSet.AddFiniteDisplayScale(1234.0));
         }
 
-        [Test]
+        [Fact]
         public void GroupManagementTest()
         {
             var mdf = ObjectFactory.CreateMapDefinition(new Version(3, 0, 0), "Test");
@@ -186,17 +182,17 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             //Default tile set has a base group (to satisfy minimum content model), so clear that first
             tsTileSet.RemoveBaseLayerGroup(tsTileSet.BaseMapLayerGroups.First());
 
-            Assert.AreEqual(0, tsMapDef.GroupCount);
-            Assert.AreEqual(0, tsTileSet.GroupCount);
+            Assert.Equal(0, tsMapDef.GroupCount);
+            Assert.Equal(0, tsTileSet.GroupCount);
 
             var grpMapDef = tsMapDef.AddBaseLayerGroup("Test");
             var grpTileSet = tsTileSet.AddBaseLayerGroup("Test");
             Assert.NotNull(grpMapDef);
             Assert.NotNull(grpTileSet);
-            Assert.AreEqual("Test", grpMapDef.Name);
-            Assert.AreEqual("Test", grpTileSet.Name);
-            Assert.AreEqual(1, tsMapDef.GroupCount);
-            Assert.AreEqual(1, tsTileSet.GroupCount);
+            Assert.Equal("Test", grpMapDef.Name);
+            Assert.Equal("Test", grpTileSet.Name);
+            Assert.Equal(1, tsMapDef.GroupCount);
+            Assert.Equal(1, tsTileSet.GroupCount);
 
             Assert.NotNull(grpMapDef.AddLayer("layer1", "Library://test/layer1.LayerDefinition"));
             Assert.NotNull(grpMapDef.AddLayer("layer2", "Library://test/layer2.LayerDefinition"));
@@ -207,16 +203,16 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             grpTileSet = tsTileSet.AddBaseLayerGroup("Test2");
             Assert.NotNull(grpMapDef);
             Assert.NotNull(grpTileSet);
-            Assert.AreEqual("Test2", grpMapDef.Name);
-            Assert.AreEqual("Test2", grpTileSet.Name);
-            Assert.AreEqual(2, tsMapDef.GroupCount);
-            Assert.AreEqual(2, tsTileSet.GroupCount);
+            Assert.Equal("Test2", grpMapDef.Name);
+            Assert.Equal("Test2", grpTileSet.Name);
+            Assert.Equal(2, tsMapDef.GroupCount);
+            Assert.Equal(2, tsTileSet.GroupCount);
 
             Assert.NotNull(grpMapDef.AddLayer("layer3", "Library://test/layer3.LayerDefinition"));
             Assert.NotNull(grpTileSet.AddLayer("layer3", "Library://test/layer3.LayerDefinition"));
 
-            Assert.AreEqual(3, tsMapDef.GetBaseLayerCount());
-            Assert.AreEqual(3, tsTileSet.GetBaseLayerCount());
+            Assert.Equal(3, tsMapDef.GetBaseLayerCount());
+            Assert.Equal(3, tsTileSet.GetBaseLayerCount());
 
             Assert.NotNull(tsMapDef.GetBaseLayerByName("layer1"));
             Assert.NotNull(tsMapDef.GetBaseLayerByName("layer2"));
@@ -237,8 +233,8 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Null(tsTileSet.GetBaseLayerByName("layer2"));
             Assert.NotNull(tsTileSet.GetBaseLayerByName("layer3"));
 
-            Assert.AreEqual(1, tsMapDef.GetBaseLayerCount());
-            Assert.AreEqual(1, tsTileSet.GetBaseLayerCount());
+            Assert.Equal(1, tsMapDef.GetBaseLayerCount());
+            Assert.Equal(1, tsTileSet.GetBaseLayerCount());
         }
     }
 }

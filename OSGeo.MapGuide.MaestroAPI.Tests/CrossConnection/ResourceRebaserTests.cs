@@ -20,25 +20,19 @@
 
 #endregion Disclaimer / License
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.CrossConnection;
-using NUnit.Framework;
 using Moq;
-using OSGeo.MapGuide.ObjectModels;
-using System.IO;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
-using System.Xml;
 using OSGeo.MapGuide.MaestroAPI.Tests;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using System;
+using System.Xml;
+using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
 {
-    [TestFixture]
     public class ResourceRebaserTests
     {
-        [Test]
+        [Fact]
         public void ResourceRebaserTest()
         {
             Assert.Throws<ArgumentNullException>(() => new ResourceRebaser(null));
@@ -47,7 +41,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             var rbaser = new ResourceRebaser(res.Object);
         }
 
-        [Test]
+        [Fact]
         public void RebaseTest()
         {
             var res = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), Utils.OpenFile("UserTestData\\TestTiledMap.xml"));

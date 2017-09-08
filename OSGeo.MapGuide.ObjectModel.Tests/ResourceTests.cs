@@ -20,63 +20,57 @@
 
 #endregion Disclaimer / License
 
-using Moq;
-using NUnit.Framework;
-using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Xunit;
 
 namespace OSGeo.MapGuide.ObjectModels.Tests
 {
-    [TestFixture]
     public class ResourceTests
     {
-        [Test]
+        [Fact]
         public void TestCloning()
         {
             //Generated classes have built in Clone() methods. Verify they check out
             var app = ObjectFactory.DeserializeEmbeddedFlexLayout(new Version(2, 2, 0));
             var app2 = app.Clone();
-            Assert.AreNotSame(app, app2);
+            Assert.NotEqual(app, app2);
 
             var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
             var fs2 = fs.Clone();
-            Assert.AreNotSame(fs, fs2);
+            Assert.NotEqual(fs, fs2);
 
             var ld = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
             var ld2 = ld.Clone();
-            Assert.AreNotSame(ld, ld2);
+            Assert.NotEqual(ld, ld2);
 
             var md = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMap");
             var md2 = md.Clone();
-            Assert.AreNotSame(md, md2);
+            Assert.NotEqual(md, md2);
 
             var wl = ObjectFactory.CreateWebLayout(new Version(1, 0, 0), "Library://Test.MapDefinition");
             var wl2 = wl.Clone();
-            Assert.AreNotSame(wl, wl2);
+            Assert.NotEqual(wl, wl2);
 
             var sl = ObjectFactory.CreateSymbolLibrary();
             var sl2 = sl.Clone();
-            Assert.AreNotSame(sl, sl2);
+            Assert.NotEqual(sl, sl2);
 
             var ssd = ObjectFactory.CreateSimpleSymbol(new Version(1, 0, 0), "Test", "Test Symbol");
             var ssd2 = ssd.Clone();
-            Assert.AreNotSame(ssd, ssd2);
+            Assert.NotEqual(ssd, ssd2);
 
             var csd = ObjectFactory.CreateCompoundSymbol(new Version(1, 0, 0), "Test", "Test Symbol");
             var csd2 = csd.Clone();
-            Assert.AreNotSame(csd, csd2);
+            Assert.NotEqual(csd, csd2);
 
             var pl = ObjectFactory.CreatePrintLayout();
             var pl2 = pl.Clone();
-            Assert.AreNotSame(pl, pl2);
+            Assert.NotEqual(pl, pl2);
         }
 
-        [Test]
+        [Fact]
         public void TestValidResourceIdentifiers()
         {
             //Verify that only valid resource identifiers can be assigned to certain resource types.
@@ -88,21 +82,21 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
@@ -112,7 +106,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
             catch (InvalidOperationException)
             {
-                Assert.Fail("Resource ID should've checked out");
+                Assert.True(false, "Resource ID should've checked out");
             }
 
             #endregion Feature Source
@@ -124,21 +118,21 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.FeatureSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
@@ -148,7 +142,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
             catch (Exception)
             {
-                Assert.Fail("Resource ID should've checked out");
+                Assert.True(false, "Resource ID should've checked out");
             }
 
             #endregion Drawing Source
@@ -160,21 +154,21 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
@@ -184,7 +178,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
             catch (Exception)
             {
-                Assert.Fail("Resource ID should've checked out");
+                Assert.True(false, "Resource ID should've checked out");
             }
 
             #endregion Map Definition
@@ -196,21 +190,21 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
@@ -220,7 +214,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
             catch (Exception)
             {
-                Assert.Fail("Resource ID should've checked out");
+                Assert.True(false, "Resource ID should've checked out");
             }
 
             #endregion Web Layout
@@ -232,21 +226,21 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
@@ -256,7 +250,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
             catch (Exception)
             {
-                Assert.Fail("Resource ID should've checked out");
+                Assert.True(false, "Resource ID should've checked out");
             }
 
             #endregion Application Definition
@@ -268,21 +262,21 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
@@ -292,7 +286,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
             catch (Exception)
             {
-                Assert.Fail("Resource ID should've checked out");
+                Assert.True(false, "Resource ID should've checked out");
             }
 
             #endregion Simple Symbol Definition
@@ -304,21 +298,21 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
@@ -328,7 +322,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
             catch (Exception)
             {
-                Assert.Fail("Resource ID should've checked out");
+                Assert.True(false, "Resource ID should've checked out");
             }
 
             #endregion Compound Symbol Definition
@@ -340,21 +334,21 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
@@ -364,7 +358,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
             catch (Exception)
             {
-                Assert.Fail("Resource ID should've checked out");
+                Assert.True(false, "Resource ID should've checked out");
             }
 
             #endregion Load Procedure
@@ -376,21 +370,21 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
@@ -400,7 +394,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
             catch (Exception)
             {
-                Assert.Fail("Resource ID should've checked out");
+                Assert.True(false, "Resource ID should've checked out");
             }
 
             #endregion Load Procedure
@@ -412,21 +406,21 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
+                Assert.True(false, "Should've thrown exception on invalid resource id");
             }
             catch (InvalidOperationException) { }
 
@@ -436,50 +430,50 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
             catch (Exception)
             {
-                Assert.Fail("Resource ID should've checked out");
+                Assert.True(false, "Resource ID should've checked out");
             }
 
             #endregion Print Layout
         }
 
-        [Test]
+        [Fact]
         public void TestResourceTypeDescriptor()
         {
             var rtd = new ResourceTypeDescriptor(ResourceTypes.ApplicationDefinition.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "ApplicationDefinition-1.0.0.xsd");
+            Assert.Equal(rtd.XsdName, "ApplicationDefinition-1.0.0.xsd");
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.DrawingSource.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "DrawingSource-1.0.0.xsd");
+            Assert.Equal(rtd.XsdName, "DrawingSource-1.0.0.xsd");
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.FeatureSource.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "FeatureSource-1.0.0.xsd");
+            Assert.Equal(rtd.XsdName, "FeatureSource-1.0.0.xsd");
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "LayerDefinition-1.0.0.xsd");
+            Assert.Equal(rtd.XsdName, "LayerDefinition-1.0.0.xsd");
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "1.1.0");
-            Assert.AreEqual(rtd.XsdName, "LayerDefinition-1.1.0.xsd");
+            Assert.Equal(rtd.XsdName, "LayerDefinition-1.1.0.xsd");
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.LoadProcedure.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "LoadProcedure-1.0.0.xsd");
+            Assert.Equal(rtd.XsdName, "LoadProcedure-1.0.0.xsd");
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.MapDefinition.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "MapDefinition-1.0.0.xsd");
+            Assert.Equal(rtd.XsdName, "MapDefinition-1.0.0.xsd");
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.DrawingSource.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "DrawingSource-1.0.0.xsd");
+            Assert.Equal(rtd.XsdName, "DrawingSource-1.0.0.xsd");
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.PrintLayout.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "PrintLayout-1.0.0.xsd");
+            Assert.Equal(rtd.XsdName, "PrintLayout-1.0.0.xsd");
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "SymbolDefinition-1.0.0.xsd");
+            Assert.Equal(rtd.XsdName, "SymbolDefinition-1.0.0.xsd");
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.SymbolLibrary.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "SymbolLibrary-1.0.0.xsd");
+            Assert.Equal(rtd.XsdName, "SymbolLibrary-1.0.0.xsd");
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.WebLayout.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "WebLayout-1.0.0.xsd");
+            Assert.Equal(rtd.XsdName, "WebLayout-1.0.0.xsd");
         }
     }
 }

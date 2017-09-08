@@ -20,26 +20,21 @@
 
 #endregion Disclaimer / License
 
-using NUnit.Framework;
-using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.DrawingSource;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Xunit;
 
 namespace OSGeo.MapGuide.ObjectModels.Tests
 {
-    [TestFixture]
     public class DrawingSourceTests
     {
-        [Test]
+        [Fact]
         public void DrawingSourceDeserializationWithFullContentModel()
         {
             IResource res = ObjectFactory.DeserializeXml(Properties.Resources.DrawingSource_1_0_0);
             Assert.NotNull(res);
-            Assert.AreEqual(res.ResourceType, "DrawingSource");
-            Assert.AreEqual(res.ResourceVersion, new Version(1, 0, 0));
+            Assert.Equal(res.ResourceType, "DrawingSource");
+            Assert.Equal(res.ResourceVersion, new Version(1, 0, 0));
             IDrawingSource ds = res as IDrawingSource;
             Assert.NotNull(ds);
         }

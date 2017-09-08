@@ -19,15 +19,14 @@
 //
 
 #endregion Disclaimer / License
-using NUnit.Framework;
 using OSGeo.FDO.Expressions;
+using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
-    [TestFixture]
     public class FilterTests
     {
-        [Test]
+        [Fact]
         public void TestFilterParse()
         {
             FdoFilter filter = null;
@@ -35,341 +34,341 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             FdoFilter right = null;
 
             filter = FdoFilter.Parse("A = 'B'");
-            Assert.IsInstanceOf<FdoComparisonCondition>(filter);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
-            Assert.AreEqual(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)filter).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(filter);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
+            Assert.Equal(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)filter).Right);
 
             filter = FdoFilter.Parse("(A = 'B')");
-            Assert.IsInstanceOf<FdoComparisonCondition>(filter);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
-            Assert.AreEqual(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)filter).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(filter);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
+            Assert.Equal(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)filter).Right);
 
             filter = FdoFilter.Parse("A <> 'B'");
-            Assert.IsInstanceOf<FdoComparisonCondition>(filter);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
-            Assert.AreEqual(ComparisonOperations.NotEqualsTo, ((FdoComparisonCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)filter).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(filter);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
+            Assert.Equal(ComparisonOperations.NotEqualsTo, ((FdoComparisonCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)filter).Right);
 
             filter = FdoFilter.Parse("(A <> 'B')");
-            Assert.IsInstanceOf<FdoComparisonCondition>(filter);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
-            Assert.AreEqual(ComparisonOperations.NotEqualsTo, ((FdoComparisonCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)filter).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(filter);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
+            Assert.Equal(ComparisonOperations.NotEqualsTo, ((FdoComparisonCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)filter).Right);
 
             filter = FdoFilter.Parse("A > 2.3");
-            Assert.IsInstanceOf<FdoComparisonCondition>(filter);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
-            Assert.AreEqual(ComparisonOperations.GreaterThan, ((FdoComparisonCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(filter);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
+            Assert.Equal(ComparisonOperations.GreaterThan, ((FdoComparisonCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
 
             filter = FdoFilter.Parse("(A > 2.3)");
-            Assert.IsInstanceOf<FdoComparisonCondition>(filter);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
-            Assert.AreEqual(ComparisonOperations.GreaterThan, ((FdoComparisonCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(filter);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
+            Assert.Equal(ComparisonOperations.GreaterThan, ((FdoComparisonCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
 
             filter = FdoFilter.Parse("A >= 2.3");
-            Assert.IsInstanceOf<FdoComparisonCondition>(filter);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
-            Assert.AreEqual(ComparisonOperations.GreaterThanOrEqualTo, ((FdoComparisonCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(filter);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
+            Assert.Equal(ComparisonOperations.GreaterThanOrEqualTo, ((FdoComparisonCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
 
             filter = FdoFilter.Parse("(A >= 2.3)");
-            Assert.IsInstanceOf<FdoComparisonCondition>(filter);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
-            Assert.AreEqual(ComparisonOperations.GreaterThanOrEqualTo, ((FdoComparisonCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(filter);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
+            Assert.Equal(ComparisonOperations.GreaterThanOrEqualTo, ((FdoComparisonCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
 
             filter = FdoFilter.Parse("A < 2.3");
-            Assert.IsInstanceOf<FdoComparisonCondition>(filter);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
-            Assert.AreEqual(ComparisonOperations.LessThan, ((FdoComparisonCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(filter);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
+            Assert.Equal(ComparisonOperations.LessThan, ((FdoComparisonCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
 
             filter = FdoFilter.Parse("(A < 2.3)");
-            Assert.IsInstanceOf<FdoComparisonCondition>(filter);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
-            Assert.AreEqual(ComparisonOperations.LessThan, ((FdoComparisonCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(filter);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
+            Assert.Equal(ComparisonOperations.LessThan, ((FdoComparisonCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
 
             filter = FdoFilter.Parse("A <= 2.3");
-            Assert.IsInstanceOf<FdoComparisonCondition>(filter);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
-            Assert.AreEqual(ComparisonOperations.LessThanOrEqualTo, ((FdoComparisonCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(filter);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
+            Assert.Equal(ComparisonOperations.LessThanOrEqualTo, ((FdoComparisonCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
 
             filter = FdoFilter.Parse("(A <= 2.3)");
-            Assert.IsInstanceOf<FdoComparisonCondition>(filter);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
-            Assert.AreEqual(ComparisonOperations.LessThanOrEqualTo, ((FdoComparisonCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(filter);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
+            Assert.Equal(ComparisonOperations.LessThanOrEqualTo, ((FdoComparisonCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)filter).Right);
 
             filter = FdoFilter.Parse("A LIKE 'B%'");
-            Assert.IsInstanceOf<FdoComparisonCondition>(filter);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
-            Assert.AreEqual(ComparisonOperations.Like, ((FdoComparisonCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)filter).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(filter);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
+            Assert.Equal(ComparisonOperations.Like, ((FdoComparisonCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)filter).Right);
 
             filter = FdoFilter.Parse("(A LIKE 'B%')");
-            Assert.IsInstanceOf<FdoComparisonCondition>(filter);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
-            Assert.AreEqual(ComparisonOperations.Like, ((FdoComparisonCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)filter).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(filter);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)filter).Left);
+            Assert.Equal(ComparisonOperations.Like, ((FdoComparisonCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)filter).Right);
 
             filter = FdoFilter.Parse("NOT (A LIKE 'B%')");
-            Assert.IsInstanceOf<FdoUnaryLogicalOperator>(filter);
+            Assert.IsAssignableFrom<FdoUnaryLogicalOperator>(filter);
             var subExpr = ((FdoUnaryLogicalOperator)filter).NegatedFilter;
-            Assert.IsInstanceOf<FdoComparisonCondition>(subExpr);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)subExpr).Left);
-            Assert.AreEqual(ComparisonOperations.Like, ((FdoComparisonCondition)subExpr).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)subExpr).Right);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(subExpr);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)subExpr).Left);
+            Assert.Equal(ComparisonOperations.Like, ((FdoComparisonCondition)subExpr).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)subExpr).Right);
 
             filter = FdoFilter.Parse("NAME NULL");
-            Assert.IsInstanceOf<FdoNullCondition>(filter);
-            Assert.AreEqual("NAME", ((FdoNullCondition)filter).Identifier.Name);
+            Assert.IsAssignableFrom<FdoNullCondition>(filter);
+            Assert.Equal("NAME", ((FdoNullCondition)filter).Identifier.Name);
 
             filter = FdoFilter.Parse("NOT NAME NULL");
-            Assert.IsInstanceOf<FdoUnaryLogicalOperator>(filter);
+            Assert.IsAssignableFrom<FdoUnaryLogicalOperator>(filter);
             subExpr = ((FdoUnaryLogicalOperator)filter).NegatedFilter;
-            Assert.AreEqual("NAME", ((FdoNullCondition)subExpr).Identifier.Name);
+            Assert.Equal("NAME", ((FdoNullCondition)subExpr).Identifier.Name);
 
             filter = FdoFilter.Parse("A = 'B' OR B = 'C'");
             left = ((FdoBinaryLogicalOperator)filter).Left;
             right = ((FdoBinaryLogicalOperator)filter).Right;
-            Assert.IsInstanceOf<FdoBinaryLogicalOperator>(filter);
-            Assert.IsInstanceOf<FdoComparisonCondition>(left);
-            Assert.AreEqual(BinaryLogicalOperations.Or, ((FdoBinaryLogicalOperator)filter).Operator);
-            Assert.IsInstanceOf<FdoComparisonCondition>(right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)left).Left);
-            Assert.AreEqual(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)left).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)left).Right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)right).Left);
-            Assert.AreEqual(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)right).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)right).Right);
+            Assert.IsAssignableFrom<FdoBinaryLogicalOperator>(filter);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(left);
+            Assert.Equal(BinaryLogicalOperations.Or, ((FdoBinaryLogicalOperator)filter).Operator);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)left).Left);
+            Assert.Equal(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)left).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)left).Right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)right).Left);
+            Assert.Equal(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)right).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)right).Right);
 
             filter = FdoFilter.Parse("A = 'B' AND B = 'C'");
             left = ((FdoBinaryLogicalOperator)filter).Left;
             right = ((FdoBinaryLogicalOperator)filter).Right;
-            Assert.IsInstanceOf<FdoBinaryLogicalOperator>(filter);
-            Assert.IsInstanceOf<FdoComparisonCondition>(left);
-            Assert.AreEqual(BinaryLogicalOperations.And, ((FdoBinaryLogicalOperator)filter).Operator);
-            Assert.IsInstanceOf<FdoComparisonCondition>(right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)left).Left);
-            Assert.AreEqual(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)left).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)left).Right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)right).Left);
-            Assert.AreEqual(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)right).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)right).Right);
+            Assert.IsAssignableFrom<FdoBinaryLogicalOperator>(filter);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(left);
+            Assert.Equal(BinaryLogicalOperations.And, ((FdoBinaryLogicalOperator)filter).Operator);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)left).Left);
+            Assert.Equal(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)left).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)left).Right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)right).Left);
+            Assert.Equal(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)right).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)right).Right);
 
             filter = FdoFilter.Parse("(A = 'B') OR (B = 'C')");
             left = ((FdoBinaryLogicalOperator)filter).Left;
             right = ((FdoBinaryLogicalOperator)filter).Right;
-            Assert.IsInstanceOf<FdoBinaryLogicalOperator>(filter);
-            Assert.IsInstanceOf<FdoComparisonCondition>(left);
-            Assert.AreEqual(BinaryLogicalOperations.Or, ((FdoBinaryLogicalOperator)filter).Operator);
-            Assert.IsInstanceOf<FdoComparisonCondition>(right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)left).Left);
-            Assert.AreEqual(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)left).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)left).Right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)right).Left);
-            Assert.AreEqual(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)right).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)right).Right);
+            Assert.IsAssignableFrom<FdoBinaryLogicalOperator>(filter);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(left);
+            Assert.Equal(BinaryLogicalOperations.Or, ((FdoBinaryLogicalOperator)filter).Operator);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)left).Left);
+            Assert.Equal(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)left).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)left).Right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)right).Left);
+            Assert.Equal(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)right).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)right).Right);
 
             filter = FdoFilter.Parse("(A = 'B') AND (B = 'C')");
             left = ((FdoBinaryLogicalOperator)filter).Left;
             right = ((FdoBinaryLogicalOperator)filter).Right;
-            Assert.IsInstanceOf<FdoBinaryLogicalOperator>(filter);
-            Assert.IsInstanceOf<FdoComparisonCondition>(left);
-            Assert.AreEqual(BinaryLogicalOperations.And, ((FdoBinaryLogicalOperator)filter).Operator);
-            Assert.IsInstanceOf<FdoComparisonCondition>(right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)left).Left);
-            Assert.AreEqual(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)left).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)left).Right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)right).Left);
-            Assert.AreEqual(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)right).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)right).Right);
+            Assert.IsAssignableFrom<FdoBinaryLogicalOperator>(filter);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(left);
+            Assert.Equal(BinaryLogicalOperations.And, ((FdoBinaryLogicalOperator)filter).Operator);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)left).Left);
+            Assert.Equal(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)left).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)left).Right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)right).Left);
+            Assert.Equal(ComparisonOperations.EqualsTo, ((FdoComparisonCondition)right).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)right).Right);
 
             filter = FdoFilter.Parse("(A <> 'B') OR (B LIKE 'C%')");
             left = ((FdoBinaryLogicalOperator)filter).Left;
             right = ((FdoBinaryLogicalOperator)filter).Right;
-            Assert.IsInstanceOf<FdoBinaryLogicalOperator>(filter);
-            Assert.IsInstanceOf<FdoComparisonCondition>(left);
-            Assert.AreEqual(BinaryLogicalOperations.Or, ((FdoBinaryLogicalOperator)filter).Operator);
-            Assert.IsInstanceOf<FdoComparisonCondition>(right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)left).Left);
-            Assert.AreEqual(ComparisonOperations.NotEqualsTo, ((FdoComparisonCondition)left).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)left).Right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)right).Left);
-            Assert.AreEqual(ComparisonOperations.Like, ((FdoComparisonCondition)right).Operator);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoComparisonCondition)right).Right);
+            Assert.IsAssignableFrom<FdoBinaryLogicalOperator>(filter);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(left);
+            Assert.Equal(BinaryLogicalOperations.Or, ((FdoBinaryLogicalOperator)filter).Operator);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)left).Left);
+            Assert.Equal(ComparisonOperations.NotEqualsTo, ((FdoComparisonCondition)left).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)left).Right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)right).Left);
+            Assert.Equal(ComparisonOperations.Like, ((FdoComparisonCondition)right).Operator);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoComparisonCondition)right).Right);
 
             filter = FdoFilter.Parse("(A < 2.2) OR (B > 1.4)");
             left = ((FdoBinaryLogicalOperator)filter).Left;
             right = ((FdoBinaryLogicalOperator)filter).Right;
-            Assert.IsInstanceOf<FdoBinaryLogicalOperator>(filter);
-            Assert.IsInstanceOf<FdoComparisonCondition>(left);
-            Assert.AreEqual(BinaryLogicalOperations.Or, ((FdoBinaryLogicalOperator)filter).Operator);
-            Assert.IsInstanceOf<FdoComparisonCondition>(right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)left).Left);
-            Assert.AreEqual(ComparisonOperations.LessThan, ((FdoComparisonCondition)left).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)left).Right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)right).Left);
-            Assert.AreEqual(ComparisonOperations.GreaterThan, ((FdoComparisonCondition)right).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)right).Right);
+            Assert.IsAssignableFrom<FdoBinaryLogicalOperator>(filter);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(left);
+            Assert.Equal(BinaryLogicalOperations.Or, ((FdoBinaryLogicalOperator)filter).Operator);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)left).Left);
+            Assert.Equal(ComparisonOperations.LessThan, ((FdoComparisonCondition)left).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)left).Right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)right).Left);
+            Assert.Equal(ComparisonOperations.GreaterThan, ((FdoComparisonCondition)right).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)right).Right);
 
             filter = FdoFilter.Parse("(A < 2.2) AND (B > 1.4)");
             left = ((FdoBinaryLogicalOperator)filter).Left;
             right = ((FdoBinaryLogicalOperator)filter).Right;
-            Assert.IsInstanceOf<FdoBinaryLogicalOperator>(filter);
-            Assert.IsInstanceOf<FdoComparisonCondition>(left);
-            Assert.AreEqual(BinaryLogicalOperations.And, ((FdoBinaryLogicalOperator)filter).Operator);
-            Assert.IsInstanceOf<FdoComparisonCondition>(right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)left).Left);
-            Assert.AreEqual(ComparisonOperations.LessThan, ((FdoComparisonCondition)left).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)left).Right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)right).Left);
-            Assert.AreEqual(ComparisonOperations.GreaterThan, ((FdoComparisonCondition)right).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)right).Right);
+            Assert.IsAssignableFrom<FdoBinaryLogicalOperator>(filter);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(left);
+            Assert.Equal(BinaryLogicalOperations.And, ((FdoBinaryLogicalOperator)filter).Operator);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)left).Left);
+            Assert.Equal(ComparisonOperations.LessThan, ((FdoComparisonCondition)left).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)left).Right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)right).Left);
+            Assert.Equal(ComparisonOperations.GreaterThan, ((FdoComparisonCondition)right).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)right).Right);
 
             filter = FdoFilter.Parse("(A <= 2.2) OR (B >= 1.4)");
             left = ((FdoBinaryLogicalOperator)filter).Left;
             right = ((FdoBinaryLogicalOperator)filter).Right;
-            Assert.IsInstanceOf<FdoBinaryLogicalOperator>(filter);
-            Assert.IsInstanceOf<FdoComparisonCondition>(left);
-            Assert.AreEqual(BinaryLogicalOperations.Or, ((FdoBinaryLogicalOperator)filter).Operator);
-            Assert.IsInstanceOf<FdoComparisonCondition>(right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)left).Left);
-            Assert.AreEqual(ComparisonOperations.LessThanOrEqualTo, ((FdoComparisonCondition)left).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)left).Right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)right).Left);
-            Assert.AreEqual(ComparisonOperations.GreaterThanOrEqualTo, ((FdoComparisonCondition)right).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)right).Right);
+            Assert.IsAssignableFrom<FdoBinaryLogicalOperator>(filter);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(left);
+            Assert.Equal(BinaryLogicalOperations.Or, ((FdoBinaryLogicalOperator)filter).Operator);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)left).Left);
+            Assert.Equal(ComparisonOperations.LessThanOrEqualTo, ((FdoComparisonCondition)left).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)left).Right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)right).Left);
+            Assert.Equal(ComparisonOperations.GreaterThanOrEqualTo, ((FdoComparisonCondition)right).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)right).Right);
 
             filter = FdoFilter.Parse("(A <= 2.2) AND (B >= 1.4)");
             left = ((FdoBinaryLogicalOperator)filter).Left;
             right = ((FdoBinaryLogicalOperator)filter).Right;
-            Assert.IsInstanceOf<FdoBinaryLogicalOperator>(filter);
-            Assert.IsInstanceOf<FdoComparisonCondition>(left);
-            Assert.AreEqual(BinaryLogicalOperations.And, ((FdoBinaryLogicalOperator)filter).Operator);
-            Assert.IsInstanceOf<FdoComparisonCondition>(right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)left).Left);
-            Assert.AreEqual(ComparisonOperations.LessThanOrEqualTo, ((FdoComparisonCondition)left).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)left).Right);
-            Assert.IsInstanceOf<FdoIdentifier>(((FdoComparisonCondition)right).Left);
-            Assert.AreEqual(ComparisonOperations.GreaterThanOrEqualTo, ((FdoComparisonCondition)right).Operator);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoComparisonCondition)right).Right);
+            Assert.IsAssignableFrom<FdoBinaryLogicalOperator>(filter);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(left);
+            Assert.Equal(BinaryLogicalOperations.And, ((FdoBinaryLogicalOperator)filter).Operator);
+            Assert.IsAssignableFrom<FdoComparisonCondition>(right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)left).Left);
+            Assert.Equal(ComparisonOperations.LessThanOrEqualTo, ((FdoComparisonCondition)left).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)left).Right);
+            Assert.IsAssignableFrom<FdoIdentifier>(((FdoComparisonCondition)right).Left);
+            Assert.Equal(ComparisonOperations.GreaterThanOrEqualTo, ((FdoComparisonCondition)right).Operator);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoComparisonCondition)right).Right);
 
             filter = FdoFilter.Parse("A IN ('A', 'B', 'C')");
-            Assert.IsInstanceOf<FdoInCondition>(filter);
-            Assert.AreEqual("A", ((FdoInCondition)filter).Identifier.Name);
-            Assert.AreEqual(3, ((FdoInCondition)filter).ValueList.Count);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoInCondition)filter).ValueList[0]);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoInCondition)filter).ValueList[1]);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoInCondition)filter).ValueList[2]);
+            Assert.IsAssignableFrom<FdoInCondition>(filter);
+            Assert.Equal("A", ((FdoInCondition)filter).Identifier.Name);
+            Assert.Equal(3, ((FdoInCondition)filter).ValueList.Count);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoInCondition)filter).ValueList[0]);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoInCondition)filter).ValueList[1]);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoInCondition)filter).ValueList[2]);
 
             filter = FdoFilter.Parse("A IN (1, 2.0, '3', TRUE, FALSE)");
-            Assert.IsInstanceOf<FdoInCondition>(filter);
-            Assert.AreEqual("A", ((FdoInCondition)filter).Identifier.Name);
-            Assert.AreEqual(5, ((FdoInCondition)filter).ValueList.Count);
-            Assert.IsInstanceOf<FdoInt32Value>(((FdoInCondition)filter).ValueList[0]);
-            Assert.IsInstanceOf<FdoDoubleValue>(((FdoInCondition)filter).ValueList[1]);
-            Assert.IsInstanceOf<FdoStringValue>(((FdoInCondition)filter).ValueList[2]);
-            Assert.IsInstanceOf<FdoBooleanValue>(((FdoInCondition)filter).ValueList[3]);
-            Assert.IsInstanceOf<FdoBooleanValue>(((FdoInCondition)filter).ValueList[4]);
+            Assert.IsAssignableFrom<FdoInCondition>(filter);
+            Assert.Equal("A", ((FdoInCondition)filter).Identifier.Name);
+            Assert.Equal(5, ((FdoInCondition)filter).ValueList.Count);
+            Assert.IsAssignableFrom<FdoInt32Value>(((FdoInCondition)filter).ValueList[0]);
+            Assert.IsAssignableFrom<FdoDoubleValue>(((FdoInCondition)filter).ValueList[1]);
+            Assert.IsAssignableFrom<FdoStringValue>(((FdoInCondition)filter).ValueList[2]);
+            Assert.IsAssignableFrom<FdoBooleanValue>(((FdoInCondition)filter).ValueList[3]);
+            Assert.IsAssignableFrom<FdoBooleanValue>(((FdoInCondition)filter).ValueList[4]);
 
             filter = FdoFilter.Parse("Geometry CONTAINS GeomFromText('POINT (1 1)')");
-            Assert.IsInstanceOf<FdoSpatialCondition>(filter);
-            Assert.AreEqual("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
-            Assert.AreEqual(SpatialOperations.Contains, ((FdoSpatialCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
+            Assert.IsAssignableFrom<FdoSpatialCondition>(filter);
+            Assert.Equal("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
+            Assert.Equal(SpatialOperations.Contains, ((FdoSpatialCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
 
             filter = FdoFilter.Parse("Geometry CROSSES GeomFromText('POINT (1 1)')");
-            Assert.IsInstanceOf<FdoSpatialCondition>(filter);
-            Assert.AreEqual("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
-            Assert.AreEqual(SpatialOperations.Crosses, ((FdoSpatialCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
+            Assert.IsAssignableFrom<FdoSpatialCondition>(filter);
+            Assert.Equal("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
+            Assert.Equal(SpatialOperations.Crosses, ((FdoSpatialCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
 
             filter = FdoFilter.Parse("Geometry DISJOINT GeomFromText('POINT (1 1)')");
-            Assert.IsInstanceOf<FdoSpatialCondition>(filter);
-            Assert.AreEqual("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
-            Assert.AreEqual(SpatialOperations.Disjoint, ((FdoSpatialCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
+            Assert.IsAssignableFrom<FdoSpatialCondition>(filter);
+            Assert.Equal("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
+            Assert.Equal(SpatialOperations.Disjoint, ((FdoSpatialCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
 
             filter = FdoFilter.Parse("Geometry EQUALS GeomFromText('POINT (1 1)')");
-            Assert.IsInstanceOf<FdoSpatialCondition>(filter);
-            Assert.AreEqual("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
-            Assert.AreEqual(SpatialOperations.Equals, ((FdoSpatialCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
+            Assert.IsAssignableFrom<FdoSpatialCondition>(filter);
+            Assert.Equal("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
+            Assert.Equal(SpatialOperations.Equals, ((FdoSpatialCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
 
             filter = FdoFilter.Parse("Geometry INTERSECTS GeomFromText('POINT (1 1)')");
-            Assert.IsInstanceOf<FdoSpatialCondition>(filter);
-            Assert.AreEqual("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
-            Assert.AreEqual(SpatialOperations.Intersects, ((FdoSpatialCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
+            Assert.IsAssignableFrom<FdoSpatialCondition>(filter);
+            Assert.Equal("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
+            Assert.Equal(SpatialOperations.Intersects, ((FdoSpatialCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
 
             filter = FdoFilter.Parse("Geometry OVERLAPS GeomFromText('POINT (1 1)')");
-            Assert.IsInstanceOf<FdoSpatialCondition>(filter);
-            Assert.AreEqual("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
-            Assert.AreEqual(SpatialOperations.Overlaps, ((FdoSpatialCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
+            Assert.IsAssignableFrom<FdoSpatialCondition>(filter);
+            Assert.Equal("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
+            Assert.Equal(SpatialOperations.Overlaps, ((FdoSpatialCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
 
             filter = FdoFilter.Parse("Geometry TOUCHES GeomFromText('POINT (1 1)')");
-            Assert.IsInstanceOf<FdoSpatialCondition>(filter);
-            Assert.AreEqual("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
-            Assert.AreEqual(SpatialOperations.Touches, ((FdoSpatialCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
+            Assert.IsAssignableFrom<FdoSpatialCondition>(filter);
+            Assert.Equal("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
+            Assert.Equal(SpatialOperations.Touches, ((FdoSpatialCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
 
             filter = FdoFilter.Parse("Geometry WITHIN GeomFromText('POINT (1 1)')");
-            Assert.IsInstanceOf<FdoSpatialCondition>(filter);
-            Assert.AreEqual("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
-            Assert.AreEqual(SpatialOperations.Within, ((FdoSpatialCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
+            Assert.IsAssignableFrom<FdoSpatialCondition>(filter);
+            Assert.Equal("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
+            Assert.Equal(SpatialOperations.Within, ((FdoSpatialCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
 
             filter = FdoFilter.Parse("Geometry COVEREDBY GeomFromText('POINT (1 1)')");
-            Assert.IsInstanceOf<FdoSpatialCondition>(filter);
-            Assert.AreEqual("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
-            Assert.AreEqual(SpatialOperations.CoveredBy, ((FdoSpatialCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
+            Assert.IsAssignableFrom<FdoSpatialCondition>(filter);
+            Assert.Equal("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
+            Assert.Equal(SpatialOperations.CoveredBy, ((FdoSpatialCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
 
             filter = FdoFilter.Parse("Geometry INSIDE GeomFromText('POINT (1 1)')");
-            Assert.IsInstanceOf<FdoSpatialCondition>(filter);
-            Assert.AreEqual("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
-            Assert.AreEqual(SpatialOperations.Inside, ((FdoSpatialCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
+            Assert.IsAssignableFrom<FdoSpatialCondition>(filter);
+            Assert.Equal("Geometry", ((FdoSpatialCondition)filter).Identifier.Name);
+            Assert.Equal(SpatialOperations.Inside, ((FdoSpatialCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoGeometryValue>(((FdoSpatialCondition)filter).Expression);
 
             filter = FdoFilter.Parse("Geometry BEYOND GeomFromText('POINT (1 1)') 2.0");
-            Assert.IsInstanceOf<FdoDistanceCondition>(filter);
-            Assert.AreEqual("Geometry", ((FdoDistanceCondition)filter).Identifier.Name);
-            Assert.AreEqual(DistanceOperations.Beyond, ((FdoDistanceCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoGeometryValue>(((FdoDistanceCondition)filter).Expression);
-            Assert.AreEqual(DataType.Double, ((FdoDistanceCondition)filter).Distance.DataType);
-            Assert.AreEqual(2.0, ((FdoDoubleValue)((FdoDistanceCondition)filter).Distance).Value);
+            Assert.IsAssignableFrom<FdoDistanceCondition>(filter);
+            Assert.Equal("Geometry", ((FdoDistanceCondition)filter).Identifier.Name);
+            Assert.Equal(DistanceOperations.Beyond, ((FdoDistanceCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoGeometryValue>(((FdoDistanceCondition)filter).Expression);
+            Assert.Equal(DataType.Double, ((FdoDistanceCondition)filter).Distance.DataType);
+            Assert.Equal(2.0, ((FdoDoubleValue)((FdoDistanceCondition)filter).Distance).Value);
 
             filter = FdoFilter.Parse("Geometry BEYOND GeomFromText('POINT (1 1)') 5");
-            Assert.IsInstanceOf<FdoDistanceCondition>(filter);
-            Assert.AreEqual("Geometry", ((FdoDistanceCondition)filter).Identifier.Name);
-            Assert.AreEqual(DistanceOperations.Beyond, ((FdoDistanceCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoGeometryValue>(((FdoDistanceCondition)filter).Expression);
-            Assert.AreEqual(DataType.Int32, ((FdoDistanceCondition)filter).Distance.DataType);
-            Assert.AreEqual(5, ((FdoInt32Value)((FdoDistanceCondition)filter).Distance).Value);
+            Assert.IsAssignableFrom<FdoDistanceCondition>(filter);
+            Assert.Equal("Geometry", ((FdoDistanceCondition)filter).Identifier.Name);
+            Assert.Equal(DistanceOperations.Beyond, ((FdoDistanceCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoGeometryValue>(((FdoDistanceCondition)filter).Expression);
+            Assert.Equal(DataType.Int32, ((FdoDistanceCondition)filter).Distance.DataType);
+            Assert.Equal(5, ((FdoInt32Value)((FdoDistanceCondition)filter).Distance).Value);
 
             filter = FdoFilter.Parse("Geometry WITHINDISTANCE GeomFromText('POINT (1 1)') 2.0");
-            Assert.IsInstanceOf<FdoDistanceCondition>(filter);
-            Assert.AreEqual("Geometry", ((FdoDistanceCondition)filter).Identifier.Name);
-            Assert.AreEqual(DistanceOperations.WithinDistance, ((FdoDistanceCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoGeometryValue>(((FdoDistanceCondition)filter).Expression);
-            Assert.AreEqual(DataType.Double, ((FdoDistanceCondition)filter).Distance.DataType);
-            Assert.AreEqual(2.0, ((FdoDoubleValue)((FdoDistanceCondition)filter).Distance).Value);
+            Assert.IsAssignableFrom<FdoDistanceCondition>(filter);
+            Assert.Equal("Geometry", ((FdoDistanceCondition)filter).Identifier.Name);
+            Assert.Equal(DistanceOperations.WithinDistance, ((FdoDistanceCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoGeometryValue>(((FdoDistanceCondition)filter).Expression);
+            Assert.Equal(DataType.Double, ((FdoDistanceCondition)filter).Distance.DataType);
+            Assert.Equal(2.0, ((FdoDoubleValue)((FdoDistanceCondition)filter).Distance).Value);
 
             filter = FdoFilter.Parse("Geometry WITHINDISTANCE GeomFromText('POINT (1 1)') 5");
-            Assert.IsInstanceOf<FdoDistanceCondition>(filter);
-            Assert.AreEqual("Geometry", ((FdoDistanceCondition)filter).Identifier.Name);
-            Assert.AreEqual(DistanceOperations.WithinDistance, ((FdoDistanceCondition)filter).Operator);
-            Assert.IsInstanceOf<FdoGeometryValue>(((FdoDistanceCondition)filter).Expression);
-            Assert.AreEqual(DataType.Int32, ((FdoDistanceCondition)filter).Distance.DataType);
-            Assert.AreEqual(5, ((FdoInt32Value)((FdoDistanceCondition)filter).Distance).Value);
+            Assert.IsAssignableFrom<FdoDistanceCondition>(filter);
+            Assert.Equal("Geometry", ((FdoDistanceCondition)filter).Identifier.Name);
+            Assert.Equal(DistanceOperations.WithinDistance, ((FdoDistanceCondition)filter).Operator);
+            Assert.IsAssignableFrom<FdoGeometryValue>(((FdoDistanceCondition)filter).Expression);
+            Assert.Equal(DataType.Int32, ((FdoDistanceCondition)filter).Distance.DataType);
+            Assert.Equal(5, ((FdoInt32Value)((FdoDistanceCondition)filter).Distance).Value);
         }
     }
 }

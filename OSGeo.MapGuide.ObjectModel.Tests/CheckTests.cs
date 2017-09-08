@@ -20,49 +20,44 @@
 
 #endregion Disclaimer / License
 
-using NUnit.Framework;
-using OSGeo.MapGuide.ObjectModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Xunit;
 
 namespace OSGeo.MapGuide.ObjectModels.Tests
 {
-    [TestFixture]
     public class CheckTests
     {
-        [Test]
+        [Fact]
         public void NotNullTest()
         {
             Assert.Throws<ArgumentNullException>(() => Check.ArgumentNotNull<object>(null, "Test"));
-            Assert.DoesNotThrow(() => Check.ArgumentNotNull("agdsfd", "arg"));
+            Check.ArgumentNotNull("agdsfd", "arg");
         }
 
-        [Test]
+        [Fact]
         public void NotEmptyTest()
         {
             Assert.Throws<ArgumentException>(() => Check.ArgumentNotEmpty(null, "test"));
             Assert.Throws<ArgumentException>(() => Check.ArgumentNotEmpty("", "test"));
-            Assert.DoesNotThrow(() => Check.ArgumentNotEmpty("agdsfd", "arg"));
+            Check.ArgumentNotEmpty("agdsfd", "arg");
         }
 
-        [Test]
+        [Fact]
         public void IsFolderTest()
         {
             Assert.Throws<ArgumentException>(() => Check.ThatArgumentIsFolder("Library://Test.FeatureSource", "test"));
             Assert.Throws<ArgumentException>(() => Check.ThatArgumentIsFolder("Library://Test", "test"));
-            Assert.DoesNotThrow(() => Check.ThatArgumentIsFolder("Library://Test/", "test"));
+            Check.ThatArgumentIsFolder("Library://Test/", "test");
         }
 
-        [Test]
+        [Fact]
         public void PreconditionTest()
         {
             Assert.Throws<ArgumentException>(() => Check.ThatPreconditionIsMet(false, "test"));
-            Assert.DoesNotThrow(() => Check.ThatPreconditionIsMet(true, "test"));
+            Check.ThatPreconditionIsMet(true, "test");
         }
 
-        [Test]
+        [Fact]
         public void RangeTest()
         {
             Assert.Throws<ArgumentException>(() => Check.ThatArgumentIsBetweenRange(1, 2, 3, false, "test"));
@@ -70,15 +65,15 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Throws<ArgumentException>(() => Check.ThatArgumentIsBetweenRange(1.0, 1.0, 1.0, false, "test"));
             Assert.Throws<ArgumentException>(() => Check.ThatArgumentIsBetweenRange(1.0, 2.0, 3.0, false, "test"));
 
-            Assert.DoesNotThrow(() => Check.ThatArgumentIsBetweenRange(1, 1, 1, true, "test"));
-            Assert.DoesNotThrow(() => Check.ThatArgumentIsBetweenRange(2, 1, 3, true, "test"));
-            Assert.DoesNotThrow(() => Check.ThatArgumentIsBetweenRange(1, 1, 3, true, "test"));
-            Assert.DoesNotThrow(() => Check.ThatArgumentIsBetweenRange(3, 1, 3, true, "test"));
-            Assert.DoesNotThrow(() => Check.ThatArgumentIsBetweenRange(1.0, 1.0, 1.0, true, "test"));
-            Assert.DoesNotThrow(() => Check.ThatArgumentIsBetweenRange(2.0, 1.0, 3.0, true, "test"));
-            Assert.DoesNotThrow(() => Check.ThatArgumentIsBetweenRange(1.0, 1.0, 3.0, true, "test"));
-            Assert.DoesNotThrow(() => Check.ThatArgumentIsBetweenRange(3.0, 1.0, 3.0, true, "test"));
-            Assert.DoesNotThrow(() => Check.ThatArgumentIsBetweenRange(1.5, 1, 2, true, "test"));
+            Check.ThatArgumentIsBetweenRange(1, 1, 1, true, "test");
+            Check.ThatArgumentIsBetweenRange(2, 1, 3, true, "test");
+            Check.ThatArgumentIsBetweenRange(1, 1, 3, true, "test");
+            Check.ThatArgumentIsBetweenRange(3, 1, 3, true, "test");
+            Check.ThatArgumentIsBetweenRange(1.0, 1.0, 1.0, true, "test");
+            Check.ThatArgumentIsBetweenRange(2.0, 1.0, 3.0, true, "test");
+            Check.ThatArgumentIsBetweenRange(1.0, 1.0, 3.0, true, "test");
+            Check.ThatArgumentIsBetweenRange(3.0, 1.0, 3.0, true, "test");
+            Check.ThatArgumentIsBetweenRange(1.5, 1, 2, true, "test");
         }
     }
 }
