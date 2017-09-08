@@ -32,7 +32,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Fact]
         public void FeatureSourceDeserializationWithFullContentModel()
         {
-            IResource res = ObjectFactory.DeserializeXml(Properties.Resources.FeatureSource_1_0_0);
+            IResource res = ObjectFactory.DeserializeXml(TestData.FeatureSource_1_0_0);
             Assert.NotNull(res);
             Assert.Equal(res.ResourceType, "FeatureSource");
             Assert.Equal(res.ResourceVersion, new Version(1, 0, 0));

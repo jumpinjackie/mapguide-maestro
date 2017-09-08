@@ -31,7 +31,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Fact]
         public void ApplicationDefinitionDeserializationWithFullContentModel()
         {
-            IResource res = ObjectFactory.DeserializeXml(Properties.Resources.AppDef_1_0_0);
+            IResource res = ObjectFactory.DeserializeXml(TestData.AppDef_1_0);
             Assert.NotNull(res);
             Assert.Equal(res.ResourceType, "ApplicationDefinition");
             Assert.Equal(res.ResourceVersion, new Version(1, 0, 0));

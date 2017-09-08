@@ -66,7 +66,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Fact]
         public void DeserializationTest_V30()
         {
-            var res = ObjectFactory.DeserializeXml(Properties.Resources.UT_LinkedTileSet);
+            var res = ObjectFactory.DeserializeXml(TestData.UT_LinkedTileSet);
             Assert.IsAssignableFrom<IMapDefinition3>(res);
             IMapDefinition3 mdf = (IMapDefinition3)res;
             Assert.Equal("Base Map linked to Tile Set", mdf.Name);
@@ -86,7 +86,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Fact]
         public void ConvertToTileSetTest()
         {
-            var res = ObjectFactory.DeserializeXml(Properties.Resources.OldTiledMap);
+            var res = ObjectFactory.DeserializeXml(TestData.OldTiledMap);
             Assert.IsAssignableFrom<IMapDefinition>(res);
             var mdf = (IMapDefinition)res;
 
