@@ -103,7 +103,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{8AEDB361
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maestro Shared Components", "Maestro Shared Components", "{345BD020-7A7B-4E8B-9CC6-4EC111D51779}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.Tests", "..\OSGeo.MapGuide.ObjectModel.Tests\OSGeo.MapGuide.ObjectModels.Tests.csproj", "{D32BE7DB-D0C3-4805-A057-18312370C57E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.Tests", "..\OSGeo.MapGuide.ObjectModels.Tests\OSGeo.MapGuide.ObjectModels.Tests.csproj", "{D32BE7DB-D0C3-4805-A057-18312370C57E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.FDO.Expressions", "..\OSGeo.FDO.Expressions\OSGeo.FDO.Expressions.csproj", "{DA2CC031-200B-4F99-A0A9-2E95374BE78F}"
 EndProject

@@ -10,7 +10,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.FDO.Expressions", "OS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.MaestroAPI.Http", "OSGeo.MapGuide.MaestroAPI.Http\OSGeo.MapGuide.MaestroAPI.Http.csproj", "{7D0F968F-3E63-4988-8754-25E135360E1E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.ObjectModels.Tests", "OSGeo.MapGuide.ObjectModel.Tests\OSGeo.MapGuide.ObjectModels.Tests.csproj", "{BBC08760-FE40-45EE-A9DB-E78174D246E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.ObjectModels.Tests", "OSGeo.MapGuide.ObjectModels.Tests\OSGeo.MapGuide.ObjectModels.Tests.csproj", "{BBC08760-FE40-45EE-A9DB-E78174D246E1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.MaestroAPI.Tests", "OSGeo.MapGuide.MaestroAPI.Tests\OSGeo.MapGuide.MaestroAPI.Tests.csproj", "{F6F9362D-D7F0-4062-8290-DA84AF4C5EAA}"
 EndProject
