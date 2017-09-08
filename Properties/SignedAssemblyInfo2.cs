@@ -23,6 +23,8 @@
 #pragma warning disable 1699
 using System.Reflection;
 
+#if !NETCOREAPP2_0
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("../Properties/maestroapi.key")]
 [assembly: AssemblyKeyName("")]
+#endif
