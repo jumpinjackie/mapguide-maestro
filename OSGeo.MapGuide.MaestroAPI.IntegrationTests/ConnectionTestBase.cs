@@ -80,10 +80,15 @@ namespace MaestroAPITests
 
         static readonly object initLock = new object();
 
+        static bool _init = false;
+
         private void SetupTestData()
         {
             lock (initLock)
             {
+                if (_init)
+                    return;
+
                 var conn = CreateTestConnection();
                 var resSvc = conn.ResourceService;
 
@@ -106,6 +111,8 @@ namespace MaestroAPITests
 
                 resSvc.SetResourceXmlData("Library://UnitTests/Data/SpaceShip.DrawingSource", File.OpenRead("TestData/DrawingService/SpaceShipDrawingSource.xml"));
                 resSvc.SetResourceData("Library://UnitTests/Data/SpaceShip.DrawingSource", "SpaceShip.dwf", ResourceDataType.File, File.OpenRead("TestData/DrawingService/SpaceShip.dwf"));
+
+                _init = true;
             }
         }
 
@@ -180,7 +187,8 @@ namespace MaestroAPITests
                 {
                     conn.ResourceService.SetResourceData(fs.ResourceID, "Sheboygan_Parcels.sdf", ResourceDataType.File, stream);
                 }
-                Assert.True(Convert.ToBoolean(conn.FeatureService.TestConnection(fsId)));
+                var res = conn.FeatureService.TestConnection(fsId);
+                Assert.True(Convert.ToBoolean(res));
             }
             var pc = (PlatformConnectionBase)conn;
             pc.ResetFeatureSourceSchemaCache();
@@ -192,13 +200,13 @@ namespace MaestroAPITests
             var cls = conn.FeatureService.GetClassDefinition(fsId, "SHP_Schema:Parcels");
 
             stats = pc.CacheStats;
-            Assert.Equal(0, stats.ClassDefinitions);
+            Assert.Equal(1, stats.ClassDefinitions);
             Assert.Equal(0, stats.FeatureSources);
 
             var cls2 = conn.FeatureService.GetClassDefinition(fsId, "SHP_Schema:Parcels");
 
             stats = pc.CacheStats;
-            Assert.Equal(0, stats.ClassDefinitions);
+            Assert.Equal(1, stats.ClassDefinitions);
             Assert.Equal(0, stats.FeatureSources);
             //Each cached instance returned is a clone
             Assert.False(object.ReferenceEquals(cls, cls2));

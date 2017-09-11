@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Specialized;
@@ -1276,24 +1277,25 @@ namespace OSGeo.MapGuide.MaestroAPI
                 param.Add("LOCALE", m_locale);
 
             string boundary;
-            System.IO.MemoryStream outStream = new System.IO.MemoryStream();
-            System.Net.WebRequest req = PrepareFormContent(outStream, out boundary);
-            req.Timeout = 1000 * 60 * 5; //Wait up to five minutes
+            using (var outStream = MemoryStreamPool.GetStream())
+            {
+                System.Net.WebRequest req = PrepareFormContent(outStream, out boundary);
+                req.Timeout = 1000 * 60 * 5; //Wait up to five minutes
 
-            EncodeFormParameters(boundary, param, outStream);
+                EncodeFormParameters(boundary, param, outStream);
 
-            /*try { req.ContentLength = outStream.Length + filestream.Length; }
-            catch {}*/
+                /*try { req.ContentLength = outStream.Length + filestream.Length; }
+                catch {}*/
 
-            System.IO.Stream s = req.GetRequestStream();
+                System.IO.Stream s = req.GetRequestStream();
 
-            Utility.CopyStream(outStream, s);
-            outStream.Dispose();
+                Utility.CopyStream(outStream, s);
 
-            AppendFormContent("PACKAGE", "package.mgp", boundary, s, filestream, callback);
-            s.Close();
+                AppendFormContent("PACKAGE", "package.mgp", boundary, s, filestream, callback);
+                s.Close();
 
-            return req;
+                return req;
+            }
         }
 
         public System.Net.WebRequest UpdateRepository(string resourceId, System.IO.Stream headerstream)
@@ -1311,19 +1313,20 @@ namespace OSGeo.MapGuide.MaestroAPI
                 param.Add("LOCALE", m_locale);
 
             string boundary;
-            System.IO.MemoryStream outStream = new System.IO.MemoryStream();
-            System.Net.WebRequest req = PrepareFormContent(outStream, out boundary);
+            using (var outStream = MemoryStreamPool.GetStream())
+            {
+                System.Net.WebRequest req = PrepareFormContent(outStream, out boundary);
 
-            EncodeFormParameters(boundary, param, outStream);
-            System.IO.Stream s = req.GetRequestStream();
+                EncodeFormParameters(boundary, param, outStream);
+                System.IO.Stream s = req.GetRequestStream();
 
-            Utility.CopyStream(outStream, s);
-            outStream.Dispose();
+                Utility.CopyStream(outStream, s);
 
-            AppendFormContent("HEADER", "header.xml", boundary, s, headerstream, null);
-            s.Close();
+                AppendFormContent("HEADER", "header.xml", boundary, s, headerstream, null);
+                s.Close();
 
-            return req;
+                return req;
+            }
         }
 
         public string ResourceExists(string resourceId)

@@ -146,9 +146,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             //Must copy stream, because we will be reading it twice :(
             //Once for validation, and once for deserialization
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            Utility.CopyStream(data, ms);
-            ms.Position = 0;
+            using (var ms = MemoryStreamPool.GetStream())
+            {
+                Utility.CopyStream(data, ms);
+                ms.Position = 0;
 
 #if DEBUG_LASTMESSAGE
             //Save us a copy for later investigation
@@ -157,22 +158,23 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             ms.Position = 0;
 #endif
-            //TODO: Find out why the "xs:include" doesn't work with validator
-            //Validation is quite important, as we otherwise may end up injecting malicious code
-            //			if (!m_disableValidation)
-            //			{
-            //				m_validator.Validate(ms, GetSchema(type));
-            //				ms.Position = 0;
-            //			}
+                //TODO: Find out why the "xs:include" doesn't work with validator
+                //Validation is quite important, as we otherwise may end up injecting malicious code
+                //			if (!m_disableValidation)
+                //			{
+                //				m_validator.Validate(ms, GetSchema(type));
+                //				ms.Position = 0;
+                //			}
 
-            try
-            {
-                return GetSerializer(type).Deserialize(ms);
-            }
-            catch (Exception ex)
-            {
-                string s = ex.Message;
-                throw;
+                try
+                {
+                    return GetSerializer(type).Deserialize(ms);
+                }
+                catch (Exception ex)
+                {
+                    string s = ex.Message;
+                    throw;
+                }
             }
         }
 
@@ -183,7 +185,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>A memorystream with the serialized object</returns>
         public virtual System.IO.MemoryStream SerializeObject(object o)
         {
-            MemoryStream ms = new MemoryStream();
+            var ms = MemoryStreamPool.GetStream();
             GetSerializer(o.GetType()).Serialize(new Utf8XmlWriter(ms), o);
             return Utility.RemoveUTF8BOM(ms);
         }
@@ -438,15 +440,16 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="resource">The resourcec to write</param>
         public virtual void WriteResource(string resourceID, object resource)
         {
-            System.IO.MemoryStream ms = SerializeObject(resource);
-            ms.Position = 0;
-
-            //Validate that our data is correctly formated
-            /*if (!m_disableValidation)
+            using (var ms = SerializeObject(resource))
             {
-                m_validator.Validate(ms, GetSchema(resource.GetType()));
                 ms.Position = 0;
-            }*/
+
+                //Validate that our data is correctly formated
+                /*if (!m_disableValidation)
+                {
+                    m_validator.Validate(ms, GetSchema(resource.GetType()));
+                    ms.Position = 0;
+                }*/
 
 #if DEBUG_LASTMESSAGE
             using (System.IO.Stream s = System.IO.File.Open("lastSave.xml", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
@@ -454,7 +457,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             ms.Position = 0;
 #endif
 
-            SetResourceXmlData(resourceID, ms);
+                SetResourceXmlData(resourceID, ms);
+            }
         }
 
         /// <summary>
@@ -826,7 +830,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                         d.Load(ms);
 
                     UpdateResourceReferences(d, oldpath, newpath, false);
-                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                    using (var ms = MemoryStreamPool.GetStream())
                     {
                         d.Save(ms);
                         ms.Position = 0;
@@ -955,7 +959,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                         d.Load(ms);
 
                     UpdateResourceReferences(d, oldpath, newpath, true);
-                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                    using (var ms = MemoryStreamPool.GetStream())
                     {
                         d.Save(ms);
                         ms.Position = 0;
@@ -1081,7 +1085,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                         d.Load(ms);
 
                     UpdateResourceReferences(d, oldpath, newpath, true);
-                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                    using (var ms = MemoryStreamPool.GetStream())
                     {
                         d.Save(ms);
                         ms.Position = 0;
@@ -1131,7 +1135,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         public virtual void CreateFolder(string resourceID)
         {
             resourceID = FixAndValidateFolderPath(resourceID);
-            SetResourceXmlData(resourceID, new MemoryStream());
+            using (var ms = MemoryStreamPool.GetStream())
+            {
+                SetResourceXmlData(resourceID, ms);
+            }
         }
 
         /// <summary>

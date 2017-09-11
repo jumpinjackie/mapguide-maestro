@@ -121,13 +121,20 @@ namespace OSGeo.MapGuide.ObjectModels
             foreach (var res in resData.ResourceData)
             {
                 var data = conn.ResourceService.GetResourceData(source.ResourceID, res.Name);
+                bool bDispose = false;
                 if (!data.CanSeek)
                 {
-                    var ms = new MemoryStream();
+                    var ms = MemoryStreamPool.GetStream();
                     Utility.CopyStream(data, ms);
                     data = ms;
+                    bDispose = true;
                 }
                 conn.ResourceService.SetResourceData(target.ResourceID, res.Name, res.Type, data);
+
+                if (bDispose)
+                {
+                    data.Dispose();
+                }
             }
         }
 
@@ -152,13 +159,19 @@ namespace OSGeo.MapGuide.ObjectModels
             foreach (var res in resData.ResourceData)
             {
                 var data = conn.ResourceService.GetResourceData(source.ResourceID, res.Name);
+                bool bDispose = false;
                 if (!data.CanSeek)
                 {
-                    var ms = new MemoryStream();
+                    var ms = MemoryStreamPool.GetStream();
                     Utility.CopyStream(data, ms);
                     data = ms;
+                    bDispose = true;
                 }
                 conn.ResourceService.SetResourceData(targetID, res.Name, res.Type, data);
+                if (bDispose)
+                {
+                    data.Dispose();
+                }
             }
         }
     }

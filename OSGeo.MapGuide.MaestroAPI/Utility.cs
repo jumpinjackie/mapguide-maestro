@@ -445,10 +445,12 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return null;
 
             var ser = new XmlSerializer(source.GetType());
-            var ms = new MemoryStream();
-            ser.Serialize(ms, source);
-            ms.Position = 0;
-            return ser.Deserialize(ms);
+            using (var ms = MemoryStreamPool.GetStream())
+            {
+                ser.Serialize(ms, source);
+                ms.Position = 0;
+                return ser.Deserialize(ms);
+            }
         }
 
         /// <summary>
@@ -554,7 +556,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (!s.CanSeek)
             {
-                var ms = new MemoryStream();
+                var ms = MemoryStreamPool.GetStream();
                 byte[] buf = new byte[1024];
                 int c;
                 while ((c = s.Read(buf, 0, buf.Length)) > 0)
@@ -578,7 +580,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public static string NormalizedSerialize(XmlSerializer serializer, object o)
         {
-            using (var ms = new MemoryStream())
+            using (var ms = MemoryStreamPool.GetStream())
             {
                 using (var xw = new Utf8XmlWriter(ms))
                 {
@@ -605,15 +607,16 @@ namespace OSGeo.MapGuide.MaestroAPI
             ms.Position = 0;
             byte[] utfheader = new byte[3];
             if (ms.Read(utfheader, 0, utfheader.Length) == utfheader.Length)
+            {
                 if (utfheader[0] == 0xEF && utfheader[1] == 0xBB && utfheader[2] == 0xBF)
                 {
                     ms.Position = 3;
-                    var mxs = new MemoryStream();
+                    var mxs = MemoryStreamPool.GetStream();
                     CopyStream(ms, mxs, false);
                     mxs.Position = 0;
                     return mxs;
                 }
-
+            }
             ms.Position = 0;
             return ms;
         }

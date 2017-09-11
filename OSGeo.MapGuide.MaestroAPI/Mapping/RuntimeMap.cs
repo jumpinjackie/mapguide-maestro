@@ -1253,6 +1253,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         internal const string RUNTIMEMAP_SELECTION_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Selection></Selection>"; //NOXLATE
 
+        static Lazy<byte[]> RUNTIMEMAP_XML_BYTES = new Lazy<byte[]>(() => System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_XML));
+
+        static Lazy<byte[]> RUNTIMEMAP_SELECTION_XML_BYTES = new Lazy<byte[]>(() => System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_SELECTION_XML));
+
         private void Save(string resourceID)
         {
             Check.ArgumentNotNull(resourceID, nameof(resourceID));
@@ -1261,48 +1265,50 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             var map = this;
 
             string selectionID = resourceID.Substring(0, resourceID.LastIndexOf(".")) + ".Selection"; //NOXLATE
-            this.ResourceService.SetResourceXmlData(resourceID, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_XML)));
-            this.ResourceService.SetResourceXmlData(selectionID, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_SELECTION_XML)));
+            this.ResourceService.SetResourceXmlData(resourceID, new System.IO.MemoryStream(RUNTIMEMAP_XML_BYTES.Value));
+            this.ResourceService.SetResourceXmlData(selectionID, new System.IO.MemoryStream(RUNTIMEMAP_SELECTION_XML_BYTES.Value));
 
             ResourceIdentifier.Validate(resourceID, ResourceTypes.Map);
             if (!resourceID.StartsWith("Session:" + this.SessionId + "//") || !resourceID.EndsWith(".Map")) //NOXLATE
                 throw new Exception(Strings.ErrorRuntimeMapNotInSessionRepo);
 
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            System.IO.MemoryStream ms2 = null;
-
-            //Apparently the name is used to reconstruct the resourceId rather than pass it around
-            //inside the map server
-            string r = map.Name;
-            string t = map.ResourceID;
-
-            string mapname = resourceID.Substring(resourceID.IndexOf("//") + 2); //NOXLATE
-            mapname = mapname.Substring(0, mapname.LastIndexOf(".")); //NOXLATE
-            map.Name = mapname;
-            map.ResourceID = resourceID;
-
-            try
+            using (var ms = MemoryStreamPool.GetStream())
             {
-                map.Serialize(new MgBinarySerializer(ms, this.SiteVersion));
-                if (this.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
+                System.IO.MemoryStream ms2 = null;
+
+                //Apparently the name is used to reconstruct the resourceId rather than pass it around
+                //inside the map server
+                string r = map.Name;
+                string t = map.ResourceID;
+
+                string mapname = resourceID.Substring(resourceID.IndexOf("//") + 2); //NOXLATE
+                mapname = mapname.Substring(0, mapname.LastIndexOf(".")); //NOXLATE
+                map.Name = mapname;
+                map.ResourceID = resourceID;
+
+                try
                 {
-                    ms2 = new System.IO.MemoryStream();
-                    map.SerializeLayerData(new MgBinarySerializer(ms2, this.SiteVersion));
+                    map.Serialize(new MgBinarySerializer(ms, this.SiteVersion));
+                    if (this.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
+                    {
+                        ms2 = new System.IO.MemoryStream();
+                        map.SerializeLayerData(new MgBinarySerializer(ms2, this.SiteVersion));
+                    }
+
+                    this.ResourceService.SetResourceData(resourceID, "RuntimeData", ResourceDataType.Stream, ms); //NOXLATE
+                    if (ms2 != null)
+                        this.ResourceService.SetResourceData(resourceID, "LayerGroupData", ResourceDataType.Stream, ms2); //NOXLATE
+
+                    SaveSelectionXml(resourceID);
+                    //Our changes have been persisted. Wipe our change list
+                    ClearChanges();
+                    this.IsDirty = false;
                 }
-
-                this.ResourceService.SetResourceData(resourceID, "RuntimeData", ResourceDataType.Stream, ms); //NOXLATE
-                if (ms2 != null)
-                    this.ResourceService.SetResourceData(resourceID, "LayerGroupData", ResourceDataType.Stream, ms2); //NOXLATE
-
-                SaveSelectionXml(resourceID);
-                //Our changes have been persisted. Wipe our change list
-                ClearChanges();
-                this.IsDirty = false;
-            }
-            finally
-            {
-                map.Name = r;
-                map.ResourceID = t;
+                finally
+                {
+                    map.Name = r;
+                    map.ResourceID = t;
+                }
             }
         }
 
@@ -1342,11 +1348,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             ResourceIdentifier.Validate(resourceID, ResourceTypes.Map);
             string selectionID = resourceID.Substring(0, resourceID.LastIndexOf(".")) + ".Selection"; //NOXLATE
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            MgBinarySerializer serializer = new MgBinarySerializer(ms, this.SiteVersion);
-            this.Selection.Serialize(serializer);
-            ms.Position = 0;
-            this.ResourceService.SetResourceData(selectionID, "RuntimeData", ResourceDataType.Stream, ms); //NOXLATE
+            using (var ms = MemoryStreamPool.GetStream())
+            {
+                MgBinarySerializer serializer = new MgBinarySerializer(ms, this.SiteVersion);
+                this.Selection.Serialize(serializer);
+                ms.Position = 0;
+                this.ResourceService.SetResourceData(selectionID, "RuntimeData", ResourceDataType.Stream, ms); //NOXLATE
+            }
         }
 
         #region change tracking

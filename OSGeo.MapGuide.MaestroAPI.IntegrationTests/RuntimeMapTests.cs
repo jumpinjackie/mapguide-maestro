@@ -70,10 +70,15 @@ namespace MaestroAPITests
 
         static readonly object initLock = new object();
 
+        static bool _init = false;
+
         private void SetupTestData()
         {
             lock (initLock)
             {
+                if (_init)
+                    return;
+
                 var conn = CreateTestConnection();
                 var resSvc = conn.ResourceService;
 
@@ -113,6 +118,8 @@ namespace MaestroAPITests
                     resSvc.SetResourceXmlData("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", File.OpenRead("TestData/TileService/UT_BaseMap.tsd"));
                     resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganLinked.MapDefinition", File.OpenRead("TestData/TileService/UT_LinkedTileSet.mdf"));
                 }
+
+                _init = true;
             }
         }
 

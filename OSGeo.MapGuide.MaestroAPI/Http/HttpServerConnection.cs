@@ -298,7 +298,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 {
                     try
                     {
-                        using (MemoryStream ms = new MemoryStream())
+                        using (var ms = MemoryStreamPool.GetStream())
                         {
                             Utility.CopyStream(wex.Response.GetResponseStream(), ms);
                             result = Encoding.UTF8.GetString(ms.ToArray(), 0, (int)ms.Length);
@@ -353,7 +353,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     try
                     {
                         string result = "";
-                        using (MemoryStream ms = new MemoryStream())
+                        using (var ms = MemoryStreamPool.GetStream())
                         {
                             Utility.CopyStream(wex.Response.GetResponseStream(), ms);
                             result = Encoding.UTF8.GetString(ms.ToArray(), 0, (int)ms.Length);
@@ -388,7 +388,15 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override Stream GetResourceData(string resourceID, string dataname)
         {
             string req = m_reqBuilder.GetResourceData(resourceID, dataname);
-            return this.OpenRead(req);
+            //NOTE: There's some behavioral difference in the netstandard2.0 version of 
+            //HttpWebRequest /HttpWebResponse that causes premature termination of stream when fed to
+            //MgBinarySerializer, so we're going back to memory streams, (but pooled through MemoryStreamPool)
+            var ms = MemoryStreamPool.GetStream();
+            Utility.CopyStream(this.OpenRead(req), ms);
+            ms.Position = 0;
+            return ms;
+
+            //return this.OpenRead(req);
             /*
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             Utility.CopyStream(this.OpenRead(req), ms);
@@ -425,26 +433,27 @@ namespace OSGeo.MapGuide.MaestroAPI
                 if (stream.CanSeek)
                     stream.Position = 0;
 
-                System.IO.MemoryStream outStream = new System.IO.MemoryStream();
+                using (var outStream = MemoryStreamPool.GetStream())
+                {
 #if DEBUG_LASTMESSAGE
                 try
                 {
 #endif
-                System.Net.WebRequest req = m_reqBuilder.SetResourceData(resourceid, dataname, datatype, outStream, stream, callback);
-                req.Credentials = _cred;
-                outStream.Position = 0;
+                    System.Net.WebRequest req = m_reqBuilder.SetResourceData(resourceid, dataname, datatype, outStream, stream, callback);
+                    req.Credentials = _cred;
+                    outStream.Position = 0;
 
-                //TODO: We need a progress bar for the upload....
-                req.Timeout = 1000 * 60 * 15;
-                using (System.IO.Stream rs = req.GetRequestStream())
-                {
-                    Utility.CopyStream(outStream, rs);
-                    rs.Flush();
-                }
-                using (System.IO.Stream resp = req.GetResponse().GetResponseStream())
-                {
-                    //Do nothing... there is no return value
-                }
+                    //TODO: We need a progress bar for the upload....
+                    req.Timeout = 1000 * 60 * 15;
+                    using (System.IO.Stream rs = req.GetRequestStream())
+                    {
+                        Utility.CopyStream(outStream, rs);
+                        rs.Flush();
+                    }
+                    using (System.IO.Stream resp = req.GetResponse().GetResponseStream())
+                    {
+                        //Do nothing... there is no return value
+                    }
 #if DEBUG_LASTMESSAGE
                 }
                 catch
@@ -455,6 +464,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     throw;
                 }
 #endif
+                }
             }
             else
             {
@@ -584,48 +594,49 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             bool exists = ResourceExists(resourceId);
 
-            MemoryStream outStream = new MemoryStream();
+            using (var outStream = MemoryStreamPool.GetStream())
+            {
 #if DEBUG_LASTMESSAGE
             try
             {
 #endif
-            //Protect against session expired
-            if (this.m_autoRestartSession && m_username != null && m_password != null)
-                this.DownloadData(m_reqBuilder.GetSiteVersion());
+                //Protect against session expired
+                if (this.m_autoRestartSession && m_username != null && m_password != null)
+                    this.DownloadData(m_reqBuilder.GetSiteVersion());
 
-            WebRequest req = m_reqBuilder.SetResource(resourceId, outStream, content, header);
-            req.Credentials = _cred;
-            outStream.Position = 0;
-            try
-            {
-                using (var rs = req.GetRequestStream())
+                WebRequest req = m_reqBuilder.SetResource(resourceId, outStream, content, header);
+                req.Credentials = _cred;
+                outStream.Position = 0;
+                try
                 {
-                    Utility.CopyStream(outStream, rs);
-                    rs.Flush();
-                }
-                var wresp = req.GetResponse();
-                var hresp = wresp as HttpWebResponse;
-                if (hresp != null)
-                {
-                    LogResponse(hresp);
-                }
+                    using (var rs = req.GetRequestStream())
+                    {
+                        Utility.CopyStream(outStream, rs);
+                        rs.Flush();
+                    }
+                    var wresp = req.GetResponse();
+                    var hresp = wresp as HttpWebResponse;
+                    if (hresp != null)
+                    {
+                        LogResponse(hresp);
+                    }
 
-                using (var resp = wresp.GetResponseStream())
-                {
-                    //Do nothing... there is no return value
+                    using (var resp = wresp.GetResponseStream())
+                    {
+                        //Do nothing... there is no return value
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                if (typeof(WebException).IsAssignableFrom(ex.GetType()))
-                    LogFailedRequest((WebException)ex);
+                catch (Exception ex)
+                {
+                    if (typeof(WebException).IsAssignableFrom(ex.GetType()))
+                        LogFailedRequest((WebException)ex);
 
-                Exception ex2 = Utility.ThrowAsWebException(ex);
-                if (ex2 != ex)
-                    throw ex2;
-                else
-                    throw;
-            }
+                    Exception ex2 = Utility.ThrowAsWebException(ex);
+                    if (ex2 != ex)
+                        throw ex2;
+                    else
+                        throw;
+                }
 #if DEBUG_LASTMESSAGE
             }
             catch
@@ -639,10 +650,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
 #endif
 
-            if (exists)
-                OnResourceUpdated(resourceId);
-            else
-                OnResourceAdded(resourceId);
+                if (exists)
+                    OnResourceUpdated(resourceId);
+                else
+                    OnResourceAdded(resourceId);
+            }
         }
 
         private void LogResponse(HttpWebResponse resp)
@@ -679,48 +691,50 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             //The request may execeed the url limit of the server, especially when using GeomFromText('...')
             ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
-            MemoryStream ms = new MemoryStream();
-            WebRequest req = m_reqBuilder.SelectFeatures(aggregate, resourceID, schema, query, columns, computedProperties, ms);
-            req.Timeout = 200 * 1000;
-            ms.Position = 0;
+            using (var ms = MemoryStreamPool.GetStream())
+            {
+                WebRequest req = m_reqBuilder.SelectFeatures(aggregate, resourceID, schema, query, columns, computedProperties, ms);
+                req.Timeout = 200 * 1000;
+                ms.Position = 0;
 #if DEBUG
-            string xq = m_reqBuilder.reqAsUrl(resourceID, schema, query, columns);
+                string xq = m_reqBuilder.reqAsUrl(resourceID, schema, query, columns);
 #endif
-            try
-            {
-                using (var rs = req.GetRequestStream())
-                {
-                    Utility.CopyStream(ms, rs);
-                    rs.Flush();
-                }
-
-                var resp = (HttpWebResponse)req.GetResponse();
-                LogResponse(resp);
-
-                if (aggregate)
-                    return new XmlDataReader(resp);
-                else
-                    return new XmlFeatureReader(resp);
-            }
-            catch (Exception ex)
-            {
-                if (typeof(WebException).IsAssignableFrom(ex.GetType()))
-                    LogFailedRequest((WebException)ex);
                 try
                 {
-                    if (this.IsSessionExpiredException(ex) && this.AutoRestartSession && this.RestartSession(false))
-                        return this.QueryFeatureSource(resourceID, schema, query, columns);
-                }
-                catch
-                {
-                    //Throw the original exception, not the secondary one
-                }
+                    using (var rs = req.GetRequestStream())
+                    {
+                        Utility.CopyStream(ms, rs);
+                        rs.Flush();
+                    }
 
-                Exception ex2 = Utility.ThrowAsWebException(ex);
-                if (ex2 != ex)
-                    throw ex2;
-                else
-                    throw;
+                    var resp = (HttpWebResponse)req.GetResponse();
+                    LogResponse(resp);
+
+                    if (aggregate)
+                        return new XmlDataReader(resp);
+                    else
+                        return new XmlFeatureReader(resp);
+                }
+                catch (Exception ex)
+                {
+                    if (typeof(WebException).IsAssignableFrom(ex.GetType()))
+                        LogFailedRequest((WebException)ex);
+                    try
+                    {
+                        if (this.IsSessionExpiredException(ex) && this.AutoRestartSession && this.RestartSession(false))
+                            return this.QueryFeatureSource(resourceID, schema, query, columns);
+                    }
+                    catch
+                    {
+                        //Throw the original exception, not the secondary one
+                    }
+
+                    Exception ex2 = Utility.ThrowAsWebException(ex);
+                    if (ex2 != ex)
+                        throw ex2;
+                    else
+                        throw;
+                }
             }
         }
 
@@ -1008,38 +1022,36 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (this.SiteVersion < new Version(2, 1, 0))
                 throw new NotSupportedException();
 
-            var ms = new MemoryStream();
             var req = m_reqBuilder.GetDynamicMapOverlayImage(map.Name, (selection == null ? string.Empty : selection.ToXml()), format, selectionColor, behaviour);
-
             return this.OpenRead(req);
         }
 
         public override Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, bool keepSelection)
         {
-            var ms = new MemoryStream();
-            var req = m_reqBuilder.GetDynamicMapOverlayImage(map.Name, (selection == null ? string.Empty : selection.ToXml()), format, ms);
-
-            //Maksim reported that the rendering times out frequently, so now we wait 5 minutes
-            req.Timeout = 5 * 60 * 1000;
-
-            using (var rs = req.GetRequestStream())
+            using (var ms = MemoryStreamPool.GetStream())
             {
-                Utility.CopyStream(ms, rs);
-                rs.Flush();
-                var resp = req.GetResponse();
-                var hwr = resp as HttpWebResponse;
-                if (hwr != null)
-                    LogResponse(hwr);
+                var req = m_reqBuilder.GetDynamicMapOverlayImage(map.Name, (selection == null ? string.Empty : selection.ToXml()), format, ms);
 
-                return resp.GetResponseStream();
+                //Maksim reported that the rendering times out frequently, so now we wait 5 minutes
+                req.Timeout = 5 * 60 * 1000;
+
+                using (var rs = req.GetRequestStream())
+                {
+                    Utility.CopyStream(ms, rs);
+                    rs.Flush();
+                    var resp = req.GetResponse();
+                    var hwr = resp as HttpWebResponse;
+                    if (hwr != null)
+                        LogResponse(hwr);
+
+                    return resp.GetResponseStream();
+                }
             }
         }
 
         public Stream RenderMapLegend(RuntimeMap map, int width, int height, Color backgroundColor, string format)
         {
-            var ms = new MemoryStream();
             string req = m_reqBuilder.RenderMapLegend(map.Name, width, height, Utility.SerializeHTMLColorARGB(backgroundColor, true), format);
-
             return this.OpenRead(req);
         }
 
@@ -1289,6 +1301,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 LogResponse(httpresp);
                 using (var st = httpresp.GetResponseStream())
                 {
+                    //Can't use pooled MS here as buffer is invalidated on disposal
                     using (var ms = new MemoryStream())
                     {
                         Utility.CopyStream(st, ms);
@@ -1319,7 +1332,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
                     using (var st = httpresp.GetResponseStream())
                     {
-                        using (var ms = new MemoryStream())
+                        using (var ms = MemoryStreamPool.GetStream())
                         {
                             Utility.CopyStream(st, ms);
                             return ms.GetBuffer();
@@ -1385,11 +1398,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type)
         {
             string req = m_reqBuilder.EnumerateUnmanagedData(startpath, filter, recursive, type);
-            var ms = new MemoryStream();
-            using (var s = this.OpenRead(req))
-                Utility.CopyStream(s, ms);
-            ms.Position = 0;
-            return (UnmanagedDataList)DeserializeObject(typeof(UnmanagedDataList), ms);
+            using (var ms = MemoryStreamPool.GetStream())
+            {
+                using (var s = this.OpenRead(req))
+                    Utility.CopyStream(s, ms);
+                ms.Position = 0;
+                return (UnmanagedDataList)DeserializeObject(typeof(UnmanagedDataList), ms);
+            }
         }
 
         /// <summary>
@@ -1834,19 +1849,23 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string runtimeMapName = rtMap.Name;
             //The request may execeed the url limit of the server, when large geometries
-            var ms = new MemoryStream();
-            var req = m_reqBuilder.QueryMapFeatures(runtimeMapName, maxFeatures, wkt, persist, selectionVariant, extraOptions, ms);
-            req.Timeout = 200 * 1000;
-            ms.Position = 0;
-
-            using (var rs = req.GetRequestStream())
+            using (var ms = MemoryStreamPool.GetStream())
             {
-                Utility.CopyStream(ms, rs);
-                rs.Flush();
-            }
+                var req = m_reqBuilder.QueryMapFeatures(runtimeMapName, maxFeatures, wkt, persist, selectionVariant, extraOptions, ms);
+                req.Timeout = 200 * 1000;
+                ms.Position = 0;
 
-            using (var sr = new StreamReader(req.GetResponse().GetResponseStream()))
-                return sr.ReadToEnd();
+                using (var rs = req.GetRequestStream())
+                {
+                    Utility.CopyStream(ms, rs);
+                    rs.Flush();
+                }
+
+                using (var sr = new StreamReader(req.GetResponse().GetResponseStream()))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
         }
 
         public override string[] GetSchemas(string resourceId)
