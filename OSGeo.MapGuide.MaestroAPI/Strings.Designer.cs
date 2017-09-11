@@ -22,7 +22,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Strings {
+    public class Strings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OSGeo.MapGuide.MaestroAPI.Strings", typeof(Strings).Assembly);
@@ -51,7 +51,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The &quot;Hybrid&quot; base layer type no longer exists in the current version of the Bing Maps API. The closes equivalent layer type is &quot;AerialsWithLabels&quot;.
         /// </summary>
-        internal static string ADF_BingMapsHybridLayerNoLongerAvailable {
+        public static string ADF_BingMapsHybridLayerNoLongerAvailable {
             get {
                 return ResourceManager.GetString("ADF_BingMapsHybridLayerNoLongerAvailable", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The Bing Maps v6/7 API was deprecated on June 30th 2017. To use the current Bing Maps API, an API key is required.
         /// </summary>
-        internal static string ADF_BingMapsMissingApiKey {
+        public static string ADF_BingMapsMissingApiKey {
             get {
                 return ResourceManager.GetString("ADF_BingMapsMissingApiKey", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to A non-existent widget by the id of {0} is being referenced from a menu/container : {1}.
         /// </summary>
-        internal static string ADF_InvalidWidgetReferenceInContainer {
+        public static string ADF_InvalidWidgetReferenceInContainer {
             get {
                 return ResourceManager.GetString("ADF_InvalidWidgetReferenceInContainer", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Map with ID {0} does not point to a valid map.
         /// </summary>
-        internal static string ADF_MapInvalidError {
+        public static string ADF_MapInvalidError {
             get {
                 return ResourceManager.GetString("ADF_MapInvalidError", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Fusion application does not specify a map.
         /// </summary>
-        internal static string ADF_MapMissingError {
+        public static string ADF_MapMissingError {
             get {
                 return ResourceManager.GetString("ADF_MapMissingError", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Error validating MapDefinition {0}, message: {1}.
         /// </summary>
-        internal static string ADF_MapValidationError {
+        public static string ADF_MapValidationError {
             get {
                 return ResourceManager.GetString("ADF_MapValidationError", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The Map Definition {0} has a coordinate system that is not EPSG:3857. This map is in a group containing one or more commerical base layers. The specified Map Definition may not correctly display or line up with the commerical base layers..
         /// </summary>
-        internal static string ADF_MapWithIncompatibleCommericalCs {
+        public static string ADF_MapWithIncompatibleCommericalCs {
             get {
                 return ResourceManager.GetString("ADF_MapWithIncompatibleCommericalCs", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to A non-UI widget by the id of {0} is residing in the menu/container ({1}). Being a non-UI widget, this may cause rendering problems for that particular container.
         /// </summary>
-        internal static string ADF_NonUiWidgetAttachedToContainer {
+        public static string ADF_NonUiWidgetAttachedToContainer {
             get {
                 return ResourceManager.GetString("ADF_NonUiWidgetAttachedToContainer", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to A widget by the id of {0} has no label. This may cause display problems in the menu/container ({1}) if there is no icon specified.
         /// </summary>
-        internal static string ADF_ReferencedWidgetInMenuHasNoLabel {
+        public static string ADF_ReferencedWidgetInMenuHasNoLabel {
             get {
                 return ResourceManager.GetString("ADF_ReferencedWidgetInMenuHasNoLabel", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Fusion application specifies a start view that is outside the map&apos;s initial extents.
         /// </summary>
-        internal static string ADF_ViewOutsideMapExtents {
+        public static string ADF_ViewOutsideMapExtents {
             get {
                 return ResourceManager.GetString("ADF_ViewOutsideMapExtents", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Could not create load procedure of type: .
         /// </summary>
-        internal static string CannotCreateLoadProcedureSubType {
+        public static string CannotCreateLoadProcedureSubType {
             get {
                 return ResourceManager.GetString("CannotCreateLoadProcedureSubType", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to [Composite Style].
         /// </summary>
-        internal static string CompositeStyleDisplayString {
+        public static string CompositeStyleDisplayString {
             get {
                 return ResourceManager.GetString("CompositeStyleDisplayString", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Copied resource: {0}.
         /// </summary>
-        internal static string CopiedResource {
+        public static string CopiedResource {
             get {
                 return ResourceManager.GetString("CopiedResource", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Copied: {0} =&gt; {1}.
         /// </summary>
-        internal static string CopiedResourceToTarget {
+        public static string CopiedResourceToTarget {
             get {
                 return ResourceManager.GetString("CopiedResourceToTarget", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}.
         /// </summary>
-        internal static string DebugWatermarkMessage {
+        public static string DebugWatermarkMessage {
             get {
                 return ResourceManager.GetString("DebugWatermarkMessage", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}\nLayer Spatial Context: {5}.
         /// </summary>
-        internal static string DebugWatermarkMessageLayer {
+        public static string DebugWatermarkMessageLayer {
             get {
                 return ResourceManager.GetString("DebugWatermarkMessageLayer", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Displays the current map extents.
         /// </summary>
-        internal static string Desc_GetExtents {
+        public static string Desc_GetExtents {
             get {
                 return ResourceManager.GetString("Desc_GetExtents", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Gets the current map as a KML document.
         /// </summary>
-        internal static string Desc_GetMapKml {
+        public static string Desc_GetMapKml {
             get {
                 return ResourceManager.GetString("Desc_GetMapKml", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Zoom to a specified scale.
         /// </summary>
-        internal static string Desc_ZoomToScale {
+        public static string Desc_ZoomToScale {
             get {
                 return ResourceManager.GetString("Desc_ZoomToScale", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Resource {0} downgraded to version {1}.
         /// </summary>
-        internal static string DowngradedResource {
+        public static string DowngradedResource {
             get {
                 return ResourceManager.GetString("DowngradedResource", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No coordinate system specified. The coordinate system if not specified will default to LL84.
         /// </summary>
-        internal static string DS_NoCoordinateSpace {
+        public static string DS_NoCoordinateSpace {
             get {
                 return ResourceManager.GetString("DS_NoCoordinateSpace", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No source DWF file specified.
         /// </summary>
-        internal static string DS_NoSourceSpecified {
+        public static string DS_NoSourceSpecified {
             get {
                 return ResourceManager.GetString("DS_NoSourceSpecified", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to An item with the key value ({0}) already exists in the collection.
         /// </summary>
-        internal static string DuplicateKeyExceptionMessage {
+        public static string DuplicateKeyExceptionMessage {
             get {
                 return ResourceManager.GetString("DuplicateKeyExceptionMessage", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Bad Document: Expected attributes at the root level node.
         /// </summary>
-        internal static string ERR_BAD_DOCUMENT_NO_ROOT_ATTRIBUTES {
+        public static string ERR_BAD_DOCUMENT_NO_ROOT_ATTRIBUTES {
             get {
                 return ResourceManager.GetString("ERR_BAD_DOCUMENT_NO_ROOT_ATTRIBUTES", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Resource cannot be downgraded. It is already older than the version this converter can downgrade to.
         /// </summary>
-        internal static string ERR_CANNOT_DOWNGRADE_OLDER_RESOURCE {
+        public static string ERR_CANNOT_DOWNGRADE_OLDER_RESOURCE {
             get {
                 return ResourceManager.GetString("ERR_CANNOT_DOWNGRADE_OLDER_RESOURCE", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Resource cannot be upgraded. It is already newer than what this converter can upgrade to.
         /// </summary>
-        internal static string ERR_CANNOT_UPGRADE_NEWER_RESOURCE {
+        public static string ERR_CANNOT_UPGRADE_NEWER_RESOURCE {
             get {
                 return ResourceManager.GetString("ERR_CANNOT_UPGRADE_NEWER_RESOURCE", resourceCulture);
             }
@@ -297,7 +297,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Class not found: {0}.
         /// </summary>
-        internal static string ERR_CLASS_NOT_FOUND {
+        public static string ERR_CLASS_NOT_FOUND {
             get {
                 return ResourceManager.GetString("ERR_CLASS_NOT_FOUND", resourceCulture);
             }
@@ -306,7 +306,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to A resource converter for {0} is already registered.
         /// </summary>
-        internal static string ERR_CONVERTER_ALREADY_REGISTERED {
+        public static string ERR_CONVERTER_ALREADY_REGISTERED {
             get {
                 return ResourceManager.GetString("ERR_CONVERTER_ALREADY_REGISTERED", resourceCulture);
             }
@@ -315,7 +315,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Could fetch and initialize identity properties for {1} This is likely a bug in MapGuide {0}{2}.
         /// </summary>
-        internal static string ERR_INIT_IDENTITY_PROPS {
+        public static string ERR_INIT_IDENTITY_PROPS {
             get {
                 return ResourceManager.GetString("ERR_INIT_IDENTITY_PROPS", resourceCulture);
             }
@@ -324,7 +324,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to There is no downgrade path to the desired resource version.
         /// </summary>
-        internal static string ERR_NO_DOWNGRADE_PATH {
+        public static string ERR_NO_DOWNGRADE_PATH {
             get {
                 return ResourceManager.GetString("ERR_NO_DOWNGRADE_PATH", resourceCulture);
             }
@@ -333,7 +333,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to There is no registered validator for {0} v{1}. Validation cannot be performed.
         /// </summary>
-        internal static string ERR_NO_REGISTERED_VALIDATOR {
+        public static string ERR_NO_REGISTERED_VALIDATOR {
             get {
                 return ResourceManager.GetString("ERR_NO_REGISTERED_VALIDATOR", resourceCulture);
             }
@@ -342,7 +342,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to There is no upgrade path to the desired resource version.
         /// </summary>
-        internal static string ERR_NO_UPGRADE_PATH {
+        public static string ERR_NO_UPGRADE_PATH {
             get {
                 return ResourceManager.GetString("ERR_NO_UPGRADE_PATH", resourceCulture);
             }
@@ -351,7 +351,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The specified property {0} is not of type: {1}.
         /// </summary>
-        internal static string ERR_PROPERTY_VALUE_NOT_OF_TYPE {
+        public static string ERR_PROPERTY_VALUE_NOT_OF_TYPE {
             get {
                 return ResourceManager.GetString("ERR_PROPERTY_VALUE_NOT_OF_TYPE", resourceCulture);
             }
@@ -360,7 +360,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No connection attached to this resource.
         /// </summary>
-        internal static string ERR_RESOURCE_NOT_ATTACHED {
+        public static string ERR_RESOURCE_NOT_ATTACHED {
             get {
                 return ResourceManager.GetString("ERR_RESOURCE_NOT_ATTACHED", resourceCulture);
             }
@@ -369,7 +369,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Service Type not supported: {0}.
         /// </summary>
-        internal static string ERR_SERVICE_NOT_SUPPORTED {
+        public static string ERR_SERVICE_NOT_SUPPORTED {
             get {
                 return ResourceManager.GetString("ERR_SERVICE_NOT_SUPPORTED", resourceCulture);
             }
@@ -378,7 +378,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to {0} contains reserved characters.
         /// </summary>
-        internal static string ErrorArgContainsReservedCharacters {
+        public static string ErrorArgContainsReservedCharacters {
             get {
                 return ResourceManager.GetString("ErrorArgContainsReservedCharacters", resourceCulture);
             }
@@ -387,7 +387,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Bad document. Expected attribute: {0}.
         /// </summary>
-        internal static string ErrorBadDocumentExpectedAttribute {
+        public static string ErrorBadDocumentExpectedAttribute {
             get {
                 return ResourceManager.GetString("ErrorBadDocumentExpectedAttribute", resourceCulture);
             }
@@ -396,7 +396,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Bad document. Expected element {0}.
         /// </summary>
-        internal static string ErrorBadDocumentExpectedElement {
+        public static string ErrorBadDocumentExpectedElement {
             get {
                 return ResourceManager.GetString("ErrorBadDocumentExpectedElement", resourceCulture);
             }
@@ -405,7 +405,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Bad document. Invalid bounding box.
         /// </summary>
-        internal static string ErrorBadDocumentInvalidBbox {
+        public static string ErrorBadDocumentInvalidBbox {
             get {
                 return ResourceManager.GetString("ErrorBadDocumentInvalidBbox", resourceCulture);
             }
@@ -414,7 +414,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Bad HTML color: {0}.
         /// </summary>
-        internal static string ErrorBadHtmlColor {
+        public static string ErrorBadHtmlColor {
             get {
                 return ResourceManager.GetString("ErrorBadHtmlColor", resourceCulture);
             }
@@ -423,7 +423,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Bad null encoded string.
         /// </summary>
-        internal static string ErrorBadNullEncodedString {
+        public static string ErrorBadNullEncodedString {
             get {
                 return ResourceManager.GetString("ErrorBadNullEncodedString", resourceCulture);
             }
@@ -432,7 +432,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Buffer too small.
         /// </summary>
-        internal static string ErrorBinarySerializerBufferTooSmall {
+        public static string ErrorBinarySerializerBufferTooSmall {
             get {
                 return ResourceManager.GetString("ErrorBinarySerializerBufferTooSmall", resourceCulture);
             }
@@ -441,7 +441,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Coordinate expected, but got object: {0}.
         /// </summary>
-        internal static string ErrorBinarySerializerCoordinateUnexpectedType {
+        public static string ErrorBinarySerializerCoordinateUnexpectedType {
             get {
                 return ResourceManager.GetString("ErrorBinarySerializerCoordinateUnexpectedType", resourceCulture);
             }
@@ -450,7 +450,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The read value was: {0} while &lt;end of stream&gt; was expected.
         /// </summary>
-        internal static string ErrorBinarySerializerExpectedEndOfStream {
+        public static string ErrorBinarySerializerExpectedEndOfStream {
             get {
                 return ResourceManager.GetString("ErrorBinarySerializerExpectedEndOfStream", resourceCulture);
             }
@@ -459,7 +459,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Failed to get valid string char width.
         /// </summary>
-        internal static string ErrorBinarySerializerGetCharWidth {
+        public static string ErrorBinarySerializerGetCharWidth {
             get {
                 return ResourceManager.GetString("ErrorBinarySerializerGetCharWidth", resourceCulture);
             }
@@ -468,7 +468,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Invalid amount of coordinates.
         /// </summary>
-        internal static string ErrorBinarySerializerInvalidAmountOfCoordinates {
+        public static string ErrorBinarySerializerInvalidAmountOfCoordinates {
             get {
                 return ResourceManager.GetString("ErrorBinarySerializerInvalidAmountOfCoordinates", resourceCulture);
             }
@@ -477,7 +477,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Coordinate count reported: {0}, for a single coordinate.
         /// </summary>
-        internal static string ErrorBinarySerializerInvalidCoordinateDimensionCount {
+        public static string ErrorBinarySerializerInvalidCoordinateDimensionCount {
             get {
                 return ResourceManager.GetString("ErrorBinarySerializerInvalidCoordinateDimensionCount", resourceCulture);
             }
@@ -486,7 +486,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Stream ended prematurely.
         /// </summary>
-        internal static string ErrorBinarySerializerPrematureEndOfStream {
+        public static string ErrorBinarySerializerPrematureEndOfStream {
             get {
                 return ResourceManager.GetString("ErrorBinarySerializerPrematureEndOfStream", resourceCulture);
             }
@@ -495,7 +495,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Stream exhausted while reading {0} bytes.
         /// </summary>
-        internal static string ErrorBinarySerializerStreamExhausted {
+        public static string ErrorBinarySerializerStreamExhausted {
             get {
                 return ResourceManager.GetString("ErrorBinarySerializerStreamExhausted", resourceCulture);
             }
@@ -504,7 +504,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Data in stream had type: {0} but type &apos;{1}&apos; was expected.
         /// </summary>
-        internal static string ErrorBinarySerializerUnexpectedType {
+        public static string ErrorBinarySerializerUnexpectedType {
             get {
                 return ResourceManager.GetString("ErrorBinarySerializerUnexpectedType", resourceCulture);
             }
@@ -513,7 +513,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Unknown object type: {0}.
         /// </summary>
-        internal static string ErrorBinarySerializerUnknownObjectType {
+        public static string ErrorBinarySerializerUnknownObjectType {
             get {
                 return ResourceManager.GetString("ErrorBinarySerializerUnknownObjectType", resourceCulture);
             }
@@ -522,7 +522,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Bounding box for map had {0} dimensions. Expected 2 dimensions.
         /// </summary>
-        internal static string ErrorBoundingBoxDoesNotHave2Dimensions {
+        public static string ErrorBoundingBoxDoesNotHave2Dimensions {
             get {
                 return ResourceManager.GetString("ErrorBoundingBoxDoesNotHave2Dimensions", resourceCulture);
             }
@@ -531,7 +531,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to This connection cannot auto-restart sessions. Most likely because this connection was just initialized with a session id and not with the credentials required to rebuild a new session.
         /// </summary>
-        internal static string ErrorConnectionCannotAutoRestartSession {
+        public static string ErrorConnectionCannotAutoRestartSession {
             get {
                 return ResourceManager.GetString("ErrorConnectionCannotAutoRestartSession", resourceCulture);
             }
@@ -540,7 +540,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Current record is empty.
         /// </summary>
-        internal static string ErrorCurrentRecordIsEmpty {
+        public static string ErrorCurrentRecordIsEmpty {
             get {
                 return ResourceManager.GetString("ErrorCurrentRecordIsEmpty", resourceCulture);
             }
@@ -549,7 +549,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Empty feature source id.
         /// </summary>
-        internal static string ErrorEmptyFeatureSourceId {
+        public static string ErrorEmptyFeatureSourceId {
             get {
                 return ResourceManager.GetString("ErrorEmptyFeatureSourceId", resourceCulture);
             }
@@ -558,7 +558,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Unable to evaluate. Current row is empty.
         /// </summary>
-        internal static string ErrorExprCurrentRowIsEmpty {
+        public static string ErrorExprCurrentRowIsEmpty {
             get {
                 return ResourceManager.GetString("ErrorExprCurrentRowIsEmpty", resourceCulture);
             }
@@ -567,7 +567,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Failed to find type for: {0}.
         /// </summary>
-        internal static string ErrorFailedToFindTypeForClrType {
+        public static string ErrorFailedToFindTypeForClrType {
             get {
                 return ResourceManager.GetString("ErrorFailedToFindTypeForClrType", resourceCulture);
             }
@@ -576,7 +576,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Failed to convert value for {0} from {1} to {2}.
         /// </summary>
-        internal static string ErrorFailedValueConversion {
+        public static string ErrorFailedValueConversion {
             get {
                 return ResourceManager.GetString("ErrorFailedValueConversion", resourceCulture);
             }
@@ -585,7 +585,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Invalid class identifier. Expected Box2D.
         /// </summary>
-        internal static string ErrorInvalidClassIdentifierBox2d {
+        public static string ErrorInvalidClassIdentifierBox2d {
             get {
                 return ResourceManager.GetString("ErrorInvalidClassIdentifierBox2d", resourceCulture);
             }
@@ -594,7 +594,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Group must have object id 12001, but had: {0}.
         /// </summary>
-        internal static string ErrorInvalidGroupObjectId {
+        public static string ErrorInvalidGroupObjectId {
             get {
                 return ResourceManager.GetString("ErrorInvalidGroupObjectId", resourceCulture);
             }
@@ -603,7 +603,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Invalid or unsupported map version.
         /// </summary>
-        internal static string ErrorInvalidMapVersion {
+        public static string ErrorInvalidMapVersion {
             get {
                 return ResourceManager.GetString("ErrorInvalidMapVersion", resourceCulture);
             }
@@ -612,7 +612,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Header must be either ResourceFolderHeaderType or ResourceDocumentHeaderType.
         /// </summary>
-        internal static string ErrorInvalidResourceHeaderRootElement {
+        public static string ErrorInvalidResourceHeaderRootElement {
             get {
                 return ResourceManager.GetString("ErrorInvalidResourceHeaderRootElement", resourceCulture);
             }
@@ -621,7 +621,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Invalid resource identifier.
         /// </summary>
-        internal static string ErrorInvalidResourceIdentifier {
+        public static string ErrorInvalidResourceIdentifier {
             get {
                 return ResourceManager.GetString("ErrorInvalidResourceIdentifier", resourceCulture);
             }
@@ -630,7 +630,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Invalid resource identifier type. Must be Library or Session.
         /// </summary>
-        internal static string ErrorInvalidResourceIdentifierType {
+        public static string ErrorInvalidResourceIdentifierType {
             get {
                 return ResourceManager.GetString("ErrorInvalidResourceIdentifierType", resourceCulture);
             }
@@ -639,7 +639,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Incoming record must be structurally identical.
         /// </summary>
-        internal static string ErrorJaggedResultSet {
+        public static string ErrorJaggedResultSet {
             get {
                 return ResourceManager.GetString("ErrorJaggedResultSet", resourceCulture);
             }
@@ -648,7 +648,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Key {0} already exists.
         /// </summary>
-        internal static string ErrorKeyAlreadyExists {
+        public static string ErrorKeyAlreadyExists {
             get {
                 return ResourceManager.GetString("ErrorKeyAlreadyExists", resourceCulture);
             }
@@ -657,7 +657,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The layer does not have a primary key, and cannot be used for selection.
         /// </summary>
-        internal static string ErrorLayerHasNoPk {
+        public static string ErrorLayerHasNoPk {
             get {
                 return ResourceManager.GetString("ErrorLayerHasNoPk", resourceCulture);
             }
@@ -666,7 +666,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The layers key consists of {0} columns, but only {1} columns were given.
         /// </summary>
-        internal static string ErrorLayerKeyMismatch {
+        public static string ErrorLayerKeyMismatch {
             get {
                 return ResourceManager.GetString("ErrorLayerKeyMismatch", resourceCulture);
             }
@@ -675,7 +675,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No class name specified.
         /// </summary>
-        internal static string ErrorNoClassNameSpecified {
+        public static string ErrorNoClassNameSpecified {
             get {
                 return ResourceManager.GetString("ErrorNoClassNameSpecified", resourceCulture);
             }
@@ -684,7 +684,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No coordinate system WKT specified.
         /// </summary>
-        internal static string ErrorNoCoordinateSystemWktSpecified {
+        public static string ErrorNoCoordinateSystemWktSpecified {
             get {
                 return ResourceManager.GetString("ErrorNoCoordinateSystemWktSpecified", resourceCulture);
             }
@@ -693,7 +693,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No data found in resource: {0}.
         /// </summary>
-        internal static string ErrorNoDataInResource {
+        public static string ErrorNoDataInResource {
             get {
                 return ResourceManager.GetString("ErrorNoDataInResource", resourceCulture);
             }
@@ -702,7 +702,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No extent specified for static extent type.
         /// </summary>
-        internal static string ErrorNoExtentSpecifiedForStaticType {
+        public static string ErrorNoExtentSpecifiedForStaticType {
             get {
                 return ResourceManager.GetString("ErrorNoExtentSpecifiedForStaticType", resourceCulture);
             }
@@ -711,7 +711,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No feature source id specified.
         /// </summary>
-        internal static string ErrorNoFeatureSourceIdSpecified {
+        public static string ErrorNoFeatureSourceIdSpecified {
             get {
                 return ResourceManager.GetString("ErrorNoFeatureSourceIdSpecified", resourceCulture);
             }
@@ -720,7 +720,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No file name specified.
         /// </summary>
-        internal static string ErrorNoFileNameSpecified {
+        public static string ErrorNoFileNameSpecified {
             get {
                 return ResourceManager.GetString("ErrorNoFileNameSpecified", resourceCulture);
             }
@@ -729,7 +729,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No provider specified.
         /// </summary>
-        internal static string ErrorNoProviderSpecified {
+        public static string ErrorNoProviderSpecified {
             get {
                 return ResourceManager.GetString("ErrorNoProviderSpecified", resourceCulture);
             }
@@ -738,7 +738,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Resource has no resource id attached.
         /// </summary>
-        internal static string ErrorNoResourceIdAttached {
+        public static string ErrorNoResourceIdAttached {
             get {
                 return ResourceManager.GetString("ErrorNoResourceIdAttached", resourceCulture);
             }
@@ -747,7 +747,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No schema specified.
         /// </summary>
-        internal static string ErrorNoSchemaSpecified {
+        public static string ErrorNoSchemaSpecified {
             get {
                 return ResourceManager.GetString("ErrorNoSchemaSpecified", resourceCulture);
             }
@@ -756,7 +756,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No schema specified to apply.
         /// </summary>
-        internal static string ErrorNoSchemaSpecifiedToApply {
+        public static string ErrorNoSchemaSpecifiedToApply {
             get {
                 return ResourceManager.GetString("ErrorNoSchemaSpecifiedToApply", resourceCulture);
             }
@@ -765,7 +765,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No server connection set for object.
         /// </summary>
-        internal static string ErrorNoServerConnectionAttached {
+        public static string ErrorNoServerConnectionAttached {
             get {
                 return ResourceManager.GetString("ErrorNoServerConnectionAttached", resourceCulture);
             }
@@ -774,7 +774,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No spatial context name specified. This is the name that should be referred to by any spatial context associations in your feature schema.
         /// </summary>
-        internal static string ErrorNoSpatialContextNameSpecified {
+        public static string ErrorNoSpatialContextNameSpecified {
             get {
                 return ResourceManager.GetString("ErrorNoSpatialContextNameSpecified", resourceCulture);
             }
@@ -783,7 +783,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Not a qualified class name: {0}.
         /// </summary>
-        internal static string ErrorNotAQualifiedClassName {
+        public static string ErrorNotAQualifiedClassName {
             get {
                 return ResourceManager.GetString("ErrorNotAQualifiedClassName", resourceCulture);
             }
@@ -792,7 +792,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Nothing to insert.
         /// </summary>
-        internal static string ErrorNothingToInsert {
+        public static string ErrorNothingToInsert {
             get {
                 return ResourceManager.GetString("ErrorNothingToInsert", resourceCulture);
             }
@@ -801,7 +801,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No values specified for updating.
         /// </summary>
-        internal static string ErrorNoValuesSpecifiedForUpdating {
+        public static string ErrorNoValuesSpecifiedForUpdating {
             get {
                 return ResourceManager.GetString("ErrorNoValuesSpecifiedForUpdating", resourceCulture);
             }
@@ -810,7 +810,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The value for {0} is null, which is not supported as a key.
         /// </summary>
-        internal static string ErrorNullKeyValue {
+        public static string ErrorNullKeyValue {
             get {
                 return ResourceManager.GetString("ErrorNullKeyValue", resourceCulture);
             }
@@ -819,7 +819,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Null values not accepted.
         /// </summary>
-        internal static string ErrorNullNotAccepted {
+        public static string ErrorNullNotAccepted {
             get {
                 return ResourceManager.GetString("ErrorNullNotAccepted", resourceCulture);
             }
@@ -828,7 +828,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Null Value.
         /// </summary>
-        internal static string ErrorNullValue {
+        public static string ErrorNullValue {
             get {
                 return ResourceManager.GetString("ErrorNullValue", resourceCulture);
             }
@@ -837,7 +837,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Value does not implement ICompositeTypeStyle.
         /// </summary>
-        internal static string ErrorObjectNotICompositeTypeStyle {
+        public static string ErrorObjectNotICompositeTypeStyle {
             get {
                 return ResourceManager.GetString("ErrorObjectNotICompositeTypeStyle", resourceCulture);
             }
@@ -846,7 +846,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to null values are not permitted. Use SetNull() if you need to specify null values.
         /// </summary>
-        internal static string ErrorObjectSetNullValuesNotPermitted {
+        public static string ErrorObjectSetNullValuesNotPermitted {
             get {
                 return ResourceManager.GetString("ErrorObjectSetNullValuesNotPermitted", resourceCulture);
             }
@@ -855,7 +855,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Overlay options are only applicable to MapGuide maps.
         /// </summary>
-        internal static string ErrorOverlayOptionsOnNonMapGuideMap {
+        public static string ErrorOverlayOptionsOnNonMapGuideMap {
             get {
                 return ResourceManager.GetString("ErrorOverlayOptionsOnNonMapGuideMap", resourceCulture);
             }
@@ -864,7 +864,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Expected &apos;)&apos; but encountered &apos;{0}&apos;.
         /// </summary>
-        internal static string ErrorParseExpectedCloser {
+        public static string ErrorParseExpectedCloser {
             get {
                 return ResourceManager.GetString("ErrorParseExpectedCloser", resourceCulture);
             }
@@ -873,7 +873,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Expected &apos;)&apos; or &apos;,&apos; but encountered &apos;{0}&apos;.
         /// </summary>
-        internal static string ErrorParseExpectedCloserOrComma {
+        public static string ErrorParseExpectedCloserOrComma {
             get {
                 return ResourceManager.GetString("ErrorParseExpectedCloserOrComma", resourceCulture);
             }
@@ -882,7 +882,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Expected &apos;EMPTY&apos; or &apos;(&apos; but encountered &apos;{0}&apos;.
         /// </summary>
-        internal static string ErrorParseExpectedEmpty {
+        public static string ErrorParseExpectedEmpty {
             get {
                 return ResourceManager.GetString("ErrorParseExpectedEmpty", resourceCulture);
             }
@@ -891,7 +891,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Expected number but encountered {0}.
         /// </summary>
-        internal static string ErrorParseExpectedNumber {
+        public static string ErrorParseExpectedNumber {
             get {
                 return ResourceManager.GetString("ErrorParseExpectedNumber", resourceCulture);
             }
@@ -900,7 +900,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Expected number but encountered end of line.
         /// </summary>
-        internal static string ErrorParseExpectedNumberEol {
+        public static string ErrorParseExpectedNumberEol {
             get {
                 return ResourceManager.GetString("ErrorParseExpectedNumberEol", resourceCulture);
             }
@@ -909,7 +909,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Expected number but encountered end of stream.
         /// </summary>
-        internal static string ErrorParseExpectedNumberEos {
+        public static string ErrorParseExpectedNumberEos {
             get {
                 return ResourceManager.GetString("ErrorParseExpectedNumberEos", resourceCulture);
             }
@@ -918,7 +918,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Expected number but encountered word {0}.
         /// </summary>
-        internal static string ErrorParseExpectedNumberGotWord {
+        public static string ErrorParseExpectedNumberGotWord {
             get {
                 return ResourceManager.GetString("ErrorParseExpectedNumberGotWord", resourceCulture);
             }
@@ -927,7 +927,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Expected word but encountered number: {0}.
         /// </summary>
-        internal static string ErrorParseExpectedWord {
+        public static string ErrorParseExpectedWord {
             get {
                 return ResourceManager.GetString("ErrorParseExpectedWord", resourceCulture);
             }
@@ -936,7 +936,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Error reading geometry.
         /// </summary>
-        internal static string ErrorParseGeometryRead {
+        public static string ErrorParseGeometryRead {
             get {
                 return ResourceManager.GetString("ErrorParseGeometryRead", resourceCulture);
             }
@@ -945,7 +945,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Unknown type: {0}.
         /// </summary>
-        internal static string ErrorParseUnknownType {
+        public static string ErrorParseUnknownType {
             get {
                 return ResourceManager.GetString("ErrorParseUnknownType", resourceCulture);
             }
@@ -954,7 +954,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Property not found: {0}.
         /// </summary>
-        internal static string ErrorPropertyNotFound {
+        public static string ErrorPropertyNotFound {
             get {
                 return ResourceManager.GetString("ErrorPropertyNotFound", resourceCulture);
             }
@@ -963,7 +963,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Provider already registered: {0}.
         /// </summary>
-        internal static string ErrorProviderAlreadyRegistered {
+        public static string ErrorProviderAlreadyRegistered {
             get {
                 return ResourceManager.GetString("ErrorProviderAlreadyRegistered", resourceCulture);
             }
@@ -972,7 +972,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Provider not registered: {0}.
         /// </summary>
-        internal static string ErrorProviderNotRegistered {
+        public static string ErrorProviderNotRegistered {
             get {
                 return ResourceManager.GetString("ErrorProviderNotRegistered", resourceCulture);
             }
@@ -981,7 +981,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The specified provider is not usable in your operating system: {0}.
         /// </summary>
-        internal static string ErrorProviderNotUsableForYourPlatform {
+        public static string ErrorProviderNotUsableForYourPlatform {
             get {
                 return ResourceManager.GetString("ErrorProviderNotUsableForYourPlatform", resourceCulture);
             }
@@ -990,7 +990,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Cannot change extension for a folder.
         /// </summary>
-        internal static string ErrorResourceIdCannotChangeExtensionForFolder {
+        public static string ErrorResourceIdCannotChangeExtensionForFolder {
             get {
                 return ResourceManager.GetString("ErrorResourceIdCannotChangeExtensionForFolder", resourceCulture);
             }
@@ -999,7 +999,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Resource Identifier class id expected, but got: {0}.
         /// </summary>
-        internal static string ErrorResourceIdentifierClassIdNotFound {
+        public static string ErrorResourceIdentifierClassIdNotFound {
             get {
                 return ResourceManager.GetString("ErrorResourceIdentifierClassIdNotFound", resourceCulture);
             }
@@ -1008,7 +1008,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The resource name must not contain &apos;:&apos;, \&quot;//\&quot; or &apos;.&apos;.
         /// </summary>
-        internal static string ErrorResourceIdentifierInvalidChars {
+        public static string ErrorResourceIdentifierInvalidChars {
             get {
                 return ResourceManager.GetString("ErrorResourceIdentifierInvalidChars", resourceCulture);
             }
@@ -1017,7 +1017,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The new name must not contain the \&quot;/\&quot; character.
         /// </summary>
-        internal static string ErrorResourceIdentifierNameInvalidChars {
+        public static string ErrorResourceIdentifierNameInvalidChars {
             get {
                 return ResourceManager.GetString("ErrorResourceIdentifierNameInvalidChars", resourceCulture);
             }
@@ -1026,7 +1026,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The supplied extension is invalid.
         /// </summary>
-        internal static string ErrorResourceIdInvalidExtension {
+        public static string ErrorResourceIdInvalidExtension {
             get {
                 return ResourceManager.GetString("ErrorResourceIdInvalidExtension", resourceCulture);
             }
@@ -1035,7 +1035,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The resourceId: {0} must be updated with a folder header.
         /// </summary>
-        internal static string ErrorResourceMustBeUpdatedWithFolderHeader {
+        public static string ErrorResourceMustBeUpdatedWithFolderHeader {
             get {
                 return ResourceManager.GetString("ErrorResourceMustBeUpdatedWithFolderHeader", resourceCulture);
             }
@@ -1044,7 +1044,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Runtime maps must be in the session repository.
         /// </summary>
-        internal static string ErrorRuntimeMapNotInSessionRepo {
+        public static string ErrorRuntimeMapNotInSessionRepo {
             get {
                 return ResourceManager.GetString("ErrorRuntimeMapNotInSessionRepo", resourceCulture);
             }
@@ -1053,7 +1053,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to A layer in selection had no id.
         /// </summary>
-        internal static string ErrorSelectedLayerHasNoId {
+        public static string ErrorSelectedLayerHasNoId {
             get {
                 return ResourceManager.GetString("ErrorSelectedLayerHasNoId", resourceCulture);
             }
@@ -1062,7 +1062,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Setting visibility of tiled map layers is not permitted.
         /// </summary>
-        internal static string ErrorSettingVisibilityOfTiledLayer {
+        public static string ErrorSettingVisibilityOfTiledLayer {
             get {
                 return ResourceManager.GetString("ErrorSettingVisibilityOfTiledLayer", resourceCulture);
             }
@@ -1071,7 +1071,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to On new versions, there should be no layer data in map.
         /// </summary>
-        internal static string ErrorShouldHaveNoLayerDataInMap {
+        public static string ErrorShouldHaveNoLayerDataInMap {
             get {
                 return ResourceManager.GetString("ErrorShouldHaveNoLayerDataInMap", resourceCulture);
             }
@@ -1080,7 +1080,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Token list contains a null value.
         /// </summary>
-        internal static string ErrorTokenListContainsNullValue {
+        public static string ErrorTokenListContainsNullValue {
             get {
                 return ResourceManager.GetString("ErrorTokenListContainsNullValue", resourceCulture);
             }
@@ -1089,7 +1089,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Type {0} does not contain schema info.
         /// </summary>
-        internal static string ErrorTypeHasNoSchemaInfo {
+        public static string ErrorTypeHasNoSchemaInfo {
             get {
                 return ResourceManager.GetString("ErrorTypeHasNoSchemaInfo", resourceCulture);
             }
@@ -1098,7 +1098,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Unexpected resource type for {0}. Expected {1}.
         /// </summary>
-        internal static string ErrorUnexpectedResourceType {
+        public static string ErrorUnexpectedResourceType {
             get {
                 return ResourceManager.GetString("ErrorUnexpectedResourceType", resourceCulture);
             }
@@ -1107,7 +1107,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The given type is not a known resource type.
         /// </summary>
-        internal static string ErrorUnknownResourceType {
+        public static string ErrorUnknownResourceType {
             get {
                 return ResourceManager.GetString("ErrorUnknownResourceType", resourceCulture);
             }
@@ -1116,7 +1116,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The type {0} is not supported for primary keys.
         /// </summary>
-        internal static string ErrorUnsupportedPkType {
+        public static string ErrorUnsupportedPkType {
             get {
                 return ResourceManager.GetString("ErrorUnsupportedPkType", resourceCulture);
             }
@@ -1125,7 +1125,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Unrecognized element. Only a subset of the FDO logical schema is supported here.
         /// </summary>
-        internal static string ErrorUnsupporteFdoSchemaXml {
+        public static string ErrorUnsupporteFdoSchemaXml {
             get {
                 return ResourceManager.GetString("ErrorUnsupporteFdoSchemaXml", resourceCulture);
             }
@@ -1134,7 +1134,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Failed in validator: {0}.
         /// </summary>
-        internal static string ErrorValidationGeneric {
+        public static string ErrorValidationGeneric {
             get {
                 return ResourceManager.GetString("ErrorValidationGeneric", resourceCulture);
             }
@@ -1143,7 +1143,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Value is not comparable.
         /// </summary>
-        internal static string ErrorValueNotComparable {
+        public static string ErrorValueNotComparable {
             get {
                 return ResourceManager.GetString("ErrorValueNotComparable", resourceCulture);
             }
@@ -1152,7 +1152,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Value falls outside the range of {0} and  {1}.
         /// </summary>
-        internal static string ErrorValueOutOfRange {
+        public static string ErrorValueOutOfRange {
             get {
                 return ResourceManager.GetString("ErrorValueOutOfRange", resourceCulture);
             }
@@ -1161,7 +1161,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Cannot write XML for a Class Definition that is not attached to a parent schema.
         /// </summary>
-        internal static string ErrorWriteClassXmlNeedToBeAttachedToParent {
+        public static string ErrorWriteClassXmlNeedToBeAttachedToParent {
             get {
                 return ResourceManager.GetString("ErrorWriteClassXmlNeedToBeAttachedToParent", resourceCulture);
             }
@@ -1170,7 +1170,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Could not calculate the extents of the Feature Source. Preview is not possible.
         /// </summary>
-        internal static string FailedToCalculateFeatureSourceExtents {
+        public static string FailedToCalculateFeatureSourceExtents {
             get {
                 return ResourceManager.GetString("FailedToCalculateFeatureSourceExtents", resourceCulture);
             }
@@ -1179,7 +1179,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Due to a limitation in the public APIs provided by MapGuide. This Feature Source cannot be packaged by Maestro&apos;s packager without discarding the MG_USER_CREDENTIALS element. The workaround is to either re-secure these Feature Sources after loading the Maestro-created package, or to use the official packaging method which will preserve MG_USER_CREDENTIALS in its encrypted state.
         /// </summary>
-        internal static string FS_CannotPackageSecuredCredentials {
+        public static string FS_CannotPackageSecuredCredentials {
             get {
                 return ResourceManager.GetString("FS_CannotPackageSecuredCredentials", resourceCulture);
             }
@@ -1188,7 +1188,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Connection test failed: {0}.
         /// </summary>
-        internal static string FS_ConnectionTestFailed {
+        public static string FS_ConnectionTestFailed {
             get {
                 return ResourceManager.GetString("FS_ConnectionTestFailed", resourceCulture);
             }
@@ -1197,7 +1197,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Spatial context extent appears to be invalid (or is the default extent returned by FDO provider. Meaning it very likely does not truly represent the extent of your data).
         /// </summary>
-        internal static string FS_DefaultSpatialContextWarning {
+        public static string FS_DefaultSpatialContextWarning {
             get {
                 return ResourceManager.GetString("FS_DefaultSpatialContextWarning", resourceCulture);
             }
@@ -1206,7 +1206,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The Extended Feature Class ({0}) is using an empty Join Prefix. A join prefix is used to prevent collisions between property names which may exist in both the primary and joined feature classes..
         /// </summary>
-        internal static string FS_EmptyJoinPrefix {
+        public static string FS_EmptyJoinPrefix {
             get {
                 return ResourceManager.GetString("FS_EmptyJoinPrefix", resourceCulture);
             }
@@ -1215,7 +1215,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Empty spatial context extent detected.
         /// </summary>
-        internal static string FS_EmptySpatialContextWarning {
+        public static string FS_EmptySpatialContextWarning {
             get {
                 return ResourceManager.GetString("FS_EmptySpatialContextWarning", resourceCulture);
             }
@@ -1224,7 +1224,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Could not obtain identity properties for {0}. This class either has no identity properties and/or is derived from a view with no uniquely identifiable columns. Attempting to create feature joins from this class may produce unexpected results..
         /// </summary>
-        internal static string FS_NoPrimaryKeyOrView {
+        public static string FS_NoPrimaryKeyOrView {
             get {
                 return ResourceManager.GetString("FS_NoPrimaryKeyOrView", resourceCulture);
             }
@@ -1233,7 +1233,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No spatial contexts found. If this feature source is strictly used for Feature Joins, this warning can be safely ignored.
         /// </summary>
-        internal static string FS_NoSpatialContextWarning {
+        public static string FS_NoSpatialContextWarning {
             get {
                 return ResourceManager.GetString("FS_NoSpatialContextWarning", resourceCulture);
             }
@@ -1242,7 +1242,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to This Feature Source uses plaintext credentials. This would happen if you are using an old version of Maestro (4.0.2 or older). This is not secure as such Feature Sources can be accessed by the Anonymous MapGuide user account. It is strongly advised that such Feature Sources can be re-secured with MapGuide/Infrastructure Studio or with Maestro 4.0.3 (or newer).
         /// </summary>
-        internal static string FS_PlaintextCredentials {
+        public static string FS_PlaintextCredentials {
             get {
                 return ResourceManager.GetString("FS_PlaintextCredentials", resourceCulture);
             }
@@ -1251,7 +1251,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The Extended Feature Class ({0}) does not satisfy the required parameters for optimal Feature Join performance (both sides sortable, on a single property). Join Performance may not be optimal. Left-side sortable: {1}, Right-side sortable: {2}.
         /// </summary>
-        internal static string FS_PotentialBadJoinPerformance {
+        public static string FS_PotentialBadJoinPerformance {
             get {
                 return ResourceManager.GetString("FS_PotentialBadJoinPerformance", resourceCulture);
             }
@@ -1260,7 +1260,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The Extended Feature Class ({0}) does not satisfy the required parameters for optimal Feature Join performance (both sides sortable, on a single property). Join Performance may not be optimal..
         /// </summary>
-        internal static string FS_PotentialBadJoinPerformance2 {
+        public static string FS_PotentialBadJoinPerformance2 {
             get {
                 return ResourceManager.GetString("FS_PotentialBadJoinPerformance2", resourceCulture);
             }
@@ -1269,7 +1269,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No primary key defined for class: {0}, features will not be selectable and feature joins on this class may produce unexpected results.
         /// </summary>
-        internal static string FS_PrimaryKeyMissingInformation {
+        public static string FS_PrimaryKeyMissingInformation {
             get {
                 return ResourceManager.GetString("FS_PrimaryKeyMissingInformation", resourceCulture);
             }
@@ -1278,7 +1278,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Failed to read identity properties: {0}.
         /// </summary>
-        internal static string FS_PrimaryKeyReadError {
+        public static string FS_PrimaryKeyReadError {
             get {
                 return ResourceManager.GetString("FS_PrimaryKeyReadError", resourceCulture);
             }
@@ -1287,7 +1287,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Failed to read schema description: {0}.
         /// </summary>
-        internal static string FS_SchemaReadError {
+        public static string FS_SchemaReadError {
             get {
                 return ResourceManager.GetString("FS_SchemaReadError", resourceCulture);
             }
@@ -1296,7 +1296,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No schemas found in datasource.
         /// </summary>
-        internal static string FS_SchemasMissingWarning {
+        public static string FS_SchemasMissingWarning {
             get {
                 return ResourceManager.GetString("FS_SchemasMissingWarning", resourceCulture);
             }
@@ -1305,7 +1305,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Feature source content has the %MG_USERNAME% and %MG_PASSWORD% tokens, but does not have the MG_USER_CREDENTIALS resource data item.
         /// </summary>
-        internal static string FS_SecuredCredentialTokensWithoutSecuredCredentialData {
+        public static string FS_SecuredCredentialTokensWithoutSecuredCredentialData {
             get {
                 return ResourceManager.GetString("FS_SecuredCredentialTokensWithoutSecuredCredentialData", resourceCulture);
             }
@@ -1314,7 +1314,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Failed to read spatial context: {0}.
         /// </summary>
-        internal static string FS_SpatialContextReadError {
+        public static string FS_SpatialContextReadError {
             get {
                 return ResourceManager.GetString("FS_SpatialContextReadError", resourceCulture);
             }
@@ -1323,7 +1323,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Maestro could not fully validate the feature source due to a a mapagent error. Assuming it is because of timeout: {0}.
         /// </summary>
-        internal static string FS_ValidationTimeout {
+        public static string FS_ValidationTimeout {
             get {
                 return ResourceManager.GetString("FS_ValidationTimeout", resourceCulture);
             }
@@ -1332,7 +1332,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Alpha value.
         /// </summary>
-        internal static string Func_ARGB_AValueDescription {
+        public static string Func_ARGB_AValueDescription {
             get {
                 return ResourceManager.GetString("Func_ARGB_AValueDescription", resourceCulture);
             }
@@ -1341,7 +1341,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Blue value.
         /// </summary>
-        internal static string Func_ARGB_BValueDescription {
+        public static string Func_ARGB_BValueDescription {
             get {
                 return ResourceManager.GetString("Func_ARGB_BValueDescription", resourceCulture);
             }
@@ -1350,7 +1350,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Color generation function.
         /// </summary>
-        internal static string Func_ARGB_Description {
+        public static string Func_ARGB_Description {
             get {
                 return ResourceManager.GetString("Func_ARGB_Description", resourceCulture);
             }
@@ -1359,7 +1359,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Green value.
         /// </summary>
-        internal static string Func_ARGB_GValueDescription {
+        public static string Func_ARGB_GValueDescription {
             get {
                 return ResourceManager.GetString("Func_ARGB_GValueDescription", resourceCulture);
             }
@@ -1368,7 +1368,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Red value.
         /// </summary>
-        internal static string Func_ARGB_RValueDescription {
+        public static string Func_ARGB_RValueDescription {
             get {
                 return ResourceManager.GetString("Func_ARGB_RValueDescription", resourceCulture);
             }
@@ -1377,7 +1377,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to String formatting function.
         /// </summary>
-        internal static string Func_DECAP_Description {
+        public static string Func_DECAP_Description {
             get {
                 return ResourceManager.GetString("Func_DECAP_Description", resourceCulture);
             }
@@ -1386,7 +1386,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to String to format.
         /// </summary>
-        internal static string Func_DECAP_StringValueDescription {
+        public static string Func_DECAP_StringValueDescription {
             get {
                 return ResourceManager.GetString("Func_DECAP_StringValueDescription", resourceCulture);
             }
@@ -1395,7 +1395,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Returns the active feature class name.
         /// </summary>
-        internal static string Func_FEATURECLASS_Description {
+        public static string Func_FEATURECLASS_Description {
             get {
                 return ResourceManager.GetString("Func_FEATURECLASS_Description", resourceCulture);
             }
@@ -1404,7 +1404,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Returns the active feature Id.
         /// </summary>
-        internal static string Func_FEATUREID_Description {
+        public static string Func_FEATUREID_Description {
             get {
                 return ResourceManager.GetString("Func_FEATUREID_Description", resourceCulture);
             }
@@ -1413,7 +1413,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Boolean expression (filter) encapsulated in a string.
         /// </summary>
-        internal static string Func_IF_ConditionDescription {
+        public static string Func_IF_ConditionDescription {
             get {
                 return ResourceManager.GetString("Func_IF_ConditionDescription", resourceCulture);
             }
@@ -1422,7 +1422,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to If evaluator for style theming.
         /// </summary>
-        internal static string Func_IF_Description {
+        public static string Func_IF_Description {
             get {
                 return ResourceManager.GetString("Func_IF_Description", resourceCulture);
             }
@@ -1431,7 +1431,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Returned if condition is false.
         /// </summary>
-        internal static string Func_IF_FalseValueDescription {
+        public static string Func_IF_FalseValueDescription {
             get {
                 return ResourceManager.GetString("Func_IF_FalseValueDescription", resourceCulture);
             }
@@ -1440,7 +1440,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Returned if condition is true.
         /// </summary>
-        internal static string Func_IF_TrueValueDescription {
+        public static string Func_IF_TrueValueDescription {
             get {
                 return ResourceManager.GetString("Func_IF_TrueValueDescription", resourceCulture);
             }
@@ -1449,7 +1449,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Returns the active layer Id.
         /// </summary>
-        internal static string Func_LAYERID_Description {
+        public static string Func_LAYERID_Description {
             get {
                 return ResourceManager.GetString("Func_LAYERID_Description", resourceCulture);
             }
@@ -1458,7 +1458,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Default value returned if expression does not evaluate to any of the keys.
         /// </summary>
-        internal static string Func_LOOKUP_DefaultValueDescription {
+        public static string Func_LOOKUP_DefaultValueDescription {
             get {
                 return ResourceManager.GetString("Func_LOOKUP_DefaultValueDescription", resourceCulture);
             }
@@ -1467,7 +1467,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Lookup table for style theming.
         /// </summary>
-        internal static string Func_LOOKUP_Description {
+        public static string Func_LOOKUP_Description {
             get {
                 return ResourceManager.GetString("Func_LOOKUP_Description", resourceCulture);
             }
@@ -1476,7 +1476,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Key expression.
         /// </summary>
-        internal static string Func_LOOKUP_ExpressionDescription {
+        public static string Func_LOOKUP_ExpressionDescription {
             get {
                 return ResourceManager.GetString("Func_LOOKUP_ExpressionDescription", resourceCulture);
             }
@@ -1485,7 +1485,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Lookup index that can be matched by the key expression.
         /// </summary>
-        internal static string Func_LOOKUP_IndexDescription {
+        public static string Func_LOOKUP_IndexDescription {
             get {
                 return ResourceManager.GetString("Func_LOOKUP_IndexDescription", resourceCulture);
             }
@@ -1494,7 +1494,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Value that is returned when the key expression matches the associated index.
         /// </summary>
-        internal static string Func_LOOKUP_ValueDescription {
+        public static string Func_LOOKUP_ValueDescription {
             get {
                 return ResourceManager.GetString("Func_LOOKUP_ValueDescription", resourceCulture);
             }
@@ -1503,7 +1503,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Returns the active map name.
         /// </summary>
-        internal static string Func_MAPNAME_Description {
+        public static string Func_MAPNAME_Description {
             get {
                 return ResourceManager.GetString("Func_MAPNAME_Description", resourceCulture);
             }
@@ -1512,7 +1512,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Default value returned if expression does not fall into any of the ranges.
         /// </summary>
-        internal static string Func_RANGE_DefaultValueDescription {
+        public static string Func_RANGE_DefaultValueDescription {
             get {
                 return ResourceManager.GetString("Func_RANGE_DefaultValueDescription", resourceCulture);
             }
@@ -1521,7 +1521,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Range table for style theming.
         /// </summary>
-        internal static string Func_RANGE_Description {
+        public static string Func_RANGE_Description {
             get {
                 return ResourceManager.GetString("Func_RANGE_Description", resourceCulture);
             }
@@ -1530,7 +1530,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Key expression.
         /// </summary>
-        internal static string Func_RANGE_ExpressionDescription {
+        public static string Func_RANGE_ExpressionDescription {
             get {
                 return ResourceManager.GetString("Func_RANGE_ExpressionDescription", resourceCulture);
             }
@@ -1539,7 +1539,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Exclusive maximum of range that can be matched by the key expression.
         /// </summary>
-        internal static string Func_RANGE_MaxDescription {
+        public static string Func_RANGE_MaxDescription {
             get {
                 return ResourceManager.GetString("Func_RANGE_MaxDescription", resourceCulture);
             }
@@ -1548,7 +1548,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Inclusive minimum of range that can be matched by the key expression.
         /// </summary>
-        internal static string Func_RANGE_MinDescription {
+        public static string Func_RANGE_MinDescription {
             get {
                 return ResourceManager.GetString("Func_RANGE_MinDescription", resourceCulture);
             }
@@ -1557,7 +1557,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Value that is returned when the key expression matches the associated range.
         /// </summary>
-        internal static string Func_RANGE_ValueDescription {
+        public static string Func_RANGE_ValueDescription {
             get {
                 return ResourceManager.GetString("Func_RANGE_ValueDescription", resourceCulture);
             }
@@ -1566,7 +1566,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Returns the active session.
         /// </summary>
-        internal static string Func_SESSION_Description {
+        public static string Func_SESSION_Description {
             get {
                 return ResourceManager.GetString("Func_SESSION_Description", resourceCulture);
             }
@@ -1575,7 +1575,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to String encoding function.
         /// </summary>
-        internal static string Func_URLENCODE_Description {
+        public static string Func_URLENCODE_Description {
             get {
                 return ResourceManager.GetString("Func_URLENCODE_Description", resourceCulture);
             }
@@ -1584,7 +1584,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to String to URL encode.
         /// </summary>
-        internal static string Func_URLENCODE_StringValueDescription {
+        public static string Func_URLENCODE_StringValueDescription {
             get {
                 return ResourceManager.GetString("Func_URLENCODE_StringValueDescription", resourceCulture);
             }
@@ -1593,7 +1593,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to {0} (*.{1})|*.{1}.
         /// </summary>
-        internal static string GenericFilter {
+        public static string GenericFilter {
             get {
                 return ResourceManager.GetString("GenericFilter", resourceCulture);
             }
@@ -1602,7 +1602,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Infinity.
         /// </summary>
-        internal static string Infinity {
+        public static string Infinity {
             get {
                 return ResourceManager.GetString("Infinity", resourceCulture);
             }
@@ -1611,7 +1611,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Extra Tools.
         /// </summary>
-        internal static string Label_ExtraTools {
+        public static string Label_ExtraTools {
             get {
                 return ResourceManager.GetString("Label_ExtraTools", resourceCulture);
             }
@@ -1620,7 +1620,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Get Extents.
         /// </summary>
-        internal static string Label_GetExtents {
+        public static string Label_GetExtents {
             get {
                 return ResourceManager.GetString("Label_GetExtents", resourceCulture);
             }
@@ -1629,7 +1629,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Get KML.
         /// </summary>
-        internal static string Label_GetMapKml {
+        public static string Label_GetMapKml {
             get {
                 return ResourceManager.GetString("Label_GetMapKml", resourceCulture);
             }
@@ -1638,7 +1638,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Tools.
         /// </summary>
-        internal static string Label_Tools {
+        public static string Label_Tools {
             get {
                 return ResourceManager.GetString("Label_Tools", resourceCulture);
             }
@@ -1647,7 +1647,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Zoom to Scale.
         /// </summary>
-        internal static string Label_ZoomToScale {
+        public static string Label_ZoomToScale {
             get {
                 return ResourceManager.GetString("Label_ZoomToScale", resourceCulture);
             }
@@ -1656,7 +1656,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The scale range {0} to {1} contains a composite style defined alongside a area/point/line style. The composite style takes precedence in such cases meaning the area/point/line style is always ignored.
         /// </summary>
-        internal static string LDF_CompositeStyleDefinedAlongsideBasicStyle {
+        public static string LDF_CompositeStyleDefinedAlongsideBasicStyle {
             get {
                 return ResourceManager.GetString("LDF_CompositeStyleDefinedAlongsideBasicStyle", resourceCulture);
             }
@@ -1665,7 +1665,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Failed to load specified Drawing Source.
         /// </summary>
-        internal static string LDF_DrawingSourceError {
+        public static string LDF_DrawingSourceError {
             get {
                 return ResourceManager.GetString("LDF_DrawingSourceError", resourceCulture);
             }
@@ -1674,7 +1674,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Failed to load specified Feature Source.
         /// </summary>
-        internal static string LDF_FeatureSourceLoadError {
+        public static string LDF_FeatureSourceLoadError {
             get {
                 return ResourceManager.GetString("LDF_FeatureSourceLoadError", resourceCulture);
             }
@@ -1683,7 +1683,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Failed to find geometry column {0} in schema {1} on featuresource {2}.
         /// </summary>
-        internal static string LDF_GeometryMissingError {
+        public static string LDF_GeometryMissingError {
             get {
                 return ResourceManager.GetString("LDF_GeometryMissingError", resourceCulture);
             }
@@ -1692,7 +1692,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Layer has property mapping for non-existent property ({0}) in class ({1}).
         /// </summary>
-        internal static string LDF_InvalidPropertyMapping {
+        public static string LDF_InvalidPropertyMapping {
             get {
                 return ResourceManager.GetString("LDF_InvalidPropertyMapping", resourceCulture);
             }
@@ -1701,7 +1701,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Referenced Symbol Definition {0} has an irrelevant usage context for this layer because this layer does not have features of type: {1}.
         /// </summary>
-        internal static string LDF_IrrelevantUsageContext {
+        public static string LDF_IrrelevantUsageContext {
             get {
                 return ResourceManager.GetString("LDF_IrrelevantUsageContext", resourceCulture);
             }
@@ -1710,7 +1710,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Layer is missing core information.
         /// </summary>
-        internal static string LDF_LayerNullError {
+        public static string LDF_LayerNullError {
             get {
                 return ResourceManager.GetString("LDF_LayerNullError", resourceCulture);
             }
@@ -1719,7 +1719,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The minimum scale ({0}) is larger than the maximum scale ({1}).
         /// </summary>
-        internal static string LDF_MinAndMaxScaleSwappedError {
+        public static string LDF_MinAndMaxScaleSwappedError {
             get {
                 return ResourceManager.GetString("LDF_MinAndMaxScaleSwappedError", resourceCulture);
             }
@@ -1728,7 +1728,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Layer Definition does not specify a class name.
         /// </summary>
-        internal static string LDF_MissingFeatureName {
+        public static string LDF_MissingFeatureName {
             get {
                 return ResourceManager.GetString("LDF_MissingFeatureName", resourceCulture);
             }
@@ -1737,7 +1737,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No FeatureSource is assigned to the layer.
         /// </summary>
-        internal static string LDF_MissingFeatureSourceError {
+        public static string LDF_MissingFeatureSourceError {
             get {
                 return ResourceManager.GetString("LDF_MissingFeatureSourceError", resourceCulture);
             }
@@ -1746,7 +1746,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No Geometry is assigned to the layer.
         /// </summary>
-        internal static string LDF_MissingGeometryError {
+        public static string LDF_MissingGeometryError {
             get {
                 return ResourceManager.GetString("LDF_MissingGeometryError", resourceCulture);
             }
@@ -1755,7 +1755,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to No scale ranges are defined, no data can be displayed.
         /// </summary>
-        internal static string LDF_MissingScaleRangesError {
+        public static string LDF_MissingScaleRangesError {
             get {
                 return ResourceManager.GetString("LDF_MissingScaleRangesError", resourceCulture);
             }
@@ -1764,7 +1764,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to More than one scale ranges is defined, this is valid, but unsupported by Maestro.
         /// </summary>
-        internal static string LDF_MultipleScaleRangesWarning {
+        public static string LDF_MultipleScaleRangesWarning {
             get {
                 return ResourceManager.GetString("LDF_MultipleScaleRangesWarning", resourceCulture);
             }
@@ -1773,7 +1773,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The scale range {0}-{1} overlaps the range {2}-{3}.
         /// </summary>
-        internal static string LDF_ScaleRangesOverlapInformation {
+        public static string LDF_ScaleRangesOverlapInformation {
             get {
                 return ResourceManager.GetString("LDF_ScaleRangesOverlapInformation", resourceCulture);
             }
@@ -1782,7 +1782,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Failed to validate column and schema: {0}.
         /// </summary>
-        internal static string LDF_SchemaAndColumnReadFailedError {
+        public static string LDF_SchemaAndColumnReadFailedError {
             get {
                 return ResourceManager.GetString("LDF_SchemaAndColumnReadFailedError", resourceCulture);
             }
@@ -1791,7 +1791,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Failed to find schema {0} in featuresource {1}.
         /// </summary>
-        internal static string LDF_SchemaMissingError {
+        public static string LDF_SchemaMissingError {
             get {
                 return ResourceManager.GetString("LDF_SchemaMissingError", resourceCulture);
             }
@@ -1800,7 +1800,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Referenced sheet layer {0} not found in sheet {1} of referenced Drawing Source.
         /// </summary>
-        internal static string LDF_SheetLayerNotFound {
+        public static string LDF_SheetLayerNotFound {
             get {
                 return ResourceManager.GetString("LDF_SheetLayerNotFound", resourceCulture);
             }
@@ -1809,7 +1809,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Referenced sheet {0} not found in referenced Drawing Source.
         /// </summary>
-        internal static string LDF_SheetNotFound {
+        public static string LDF_SheetNotFound {
             get {
                 return ResourceManager.GetString("LDF_SheetNotFound", resourceCulture);
             }
@@ -1818,7 +1818,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The Layer Definition contains a Composite Rule pointing to a non-existent Symbol Definition: {0}.
         /// </summary>
-        internal static string LDF_SymbolDefintionReferenceNotFound {
+        public static string LDF_SymbolDefintionReferenceNotFound {
             get {
                 return ResourceManager.GetString("LDF_SymbolDefintionReferenceNotFound", resourceCulture);
             }
@@ -1827,7 +1827,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The Layer Definition specifies a parameter override for {0} that does not exist ({1}).
         /// </summary>
-        internal static string LDF_SymbolParameterOverrideToNonExistentParameter {
+        public static string LDF_SymbolParameterOverrideToNonExistentParameter {
             get {
                 return ResourceManager.GetString("LDF_SymbolParameterOverrideToNonExistentParameter", resourceCulture);
             }
@@ -1836,7 +1836,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The layer has no type, or the type is unsupported by Maestro.
         /// </summary>
-        internal static string LDF_UnsupportedLayerTypeWarning {
+        public static string LDF_UnsupportedLayerTypeWarning {
             get {
                 return ResourceManager.GetString("LDF_UnsupportedLayerTypeWarning", resourceCulture);
             }
@@ -1845,7 +1845,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Convert to SDF option is not supported by Maestro.
         /// </summary>
-        internal static string LPROC_ConvertToSdf3NotSupported {
+        public static string LPROC_ConvertToSdf3NotSupported {
             get {
                 return ResourceManager.GetString("LPROC_ConvertToSdf3NotSupported", resourceCulture);
             }
@@ -1854,7 +1854,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to DWF Load Procedures cannot be executed by Maestro.
         /// </summary>
-        internal static string LPROC_DWFNotSupported {
+        public static string LPROC_DWFNotSupported {
             get {
                 return ResourceManager.GetString("LPROC_DWFNotSupported", resourceCulture);
             }
@@ -1863,7 +1863,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to DWG Load Procedures cannot be executed by Maestro.
         /// </summary>
-        internal static string LPROC_DWGNotSupported {
+        public static string LPROC_DWGNotSupported {
             get {
                 return ResourceManager.GetString("LPROC_DWGNotSupported", resourceCulture);
             }
@@ -1872,7 +1872,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Generalization of source data is not supported by Maestro.
         /// </summary>
-        internal static string LPROC_GeneralizationNotSupported {
+        public static string LPROC_GeneralizationNotSupported {
             get {
                 return ResourceManager.GetString("LPROC_GeneralizationNotSupported", resourceCulture);
             }
@@ -1881,7 +1881,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Raster Load Procedures cannot be executed by Maestro.
         /// </summary>
-        internal static string LPROC_RasterNotSupported {
+        public static string LPROC_RasterNotSupported {
             get {
                 return ResourceManager.GetString("LPROC_RasterNotSupported", resourceCulture);
             }
@@ -1890,7 +1890,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to SDF 2 Migration options are not supported by Maestro. Ensure your source files are SDF3 files..
         /// </summary>
-        internal static string LPROC_Sdf2OptionsNotSupported {
+        public static string LPROC_Sdf2OptionsNotSupported {
             get {
                 return ResourceManager.GetString("LPROC_Sdf2OptionsNotSupported", resourceCulture);
             }
@@ -1899,7 +1899,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Source file not found: {0}.
         /// </summary>
-        internal static string LPROC_SourceFileNotFound {
+        public static string LPROC_SourceFileNotFound {
             get {
                 return ResourceManager.GetString("LPROC_SourceFileNotFound", resourceCulture);
             }
@@ -1908,7 +1908,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Data from {0} is not visible in the map&apos;s start extent.
         /// </summary>
-        internal static string MDF_DataOutsideMapWarning {
+        public static string MDF_DataOutsideMapWarning {
             get {
                 return ResourceManager.GetString("MDF_DataOutsideMapWarning", resourceCulture);
             }
@@ -1917,7 +1917,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to {0} has a different coordinate system than the map, this will impact performance as the coordinates are transformed while rendering the map. Maestro cannot validate the extent of the data..
         /// </summary>
-        internal static string MDF_DataReprojectionWarning {
+        public static string MDF_DataReprojectionWarning {
             get {
                 return ResourceManager.GetString("MDF_DataReprojectionWarning", resourceCulture);
             }
@@ -1926,7 +1926,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Layer {0}&apos;s FeatureSource could not be read: {1}.
         /// </summary>
-        internal static string MDF_FeatureSourceReadError {
+        public static string MDF_FeatureSourceReadError {
             get {
                 return ResourceManager.GetString("MDF_FeatureSourceReadError", resourceCulture);
             }
@@ -1935,7 +1935,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Group {0} has the default legend label.
         /// </summary>
-        internal static string MDF_GroupHasDefaultLabelInformation {
+        public static string MDF_GroupHasDefaultLabelInformation {
             get {
                 return ResourceManager.GetString("MDF_GroupHasDefaultLabelInformation", resourceCulture);
             }
@@ -1944,7 +1944,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Group {0} does not have a legend label.
         /// </summary>
-        internal static string MDF_GroupMissingLabelInformation {
+        public static string MDF_GroupMissingLabelInformation {
             get {
                 return ResourceManager.GetString("MDF_GroupMissingLabelInformation", resourceCulture);
             }
@@ -1953,7 +1953,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Layer Group ({0}) belongs to a non-existent Layer Group ({1}).
         /// </summary>
-        internal static string MDF_GroupWithNonExistentGroup {
+        public static string MDF_GroupWithNonExistentGroup {
             get {
                 return ResourceManager.GetString("MDF_GroupWithNonExistentGroup", resourceCulture);
             }
@@ -1962,7 +1962,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Layer {0} does not have a legend label.
         /// </summary>
-        internal static string MDF_LayerMissingLabelInformation {
+        public static string MDF_LayerMissingLabelInformation {
             get {
                 return ResourceManager.GetString("MDF_LayerMissingLabelInformation", resourceCulture);
             }
@@ -1971,7 +1971,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The layer name {0} is used for both &quot;{1}&quot; and &quot;{2}&quot;.
         /// </summary>
-        internal static string MDF_LayerNameDuplicateWarning {
+        public static string MDF_LayerNameDuplicateWarning {
             get {
                 return ResourceManager.GetString("MDF_LayerNameDuplicateWarning", resourceCulture);
             }
@@ -1980,7 +1980,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Layer {0} could not be read: {1}.
         /// </summary>
-        internal static string MDF_LayerReadError {
+        public static string MDF_LayerReadError {
             get {
                 return ResourceManager.GetString("MDF_LayerReadError", resourceCulture);
             }
@@ -1989,7 +1989,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Layer ({0}) belongs to a non-existent Layer Group ({1}).
         /// </summary>
-        internal static string MDF_LayerWithNonExistentGroup {
+        public static string MDF_LayerWithNonExistentGroup {
             get {
                 return ResourceManager.GetString("MDF_LayerWithNonExistentGroup", resourceCulture);
             }
@@ -1998,7 +1998,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Map Definition references feature source {0} which has a null extent. Most likely caused by feature source having no actual data inside it.
         /// </summary>
-        internal static string MDF_LayerWithNullExtent {
+        public static string MDF_LayerWithNullExtent {
             get {
                 return ResourceManager.GetString("MDF_LayerWithNullExtent", resourceCulture);
             }
@@ -2007,7 +2007,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Layer {0} has no geometry column.
         /// </summary>
-        internal static string MDF_MissingLayerGeometryColumnError {
+        public static string MDF_MissingLayerGeometryColumnError {
             get {
                 return ResourceManager.GetString("MDF_MissingLayerGeometryColumnError", resourceCulture);
             }
@@ -2016,7 +2016,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Layer {0} has an invalid Schema.
         /// </summary>
-        internal static string MDF_MissingLayerSchemaError {
+        public static string MDF_MissingLayerSchemaError {
             get {
                 return ResourceManager.GetString("MDF_MissingLayerSchemaError", resourceCulture);
             }
@@ -2025,7 +2025,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to {0} has no spatial context (eg. no coordinate system).
         /// </summary>
-        internal static string MDF_MissingSpatialContextWarning {
+        public static string MDF_MissingSpatialContextWarning {
             get {
                 return ResourceManager.GetString("MDF_MissingSpatialContextWarning", resourceCulture);
             }
@@ -2034,7 +2034,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to {0} has more than one spatial context, the following test results may be inacurate.
         /// </summary>
-        internal static string MDF_MultipleSpatialContextsInformation {
+        public static string MDF_MultipleSpatialContextsInformation {
             get {
                 return ResourceManager.GetString("MDF_MultipleSpatialContextsInformation", resourceCulture);
             }
@@ -2043,7 +2043,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Map Definition has no coordinate system.
         /// </summary>
-        internal static string MDF_NoCoordinateSystem {
+        public static string MDF_NoCoordinateSystem {
             get {
                 return ResourceManager.GetString("MDF_NoCoordinateSystem", resourceCulture);
             }
@@ -2052,7 +2052,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The Map Definition contains tiled layers but has no finite display scales defined.
         /// </summary>
-        internal static string MDF_NoFiniteDisplayScalesSpecified {
+        public static string MDF_NoFiniteDisplayScalesSpecified {
             get {
                 return ResourceManager.GetString("MDF_NoFiniteDisplayScalesSpecified", resourceCulture);
             }
@@ -2061,7 +2061,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to {0} is a raster layer, and in another coordinate system than the map. No data will be displayed by the layer.
         /// </summary>
-        internal static string MDF_RasterReprojectionError {
+        public static string MDF_RasterReprojectionError {
             get {
                 return ResourceManager.GetString("MDF_RasterReprojectionError", resourceCulture);
             }
@@ -2070,7 +2070,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to {0} could not be processed for spatial info: {1}.
         /// </summary>
-        internal static string MDF_ResourceReadError {
+        public static string MDF_ResourceReadError {
             get {
                 return ResourceManager.GetString("MDF_ResourceReadError", resourceCulture);
             }
@@ -2079,7 +2079,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Layer {0} is marked as selectable but its feature class {1} in ({2}) has no identity properties. This layer will not be selectable..
         /// </summary>
-        internal static string MDF_UnselectableLayer {
+        public static string MDF_UnselectableLayer {
             get {
                 return ResourceManager.GetString("MDF_UnselectableLayer", resourceCulture);
             }
@@ -2088,7 +2088,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Layer {0} is a type that is unsupported by Maestro.
         /// </summary>
-        internal static string MDF_UnsupportedLayerTypeWarning {
+        public static string MDF_UnsupportedLayerTypeWarning {
             get {
                 return ResourceManager.GetString("MDF_UnsupportedLayerTypeWarning", resourceCulture);
             }
@@ -2097,7 +2097,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Moved resource: {0}.
         /// </summary>
-        internal static string MovedResource {
+        public static string MovedResource {
             get {
                 return ResourceManager.GetString("MovedResource", resourceCulture);
             }
@@ -2106,7 +2106,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Moving resource ....
         /// </summary>
-        internal static string MovingResource {
+        public static string MovingResource {
             get {
                 return ResourceManager.GetString("MovingResource", resourceCulture);
             }
@@ -2115,7 +2115,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to (null).
         /// </summary>
-        internal static string NullString {
+        public static string NullString {
             get {
                 return ResourceManager.GetString("NullString", resourceCulture);
             }
@@ -2124,7 +2124,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Table mapping for Feature class ({0}) has an incomplete column mapping. Either the X or Y or both columns are not specified.
         /// </summary>
-        internal static string ODBC_IncompleteXYZColumnMapping {
+        public static string ODBC_IncompleteXYZColumnMapping {
             get {
                 return ResourceManager.GetString("ODBC_IncompleteXYZColumnMapping", resourceCulture);
             }
@@ -2133,7 +2133,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Feature class ({0}) has a logical geometry property ({1}) that is not of the Point geometry type.
         /// </summary>
-        internal static string ODBC_InvalidGeometryProperty {
+        public static string ODBC_InvalidGeometryProperty {
             get {
                 return ResourceManager.GetString("ODBC_InvalidGeometryProperty", resourceCulture);
             }
@@ -2142,7 +2142,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Feature class ({0}) has no corresponding ODBC table override item.
         /// </summary>
-        internal static string ODBC_NoSuchTableOverrideForFeatureClass {
+        public static string ODBC_NoSuchTableOverrideForFeatureClass {
             get {
                 return ResourceManager.GetString("ODBC_NoSuchTableOverrideForFeatureClass", resourceCulture);
             }
@@ -2151,7 +2151,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to All Files.
         /// </summary>
-        internal static string PickAll {
+        public static string PickAll {
             get {
                 return ResourceManager.GetString("PickAll", resourceCulture);
             }
@@ -2160,7 +2160,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Batch Files.
         /// </summary>
-        internal static string PickBat {
+        public static string PickBat {
             get {
                 return ResourceManager.GetString("PickBat", resourceCulture);
             }
@@ -2169,7 +2169,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Autodesk DWF.
         /// </summary>
-        internal static string PickDwf {
+        public static string PickDwf {
             get {
                 return ResourceManager.GetString("PickDwf", resourceCulture);
             }
@@ -2178,7 +2178,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Executables.
         /// </summary>
-        internal static string PickExe {
+        public static string PickExe {
             get {
                 return ResourceManager.GetString("PickExe", resourceCulture);
             }
@@ -2187,7 +2187,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to INI Files.
         /// </summary>
-        internal static string PickIni {
+        public static string PickIni {
             get {
                 return ResourceManager.GetString("PickIni", resourceCulture);
             }
@@ -2196,7 +2196,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Log Files.
         /// </summary>
-        internal static string PickLog {
+        public static string PickLog {
             get {
                 return ResourceManager.GetString("PickLog", resourceCulture);
             }
@@ -2205,7 +2205,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to MapGuide Package File.
         /// </summary>
-        internal static string PickMgp {
+        public static string PickMgp {
             get {
                 return ResourceManager.GetString("PickMgp", resourceCulture);
             }
@@ -2214,7 +2214,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Portable Network Graphics.
         /// </summary>
-        internal static string PickPng {
+        public static string PickPng {
             get {
                 return ResourceManager.GetString("PickPng", resourceCulture);
             }
@@ -2223,7 +2223,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Python Scripts.
         /// </summary>
-        internal static string PickPy {
+        public static string PickPy {
             get {
                 return ResourceManager.GetString("PickPy", resourceCulture);
             }
@@ -2232,7 +2232,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Autodesk Spatial Data File.
         /// </summary>
-        internal static string PickSdf {
+        public static string PickSdf {
             get {
                 return ResourceManager.GetString("PickSdf", resourceCulture);
             }
@@ -2241,7 +2241,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to ESRI Shapefile.
         /// </summary>
-        internal static string PickShp {
+        public static string PickShp {
             get {
                 return ResourceManager.GetString("PickShp", resourceCulture);
             }
@@ -2250,7 +2250,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to SQLite Databases.
         /// </summary>
-        internal static string PickSqlite {
+        public static string PickSqlite {
             get {
                 return ResourceManager.GetString("PickSqlite", resourceCulture);
             }
@@ -2259,7 +2259,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Text Files.
         /// </summary>
-        internal static string PickTxt {
+        public static string PickTxt {
             get {
                 return ResourceManager.GetString("PickTxt", resourceCulture);
             }
@@ -2268,7 +2268,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to XML Files.
         /// </summary>
-        internal static string PickXml {
+        public static string PickXml {
             get {
                 return ResourceManager.GetString("PickXml", resourceCulture);
             }
@@ -2277,7 +2277,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Zip Files.
         /// </summary>
-        internal static string PickZip {
+        public static string PickZip {
             get {
                 return ResourceManager.GetString("PickZip", resourceCulture);
             }
@@ -2286,7 +2286,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Preview Map.
         /// </summary>
-        internal static string PreviewMap {
+        public static string PreviewMap {
             get {
                 return ResourceManager.GetString("PreviewMap", resourceCulture);
             }
@@ -2295,7 +2295,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Copying Folder ....
         /// </summary>
-        internal static string ProgressCopyingFolder {
+        public static string ProgressCopyingFolder {
             get {
                 return ResourceManager.GetString("ProgressCopyingFolder", resourceCulture);
             }
@@ -2304,7 +2304,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Finding Folder References ....
         /// </summary>
-        internal static string ProgressFindingFolderRefs {
+        public static string ProgressFindingFolderRefs {
             get {
                 return ResourceManager.GetString("ProgressFindingFolderRefs", resourceCulture);
             }
@@ -2313,7 +2313,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Moving Folder ....
         /// </summary>
-        internal static string ProgressMovingFolder {
+        public static string ProgressMovingFolder {
             get {
                 return ResourceManager.GetString("ProgressMovingFolder", resourceCulture);
             }
@@ -2322,7 +2322,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to This connection does not support required service: .
         /// </summary>
-        internal static string RequiredServiceNotSupported {
+        public static string RequiredServiceNotSupported {
             get {
                 return ResourceManager.GetString("RequiredServiceNotSupported", resourceCulture);
             }
@@ -2331,7 +2331,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The site version of this current connection is not known to support watermarks.
         /// </summary>
-        internal static string SiteVersionDoesntSupportWatermarks {
+        public static string SiteVersionDoesntSupportWatermarks {
             get {
                 return ResourceManager.GetString("SiteVersionDoesntSupportWatermarks", resourceCulture);
             }
@@ -2340,7 +2340,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The simple symbol definition contains an image graphic that references a resource id {0} with a non-existent resource data {1}.
         /// </summary>
-        internal static string SSDF_ImageGraphicReferenceResourceDataNotFound {
+        public static string SSDF_ImageGraphicReferenceResourceDataNotFound {
             get {
                 return ResourceManager.GetString("SSDF_ImageGraphicReferenceResourceDataNotFound", resourceCulture);
             }
@@ -2349,7 +2349,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The simple symbol definition contains an image graphic that references a non-existent resource id.
         /// </summary>
-        internal static string SSDF_ImageGraphicReferenceResourceIdNotFound {
+        public static string SSDF_ImageGraphicReferenceResourceIdNotFound {
             get {
                 return ResourceManager.GetString("SSDF_ImageGraphicReferenceResourceIdNotFound", resourceCulture);
             }
@@ -2358,7 +2358,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The Simple Symbol Definition has no geometry usage contexts specified..
         /// </summary>
-        internal static string SSDF_NoGeometryUsageContext {
+        public static string SSDF_NoGeometryUsageContext {
             get {
                 return ResourceManager.GetString("SSDF_NoGeometryUsageContext", resourceCulture);
             }
@@ -2367,7 +2367,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The simple symbol definition contains a symbol parameter {0} that is not referenced anywhere within the definition.
         /// </summary>
-        internal static string SSDF_SymbolParameterNotUsed {
+        public static string SSDF_SymbolParameterNotUsed {
             get {
                 return ResourceManager.GetString("SSDF_SymbolParameterNotUsed", resourceCulture);
             }
@@ -2376,7 +2376,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Created: {0}.
         /// </summary>
-        internal static string TemplateCreated {
+        public static string TemplateCreated {
             get {
                 return ResourceManager.GetString("TemplateCreated", resourceCulture);
             }
@@ -2385,7 +2385,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to File not found: {0}.
         /// </summary>
-        internal static string TemplateFileNotFound {
+        public static string TemplateFileNotFound {
             get {
                 return ResourceManager.GetString("TemplateFileNotFound", resourceCulture);
             }
@@ -2394,7 +2394,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to File processed: {0}.
         /// </summary>
-        internal static string TemplateFileProcessed {
+        public static string TemplateFileProcessed {
             get {
                 return ResourceManager.GetString("TemplateFileProcessed", resourceCulture);
             }
@@ -2403,7 +2403,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Loaded: {0}.
         /// </summary>
-        internal static string TemplateLoaded {
+        public static string TemplateLoaded {
             get {
                 return ResourceManager.GetString("TemplateLoaded", resourceCulture);
             }
@@ -2412,7 +2412,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Set default spatial context for: {0}.
         /// </summary>
-        internal static string TemplateSetSpatialContext {
+        public static string TemplateSetSpatialContext {
             get {
                 return ResourceManager.GetString("TemplateSetSpatialContext", resourceCulture);
             }
@@ -2421,7 +2421,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Success: {0}.
         /// </summary>
-        internal static string TemplateSuccess {
+        public static string TemplateSuccess {
             get {
                 return ResourceManager.GetString("TemplateSuccess", resourceCulture);
             }
@@ -2430,7 +2430,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Uploaded: {0}.prj.
         /// </summary>
-        internal static string TemplateUploadedPrj {
+        public static string TemplateUploadedPrj {
             get {
                 return ResourceManager.GetString("TemplateUploadedPrj", resourceCulture);
             }
@@ -2439,7 +2439,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Could not find template url for template: .
         /// </summary>
-        internal static string TemplateUrlNotFound {
+        public static string TemplateUrlNotFound {
             get {
                 return ResourceManager.GetString("TemplateUrlNotFound", resourceCulture);
             }
@@ -2460,7 +2460,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         ///          &lt;Justification&gt;&apos;Left&apos;&lt;/Justification&gt;
         ///          &lt;TextCol [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string TextWatermark {
+        public static string TextWatermark {
             get {
                 return ResourceManager.GetString("TextWatermark", resourceCulture);
             }
@@ -2469,7 +2469,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Preview.
         /// </summary>
-        internal static string TitlePreview {
+        public static string TitlePreview {
             get {
                 return ResourceManager.GetString("TitlePreview", resourceCulture);
             }
@@ -2478,7 +2478,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to All threads crashed, and the tile set was only partially created.
         /// </summary>
-        internal static string TS_ThreadFailureError {
+        public static string TS_ThreadFailureError {
             get {
                 return ResourceManager.GetString("TS_ThreadFailureError", resourceCulture);
             }
@@ -2487,7 +2487,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The resource type cannot be previewed.
         /// </summary>
-        internal static string UnpreviewableResourceType {
+        public static string UnpreviewableResourceType {
             get {
                 return ResourceManager.GetString("UnpreviewableResourceType", resourceCulture);
             }
@@ -2496,7 +2496,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The given Map Definition or Tile Set Definition cannot be seeded.
         /// </summary>
-        internal static string UnseedableTileSet {
+        public static string UnseedableTileSet {
             get {
                 return ResourceManager.GetString("UnseedableTileSet", resourceCulture);
             }
@@ -2505,7 +2505,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Unsupported Load Procedure Type.
         /// </summary>
-        internal static string UnsupportedLoadProcedureType {
+        public static string UnsupportedLoadProcedureType {
             get {
                 return ResourceManager.GetString("UnsupportedLoadProcedureType", resourceCulture);
             }
@@ -2514,7 +2514,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to There web layout has more than one command named: {0}.
         /// </summary>
-        internal static string WL_DuplicateCommandName {
+        public static string WL_DuplicateCommandName {
             get {
                 return ResourceManager.GetString("WL_DuplicateCommandName", resourceCulture);
             }
@@ -2523,7 +2523,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to The search command {0} references more than one property named {1}.
         /// </summary>
-        internal static string WL_DuplicateSearchResultColumn {
+        public static string WL_DuplicateSearchResultColumn {
             get {
                 return ResourceManager.GetString("WL_DuplicateSearchResultColumn", resourceCulture);
             }
@@ -2532,7 +2532,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Error validating MapDefinition {0}, message: {1}.
         /// </summary>
-        internal static string WL_MapValidationError {
+        public static string WL_MapValidationError {
             get {
                 return ResourceManager.GetString("WL_MapValidationError", resourceCulture);
             }
@@ -2541,7 +2541,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Layout does not specify a map.
         /// </summary>
-        internal static string WL_MissingMapError {
+        public static string WL_MissingMapError {
             get {
                 return ResourceManager.GetString("WL_MissingMapError", resourceCulture);
             }
@@ -2550,7 +2550,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Context Menu contains a reference to a command that doesn&apos;t exist: {0}.
         /// </summary>
-        internal static string WL_NonExistentMenuCommandReference {
+        public static string WL_NonExistentMenuCommandReference {
             get {
                 return ResourceManager.GetString("WL_NonExistentMenuCommandReference", resourceCulture);
             }
@@ -2559,7 +2559,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Task Pane contains a reference to a command that does not exist: {0}.
         /// </summary>
-        internal static string WL_NonExistentTaskPaneCommandReference {
+        public static string WL_NonExistentTaskPaneCommandReference {
             get {
                 return ResourceManager.GetString("WL_NonExistentTaskPaneCommandReference", resourceCulture);
             }
@@ -2568,7 +2568,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Toolbar contains a reference to a command that does not exist: {0}.
         /// </summary>
-        internal static string WL_NonExistentToolbarCommandReference {
+        public static string WL_NonExistentToolbarCommandReference {
             get {
                 return ResourceManager.GetString("WL_NonExistentToolbarCommandReference", resourceCulture);
             }
@@ -2577,7 +2577,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Layout specifies a start view that is outside the map&apos;s initial extents.
         /// </summary>
-        internal static string WL_StartViewOutsideExtentsWarning {
+        public static string WL_StartViewOutsideExtentsWarning {
             get {
                 return ResourceManager.GetString("WL_StartViewOutsideExtentsWarning", resourceCulture);
             }
@@ -2586,7 +2586,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         /// <summary>
         ///   Looks up a localized string similar to Line {0}, Char {1}: {2}.
         /// </summary>
-        internal static string XmlValidationIssueTemplate {
+        public static string XmlValidationIssueTemplate {
             get {
                 return ResourceManager.GetString("XmlValidationIssueTemplate", resourceCulture);
             }

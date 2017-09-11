@@ -458,10 +458,6 @@
       <Project>{F1E2F468-5030-4DBA-968C-9620284AFAA1}</Project>
       <Name>Maestro.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Http\OSGeo.MapGuide.MaestroAPI.Http.csproj">
-      <Project>{6EF1E775-444B-4E5F-87FB-D687C43A68D7}</Project>
-      <Name>OSGeo.MapGuide.MaestroAPI.Http</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj">
       <Project>{857CA1A3-FC88-4BE0-AB6A-D1EE772AB288}</Project>
       <Name>ICSharpCode.Core.WinForms</Name>
