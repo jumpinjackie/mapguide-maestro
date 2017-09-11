@@ -20,17 +20,18 @@
 
 #endregion Disclaimer / License
 
-using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.MaestroAPI.Tests;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
+using Xunit;
 
 namespace MaestroAPITests
 {
-    [TestFixture]
-    public class HttpConnectionTests : ConnectionTestBase
+    public class HttpConnectionFixture : ConnectionTestBaseFixture
     {
         protected override bool ShouldIgnore(out string reason)
         {
@@ -41,81 +42,96 @@ namespace MaestroAPITests
             return TestControl.IgnoreHttpConnectionTests;
         }
 
+        public override IServerConnection CreateTestConnection()
+        {
+            return ConnectionUtil.CreateTestHttpConnection();
+        }
+    }
+
+    public class HttpConnectionTests : ConnectionTestBase<HttpConnectionFixture>
+    {
+        public HttpConnectionTests(HttpConnectionFixture fixture) 
+            : base(fixture)
+        {
+        }
+
         protected override string GetTestPrefix()
         {
             return "Http";
         }
 
-        //[Test]
+        //[Fact]
         public override void TestEncryptedFeatureSourceCredentials()
         {
             base.TestEncryptedFeatureSourceCredentials();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestResourceExists()
         {
             base.TestResourceExists();
         }
 
-        [Test]
+        [SkippableFact]
         public void TestFeatureSourceCaching()
         {
             base.TestFeatureSourceCaching("HttpCaching");
         }
 
-        [Test]
+        [SkippableFact]
         public void TestClassDefinitionCaching()
         {
             base.TestClassDefinitionCaching("HttpCaching");
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestTouch()
         {
             base.TestTouch();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestAnyStreamInput()
         {
             base.TestAnyStreamInput();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestCreateFromExistingSession()
         {
             base.TestCreateFromExistingSession();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestSchemaMapping()
         {
             base.TestSchemaMapping();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestCreateRuntimeMapWithInvalidLayersErrorsDisabled()
         {
             base.TestCreateRuntimeMapWithInvalidLayersErrorsDisabled();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestCreateRuntimeMapWithInvalidLayersErrorsEnabled()
         {
             base.TestCreateRuntimeMapWithInvalidLayersErrorsEnabled();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestQueryLimits()
         {
             base.TestQueryLimits();
         }
 
-        [Test]
+        [SkippableFact]
         public void TestCase2432()
         {
-            var conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
 
             //Problematic method: Cause of original ticket
             for (int i = 0; i < 10; i++)
@@ -160,11 +176,6 @@ namespace MaestroAPITests
             WaitHandle.WaitAll(events.ToArray());
         }
 
-        protected override IServerConnection CreateTestConnection()
-        {
-            return ConnectionUtil.CreateTestHttpConnection();
-        }
-
         public override IServerConnection CreateFromExistingSession(IServerConnection orig)
         {
             return ConnectionProviderRegistry.CreateConnection("Maestro.Http",
@@ -172,12 +183,13 @@ namespace MaestroAPITests
                 HttpServerConnection.PARAM_SESSION, orig.SessionID);
         }
 
-        [Test]
+        [SkippableFact]
         public void TestSheboyganCsToPseudoMercator()
         {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
             //Purpose: Unit test to guard against regression as a result of updating/replacing NTS
 
-            var conn = CreateTestConnection();
+            var conn = _fixture.CreateTestConnection();
             var srcWkt = "GEOGCS[\"WGS84 Lat/Long's, Degrees, -180 ==> +180\",DATUM[\"D_WGS_1984\",SPHEROID[\"World_Geodetic_System_of_1984\",6378137,298.257222932867]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.017453292519943295]]";
             var dstCs = conn.CoordinateSystemCatalog.FindCoordSys("WGS84.PseudoMercator");
             var dstWkt = dstCs.WKT;
@@ -187,22 +199,23 @@ namespace MaestroAPITests
             double tx1;
             double ty1;
             trans.Transform(-87.7649869909628, 43.6913981287878, out tx1, out ty1);
-            Assert.AreEqual(-9769953.66131227, tx1, 0.0000001);
-            Assert.AreEqual(5417808.88017179, ty1, 0.0000001);
+            Assert.Equal(-9769953.66131227, tx1, 7); // 0.0000001);
+            Assert.Equal(5417808.88017179, ty1, 7); // 0.0000001);
 
             double tx2;
             double ty2;
 
             trans.Transform(-87.6955215108997, 43.7975200004803, out tx2, out ty2);
-            Assert.AreEqual(-9762220.79944393, tx2, 0.0000001);
-            Assert.AreEqual(5434161.22418638, ty2, 0.0000001);
+            Assert.Equal(-9762220.79944393, tx2, 7); // 0.0000001);
+            Assert.Equal(5434161.22418638, ty2, 7); // 0.0000001);
         }
 
-        [Test]
+        [SkippableFact]
         public void TestCustomProperties()
         {
-            var builder = new RequestBuilder(new Uri("http://tempuri.org"), "en");
-            var conn = new HttpServerConnection(builder);
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = CreateHttpConnection("http://tempuri.org", "en");
 
             //Work through the interface
             IServerConnection isvc = (IServerConnection)conn;
@@ -210,37 +223,57 @@ namespace MaestroAPITests
             //UserAgent is exposed as a custom property
             var props = isvc.GetCustomPropertyNames();
 
-            Assert.IsNotNull(props);
-            Assert.AreEqual(props.Length, 2);
-            Assert.IsTrue(Array.IndexOf<string>(props, HttpServerConnection.PROP_USER_AGENT) >= 0);
-            Assert.IsTrue(Array.IndexOf<string>(props, HttpServerConnection.PROP_BASE_URL) >= 0);
+            Assert.NotNull(props);
+            Assert.Equal(props.Length, 2);
+            Assert.True(Array.IndexOf<string>(props, HttpServerConnection.PROP_USER_AGENT) >= 0);
+            Assert.True(Array.IndexOf<string>(props, HttpServerConnection.PROP_BASE_URL) >= 0);
 
             //It is of type string
             var type = isvc.GetCustomPropertyType(HttpServerConnection.PROP_USER_AGENT);
-            Assert.AreEqual(type, typeof(string));
+            Assert.Equal(type, typeof(string));
             type = isvc.GetCustomPropertyType(HttpServerConnection.PROP_BASE_URL);
-            Assert.AreEqual(type, typeof(string));
+            Assert.Equal(type, typeof(string));
 
             //We can set and get it
             isvc.SetCustomProperty(HttpServerConnection.PROP_USER_AGENT, "MapGuide Maestro API Unit Test Fixture");
             var agent = (string)isvc.GetCustomProperty(HttpServerConnection.PROP_USER_AGENT);
-            Assert.AreEqual(agent, "MapGuide Maestro API Unit Test Fixture");
+            Assert.Equal(agent, "MapGuide Maestro API Unit Test Fixture");
 
             //BaseUrl is read-only
             try
             {
                 isvc.SetCustomProperty(HttpServerConnection.PROP_BASE_URL, "http://mylocalhost/mapguide");
-                Assert.Fail("Should've thrown exception");
+                Assert.True(false, "Should've thrown exception");
             }
             catch { }
         }
 
-        [Test]
+        static HttpServerConnection CreateHttpConnection(string uri, string locale, Version ver = null)
+        {
+            var asm = typeof(HttpServerConnection).Assembly;
+            var reqBuilderType = asm.GetTypes().FirstOrDefault(t => t.Name == "RequestBuilder");
+
+            var reqBuilderCtor = reqBuilderType.GetInternalConstructor(new[] { typeof(Uri), typeof(string) });
+            var reqBuilder = reqBuilderCtor.Invoke(new object[] { new Uri(uri), locale });
+
+            var httpConnCtor = typeof(HttpServerConnection).GetInternalConstructor(new[] { reqBuilderType });
+            var conn = httpConnCtor.Invoke(new[] { reqBuilder }) as HttpServerConnection;
+            
+            if (ver != null)
+            {
+                var method = conn.GetType().GetMethod("SetSiteVersion", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+                method.Invoke(conn, new[] { ver });
+            }
+
+            return conn;
+        }
+
+        [SkippableFact]
         public void TestServiceCapabilities()
         {
-            var builder = new RequestBuilder(new Uri("http://tempuri.org"), "en");
-            var conn = new HttpServerConnection(builder);
-            conn.SetSiteVersion(new Version(1, 2, 0));
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = CreateHttpConnection("http://tempuri.org", "en", new Version(1, 2, 0));
 
             //Work through the interface
             IServerConnection isvc = (IServerConnection)conn;
@@ -253,11 +286,12 @@ namespace MaestroAPITests
                 }
                 catch
                 {
-                    Assert.Fail("Supported service type mismatch");
+                    Assert.True(false, "Supported service type mismatch");
                 }
             }
 
-            conn.SetSiteVersion(new Version(2, 0, 0));
+            var method = conn.GetType().GetMethod("SetSiteVersion", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            method.Invoke(conn, new[] { new Version(2, 0, 0) });
 
             stypes = isvc.Capabilities.SupportedServices;
             foreach (int st in stypes)
@@ -268,7 +302,7 @@ namespace MaestroAPITests
                 }
                 catch
                 {
-                    Assert.Fail("Supported service type mismatch");
+                    Assert.True(false, "Supported service type mismatch");
                 }
             }
         }

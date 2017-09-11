@@ -1,0 +1,223 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Tests\Utils.cs" Link="Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
+    <PackageReference Include="Moq" Version="4.7.99" />
+    <PackageReference Include="xunit" Version="2.2.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+    <PackageReference Include="Xunit.SkippableFact" Version="1.3.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj" />
+    <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="TestData\DrawingService\CorruptedDwf.dwf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\DrawingService\DrawingServiceTest.dump">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\DrawingService\InvalidDrawingSource.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\DrawingService\MapGuideDrawingSource.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\DrawingService\SpaceShip.dwf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\DrawingService\SpaceShipDrawingSource.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\DrawingService\test.dwf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\FeatureService\SDF\Empty.FeatureSource">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\FeatureService\SDF\Empty.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\FeatureService\SDF\Sheboygan_CityLimits.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\FeatureService\SDF\Sheboygan_Parcels.FeatureSource">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\FeatureService\SDF\Sheboygan_Parcels.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\FeatureService\SDF\Sheboygan_VotingDistricts.FeatureSource">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\FeatureService\SDF\Sheboygan_VotingDistricts.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\MappingServiceTest.dump">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_AllElements.pl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_HydrographicPolygons.fs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_HydrographicPolygons.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_HydrographicPolygons.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_MultiCTS.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_MultiCTSWithTheme.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_MultiFTS.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_MultiFTSSingleCTS.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_MultiFTSWithTheme.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_NoLegend.pl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_PoweredByMapGuide.wdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_Rail.fs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_Rail.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_Rail.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_Rail.wdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_Rail_Watermark.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_Rail_Web.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_Rail_Web.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_RotatedPointStyles.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_Sheboygan.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_SheboyganWithWatermark.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_Sheboygan_833.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_SingleFTSMultiCTS.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\MappingService\UT_SymbolMart.sl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\TileService\UT_BaseMap.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\TileService\UT_BaseMap.tsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\TileService\UT_LinkedTileSet.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\TileService\UT_Parcels.fs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\TileService\UT_Parcels.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\TileService\UT_RoadCenterLines.fs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\TileService\UT_RoadCenterLines.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\TileService\UT_RoadCenterLines.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\TileService\UT_StylizationFuncs.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\TileService\UT_VotingDistricts.fs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\TileService\UT_VotingDistricts.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\TileService\UT_VotingDistricts.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\TileService\UT_VotingDistrictsFunctions.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\TileService\UT_XYZ.tsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestMaestroAPI.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="UserTestData\1896.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="UserTestData\InvalidLayer.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="UserTestData\NASA_WMS_config_doc.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="UserTestData\odbc_example_config.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="UserTestData\odbc_example_config2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="UserTestData\SpaceShip.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="UserTestData\TestDuplicateLayerIds.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="UserTestData\TestMapWithInvalidLayers.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="UserTestData\TestTiledMap.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="UserTestData\wms_config_example1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="UserTestData\wms_config_example2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

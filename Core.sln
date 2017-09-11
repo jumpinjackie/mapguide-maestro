@@ -8,11 +8,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.ObjectModels
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.FDO.Expressions", "OSGeo.FDO.Expressions\OSGeo.FDO.Expressions.csproj", "{34482EB3-3CE2-44E5-9DEC-76ED6E377B35}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.MaestroAPI.Http", "OSGeo.MapGuide.MaestroAPI.Http\OSGeo.MapGuide.MaestroAPI.Http.csproj", "{7D0F968F-3E63-4988-8754-25E135360E1E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.ObjectModels.Tests", "OSGeo.MapGuide.ObjectModels.Tests\OSGeo.MapGuide.ObjectModels.Tests.csproj", "{BBC08760-FE40-45EE-A9DB-E78174D246E1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.MaestroAPI.Tests", "OSGeo.MapGuide.MaestroAPI.Tests\OSGeo.MapGuide.MaestroAPI.Tests.csproj", "{F6F9362D-D7F0-4062-8290-DA84AF4C5EAA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.MaestroAPI.IntegrationTests", "OSGeo.MapGuide.MaestroAPI.IntegrationTests\OSGeo.MapGuide.MaestroAPI.IntegrationTests.csproj", "{7F6E06DE-45C9-41A9-82AB-5206011951B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,18 +60,6 @@ Global
 		{34482EB3-3CE2-44E5-9DEC-76ED6E377B35}.Release|x64.Build.0 = Release|Any CPU
 		{34482EB3-3CE2-44E5-9DEC-76ED6E377B35}.Release|x86.ActiveCfg = Release|Any CPU
 		{34482EB3-3CE2-44E5-9DEC-76ED6E377B35}.Release|x86.Build.0 = Release|Any CPU
-		{7D0F968F-3E63-4988-8754-25E135360E1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D0F968F-3E63-4988-8754-25E135360E1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D0F968F-3E63-4988-8754-25E135360E1E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{7D0F968F-3E63-4988-8754-25E135360E1E}.Debug|x64.Build.0 = Debug|Any CPU
-		{7D0F968F-3E63-4988-8754-25E135360E1E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7D0F968F-3E63-4988-8754-25E135360E1E}.Debug|x86.Build.0 = Debug|Any CPU
-		{7D0F968F-3E63-4988-8754-25E135360E1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D0F968F-3E63-4988-8754-25E135360E1E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D0F968F-3E63-4988-8754-25E135360E1E}.Release|x64.ActiveCfg = Release|Any CPU
-		{7D0F968F-3E63-4988-8754-25E135360E1E}.Release|x64.Build.0 = Release|Any CPU
-		{7D0F968F-3E63-4988-8754-25E135360E1E}.Release|x86.ActiveCfg = Release|Any CPU
-		{7D0F968F-3E63-4988-8754-25E135360E1E}.Release|x86.Build.0 = Release|Any CPU
 		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -96,6 +84,18 @@ Global
 		{F6F9362D-D7F0-4062-8290-DA84AF4C5EAA}.Release|x64.Build.0 = Release|Any CPU
 		{F6F9362D-D7F0-4062-8290-DA84AF4C5EAA}.Release|x86.ActiveCfg = Release|Any CPU
 		{F6F9362D-D7F0-4062-8290-DA84AF4C5EAA}.Release|x86.Build.0 = Release|Any CPU
+		{7F6E06DE-45C9-41A9-82AB-5206011951B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F6E06DE-45C9-41A9-82AB-5206011951B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F6E06DE-45C9-41A9-82AB-5206011951B5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7F6E06DE-45C9-41A9-82AB-5206011951B5}.Debug|x64.Build.0 = Debug|Any CPU
+		{7F6E06DE-45C9-41A9-82AB-5206011951B5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7F6E06DE-45C9-41A9-82AB-5206011951B5}.Debug|x86.Build.0 = Debug|Any CPU
+		{7F6E06DE-45C9-41A9-82AB-5206011951B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F6E06DE-45C9-41A9-82AB-5206011951B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F6E06DE-45C9-41A9-82AB-5206011951B5}.Release|x64.ActiveCfg = Release|Any CPU
+		{7F6E06DE-45C9-41A9-82AB-5206011951B5}.Release|x64.Build.0 = Release|Any CPU
+		{7F6E06DE-45C9-41A9-82AB-5206011951B5}.Release|x86.ActiveCfg = Release|Any CPU
+		{7F6E06DE-45C9-41A9-82AB-5206011951B5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

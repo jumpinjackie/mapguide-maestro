@@ -26,6 +26,14 @@ using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
+    public static class ReflectionExtensions
+    {
+        public static ConstructorInfo GetInternalConstructor(this Type type, Type[] types)
+        {
+            return type.GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null, types, null);
+        }
+    }
+
     public static class Utils
     {
         public static Stream AsStream(this string str)

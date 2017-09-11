@@ -20,57 +20,47 @@
 
 #endregion Disclaimer / License
 
-using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
+using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.DrawingSource;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using Xunit;
+using MapModel = OSGeo.MapGuide.ObjectModels.RuntimeMap;
 
 namespace MaestroAPITests
 {
-    using OSGeo.MapGuide.MaestroAPI.Commands;
-    using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
-    using OSGeo.MapGuide.MaestroAPI.Resource;
-    using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
-    using OSGeo.MapGuide.ObjectModels;
-    using OSGeo.MapGuide.ObjectModels.DrawingSource;
-    using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-    using System.Diagnostics;
-    using System.Drawing;
-    using MapModel = OSGeo.MapGuide.ObjectModels.RuntimeMap;
-
-    [SetUpFixture]
-    public class TestBootstrap
+    public abstract class RuntimeMapFixture : IDisposable
     {
-        //Guard variable to prevent duplicate registration on repeated test runs of a single test session
-        private static bool _registered = false;
+        public bool Skip { get; }
 
-        [OneTimeSetUp]
-        public void Setup()
+        public string SkipReason { get; }
+
+        public RuntimeMapFixture()
         {
-            if (!_registered)
+            string reason;
+            if (this.ShouldIgnore(out reason))
             {
-                TestEnvironment.Initialize("TestMaestroAPI.xml");
-                TestEnvironment.PrintSummary();
-
-                ResourceValidatorLoader.LoadStockValidators();
-                _registered = true;
+                this.Skip = true;
+                this.SkipReason = reason;
+            }
+            else
+            {
+                this.Skip = false;
+                this.SkipReason = string.Empty;
+                SetupTestData();
             }
         }
-
-        [OneTimeTearDown]
-        public void Teardown()
-        {
-        }
-    }
-
-    public abstract class RuntimeMapTests
-    {
-        protected IServerConnection _conn;
 
         protected virtual bool ShouldIgnore(out string reason)
         {
@@ -78,147 +68,157 @@ namespace MaestroAPITests
             return false;
         }
 
-        [TestFixtureSetUp]
-        public void TestFixtureSetup()
-        {
-            string reason;
-            if (this.ShouldIgnore(out reason))
-            {
-                Assert.Ignore(reason);
-            }
-            else
-            {
-                _conn = CreateTestConnection();
-                SetupTestData();
-            }
-        }
+        static readonly object initLock = new object();
 
         private void SetupTestData()
         {
-            var resSvc = _conn.ResourceService;
-
-            resSvc.DeleteResource("Library://UnitTests/");
-
-            resSvc.SetResourceXmlData("Library://UnitTests/Maps/Sheboygan.MapDefinition", File.OpenRead("TestData/MappingService/UT_Sheboygan.mdf"));
-            resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganTiled.MapDefinition", File.OpenRead("UserTestData/TestTiledMap.xml"));
-            resSvc.SetResourceXmlData("Library://UnitTests/Maps/DuplicateLayerIds.MapDefinition", File.OpenRead("UserTestData/TestDuplicateLayerIds.xml"));
-
-            resSvc.SetResourceXmlData("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.ldf"));
-            resSvc.SetResourceXmlData("Library://UnitTests/Layers/Rail.LayerDefinition", File.OpenRead("TestData/MappingService/UT_Rail.ldf"));
-            resSvc.SetResourceXmlData("Library://UnitTests/Layers/Parcels.LayerDefinition", File.OpenRead("TestData/TileService/UT_Parcels.ldf"));
-
-            resSvc.SetResourceXmlData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.fs"));
-            resSvc.SetResourceXmlData("Library://UnitTests/Data/Rail.FeatureSource", File.OpenRead("TestData/MappingService/UT_Rail.fs"));
-            resSvc.SetResourceXmlData("Library://UnitTests/Data/Parcels.FeatureSource", File.OpenRead("TestData/TileService/UT_Parcels.fs"));
-
-            resSvc.SetResourceData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", "UT_HydrographicPolygons.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.sdf"));
-            resSvc.SetResourceData("Library://UnitTests/Data/Rail.FeatureSource", "UT_Rail.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_Rail.sdf"));
-            resSvc.SetResourceData("Library://UnitTests/Data/Parcels.FeatureSource", "UT_Parcels.sdf", ResourceDataType.File, File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"));
-
-            resSvc.SetResourceXmlData("Library://UnitTests/Data/SpaceShip.DrawingSource", File.OpenRead("TestData/DrawingService/SpaceShipDrawingSource.xml"));
-            resSvc.SetResourceData("Library://UnitTests/Data/SpaceShip.DrawingSource", "SpaceShip.dwf", ResourceDataType.File, File.OpenRead("TestData/DrawingService/SpaceShip.dwf"));
-
-            if (_conn.SiteVersion >= new Version(3, 0))
+            lock (initLock)
             {
-                resSvc.SetResourceXmlData("Library://UnitTests/Data/RoadCenterLines.FeatureSource", File.OpenRead("TestData/TileService/UT_RoadCenterLines.fs"));
-                resSvc.SetResourceData("Library://UnitTests/Data/RoadCenterLines.FeatureSource", "RoadCenterLines.sdf", ResourceDataType.File, File.OpenRead("TestData/TileService/UT_RoadCenterLines.sdf"));
+                var conn = CreateTestConnection();
+                var resSvc = conn.ResourceService;
 
-                resSvc.SetResourceXmlData("Library://UnitTests/Layers/RoadCenterLines.LayerDefinition", File.OpenRead("TestData/TileService/UT_RoadCenterLines.ldf"));
+                resSvc.DeleteResource("Library://UnitTests/");
 
-                resSvc.SetResourceXmlData("Library://UnitTests/Data/VotingDistricts.FeatureSource", File.OpenRead("TestData/TileService/UT_VotingDistricts.fs"));
-                resSvc.SetResourceData("Library://UnitTests/Data/VotingDistricts.FeatureSource", "VotingDistricts.sdf", ResourceDataType.File, File.OpenRead("TestData/TileService/UT_VotingDistricts.sdf"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Maps/Sheboygan.MapDefinition", File.OpenRead("TestData/MappingService/UT_Sheboygan.mdf"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganTiled.MapDefinition", File.OpenRead("UserTestData/TestTiledMap.xml"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Maps/DuplicateLayerIds.MapDefinition", File.OpenRead("UserTestData/TestDuplicateLayerIds.xml"));
 
-                resSvc.SetResourceXmlData("Library://UnitTests/Layers/VotingDistricts.LayerDefinition", File.OpenRead("TestData/TileService/UT_VotingDistricts.ldf"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.ldf"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Layers/Rail.LayerDefinition", File.OpenRead("TestData/MappingService/UT_Rail.ldf"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Layers/Parcels.LayerDefinition", File.OpenRead("TestData/TileService/UT_Parcels.ldf"));
 
-                resSvc.SetResourceXmlData("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", File.OpenRead("TestData/TileService/UT_BaseMap.tsd"));
-                resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganLinked.MapDefinition", File.OpenRead("TestData/TileService/UT_LinkedTileSet.mdf"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.fs"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/Rail.FeatureSource", File.OpenRead("TestData/MappingService/UT_Rail.fs"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/Parcels.FeatureSource", File.OpenRead("TestData/TileService/UT_Parcels.fs"));
+
+                resSvc.SetResourceData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", "UT_HydrographicPolygons.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.sdf"));
+                resSvc.SetResourceData("Library://UnitTests/Data/Rail.FeatureSource", "UT_Rail.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_Rail.sdf"));
+                resSvc.SetResourceData("Library://UnitTests/Data/Parcels.FeatureSource", "UT_Parcels.sdf", ResourceDataType.File, File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"));
+
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/SpaceShip.DrawingSource", File.OpenRead("TestData/DrawingService/SpaceShipDrawingSource.xml"));
+                resSvc.SetResourceData("Library://UnitTests/Data/SpaceShip.DrawingSource", "SpaceShip.dwf", ResourceDataType.File, File.OpenRead("TestData/DrawingService/SpaceShip.dwf"));
+
+                if (conn.SiteVersion >= new Version(3, 0))
+                {
+                    resSvc.SetResourceXmlData("Library://UnitTests/Data/RoadCenterLines.FeatureSource", File.OpenRead("TestData/TileService/UT_RoadCenterLines.fs"));
+                    resSvc.SetResourceData("Library://UnitTests/Data/RoadCenterLines.FeatureSource", "RoadCenterLines.sdf", ResourceDataType.File, File.OpenRead("TestData/TileService/UT_RoadCenterLines.sdf"));
+
+                    resSvc.SetResourceXmlData("Library://UnitTests/Layers/RoadCenterLines.LayerDefinition", File.OpenRead("TestData/TileService/UT_RoadCenterLines.ldf"));
+
+                    resSvc.SetResourceXmlData("Library://UnitTests/Data/VotingDistricts.FeatureSource", File.OpenRead("TestData/TileService/UT_VotingDistricts.fs"));
+                    resSvc.SetResourceData("Library://UnitTests/Data/VotingDistricts.FeatureSource", "VotingDistricts.sdf", ResourceDataType.File, File.OpenRead("TestData/TileService/UT_VotingDistricts.sdf"));
+
+                    resSvc.SetResourceXmlData("Library://UnitTests/Layers/VotingDistricts.LayerDefinition", File.OpenRead("TestData/TileService/UT_VotingDistricts.ldf"));
+
+                    resSvc.SetResourceXmlData("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", File.OpenRead("TestData/TileService/UT_BaseMap.tsd"));
+                    resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganLinked.MapDefinition", File.OpenRead("TestData/TileService/UT_LinkedTileSet.mdf"));
+                }
             }
         }
 
-        [TestFixtureTearDown]
-        public void TestFixtureTearDown()
+        public void Dispose()
         {
         }
 
-        protected abstract IServerConnection CreateTestConnection();
+        public abstract IServerConnection CreateTestConnection();
+    }
+
+    public abstract class RuntimeMapTests<T> : IClassFixture<T> 
+        where T : RuntimeMapFixture
+    {
+        protected T _fixture;
+
+        public RuntimeMapTests(T fixture)
+        {
+            _fixture = fixture;
+        }
 
         public virtual void TestGroupAssignment()
         {
-            var resSvc = _conn.ResourceService;
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
+            var resSvc = conn.ResourceService;
             var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
             Assert.NotNull(mdf);
             var gdf1 = mdf.AddGroup("Group1");
             var gdf2 = mdf.AddGroup("Group2");
             gdf2.Group = gdf1.Name;
-            resSvc.SaveResourceAs(mdf, "Session:" + _conn.SessionID + "//TestGroupAssignment.MapDefinition");
-            mdf.ResourceID = "Session:" + _conn.SessionID + "//TestGroupAssignment.MapDefinition";
+            resSvc.SaveResourceAs(mdf, "Session:" + conn.SessionID + "//TestGroupAssignment.MapDefinition");
+            mdf.ResourceID = "Session:" + conn.SessionID + "//TestGroupAssignment.MapDefinition";
 
-            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            var mapSvc = conn.GetService((int)ServiceType.Mapping) as IMappingService;
             Assert.NotNull(mapSvc);
 
-            var map = mapSvc.CreateMap("Session:" + _conn.SessionID + "//TestGroupAssignment.Map", mdf, 1.0);
+            var map = mapSvc.CreateMap("Session:" + conn.SessionID + "//TestGroupAssignment.Map", mdf, 1.0);
             foreach (var grp in mdf.MapLayerGroup)
             {
                 var rtGrp = mapSvc.CreateMapGroup(map, grp);
-                Assert.AreEqual(rtGrp.Group, grp.Group);
+                Assert.Equal(rtGrp.Group, grp.Group);
             }
         }
 
         public virtual void TestExtentSerialization()
         {
-            var resSvc = _conn.ResourceService;
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
+            var resSvc = conn.ResourceService;
             var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
             Assert.NotNull(mdf);
             mdf.Extents = ObjectFactory.CreateEnvelope(1.0, 2.0, 3.0, 4.0);
 
-            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            var mapSvc = conn.GetService((int)ServiceType.Mapping) as IMappingService;
             Assert.NotNull(mapSvc);
 
-            var map = mapSvc.CreateMap("Session:" + _conn.SessionID + "//TestExtentSerialization.Map", mdf, 1.0);
+            var map = mapSvc.CreateMap("Session:" + conn.SessionID + "//TestExtentSerialization.Map", mdf, 1.0);
             map.Save();
 
-            var map2 = mapSvc.OpenMap("Session:" + _conn.SessionID + "//TestExtentSerialization.Map");
-            Assert.AreEqual(1.0, map2.DataExtent.MinX);
-            Assert.AreEqual(2.0, map2.DataExtent.MinY);
-            Assert.AreEqual(3.0, map2.DataExtent.MaxX);
-            Assert.AreEqual(4.0, map2.DataExtent.MaxY);
+            var map2 = mapSvc.OpenMap("Session:" + conn.SessionID + "//TestExtentSerialization.Map");
+            Assert.Equal(1.0, map2.DataExtent.MinX);
+            Assert.Equal(2.0, map2.DataExtent.MinY);
+            Assert.Equal(3.0, map2.DataExtent.MaxX);
+            Assert.Equal(4.0, map2.DataExtent.MaxY);
         }
 
         public virtual void TestCreate()
         {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
             //Create a runtime map from its map definition, verify layer/group
             //structure is the same
 
-            var resSvc = _conn.ResourceService;
+            var conn = _fixture.CreateTestConnection();
+            var resSvc = conn.ResourceService;
             var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
             Assert.NotNull(mdf);
 
-            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            var mapSvc = conn.GetService((int)ServiceType.Mapping) as IMappingService;
             Assert.NotNull(mapSvc);
 
-            var map = mapSvc.CreateMap("Session:" + _conn.SessionID + "//TestCreate1.Map", mdf, 1.0);
-            var map2 = mapSvc.CreateMap("Session:" + _conn.SessionID + "//TestCreate2.Map", "Library://UnitTests/Maps/Sheboygan.MapDefinition", 1.0);
+            var map = mapSvc.CreateMap("Session:" + conn.SessionID + "//TestCreate1.Map", mdf, 1.0);
+            var map2 = mapSvc.CreateMap("Session:" + conn.SessionID + "//TestCreate2.Map", "Library://UnitTests/Maps/Sheboygan.MapDefinition", 1.0);
             //var map3 = mapSvc.CreateMap("Library://UnitTests/Maps/Sheboygan.MapDefinition", 1.0);
 
             Assert.NotNull(map.Layers["Parcels"]);
             var parcelsLayers = map.Layers["Parcels"];
-            Assert.AreEqual(1, parcelsLayers.ScaleRanges.Length);
-            Assert.AreEqual(0.0, parcelsLayers.ScaleRanges[0].MinScale);
-            Assert.AreEqual(13000.0, parcelsLayers.ScaleRanges[0].MaxScale);
+            Assert.Equal(1, parcelsLayers.ScaleRanges.Length);
+            Assert.Equal(0.0, parcelsLayers.ScaleRanges[0].MinScale);
+            Assert.Equal(13000.0, parcelsLayers.ScaleRanges[0].MaxScale);
 
             Assert.NotNull(map);
             Assert.NotNull(map2);
             //Assert.NotNull(map3);
 
             //Check resource ids
-            //Assert.IsTrue(!string.IsNullOrEmpty(map3.ResourceID));
-            Assert.AreEqual("Session:" + _conn.SessionID + "//TestCreate1.Map", map.ResourceID);
-            Assert.AreEqual("Session:" + _conn.SessionID + "//TestCreate2.Map", map2.ResourceID);
+            //Assert.True(!string.IsNullOrEmpty(map3.ResourceID));
+            Assert.Equal("Session:" + conn.SessionID + "//TestCreate1.Map", map.ResourceID);
+            Assert.Equal("Session:" + conn.SessionID + "//TestCreate2.Map", map2.ResourceID);
 
             //Check layer/group structure
-            Assert.IsTrue(Matches(map, mdf));
-            Assert.IsTrue(Matches(map2, mdf));
-            //Assert.IsTrue(Matches(map3, mdf));
+            Assert.True(Matches(map, mdf));
+            Assert.True(Matches(map2, mdf));
+            //Assert.True(Matches(map3, mdf));
         }
 
         protected bool Matches(RuntimeMap map, IMapDefinition mdf)
@@ -258,28 +258,31 @@ namespace MaestroAPITests
 
         public virtual void TestSave()
         {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
             //Create a runtime map from its map definition, modify some layers
             //and groups. Save it, open another instance and verify the changes
             //have stuck
-            var resSvc = _conn.ResourceService;
-            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            var conn = _fixture.CreateTestConnection();
+            var resSvc = conn.ResourceService;
+            var mapSvc = conn.GetService((int)ServiceType.Mapping) as IMappingService;
             Assert.NotNull(mapSvc);
 
             var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
             Assert.NotNull(mdf);
 
-            var mid = "Session:" + _conn.SessionID + "//TestSave.Map";
+            var mid = "Session:" + conn.SessionID + "//TestSave.Map";
             var map = mapSvc.CreateMap(mid, mdf, 1.0);
             //Doesn't exist yet because save isn't called
-            if (CaresAboutRuntimeMapState) Assert.IsTrue(!resSvc.ResourceExists(mid));
+            if (CaresAboutRuntimeMapState) Assert.True(!resSvc.ResourceExists(mid));
 
             //Call save
-            Assert.IsTrue(Matches(map, mdf));
-            Assert.IsFalse(map.IsDirty);
+            Assert.True(Matches(map, mdf));
+            Assert.False(map.IsDirty);
             map.Save();
-            Assert.IsFalse(map.IsDirty);
-            Assert.IsTrue(Matches(map, mdf));
-            if (CaresAboutRuntimeMapState) Assert.IsTrue(resSvc.ResourceExists(mid));
+            Assert.False(map.IsDirty);
+            Assert.True(Matches(map, mdf));
+            if (CaresAboutRuntimeMapState) Assert.True(resSvc.ResourceExists(mid));
 
             //Tests below not applicable if test suite doesn't care about runtime state
             if (!CaresAboutRuntimeMapState)
@@ -287,15 +290,15 @@ namespace MaestroAPITests
 
             //Open second runtime map instance
             var map2 = mapSvc.OpenMap(mid);
-            Assert.IsFalse(map == map2);
-            Assert.IsTrue(Matches(map2, mdf));
+            Assert.False(map == map2);
+            Assert.True(Matches(map2, mdf));
 
             //Tweak some settings
             var parcels = map2.Layers["Parcels"];
             //Check these values still came through
-            Assert.AreEqual(1, parcels.ScaleRanges.Length);
-            Assert.AreEqual(0.0, parcels.ScaleRanges[0].MinScale);
-            Assert.AreEqual(13000.0, parcels.ScaleRanges[0].MaxScale);
+            Assert.Equal(1, parcels.ScaleRanges.Length);
+            Assert.Equal(0.0, parcels.ScaleRanges[0].MinScale);
+            Assert.Equal(13000.0, parcels.ScaleRanges[0].MaxScale);
 
             var rail = map2.Layers["Rail"];
             Assert.NotNull(parcels);
@@ -308,14 +311,14 @@ namespace MaestroAPITests
             rail.Selectable = false;
 
             //Save
-            Assert.IsFalse(Matches(map2, mdf));
-            Assert.IsTrue(map2.IsDirty);
+            Assert.False(Matches(map2, mdf));
+            Assert.True(map2.IsDirty);
             map2.Save();
-            Assert.IsFalse(map2.IsDirty);
-            Assert.IsFalse(Matches(map2, mdf));
+            Assert.False(map2.IsDirty);
+            Assert.False(Matches(map2, mdf));
 
             var map3 = mapSvc.OpenMap(mid);
-            Assert.IsFalse(Matches(map3, mdf));
+            Assert.False(Matches(map3, mdf));
 
             parcels = null;
             rail = null;
@@ -324,26 +327,29 @@ namespace MaestroAPITests
             rail = map3.Layers["Rail"];
             Assert.NotNull(parcels);
 
-            Assert.IsFalse(parcels.Visible);
-            Assert.IsFalse(parcels.Selectable);
+            Assert.False(parcels.Visible);
+            Assert.False(parcels.Selectable);
 
             Assert.NotNull(rail);
 
-            Assert.IsFalse(rail.Selectable);
+            Assert.False(rail.Selectable);
         }
 
         public abstract string TestPrefix { get; }
 
-        protected virtual bool CaresAboutRuntimeMapState { get { return true; } }
+        protected virtual bool CaresAboutRuntimeMapState => true;
 
         public virtual void TestRender75k()
         {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
             //Render a map of sheboygan at 75k
             //Only programmatically verify the returned stream can be fed to a
             //System.Drawing.Image object.
 
-            var resSvc = _conn.ResourceService;
-            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            var conn = _fixture.CreateTestConnection();
+            var resSvc = conn.ResourceService;
+            var mapSvc = conn.GetService((int)ServiceType.Mapping) as IMappingService;
             Assert.NotNull(mapSvc);
 
             var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
@@ -356,23 +362,23 @@ namespace MaestroAPITests
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
             double metersPerUnit = 111319.490793274;
-            var cs = _conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
+            var cs = conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
             metersPerUnit = cs.MetersPerUnit;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
-            var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestRender75k.Map";
+            var mid = "Session:" + conn.SessionID + "//" + TestPrefix + "TestRender75k.Map";
             var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
-            Assert.IsFalse(map.IsDirty);
+            Assert.False(map.IsDirty);
             map.ViewScale = 75000;
             map.DisplayWidth = 1024;
             map.DisplayHeight = 1024;
             map.DisplayDpi = 96;
 
             //Doesn't exist yet because save isn't called
-            if (CaresAboutRuntimeMapState) Assert.IsTrue(!resSvc.ResourceExists(mid));
-            Assert.IsTrue(map.IsDirty);
+            if (CaresAboutRuntimeMapState) Assert.True(!resSvc.ResourceExists(mid));
+            Assert.True(map.IsDirty);
             map.Save();
-            Assert.IsFalse(map.IsDirty);
+            Assert.False(map.IsDirty);
 
             //Render default
             RenderAndVerify(mapSvc, map, TestPrefix + "TestRender75k.png", "PNG");
@@ -384,9 +390,9 @@ namespace MaestroAPITests
             var rail = map.Layers["Rail"];
             Assert.NotNull(rail);
             rail.Visible = false;
-            Assert.IsTrue(map.IsDirty);
+            Assert.True(map.IsDirty);
             map.Save();
-            Assert.IsFalse(map.IsDirty);
+            Assert.False(map.IsDirty);
 
             //Render again
             RenderAndVerify(mapSvc, map, TestPrefix + "TestRender75k_NoRail.png", "PNG");
@@ -399,9 +405,9 @@ namespace MaestroAPITests
             rail = map.Layers["Rail"];
             Assert.NotNull(rail);
             rail.Visible = true;
-            Assert.IsTrue(map.IsDirty);
+            Assert.True(map.IsDirty);
             map.Save();
-            Assert.IsFalse(map.IsDirty);
+            Assert.False(map.IsDirty);
 
             //Render again
             RenderAndVerify(mapSvc, map, TestPrefix + "TestRender75k_RailBackOn.png", "PNG");
@@ -424,6 +430,7 @@ namespace MaestroAPITests
                     Utility.CopyStream(ms, ms2);
                     Utility.CopyStream(ms, fs);
                     //See if System.Drawing.Image accepts this
+                    /*
                     try
                     {
                         using (var img = System.Drawing.Image.FromStream(ms))
@@ -433,6 +440,7 @@ namespace MaestroAPITests
                     {
                         Assert.Fail(ex.Message);
                     }
+                    */
                 }
             }
         }
@@ -449,6 +457,7 @@ namespace MaestroAPITests
                     Utility.CopyStream(ms, ms2);
                     Utility.CopyStream(ms, fs);
                     //See if System.Drawing.Image accepts this
+                    /*
                     try
                     {
                         using (var img = System.Drawing.Image.FromStream(ms))
@@ -458,6 +467,7 @@ namespace MaestroAPITests
                     {
                         Assert.Fail(ex.Message);
                     }
+                    */
                 }
             }
         }
@@ -474,6 +484,7 @@ namespace MaestroAPITests
                     Utility.CopyStream(ms, ms2);
                     Utility.CopyStream(ms, fs);
                     //See if System.Drawing.Image accepts this
+                    /*
                     try
                     {
                         using (var img = System.Drawing.Image.FromStream(ms))
@@ -483,6 +494,7 @@ namespace MaestroAPITests
                     {
                         Assert.Fail(ex.Message);
                     }
+                    */
                 }
             }
         }
@@ -499,6 +511,7 @@ namespace MaestroAPITests
                     Utility.CopyStream(ms, ms2);
                     Utility.CopyStream(ms, fs);
                     //See if System.Drawing.Image accepts this
+                    /*
                     try
                     {
                         using (var img = System.Drawing.Image.FromStream(ms))
@@ -508,6 +521,7 @@ namespace MaestroAPITests
                     {
                         Assert.Fail(ex.Message);
                     }
+                    */
                 }
             }
         }
@@ -524,6 +538,7 @@ namespace MaestroAPITests
                     Utility.CopyStream(ms, ms2);
                     Utility.CopyStream(ms, fs);
                     //See if System.Drawing.Image accepts this
+                    /*
                     try
                     {
                         using (var img = System.Drawing.Image.FromStream(ms))
@@ -533,6 +548,7 @@ namespace MaestroAPITests
                     {
                         Assert.Fail(ex.Message);
                     }
+                    */
                 }
             }
         }
@@ -549,6 +565,7 @@ namespace MaestroAPITests
                     Utility.CopyStream(ms, ms2);
                     Utility.CopyStream(ms, fs);
                     //See if System.Drawing.Image accepts this
+                    /*
                     try
                     {
                         using (var img = System.Drawing.Image.FromStream(ms))
@@ -558,6 +575,7 @@ namespace MaestroAPITests
                     {
                         Assert.Fail(ex.Message);
                     }
+                    */
                 }
             }
         }
@@ -566,8 +584,11 @@ namespace MaestroAPITests
 
         public virtual void TestLegendIconRendering()
         {
-            var resSvc = _conn.ResourceService;
-            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
+            var resSvc = conn.ResourceService;
+            var mapSvc = conn.GetService((int)ServiceType.Mapping) as IMappingService;
             Assert.NotNull(mapSvc);
 
             var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
@@ -580,11 +601,11 @@ namespace MaestroAPITests
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
             double metersPerUnit = 111319.490793274;
-            var cs = _conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
+            var cs = conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
             metersPerUnit = cs.MetersPerUnit;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
-            var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestLegendIconRendering.Map";
+            var mid = "Session:" + conn.SessionID + "//" + TestPrefix + "TestLegendIconRendering.Map";
             var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
             map.ViewScale = 12000;
             map.DisplayWidth = 1024;
@@ -592,49 +613,63 @@ namespace MaestroAPITests
             map.DisplayDpi = 96;
 
             //Doesn't exist yet because save isn't called
-            Assert.IsTrue(!resSvc.ResourceExists(mid));
-            Assert.IsTrue(map.IsDirty);
+            Assert.True(!resSvc.ResourceExists(mid));
+            Assert.True(map.IsDirty);
             map.Save();
-            Assert.IsFalse(map.IsDirty);
+            Assert.False(map.IsDirty);
 
             int counter = 0;
             foreach (var layer in map.Layers)
             {
-                var icon = mapSvc.GetLegendImage(map.ViewScale, layer.LayerDefinitionID, -1, -1);
-                icon.Save(TestPrefix + "TestLegendIconRendering_" + counter + "_16x16.png");
+                var icon = mapSvc.GetLegendImageStream(map.ViewScale, layer.LayerDefinitionID, -1, -1);
+                using (var fw = File.OpenWrite(TestPrefix + "TestLegendIconRendering_" + counter + "_16x16.png"))
+                {
+                    icon.CopyTo(fw);
+                }
                 counter++;
             }
 
             foreach (var layer in map.Layers)
             {
-                var icon = mapSvc.GetLegendImage(map.ViewScale, layer.LayerDefinitionID, -1, -1, 16, 16, "JPG");
-                icon.Save(TestPrefix + "TestLegendIconRendering_" + counter + "_16x16.jpg");
+                var icon = mapSvc.GetLegendImageStream(map.ViewScale, layer.LayerDefinitionID, -1, -1, 16, 16, "JPG");
+                using (var fw = File.OpenWrite(TestPrefix + "TestLegendIconRendering_" + counter + "_16x16.jpg"))
+                {
+                    icon.CopyTo(fw);
+                }
                 counter++;
             }
 
             foreach (var layer in map.Layers)
             {
-                var icon = mapSvc.GetLegendImage(map.ViewScale, layer.LayerDefinitionID, -1, -1, 16, 16, "GIF");
-                icon.Save(TestPrefix + "TestLegendIconRendering_" + counter + "_16x16.gif");
+                var icon = mapSvc.GetLegendImageStream(map.ViewScale, layer.LayerDefinitionID, -1, -1, 16, 16, "GIF");
+                using (var fw = File.OpenWrite(TestPrefix + "TestLegendIconRendering_" + counter + "_16x16.gif"))
+                {
+                    icon.CopyTo(fw);
+                }
                 counter++;
             }
 
             foreach (var layer in map.Layers)
             {
-                var icon = mapSvc.GetLegendImage(map.ViewScale, layer.LayerDefinitionID, -1, -1, 160, 50, "PNG");
-                icon.Save(TestPrefix + "TestLegendIconRendering_" + counter + "_160x50.png");
+                var icon = mapSvc.GetLegendImageStream(map.ViewScale, layer.LayerDefinitionID, -1, -1, 160, 50, "PNG");
+                using (var fw = File.OpenWrite(TestPrefix + "TestLegendIconRendering_" + counter + "_160x50.png"))
+                {
+                    icon.CopyTo(fw);
+                }
                 counter++;
             }
         }
 
         public virtual void TestRender12k()
         {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
             //Render a map of sheboygan at 12k
             //Only programmatically verify the returned stream can be fed to a
             //System.Drawing.Image object.
-
-            var resSvc = _conn.ResourceService;
-            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            var conn = _fixture.CreateTestConnection();
+            var resSvc = conn.ResourceService;
+            var mapSvc = conn.GetService((int)ServiceType.Mapping) as IMappingService;
             Assert.NotNull(mapSvc);
 
             var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
@@ -647,23 +682,23 @@ namespace MaestroAPITests
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
             double metersPerUnit = 111319.490793274;
-            var cs = _conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
+            var cs = conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
             metersPerUnit = cs.MetersPerUnit;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
-            var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestRender12k.Map";
+            var mid = "Session:" + conn.SessionID + "//" + TestPrefix + "TestRender12k.Map";
             var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
-            Assert.IsFalse(map.IsDirty);
+            Assert.False(map.IsDirty);
             map.ViewScale = 12000;
             map.DisplayWidth = 1024;
             map.DisplayHeight = 1024;
             map.DisplayDpi = 96;
 
             //Doesn't exist yet because save isn't called
-            Assert.IsTrue(!resSvc.ResourceExists(mid));
-            Assert.IsTrue(map.IsDirty);
+            Assert.True(!resSvc.ResourceExists(mid));
+            Assert.True(map.IsDirty);
             map.Save();
-            Assert.IsFalse(map.IsDirty);
+            Assert.False(map.IsDirty);
 
             //Render default
             RenderAndVerify(mapSvc, map, TestPrefix + "TestRender12k.png", "PNG");
@@ -675,9 +710,9 @@ namespace MaestroAPITests
             var parcels = map.Layers["Parcels"];
             Assert.NotNull(parcels);
             parcels.Visible = false;
-            Assert.IsTrue(map.IsDirty);
+            Assert.True(map.IsDirty);
             map.Save();
-            Assert.IsFalse(map.IsDirty);
+            Assert.False(map.IsDirty);
 
             //Render again
             RenderAndVerify(mapSvc, map, TestPrefix + "TestRender12k_NoParcels.png", "PNG");
@@ -690,9 +725,9 @@ namespace MaestroAPITests
             parcels = map.Layers["Parcels"];
             Assert.NotNull(parcels);
             parcels.Visible = true;
-            Assert.IsTrue(map.IsDirty);
+            Assert.True(map.IsDirty);
             map.Save();
-            Assert.IsFalse(map.IsDirty);
+            Assert.False(map.IsDirty);
 
             //Render again
             RenderAndVerify(mapSvc, map, TestPrefix + "TestRender12k_ParcelsBackOn.png", "PNG");
@@ -703,11 +738,13 @@ namespace MaestroAPITests
 
         public virtual void TestMapManipulation()
         {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
             //Render a map of sheboygan at 12k
             //Verify that layer removal and addition produces the expected rendered result
-
-            var resSvc = _conn.ResourceService;
-            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            var conn = _fixture.CreateTestConnection();
+            var resSvc = conn.ResourceService;
+            var mapSvc = conn.GetService((int)ServiceType.Mapping) as IMappingService;
             Assert.NotNull(mapSvc);
 
             var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
@@ -720,11 +757,11 @@ namespace MaestroAPITests
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
             double metersPerUnit = 111319.490793274;
-            var cs = _conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
+            var cs = conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
             metersPerUnit = cs.MetersPerUnit;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
-            var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestMapManipulation.Map";
+            var mid = "Session:" + conn.SessionID + "//" + TestPrefix + "TestMapManipulation.Map";
             var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
             map.ViewScale = 12000;
             map.DisplayWidth = 1024;
@@ -732,10 +769,10 @@ namespace MaestroAPITests
             map.DisplayDpi = 96;
 
             //Doesn't exist yet because save isn't called
-            Assert.IsTrue(!resSvc.ResourceExists(mid));
-            Assert.IsTrue(map.IsDirty);
+            Assert.True(!resSvc.ResourceExists(mid));
+            Assert.True(map.IsDirty);
             map.Save();
-            Assert.IsFalse(map.IsDirty);
+            Assert.False(map.IsDirty);
 
             //Render default
             RenderAndVerify(mapSvc, map, TestPrefix + "TestMapManipulation12kWithRail.png", "PNG");
@@ -750,9 +787,9 @@ namespace MaestroAPITests
             var rail = map.Layers["Rail"];
             Assert.NotNull(rail);
             map.Layers.Remove(rail);
-            Assert.IsTrue(map.IsDirty);
+            Assert.True(map.IsDirty);
             map.Save();
-            Assert.IsFalse(map.IsDirty);
+            Assert.False(map.IsDirty);
 
             //Render again
             RenderAndVerify(mapSvc, map, TestPrefix + "TestMapManipulation12k_RailRemoved.png", "PNG");
@@ -781,9 +818,9 @@ namespace MaestroAPITests
             //var parcels = map.GetLayerByName("Parcels");
             //rail.SetDrawOrder(parcels.DisplayOrder - 0.000001);
 
-            Assert.IsTrue(map.IsDirty);
+            Assert.True(map.IsDirty);
             map.Save();
-            Assert.IsFalse(map.IsDirty);
+            Assert.False(map.IsDirty);
 
             //Render again. Rail should be above parcels
             RenderAndVerify(mapSvc, map, TestPrefix + "TestMapManipulation12k_RailReAdded.png", "PNG");
@@ -797,10 +834,12 @@ namespace MaestroAPITests
 
         public virtual void TestMapManipulation2()
         {
-            //This is mainly to exercise Insert() and to verify that draw orders come back as expected
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
 
-            var resSvc = _conn.ResourceService;
-            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            //This is mainly to exercise Insert() and to verify that draw orders come back as expected
+            var conn = _fixture.CreateTestConnection();
+            var resSvc = conn.ResourceService;
+            var mapSvc = conn.GetService((int)ServiceType.Mapping) as IMappingService;
             Assert.NotNull(mapSvc);
 
             var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
@@ -813,7 +852,7 @@ namespace MaestroAPITests
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
             double metersPerUnit = 111319.490793274;
-            var cs = _conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
+            var cs = conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
             metersPerUnit = cs.MetersPerUnit;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
@@ -832,19 +871,19 @@ namespace MaestroAPITests
             Assert.NotNull(mdf);
 
             //Now create our runtime map
-            var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestMapManipulation2.Map";
+            var mid = "Session:" + conn.SessionID + "//" + TestPrefix + "TestMapManipulation2.Map";
             var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
             map.ViewScale = 12000;
             map.DisplayWidth = 1024;
             map.DisplayHeight = 1024;
             map.DisplayDpi = 96;
 
-            Assert.AreEqual(0, map.Layers.Count);
-            Assert.AreEqual(0, map.Groups.Count);
+            Assert.Equal(0, map.Layers.Count);
+            Assert.Equal(0, map.Groups.Count);
 
             map.Groups.Add(mapSvc.CreateMapGroup(map, "Group1"));//new RuntimeMapGroup(map, "Group1"));
             map.Groups.Add(mapSvc.CreateMapGroup(map, "Group2"));//new RuntimeMapGroup(map, "Group2"));
-            Assert.AreEqual(2, map.Groups.Count);
+            Assert.Equal(2, map.Groups.Count);
 
             Assert.NotNull(map.Groups["Group1"]);
             Assert.NotNull(map.Groups["Group2"]);
@@ -854,7 +893,7 @@ namespace MaestroAPITests
             layer.Group = "Group1";
 
             map.Layers.Insert(0, layer);
-            Assert.AreEqual(1, map.Layers.Count);
+            Assert.Equal(1, map.Layers.Count);
             Assert.NotNull(map.Layers["HydrographicPolygons"]);
             Assert.True(map.Layers["HydrographicPolygons"] == map.Layers[0]);
             Assert.NotNull(map.Layers.GetByObjectId(layer.ObjectId));
@@ -863,7 +902,7 @@ namespace MaestroAPITests
             map.Layers.Insert(0, layer2);
             layer2.Group = "Group1"; //Intentional
 
-            Assert.AreEqual(2, map.Layers.Count);
+            Assert.Equal(2, map.Layers.Count);
             Assert.True(layer2 == map.Layers[0]);
             Assert.False(layer2 == map.Layers[1]);
             Assert.NotNull(map.Layers["HydrographicPolygons"]);
@@ -878,7 +917,7 @@ namespace MaestroAPITests
             var layer3 = mapSvc.CreateMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Rail.LayerDefinition"));
             layer3.Group = "Group2";
             map.Layers.Insert(0, layer3);
-            Assert.AreEqual(3, map.Layers.Count);
+            Assert.Equal(3, map.Layers.Count);
             Assert.True(layer3 == map.Layers[0]);
             Assert.False(layer3 == map.Layers[1]);
             Assert.False(layer3 == map.Layers[2]);
@@ -896,12 +935,12 @@ namespace MaestroAPITests
             Assert.NotNull(map.Layers.GetByObjectId(layer2.ObjectId));
             Assert.NotNull(map.Layers.GetByObjectId(layer3.ObjectId));
 
-            Assert.AreEqual(2, map.GetLayersOfGroup("Group1").Length);
-            Assert.AreEqual(1, map.GetLayersOfGroup("Group2").Length);
+            Assert.Equal(2, map.GetLayersOfGroup("Group1").Length);
+            Assert.Equal(1, map.GetLayersOfGroup("Group2").Length);
 
             //Group1 has 2 layers
             map.Groups.Remove("Group1");
-            Assert.AreEqual(1, map.Layers.Count);
+            Assert.Equal(1, map.Layers.Count);
             Assert.Null(map.Groups["Group1"]);
             Assert.True(map.Groups["Group2"] == map.Groups[0]);
             Assert.Null(map.Layers.GetByObjectId(layer.ObjectId));
@@ -910,26 +949,28 @@ namespace MaestroAPITests
 
             //Removing layer doesn't affect its group. It will still be there
             map.Layers.Remove(layer3.Name);
-            Assert.AreEqual(0, map.Layers.Count);
-            Assert.AreEqual(1, map.Groups.Count);
+            Assert.Equal(0, map.Layers.Count);
+            Assert.Equal(1, map.Groups.Count);
             Assert.NotNull(map.Groups["Group2"]);
             Assert.Null(map.Layers.GetByObjectId(layer.ObjectId));
             Assert.Null(map.Layers.GetByObjectId(layer2.ObjectId));
             Assert.Null(map.Layers.GetByObjectId(layer3.ObjectId));
 
             map.Groups.Remove("Group2");
-            Assert.AreEqual(0, map.Layers.Count);
-            Assert.AreEqual(0, map.Groups.Count);
+            Assert.Equal(0, map.Layers.Count);
+            Assert.Equal(0, map.Groups.Count);
         }
 
         public virtual void TestMapManipulation3()
         {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
             //Pretty much the same as TestMapManipulation2() but with Add() instead of Insert()
             //Add() puts the item at the end of the collection, so draw orders should reflect
             //that
-
-            var resSvc = _conn.ResourceService;
-            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            var conn = _fixture.CreateTestConnection();
+            var resSvc = conn.ResourceService;
+            var mapSvc = conn.GetService((int)ServiceType.Mapping) as IMappingService;
             Assert.NotNull(mapSvc);
 
             var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
@@ -942,7 +983,7 @@ namespace MaestroAPITests
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
             double metersPerUnit = 111319.490793274;
-            var cs = _conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
+            var cs = conn.CoordinateSystemCatalog.CreateCoordinateSystem(mdf.CoordinateSystem);
             metersPerUnit = cs.MetersPerUnit;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
@@ -961,19 +1002,19 @@ namespace MaestroAPITests
             Assert.NotNull(mdf);
 
             //Now create our runtime map
-            var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestMapManipulation2.Map";
+            var mid = "Session:" + conn.SessionID + "//" + TestPrefix + "TestMapManipulation2.Map";
             var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
             map.ViewScale = 12000;
             map.DisplayWidth = 1024;
             map.DisplayHeight = 1024;
             map.DisplayDpi = 96;
 
-            Assert.AreEqual(0, map.Layers.Count);
-            Assert.AreEqual(0, map.Groups.Count);
+            Assert.Equal(0, map.Layers.Count);
+            Assert.Equal(0, map.Groups.Count);
 
             map.Groups.Add(mapSvc.CreateMapGroup(map, "Group1"));//new RuntimeMapGroup(map, "Group1"));
             map.Groups.Add(mapSvc.CreateMapGroup(map, "Group2"));//new RuntimeMapGroup(map, "Group2"));
-            Assert.AreEqual(2, map.Groups.Count);
+            Assert.Equal(2, map.Groups.Count);
 
             Assert.NotNull(map.Groups["Group1"]);
             Assert.NotNull(map.Groups["Group2"]);
@@ -983,7 +1024,7 @@ namespace MaestroAPITests
             layer.Group = "Group1";
 
             map.Layers.Add(layer);
-            Assert.AreEqual(1, map.Layers.Count);
+            Assert.Equal(1, map.Layers.Count);
             Assert.NotNull(map.Layers["HydrographicPolygons"]);
             Assert.True(map.Layers["HydrographicPolygons"] == map.Layers[0]);
             Assert.NotNull(map.Layers.GetByObjectId(layer.ObjectId));
@@ -992,7 +1033,7 @@ namespace MaestroAPITests
             map.Layers.Add(layer2);
             layer2.Group = "Group1"; //Intentional
 
-            Assert.AreEqual(2, map.Layers.Count);
+            Assert.Equal(2, map.Layers.Count);
             Assert.False(layer2 == map.Layers[0]);
             Assert.True(layer2 == map.Layers[1]);
             Assert.NotNull(map.Layers["HydrographicPolygons"]);
@@ -1007,7 +1048,7 @@ namespace MaestroAPITests
             var layer3 = mapSvc.CreateMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Rail.LayerDefinition"));
             layer3.Group = "Group2";
             map.Layers.Add(layer3);
-            Assert.AreEqual(3, map.Layers.Count);
+            Assert.Equal(3, map.Layers.Count);
             Assert.False(layer3 == map.Layers[0]);
             Assert.False(layer3 == map.Layers[1]);
             Assert.True(layer3 == map.Layers[2]);
@@ -1025,12 +1066,12 @@ namespace MaestroAPITests
             Assert.NotNull(map.Layers.GetByObjectId(layer2.ObjectId));
             Assert.NotNull(map.Layers.GetByObjectId(layer3.ObjectId));
 
-            Assert.AreEqual(2, map.GetLayersOfGroup("Group1").Length);
-            Assert.AreEqual(1, map.GetLayersOfGroup("Group2").Length);
+            Assert.Equal(2, map.GetLayersOfGroup("Group1").Length);
+            Assert.Equal(1, map.GetLayersOfGroup("Group2").Length);
 
             //Group1 has 2 layers
             map.Groups.Remove("Group1");
-            Assert.AreEqual(1, map.Layers.Count);
+            Assert.Equal(1, map.Layers.Count);
             Assert.Null(map.Groups["Group1"]);
             Assert.True(map.Groups["Group2"] == map.Groups[0]);
             Assert.Null(map.Layers.GetByObjectId(layer.ObjectId));
@@ -1039,21 +1080,23 @@ namespace MaestroAPITests
 
             //Removing layer doesn't affect its group. It will still be there
             map.Layers.Remove(layer3.Name);
-            Assert.AreEqual(0, map.Layers.Count);
-            Assert.AreEqual(1, map.Groups.Count);
+            Assert.Equal(0, map.Layers.Count);
+            Assert.Equal(1, map.Groups.Count);
             Assert.NotNull(map.Groups["Group2"]);
             Assert.Null(map.Layers.GetByObjectId(layer.ObjectId));
             Assert.Null(map.Layers.GetByObjectId(layer2.ObjectId));
             Assert.Null(map.Layers.GetByObjectId(layer3.ObjectId));
 
             map.Groups.Remove("Group2");
-            Assert.AreEqual(0, map.Layers.Count);
-            Assert.AreEqual(0, map.Groups.Count);
+            Assert.Equal(0, map.Layers.Count);
+            Assert.Equal(0, map.Groups.Count);
         }
 
         public virtual void TestMapManipulation4()
         {
-            IServerConnection conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             IMappingService mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
             string mapdefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
             ResourceIdentifier rtmX = new ResourceIdentifier(mapdefinition);
@@ -1062,32 +1105,36 @@ namespace MaestroAPITests
             ResourceIdentifier mapid = new ResourceIdentifier(mapName, ResourceTypes.Map, conn.SessionID);
             IMapDefinition mdef = (IMapDefinition)conn.ResourceService.GetResource(mapdefinition);
             RuntimeMap rtm = mapSvc.CreateMap(mdef); // Create new runtime map
-            Assert.IsFalse(rtm.IsDirty);
+            Assert.False(rtm.IsDirty);
             rtm.Save();
-            Assert.IsFalse(rtm.IsDirty);
+            Assert.False(rtm.IsDirty);
             RuntimeMap tmprtm = mapSvc.CreateMap(mapid, mdef); // Create new map in data cache
-            Assert.IsFalse(tmprtm.IsDirty);
+            Assert.False(tmprtm.IsDirty);
             tmprtm.Save();
-            Assert.IsFalse(tmprtm.IsDirty);
+            Assert.False(tmprtm.IsDirty);
 
             RuntimeMap mymap = mapSvc.OpenMap(mapid);
         }
 
         public virtual void TestMapManipulation5()
         {
-            IServerConnection conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             IMappingService mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
             string mapdefinition = "Library://UnitTests/Maps/SheboyganTiled.MapDefinition";
             IMapDefinition mdef = (IMapDefinition)conn.ResourceService.GetResource(mapdefinition);
             RuntimeMap rtm = mapSvc.CreateMap(mdef); // Create new runtime map
             rtm.Save();
-            Assert.IsFalse(rtm.IsDirty);
+            Assert.False(rtm.IsDirty);
             RuntimeMap mymap = mapSvc.OpenMap("Session:" + conn.SessionID + "//" + rtm.Name + ".Map");
         }
 
         public virtual void TestMapAddDwfLayer()
         {
-            IServerConnection conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             IMappingService mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
             string mapdefinition = "Library://UnitTests/Maps/SheboyganTiled.MapDefinition";
             IMapDefinition mdef = (IMapDefinition)conn.ResourceService.GetResource(mapdefinition);
@@ -1115,17 +1162,19 @@ namespace MaestroAPITests
             rtm.Layers.Add(rtLayer);
 
             rtm.Save();
-            Assert.IsFalse(rtm.IsDirty);
+            Assert.False(rtm.IsDirty);
             RuntimeMap mymap = mapSvc.OpenMap("Session:" + conn.SessionID + "//" + rtm.Name + ".Map");
         }
 
         public virtual void TestResourceEvents()
         {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
             bool deleteCalled = false;
             bool updateCalled = false;
             bool insertCalled = false;
 
-            var conn = CreateTestConnection();
+            var conn = _fixture.CreateTestConnection();
             conn.ResourceService.ResourceAdded += (s, e) => { insertCalled = true; };
             conn.ResourceService.ResourceDeleted += (s, e) => { deleteCalled = true; };
             conn.ResourceService.ResourceUpdated += (s, e) => { updateCalled = true; };
@@ -1139,16 +1188,17 @@ namespace MaestroAPITests
             //This should raise ResourceDeleted
             conn.ResourceService.DeleteResource("Library://UnitTests/ResourceEvents/Test.LayerDefinition");
 
-            Assert.IsTrue(deleteCalled);
-            Assert.IsTrue(updateCalled);
-            Assert.IsTrue(insertCalled);
+            Assert.True(deleteCalled);
+            Assert.True(updateCalled);
+            Assert.True(insertCalled);
         }
 
         public virtual void TestCaseDuplicateLayerIds()
         {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
             try
             {
-                IServerConnection conn = CreateTestConnection();
+                var conn = _fixture.CreateTestConnection();
                 IMappingService mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
                 string mapdefinition = "Library://UnitTests/Maps/DuplicateLayerIds.MapDefinition";
                 IMapDefinition mdef = (IMapDefinition)conn.ResourceService.GetResource(mapdefinition);
@@ -1156,12 +1206,14 @@ namespace MaestroAPITests
             }
             catch (Exception ex)
             {
-                Assert.Fail(ex.ToString());
+                Assert.True(false, ex.ToString());
             }
         }
 
         public virtual void TestLargeMapCreatePerformance()
         {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
             TestMapCreate(50, 10);
             TestMapCreate(100, 25);
             TestMapCreate(200, 50);
@@ -1170,7 +1222,8 @@ namespace MaestroAPITests
         private void TestMapCreate(int layerSize, int groupSize)
         {
             //Create a 200 layer, 50 group map. This is not part of the benchmark
-            var mdf = Utility.CreateMapDefinition(_conn, "LargeMap");
+            var conn = _fixture.CreateTestConnection();
+            var mdf = Utility.CreateMapDefinition(conn, "LargeMap");
             mdf.ResourceID = "Library://UnitTests/LargeMapTest/LargeMap.MapDefinition";
             string root = "Library://UnitTests/LargeMapTest/";
 
@@ -1203,13 +1256,13 @@ namespace MaestroAPITests
                 ms.Position = 0;
 
                 string lid = root + "Layers/Layer" + i + ".LayerDefinition";
-                _conn.ResourceService.SetResourceXmlData(lid, ms);
+                conn.ResourceService.SetResourceXmlData(lid, ms);
                 mdf.AddLayer(groupName, layerName, lid);
             }
 
-            Assert.IsTrue(Array.IndexOf(_conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0);
-            var mapSvc = (IMappingService)_conn.GetService((int)ServiceType.Mapping);
-            var mid = "Session:" + _conn.SessionID + "//TestLargeMapCreatePerformance.Map";
+            Assert.True(Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0);
+            var mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+            var mid = "Session:" + conn.SessionID + "//TestLargeMapCreatePerformance.Map";
 
             //Begin Benchmark
             var sw = new Stopwatch();
@@ -1222,8 +1275,7 @@ namespace MaestroAPITests
         }
     }
 
-    [TestFixture]
-    public class HttpRuntimeMapTests : RuntimeMapTests
+    public class HttpRuntimeMapFixture : RuntimeMapFixture
     {
         protected override bool ShouldIgnore(out string reason)
         {
@@ -1234,9 +1286,17 @@ namespace MaestroAPITests
             return TestControl.IgnoreHttpRuntimeMapTests;
         }
 
-        protected override IServerConnection CreateTestConnection()
+        public override IServerConnection CreateTestConnection()
         {
             return ConnectionUtil.CreateTestHttpConnection();
+        }
+    }
+
+    public class HttpRuntimeMapTests : RuntimeMapTests<HttpRuntimeMapFixture>
+    {
+        public HttpRuntimeMapTests(HttpRuntimeMapFixture fixture) 
+            : base(fixture)
+        {
         }
 
         public override string TestPrefix
@@ -1244,122 +1304,122 @@ namespace MaestroAPITests
             get { return "Http"; }
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestGroupAssignment()
         {
             base.TestGroupAssignment();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestExtentSerialization()
         {
             base.TestExtentSerialization();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestResourceEvents()
         {
             base.TestResourceEvents();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestCreate()
         {
             base.TestCreate();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestSave()
         {
             base.TestSave();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestRender75k()
         {
             base.TestRender75k();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestRender12k()
         {
             base.TestRender12k();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestLegendIconRendering()
         {
             base.TestLegendIconRendering();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestMapManipulation()
         {
             base.TestMapManipulation();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestMapManipulation2()
         {
             base.TestMapManipulation2();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestMapManipulation3()
         {
             base.TestMapManipulation3();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestLargeMapCreatePerformance()
         {
             base.TestLargeMapCreatePerformance();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestMapManipulation4()
         {
             base.TestMapManipulation4();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestMapManipulation5()
         {
             base.TestMapManipulation5();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestMapAddDwfLayer()
         {
             base.TestMapAddDwfLayer();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestCaseDuplicateLayerIds()
         {
             base.TestCaseDuplicateLayerIds();
         }
 
-        [Test]
+        [SkippableFact]
         public void TestCreateRuntimeMapRequest()
         {
-            if (_conn.SiteVersion < new Version(2, 6))
-            {
-                Assert.Ignore("Skipping test (TestCreateRuntimeMapRequest). MapGuide is older than 2.6");
-                return;
-            }
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
 
-            int[] cmds = _conn.Capabilities.SupportedCommands;
+            var conn = _fixture.CreateTestConnection();
+            Skip.If(conn.SiteVersion < new Version(2, 6), "Skipping test (TestCreateRuntimeMapRequest). MapGuide is older than 2.6");
+
+            int[] cmds = conn.Capabilities.SupportedCommands;
             Assert.True(Array.IndexOf(cmds, (int)CommandType.CreateRuntimeMap) >= 0);
 
             //Barebones
-            ICreateRuntimeMap create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            ICreateRuntimeMap create = (ICreateRuntimeMap)conn.CreateCommand((int)CommandType.CreateRuntimeMap);
             create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
 
             MapModel.IRuntimeMapInfo rtInfo = create.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
 
             Assert.NotNull(rtInfo.CoordinateSystem);
@@ -1371,13 +1431,14 @@ namespace MaestroAPITests
             Assert.True(rtInfo.Groups.Count == 0);
 
             //Barebones with tiled
-            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create = (ICreateRuntimeMap)conn.CreateCommand((int)CommandType.CreateRuntimeMap);
             create.MapDefinition = "Library://UnitTests/Maps/SheboyganTiled.MapDefinition";
 
             rtInfo = create.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.True(String.IsNullOrEmpty(rtInfo.IconMimeType));
@@ -1390,14 +1451,15 @@ namespace MaestroAPITests
             Assert.True(rtInfo.FiniteDisplayScales.Length > 0);
 
             //With Layer/Group structure
-            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create = (ICreateRuntimeMap)conn.CreateCommand((int)CommandType.CreateRuntimeMap);
             create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
             create.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups);
 
             rtInfo = create.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.True(String.IsNullOrEmpty(rtInfo.IconMimeType));
@@ -1413,14 +1475,15 @@ namespace MaestroAPITests
             Assert.True(rtInfo.Groups.Count == 0);
 
             //With Layer/Group structure and inline icons
-            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create = (ICreateRuntimeMap)conn.CreateCommand((int)CommandType.CreateRuntimeMap);
             create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
             create.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons);
 
             rtInfo = create.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.False(String.IsNullOrEmpty(rtInfo.IconMimeType));
@@ -1451,14 +1514,15 @@ namespace MaestroAPITests
             Assert.True(rtInfo.Groups.Count == 0);
 
             //Kitchen sink
-            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create = (ICreateRuntimeMap)conn.CreateCommand((int)CommandType.CreateRuntimeMap);
             create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
             create.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons | RuntimeMapRequestedFeatures.FeatureSourceInformation);
 
             rtInfo = create.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.False(String.IsNullOrEmpty(rtInfo.IconMimeType));
@@ -1491,48 +1555,52 @@ namespace MaestroAPITests
             Assert.NotNull(rtInfo.Groups);
             Assert.True(rtInfo.Groups.Count == 0);
 
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+                create = (ICreateRuntimeMap)conn.CreateCommand((int)CommandType.CreateRuntimeMap);
                 create.MapDefinition = "Library://UnitTests/Maps/SheboyganLinked.MapDefinition";
                 create.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons | RuntimeMapRequestedFeatures.FeatureSourceInformation);
 
                 rtInfo = create.Execute();
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                {
+                    var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                    Assert.NotNull(test);
+                }
                 MapModel.IRuntimeMapInfo2 rtInfo2 = (MapModel.IRuntimeMapInfo2)rtInfo;
-                Assert.AreEqual("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", rtInfo2.TileSetDefinition);
+                Assert.Equal("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", rtInfo2.TileSetDefinition);
                 Assert.True(rtInfo2.TileWidth.HasValue);
                 Assert.True(rtInfo2.TileHeight.HasValue);
             }
         }
 
-        [Test]
+        [SkippableFact]
         public void TestDescribeRuntimeMapRequest()
         {
-            if (_conn.SiteVersion < new Version(2, 6))
-            {
-                Assert.Ignore("Skipping test (TestCreateRuntimeMapRequest). MapGuide is older than 2.6");
-                return;
-            }
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+            var conn = _fixture.CreateTestConnection();
 
-            int[] cmds = _conn.Capabilities.SupportedCommands;
+            Skip.If(conn.SiteVersion < new Version(2, 6), "Skipping test (TestCreateRuntimeMapRequest). MapGuide is older than 2.6");
+            
+            int[] cmds = conn.Capabilities.SupportedCommands;
             Assert.True(Array.IndexOf(cmds, (int)CommandType.CreateRuntimeMap) >= 0);
 
             //Barebones
-            ICreateRuntimeMap create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            ICreateRuntimeMap create = (ICreateRuntimeMap)conn.CreateCommand((int)CommandType.CreateRuntimeMap);
             create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
 
             MapModel.IRuntimeMapInfo map = create.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(map);
+                var test = map as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
-            IDescribeRuntimeMap describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
+            IDescribeRuntimeMap describe = (IDescribeRuntimeMap)conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
             MapModel.IRuntimeMapInfo rtInfo = describe.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.True(String.IsNullOrEmpty(rtInfo.IconMimeType));
@@ -1543,20 +1611,22 @@ namespace MaestroAPITests
             Assert.True(rtInfo.Groups.Count == 0);
 
             //Barebones with tiled
-            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create = (ICreateRuntimeMap)conn.CreateCommand((int)CommandType.CreateRuntimeMap);
             create.MapDefinition = "Library://UnitTests/Maps/SheboyganTiled.MapDefinition";
 
             map = create.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(map);
+                var test = map as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
-            describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
+            describe = (IDescribeRuntimeMap)conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
             rtInfo = describe.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.True(String.IsNullOrEmpty(rtInfo.IconMimeType));
@@ -1569,21 +1639,23 @@ namespace MaestroAPITests
             Assert.True(rtInfo.FiniteDisplayScales.Length > 0);
 
             //With Layer/Group structure
-            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create = (ICreateRuntimeMap)conn.CreateCommand((int)CommandType.CreateRuntimeMap);
             create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
 
             map = create.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(map);
+                var test = map as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
-            describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
+            describe = (IDescribeRuntimeMap)conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
             describe.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups);
             rtInfo = describe.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.True(String.IsNullOrEmpty(rtInfo.IconMimeType));
@@ -1599,21 +1671,23 @@ namespace MaestroAPITests
             Assert.True(rtInfo.Groups.Count == 0);
 
             //With Layer/Group structure and inline icons
-            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create = (ICreateRuntimeMap)conn.CreateCommand((int)CommandType.CreateRuntimeMap);
             create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
 
             map = create.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(map);
+                var test = map as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
-            describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
+            describe = (IDescribeRuntimeMap)conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
             describe.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons);
             rtInfo = describe.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.False(String.IsNullOrEmpty(rtInfo.IconMimeType));
@@ -1644,21 +1718,23 @@ namespace MaestroAPITests
             Assert.True(rtInfo.Groups.Count == 0);
 
             //Kitchen sink
-            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create = (ICreateRuntimeMap)conn.CreateCommand((int)CommandType.CreateRuntimeMap);
             create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
 
             map = create.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(map);
+                var test = map as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
-            describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
+            describe = (IDescribeRuntimeMap)conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
             describe.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons | RuntimeMapRequestedFeatures.FeatureSourceInformation);
             rtInfo = describe.Execute();
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.False(String.IsNullOrEmpty(rtInfo.IconMimeType));
@@ -1691,247 +1767,35 @@ namespace MaestroAPITests
             Assert.NotNull(rtInfo.Groups);
             Assert.True(rtInfo.Groups.Count == 0);
 
-            if (_conn.SiteVersion >= new Version(3, 0))
+            if (conn.SiteVersion >= new Version(3, 0))
             {
-                create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+                create = (ICreateRuntimeMap)conn.CreateCommand((int)CommandType.CreateRuntimeMap);
                 create.MapDefinition = "Library://UnitTests/Maps/SheboyganLinked.MapDefinition";
                 create.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons | RuntimeMapRequestedFeatures.FeatureSourceInformation);
 
                 rtInfo = create.Execute();
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                {
+                    var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                    Assert.NotNull(test);
+                }
                 MapModel.IRuntimeMapInfo2 rtInfo2 = (MapModel.IRuntimeMapInfo2)rtInfo;
-                Assert.AreEqual("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", rtInfo2.TileSetDefinition);
+                Assert.Equal("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", rtInfo2.TileSetDefinition);
                 Assert.True(rtInfo2.TileWidth.HasValue);
                 Assert.True(rtInfo2.TileHeight.HasValue);
 
-                describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
+                describe = (IDescribeRuntimeMap)conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
                 describe.Name = rtInfo.Name;
                 describe.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons | RuntimeMapRequestedFeatures.FeatureSourceInformation);
                 rtInfo = describe.Execute();
-                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                {
+                    var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                    Assert.NotNull(test);
+                }
                 rtInfo2 = (MapModel.IRuntimeMapInfo2)rtInfo;
-                Assert.AreEqual("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", rtInfo2.TileSetDefinition);
+                Assert.Equal("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", rtInfo2.TileSetDefinition);
                 Assert.True(rtInfo2.TileWidth.HasValue);
                 Assert.True(rtInfo2.TileHeight.HasValue);
             }
         }
-    }
-
-    [TestFixture]
-    public class LocalNativeRuntimeMapTests : RuntimeMapTests
-    {
-        protected override bool ShouldIgnore(out string reason)
-        {
-            reason = string.Empty;
-            if (TestControl.IgnoreLocalNativeRuntimeMapTests)
-                reason = "Skipping LocalNativeRuntimeMapTests because TestControl.IgnoreLocalNativeRuntimeMapTests = true";
-
-            return TestControl.IgnoreLocalNativeRuntimeMapTests;
-        }
-
-        protected override IServerConnection CreateTestConnection()
-        {
-            return ConnectionUtil.CreateTestLocalNativeConnection();
-        }
-
-        public override string TestPrefix
-        {
-            get { return "LocalNative"; }
-        }
-
-        [Test]
-        public override void TestGroupAssignment()
-        {
-            base.TestGroupAssignment();
-        }
-
-        [Test]
-        public override void TestExtentSerialization()
-        {
-            base.TestExtentSerialization();
-        }
-
-        [Test]
-        public override void TestResourceEvents()
-        {
-            base.TestResourceEvents();
-        }
-
-        [Test]
-        public override void TestCreate()
-        {
-            base.TestCreate();
-        }
-
-        [Test]
-        public override void TestSave()
-        {
-            base.TestSave();
-        }
-
-        [Test]
-        public override void TestRender75k()
-        {
-            base.TestRender75k();
-        }
-
-        [Test]
-        public override void TestRender12k()
-        {
-            base.TestRender12k();
-        }
-
-        [Test]
-        public override void TestLegendIconRendering()
-        {
-            base.TestLegendIconRendering();
-        }
-
-        [Test]
-        public override void TestMapManipulation()
-        {
-            base.TestMapManipulation();
-        }
-
-        [Test]
-        public override void TestMapManipulation2()
-        {
-            base.TestMapManipulation2();
-        }
-
-        [Test]
-        public override void TestMapManipulation3()
-        {
-            base.TestMapManipulation3();
-        }
-
-        [Test]
-        public override void TestLargeMapCreatePerformance()
-        {
-            base.TestLargeMapCreatePerformance();
-        }
-
-        [Test]
-        public override void TestMapAddDwfLayer()
-        {
-            base.TestMapAddDwfLayer();
-        }
-
-        [Test]
-        public override void TestCaseDuplicateLayerIds()
-        {
-            base.TestCaseDuplicateLayerIds();
-        }
-    }
-
-    [TestFixture]
-    public class LocalRuntimeMapTests : RuntimeMapTests
-    {
-        protected override bool ShouldIgnore(out string reason)
-        {
-            reason = string.Empty;
-            if (TestControl.IgnoreLocalRuntimeMapTests)
-                reason = "Skipping LocalRuntimeMapTests because TestControl.IgnoreLocalRuntimeMapTests = true";
-
-            return TestControl.IgnoreLocalRuntimeMapTests;
-        }
-
-        protected override IServerConnection CreateTestConnection()
-        {
-            return ConnectionUtil.CreateTestLocalConnection();
-        }
-
-        public override string TestPrefix
-        {
-            get { return "Local"; }
-        }
-
-        protected override bool CaresAboutRuntimeMapState
-        {
-            get
-            {
-                return false;
-            }
-        }
-
-        [Test]
-        public override void TestGroupAssignment()
-        {
-            base.TestGroupAssignment();
-        }
-
-        /*
-        [Test]
-        public override void TestExtentSerialization()
-        {
-            base.TestExtentSerialization();
-        }*/
-
-        [Test]
-        public override void TestResourceEvents()
-        {
-            base.TestResourceEvents();
-        }
-
-        [Test]
-        public override void TestCreate()
-        {
-            base.TestCreate();
-        }
-
-        [Test]
-        public override void TestSave()
-        {
-            base.TestSave();
-        }
-
-        [Test]
-        public override void TestRender75k()
-        {
-            base.TestRender75k();
-        }
-
-        [Test]
-        public override void TestRender12k()
-        {
-            base.TestRender12k();
-        }
-
-        [Test]
-        public override void TestLegendIconRendering()
-        {
-            base.TestLegendIconRendering();
-        }
-
-        [Test]
-        public override void TestMapManipulation()
-        {
-            base.TestMapManipulation();
-        }
-
-        [Test]
-        public override void TestMapManipulation2()
-        {
-            base.TestMapManipulation2();
-        }
-
-        [Test]
-        public override void TestMapManipulation3()
-        {
-            base.TestMapManipulation3();
-        }
-
-        [Test]
-        public override void TestCaseDuplicateLayerIds()
-        {
-            base.TestCaseDuplicateLayerIds();
-        }
-
-        /*
-        [Test]
-        public override void TestLargeMapCreatePerformance()
-        {
-            base.TestLargeMapCreatePerformance();
-        }*/
     }
 }

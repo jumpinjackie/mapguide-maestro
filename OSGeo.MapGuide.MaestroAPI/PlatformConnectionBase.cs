@@ -2226,7 +2226,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                 throw new ArgumentException(Strings.ErrorRuntimeMapNotInSessionRepo);
 
             var map = new RuntimeMap(GetInterface());
-            map.Deserialize(new MgBinaryDeserializer(this.GetResourceData(runtimeMapResourceId, "RuntimeData"), this.SiteVersion)); //NOXLATE
+            var stream = this.GetResourceData(runtimeMapResourceId, "RuntimeData");
+            map.Deserialize(new MgBinaryDeserializer(stream, this.SiteVersion)); //NOXLATE
             if (this.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
                 map.DeserializeLayerData(new MgBinaryDeserializer(this.GetResourceData(runtimeMapResourceId, "LayerGroupData"), this.SiteVersion)); //NOXLATE
 

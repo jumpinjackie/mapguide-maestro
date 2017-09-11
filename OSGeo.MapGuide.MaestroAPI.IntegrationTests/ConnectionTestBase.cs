@@ -20,13 +20,11 @@
 
 #endregion Disclaimer / License
 
-using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Internal;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.MaestroAPI.Services;
@@ -36,31 +34,38 @@ using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
 using System.IO;
+using Xunit;
 
 namespace MaestroAPITests
 {
-    public abstract class ConnectionTestBase
+    public abstract class ConnectionTestBaseFixture : IDisposable
     {
-        [TestFixtureSetUp]
-        public void TestFixtureSetup()
+        public ConnectionTestBaseFixture()
         {
             string reason;
             if (ShouldIgnore(out reason))
             {
-                Assert.Ignore(reason);
+                this.Skip = true;
+                this.SkipReason = reason;
             }
             else
             {
+                this.Skip = false;
+                this.SkipReason = string.Empty;
                 try
                 {
                     SetupTestData();
                 }
                 catch (Exception ex)
                 {
-                    Assert.Fail(ex.ToString());
+                    Assert.True(false, ex.ToString());
                 }
             }
         }
+
+        public bool Skip { get; }
+
+        public string SkipReason { get; }
 
         protected virtual bool ShouldIgnore(out string reason)
         {
@@ -68,39 +73,62 @@ namespace MaestroAPITests
             return false;
         }
 
-        protected abstract string GetTestPrefix();
+        public void Dispose()
+        {
+
+        }
+
+        static readonly object initLock = new object();
 
         private void SetupTestData()
         {
-            var conn = CreateTestConnection();
-            var resSvc = conn.ResourceService;
+            lock (initLock)
+            {
+                var conn = CreateTestConnection();
+                var resSvc = conn.ResourceService;
 
-            resSvc.DeleteResource("Library://UnitTests/");
+                resSvc.DeleteResource("Library://UnitTests/");
 
-            resSvc.SetResourceXmlData("Library://UnitTests/Maps/Sheboygan.MapDefinition", File.OpenRead("TestData/MappingService/UT_Sheboygan.mdf"));
-            resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganTiled.MapDefinition", File.OpenRead("UserTestData/TestTiledMap.xml"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Maps/Sheboygan.MapDefinition", File.OpenRead("TestData/MappingService/UT_Sheboygan.mdf"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganTiled.MapDefinition", File.OpenRead("UserTestData/TestTiledMap.xml"));
 
-            resSvc.SetResourceXmlData("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.ldf"));
-            resSvc.SetResourceXmlData("Library://UnitTests/Layers/Rail.LayerDefinition", File.OpenRead("TestData/MappingService/UT_Rail.ldf"));
-            resSvc.SetResourceXmlData("Library://UnitTests/Layers/Parcels.LayerDefinition", File.OpenRead("TestData/TileService/UT_Parcels.ldf"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.ldf"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Layers/Rail.LayerDefinition", File.OpenRead("TestData/MappingService/UT_Rail.ldf"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Layers/Parcels.LayerDefinition", File.OpenRead("TestData/TileService/UT_Parcels.ldf"));
 
-            resSvc.SetResourceXmlData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.fs"));
-            resSvc.SetResourceXmlData("Library://UnitTests/Data/Rail.FeatureSource", File.OpenRead("TestData/MappingService/UT_Rail.fs"));
-            resSvc.SetResourceXmlData("Library://UnitTests/Data/Parcels.FeatureSource", File.OpenRead("TestData/TileService/UT_Parcels.fs"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.fs"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/Rail.FeatureSource", File.OpenRead("TestData/MappingService/UT_Rail.fs"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/Parcels.FeatureSource", File.OpenRead("TestData/TileService/UT_Parcels.fs"));
 
-            resSvc.SetResourceData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", "UT_HydrographicPolygons.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.sdf"));
-            resSvc.SetResourceData("Library://UnitTests/Data/Rail.FeatureSource", "UT_Rail.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_Rail.sdf"));
-            resSvc.SetResourceData("Library://UnitTests/Data/Parcels.FeatureSource", "UT_Parcels.sdf", ResourceDataType.File, File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"));
+                resSvc.SetResourceData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", "UT_HydrographicPolygons.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.sdf"));
+                resSvc.SetResourceData("Library://UnitTests/Data/Rail.FeatureSource", "UT_Rail.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_Rail.sdf"));
+                resSvc.SetResourceData("Library://UnitTests/Data/Parcels.FeatureSource", "UT_Parcels.sdf", ResourceDataType.File, File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"));
 
-            resSvc.SetResourceXmlData("Library://UnitTests/Data/SpaceShip.DrawingSource", File.OpenRead("TestData/DrawingService/SpaceShipDrawingSource.xml"));
-            resSvc.SetResourceData("Library://UnitTests/Data/SpaceShip.DrawingSource", "SpaceShip.dwf", ResourceDataType.File, File.OpenRead("TestData/DrawingService/SpaceShip.dwf"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/SpaceShip.DrawingSource", File.OpenRead("TestData/DrawingService/SpaceShipDrawingSource.xml"));
+                resSvc.SetResourceData("Library://UnitTests/Data/SpaceShip.DrawingSource", "SpaceShip.dwf", ResourceDataType.File, File.OpenRead("TestData/DrawingService/SpaceShip.dwf"));
+            }
         }
 
-        protected abstract IServerConnection CreateTestConnection();
+        public abstract IServerConnection CreateTestConnection();
+    }
+
+    public abstract class ConnectionTestBase<T> : IClassFixture<T> 
+        where T : ConnectionTestBaseFixture
+    {
+        protected T _fixture;
+
+        public ConnectionTestBase(T fixture)
+        {
+            _fixture = fixture;
+        }
+
+        protected abstract string GetTestPrefix();
 
         protected void TestFeatureSourceCaching(string fsName)
         {
-            var conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             string fsId = "Library://UnitTests/" + fsName + ".FeatureSource";
             if (!conn.ResourceService.ResourceExists(fsId))
             {
@@ -118,26 +146,28 @@ namespace MaestroAPITests
             pc.ResetFeatureSourceSchemaCache();
 
             var stats = pc.CacheStats;
-            Assert.AreEqual(0, stats.ClassDefinitions);
-            Assert.AreEqual(0, stats.FeatureSources);
+            Assert.Equal(0, stats.ClassDefinitions);
+            Assert.Equal(0, stats.FeatureSources);
 
             var fsd = conn.FeatureService.DescribeFeatureSource(fsId);
 
             stats = pc.CacheStats;
-            Assert.AreEqual(1, stats.FeatureSources);
-            Assert.AreEqual(1, stats.ClassDefinitions);
+            Assert.Equal(1, stats.FeatureSources);
+            Assert.Equal(1, stats.ClassDefinitions);
 
             var fsd2 = conn.FeatureService.DescribeFeatureSource(fsId);
 
             stats = pc.CacheStats;
-            Assert.AreEqual(1, stats.FeatureSources);
-            Assert.AreEqual(1, stats.ClassDefinitions);
+            Assert.Equal(1, stats.FeatureSources);
+            Assert.Equal(1, stats.ClassDefinitions);
             //Each cached instance returned is a clone
             Assert.False(object.ReferenceEquals(fsd, fsd2));
         }
 
         protected void TestClassDefinitionCaching(string fsName)
         {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
             var conn = ConnectionUtil.CreateTestHttpConnection();
             string fsId = "Library://UnitTests/" + fsName + ".FeatureSource";
             if (!conn.ResourceService.ResourceExists(fsId))
@@ -156,20 +186,20 @@ namespace MaestroAPITests
             pc.ResetFeatureSourceSchemaCache();
 
             var stats = pc.CacheStats;
-            Assert.AreEqual(0, stats.ClassDefinitions);
-            Assert.AreEqual(0, stats.FeatureSources);
+            Assert.Equal(0, stats.ClassDefinitions);
+            Assert.Equal(0, stats.FeatureSources);
 
             var cls = conn.FeatureService.GetClassDefinition(fsId, "SHP_Schema:Parcels");
 
             stats = pc.CacheStats;
-            Assert.AreEqual(0, stats.ClassDefinitions);
-            Assert.AreEqual(0, stats.FeatureSources);
+            Assert.Equal(0, stats.ClassDefinitions);
+            Assert.Equal(0, stats.FeatureSources);
 
             var cls2 = conn.FeatureService.GetClassDefinition(fsId, "SHP_Schema:Parcels");
 
             stats = pc.CacheStats;
-            Assert.AreEqual(0, stats.ClassDefinitions);
-            Assert.AreEqual(0, stats.FeatureSources);
+            Assert.Equal(0, stats.ClassDefinitions);
+            Assert.Equal(0, stats.FeatureSources);
             //Each cached instance returned is a clone
             Assert.False(object.ReferenceEquals(cls, cls2));
         }
@@ -269,7 +299,9 @@ namespace MaestroAPITests
 
         public virtual void TestInsertFeatures()
         {
-            var conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             var fsId = "Library://UnitTests/Data/Test" + GetTestPrefix() + "InsertFeatures.FeatureSource";
             ClassDefinition cls = null;
             FeatureSchema schema = null;
@@ -323,12 +355,14 @@ namespace MaestroAPITests
                 rdr.Close();
             }
 
-            Assert.AreEqual(4, count);
+            Assert.Equal(4, count);
         }
 
         public virtual void TestUpdateFeatures()
         {
-            var conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             var fsId = "Library://UnitTests/Data/Test" + GetTestPrefix() + "UpdateFeatures.FeatureSource";
             ClassDefinition cls = null;
             FeatureSchema schema = null;
@@ -342,12 +376,14 @@ namespace MaestroAPITests
             update.ValuesToUpdate = new MutableRecord();
             update.ValuesToUpdate.PutValue("NAME", new StringValue("Test4Modified"));
 
-            Assert.AreEqual(1, update.Execute());
+            Assert.Equal(1, update.Execute());
         }
 
         public virtual void TestDeleteFeatures()
         {
-            var conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             var fsId = "Library://UnitTests/Data/Test" + GetTestPrefix() + "DeleteFeatures.FeatureSource";
             ClassDefinition cls = null;
             FeatureSchema schema = null;
@@ -358,7 +394,7 @@ namespace MaestroAPITests
             delete.FeatureSourceId = fsId;
             delete.Filter = "NAME = 'Test4'";
 
-            Assert.AreEqual(1, delete.Execute());
+            Assert.Equal(1, delete.Execute());
 
             int count = 0;
             using (var rdr = conn.FeatureService.QueryFeatureSource(fsId, cls.Name))
@@ -366,12 +402,14 @@ namespace MaestroAPITests
                 while (rdr.ReadNext()) { count++; }
             }
 
-            Assert.AreEqual(3, count);
+            Assert.Equal(3, count);
         }
 
         public virtual void TestCreateDataStore()
         {
-            var conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             var fsId = "Library://UnitTests/Data/Test" + GetTestPrefix() + "CreateDataStore.FeatureSource";
             ClassDefinition cls = null;
             FeatureSchema schema = null;
@@ -381,22 +419,24 @@ namespace MaestroAPITests
             Assert.NotNull(cls2);
             Assert.False(ClassDefinition.ReferenceEquals(cls, cls2));
 
-            Assert.AreEqual(cls.Name, cls2.Name);
-            Assert.AreEqual(cls.DefaultGeometryPropertyName, cls2.DefaultGeometryPropertyName);
-            Assert.AreEqual(cls.Properties.Count, cls2.Properties.Count);
-            Assert.AreEqual(cls.IdentityProperties.Count, cls2.IdentityProperties.Count);
+            Assert.Equal(cls.Name, cls2.Name);
+            Assert.Equal(cls.DefaultGeometryPropertyName, cls2.DefaultGeometryPropertyName);
+            Assert.Equal(cls.Properties.Count, cls2.Properties.Count);
+            Assert.Equal(cls.IdentityProperties.Count, cls2.IdentityProperties.Count);
             foreach (var prop in cls.Properties)
             {
                 var prop2 = cls2.FindProperty(prop.Name);
-                Assert.AreEqual(prop.Name, prop2.Name);
-                Assert.AreEqual(prop.Type, prop2.Type);
+                Assert.Equal(prop.Name, prop2.Name);
+                Assert.Equal(prop.Type, prop2.Type);
             }
         }
 
         public virtual void TestApplySchema()
         {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
             var fsId = "Library://UnitTests/Data/TestMaestro" + GetTestPrefix() + "ApplySchema.FeatureSource";
-            var conn = CreateTestConnection();
+            var conn = _fixture.CreateTestConnection();
             if (conn.ResourceService.ResourceExists(fsId))
                 conn.ResourceService.DeleteResource(fsId);
 
@@ -421,21 +461,23 @@ namespace MaestroAPITests
             Assert.NotNull(cls2);
             Assert.False(ClassDefinition.ReferenceEquals(cls, cls2));
 
-            Assert.AreEqual(cls.Name, cls2.Name);
-            Assert.AreEqual(cls.DefaultGeometryPropertyName, cls2.DefaultGeometryPropertyName);
-            Assert.AreEqual(cls.Properties.Count, cls2.Properties.Count);
-            Assert.AreEqual(cls.IdentityProperties.Count, cls2.IdentityProperties.Count);
+            Assert.Equal(cls.Name, cls2.Name);
+            Assert.Equal(cls.DefaultGeometryPropertyName, cls2.DefaultGeometryPropertyName);
+            Assert.Equal(cls.Properties.Count, cls2.Properties.Count);
+            Assert.Equal(cls.IdentityProperties.Count, cls2.IdentityProperties.Count);
             foreach (var prop in cls.Properties)
             {
                 var prop2 = cls2.FindProperty(prop.Name);
-                Assert.AreEqual(prop.Name, prop2.Name);
-                Assert.AreEqual(prop.Type, prop2.Type);
+                Assert.Equal(prop.Name, prop2.Name);
+                Assert.Equal(prop.Type, prop2.Type);
             }
         }
 
         public virtual void TestQueryLimits()
         {
-            var conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             for (int i = 0; i < 10; i++)
             {
                 int limit = (i + 1) * 2;
@@ -447,15 +489,17 @@ namespace MaestroAPITests
                         count++;
                     }
                     reader.Close();
-                    Assert.AreEqual(count, limit, "Expected to have read " + limit + " features. Read " + count + " features instead");
+                    Assert.Equal(count, limit); // "Expected to have read " + limit + " features. Read " + count + " features instead");
                 }
             }
         }
 
         public virtual void TestEncryptedFeatureSourceCredentials()
         {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
             //Sensitive data redacted, nevertheless you can test and verify this by filling in the
-            //blanks here and uncommenting the above [Test] attribute. If the test passes, credential encryption is working
+            //blanks here and uncommenting the above [Fact] attribute. If the test passes, credential encryption is working
             string server = "";
             string database = "";
             string actualUser = "";
@@ -476,7 +520,7 @@ namespace MaestroAPITests
             fs.SetEncryptedCredentials(conn, actualUser, actualPass);
 
             string result = conn.FeatureService.TestConnection(fsId);
-            Assert.AreEqual("TRUE", result.ToUpper());
+            Assert.Equal("TRUE", result.ToUpper());
 
             //Test convenience method
             fsId = "Library://UnitTests/" + GetTestPrefix() + "EncryptedCredentials2.FeatureSource";
@@ -490,8 +534,8 @@ namespace MaestroAPITests
             fs.SetEncryptedCredentials(conn, actualUser, actualPass);
 
             result = conn.FeatureService.TestConnection(fsId);
-            Assert.AreEqual("TRUE", result.ToUpper());
-            Assert.AreEqual(actualUser, fs.GetEncryptedUsername(conn));
+            Assert.Equal("TRUE", result.ToUpper());
+            Assert.Equal(actualUser, fs.GetEncryptedUsername(conn));
 
             //Do not set encrypted credentials
             fsId = "Library://UnitTests/" + GetTestPrefix() + "EncryptedCredentials3.FeatureSource";
@@ -506,7 +550,7 @@ namespace MaestroAPITests
             try
             {
                 result = conn.FeatureService.TestConnection(fsId);
-                Assert.AreEqual("FALSE", result.ToUpper());
+                Assert.Equal("FALSE", result.ToUpper());
             }
             catch //Exception or false I can't remember, as long as the result is not "true"
             {
@@ -526,18 +570,20 @@ namespace MaestroAPITests
             try
             {
                 result = conn.FeatureService.TestConnection(fsId);
-                Assert.AreEqual("FALSE", result.ToUpper());
+                Assert.Equal("FALSE", result.ToUpper());
             }
             catch
             {
                 //Exception or false I can't remember, as long as the result is not "true"
             }
-            Assert.AreEqual(bogusUser, fs.GetEncryptedUsername(conn));
+            Assert.Equal(bogusUser, fs.GetEncryptedUsername(conn));
         }
 
         public virtual void TestTouch()
         {
-            var conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             var resSvc = conn.ResourceService;
             if (!resSvc.ResourceExists("Library://UnitTests/Data/HydrographicPolygons.FeatureSource"))
                 resSvc.SetResourceXmlData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.fs"));
@@ -547,10 +593,12 @@ namespace MaestroAPITests
 
         public virtual void TestAnyStreamInput()
         {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
             string source = "Library://UnitTests/Data/HydrographicPolygons.FeatureSource";
             string target = "Library://UnitTests/Data/TestAnyStreamInput.FeatureSource";
 
-            var conn = CreateTestConnection();
+            var conn = _fixture.CreateTestConnection();
             var resSvc = conn.ResourceService;
             if (!resSvc.ResourceExists(source))
                 resSvc.SetResourceXmlData(source, File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.fs"));
@@ -574,7 +622,9 @@ namespace MaestroAPITests
 
         public virtual void TestCreateFromExistingSession()
         {
-            var conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             var conn2 = CreateFromExistingSession(conn);
 
             //This connection cannot restart sessions, and cannot be set to restart sessions
@@ -588,20 +638,24 @@ namespace MaestroAPITests
             }
             catch (Exception ex)
             {
-                Assert.Fail(ex.ToString());
+                Assert.True(false, ex.ToString());
             }
         }
 
         public virtual void TestResourceExists()
         {
-            var conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             Assert.True(conn.ResourceService.ResourceExists("Library://UnitTests/Maps/Sheboygan.MapDefinition"));
             Assert.False(conn.ResourceService.ResourceExists("Library://UnitTests/IDontExist.MapDefinition"));
         }
 
         public virtual void TestSchemaMapping()
         {
-            var conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             var doc1 = conn.FeatureService.GetSchemaMapping("OSGeo.WMS", "FeatureServer=http://mapconnect.ga.gov.au/wmsconnector/com.esri.wms.Esrimap?Servicename=GDA94_MapConnect_SDE_250kmap_WMS");
             Assert.NotNull(doc1);
             Assert.True(doc1 is WmsConfigurationDocument);
@@ -609,55 +663,49 @@ namespace MaestroAPITests
 
         public virtual void TestCreateRuntimeMapWithInvalidLayersErrorsEnabled()
         {
-            var conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             var resSvc = conn.ResourceService;
             resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganWithInvalidLayers.MapDefinition", File.OpenRead("UserTestData/TestMapWithInvalidLayers.xml"));
             resSvc.SetResourceXmlData("Library://UnitTests/Layers/InvalidLayer.LayerDefinition", File.OpenRead("UserTestData/InvalidLayer.xml"));
 
-            if (Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) < 0)
+            Skip.If(Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) < 0);
+
+            var mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+            var mdf = (IMapDefinition)resSvc.GetResource("Library://UnitTests/Maps/SheboyganWithInvalidLayers.MapDefinition");
+            try
             {
-                Assert.Ignore("Connection does not support the Mapping Service");
+                mapSvc.CreateMap(mdf, false);
+                Assert.True(false, "CreateMap should've thrown an exception with suppressErrors = false");
             }
-            else
+            catch (Exception ex)
             {
-                var mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
-                var mdf = (IMapDefinition)resSvc.GetResource("Library://UnitTests/Maps/SheboyganWithInvalidLayers.MapDefinition");
-                try
-                {
-                    mapSvc.CreateMap(mdf, false);
-                    Assert.Fail("CreateMap should've thrown an exception with suppressErrors = false");
-                }
-                catch (Exception ex)
-                {
-                    Assert.True(true, ex.ToString());
-                }
+                Assert.True(true, ex.ToString());
             }
         }
 
         public virtual void TestCreateRuntimeMapWithInvalidLayersErrorsDisabled()
         {
-            var conn = CreateTestConnection();
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            var conn = _fixture.CreateTestConnection();
             var resSvc = conn.ResourceService;
             resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganWithInvalidLayers.MapDefinition", File.OpenRead("UserTestData/TestMapWithInvalidLayers.xml"));
             resSvc.SetResourceXmlData("Library://UnitTests/Layers/InvalidLayer.LayerDefinition", File.OpenRead("UserTestData/InvalidLayer.xml"));
 
-            if (Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) < 0)
+            Skip.If(Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) < 0);
+
+            var mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+            var mdf = (IMapDefinition)resSvc.GetResource("Library://UnitTests/Maps/SheboyganWithInvalidLayers.MapDefinition");
+            try
             {
-                Assert.Ignore("Connection does not support the Mapping Service");
+                mapSvc.CreateMap(mdf, true);
+                Assert.True(true);
             }
-            else
+            catch (Exception ex)
             {
-                var mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
-                var mdf = (IMapDefinition)resSvc.GetResource("Library://UnitTests/Maps/SheboyganWithInvalidLayers.MapDefinition");
-                try
-                {
-                    mapSvc.CreateMap(mdf, true);
-                    Assert.True(true);
-                }
-                catch (Exception ex)
-                {
-                    Assert.Fail("CreateMap with suppressErrors = true should not have thrown an exception: " + ex.ToString());
-                }
+                Assert.True(false, "CreateMap with suppressErrors = true should not have thrown an exception: " + ex.ToString());
             }
         }
     }

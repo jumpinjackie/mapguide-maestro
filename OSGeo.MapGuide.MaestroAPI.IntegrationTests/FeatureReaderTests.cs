@@ -20,23 +20,18 @@
 
 #endregion Disclaimer / License
 
-using NUnit.Framework;
-using OSGeo.MapGuide.MaestroAPI.Http;
-using System.IO;
-using System.Text;
 
 namespace MaestroAPITests
 {
-    [TestFixture]
     public class FeatureReaderTests
     {
-        [TestFixtureSetUp]
+        /*
+        //[TestFixtureSetUp]
         public void Setup()
         {
             if (TestControl.IgnoreFeatureReaderTests)
                 Assert.Ignore("Skipping FeatureReaderTests because TestControl.IgnoreFeatureReaderTests = true");
         }
-
-        
+        */
     }
 }

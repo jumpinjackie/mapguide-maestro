@@ -20,14 +20,13 @@
 
 #endregion Disclaimer / License
 
-using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI;
 using System;
+using Xunit;
 
 namespace MaestroAPITests
 {
-    [TestFixture]
-    public class LocalConnectionTests : ConnectionTestBase
+    public class LocalConnectionFixture : ConnectionTestBaseFixture
     {
         protected override bool ShouldIgnore(out string reason)
         {
@@ -38,95 +37,103 @@ namespace MaestroAPITests
             return TestControl.IgnoreLocalFeatureTests;
         }
 
+        public override IServerConnection CreateTestConnection()
+        {
+            return ConnectionUtil.CreateTestLocalConnection();
+        }
+    }
+
+    public class LocalConnectionTests : ConnectionTestBase<LocalConnectionFixture>
+    {
+        public LocalConnectionTests(LocalConnectionFixture fixture) 
+            : base(fixture)
+        {
+        }
+
         protected override string GetTestPrefix()
         {
             return "Local";
         }
 
-        protected override IServerConnection CreateTestConnection()
-        {
-            return ConnectionUtil.CreateTestLocalConnection();
-        }
-
-        [Test]
+        [SkippableFact]
         public override void TestTouch()
         {
             base.TestTouch();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestAnyStreamInput()
         {
             base.TestAnyStreamInput();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestResourceExists()
         {
             base.TestResourceExists();
         }
 
-        [Test]
+        [SkippableFact]
         public void TestFeatureSourceCaching()
         {
             base.TestFeatureSourceCaching("LocalFeatureSourceCaching");
         }
 
-        [Test]
+        [SkippableFact]
         public void TestClassDefinitionCaching()
         {
             base.TestClassDefinitionCaching("LocalClassCaching");
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestApplySchema()
         {
             base.TestApplySchema();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestQueryLimits()
         {
             base.TestQueryLimits();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestCreateDataStore()
         {
             base.TestCreateDataStore();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestDeleteFeatures()
         {
             base.TestDeleteFeatures();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestInsertFeatures()
         {
             base.TestInsertFeatures();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestUpdateFeatures()
         {
             base.TestUpdateFeatures();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestSchemaMapping()
         {
             base.TestSchemaMapping();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestCreateRuntimeMapWithInvalidLayersErrorsDisabled()
         {
             base.TestCreateRuntimeMapWithInvalidLayersErrorsDisabled();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestCreateRuntimeMapWithInvalidLayersErrorsEnabled()
         {
             base.TestCreateRuntimeMapWithInvalidLayersErrorsEnabled();

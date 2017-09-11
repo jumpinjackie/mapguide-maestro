@@ -148,11 +148,24 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         private static string _dllRoot;
 
+        const string HTTP_PROVIDER = "Maestro.Http";
+
         static ConnectionProviderRegistry()
         {
             _ctors = new Dictionary<string, ConnectionFactoryMethod>();
             _providers = new List<ConnectionProviderEntry>();
             _callCount = new Dictionary<string, int>();
+
+            //Maestro.Http is now built-in
+            var httpProvider = HTTP_PROVIDER.ToUpper();
+            _ctors[httpProvider] = new ConnectionFactoryMethod((initParams) =>
+            {
+                var conn = new HttpServerConnection(initParams);
+                return conn;
+            });
+            _providers.Add(new ConnectionProviderEntry(httpProvider, "HTTP Connection Provider", null, true));
+            _callCount[httpProvider] = 0;
+
 
             var dir = System.IO.Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
             var path = System.IO.Path.Combine(dir, PROVIDER_CONFIG);

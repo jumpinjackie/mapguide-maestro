@@ -20,13 +20,12 @@
 
 #endregion Disclaimer / License
 
-using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI;
+using Xunit;
 
 namespace MaestroAPITests
 {
-    [TestFixture]
-    public class LocalNativeFeatureTests : ConnectionTestBase
+    public class LocalNativeFeatureFixture : ConnectionTestBaseFixture
     {
         protected override bool ShouldIgnore(out string reason)
         {
@@ -37,89 +36,97 @@ namespace MaestroAPITests
             return TestControl.IgnoreLocalNativeFeatureTests;
         }
 
+        public override IServerConnection CreateTestConnection()
+        {
+            return ConnectionUtil.CreateTestLocalNativeConnection();
+        }
+    }
+
+    public class LocalNativeFeatureTests : ConnectionTestBase<LocalNativeFeatureFixture>
+    {
+        public LocalNativeFeatureTests(LocalNativeFeatureFixture fixture) 
+            : base(fixture)
+        {
+        }
+
         protected override string GetTestPrefix()
         {
             return "LocalNative";
         }
 
-        protected override IServerConnection CreateTestConnection()
-        {
-            return ConnectionUtil.CreateTestLocalNativeConnection();
-        }
-
-        [Test]
+        [SkippableFact]
         public override void TestTouch()
         {
             base.TestTouch();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestAnyStreamInput()
         {
             base.TestAnyStreamInput();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestCreateFromExistingSession()
         {
             base.TestCreateFromExistingSession();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestResourceExists()
         {
             base.TestResourceExists();
         }
 
-        [Test]
+        [SkippableFact]
         public void TestFeatureSourceCaching()
         {
             base.TestFeatureSourceCaching("LocalNativeFeatureSourceCaching");
         }
 
-        [Test]
+        [SkippableFact]
         public void TestClassDefinitionCaching()
         {
             base.TestClassDefinitionCaching("LocalNativeClassCaching");
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestApplySchema()
         {
             base.TestApplySchema();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestQueryLimits()
         {
             base.TestQueryLimits();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestCreateDataStore()
         {
             base.TestCreateDataStore();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestDeleteFeatures()
         {
             base.TestDeleteFeatures();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestInsertFeatures()
         {
             base.TestInsertFeatures();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestUpdateFeatures()
         {
             base.TestUpdateFeatures();
         }
 
-        [Test]
+        [SkippableFact]
         public override void TestSchemaMapping()
         {
             base.TestSchemaMapping();

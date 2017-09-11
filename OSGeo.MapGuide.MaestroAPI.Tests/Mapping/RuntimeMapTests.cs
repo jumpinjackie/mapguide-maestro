@@ -35,14 +35,6 @@ using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
 {
-    public static class ReflectionExtensions
-    {
-        public static ConstructorInfo GetInternalConstructor(this Type type, Type[] types)
-        {
-            return type.GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null, types, null);
-        }
-    }
-
     public class RuntimeMapTests
     {
         static RuntimeMap CreateMap(IServerConnection conn, IMapDefinition mdf, double val, bool b)

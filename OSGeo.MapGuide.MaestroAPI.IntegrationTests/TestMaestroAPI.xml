@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Maestro API test configuration file
+
+Configured for exercising everything in the Maestro API except for LocalNative connection providers and GeoREST
+-->
+<TestConfiguration>
+  <TestSettings>
+    <!--
+    The path to webconfig.ini required by the LocalNative provider to run its specific tests. Should come from the same
+    MapGuide installation where you have sourced the .net assemblies used to build your own LocalNative provider with the
+    ProviderTemplate tool in the Maestro SDK
+    -->
+    <LocalNativeConfigFile>C:\Program Files\OSGeo\MapGuide\Web\www\webconfig.ini</LocalNativeConfigFile>
+    <!--
+    The MapGuide user account for running the LocalNative provider tests under
+    -->
+    <LocalNativeUsername>Administrator</LocalNativeUsername>
+    <!--
+    The password for the MapGuide user account for running the LocalNative provider tests under
+    -->
+    <LocalNativePassword>admin</LocalNativePassword>
+    <!--
+    The path to the Platform.ini required by the Local connection provider to run its specific tests.
+    -->
+    <LocalConfigFile>Platform.ini</LocalConfigFile>
+    <!--
+    The mapagent URL required for running the HTTP provider tests
+    -->
+    <HttpUrl>http://localhost/mapguide/mapagent/mapagent.fcgi</HttpUrl>
+    <!--
+    The MapGuide user account for running the HTTP provider tests under
+    -->
+    <HttpUsername>Administrator</HttpUsername>
+    <!--
+    The password for the MapGuide user account for running the HTTP provider tests under
+    -->
+    <HttpPassword>admin</HttpPassword>
+  </TestSettings>
+  <TestControl>
+    <!-- Core API -->
+    <IgnoreConfigurationTests>false</IgnoreConfigurationTests>
+    <IgnoreExpressionTests>false</IgnoreExpressionTests>
+    <IgnoreFeatureReaderTests>false</IgnoreFeatureReaderTests>
+    <IgnoreObjectTests>false</IgnoreObjectTests>
+    <IgnoreResourceTests>false</IgnoreResourceTests>
+    <IgnoreSchemaTests>false</IgnoreSchemaTests>
+    <IgnoreSerializationTests>false</IgnoreSerializationTests>
+    <IgnoreValidationTests>false</IgnoreValidationTests>
+    <IgnoreMiscTests>false</IgnoreMiscTests>
+    <!-- Functionality that uses the HTTP connection provider -->
+    <IgnoreHttpConnectionTests>false</IgnoreHttpConnectionTests>
+    <IgnoreHttpSiteTests>false</IgnoreHttpSiteTests>
+    <IgnoreHttpRuntimeMapTests>false</IgnoreHttpRuntimeMapTests>
+    <!-- Functionality that uses the Local connection provider -->
+    <IgnoreLocalRuntimeMapTests>true</IgnoreLocalRuntimeMapTests>
+    <IgnoreLocalFeatureTests>true</IgnoreLocalFeatureTests>
+    <!--
+    Local Native connection provider tests are disabled as the standard test profile does not cover
+    this functionality. The Test Runner configuration in the Maestro SDK enables such tests, while
+    disabling the Local Connection ones (because it doesn't include mg-desktop and supporting libs/datafiles)
+    -->
+    <IgnoreLocalNativeRuntimeMapTests>true</IgnoreLocalNativeRuntimeMapTests>
+    <IgnoreLocalNativePerformanceTests>true</IgnoreLocalNativePerformanceTests>
+    <IgnoreLocalNativeFeatureTests>true</IgnoreLocalNativeFeatureTests>
+  </TestControl>
+</TestConfiguration>

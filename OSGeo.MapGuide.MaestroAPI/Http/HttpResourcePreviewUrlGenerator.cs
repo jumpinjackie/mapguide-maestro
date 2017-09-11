@@ -312,7 +312,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                     mdf.Extents.MaxY,
                     cleanCs.ToString());
             }
-            string watermarkXml = string.Format(Files.TextWatermark, message);
+            string watermarkXml = string.Format(Strings.TextWatermark, message);
             string resId = "Session:" + conn.SessionID + "//Debug.WatermarkDefinition";
             using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(watermarkXml)))
             {

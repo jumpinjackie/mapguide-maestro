@@ -20,33 +20,38 @@
 
 #endregion Disclaimer / License
 
-using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
-using OSGeo.MapGuide.ObjectModels;
+using System;
 using System.IO;
 using System.Linq;
+using Xunit;
 
 namespace MaestroAPITests
 {
-    [TestFixture]
-    public class HttpSiteTests
+    public class HttpSiteTests : IDisposable
     {
-        [TestFixtureSetUp]
-        public void Setup()
+        private bool _skip;
+        private string _skipReason;
+
+        public HttpSiteTests()
         {
-            if (TestControl.IgnoreHttpSiteTests)
-                Assert.Ignore("Skipping HttpSiteTests because TestControl.IgnoreHttpSiteTests = true");
+            _skip = TestControl.IgnoreHttpSiteTests;
+            _skipReason = _skip ? "Skipping HttpSiteTests because TestControl.IgnoreHttpSiteTests = true" : string.Empty;
         }
+
+        public void Dispose() { }
 
         private IServerConnection CreateTestConnection()
         {
             return ConnectionUtil.CreateTestHttpConnection();
         }
 
-        [Test]
+        [SkippableFact]
         public void TestMapDefinitionValidation()
         {
+            Skip.If(_skip, _skipReason);
+
             var conn = CreateTestConnection();
             var mdf = Utility.CreateMapDefinition(conn, "Test");
             mdf.ResourceID = "Library://UnitTests/Test.MapDefinition";
@@ -76,9 +81,11 @@ namespace MaestroAPITests
             Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Error_MapDefinition_GroupWithNonExistentGroup));
         }
 
-        [Test]
+        [SkippableFact]
         public void TestSymbolDefinitionValidation()
         {
+            Skip.If(_skip, _skipReason);
+
             var conn = CreateTestConnection();
             var ssym = Utility.CreateSimpleSymbol(conn, "Test", "Test");
             ssym.ResourceID = "Library://UnitTests/Test.SymbolDefinition";

@@ -20,24 +20,33 @@
 
 #endregion Disclaimer / License
 
-using NUnit.Framework;
+using System;
 using System.Diagnostics;
+using Xunit;
 
 namespace MaestroAPITests
 {
-    [TestFixture]
-    public class LocalNativePerformanceTests
+    public class LocalNativePerformanceTests : IDisposable
     {
-        [TestFixtureSetUp]
-        public void Setup()
+        private bool _skip;
+        private string _skipReason;
+
+        public LocalNativePerformanceTests()
         {
-            if (TestControl.IgnoreLocalNativePerformanceTests)
-                Assert.Ignore("Skipping LocalNativePerformanceTests because TestControl.IgnoreLocalNativePerformanceTests = true");
+            _skip = TestControl.IgnoreLocalNativePerformanceTests;
+            _skipReason = _skip ? "Skipping LocalNativePerformanceTests because TestControl.IgnoreLocalNativePerformanceTests = true" : string.Empty;
         }
 
-        [Test]
+        public void Dispose()
+        {
+            
+        }
+
+        [SkippableFact]
         public void TestCase1914()
         {
+            Skip.If(_skip, _skipReason);
+
             var conn = ConnectionUtil.CreateTestLocalNativeConnection();
             var sw = new Stopwatch();
             sw.Start();

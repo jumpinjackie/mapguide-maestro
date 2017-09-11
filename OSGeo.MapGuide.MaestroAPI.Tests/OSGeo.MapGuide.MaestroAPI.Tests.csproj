@@ -16,7 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OSGeo.FDO.Expressions\OSGeo.FDO.Expressions.csproj" />
-    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Http\OSGeo.MapGuide.MaestroAPI.Http.csproj" />
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj" />
     <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj" />
   </ItemGroup>

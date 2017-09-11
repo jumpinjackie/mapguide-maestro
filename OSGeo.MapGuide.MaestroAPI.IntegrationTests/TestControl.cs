@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using System;
 using System.IO;
 using System.Xml;
@@ -39,7 +40,7 @@ namespace MaestroAPITests
         public static string HttpUsername = "Administrator";
         public static string HttpPassword = "admin";
 
-        public static void Initialize(string initFile)
+        internal static void Initialize(string initFile)
         {
             if (File.Exists(initFile))
             {
@@ -127,6 +128,13 @@ namespace MaestroAPITests
         public static bool IgnoreLocalNativePerformanceTests = true;
         public static bool IgnoreLocalNativeFeatureTests = true;
         public static bool IgnoreLocalFeatureTests = false;
+
+        static TestControl()
+        {
+            TestEnvironment.Initialize("TestMaestroAPI.xml");
+            TestEnvironment.PrintSummary();
+            ResourceValidatorLoader.LoadStockValidators();
+        }
     }
 
     internal static class ConnectionUtil
