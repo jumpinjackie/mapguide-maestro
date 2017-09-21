@@ -55,7 +55,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(SolutionDir)..\Properties\maestroapi.key" "$(SolutionDir)..\SDK\bin"</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(SolutionDir)Properties\maestroapi.key" "$(SolutionDir)..\SDK\bin"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
