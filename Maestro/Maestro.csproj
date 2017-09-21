@@ -37,6 +37,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -65,26 +66,6 @@
     <StartupObject>Maestro.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Maestro.Editors, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\Maestro.Editors.dll</HintPath>
-    </Reference>
-    <Reference Include="Maestro.Login, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\Maestro.Login.dll</HintPath>
-    </Reference>
-    <Reference Include="Maestro.Packaging, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\Maestro.Packaging.dll</HintPath>
-    </Reference>
-    <Reference Include="Maestro.Shared.UI, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\Maestro.Shared.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.MapGuide.MaestroAPI, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\OSGeo.MapGuide.MaestroAPI.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -455,8 +436,28 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj">
-      <Project>{F1E2F468-5030-4DBA-968C-9620284AFAA1}</Project>
+      <Project>{f1e2f468-5030-4dba-968c-9620284afaa1}</Project>
       <Name>Maestro.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj">
+      <Project>{5ad2cdba-952e-4148-98a1-31d2e0d540d5}</Project>
+      <Name>Maestro.Editors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.Login\Maestro.Login.csproj">
+      <Project>{07588440-5f9f-4c30-aa06-9cf30ba6dde6}</Project>
+      <Name>Maestro.Login</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.Packaging\Maestro.Packaging.csproj">
+      <Project>{0ea33e36-9c33-4d60-b378-b87fadaa0f40}</Project>
+      <Name>Maestro.Packaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj">
+      <Project>{cfd19053-2172-41d3-8460-0fd2123a1e88}</Project>
+      <Name>Maestro.Shared.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
+      <Project>{80fa3158-8b5f-48d1-a393-0378afe48a7e}</Project>
+      <Name>OSGeo.MapGuide.MaestroAPI</Name>
     </ProjectReference>
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj">
       <Project>{857CA1A3-FC88-4BE0-AB6A-D1EE772AB288}</Project>
