@@ -55,6 +55,7 @@ after_build:
   - cd /D %APPVEYOR_BUILD_FOLDER%\Install
   - makensis.exe /DSLN_CONFIG=%CONFIGURATION% /DCPU=x86 /DRELEASE_VERSION=%ARTIFACT_RELEASE_LABEL% Maestro.nsi
   - cd %APPVEYOR_BUILD_FOLDER%
+  - dotnet pack Core.sln --configuration %CONFIGURATION% --output %APPVEYOR_BUILD_FOLDER%\artifacts --include-symbols --version-suffix "pre%APPVEYOR_BUILD_NUMBER%"
 
 test_script:
   - unittest.bat
