@@ -23,69 +23,52 @@
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http.Commands
 {
     public class HttpGetResourceContents : IGetResourceContents
     {
-        private readonly IResourceService _resSvc;
+        readonly IResourceService _resSvc;
 
         public HttpGetResourceContents(IResourceService resSvc)
         {
             _resSvc = resSvc;
-            _completed = new Dictionary<string, IResource>();
         }
 
-        private Dictionary<string, IResource> _completed;
-
-        private readonly object SyncRoot = new object();
-
-        private void PutCompleted(IResource res)
+        public IDictionary<string, IResource> Execute(IEnumerable<string> resourceIds)
         {
-            lock (SyncRoot)
-            {
-                _completed.Add(res.ResourceID, res);
-            }
-        }
+            var completed = new ConcurrentDictionary<string, IResource>();
 
-        public Dictionary<string, IResource> Execute(IEnumerable<string> resourceIds)
-        {
-            _completed.Clear();
             List<string> workItems = new List<string>(resourceIds);
-            int completed = 0;
 
-            foreach (var resId in workItems)
+            var errors = new ConcurrentBag<Exception>();
+
+            Parallel.ForEach(workItems, (resId) => 
             {
-                //Closures referencing iterator variables are bad mmkay?
-                string rid = resId;
-
-                //NOTE: Multi-threaded code is my weakness. So I wouldn't be surprised
-                //if this has some subtle bug due to multi-threading. However, I have
-                //stuck to basic rules of thumb in implementing this (ie. Do not let threads
-                //manipulate shared state!). The whole code path of the
-                //IResourceService.GetResource() implementation does not touch any shared
-                //state. So I say with minor confidence that this should work without problems.
-                ThreadPool.QueueUserWorkItem((obj) =>
+                try
                 {
-                    try
-                    {
-                        IResource res = _resSvc.GetResource(rid);
-                        PutCompleted(res);
-                    }
-                    finally
-                    {
-                        Interlocked.Increment(ref completed);
-                    }
-                });
+                    IResource res = _resSvc.GetResource(resId);
+                    completed[resId] = res;
+                }
+                catch (Exception ex)
+                {
+                    //TODO: Should probably pair with original resource id
+                    errors.Add(ex);
+                }
+            });
+
+            if (errors.Any())
+            {
+                throw new AggregateException(errors);
             }
 
-            //Wait until all completed
-            while (completed < workItems.Count)
-                Thread.Sleep(20);
-
-            return _completed;
+            return completed;
         }
 
         public IServerConnection Parent { get; }

@@ -55,6 +55,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// </summary>
         /// <param name="resourceIds"></param>
         /// <returns></returns>
-        Dictionary<string, IResource> Execute(IEnumerable<string> resourceIds);
+        IDictionary<string, IResource> Execute(IEnumerable<string> resourceIds);
     }
 }
