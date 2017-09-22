@@ -65,7 +65,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
-xcopy /s /y "$(USERPROFILE)\.nuget\packages\mapguide-api-base-x86\3.0.0.8701\mapguide-api-base\*.*" "$(TargetDir)"</PostBuildEvent>
+xcopy /s /y "$(MSBuildProjectDirectory)\..\Packages\mapguide-api-base-x86\3.0.0.8701\mapguide-api-base\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

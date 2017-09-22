@@ -676,7 +676,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /S /Y /I "$(USERPROFILE)\.nuget\packages\ironpython.stdlib\2.7.7\content\Lib" "$(SolutionDir)$(OutDir)Lib"</PostBuildEvent>
+    <PostBuildEvent>xcopy /S /Y /I "$(MSBuildProjectDirectory)\..\Packages\ironpython.stdlib\2.7.7\content\Lib" "$(SolutionDir)$(OutDir)Lib"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
