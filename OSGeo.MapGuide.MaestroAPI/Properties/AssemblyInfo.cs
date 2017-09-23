@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("OSGeo.MapGuide.MaestroAPI")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("The MapGuide Maestro API provides a unified interface for working with services provided by MapGuide Open Source /  Autodesk Infrastructure Map Server. Unlike the official MapGuide .net API, Maestro can work with many different versions of MapGuide with support for working with resources in a MapGuide Server in a fully object-oriented manner via the companion OSGeo.MapGuide.ObjectModels library.")]
 [assembly: AssemblyProduct("OSGeo.MapGuide.MaestroAPI")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
