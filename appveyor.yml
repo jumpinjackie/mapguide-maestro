@@ -62,7 +62,7 @@ after_build:
 
 test_script:
 - ps: >-
-    .\Packages\opencover\4.6.519\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:".\Packages\xunit.runner.console\2.2.0\tools\xunit.console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\%CONFIG%\%TARGETFX%\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModels.Tests\bin\%CONFIG%\%TARGETFX%\OSGeo.MapGuide.ObjectModels.Tests.dll -noshadow" -output:OpenCoverCoverage.xml -coverbytest:*.Tests.dll
+    .\Packages\opencover\4.6.519\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:".\Packages\xunit.runner.console\2.2.0\tools\xunit.console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\%CONFIG%\%TARGETFX%\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModels.Tests\bin\%CONFIG%\%TARGETFX%\OSGeo.MapGuide.ObjectModels.Tests.dll -noshadow -xml .\TestResults.xml" -output:OpenCoverCoverage.xml -coverbytest:*.Tests.dll
 
     $coveralls = (Resolve-Path "Packages/coveralls.net/0.412.0/tools/csmacnz.coveralls.exe").ToString()
 
