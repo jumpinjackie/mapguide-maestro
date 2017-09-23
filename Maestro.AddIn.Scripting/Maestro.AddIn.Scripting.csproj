@@ -643,10 +643,12 @@
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj">
       <Project>{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}</Project>
       <Name>ICSharpCode.Core</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.TextEditor\ICSharpCode.TextEditor.csproj">
       <Project>{2D18BE89-D210-49EB-A9DD-2246FBB3DF6D}</Project>
       <Name>ICSharpCode.TextEditor</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -676,7 +678,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /S /Y /I "$(MSBuildProjectDirectory)\..\Packages\ironpython.stdlib\2.7.7\content\Lib" "$(SolutionDir)$(OutDir)Lib"</PostBuildEvent>
+    <PostBuildEvent>xcopy /S /Y /I "$(MSBuildProjectDirectory)\..\Packages\ironpython.stdlib\2.7.7\content\Lib" "$(TargetDir)Lib"
+call "$(SolutionDir)addin_clean.bat" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

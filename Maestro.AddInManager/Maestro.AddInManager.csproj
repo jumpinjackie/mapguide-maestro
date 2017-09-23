@@ -100,10 +100,12 @@
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj">
       <Project>{857CA1A3-FC88-4BE0-AB6A-D1EE772AB288}</Project>
       <Name>ICSharpCode.Core.WinForms</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj">
       <Project>{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}</Project>
       <Name>ICSharpCode.Core</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -117,4 +119,7 @@
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call "$(SolutionDir)addin_clean.bat" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

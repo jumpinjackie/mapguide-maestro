@@ -637,8 +637,8 @@
     <PreBuildEvent>"$(ProjectDir)CS_Comp.exe" /b "$(ProjectDir)Dictionaries" "$(ProjectDir)Dictionaries"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>
-xcopy /s /y "$(MSBuildProjectDirectory)\..\Packages\mapguide-api-base-x86\3.0.0.8701\mapguide-api-base\*.*" "$(TargetDir)"
-xcopy /s /y "$(MSBuildProjectDirectory)\..\Packages\mg-desktop-x86\3.0.0.8701\mg-desktop\*.*" "$(TargetDir)"</PostBuildEvent>
+    <PostBuildEvent>xcopy /s /y "$(MSBuildProjectDirectory)\..\Packages\mapguide-api-base-x86\3.0.0.8701\mapguide-api-base\*.*" "$(TargetDir)"
+xcopy /s /y "$(MSBuildProjectDirectory)\..\Packages\mg-desktop-x86\3.0.0.8701\mg-desktop\*.*" "$(TargetDir)"
+call "$(SolutionDir)addin_clean.bat" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
 </Project>
