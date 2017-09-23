@@ -61,17 +61,16 @@ after_build:
   - dotnet pack Core.sln --configuration %CONFIGURATION% --output %APPVEYOR_BUILD_FOLDER%\artifacts --include-symbols /p:Version=6.0.0-pre%APPVEYOR_BUILD_NUMBER%"
 
 test_script:
-  - unittest.bat
-#- ps: >-
-#    .\Packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:"Packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\Release\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModel.Tests\bin\Release\OSGeo.MapGuide.ObjectModels.Tests.dll" -output:OpenCoverCoverage.xml
-#
-#    $coveralls = (Resolve-Path "Packages/coveralls.net.*/tools/csmacnz.coveralls.exe").ToString()
-#
-#    & $coveralls --opencover -i OpenCoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
-#
-#    $wc = New-Object 'System.Net.WebClient'
-#
-#    $wc.UploadFile("https://ci.appveyor.com/api/testresults/nunit3/$env:APPVEYOR_JOB_ID", (Resolve-Path .\TestResult.xml))
+  - ps: >-
+    .\Packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:"Packages\xunit.runner.console\2.2.0\tools\xunit.console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\%CONFIG%\%TARGETFX%\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModels.Tests\bin\%CONFIG%\%TARGETFX%\OSGeo.MapGuide.ObjectModels.Tests.dll -noshadow" -output:OpenCoverCoverage.xml -coverbytest:*.Tests.dll
+
+    $coveralls = (Resolve-Path "Packages/coveralls.net/0.412.0/tools/csmacnz.coveralls.exe").ToString()
+
+    & $coveralls --opencover -i OpenCoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
+
+    $wc = New-Object 'System.Net.WebClient'
+
+    $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$env:APPVEYOR_JOB_ID", (Resolve-Path .\TestResult.xml))
 
 artifacts:
   - path: .\artifacts\MapGuideMaestro-$(configuration)-$(ARTIFACT_RELEASE_LABEL)-Setup.exe
