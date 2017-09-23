@@ -238,7 +238,7 @@ namespace OSGeo.MapGuide.ObjectModels
                 }
                 else
                 {
-                    using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xmlContent)))
+                    using (var ms = MemoryStreamPool.GetStream("SetConfigurationContent", Encoding.UTF8.GetBytes(xmlContent))) //NOXLATE
                     {
                         conn.ResourceService.SetResourceData(fs.ResourceID, fs.ConfigurationDocument, ResourceDataType.Stream, ms);
                     }

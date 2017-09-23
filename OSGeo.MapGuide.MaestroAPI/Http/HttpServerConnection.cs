@@ -1063,7 +1063,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             mapname = mapname.Substring(0, mapname.LastIndexOf("."));
 #if DEBUG
             string s = m_reqBuilder.GetMapImageUrl(mapname, format, null, x, y, scale, dpi, width, height, clip, null, null, null, null);
-            return new MemoryStream(this.DownloadData(s));
+            //return new MemoryStream(this.DownloadData(s));
+            return MemoryStreamPool.GetStream("RenderRuntimeMap", this.DownloadData(s)); //NOXLATE
 #else
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x, y, scale, dpi, width, height, clip, null, null, null, null, ms);
@@ -1095,7 +1096,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             mapname = mapname.Substring(0, mapname.LastIndexOf("."));
 #if DEBUG
             string s = m_reqBuilder.GetMapImageUrl(mapname, format, null, x1, y1, x2, y2, dpi, width, height, clip, null, null, null, null);
-            return new MemoryStream(this.DownloadData(s));
+            //return new MemoryStream(this.DownloadData(s));
+            return MemoryStreamPool.GetStream("RenderRuntimeMap", this.DownloadData(s)); //NOXLATE
 #else
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x1, y1, x2, y2, dpi, width, height, clip, null, null, null, null, ms);

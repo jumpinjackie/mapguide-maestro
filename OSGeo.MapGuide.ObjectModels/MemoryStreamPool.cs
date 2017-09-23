@@ -36,5 +36,9 @@ namespace OSGeo.MapGuide.ObjectModels
         public static MemoryStream GetStream() => msManager.GetStream();
 
         public static MemoryStream GetStream(string tag) => msManager.GetStream(tag);
+
+        public static MemoryStream GetStream(string tag, byte[] buffer) => GetStream(tag, buffer, 0, buffer.Length);
+
+        public static MemoryStream GetStream(string tag, byte[] buffer, int offset, int length) => msManager.GetStream(tag, buffer, offset, length);
     }
 }

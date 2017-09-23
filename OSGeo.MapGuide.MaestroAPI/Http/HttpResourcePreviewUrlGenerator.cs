@@ -313,8 +313,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                     cleanCs.ToString());
             }
             string watermarkXml = string.Format(Strings.TextWatermark, message);
-            string resId = "Session:" + conn.SessionID + "//Debug.WatermarkDefinition";
-            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(watermarkXml)))
+            string resId = "Session:" + conn.SessionID + "//Debug.WatermarkDefinition"; //NOXLATE
+            using (var ms = MemoryStreamPool.GetStream("DebugWatermark", Encoding.UTF8.GetBytes(watermarkXml))) //NOXLATE
             {
                 conn.ResourceService.SetResourceXmlData(resId, ms);
             }
