@@ -4,7 +4,6 @@
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <DebugType>portable</DebugType>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>$(MSBuildProjectDirectory)\..\Properties\maestroapi.key</AssemblyOriginatorKeyFile>
     <PackageProjectUrl>https://github.com/jumpinjackie/mapguide-maestro</PackageProjectUrl>
@@ -13,8 +12,14 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
-  <!-- Turn off assembly signing for netstandard 2.0 -->
+  <!-- Use full pdb generation for net461 -->
+  <PropertyGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+  </PropertyGroup>
+  <!-- Use portable pdb generation and turn off assembly signing for netstandard 2.0 -->
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <DebugType>portable</DebugType>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
   </PropertyGroup>
