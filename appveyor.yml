@@ -76,6 +76,9 @@ test_script:
 artifacts:
   - path: .\artifacts\MapGuideMaestro-$(configuration)-$(ARTIFACT_RELEASE_LABEL)-Setup.exe
     name: installer_windows
+  - path: .\artifacts\*.nupkg
+    name: nuget_packages
+    type: NuGetPackage
 
 #  - path: .\artifacts\Maestro-SDK-$(ARTIFACT_RELEASE_LABEL).zip
 #    name: sdk
