@@ -23,10 +23,21 @@ using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI.Geometry
 {
+    /// <summary>
+    /// Defines a geometry instance
+    /// </summary>
     public interface IGeometryRef
     {
+        /// <summary>
+        /// Gets the well-known text representation of this geometry
+        /// </summary>
+        /// <returns></returns>
         string AsText();
 
+        /// <summary>
+        /// Gets the envelope of this geometry
+        /// </summary>
+        /// <returns></returns>
         IEnvelope GetEnvelope();
     }
 }

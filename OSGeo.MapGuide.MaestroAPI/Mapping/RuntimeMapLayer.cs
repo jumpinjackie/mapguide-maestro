@@ -34,6 +34,22 @@ using System.Diagnostics;
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
     /// <summary>
+    /// Defines the types of layers
+    /// </summary>
+    public static class RuntimeMapLayerType
+    {
+        /// <summary>
+        /// Base map (aka. Tiled)
+        /// </summary>
+        public const int BaseMap = 2;
+
+        /// <summary>
+        /// Dynamic
+        /// </summary>
+        public const int Dynamic = 1;
+    }
+
+    /// <summary>
     /// Describes a FDO property
     /// </summary>
     public class PropertyInfo
@@ -111,11 +127,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             public double MaxScale { get; }
         }
 
-        //From MgLayerType
-        public const int kBaseMap = 2;
-
-        public const int kDynamic = 1;
-
         private const double InfinityScale = double.MaxValue;
 
         /// <summary>
@@ -184,7 +195,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         protected internal RuntimeMapLayer(RuntimeMap parent)
         {
             _scaleRanges = new double[] { 0.0, InfinityScale };
-            _type = kDynamic;
+            _type = RuntimeMapLayerType.Dynamic;
             this.IdentityProperties = new PropertyInfo[0];
             _objectId = Guid.NewGuid().ToString();
             this.Parent = parent;
@@ -362,7 +373,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                if (this.Type == kBaseMap)
+                if (this.Type == RuntimeMapLayerType.BaseMap)
                     throw new InvalidOperationException(Strings.ErrorSettingVisibilityOfTiledLayer);
 
                 if (SetField(ref _visible, value, nameof(Visible)))

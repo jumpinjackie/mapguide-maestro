@@ -54,7 +54,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 
         public override double MetersPerUnitY => UDM_Y;
 
-        protected override double CalculateScale(IEnvelope bbox, Size size)
+        protected override double CalculateScale(Envelope bbox, Size size)
         {
             double picture_width_in_meters = (size.Width / DPI) / IPM;
             double picture_height_in_meters = (size.Height / DPI) / IPM;
@@ -68,7 +68,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             return Math.Max(width_scale, height_scale);
         }
 
-        protected override IEnvelope AdjustBoundingBox(IEnvelope bbox, double scale, Size size)
+        protected override Envelope AdjustBoundingBox(Envelope bbox, double scale, Size size)
         {
             double picture_width_in_meters = ((size.Width / DPI) / IPM) * scale;
             double picture_height_in_meters = ((size.Height / DPI) / IPM) * scale;

@@ -29,7 +29,7 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
-    public class XmlProperty
+    internal struct XmlProperty
     {
         public XmlProperty(string name, PropertyValueType pvtype)
         {
@@ -42,9 +42,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
         public PropertyValueType Type { get; }
     }
 
-    public class XmlRecord : RecordBase
+    internal class XmlRecord : RecordBase
     {
-        public XmlRecord(XmlProperty[] properties, FixedWKTReader wktReader, XmlNodeList propertyNodes, string nameElement, string valueElement)
+        internal XmlRecord(XmlProperty[] properties, FixedWKTReader wktReader, XmlNodeList propertyNodes, string nameElement, string valueElement)
         {
             for (int i = 0; i < properties.Length; i++)
             {

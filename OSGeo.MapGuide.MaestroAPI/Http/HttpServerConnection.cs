@@ -50,9 +50,61 @@ using System.Xml;
 namespace OSGeo.MapGuide.MaestroAPI
 {
     /// <summary>
+    /// HTTP connection provider properties
+    /// </summary>
+    public static class HttpServerConnectionProperties
+    {
+        /// <summary>
+        /// The user agent
+        /// </summary>
+        public const string PROP_USER_AGENT = "UserAgent"; //NOXLATE
+
+        /// <summary>
+        /// The base URL
+        /// </summary>
+        public const string PROP_BASE_URL = "BaseUrl"; //NOXLATE
+    }
+
+    /// <summary>
+    /// HTTP connection provider parameters
+    /// </summary>
+    public static class HttpServerConnectionParams
+    {
+        /// <summary>
+        /// URL
+        /// </summary>
+        public const string PARAM_URL = "Url"; //NOXLATE
+
+        /// <summary>
+        /// Session ID
+        /// </summary>
+        public const string PARAM_SESSION = "SessionId"; //NOXLATE
+
+        /// <summary>
+        /// Locale
+        /// </summary>
+        public const string PARAM_LOCALE = "Locale"; //NOXLATE
+
+        /// <summary>
+        /// Allow untested versions
+        /// </summary>
+        public const string PARAM_UNTESTED = "AllowUntestedVersion"; //NOXLATE
+
+        /// <summary>
+        /// Username
+        /// </summary>
+        public const string PARAM_USERNAME = "Username"; //NOXLATE
+
+        /// <summary>
+        /// Password
+        /// </summary>
+        public const string PARAM_PASSWORD = "Password"; //NOXLATE
+    }
+
+    /// <summary>
     /// Primary http based connection to the MapGuide Server
     /// </summary>
-    public class HttpServerConnection : MgServerConnectionBase,
+    internal class HttpServerConnection : MgServerConnectionBase,
                                         IServerConnection,
                                         IDisposable,
                                         IFeatureService,
@@ -88,7 +140,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             get
             {
                 var nvc = new NameValueCollection();
-                nvc[PARAM_URL] = this.BaseURL;
+                nvc[HttpServerConnectionParams.PARAM_URL] = this.BaseURL;
                 nvc[CommandLineArguments.Provider] = this.ProviderName;
                 nvc[CommandLineArguments.Session] = this.SessionID;
                 return nvc;
@@ -111,13 +163,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                 }
             }
         }
-
-        public const string PARAM_URL = "Url"; //NOXLATE
-        public const string PARAM_SESSION = "SessionId"; //NOXLATE
-        public const string PARAM_LOCALE = "Locale"; //NOXLATE
-        public const string PARAM_UNTESTED = "AllowUntestedVersion"; //NOXLATE
-        public const string PARAM_USERNAME = "Username"; //NOXLATE
-        public const string PARAM_PASSWORD = "Password"; //NOXLATE
 
         private ICredentials _cred;
 
@@ -196,30 +241,30 @@ namespace OSGeo.MapGuide.MaestroAPI
         internal HttpServerConnection(NameValueCollection initParams)
             : this()
         {
-            if (initParams[PARAM_URL] == null)
-                throw new ArgumentException("Missing required connection parameter: " + PARAM_URL);
+            if (initParams[HttpServerConnectionParams.PARAM_URL] == null)
+                throw new ArgumentException("Missing required connection parameter: " + HttpServerConnectionParams.PARAM_URL);
 
             string locale = null;
             bool allowUntestedVersion = true;
 
-            if (initParams[PARAM_LOCALE] != null)
-                locale = initParams[PARAM_LOCALE];
-            if (initParams[PARAM_UNTESTED] != null)
-                bool.TryParse(initParams[PARAM_UNTESTED], out allowUntestedVersion);
+            if (initParams[HttpServerConnectionParams.PARAM_LOCALE] != null)
+                locale = initParams[HttpServerConnectionParams.PARAM_LOCALE];
+            if (initParams[HttpServerConnectionParams.PARAM_UNTESTED] != null)
+                bool.TryParse(initParams[HttpServerConnectionParams.PARAM_UNTESTED], out allowUntestedVersion);
 
-            if (initParams[PARAM_SESSION] != null)
+            if (initParams[HttpServerConnectionParams.PARAM_SESSION] != null)
             {
-                string sessionid = initParams[PARAM_SESSION];
+                string sessionid = initParams[HttpServerConnectionParams.PARAM_SESSION];
 
-                InitConnection(new Uri(initParams[PARAM_URL]), sessionid, locale, allowUntestedVersion);
+                InitConnection(new Uri(initParams[HttpServerConnectionParams.PARAM_URL]), sessionid, locale, allowUntestedVersion);
             }
             else //Assuming username/password combination
             {
-                string pwd = initParams[PARAM_PASSWORD] ?? string.Empty;
-                if (initParams[PARAM_USERNAME] == null)
-                    throw new ArgumentException("Missing required connection parameter: " + PARAM_USERNAME);
+                string pwd = initParams[HttpServerConnectionParams.PARAM_PASSWORD] ?? string.Empty;
+                if (initParams[HttpServerConnectionParams.PARAM_USERNAME] == null)
+                    throw new ArgumentException("Missing required connection parameter: " + HttpServerConnectionParams.PARAM_USERNAME);
 
-                InitConnection(new Uri(initParams[PARAM_URL]), initParams[PARAM_USERNAME], pwd, locale, allowUntestedVersion);
+                InitConnection(new Uri(initParams[HttpServerConnectionParams.PARAM_URL]), initParams[HttpServerConnectionParams.PARAM_USERNAME], pwd, locale, allowUntestedVersion);
             }
         }
 
@@ -1436,6 +1481,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="layerdefinition">The layer the image should represent</param>
         /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
         /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="format"></param>
         /// <returns>The minature bitmap</returns>
         public override System.IO.Stream GetLegendImageStream(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
         {
@@ -1653,10 +1701,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             throw new UnsupportedServiceTypeException(st);
         }
 
-        public const string PROP_USER_AGENT = "UserAgent"; //NOXLATE
-        public const string PROP_BASE_URL = "BaseUrl"; //NOXLATE
+        static Lazy<string[]> _customPropNames = new Lazy<string[]>(() => new string[] { HttpServerConnectionProperties.PROP_USER_AGENT, HttpServerConnectionProperties.PROP_BASE_URL });
 
-        public override string[] GetCustomPropertyNames() => new string[] { PROP_USER_AGENT, PROP_BASE_URL };
+        public override string[] GetCustomPropertyNames() => _customPropNames.Value;
 
         /// <summary>
         /// Gets or sets the number of worker threads to spawn when initializing
@@ -1670,9 +1717,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public override Type GetCustomPropertyType(string name)
         {
-            if (name == PROP_USER_AGENT)
+            if (name == HttpServerConnectionProperties.PROP_USER_AGENT)
                 return typeof(string);
-            else if (name == PROP_BASE_URL)
+            else if (name == HttpServerConnectionProperties.PROP_BASE_URL)
                 return typeof(string);
             else
                 throw new CustomPropertyNotFoundException();
@@ -1680,7 +1727,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public override void SetCustomProperty(string name, object value)
         {
-            if (name == PROP_USER_AGENT)
+            if (name == HttpServerConnectionProperties.PROP_USER_AGENT)
                 this.UserAgent = value.ToString();
             else
                 throw new CustomPropertyNotFoundException();
@@ -1688,9 +1735,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public override object GetCustomProperty(string name)
         {
-            if (name == PROP_USER_AGENT)
+            if (name == HttpServerConnectionProperties.PROP_USER_AGENT)
                 return this.UserAgent;
-            else if (name == PROP_BASE_URL)
+            else if (name == HttpServerConnectionProperties.PROP_BASE_URL)
                 return this.BaseURL;
             else
                 throw new CustomPropertyNotFoundException();

@@ -20,9 +20,7 @@
 
 #endregion Disclaimer / License
 
-using GeoAPI.Geometries;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
-using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
@@ -297,7 +295,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Parses the given query string to a dictionary
         /// </summary>
-        /// <param name=""></param>
+        /// <param name="queryString"></param>
         /// <returns></returns>
         public static IDictionary<string, string> ParseQueryString(string queryString)
         {
@@ -620,11 +618,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             ms.Position = 0;
             return ms;
         }
-
-        /// <summary>
-        /// Returns a type used to define an unknown column type in a feature reader
-        /// </summary>
-        //public static Type UnmappedType => typeof(UnmappedDataType);
 
         /// <summary>
         /// This method tries to extract the html content of a WebException.

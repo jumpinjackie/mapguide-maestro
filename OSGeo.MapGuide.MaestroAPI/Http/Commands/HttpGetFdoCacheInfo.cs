@@ -24,7 +24,7 @@ using OSGeo.MapGuide.MaestroAPI.Commands;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http.Commands
 {
-    public class HttpGetFdoCacheInfo : IGetFdoCacheInfo
+    internal class HttpGetFdoCacheInfo : IGetFdoCacheInfo
     {
         private readonly HttpServerConnection _conn;
 

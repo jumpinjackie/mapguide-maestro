@@ -31,7 +31,7 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
-    public class XmlFeatureReader : XmlReaderBase, IFeatureReader
+    internal class XmlFeatureReader : XmlReaderBase, IFeatureReader
     {
         internal XmlFeatureReader(Stream stream)
             : base(stream)

@@ -327,9 +327,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                         foreach (var layer in group.BaseMapLayer)
                         {
                             var rtl = _mapSvc.CreateMapLayer(this, layer);
-                            rtl.Type = RuntimeMapLayer.kDynamic; //HACK: Setting Visible = true not allowed for kBaseMap
+                            rtl.Type = RuntimeMapLayerType.Dynamic; //HACK: Setting Visible = true not allowed for kBaseMap
                             rtl.Visible = true;
-                            rtl.Type = RuntimeMapLayer.kBaseMap;
+                            rtl.Type = RuntimeMapLayerType.BaseMap;
                             rtl.Group = group.Name;
                             this.Layers.Add(rtl);
                         }
@@ -1322,12 +1322,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             for (int i = 0; i < groups.Count; i++)
             {
                 var group = groups[i];
-                group.Type = RuntimeMapGroup.kNormal;
+                group.Type = RuntimeMapGroupType.Normal;
 
                 var layers = this.GetLayersOfGroup(group.Name);
                 for (int j = 0; j < layers.Length; j++)
                 {
-                    layers[j].Type = RuntimeMapLayer.kDynamic;
+                    layers[j].Type = RuntimeMapLayerType.Dynamic;
                 }
             }
         }
@@ -1622,7 +1622,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             for (int i = this.Groups.Count - 1; i >= 0; i--)
             {
                 //Deal with base groups later
-                if (this.Groups[i].Type == RuntimeMapGroup.kBaseMap)
+                if (this.Groups[i].Type == RuntimeMapGroupType.BaseMap)
                 {
                     baseGroups.Add(this.Groups[i]);
                     continue;
@@ -1643,7 +1643,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             for (int i = this.Layers.Count - 1; i >= 0; i--)
             {
                 //Deal with base layers later
-                if (this.Layers[i].Type == RuntimeMapLayer.kBaseMap)
+                if (this.Layers[i].Type == RuntimeMapLayerType.BaseMap)
                 {
                     baseLayers.Add(this.Layers[i]);
                     continue;

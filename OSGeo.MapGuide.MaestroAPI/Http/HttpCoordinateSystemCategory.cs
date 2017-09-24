@@ -24,7 +24,7 @@ using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
-    public class HttpCoordinateSystemCategory : CoordinateSystemCategory
+    internal class HttpCoordinateSystemCategory : CoordinateSystemCategory
     {
         public HttpCoordinateSystemCategory(ICoordinateSystemCatalog parent, string name)
             : base(parent, name)

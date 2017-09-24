@@ -402,6 +402,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="boundary">The request boundary string</param>
         /// <param name="responseStream">The stream to write to</param>
         /// <param name="dataStream">The stream to read from. When using non-file parameters, use UTF8 encoding</param>
+        /// <param name="callback"></param>
         private void AppendFormContent(string name, string filename, string boundary, System.IO.Stream responseStream, System.IO.Stream dataStream, Utility.StreamCopyProgressDelegate callback)
         {
             string contenttype;

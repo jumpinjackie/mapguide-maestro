@@ -25,7 +25,7 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
-    public class HttpCoordinateSystemCatalog : CoordinateSystemCatalog
+    internal class HttpCoordinateSystemCatalog : CoordinateSystemCatalog
     {
         private HttpServerConnection m_con;
         private RequestBuilder m_req;

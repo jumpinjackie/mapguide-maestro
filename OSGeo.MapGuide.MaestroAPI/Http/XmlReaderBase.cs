@@ -31,9 +31,7 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
-    public delegate IRecord RecordFactoryMethod();
-
-    public abstract class XmlReaderBase : ReaderBase
+    internal abstract class XmlReaderBase : ReaderBase
     {
         protected FixedWKTReader _wktReader;
         protected XmlTextReader _reader;

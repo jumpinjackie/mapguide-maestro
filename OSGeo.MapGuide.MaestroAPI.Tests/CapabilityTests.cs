@@ -21,7 +21,6 @@
 #endregion Disclaimer / License
 using Moq;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using OSGeo.MapGuide.MaestroAPI.Mapping.Tests;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
 using System;
@@ -34,7 +33,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
     {
         static IConnectionCapabilities CreateHttpCapabilities(IServerConnection conn)
         {
-            var type = typeof(HttpServerConnection).Assembly.GetTypes().FirstOrDefault(t => t.Name == "HttpCapabilities");
+            var type = typeof(IServerConnection).Assembly.GetTypes().FirstOrDefault(t => t.Name == "HttpCapabilities");
             var ctor = type.GetInternalConstructor(new[] { typeof(IServerConnection) });
             return ctor.Invoke(new[] { conn }) as IConnectionCapabilities;
         }

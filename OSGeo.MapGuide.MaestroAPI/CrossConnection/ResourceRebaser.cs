@@ -21,7 +21,6 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.ObjectModels;
-using System.IO;
 using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.CrossConnection

@@ -20,7 +20,6 @@
 
 #endregion Disclaimer / License
 
-using GeoAPI.Geometries;
 using OSGeo.MapGuide.MaestroAPI.Geometry;
 using System;
 

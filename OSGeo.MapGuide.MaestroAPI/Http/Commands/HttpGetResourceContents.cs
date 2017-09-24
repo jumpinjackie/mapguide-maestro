@@ -27,12 +27,11 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http.Commands
 {
-    public class HttpGetResourceContents : IGetResourceContents
+    internal class HttpGetResourceContents : IGetResourceContents
     {
         readonly IResourceService _resSvc;
 

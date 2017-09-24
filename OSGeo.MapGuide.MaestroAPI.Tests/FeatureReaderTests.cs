@@ -22,29 +22,28 @@
 using Moq;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Geometry;
-using OSGeo.MapGuide.MaestroAPI.Http;
-using OSGeo.MapGuide.MaestroAPI.Mapping.Tests;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
 using System.IO;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
     public class FeatureReaderTests
     {
-        static XmlFeatureReader CreateXmlFeatureReader(Stream stream)
+        static IFeatureReader CreateXmlFeatureReader(Stream stream)
         {
-            var ctor = typeof(XmlFeatureReader).GetInternalConstructor(new[] { typeof(Stream) });
-            return ctor.Invoke(new[] { stream }) as XmlFeatureReader;
+            var xrType = typeof(IFeatureReader).Assembly.GetTypes().FirstOrDefault(t => t.Name == "XmlFeatureReader");
+            var ctor = xrType.GetInternalConstructor(new[] { typeof(Stream) });
+            return ctor.Invoke(new[] { stream }) as IFeatureReader;
         }
 
-        static XmlDataReader CreateXmlDataReader(Stream stream)
+        static IReader CreateXmlDataReader(Stream stream)
         {
-            var ctor = typeof(XmlDataReader).GetInternalConstructor(new[] { typeof(Stream) });
-            return ctor.Invoke(new[] { stream }) as XmlDataReader;
+            var xrType = typeof(IFeatureReader).Assembly.GetTypes().FirstOrDefault(t => t.Name == "XmlDataReader");
+            var ctor = xrType.GetInternalConstructor(new[] { typeof(Stream) });
+            return ctor.Invoke(new[] { stream }) as IReader;
         }
 
         [Fact]

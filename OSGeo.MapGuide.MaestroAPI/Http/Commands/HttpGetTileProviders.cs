@@ -23,7 +23,7 @@ using OSGeo.MapGuide.MaestroAPI.Commands;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http.Commands
 {
-    public class HttpGetTileProviders : IGetTileProviders
+    internal class HttpGetTileProviders : IGetTileProviders
     {
         private readonly HttpServerConnection _conn;
 

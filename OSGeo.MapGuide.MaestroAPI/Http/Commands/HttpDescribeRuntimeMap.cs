@@ -25,7 +25,7 @@ using OSGeo.MapGuide.ObjectModels.RuntimeMap;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http.Commands
 {
-    public class HttpDescribeRuntimeMap : IDescribeRuntimeMap
+    internal class HttpDescribeRuntimeMap : IDescribeRuntimeMap
     {
         private readonly HttpServerConnection _conn;
 

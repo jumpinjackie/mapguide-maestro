@@ -20,7 +20,6 @@
 
 #endregion Disclaimer / License
 
-using GeoAPI.Geometries;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
@@ -46,13 +45,22 @@ using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
+    /// <summary>
+    /// Describes stats of cached objects in a connection
+    /// </summary>
     public struct ConnectionCacheStats
     {
+        /// <summary>
+        /// The number of cached instances
+        /// </summary>
         public int FeatureSources { get; }
 
+        /// <summary>
+        /// The number of cached class definitions
+        /// </summary>
         public int ClassDefinitions { get; }
 
-        public ConnectionCacheStats(int featureSources, int classDefs)
+        internal ConnectionCacheStats(int featureSources, int classDefs)
         {
             this.FeatureSources = featureSources;
             this.ClassDefinitions = classDefs;
@@ -1613,6 +1621,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal int CachedClassDefinitions => m_classDefinitionCache.Count;
 
+        /// <summary>
+        /// Gets the cache stats for the current connection
+        /// </summary>
         public ConnectionCacheStats CacheStats => new ConnectionCacheStats(CachedFeatureSources, CachedClassDefinitions);
 
         /// <summary>
@@ -2016,7 +2027,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             rtLayer.Selectable = source.Selectable;
             rtLayer.ShowInLegend = source.ShowInLegend;
             rtLayer.Visible = true;
-            rtLayer.Type = RuntimeMapLayer.kBaseMap;
+            rtLayer.Type = RuntimeMapLayerType.BaseMap;
 
             return rtLayer;
         }

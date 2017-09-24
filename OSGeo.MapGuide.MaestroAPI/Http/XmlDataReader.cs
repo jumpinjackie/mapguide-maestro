@@ -26,7 +26,7 @@ using System.Net;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
-    public class XmlDataReader : XmlReaderBase
+    internal class XmlDataReader : XmlReaderBase
     {
         internal XmlDataReader(Stream stream)
             : base(stream)

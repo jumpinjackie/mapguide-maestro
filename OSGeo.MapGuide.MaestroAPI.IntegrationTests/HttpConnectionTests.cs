@@ -179,8 +179,8 @@ namespace MaestroAPITests
         public override IServerConnection CreateFromExistingSession(IServerConnection orig)
         {
             return ConnectionProviderRegistry.CreateConnection("Maestro.Http",
-                HttpServerConnection.PARAM_URL, orig.GetCustomProperty(HttpServerConnection.PROP_BASE_URL).ToString(),
-                HttpServerConnection.PARAM_SESSION, orig.SessionID);
+                HttpServerConnectionParams.PARAM_URL, orig.GetCustomProperty(HttpServerConnectionProperties.PROP_BASE_URL).ToString(),
+                HttpServerConnectionParams.PARAM_SESSION, orig.SessionID);
         }
 
         [SkippableFact]
@@ -225,39 +225,41 @@ namespace MaestroAPITests
 
             Assert.NotNull(props);
             Assert.Equal(props.Length, 2);
-            Assert.True(Array.IndexOf<string>(props, HttpServerConnection.PROP_USER_AGENT) >= 0);
-            Assert.True(Array.IndexOf<string>(props, HttpServerConnection.PROP_BASE_URL) >= 0);
+            Assert.True(Array.IndexOf<string>(props, HttpServerConnectionProperties.PROP_USER_AGENT) >= 0);
+            Assert.True(Array.IndexOf<string>(props, HttpServerConnectionProperties.PROP_BASE_URL) >= 0);
 
             //It is of type string
-            var type = isvc.GetCustomPropertyType(HttpServerConnection.PROP_USER_AGENT);
+            var type = isvc.GetCustomPropertyType(HttpServerConnectionProperties.PROP_USER_AGENT);
             Assert.Equal(type, typeof(string));
-            type = isvc.GetCustomPropertyType(HttpServerConnection.PROP_BASE_URL);
+            type = isvc.GetCustomPropertyType(HttpServerConnectionProperties.PROP_BASE_URL);
             Assert.Equal(type, typeof(string));
 
             //We can set and get it
-            isvc.SetCustomProperty(HttpServerConnection.PROP_USER_AGENT, "MapGuide Maestro API Unit Test Fixture");
-            var agent = (string)isvc.GetCustomProperty(HttpServerConnection.PROP_USER_AGENT);
+            isvc.SetCustomProperty(HttpServerConnectionProperties.PROP_USER_AGENT, "MapGuide Maestro API Unit Test Fixture");
+            var agent = (string)isvc.GetCustomProperty(HttpServerConnectionProperties.PROP_USER_AGENT);
             Assert.Equal(agent, "MapGuide Maestro API Unit Test Fixture");
 
             //BaseUrl is read-only
             try
             {
-                isvc.SetCustomProperty(HttpServerConnection.PROP_BASE_URL, "http://mylocalhost/mapguide");
+                isvc.SetCustomProperty(HttpServerConnectionProperties.PROP_BASE_URL, "http://mylocalhost/mapguide");
                 Assert.True(false, "Should've thrown exception");
             }
             catch { }
         }
 
-        static HttpServerConnection CreateHttpConnection(string uri, string locale, Version ver = null)
+        static IServerConnection CreateHttpConnection(string uri, string locale, Version ver = null)
         {
-            var asm = typeof(HttpServerConnection).Assembly;
+            var asm = typeof(IServerConnection).Assembly;
             var reqBuilderType = asm.GetTypes().FirstOrDefault(t => t.Name == "RequestBuilder");
 
             var reqBuilderCtor = reqBuilderType.GetInternalConstructor(new[] { typeof(Uri), typeof(string) });
             var reqBuilder = reqBuilderCtor.Invoke(new object[] { new Uri(uri), locale });
 
-            var httpConnCtor = typeof(HttpServerConnection).GetInternalConstructor(new[] { reqBuilderType });
-            var conn = httpConnCtor.Invoke(new[] { reqBuilder }) as HttpServerConnection;
+            var httpConnType = asm.GetTypes().FirstOrDefault(t => t.Name == "HttpServerConnection");
+
+            var httpConnCtor = httpConnType.GetInternalConstructor(new[] { reqBuilderType });
+            var conn = httpConnCtor.Invoke(new[] { reqBuilder }) as IServerConnection;
             
             if (ver != null)
             {
