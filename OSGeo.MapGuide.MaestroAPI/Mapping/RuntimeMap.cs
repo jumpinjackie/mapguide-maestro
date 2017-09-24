@@ -327,9 +327,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                         foreach (var layer in group.BaseMapLayer)
                         {
                             var rtl = _mapSvc.CreateMapLayer(this, layer);
-                            rtl.Type = RuntimeMapLayer.kDynamic; //HACK: Setting Visible = true not allowed for kBaseMap
+                            rtl.Type = RuntimeMapLayerType.Dynamic; //HACK: Setting Visible = true not allowed for kBaseMap
                             rtl.Visible = true;
-                            rtl.Type = RuntimeMapLayer.kBaseMap;
+                            rtl.Type = RuntimeMapLayerType.BaseMap;
                             rtl.Group = group.Name;
                             this.Layers.Add(rtl);
                         }
@@ -1253,6 +1253,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         internal const string RUNTIMEMAP_SELECTION_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Selection></Selection>"; //NOXLATE
 
+        static Lazy<byte[]> RUNTIMEMAP_XML_BYTES = new Lazy<byte[]>(() => System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_XML));
+
+        static Lazy<byte[]> RUNTIMEMAP_SELECTION_XML_BYTES = new Lazy<byte[]>(() => System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_SELECTION_XML));
+
         private void Save(string resourceID)
         {
             Check.ArgumentNotNull(resourceID, nameof(resourceID));
@@ -1261,48 +1265,50 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             var map = this;
 
             string selectionID = resourceID.Substring(0, resourceID.LastIndexOf(".")) + ".Selection"; //NOXLATE
-            this.ResourceService.SetResourceXmlData(resourceID, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_XML)));
-            this.ResourceService.SetResourceXmlData(selectionID, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_SELECTION_XML)));
+            this.ResourceService.SetResourceXmlData(resourceID, new System.IO.MemoryStream(RUNTIMEMAP_XML_BYTES.Value));
+            this.ResourceService.SetResourceXmlData(selectionID, new System.IO.MemoryStream(RUNTIMEMAP_SELECTION_XML_BYTES.Value));
 
             ResourceIdentifier.Validate(resourceID, ResourceTypes.Map);
             if (!resourceID.StartsWith("Session:" + this.SessionId + "//") || !resourceID.EndsWith(".Map")) //NOXLATE
                 throw new Exception(Strings.ErrorRuntimeMapNotInSessionRepo);
 
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            System.IO.MemoryStream ms2 = null;
-
-            //Apparently the name is used to reconstruct the resourceId rather than pass it around
-            //inside the map server
-            string r = map.Name;
-            string t = map.ResourceID;
-
-            string mapname = resourceID.Substring(resourceID.IndexOf("//") + 2); //NOXLATE
-            mapname = mapname.Substring(0, mapname.LastIndexOf(".")); //NOXLATE
-            map.Name = mapname;
-            map.ResourceID = resourceID;
-
-            try
+            using (var ms = MemoryStreamPool.GetStream())
             {
-                map.Serialize(new MgBinarySerializer(ms, this.SiteVersion));
-                if (this.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
+                System.IO.MemoryStream ms2 = null;
+
+                //Apparently the name is used to reconstruct the resourceId rather than pass it around
+                //inside the map server
+                string r = map.Name;
+                string t = map.ResourceID;
+
+                string mapname = resourceID.Substring(resourceID.IndexOf("//") + 2); //NOXLATE
+                mapname = mapname.Substring(0, mapname.LastIndexOf(".")); //NOXLATE
+                map.Name = mapname;
+                map.ResourceID = resourceID;
+
+                try
                 {
-                    ms2 = new System.IO.MemoryStream();
-                    map.SerializeLayerData(new MgBinarySerializer(ms2, this.SiteVersion));
+                    map.Serialize(new MgBinarySerializer(ms, this.SiteVersion));
+                    if (this.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
+                    {
+                        ms2 = new System.IO.MemoryStream();
+                        map.SerializeLayerData(new MgBinarySerializer(ms2, this.SiteVersion));
+                    }
+
+                    this.ResourceService.SetResourceData(resourceID, "RuntimeData", ResourceDataType.Stream, ms); //NOXLATE
+                    if (ms2 != null)
+                        this.ResourceService.SetResourceData(resourceID, "LayerGroupData", ResourceDataType.Stream, ms2); //NOXLATE
+
+                    SaveSelectionXml(resourceID);
+                    //Our changes have been persisted. Wipe our change list
+                    ClearChanges();
+                    this.IsDirty = false;
                 }
-
-                this.ResourceService.SetResourceData(resourceID, "RuntimeData", ResourceDataType.Stream, ms); //NOXLATE
-                if (ms2 != null)
-                    this.ResourceService.SetResourceData(resourceID, "LayerGroupData", ResourceDataType.Stream, ms2); //NOXLATE
-
-                SaveSelectionXml(resourceID);
-                //Our changes have been persisted. Wipe our change list
-                ClearChanges();
-                this.IsDirty = false;
-            }
-            finally
-            {
-                map.Name = r;
-                map.ResourceID = t;
+                finally
+                {
+                    map.Name = r;
+                    map.ResourceID = t;
+                }
             }
         }
 
@@ -1316,12 +1322,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             for (int i = 0; i < groups.Count; i++)
             {
                 var group = groups[i];
-                group.Type = RuntimeMapGroup.kNormal;
+                group.Type = RuntimeMapGroupType.Normal;
 
                 var layers = this.GetLayersOfGroup(group.Name);
                 for (int j = 0; j < layers.Length; j++)
                 {
-                    layers[j].Type = RuntimeMapLayer.kDynamic;
+                    layers[j].Type = RuntimeMapLayerType.Dynamic;
                 }
             }
         }
@@ -1342,11 +1348,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             ResourceIdentifier.Validate(resourceID, ResourceTypes.Map);
             string selectionID = resourceID.Substring(0, resourceID.LastIndexOf(".")) + ".Selection"; //NOXLATE
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            MgBinarySerializer serializer = new MgBinarySerializer(ms, this.SiteVersion);
-            this.Selection.Serialize(serializer);
-            ms.Position = 0;
-            this.ResourceService.SetResourceData(selectionID, "RuntimeData", ResourceDataType.Stream, ms); //NOXLATE
+            using (var ms = MemoryStreamPool.GetStream())
+            {
+                MgBinarySerializer serializer = new MgBinarySerializer(ms, this.SiteVersion);
+                this.Selection.Serialize(serializer);
+                ms.Position = 0;
+                this.ResourceService.SetResourceData(selectionID, "RuntimeData", ResourceDataType.Stream, ms); //NOXLATE
+            }
         }
 
         #region change tracking
@@ -1578,12 +1586,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="geomType"></param>
         /// <param name="themeCategory"></param>
         /// <returns></returns>
-        public Image GetLegendImage(string layerDefinitionID, double scale, int width, int height, string format, int geomType, int themeCategory)
+        public System.IO.Stream GetLegendImageStream(string layerDefinitionID, double scale, int width, int height, string format, int geomType, int themeCategory)
         {
             if (_mapSvc == null)
                 throw new NotSupportedException();
 
-            return _mapSvc.GetLegendImage(scale, layerDefinitionID, themeCategory, geomType, width, height, format);
+            return _mapSvc.GetLegendImageStream(scale, layerDefinitionID, themeCategory, geomType, width, height, format);
         }
 
         #endregion convenience methods
@@ -1614,7 +1622,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             for (int i = this.Groups.Count - 1; i >= 0; i--)
             {
                 //Deal with base groups later
-                if (this.Groups[i].Type == RuntimeMapGroup.kBaseMap)
+                if (this.Groups[i].Type == RuntimeMapGroupType.BaseMap)
                 {
                     baseGroups.Add(this.Groups[i]);
                     continue;
@@ -1635,7 +1643,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             for (int i = this.Layers.Count - 1; i >= 0; i--)
             {
                 //Deal with base layers later
-                if (this.Layers[i].Type == RuntimeMapLayer.kBaseMap)
+                if (this.Layers[i].Type == RuntimeMapLayerType.BaseMap)
                 {
                     baseLayers.Add(this.Layers[i]);
                     continue;

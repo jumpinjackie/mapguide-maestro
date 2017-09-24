@@ -2895,7 +2895,7 @@ namespace Maestro.MapViewer
                         var groups = _map.Groups;
                         for (int i = 0; i < groups.Count; i++)
                         {
-                            if (groups[i].Type == RuntimeMapGroup.kBaseMap)
+                            if (groups[i].Type == RuntimeMapGroupType.BaseMap)
                             {
                                 _hasTiledLayers = true;
                                 break;

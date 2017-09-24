@@ -23,7 +23,6 @@
 using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
 using OSGeo.MapGuide.ObjectModels;
 using System.Collections.Generic;
-using System.IO;
 
 namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
 {
@@ -158,7 +157,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                         {
                             if (!stream.CanSeek)
                             {
-                                using (var ms = new MemoryStream())
+                                using (var ms = MemoryStreamPool.GetStream())
                                 {
                                     Utility.CopyStream(stream, ms, false);
                                     ms.Position = 0L;
@@ -244,7 +243,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                         {
                             if (!stream.CanSeek)
                             {
-                                using (var ms = new MemoryStream())
+                                using (var ms = MemoryStreamPool.GetStream())
                                 {
                                     Utility.CopyStream(stream, ms, false);
                                     ms.Position = 0L;
@@ -327,7 +326,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                         {
                             if (!stream.CanSeek)
                             {
-                                using (var ms = new MemoryStream())
+                                using (var ms = MemoryStreamPool.GetStream())
                                 {
                                     Utility.CopyStream(stream, ms, false);
                                     ms.Position = 0L;
@@ -407,7 +406,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                     {
                         if (!stream.CanSeek)
                         {
-                            using (var ms = new MemoryStream())
+                            using (var ms = MemoryStreamPool.GetStream())
                             {
                                 Utility.CopyStream(stream, ms, false);
                                 ms.Position = 0L;
@@ -454,7 +453,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                                 {
                                     if (!stream.CanSeek)
                                     {
-                                        using (var ms = new MemoryStream())
+                                        using (var ms = MemoryStreamPool.GetStream())
                                         {
                                             Utility.CopyStream(stream, ms, false);
                                             ms.Position = 0L;

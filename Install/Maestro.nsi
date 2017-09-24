@@ -74,7 +74,7 @@ LicenseData "LGPL21.rtf"
 #	!define INST_PRODUCT_NAME "${INST_PRODUCT_QUALIFIED} ${RELEASE_VERSION}"
 !endif
 
-!define PROJECT_URL "http://trac.osgeo.org/mapguide/wiki/maestro"
+!define PROJECT_URL "https://github.com/jumpinjackie/mapguide-maestro"
 !define INST_SRC "."
 !define INST_LICENSE "..\Maestro\license.txt"
 #!define INST_OUTPUT "MapGuideMaestro-${SLN_CONFIG}-${RELEASE_VERSION}-${CPU}-Setup.exe"
@@ -189,87 +189,21 @@ Section
     # docs
     #File "${INST_OUTPUT_MAESTRO}\${HELP_USER}"
     #File "${INST_OUTPUT_MAESTRO}\${HELP_API}"
-    File "${INST_OUTPUT_MAESTRO}\changelog.txt"
-    File "${INST_OUTPUT_MAESTRO}\license.txt"
+    File "${INST_OUTPUT_MAESTRO}\*.txt"
     
     # data/config files
-    File "${INST_OUTPUT_MAESTRO}\LocalConfigure.exe.config"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.exe.config"
-    File "${INST_OUTPUT_MAESTRO}\MaestroFsPreview.exe.config"
-    File "${INST_OUTPUT_MAESTRO}\MgCooker.exe.config"
-    File "${INST_OUTPUT_MAESTRO}\MgCookerCmd.exe.config"
-    File "${INST_OUTPUT_MAESTRO}\RtMapInspector.exe.config"
-    File "${INST_OUTPUT_MAESTRO}\ConnectionProviders.xml"
-    File "${INST_OUTPUT_MAESTRO}\FsEditorMap.xml"
-    File "${INST_OUTPUT_MAESTRO}\OdbcDriverMap.xml"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Base.xml"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Editors.xml"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Login.xml"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.MapViewer.xml"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Packaging.xml"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Shared.UI.xml"
-    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.xml"
-    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.xml"
+    File "${INST_OUTPUT_MAESTRO}\*.config"
+    File "${INST_OUTPUT_MAESTRO}\*.xml"
     
     # libraries
-    File "${INST_OUTPUT_MAESTRO}\Aga.Controls.dll"
-    File "${INST_OUTPUT_MAESTRO}\GeoAPI.dll"
-    File "${INST_OUTPUT_MAESTRO}\ICSharpCode.Core.dll"
-    File "${INST_OUTPUT_MAESTRO}\ICSharpCode.Core.WinForms.dll"
-    File "${INST_OUTPUT_MAESTRO}\ICSharpCode.SharpZipLib.dll"
-    File "${INST_OUTPUT_MAESTRO}\ICSharpCode.TextEditor.dll"
-    File "${INST_OUTPUT_MAESTRO}\IronPython.dll"
-    File "${INST_OUTPUT_MAESTRO}\IronPython.Modules.dll"
-    File "${INST_OUTPUT_MAESTRO}\Irony.dll"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Base.dll"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Editors.dll"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Login.dll"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.MapViewer.dll"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Packaging.dll"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Shared.UI.dll"
-    File "${INST_OUTPUT_MAESTRO}\Microsoft.Dynamic.dll"
-    File "${INST_OUTPUT_MAESTRO}\Microsoft.Scripting.dll"
-    File "${INST_OUTPUT_MAESTRO}\Microsoft.Scripting.Metadata.dll"
-    File "${INST_OUTPUT_MAESTRO}\NetTopologySuite.dll"
-    File "${INST_OUTPUT_MAESTRO}\OSGeo.FDO.Expressions.dll"
-    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.dll"
-    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.dll"
-    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.Http.dll"
-    File "${INST_OUTPUT_MAESTRO}\PowerCollections.dll"
-    File "${INST_OUTPUT_MAESTRO}\ProjNet.dll"
-    File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.dll"
-    File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.ThemeVS2003.dll"
-    File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.ThemeVS2012.dll"
-    File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.ThemeVS2013.dll"
-    File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll"
+    File "${INST_OUTPUT_MAESTRO}\*.dll"
     
     # pdbs for greater context in exception stack traces
     #File "${INST_OUTPUT_MAESTRO}\Aga.Controls.pdb"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.pdb"
-    File "${INST_OUTPUT_MAESTRO}\MaestroFsPreview.pdb"
-    File "${INST_OUTPUT_MAESTRO}\MgCooker.pdb"
-    File "${INST_OUTPUT_MAESTRO}\MgCookerCmd.pdb"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Base.pdb"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Editors.pdb"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.LiveMapEditor.pdb"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Login.pdb"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.MapViewer.pdb"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Packaging.pdb"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.Shared.UI.pdb"
-    File "${INST_OUTPUT_MAESTRO}\OSGeo.FDO.Expressions.pdb"
-    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.pdb"
-    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.pdb"
-    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.Http.pdb"
-    File "${INST_OUTPUT_MAESTRO}\RtMapInspector.pdb"
+    File "${INST_OUTPUT_MAESTRO}\*.pdb"
 
     # main executables
-    File "${INST_OUTPUT_MAESTRO}\${EXE_MAESTRO}"
-    File "${INST_OUTPUT_MAESTRO}\LocalConfigure.exe"
-    File "${INST_OUTPUT_MAESTRO}\MgCooker.exe"
-    File "${INST_OUTPUT_MAESTRO}\MgCookerCmd.exe"
-    File "${INST_OUTPUT_MAESTRO}\Maestro.LiveMapEditor.exe"
-    File "${INST_OUTPUT_MAESTRO}\MaestroFsPreview.exe"
-    File "${INST_OUTPUT_MAESTRO}\RtMapInspector.exe"
+    File "${INST_OUTPUT_MAESTRO}\*.exe"
 
     # create uninstaller
     WriteUninstaller "$INSTDIR\uninstall.exe"
@@ -342,7 +276,7 @@ Function .onInit
     !endif
     
     !insertmacro MUI_LANGDLL_DISPLAY
-    !insertmacro CheckNetFramework 45
+    !insertmacro CheckNetFramework 461
 FunctionEnd
 
 Function LaunchLink

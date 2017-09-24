@@ -287,7 +287,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             {
                 if (!string.IsNullOrEmpty(bgcolor.InnerText))
                 {
-                    this.BackgroundColor = bgcolor.InnerText.StartsWith("0x") ? ColorTranslator.FromHtml("#" + bgcolor.InnerText.Substring(2)) : ColorTranslator.FromHtml("#" + bgcolor.InnerText);
+                    this.BackgroundColor = bgcolor.InnerText.StartsWith("0x") ? Utility.ParseHTMLColor(bgcolor.InnerText.Substring(2)) : Utility.ParseHTMLColor(bgcolor.InnerText);
                 }
                 else
                 {

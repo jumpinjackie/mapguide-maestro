@@ -1208,9 +1208,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new MgReadOnlyStream(fetch);
         }
 
-        public System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type) => GetLegendImage(scale, layerdefinition, themeIndex, type, 16, 16, "PNG");
+        public System.IO.Stream GetLegendImageStream(double scale, string layerdefinition, int themeIndex, int type) => GetLegendImageStream(scale, layerdefinition, themeIndex, type, 16, 16, "PNG");
 
-        public System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
+        public System.IO.Stream GetLegendImageStream(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
         {
             var mappingSvc = GetMappingService();
             GetByteReaderMethod fetch = () =>
@@ -1218,7 +1218,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 MgResourceIdentifier resId = new MgResourceIdentifier(layerdefinition);
                 return mappingSvc.GenerateLegendImage(resId, scale, width, height, format, type, themeIndex);
             };
-            return new System.Drawing.Bitmap(new MgReadOnlyStream(fetch));
+            return new MgReadOnlyStream(fetch);
         }
 
         public string QueryMapFeatures(RuntimeMap rtMap, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)

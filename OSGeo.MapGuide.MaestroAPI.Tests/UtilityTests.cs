@@ -19,20 +19,16 @@
 //
 
 #endregion Disclaimer / License
-using NUnit.Framework;
+
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
-    [TestFixture]
     public class UtilityTests
     {
-        [Test]
+        [Fact]
         public void Utility_IsZero()
         {
             Assert.True(Utility.IsZero(0.0));
@@ -43,28 +39,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.False(Utility.IsZero(-0.1f));
         }
 
-        [Test]
+        [Fact]
         public void Utility_MakeWktPolygon()
         {
             var wkt = Utility.MakeWktPolygon(1, 2, 3, 4);
-            Assert.AreEqual("POLYGON((1 2, 3 2, 3 4, 1 4, 1 2))", wkt);
+            Assert.Equal("POLYGON((1 2, 3 2, 3 4, 1 4, 1 2))", wkt);
         }
 
-        [Test]
+        [Fact]
         public void Utility_MakeWktCircle()
         {
             var wkt = Utility.MakeWktCircle(1, 2, 3);
-            Assert.AreEqual("CURVEPOLYGON ((-2 2 (CIRCULARARCSEGMENT (1 -1, 4 2), CIRCULARARCSEGMENT (1 5, -2 2))))", wkt);
+            Assert.Equal("CURVEPOLYGON ((-2 2 (CIRCULARARCSEGMENT (1 -1, 4 2), CIRCULARARCSEGMENT (1 5, -2 2))))", wkt);
         }
 
-        [Test]
+        [Fact]
         public void Utility_IsDbXmlError()
         {
             Assert.True(Utility.IsDbXmlError(new Exception("MgDbXmlException")));
             Assert.True(Utility.IsDbXmlError(new Exception("MgXmlParserException")));
         }
 
-        [Test]
+        [Fact]
         public void Utility_HasOriginalXml()
         {
             var ex = new Exception("MgDbXmlException");
@@ -76,24 +72,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.False(Utility.HasOriginalXml(ex2));
         }
 
-        [Test]
+        [Fact]
         public void Utility_ToConnectionString()
         {
             var nvc = new NameValueCollection();
             nvc["Foo"] = "Bar";
             nvc["Baz"] = "Snafu";
-            Assert.AreEqual("Foo=Bar;Baz=Snafu", Utility.ToConnectionString(nvc));
+            Assert.Equal("Foo=Bar;Baz=Snafu", Utility.ToConnectionString(nvc));
         }
 
-        [Test]
+        [Fact]
         public void Utility_StripVersionFromProviderName()
         {
-            Assert.AreEqual("OSGeo.SDF", Utility.StripVersionFromProviderName("OSGeo.SDF.4.0"));
-            Assert.AreEqual("OSGeo.SDF", Utility.StripVersionFromProviderName("OSGeo.SDF.4"));
-            Assert.AreEqual("OSGeo.SDF", Utility.StripVersionFromProviderName("OSGeo.SDF"));
+            Assert.Equal("OSGeo.SDF", Utility.StripVersionFromProviderName("OSGeo.SDF.4.0"));
+            Assert.Equal("OSGeo.SDF", Utility.StripVersionFromProviderName("OSGeo.SDF.4"));
+            Assert.Equal("OSGeo.SDF", Utility.StripVersionFromProviderName("OSGeo.SDF"));
         }
 
-        [Test]
+        [Fact]
         public void Utility_IsSuccessfulConnectionTestResult()
         {
             Assert.True(Utility.IsSuccessfulConnectionTestResult("No errors"));
@@ -104,28 +100,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.False(Utility.IsSuccessfulConnectionTestResult(null));
         }
 
-        [Test]
+        [Fact]
         public void Utility_ParseQueryString()
         {
             var param = Utility.ParseQueryString("a=b&c=d");
-            Assert.AreEqual(2, param.Count);
-            Assert.AreEqual("b", param["a"]);
-            Assert.AreEqual("d", param["c"]);
+            Assert.Equal(2, param.Count);
+            Assert.Equal("b", param["a"]);
+            Assert.Equal("d", param["c"]);
 
             param = Utility.ParseQueryString("a=b&c=d&");
-            Assert.AreEqual(2, param.Count);
-            Assert.AreEqual("b", param["a"]);
-            Assert.AreEqual("d", param["c"]);
+            Assert.Equal(2, param.Count);
+            Assert.Equal("b", param["a"]);
+            Assert.Equal("d", param["c"]);
 
             param = Utility.ParseQueryString("a=&c=d&");
-            Assert.AreEqual(2, param.Count);
-            Assert.AreEqual("", param["a"]);
-            Assert.AreEqual("d", param["c"]);
+            Assert.Equal(2, param.Count);
+            Assert.Equal("", param["a"]);
+            Assert.Equal("d", param["c"]);
 
             param = Utility.ParseQueryString("a=b &c=d&");
-            Assert.AreEqual(2, param.Count);
-            Assert.AreEqual("b ", param["a"]);
-            Assert.AreEqual("d", param["c"]);
+            Assert.Equal(2, param.Count);
+            Assert.Equal("b ", param["a"]);
+            Assert.Equal("d", param["c"]);
         }
     }
 }

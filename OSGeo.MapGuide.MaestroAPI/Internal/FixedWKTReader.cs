@@ -54,7 +54,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// <c>GeometryFactory</c>.
         /// </summary>
         /// <param name="geometryFactory">The factory used to create <c>Geometry</c>s.</param>
-        public FixedWKTReader(IGeometryFactory geometryFactory)
+        private FixedWKTReader(IGeometryFactory geometryFactory)
         {
             this.geometryFactory = geometryFactory;
             precisionModel = geometryFactory.PrecisionModel;

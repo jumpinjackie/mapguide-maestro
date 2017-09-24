@@ -23,6 +23,6 @@
 #pragma warning disable 1699
 using System.Reflection;
 
-[assembly: AssemblyDelaySign(false)]
-[assembly: AssemblyKeyFile("..\\..\\..\\Properties\\maestroapi.key")]
-[assembly: AssemblyKeyName("")]
+//[assembly: AssemblyDelaySign(false)]
+//[assembly: AssemblyKeyFile("../../../Properties/maestroapi.key")]
+//[assembly: AssemblyKeyName("")]

@@ -107,7 +107,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="bbox">The map bounding box</param>
         /// <param name="size">The size of the image</param>
         /// <returns>The scale</returns>
-        protected abstract double CalculateScale(IEnvelope bbox, System.Drawing.Size size);
+        protected abstract double CalculateScale(Envelope bbox, System.Drawing.Size size);
 
         /// <summary>
         /// Adjusts the boundingbox to equal proportions
@@ -130,7 +130,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="scale">The scale to fit</param>
         /// <param name="size">The size to fit to</param>
         /// <returns>A bounding box with the correct ratio</returns>
-        protected abstract IEnvelope AdjustBoundingBox(IEnvelope bbox, double scale, System.Drawing.Size size);
+        protected abstract Envelope AdjustBoundingBox(Envelope bbox, double scale, System.Drawing.Size size);
 
         /// <summary>
         /// Calculates the distance from one point to another, in meters

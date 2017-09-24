@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.IO;
 
@@ -286,7 +287,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
             ulong remain = p.Length;
             byte[] buf = new byte[1024 * 8];
 
-            MemoryStream ms = new MemoryStream();
+            var ms = MemoryStreamPool.GetStream();
             do
             {
                 int blocksize = ReadInt32();

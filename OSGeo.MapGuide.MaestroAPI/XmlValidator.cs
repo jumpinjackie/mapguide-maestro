@@ -250,7 +250,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 }
 
                 var validator = new XmlValidator();
-                using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+                using (var ms = MemoryStreamPool.GetStream("ValidateResourceXmlContent", Encoding.UTF8.GetBytes(xml))) //NOXLATE
                 {
                     validator.Validate(ms, new List<XmlSchema>(xsds.Values).ToArray());
                 }

@@ -20,7 +20,6 @@
 
 #endregion Disclaimer / License
 using Moq;
-using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
@@ -30,32 +29,32 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
 using System.Linq;
+using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
-    [TestFixture]
     public class ResourceTests
     {
-        [Test]
+        [Fact]
         public void TestWebLayout()
         {
             var conn = new Mock<IServerConnection>();
 
             var wl = ObjectFactory.CreateWebLayout(new Version(1, 0, 0), "Library://Test.MapDefinition");
-            Assert.IsNotNull(wl.CommandSet);
-            Assert.IsNotNull(wl.ContextMenu);
-            Assert.IsNotNull(wl.InformationPane);
-            Assert.IsNotNull(wl.Map);
-            Assert.IsNotNull(wl.StatusBar);
-            Assert.IsNotNull(wl.TaskPane);
-            Assert.IsNotNull(wl.ToolBar);
-            Assert.IsNotNull(wl.ZoomControl);
+            Assert.NotNull(wl.CommandSet);
+            Assert.NotNull(wl.ContextMenu);
+            Assert.NotNull(wl.InformationPane);
+            Assert.NotNull(wl.Map);
+            Assert.NotNull(wl.StatusBar);
+            Assert.NotNull(wl.TaskPane);
+            Assert.NotNull(wl.ToolBar);
+            Assert.NotNull(wl.ZoomControl);
 
-            Assert.IsTrue(wl.CommandSet.CommandCount > 0);
-            Assert.IsTrue(wl.ContextMenu.ItemCount > 0);
-            Assert.IsTrue(wl.ToolBar.ItemCount > 0);
+            Assert.True(wl.CommandSet.CommandCount > 0);
+            Assert.True(wl.ContextMenu.ItemCount > 0);
+            Assert.True(wl.ToolBar.ItemCount > 0);
 
-            Assert.AreEqual(wl.Map.ResourceId, "Library://Test.MapDefinition");
+            Assert.Equal(wl.Map.ResourceId, "Library://Test.MapDefinition");
 
             //Verify all built-in commands are available
             Array cmdNames = Enum.GetValues(typeof(BuiltInCommandType));
@@ -70,11 +69,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
                     }
                 }
                 //Trace.TraceInformation("Found command (" + cmdName.ToString() + "): " + found);
-                Assert.IsTrue(found);
+                Assert.True(found);
             }
         }
 
-        [Test]
+        [Fact]
         public void TestLayerDefinitionConversions()
         {
             var conn = new Mock<IServerConnection>();
@@ -85,10 +84,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             ((IVectorLayerDefinition)ldf.SubLayer).FeatureName = "SHP_Schema:Parcels";
             ((IVectorLayerDefinition)ldf.SubLayer).Geometry = "Geometry";
 
-            Assert.AreEqual("1.0.0", ldf.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("LayerDefinition-1.0.0.xsd", ldf.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("LayerDefinition-1.0.0.xsd", ldf.ValidatingSchema);
-            Assert.AreEqual(new Version(1, 0, 0), ldf.ResourceVersion);
+            Assert.Equal("1.0.0", ldf.GetResourceTypeDescriptor().Version);
+            Assert.Equal("LayerDefinition-1.0.0.xsd", ldf.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("LayerDefinition-1.0.0.xsd", ldf.ValidatingSchema);
+            Assert.Equal(new Version(1, 0, 0), ldf.ResourceVersion);
 
             using (var fs = Utils.OpenTempWrite("LayerDef_100.xml"))
             {
@@ -100,10 +99,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             var ldf1 = (ILayerDefinition)conv.Convert(ldf, new Version(1, 1, 0));
 
-            Assert.AreEqual("1.1.0", ldf1.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("LayerDefinition-1.1.0.xsd", ldf1.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("LayerDefinition-1.1.0.xsd", ldf1.ValidatingSchema);
-            Assert.AreEqual(new Version(1, 1, 0), ldf1.ResourceVersion);
+            Assert.Equal("1.1.0", ldf1.GetResourceTypeDescriptor().Version);
+            Assert.Equal("LayerDefinition-1.1.0.xsd", ldf1.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("LayerDefinition-1.1.0.xsd", ldf1.ValidatingSchema);
+            Assert.Equal(new Version(1, 1, 0), ldf1.ResourceVersion);
 
             using (var fs = Utils.OpenTempWrite("LayerDef_110.xml"))
             {
@@ -115,10 +114,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             var ldf2 = (ILayerDefinition)conv.Convert(ldf1, new Version(1, 2, 0));
 
-            Assert.AreEqual("1.2.0", ldf2.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("LayerDefinition-1.2.0.xsd", ldf2.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("LayerDefinition-1.2.0.xsd", ldf2.ValidatingSchema);
-            Assert.AreEqual(new Version(1, 2, 0), ldf2.ResourceVersion);
+            Assert.Equal("1.2.0", ldf2.GetResourceTypeDescriptor().Version);
+            Assert.Equal("LayerDefinition-1.2.0.xsd", ldf2.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("LayerDefinition-1.2.0.xsd", ldf2.ValidatingSchema);
+            Assert.Equal(new Version(1, 2, 0), ldf2.ResourceVersion);
 
             using (var fs = Utils.OpenTempWrite("LayerDef_120.xml"))
             {
@@ -130,10 +129,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             var ldf3 = (ILayerDefinition)conv.Convert(ldf2, new Version(1, 3, 0));
 
-            Assert.AreEqual("1.3.0", ldf3.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("LayerDefinition-1.3.0.xsd", ldf3.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("LayerDefinition-1.3.0.xsd", ldf3.ValidatingSchema);
-            Assert.AreEqual(new Version(1, 3, 0), ldf3.ResourceVersion);
+            Assert.Equal("1.3.0", ldf3.GetResourceTypeDescriptor().Version);
+            Assert.Equal("LayerDefinition-1.3.0.xsd", ldf3.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("LayerDefinition-1.3.0.xsd", ldf3.ValidatingSchema);
+            Assert.Equal(new Version(1, 3, 0), ldf3.ResourceVersion);
 
             using (var fs = Utils.OpenTempWrite("LayerDef_130.xml"))
             {
@@ -145,11 +144,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             var ldf4 = (ILayerDefinition)conv.Convert(ldf2, new Version(2, 3, 0));
 
-            Assert.AreEqual("2.3.0", ldf4.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("LayerDefinition-2.3.0.xsd", ldf4.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("LayerDefinition-2.3.0.xsd", ldf4.ValidatingSchema);
-            Assert.AreEqual(new Version(2, 3, 0), ldf4.ResourceVersion);
-            Assert.IsTrue(ldf4.SubLayer is ISubLayerDefinition2);
+            Assert.Equal("2.3.0", ldf4.GetResourceTypeDescriptor().Version);
+            Assert.Equal("LayerDefinition-2.3.0.xsd", ldf4.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("LayerDefinition-2.3.0.xsd", ldf4.ValidatingSchema);
+            Assert.Equal(new Version(2, 3, 0), ldf4.ResourceVersion);
+            Assert.True(ldf4.SubLayer is ISubLayerDefinition2);
 
             using (var fs = Utils.OpenTempWrite("LayerDef_230.xml"))
             {
@@ -164,14 +163,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             var ldf5 = (ILayerDefinition)conv.Convert(ldf4, new Version(2, 4, 0));
 
-            Assert.AreEqual("2.4.0", ldf5.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("LayerDefinition-2.4.0.xsd", ldf5.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("LayerDefinition-2.4.0.xsd", ldf5.ValidatingSchema);
-            Assert.AreEqual(new Version(2, 4, 0), ldf5.ResourceVersion);
-            Assert.IsTrue(ldf5.SubLayer is ISubLayerDefinition2);
+            Assert.Equal("2.4.0", ldf5.GetResourceTypeDescriptor().Version);
+            Assert.Equal("LayerDefinition-2.4.0.xsd", ldf5.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("LayerDefinition-2.4.0.xsd", ldf5.ValidatingSchema);
+            Assert.Equal(new Version(2, 4, 0), ldf5.ResourceVersion);
+            Assert.True(ldf5.SubLayer is ISubLayerDefinition2);
 
             var vl5 = ldf5.SubLayer as IVectorLayerDefinition;
-            Assert.AreEqual("http://www.google.com", vl5.Url);
+            Assert.Equal("http://www.google.com", vl5.Url);
 
             using (var fs = Utils.OpenTempWrite("LayerDef_240.xml"))
             {
@@ -190,7 +189,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mdf.AddGroup("Group2");
         }
 
-        [Test]
+        [Fact]
         public void TestMapDefinitionLayerInsert()
         {
             var conn = new Mock<IServerConnection>();
@@ -208,16 +207,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.Throws<ArgumentException>(() => { mdf.InsertLayer(0, null, "Hydro", "Garbage"); });
 
             IMapLayer layer = mdf.InsertLayer(0, null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
-            Assert.AreEqual(0, mdf.GetIndex(layer));
+            Assert.Equal(0, mdf.GetIndex(layer));
             Assert.True(layer == mdf.GetLayerByName("Hydro"));
 
             layerCount = mdf.GetDynamicLayerCount();
             IMapLayer layer1 = mdf.InsertLayer(layerCount, null, "Hydro2", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
-            Assert.AreEqual(layerCount, mdf.GetIndex(layer1));
+            Assert.Equal(layerCount, mdf.GetIndex(layer1));
             Assert.True(layer1 == mdf.GetLayerByName("Hydro2"));
         }
 
-        [Test]
+        [Fact]
         public void TestMapDefinitionLayerAdd()
         {
             var conn = new Mock<IServerConnection>();
@@ -234,12 +233,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.Throws<ArgumentException>(() => { mdf.AddLayer(null, "Hydro", "Garbage"); });
 
             IMapLayer layer = mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
-            Assert.AreEqual(0, mdf.GetIndex(layer));
+            Assert.Equal(0, mdf.GetIndex(layer));
             Assert.True(layer == mdf.GetLayerByName("Hydro"));
-            Assert.AreEqual(layerCount + 1, mdf.GetDynamicLayerCount());
+            Assert.Equal(layerCount + 1, mdf.GetDynamicLayerCount());
         }
 
-        [Test]
+        [Fact]
         public void TestMapDefinitionLayerRemove()
         {
             var conn = new Mock<IServerConnection>();
@@ -248,16 +247,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             int layerCount = mdf.GetDynamicLayerCount();
 
             IMapLayer layer = mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
-            Assert.AreEqual(0, mdf.GetIndex(layer));
+            Assert.Equal(0, mdf.GetIndex(layer));
             Assert.True(layer == mdf.GetLayerByName("Hydro"));
-            Assert.AreEqual(layerCount + 1, mdf.GetDynamicLayerCount());
+            Assert.Equal(layerCount + 1, mdf.GetDynamicLayerCount());
 
             mdf.RemoveLayer(layer);
             Assert.True(mdf.GetIndex(layer) < 0);
-            Assert.AreEqual(layerCount, mdf.GetDynamicLayerCount());
+            Assert.Equal(layerCount, mdf.GetDynamicLayerCount());
         }
 
-        [Test]
+        [Fact]
         public void TestMapDefinitionLayerReordering()
         {
             var conn = new Mock<IServerConnection>();
@@ -271,27 +270,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.Throws<ArgumentNullException>(() => { mdf.SetBottomDrawOrder(null); });
 
             IMapLayer layer = mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
-            Assert.AreEqual(0, mdf.GetIndex(layer));
+            Assert.Equal(0, mdf.GetIndex(layer));
             Assert.True(layer == mdf.GetLayerByName("Hydro"));
-            Assert.AreEqual(layerCount + 1, mdf.GetDynamicLayerCount());
+            Assert.Equal(layerCount + 1, mdf.GetDynamicLayerCount());
 
             int value = mdf.MoveUp(layer);
-            Assert.AreEqual(0, value); //Already at top
+            Assert.Equal(0, value); //Already at top
             value = mdf.MoveDown(layer);
-            Assert.AreEqual(1, value);
+            Assert.Equal(1, value);
             mdf.SetBottomDrawOrder(layer);
             value = mdf.GetIndex(layer);
-            Assert.AreEqual(mdf.GetDynamicLayerCount() - 1, value);
+            Assert.Equal(mdf.GetDynamicLayerCount() - 1, value);
             value = mdf.MoveDown(layer);
-            Assert.AreEqual(mdf.GetDynamicLayerCount() - 1, value); //Already at bottom
+            Assert.Equal(mdf.GetDynamicLayerCount() - 1, value); //Already at bottom
             value = mdf.MoveUp(layer);
-            Assert.AreEqual(mdf.GetDynamicLayerCount() - 2, value);
+            Assert.Equal(mdf.GetDynamicLayerCount() - 2, value);
             mdf.SetTopDrawOrder(layer);
             value = mdf.GetIndex(layer);
-            Assert.AreEqual(0, value);
+            Assert.Equal(0, value);
         }
 
-        [Test]
+        [Fact]
         public void TestMapDefinitionGroupAdd()
         {
             var conn = new Mock<IServerConnection>();
@@ -305,12 +304,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.Throws<ArgumentException>(() => { mdf.AddGroup("Group1"); });
 
             IMapLayerGroup group = mdf.AddGroup("Test");
-            Assert.AreEqual(groupCount + 1, mdf.GetGroupCount());
+            Assert.Equal(groupCount + 1, mdf.GetGroupCount());
             Assert.NotNull(mdf.GetGroupByName("Test"));
             Assert.True(group == mdf.GetGroupByName("Test"));
         }
 
-        [Test]
+        [Fact]
         public void TestMapDefinitionGroupRemove()
         {
             var conn = new Mock<IServerConnection>();
@@ -320,16 +319,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             int groupCount = mdf.GetGroupCount();
 
             IMapLayerGroup group = mdf.AddGroup("Test");
-            Assert.AreEqual(groupCount + 1, mdf.GetGroupCount());
+            Assert.Equal(groupCount + 1, mdf.GetGroupCount());
             Assert.NotNull(mdf.GetGroupByName("Test"));
             Assert.True(group == mdf.GetGroupByName("Test"));
 
             mdf.RemoveGroup(group);
-            Assert.AreEqual(groupCount, mdf.GetGroupCount());
+            Assert.Equal(groupCount, mdf.GetGroupCount());
             Assert.Null(mdf.GetGroupByName("Test"));
         }
 
-        [Test]
+        [Fact]
         public void TestMapDefinitionGroupReordering()
         {
             var conn = new Mock<IServerConnection>();
@@ -343,17 +342,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.Throws<ArgumentNullException>(() => { mdf.SetBottomDrawOrder(null); });
 
             IMapLayerGroup group = mdf.AddGroup("Test");
-            Assert.AreEqual(groupCount, mdf.GetIndex(group));
+            Assert.Equal(groupCount, mdf.GetIndex(group));
             Assert.True(group == mdf.GetGroupByName("Test"));
-            Assert.AreEqual(groupCount + 1, mdf.GetGroupCount());
+            Assert.Equal(groupCount + 1, mdf.GetGroupCount());
 
             int value = mdf.MoveUpGroup(group);
-            Assert.AreEqual(groupCount - 1, value); //Already at top
+            Assert.Equal(groupCount - 1, value); //Already at top
             value = mdf.MoveDownGroup(group);
-            Assert.AreEqual(groupCount, value);
+            Assert.Equal(groupCount, value);
         }
 
-        [Test]
+        [Fact]
         public void TestMapDefinitionConversions()
         {
             var conn = new Mock<IServerConnection>();
@@ -362,10 +361,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "Test Map");
             mdf.ResourceID = "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition";
 
-            Assert.AreEqual("1.0.0", mdf.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("MapDefinition-1.0.0.xsd", mdf.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("MapDefinition-1.0.0.xsd", mdf.ValidatingSchema);
-            Assert.AreEqual(new Version(1, 0, 0), mdf.ResourceVersion);
+            Assert.Equal("1.0.0", mdf.GetResourceTypeDescriptor().Version);
+            Assert.Equal("MapDefinition-1.0.0.xsd", mdf.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("MapDefinition-1.0.0.xsd", mdf.ValidatingSchema);
+            Assert.Equal(new Version(1, 0, 0), mdf.ResourceVersion);
 
             using (var fs = Utils.OpenTempWrite("MapDef_100.xml"))
             {
@@ -377,10 +376,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             var mdf2 = (IMapDefinition)conv.Convert(mdf, new Version(2, 3, 0));
 
-            Assert.AreEqual("2.3.0", mdf2.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("MapDefinition-2.3.0.xsd", mdf2.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("MapDefinition-2.3.0.xsd", mdf2.ValidatingSchema);
-            Assert.AreEqual(new Version(2, 3, 0), mdf2.ResourceVersion);
+            Assert.Equal("2.3.0", mdf2.GetResourceTypeDescriptor().Version);
+            Assert.Equal("MapDefinition-2.3.0.xsd", mdf2.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("MapDefinition-2.3.0.xsd", mdf2.ValidatingSchema);
+            Assert.Equal(new Version(2, 3, 0), mdf2.ResourceVersion);
             Assert.True(mdf2 is IMapDefinition2);
 
             using (var fs = Utils.OpenTempWrite("MapDef_230.xml"))
@@ -392,7 +391,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             }
         }
 
-        [Test]
+        [Fact]
         public void TestLoadProcedureConversions()
         {
             var conn = new Mock<IServerConnection>();
@@ -401,10 +400,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var lproc = ObjectFactory.CreateLoadProcedure(LoadType.Sdf);
             lproc.ResourceID = "Library://Samples/Sheboygan/Load/Load.LoadProcedure";
 
-            Assert.AreEqual("1.0.0", lproc.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("LoadProcedure-1.0.0.xsd", lproc.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("LoadProcedure-1.0.0.xsd", lproc.ValidatingSchema);
-            Assert.AreEqual(new Version(1, 0, 0), lproc.ResourceVersion);
+            Assert.Equal("1.0.0", lproc.GetResourceTypeDescriptor().Version);
+            Assert.Equal("LoadProcedure-1.0.0.xsd", lproc.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("LoadProcedure-1.0.0.xsd", lproc.ValidatingSchema);
+            Assert.Equal(new Version(1, 0, 0), lproc.ResourceVersion);
 
             using (var fs = Utils.OpenTempWrite("LoadProc_100.xml"))
             {
@@ -416,10 +415,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             var lproc2 = (ILoadProcedure)conv.Convert(lproc, new Version(1, 1, 0));
 
-            Assert.AreEqual("1.1.0", lproc2.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("LoadProcedure-1.1.0.xsd", lproc2.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("LoadProcedure-1.1.0.xsd", lproc2.ValidatingSchema);
-            Assert.AreEqual(new Version(1, 1, 0), lproc2.ResourceVersion);
+            Assert.Equal("1.1.0", lproc2.GetResourceTypeDescriptor().Version);
+            Assert.Equal("LoadProcedure-1.1.0.xsd", lproc2.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("LoadProcedure-1.1.0.xsd", lproc2.ValidatingSchema);
+            Assert.Equal(new Version(1, 1, 0), lproc2.ResourceVersion);
 
             using (var fs = Utils.OpenTempWrite("LoadProc_110.xml"))
             {
@@ -431,10 +430,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             var lproc3 = (ILoadProcedure)conv.Convert(lproc2, new Version(2, 2, 0));
 
-            Assert.AreEqual("2.2.0", lproc3.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("LoadProcedure-2.2.0.xsd", lproc3.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("LoadProcedure-2.2.0.xsd", lproc3.ValidatingSchema);
-            Assert.AreEqual(new Version(2, 2, 0), lproc3.ResourceVersion);
+            Assert.Equal("2.2.0", lproc3.GetResourceTypeDescriptor().Version);
+            Assert.Equal("LoadProcedure-2.2.0.xsd", lproc3.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("LoadProcedure-2.2.0.xsd", lproc3.ValidatingSchema);
+            Assert.Equal(new Version(2, 2, 0), lproc3.ResourceVersion);
 
             using (var fs = Utils.OpenTempWrite("LoadProc_220.xml"))
             {
@@ -445,7 +444,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             }
         }
 
-        [Test]
+        [Fact]
         public void TestWebLayoutConversions()
         {
             var conn = new Mock<IServerConnection>();
@@ -454,10 +453,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var wl = ObjectFactory.CreateWebLayout(new Version(1, 0, 0), "Library://Test.MapDefinition");
             wl.ResourceID = "Library://Test.WebLayout";
 
-            Assert.AreEqual("1.0.0", wl.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("WebLayout-1.0.0.xsd", wl.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("WebLayout-1.0.0.xsd", wl.ValidatingSchema);
-            Assert.AreEqual(new Version(1, 0, 0), wl.ResourceVersion);
+            Assert.Equal("1.0.0", wl.GetResourceTypeDescriptor().Version);
+            Assert.Equal("WebLayout-1.0.0.xsd", wl.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("WebLayout-1.0.0.xsd", wl.ValidatingSchema);
+            Assert.Equal(new Version(1, 0, 0), wl.ResourceVersion);
 
             using (var fs = Utils.OpenTempWrite("WebLayout_100.xml"))
             {
@@ -469,10 +468,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             var wl2 = (IWebLayout)conv.Convert(wl, new Version(1, 1, 0));
 
-            Assert.AreEqual("1.1.0", wl2.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("WebLayout-1.1.0.xsd", wl2.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("WebLayout-1.1.0.xsd", wl2.ValidatingSchema);
-            Assert.AreEqual(new Version(1, 1, 0), wl2.ResourceVersion);
+            Assert.Equal("1.1.0", wl2.GetResourceTypeDescriptor().Version);
+            Assert.Equal("WebLayout-1.1.0.xsd", wl2.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("WebLayout-1.1.0.xsd", wl2.ValidatingSchema);
+            Assert.Equal(new Version(1, 1, 0), wl2.ResourceVersion);
             Assert.True(wl2 is IWebLayout2);
 
             using (var fs = Utils.OpenTempWrite("WebLayout_110.xml"))
@@ -487,16 +486,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.False(maptip.Any());
 
             var wl3 = (IWebLayout)conv.Convert(wl, new Version(2, 4, 0));
-            Assert.AreEqual("2.4.0", wl3.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("WebLayout-2.4.0.xsd", wl3.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("WebLayout-2.4.0.xsd", wl3.ValidatingSchema);
-            Assert.AreEqual(new Version(2, 4, 0), wl3.ResourceVersion);
+            Assert.Equal("2.4.0", wl3.GetResourceTypeDescriptor().Version);
+            Assert.Equal("WebLayout-2.4.0.xsd", wl3.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("WebLayout-2.4.0.xsd", wl3.ValidatingSchema);
+            Assert.Equal(new Version(2, 4, 0), wl3.ResourceVersion);
 
             maptip = wl3.CommandSet.Commands.OfType<IBasicCommand>().Where(cmd => cmd.Action == BasicCommandActionType.MapTip);
             Assert.True(maptip.Any());
         }
 
-        [Test]
+        [Fact]
         public void TestSymbolDefinitionConversions()
         {
             var conn = new Mock<IServerConnection>();
@@ -505,10 +504,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var ssym = ObjectFactory.CreateSimpleSymbol(new Version(1, 0, 0), "SimpleSymbolTest", "Test simple symbol");
             ssym.ResourceID = "Library://Samples/Sheboygan/Symbols/Test.SymbolDefinition";
 
-            Assert.AreEqual("1.0.0", ssym.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("SymbolDefinition-1.0.0.xsd", ssym.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("SymbolDefinition-1.0.0.xsd", ssym.ValidatingSchema);
-            Assert.AreEqual(new Version(1, 0, 0), ssym.ResourceVersion);
+            Assert.Equal("1.0.0", ssym.GetResourceTypeDescriptor().Version);
+            Assert.Equal("SymbolDefinition-1.0.0.xsd", ssym.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("SymbolDefinition-1.0.0.xsd", ssym.ValidatingSchema);
+            Assert.Equal(new Version(1, 0, 0), ssym.ResourceVersion);
 
             using (var fs = Utils.OpenTempWrite("SimpleSymDef_100.xml"))
             {
@@ -520,10 +519,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             var ssym2 = (ISimpleSymbolDefinition)conv.Convert(ssym, new Version(1, 1, 0));
 
-            Assert.AreEqual("1.1.0", ssym2.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("SymbolDefinition-1.1.0.xsd", ssym2.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("SymbolDefinition-1.1.0.xsd", ssym2.ValidatingSchema);
-            Assert.AreEqual(new Version(1, 1, 0), ssym2.ResourceVersion);
+            Assert.Equal("1.1.0", ssym2.GetResourceTypeDescriptor().Version);
+            Assert.Equal("SymbolDefinition-1.1.0.xsd", ssym2.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("SymbolDefinition-1.1.0.xsd", ssym2.ValidatingSchema);
+            Assert.Equal(new Version(1, 1, 0), ssym2.ResourceVersion);
 
             using (var fs = Utils.OpenTempWrite("SimpleSymDef_110.xml"))
             {
@@ -536,10 +535,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var csym = ObjectFactory.CreateCompoundSymbol(new Version(1, 0, 0), "CompoundSymbolTest", "Test compound symbol");
             csym.ResourceID = "Library://Samples/Sheboygan/Symbols/Compound.SymbolDefinition";
 
-            Assert.AreEqual("1.0.0", csym.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("SymbolDefinition-1.0.0.xsd", csym.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("SymbolDefinition-1.0.0.xsd", csym.ValidatingSchema);
-            Assert.AreEqual(new Version(1, 0, 0), csym.ResourceVersion);
+            Assert.Equal("1.0.0", csym.GetResourceTypeDescriptor().Version);
+            Assert.Equal("SymbolDefinition-1.0.0.xsd", csym.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("SymbolDefinition-1.0.0.xsd", csym.ValidatingSchema);
+            Assert.Equal(new Version(1, 0, 0), csym.ResourceVersion);
 
             using (var fs = Utils.OpenTempWrite("CompoundSymDef_100.xml"))
             {
@@ -551,10 +550,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             var csym2 = (ICompoundSymbolDefinition)conv.Convert(csym, new Version(1, 1, 0));
 
-            Assert.AreEqual("1.1.0", csym2.GetResourceTypeDescriptor().Version);
-            Assert.AreEqual("SymbolDefinition-1.1.0.xsd", csym2.GetResourceTypeDescriptor().XsdName);
-            Assert.AreEqual("SymbolDefinition-1.1.0.xsd", csym2.ValidatingSchema);
-            Assert.AreEqual(new Version(1, 1, 0), csym2.ResourceVersion);
+            Assert.Equal("1.1.0", csym2.GetResourceTypeDescriptor().Version);
+            Assert.Equal("SymbolDefinition-1.1.0.xsd", csym2.GetResourceTypeDescriptor().XsdName);
+            Assert.Equal("SymbolDefinition-1.1.0.xsd", csym2.ValidatingSchema);
+            Assert.Equal(new Version(1, 1, 0), csym2.ResourceVersion);
 
             using (var fs = Utils.OpenTempWrite("CompoundSymDef_110.xml"))
             {
@@ -565,7 +564,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             }
         }
 
-        [Test]
+        [Fact]
         public void TestMapDefinitionNestedGroupDelete()
         {
             var conn = new Mock<IServerConnection>();
@@ -609,8 +608,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
              */
 
             mdf.RemoveLayerGroupAndChildLayers("Group1");
-            Assert.AreEqual(1, mdf.GetGroupCount());
-            Assert.AreEqual(1, mdf.GetDynamicLayerCount());
+            Assert.Equal(1, mdf.GetGroupCount());
+            Assert.Equal(1, mdf.GetDynamicLayerCount());
             Assert.Null(mdf.GetLayerByName("Layer1"));
             Assert.Null(mdf.GetLayerByName("Layer2"));
             Assert.Null(mdf.GetLayerByName("Layer3"));

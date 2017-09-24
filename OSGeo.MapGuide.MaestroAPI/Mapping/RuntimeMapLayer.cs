@@ -34,6 +34,22 @@ using System.Diagnostics;
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
     /// <summary>
+    /// Defines the types of layers
+    /// </summary>
+    public static class RuntimeMapLayerType
+    {
+        /// <summary>
+        /// Base map (aka. Tiled)
+        /// </summary>
+        public const int BaseMap = 2;
+
+        /// <summary>
+        /// Dynamic
+        /// </summary>
+        public const int Dynamic = 1;
+    }
+
+    /// <summary>
     /// Describes a FDO property
     /// </summary>
     public class PropertyInfo
@@ -111,11 +127,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             public double MaxScale { get; }
         }
 
-        //From MgLayerType
-        public const int kBaseMap = 2;
-
-        public const int kDynamic = 1;
-
         private const double InfinityScale = double.MaxValue;
 
         /// <summary>
@@ -184,7 +195,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         protected internal RuntimeMapLayer(RuntimeMap parent)
         {
             _scaleRanges = new double[] { 0.0, InfinityScale };
-            _type = kDynamic;
+            _type = RuntimeMapLayerType.Dynamic;
             this.IdentityProperties = new PropertyInfo[0];
             _objectId = Guid.NewGuid().ToString();
             this.Parent = parent;
@@ -362,7 +373,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                if (this.Type == kBaseMap)
+                if (this.Type == RuntimeMapLayerType.BaseMap)
                     throw new InvalidOperationException(Strings.ErrorSettingVisibilityOfTiledLayer);
 
                 if (SetField(ref _visible, value, nameof(Visible)))
@@ -914,19 +925,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 return Single;
             else if (type == typeof(double))
                 return Double;
-            else if (type == Utility.GeometryType)
+            else if (IsGeometryType(type))
                 return Geometry;
             else if (type == typeof(string))
                 return String;
             else if (type == typeof(DateTime))
                 return DateTime;
-            else if (type == Utility.RasterType)
-                return Raster;
+            //else if (IsRasterType(type))
+            //    return Raster;
             else if (type == typeof(byte[]))
                 return Blob;
 
             throw new Exception($"Failed to find type for: {type.FullName.ToString()}"); //LOCALIZEME
         }
+
+        //static bool IsRasterType(Type type) => type.Name == "Bitmap";
+
+        static bool IsGeometryType(Type type) => typeof(GeoAPI.Geometries.IGeometry).IsAssignableFrom(type);
 
         private static Type ConvertMgTypeToNetType(short idType)
         {
@@ -954,7 +969,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     return typeof(bool);
 
                 case Geometry:
-                    return Utility.GeometryType;
+                    return typeof(GeoAPI.Geometries.IGeometry);
 
                 case String:
                     return typeof(string);
@@ -962,8 +977,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 case DateTime:
                     return typeof(DateTime);
 
-                case Raster:
-                    return Utility.RasterType;
+                //case Raster:
+                //    return Utility.RasterType;
 
                 case Blob:
                     return typeof(byte[]);

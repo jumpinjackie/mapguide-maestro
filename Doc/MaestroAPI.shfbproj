@@ -26,6 +26,7 @@
     <SHFBROOT>$(MSBuildThisFileDirectory)..\Maestro\packages\EWSoftware.SHFB.2017.5.15.0\Tools\</SHFBROOT>
     <ComponentPath>$(MSBuildThisFileDirectory)..\Maestro\packages\</ComponentPath>
     <DocumentationSources>
+      <!--
       <DocumentationSource sourceFile="..\SDK\addin-bin\Maestro.Base.dll" />
       <DocumentationSource sourceFile="..\SDK\addin-bin\Maestro.Base.xml" />
       <DocumentationSource sourceFile="..\SDK\bin\Maestro.Editors.dll" />
@@ -38,6 +39,7 @@
       <DocumentationSource sourceFile="..\SDK\bin\Maestro.Packaging.xml" />
       <DocumentationSource sourceFile="..\SDK\bin\Maestro.Shared.UI.dll" />
       <DocumentationSource sourceFile="..\SDK\bin\Maestro.Shared.UI.xml" />
+      -->
       <DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.MaestroAPI.dll" />
       <DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.MaestroAPI.xml" />
       <DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.ObjectModels.dll" />
@@ -88,7 +90,7 @@
     <HtmlSdkLinkType>None</HtmlSdkLinkType>
     <MSHelp2SdkLinkType>None</MSHelp2SdkLinkType>
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
-    <CopyrightText>%28c%29 2013, Jackie Ng</CopyrightText>
+    <CopyrightText>%28c%29 2017, Jackie Ng</CopyrightText>
     <SyntaxFilters>C#, Visual Basic, Managed C++, F#, ASP.NET</SyntaxFilters>
     <RootNamespaceContainer>True</RootNamespaceContainer>
     <Preliminary>False</Preliminary>
@@ -178,6 +180,9 @@ The main namespaces of the Maestro API are listed below
   <ItemGroup>
     <Reference Include="Aga.Controls">
       <HintPath>..\SDK\bin\Aga.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="GeoAPI">
+      <HintPath>..\Maestro\packages\GeoAPI.1.7.4\lib\net45\GeoAPI.dll</HintPath>
     </Reference>
     <Reference Include="WeifenLuo.WinFormsUI.Docking">
       <HintPath>..\SDK\bin\WeifenLuo.WinFormsUI.Docking.dll</HintPath>

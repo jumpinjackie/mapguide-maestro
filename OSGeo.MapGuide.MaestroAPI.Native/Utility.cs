@@ -61,7 +61,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         /// <summary>
         /// Returns a type used to define a raster column in a feature reader
         /// </summary>
-        public static Type RasterType => typeof(Bitmap);
+        //public static Type RasterType => typeof(Bitmap);
 
         /// <summary>
         /// Returns the type used to define a geometry column in a feature reader
@@ -107,8 +107,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 case MgPropertyType.DateTime:
                     return typeof(DateTime);
 
-                case MgPropertyType.Raster:
-                    return Utility.RasterType;
+                //case MgPropertyType.Raster:
+                //    return Utility.RasterType;
 
                 case MgPropertyType.Blob:
                     return typeof(byte[]);
@@ -181,8 +181,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 return MgPropertyType.String;
             else if (type == typeof(DateTime))
                 return MgPropertyType.DateTime;
-            else if (type == Utility.RasterType)
-                return MgPropertyType.Raster;
+            //else if (type == Utility.RasterType)
+            //    return MgPropertyType.Raster;
             else if (type == typeof(byte[]))
                 return MgPropertyType.Blob;
 

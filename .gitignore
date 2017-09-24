@@ -1,4 +1,5 @@
 .vs
+.vscode
 bin/
 obj/
 out/
@@ -14,3 +15,4 @@ SDK/MaestroAPI.chm
 Reports/
 UserDoc/build
 TestResult.xml
+Packages/

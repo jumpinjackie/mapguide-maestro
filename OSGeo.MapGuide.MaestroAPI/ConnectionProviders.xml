@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ConnectionProviderRegistry>
     <ConnectionProvider>
-        <Name>Maestro.Http</Name>
-        <Description>Connection using the mapagent http API</Description>
-        <Assembly>OSGeo.MapGuide.MaestroAPI.Http.dll</Assembly>
-        <Type>OSGeo.MapGuide.MaestroAPI.HttpServerConnection</Type>
-    </ConnectionProvider>
-    <ConnectionProvider>
         <Name>Maestro.Rest</Name>
         <Description>Connection using the mapguide-rest API</Description>
         <Assembly>OSGeo.MapGuide.MaestroAPI.Rest.dll</Assembly>

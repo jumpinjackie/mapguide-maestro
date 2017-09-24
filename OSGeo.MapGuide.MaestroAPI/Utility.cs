@@ -20,9 +20,7 @@
 
 #endregion Disclaimer / License
 
-using GeoAPI.Geometries;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
-using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
@@ -297,7 +295,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Parses the given query string to a dictionary
         /// </summary>
-        /// <param name=""></param>
+        /// <param name="queryString"></param>
         /// <returns></returns>
         public static IDictionary<string, string> ParseQueryString(string queryString)
         {
@@ -445,10 +443,12 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return null;
 
             var ser = new XmlSerializer(source.GetType());
-            var ms = new MemoryStream();
-            ser.Serialize(ms, source);
-            ms.Position = 0;
-            return ser.Deserialize(ms);
+            using (var ms = MemoryStreamPool.GetStream())
+            {
+                ser.Serialize(ms, source);
+                ms.Position = 0;
+                return ser.Deserialize(ms);
+            }
         }
 
         /// <summary>
@@ -554,7 +554,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (!s.CanSeek)
             {
-                var ms = new MemoryStream();
+                var ms = MemoryStreamPool.GetStream();
                 byte[] buf = new byte[1024];
                 int c;
                 while ((c = s.Read(buf, 0, buf.Length)) > 0)
@@ -578,7 +578,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public static string NormalizedSerialize(XmlSerializer serializer, object o)
         {
-            using (var ms = new MemoryStream())
+            using (var ms = MemoryStreamPool.GetStream())
             {
                 using (var xw = new Utf8XmlWriter(ms))
                 {
@@ -605,33 +605,19 @@ namespace OSGeo.MapGuide.MaestroAPI
             ms.Position = 0;
             byte[] utfheader = new byte[3];
             if (ms.Read(utfheader, 0, utfheader.Length) == utfheader.Length)
+            {
                 if (utfheader[0] == 0xEF && utfheader[1] == 0xBB && utfheader[2] == 0xBF)
                 {
                     ms.Position = 3;
-                    var mxs = new MemoryStream();
+                    var mxs = MemoryStreamPool.GetStream();
                     CopyStream(ms, mxs, false);
                     mxs.Position = 0;
                     return mxs;
                 }
-
+            }
             ms.Position = 0;
             return ms;
         }
-
-        /// <summary>
-        /// Returns a type used to define an unknown column type in a feature reader
-        /// </summary>
-        public static Type UnmappedType => typeof(UnmappedDataType);
-
-        /// <summary>
-        /// Returns a type used to define a raster column in a feature reader
-        /// </summary>
-        public static Type RasterType => typeof(Bitmap);
-
-        /// <summary>
-        /// Returns the type used to define a geometry column in a feature reader
-        /// </summary>
-        public static Type GeometryType => typeof(IGeometryRef);
 
         /// <summary>
         /// This method tries to extract the html content of a WebException.

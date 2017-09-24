@@ -19,7 +19,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Strings {
@@ -183,6 +183,51 @@ namespace OSGeo.MapGuide.MaestroAPI {
         public static string CopiedResourceToTarget {
             get {
                 return ResourceManager.GetString("CopiedResourceToTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}.
+        /// </summary>
+        public static string DebugWatermarkMessage {
+            get {
+                return ResourceManager.GetString("DebugWatermarkMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}\nLayer Spatial Context: {5}.
+        /// </summary>
+        public static string DebugWatermarkMessageLayer {
+            get {
+                return ResourceManager.GetString("DebugWatermarkMessageLayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Displays the current map extents.
+        /// </summary>
+        public static string Desc_GetExtents {
+            get {
+                return ResourceManager.GetString("Desc_GetExtents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gets the current map as a KML document.
+        /// </summary>
+        public static string Desc_GetMapKml {
+            get {
+                return ResourceManager.GetString("Desc_GetMapKml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom to a specified scale.
+        /// </summary>
+        public static string Desc_ZoomToScale {
+            get {
+                return ResourceManager.GetString("Desc_ZoomToScale", resourceCulture);
             }
         }
         
@@ -1123,6 +1168,15 @@ namespace OSGeo.MapGuide.MaestroAPI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not calculate the extents of the Feature Source. Preview is not possible.
+        /// </summary>
+        public static string FailedToCalculateFeatureSourceExtents {
+            get {
+                return ResourceManager.GetString("FailedToCalculateFeatureSourceExtents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Due to a limitation in the public APIs provided by MapGuide. This Feature Source cannot be packaged by Maestro&apos;s packager without discarding the MG_USER_CREDENTIALS element. The workaround is to either re-secure these Feature Sources after loading the Maestro-created package, or to use the official packaging method which will preserve MG_USER_CREDENTIALS in its encrypted state.
         /// </summary>
         public static string FS_CannotPackageSecuredCredentials {
@@ -1551,6 +1605,51 @@ namespace OSGeo.MapGuide.MaestroAPI {
         public static string Infinity {
             get {
                 return ResourceManager.GetString("Infinity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extra Tools.
+        /// </summary>
+        public static string Label_ExtraTools {
+            get {
+                return ResourceManager.GetString("Label_ExtraTools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get Extents.
+        /// </summary>
+        public static string Label_GetExtents {
+            get {
+                return ResourceManager.GetString("Label_GetExtents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get KML.
+        /// </summary>
+        public static string Label_GetMapKml {
+            get {
+                return ResourceManager.GetString("Label_GetMapKml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tools.
+        /// </summary>
+        public static string Label_Tools {
+            get {
+                return ResourceManager.GetString("Label_Tools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom to Scale.
+        /// </summary>
+        public static string Label_ZoomToScale {
+            get {
+                return ResourceManager.GetString("Label_ZoomToScale", resourceCulture);
             }
         }
         
@@ -2185,6 +2284,15 @@ namespace OSGeo.MapGuide.MaestroAPI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preview Map.
+        /// </summary>
+        public static string PreviewMap {
+            get {
+                return ResourceManager.GetString("PreviewMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copying Folder ....
         /// </summary>
         public static string ProgressCopyingFolder {
@@ -2217,6 +2325,15 @@ namespace OSGeo.MapGuide.MaestroAPI {
         public static string RequiredServiceNotSupported {
             get {
                 return ResourceManager.GetString("RequiredServiceNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The site version of this current connection is not known to support watermarks.
+        /// </summary>
+        public static string SiteVersionDoesntSupportWatermarks {
+            get {
+                return ResourceManager.GetString("SiteVersionDoesntSupportWatermarks", resourceCulture);
             }
         }
         
@@ -2325,6 +2442,27 @@ namespace OSGeo.MapGuide.MaestroAPI {
         public static string TemplateUrlNotFound {
             get {
                 return ResourceManager.GetString("TemplateUrlNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///&lt;WatermarkDefinition xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.4.0&quot; xsi:noNamespaceSchemaLocation=&quot;WatermarkDefinition-2.4.0.xsd&quot;&gt;
+        ///  &lt;Content&gt;
+        ///    &lt;SimpleSymbolDefinition&gt;
+        ///      &lt;Name /&gt;
+        ///      &lt;Description /&gt;
+        ///      &lt;Graphics&gt;
+        ///        &lt;Text&gt;
+        ///          &lt;Content&gt;&apos;{0}&apos;&lt;/Content&gt;
+        ///          &lt;FontName&gt;&apos;Arial&apos;&lt;/FontName&gt;
+        ///          &lt;Height&gt;3&lt;/Height&gt;
+        ///          &lt;Justification&gt;&apos;Left&apos;&lt;/Justification&gt;
+        ///          &lt;TextCol [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string TextWatermark {
+            get {
+                return ResourceManager.GetString("TextWatermark", resourceCulture);
             }
         }
         

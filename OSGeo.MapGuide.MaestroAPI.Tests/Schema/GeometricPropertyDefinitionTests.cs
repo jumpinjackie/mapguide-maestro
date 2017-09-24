@@ -21,87 +21,84 @@
 #endregion Disclaimer / License
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using NUnit.Framework;
+using Xunit;
+
 namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
 {
-    [TestFixture]
     public class GeometricPropertyDefinitionTests
     {
-        [Test]
+        [Fact]
         public void GeometricPropertyDefinitionTest()
         {
             var prop = new GeometricPropertyDefinition("Foo", "Bar");
-            Assert.AreEqual("Foo", prop.Name);
-            Assert.AreEqual("Bar", prop.Description);
-            Assert.AreEqual(0, prop.SpecificGeometryTypes.Length);
+            Assert.Equal("Foo", prop.Name);
+            Assert.Equal("Bar", prop.Description);
+            Assert.Equal(0, prop.SpecificGeometryTypes.Length);
             Assert.True(String.IsNullOrEmpty(prop.SpatialContextAssociation));
         }
 
-        [Test]
+        [Fact]
         public void GeometryTypesToStringTest()
         {
             var prop = new GeometricPropertyDefinition("Foo", "Bar");
-            Assert.AreEqual("Foo", prop.Name);
-            Assert.AreEqual("Bar", prop.Description);
-            Assert.AreEqual(0, prop.SpecificGeometryTypes.Length);
+            Assert.Equal("Foo", prop.Name);
+            Assert.Equal("Bar", prop.Description);
+            Assert.Equal(0, prop.SpecificGeometryTypes.Length);
             Assert.True(String.IsNullOrEmpty(prop.SpatialContextAssociation));
 
             prop.GeometricTypes = FeatureGeometricType.Curve | FeatureGeometricType.Solid;
             var types = new List<string>(prop.GeometryTypesToString().Split(' '));
-            Assert.GreaterOrEqual(types.IndexOf("curve"), 0);
-            Assert.GreaterOrEqual(types.IndexOf("solid"), 0);
-            Assert.Less(types.IndexOf("point"), 0);
-            Assert.Less(types.IndexOf("surface"), 0);
+            Assert.True(types.IndexOf("curve") >= 0);
+            Assert.True(types.IndexOf("solid") >= 0);
+            Assert.True(types.IndexOf("point") < 0);
+            Assert.True(types.IndexOf("surface") < 0);
         }
 
-        [Test]
+        [Fact]
         public void GetIndividualGeometricTypesTest()
         {
             var prop = new GeometricPropertyDefinition("Foo", "Bar");
-            Assert.AreEqual("Foo", prop.Name);
-            Assert.AreEqual("Bar", prop.Description);
-            Assert.AreEqual(0, prop.SpecificGeometryTypes.Length);
+            Assert.Equal("Foo", prop.Name);
+            Assert.Equal("Bar", prop.Description);
+            Assert.Equal(0, prop.SpecificGeometryTypes.Length);
             Assert.True(String.IsNullOrEmpty(prop.SpatialContextAssociation));
 
             prop.GeometricTypes = FeatureGeometricType.Curve | FeatureGeometricType.Solid;
 
             var types = new List<FeatureGeometricType>(prop.GetIndividualGeometricTypes());
-            Assert.GreaterOrEqual(types.IndexOf(FeatureGeometricType.Curve), 0);
-            Assert.GreaterOrEqual(types.IndexOf(FeatureGeometricType.Solid), 0);
-            Assert.Less(types.IndexOf(FeatureGeometricType.Point), 0);
-            Assert.Less(types.IndexOf(FeatureGeometricType.Surface), 0);
+            Assert.True(types.IndexOf(FeatureGeometricType.Curve) >= 0);
+            Assert.True(types.IndexOf(FeatureGeometricType.Solid) >= 0);
+            Assert.True(types.IndexOf(FeatureGeometricType.Point) < 0);
+            Assert.True(types.IndexOf(FeatureGeometricType.Surface) < 0);
         }
 
-        [Test]
+        [Fact]
         public void SpecificGeometryTypesTest()
         {
             var prop = new GeometricPropertyDefinition("Foo", "Bar");
-            Assert.AreEqual("Foo", prop.Name);
-            Assert.AreEqual("Bar", prop.Description);
-            Assert.AreEqual(0, prop.SpecificGeometryTypes.Length);
+            Assert.Equal("Foo", prop.Name);
+            Assert.Equal("Bar", prop.Description);
+            Assert.Equal(0, prop.SpecificGeometryTypes.Length);
             Assert.True(String.IsNullOrEmpty(prop.SpatialContextAssociation));
 
             prop.GeometricTypes = FeatureGeometricType.Curve | FeatureGeometricType.Point;
 
             var types = new List<SpecificGeometryType>(prop.SpecificGeometryTypes);
-            Assert.GreaterOrEqual(types.IndexOf(SpecificGeometryType.LineString), 0);
-            Assert.GreaterOrEqual(types.IndexOf(SpecificGeometryType.CurveString), 0);
-            Assert.GreaterOrEqual(types.IndexOf(SpecificGeometryType.MultiCurveString), 0);
-            Assert.GreaterOrEqual(types.IndexOf(SpecificGeometryType.MultiLineString), 0);
-            Assert.GreaterOrEqual(types.IndexOf(SpecificGeometryType.Point), 0);
-            Assert.GreaterOrEqual(types.IndexOf(SpecificGeometryType.MultiPoint), 0);
+            Assert.True(types.IndexOf(SpecificGeometryType.LineString) >= 0);
+            Assert.True(types.IndexOf(SpecificGeometryType.CurveString) >= 0);
+            Assert.True(types.IndexOf(SpecificGeometryType.MultiCurveString) >= 0);
+            Assert.True(types.IndexOf(SpecificGeometryType.MultiLineString) >= 0);
+            Assert.True(types.IndexOf(SpecificGeometryType.Point) >= 0);
+            Assert.True(types.IndexOf(SpecificGeometryType.MultiPoint) >= 0);
             
             prop.GeometricTypes = FeatureGeometricType.Point;
             types = new List<SpecificGeometryType>(prop.SpecificGeometryTypes);
-            Assert.Less(types.IndexOf(SpecificGeometryType.LineString), 0);
-            Assert.Less(types.IndexOf(SpecificGeometryType.CurveString), 0);
-            Assert.Less(types.IndexOf(SpecificGeometryType.MultiCurveString), 0);
-            Assert.Less(types.IndexOf(SpecificGeometryType.MultiLineString), 0);
-            Assert.GreaterOrEqual(types.IndexOf(SpecificGeometryType.Point), 0);
-            Assert.GreaterOrEqual(types.IndexOf(SpecificGeometryType.MultiPoint), 0);
+            Assert.True(types.IndexOf(SpecificGeometryType.LineString) < 0);
+            Assert.True(types.IndexOf(SpecificGeometryType.CurveString) < 0);
+            Assert.True(types.IndexOf(SpecificGeometryType.MultiCurveString) < 0);
+            Assert.True(types.IndexOf(SpecificGeometryType.MultiLineString) < 0);
+            Assert.True(types.IndexOf(SpecificGeometryType.Point) >= 0);
+            Assert.True(types.IndexOf(SpecificGeometryType.MultiPoint) >= 0);
         }
     }
 }

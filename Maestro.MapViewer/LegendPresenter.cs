@@ -1176,7 +1176,7 @@ namespace Maestro.MapViewer
                 this.DrawSelectabilityIcon = (layer != null && bInitiallySelectable);
                 this.WasInitiallySelectable = bInitiallySelectable;
                 this.LayerDefinitionContent = null;
-                this.Checkable = (layer.Type != RuntimeMapLayer.kBaseMap);
+                this.Checkable = (layer.Type != RuntimeMapLayerType.BaseMap);
                 _themeNodes = new Dictionary<ThemeCategory, List<LayerThemeNodeMetadata>>();
                 _defaultIcons = new Dictionary<ThemeCategory, Image>();
             }

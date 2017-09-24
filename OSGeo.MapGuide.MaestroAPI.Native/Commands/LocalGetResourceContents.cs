@@ -59,7 +59,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
 
 #endif
 
-        Dictionary<string, IResource> IGetResourceContents.Execute(IEnumerable<string> resourceIds)
+        IDictionary<string, IResource> IGetResourceContents.Execute(IEnumerable<string> resourceIds)
         {
             //There is an implicit assumption here that all resource ids check out and that
             //there is no duplicates

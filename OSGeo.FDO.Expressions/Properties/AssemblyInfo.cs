@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OSGeo.MapGuide.MaestroAPI.Expressions")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyProduct("OSGeo.MapGuide.MaestroAPI.Expressions")]
+[assembly: AssemblyTitle("OSGeo.FDO.Expressions")]
+[assembly: AssemblyDescription("FDO (Feature Data Objects) expression parsing library based on the Irony grammar language toolkit")]
+[assembly: AssemblyProduct("OSGeo.FDO.Expressions")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -53,8 +53,8 @@ Configured for exercising everything in the Maestro API except for LocalNative c
     <IgnoreHttpSiteTests>false</IgnoreHttpSiteTests>
     <IgnoreHttpRuntimeMapTests>false</IgnoreHttpRuntimeMapTests>
     <!-- Functionality that uses the Local connection provider -->
-    <IgnoreLocalRuntimeMapTests>false</IgnoreLocalRuntimeMapTests>
-    <IgnoreLocalFeatureTests>false</IgnoreLocalFeatureTests>
+    <IgnoreLocalRuntimeMapTests>true</IgnoreLocalRuntimeMapTests>
+    <IgnoreLocalFeatureTests>true</IgnoreLocalFeatureTests>
     <!--
     Local Native connection provider tests are disabled as the standard test profile does not cover
     this functionality. The Test Runner configuration in the Maestro SDK enables such tests, while

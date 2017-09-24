@@ -22,11 +22,25 @@
 using System;
 using System.IO;
 using System.Reflection;
+using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
-    public class Utils
+    public static class ReflectionExtensions
     {
+        public static ConstructorInfo GetInternalConstructor(this Type type, Type[] types)
+        {
+            return type.GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null, types, null);
+        }
+    }
+
+    public static class Utils
+    {
+        public static Stream AsStream(this string str)
+        {
+            return new MemoryStream(Encoding.UTF8.GetBytes(str));
+        }
+
         public static string ResolvePath(string relPath)
         {
             UriBuilder uri = new UriBuilder(Assembly.GetExecutingAssembly().CodeBase);

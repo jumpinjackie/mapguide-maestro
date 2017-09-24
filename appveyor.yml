@@ -2,6 +2,7 @@ platform: Any CPU
 configuration: Release
 shallow_clone: true
 version: 6.0.0.{build}
+image: Visual Studio 2017
 
 matrix:
   fast_finish: true
@@ -16,20 +17,25 @@ assembly_info:
 
 # restore NuGet packages before running MSBuild
 before_build:
+  - echo CD                             %CD%
   - echo APPVEYOR_PROJECT_NAME          %APPVEYOR_PROJECT_NAME%
   - echo APPVEYOR_PROJECT_SLUG          %APPVEYOR_PROJECT_SLUG%
   - echo APPVEYOR_BUILD_FOLDER          %APPVEYOR_BUILD_FOLDER%
   - echo APPVEYOR_BUILD_ID              %APPVEYOR_BUILD_ID%
   - echo APPVEYOR_BUILD_NUMBER          %APPVEYOR_BUILD_NUMBER%
   - echo APPVEYOR_BUILD_VERSION         %APPVEYOR_BUILD_VERSION%
+  - echo APPVEYOR_JOB_ID                %APPVEYOR_JOB_ID%
+  - echo APPVEYOR_JOB_NAME              %APPVEYOR_JOB_NAME%
+  - echo APPVEYOR_JOB_NUMBER            %APPVEYOR_JOB_NUMBER%
   - echo APPVEYOR_REPO_NAME             %APPVEYOR_REPO_NAME%
   - echo APPVEYOR_REPO_BRANCH           %APPVEYOR_REPO_BRANCH%
   - echo APPVEYOR_REPO_TAG              %APPVEYOR_REPO_TAG%
   - echo APPVEYOR_REPO_TAG_NAME         %APPVEYOR_REPO_TAG_NAME%
   - echo APPVEYOR_REPO_COMMIT           %APPVEYOR_REPO_COMMIT%
   - echo APPVEYOR_REPO_COMMIT_TIMESTAMP %APPVEYOR_REPO_COMMIT_TIMESTAMP%
+  - nuget update -self
+  - nuget restore Maestro.sln
   - pip install -U sphinx
-  - nuget restore Maestro\Maestro_All.sln
 
 environment:
   COVERALLS_REPO_TOKEN:
@@ -38,45 +44,44 @@ environment:
 build:
   verbosity: minimal
   parallel: true
-  project: Maestro\Maestro_All.sln
+  project: Maestro.sln
 
 after_build:
   - set ARTIFACT_RELEASE_LABEL=%APPVEYOR_BUILD_VERSION%
   - if "%APPVEYOR_REPO_TAG%" == "true" set ARTIFACT_RELEASE_LABEL=%APPVEYOR_REPO_TAG_NAME%
   - if not exist %APPVEYOR_BUILD_FOLDER%\artifacts mkdir %APPVEYOR_BUILD_FOLDER%\artifacts
-  - set PATH=%PATH%;%APPVEYOR_BUILD_FOLDER%\Maestro\packages\NSIS.2.51\tools
-  - cd /D %APPVEYOR_BUILD_FOLDER%\Doc
-  - msbuild /p:Configuration=%CONFIGURATION% /v:q
-  - move %APPVEYOR_BUILD_FOLDER%\Doc\Help\MaestroAPI.chm %APPVEYOR_BUILD_FOLDER%\SDK\
+  - set PATH=%PATH%;%APPVEYOR_BUILD_FOLDER%\Packages\nsis\2.51.0\tools
   - cd /D %APPVEYOR_BUILD_FOLDER%\UserDoc
   - call make.bat html
   - cd /D %APPVEYOR_BUILD_FOLDER%\UserDoc\build\html
   - xcopy /S /Y *.* %APPVEYOR_BUILD_FOLDER%\out\%CONFIGURATION%\UserDoc\
   - cd /D %APPVEYOR_BUILD_FOLDER%\Install
   - makensis.exe /DSLN_CONFIG=%CONFIGURATION% /DCPU=x86 /DRELEASE_VERSION=%ARTIFACT_RELEASE_LABEL% Maestro.nsi
-  - cd /D %APPVEYOR_BUILD_FOLDER%\SDK
-  - 7z a %APPVEYOR_BUILD_FOLDER%\artifacts\Maestro-SDK-%ARTIFACT_RELEASE_LABEL%.zip *
   - cd %APPVEYOR_BUILD_FOLDER%
+  - dotnet pack Core.sln --configuration %CONFIGURATION% --output %APPVEYOR_BUILD_FOLDER%\artifacts --include-symbols /p:Version=6.0.0-pre%APPVEYOR_BUILD_NUMBER%"
 
 test_script:
 - ps: >-
-    .\Maestro\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:"Maestro\packages\NUnit.ConsoleRunner.3.6.1\tools\nunit3-console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\Release\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModel.Tests\bin\Release\OSGeo.MapGuide.ObjectModels.Tests.dll" -output:OpenCoverCoverage.xml
+    .\Packages\opencover\4.6.519\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:".\Packages\xunit.runner.console\2.2.0\tools\xunit.console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\Release\net461\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModels.Tests\bin\Release\net461\OSGeo.MapGuide.ObjectModels.Tests.dll -noshadow -xml .\TestResult.xml" -output:OpenCoverCoverage.xml -coverbytest:*.Tests.dll
 
-    $coveralls = (Resolve-Path "Maestro/packages/coveralls.net.*/tools/csmacnz.coveralls.exe").ToString()
+    $coveralls = (Resolve-Path "Packages/coveralls.net/0.412.0/tools/csmacnz.coveralls.exe").ToString()
 
     & $coveralls --opencover -i OpenCoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
 
     $wc = New-Object 'System.Net.WebClient'
 
-    $wc.UploadFile("https://ci.appveyor.com/api/testresults/nunit3/$env:APPVEYOR_JOB_ID", (Resolve-Path .\TestResult.xml))
+    $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$env:APPVEYOR_JOB_ID", (Resolve-Path .\TestResult.xml))
 
 artifacts:
   - path: .\artifacts\MapGuideMaestro-$(configuration)-$(ARTIFACT_RELEASE_LABEL)-Setup.exe
     name: installer_windows
+  - path: .\artifacts\*.nupkg
+    name: nuget_packages
+    type: NuGetPackage
 
-  - path: .\artifacts\Maestro-SDK-$(ARTIFACT_RELEASE_LABEL).zip
-    name: sdk
-    type: zip
+#  - path: .\artifacts\Maestro-SDK-$(ARTIFACT_RELEASE_LABEL).zip
+#    name: sdk
+#    type: zip
 
 deploy:
   release: $(appveyor_repo_tag_name)
@@ -84,7 +89,8 @@ deploy:
   provider: GitHub
   auth_token:
     secure: d+aY+YJPCp6KzWE2XcGKdp5XFXoh66H7le3SJiqxtAHDZ1P2+kw/PgIF5Unj3kxG
-  artifact: installer_windows,sdk
+#  artifact: installer_windows,sdk
+  artifact: installer_windows,nuget_packages
   draft: true
   prerelease: true
   on:

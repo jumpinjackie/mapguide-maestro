@@ -309,7 +309,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         internal static string NormalizedSerialize(XmlSerializer serializer, object o)
         {
-            using (var ms = new MemoryStream())
+            using (var ms = MemoryStreamPool.GetStream())
             {
                 using (var xw = new Utf8XmlWriter(ms))
                 {

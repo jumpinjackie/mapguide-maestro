@@ -1,5 +1,6 @@
 ﻿using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Serialization;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Collections.Generic;
 using System.Xml;
@@ -237,7 +238,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             {
                 object[] tmp = NormalizeAndValidate(values);
 
-                using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                using (var ms = MemoryStreamPool.GetStream())
                 {
                     for (int i = 0; i < m_layer.IdentityProperties.Length; i++)
                     {

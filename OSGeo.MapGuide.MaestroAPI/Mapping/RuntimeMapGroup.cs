@@ -27,22 +27,33 @@ using System;
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
     /// <summary>
+    /// Defines the type of map layer group
+    /// </summary>
+    public static class RuntimeMapGroupType
+    {
+        /// <summary>
+        /// Base map (aka. Tiled)
+        /// </summary>
+        public const int BaseMap = 2;
+
+        /// <summary>
+        /// Normal
+        /// </summary>
+        public const int Normal = 1;
+    }
+
+    /// <summary>
     /// Represents a group of layers in a runtime map. Use <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup)"/> to create
     /// instances of this class.
     /// </summary>
     public class RuntimeMapGroup : MapObservable
     {
-        //From MgLayerGroupType
-        public const int kBaseMap = 2;
-
-        public const int kNormal = 1;
-
         internal RuntimeMapGroup()
         {
             _disableChangeTracking = true;
             this.Group = string.Empty;
             this.LegendLabel = string.Empty;
-            this.Type = kNormal;
+            this.Type = RuntimeMapGroupType.Normal;
             this.ObjectId = Guid.NewGuid().ToString();
         }
 
@@ -76,7 +87,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.ShowInLegend = group.ShowInLegend;
             this.Visible = group.Visible;
 
-            this.Type = kNormal;
+            this.Type = RuntimeMapGroupType.Normal;
 
             _disableChangeTracking = false;
         }
@@ -91,7 +102,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.ShowInLegend = group.ShowInLegend;
             this.Visible = group.Visible;
 
-            this.Type = kBaseMap;
+            this.Type = RuntimeMapGroupType.BaseMap;
 
             _disableChangeTracking = false;
         }

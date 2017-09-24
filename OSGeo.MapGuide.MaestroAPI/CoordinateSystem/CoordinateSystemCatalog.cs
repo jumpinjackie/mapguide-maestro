@@ -163,6 +163,11 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             public double MetersPerUnit => _cs.MetersPerUnitX;
         }
 
+        /// <summary>
+        /// Gets the coordinate system for the given well-known text
+        /// </summary>
+        /// <param name="wkt"></param>
+        /// <returns></returns>
         public virtual ICoordinateSystemRef CreateCoordinateSystem(string wkt)
         {
             var cs = CoordinateSystemBase.Create(wkt);

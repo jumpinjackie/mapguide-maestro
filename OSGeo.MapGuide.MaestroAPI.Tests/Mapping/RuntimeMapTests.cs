@@ -21,7 +21,6 @@
 #endregion Disclaimer / License
 
 using Moq;
-using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI.Tests;
 using OSGeo.MapGuide.ObjectModels;
@@ -32,18 +31,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
 {
-    public static class ReflectionExtensions
-    {
-        public static ConstructorInfo GetInternalConstructor(this Type type, Type[] types)
-        {
-            return type.GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null, types, null);
-        }
-    }
-
-    [TestFixture]
     public class RuntimeMapTests
     {
         static RuntimeMap CreateMap(IServerConnection conn, IMapDefinition mdf, double val, bool b)
@@ -79,7 +70,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
         private static RuntimeMap CreateTestMap()
         {
             var layers = new Dictionary<string, ILayerDefinition>();
-            var mdf = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), Utils.OpenFile("UserTestData\\TestTiledMap.xml"));
+            var mdf = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}TestTiledMap.xml"));
             mdf.ResourceID = "Library://UnitTest/Test.MapDefinition";
             foreach (var lyr in mdf.BaseMap.BaseMapLayerGroups.First().BaseMapLayer)
             {
@@ -117,16 +108,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             conn.Setup(c => c.GetService((int)ServiceType.Mapping)).Returns(mapSvc.Object);
 
             var map = CreateMap(conn.Object, mdf, 1.0, true);
-            Assert.AreEqual(15, map.FiniteDisplayScaleCount);
+            Assert.Equal(15, map.FiniteDisplayScaleCount);
             Assert.NotNull(map.Layers);
             Assert.NotNull(map.Groups);
             return map;
         }
 
-        [Test]
+        [Fact]
         public void UnsupportedConnectionTest()
         {
-            var res = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), Utils.OpenFile("UserTestData\\TestTiledMap.xml"));
+            var res = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}TestTiledMap.xml"));
             var conn = new Mock<IServerConnection>();
             var caps = new Mock<IConnectionCapabilities>();
             caps.Setup(c => c.SupportedServices).Returns(new int[0]);
@@ -146,7 +137,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             });
         }
 
-        [Test]
+        [Fact]
         public void GetFiniteDisplayScaleAtTest()
         {
             var map = CreateTestMap();
@@ -154,20 +145,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.Throws<IndexOutOfRangeException>(() => map.GetFiniteDisplayScaleAt(16));
             for (int i = 0; i < map.FiniteDisplayScaleCount; i++)
             {
-                Assert.Greater(map.GetFiniteDisplayScaleAt(i), 0);
+                Assert.True(map.GetFiniteDisplayScaleAt(i) > 0);
             }
         }
 
-        [Test]
+        [Fact]
         public void SetViewCenterTest()
         {
             var map = CreateTestMap();
             map.SetViewCenter(-37, 23);
-            Assert.AreEqual(-37, map.ViewCenter.X);
-            Assert.AreEqual(23, map.ViewCenter.Y);
+            Assert.Equal(-37, map.ViewCenter.X);
+            Assert.Equal(23, map.ViewCenter.Y);
         }
 
-        [Test]
+        [Fact]
         public void GetGroupByNameTest()
         {
             var map = CreateTestMap();
@@ -175,18 +166,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.Null(map.Groups["asjgsfdsf"]);
         }
 
-        [Test]
+        [Fact]
         public void GetLayerByObjectIdTest()
         {
             var map = CreateTestMap();
             var lyr = map.Layers["Rail"];
             var lyr2 = map.GetLayerByObjectId(lyr.ObjectId);
             Assert.NotNull(lyr2);
-            Assert.AreSame(lyr, lyr2);
+            Assert.Equal(lyr, lyr2);
             Assert.Null(map.GetLayerByObjectId("asjgsfdsf"));
         }
 
-        [Test]
+        [Fact]
         public void InsertLayerTest()
         {
             var map = CreateTestMap();
@@ -199,12 +190,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             var lyr = mapSvc.CreateMapLayer(map, layer.Object);
             int count = map.Layers.Count;
             map.Layers.Insert(0, lyr);
-            Assert.AreEqual(count + 1, map.Layers.Count);
+            Assert.Equal(count + 1, map.Layers.Count);
             var lyr2 = map.Layers[0];
-            Assert.AreSame(lyr, lyr2);
+            Assert.Equal(lyr, lyr2);
         }
 
-        [Test]
+        [Fact]
         public void SetLayerIndexTest()
         {
             var map = CreateTestMap();
@@ -218,12 +209,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             int count = map.Layers.Count;
             int idx = map.Layers.Count - 1;
             map.Layers[idx] = lyr;
-            Assert.AreEqual(count, map.Layers.Count);
+            Assert.Equal(count, map.Layers.Count);
             var lyr2 = map.Layers[idx];
-            Assert.AreSame(lyr, lyr2);
+            Assert.Equal(lyr, lyr2);
         }
 
-        [Test]
+        [Fact]
         public void RemoveLayerAtTest()
         {
             var map = CreateTestMap();
@@ -232,75 +223,75 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             int count = map.Layers.Count;
             var lyr = map.Layers[0];
             map.Layers.RemoveAt(0);
-            Assert.AreEqual(count - 1, map.Layers.Count);
+            Assert.Equal(count - 1, map.Layers.Count);
             Assert.Null(map.Layers[lyr.Name]);
         }
 
-        [Test]
+        [Fact]
         public void IndexOfLayerTest()
         {
             var map = CreateTestMap();
-            Assert.GreaterOrEqual(map.IndexOfLayer("Rail"), 0);
-            Assert.GreaterOrEqual(map.IndexOfLayer("Parcels"), 0);
-            Assert.GreaterOrEqual(map.IndexOfLayer("HydrographicPolygons"), 0);
-            Assert.Less(map.IndexOfLayer("sdjgdsfasdf"), 0);
+            Assert.True(map.IndexOfLayer("Rail") >= 0);
+            Assert.True(map.IndexOfLayer("Parcels") >= 0);
+            Assert.True(map.IndexOfLayer("HydrographicPolygons") >= 0);
+            Assert.True(map.IndexOfLayer("sdjgdsfasdf") < 0);
         }
 
-        [Test]
+        [Fact]
         public void RemoveLayerTest()
         {
             var map = CreateTestMap();
-            Assert.AreEqual(3, map.Layers.Count);
+            Assert.Equal(3, map.Layers.Count);
             map.Layers.Remove("Rail");
-            Assert.AreEqual(2, map.Layers.Count);
+            Assert.Equal(2, map.Layers.Count);
             map.Layers.Remove("asdgjsdfdsf");
-            Assert.AreEqual(2, map.Layers.Count);
+            Assert.Equal(2, map.Layers.Count);
         }
 
-        [Test]
+        [Fact]
         public void RemoveGroupTest()
         {
             var map = CreateTestMap();
-            Assert.AreEqual(1, map.Groups.Count);
+            Assert.Equal(1, map.Groups.Count);
             map.Groups.Remove("Base Layer Group");
-            Assert.AreEqual(0, map.Groups.Count);
+            Assert.Equal(0, map.Groups.Count);
 
             map = CreateTestMap();
             var grp = map.Groups[0];
             map.Groups.Remove(grp);
-            Assert.AreEqual(0, map.Groups.Count);
+            Assert.Equal(0, map.Groups.Count);
         }
 
-        [Test]
+        [Fact]
         public void GetLayersOfGroupTest()
         {
             var map = CreateTestMap();
             var layers = map.GetLayersOfGroup("Base Layer Group");
-            Assert.AreEqual(3, layers.Length);
+            Assert.Equal(3, layers.Length);
             layers = map.GetLayersOfGroup("asdjgdsfd");
-            Assert.AreEqual(0, layers.Length);
+            Assert.Equal(0, layers.Length);
         }
 
-        [Test]
+        [Fact]
         public void GetGroupsOfGroupTest()
         {
             var map = CreateTestMap();
             var groups = map.GetGroupsOfGroup("Base Layer Group");
-            Assert.AreEqual(0, groups.Length);
+            Assert.Equal(0, groups.Length);
             groups = map.GetGroupsOfGroup("asdjsdfdsfd");
-            Assert.AreEqual(0, groups.Length);
+            Assert.Equal(0, groups.Length);
             var mapSvc = (IMappingService)map.CurrentConnection.GetService((int)ServiceType.Mapping);
             var grp = mapSvc.CreateMapGroup(map, "Test");
             grp.Group = "Base Layer Group";
             map.Groups.Add(grp);
-            Assert.AreEqual(2, map.Groups.Count);
+            Assert.Equal(2, map.Groups.Count);
             groups = map.GetGroupsOfGroup("Base Layer Group");
-            Assert.AreEqual(1, groups.Length);
+            Assert.Equal(1, groups.Length);
             groups = map.GetGroupsOfGroup("Test");
-            Assert.AreEqual(0, groups.Length);
+            Assert.Equal(0, groups.Length);
         }
         
-        [Test]
+        [Fact]
         public void GetLayerByNameTest()
         {
             var map = CreateTestMap();
@@ -310,42 +301,42 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.Null(map.Layers["sdhgdsafdsfd"]);
         }
 
-        [Test]
+        [Fact]
         public void UpdateMapDefinitionTest()
         {
             var map = CreateTestMap();
             IMapDefinition mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "Test Map");
             map.UpdateMapDefinition(mdf);
-            Assert.AreEqual(0, mdf.GetDynamicLayerCount());
-            Assert.AreEqual(0, mdf.GetGroupCount());
+            Assert.Equal(0, mdf.GetDynamicLayerCount());
+            Assert.Equal(0, mdf.GetGroupCount());
             Assert.NotNull(mdf.BaseMap);
             var grp = mdf.BaseMap.GetFirstGroup();
             Assert.NotNull(grp);
-            Assert.AreEqual(3, grp.BaseMapLayer.Count());
-            Assert.AreEqual("Base Layer Group", grp.Name);
+            Assert.Equal(3, grp.BaseMapLayer.Count());
+            Assert.Equal("Base Layer Group", grp.Name);
         }
 
-        [Test]
+        [Fact]
         public void ToMapDefinitionTest()
         {
             var map = CreateTestMap();
             var mdf = map.ToMapDefinition(false);
-            Assert.AreEqual(0, mdf.GetDynamicLayerCount());
-            Assert.AreEqual(0, mdf.GetGroupCount());
+            Assert.Equal(0, mdf.GetDynamicLayerCount());
+            Assert.Equal(0, mdf.GetGroupCount());
             Assert.NotNull(mdf.BaseMap);
             var grp = mdf.BaseMap.GetFirstGroup();
             Assert.NotNull(grp);
-            Assert.AreEqual(3, grp.BaseMapLayer.Count());
-            Assert.AreEqual("Base Layer Group", grp.Name);
+            Assert.Equal(3, grp.BaseMapLayer.Count());
+            Assert.Equal("Base Layer Group", grp.Name);
 
             mdf = map.ToMapDefinition(true);
-            Assert.AreEqual(0, mdf.GetDynamicLayerCount());
-            Assert.AreEqual(0, mdf.GetGroupCount());
+            Assert.Equal(0, mdf.GetDynamicLayerCount());
+            Assert.Equal(0, mdf.GetGroupCount());
             Assert.NotNull(mdf.BaseMap);
             grp = mdf.BaseMap.GetFirstGroup();
             Assert.NotNull(grp);
-            Assert.AreEqual(3, grp.BaseMapLayer.Count());
-            Assert.AreEqual("Base Layer Group", grp.Name);
+            Assert.Equal(3, grp.BaseMapLayer.Count());
+            Assert.Equal("Base Layer Group", grp.Name);
         }
     }
 }

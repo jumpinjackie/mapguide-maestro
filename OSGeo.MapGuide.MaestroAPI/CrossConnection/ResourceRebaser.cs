@@ -21,7 +21,6 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.ObjectModels;
-using System.IO;
 using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
@@ -111,7 +110,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                 el.InnerText = el.InnerText.Replace(sourceRoot, targetRoot);
             }
 
-            using (var ms = new MemoryStream())
+            using (var ms = MemoryStreamPool.GetStream())
             {
                 doc.Save(ms);
                 ms.Position = 0L;

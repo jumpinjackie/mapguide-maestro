@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,11 +9,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MpuCalc</RootNamespace>
     <AssemblyName>MpuCalc</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\Maestro\</SolutionDir>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -37,18 +39,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OSGeo.MapGuide.Foundation, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Foundation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="OSGeo.MapGuide.Geometry, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.Geometry.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="OSGeo.MapGuide.PlatformBase, Version=3.0.0.8701, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.3.0.0.8701\lib\net40\OSGeo.MapGuide.PlatformBase.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -66,12 +56,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="mapguide-api-base-x86">
+      <Version>3.0.0.8701</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
-xcopy /s /y "$(SolutionDir)packages\mapguide-api-base-x86.3.0.0.8701\mapguide-api-base\*.*" "$(TargetDir)"</PostBuildEvent>
+xcopy /s /y "$(MSBuildProjectDirectory)\..\Packages\mapguide-api-base-x86\3.0.0.8701\mapguide-api-base\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

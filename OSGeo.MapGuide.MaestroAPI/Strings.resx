@@ -915,4 +915,83 @@
   <data name="ADF_BingMapsHybridLayerNoLongerAvailable" xml:space="preserve">
     <value>The "Hybrid" base layer type no longer exists in the current version of the Bing Maps API. The closes equivalent layer type is "AerialsWithLabels"</value>
   </data>
+  <data name="DebugWatermarkMessage" xml:space="preserve">
+    <value>MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}</value>
+  </data>
+  <data name="DebugWatermarkMessageLayer" xml:space="preserve">
+    <value>MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}\nLayer Spatial Context: {5}</value>
+  </data>
+  <data name="Desc_GetExtents" xml:space="preserve">
+    <value>Displays the current map extents</value>
+  </data>
+  <data name="Desc_GetMapKml" xml:space="preserve">
+    <value>Gets the current map as a KML document</value>
+  </data>
+  <data name="Desc_ZoomToScale" xml:space="preserve">
+    <value>Zoom to a specified scale</value>
+  </data>
+  <data name="FailedToCalculateFeatureSourceExtents" xml:space="preserve">
+    <value>Could not calculate the extents of the Feature Source. Preview is not possible</value>
+  </data>
+  <data name="Label_ExtraTools" xml:space="preserve">
+    <value>Extra Tools</value>
+  </data>
+  <data name="Label_GetExtents" xml:space="preserve">
+    <value>Get Extents</value>
+  </data>
+  <data name="Label_GetMapKml" xml:space="preserve">
+    <value>Get KML</value>
+  </data>
+  <data name="Label_Tools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="Label_ZoomToScale" xml:space="preserve">
+    <value>Zoom to Scale</value>
+  </data>
+  <data name="PreviewMap" xml:space="preserve">
+    <value>Preview Map</value>
+  </data>
+  <data name="SiteVersionDoesntSupportWatermarks" xml:space="preserve">
+    <value>The site version of this current connection is not known to support watermarks</value>
+  </data>
+  <data name="TextWatermark" xml:space="preserve">
+    <value>&lt;?xml version="1.0"?&gt;
+&lt;WatermarkDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2.4.0" xsi:noNamespaceSchemaLocation="WatermarkDefinition-2.4.0.xsd"&gt;
+  &lt;Content&gt;
+    &lt;SimpleSymbolDefinition&gt;
+      &lt;Name /&gt;
+      &lt;Description /&gt;
+      &lt;Graphics&gt;
+        &lt;Text&gt;
+          &lt;Content&gt;'{0}'&lt;/Content&gt;
+          &lt;FontName&gt;'Arial'&lt;/FontName&gt;
+          &lt;Height&gt;3&lt;/Height&gt;
+          &lt;Justification&gt;'Left'&lt;/Justification&gt;
+          &lt;TextColor&gt;FF000000&lt;/TextColor&gt;
+          &lt;Frame&gt;
+            &lt;FillColor&gt;CCFFFFFF&lt;/FillColor&gt;
+          &lt;/Frame&gt;
+        &lt;/Text&gt;
+      &lt;/Graphics&gt;
+      &lt;PointUsage /&gt;
+      &lt;ParameterDefinition /&gt;
+    &lt;/SimpleSymbolDefinition&gt;
+  &lt;/Content&gt;
+  &lt;Appearance /&gt;
+  &lt;Position&gt;
+    &lt;XYPosition&gt;
+      &lt;XPosition&gt;
+        &lt;Offset&gt;10&lt;/Offset&gt;
+        &lt;Unit&gt;Points&lt;/Unit&gt;
+        &lt;Alignment&gt;Left&lt;/Alignment&gt;
+      &lt;/XPosition&gt;
+      &lt;YPosition&gt;
+        &lt;Offset&gt;10&lt;/Offset&gt;
+        &lt;Unit&gt;Points&lt;/Unit&gt;
+        &lt;Alignment&gt;Top&lt;/Alignment&gt;
+      &lt;/YPosition&gt;
+    &lt;/XYPosition&gt;
+  &lt;/Position&gt;
+&lt;/WatermarkDefinition&gt;</value>
+  </data>
 </root>

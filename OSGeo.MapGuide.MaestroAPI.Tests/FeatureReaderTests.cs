@@ -20,22 +20,33 @@
 
 #endregion Disclaimer / License
 using Moq;
-using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Geometry;
-using OSGeo.MapGuide.MaestroAPI.Http;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
 using System.IO;
 using System.Linq;
-using System.Text;
+using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
-    [TestFixture]
     public class FeatureReaderTests
     {
-        [Test]
+        static IFeatureReader CreateXmlFeatureReader(Stream stream)
+        {
+            var xrType = typeof(IFeatureReader).Assembly.GetTypes().FirstOrDefault(t => t.Name == "XmlFeatureReader");
+            var ctor = xrType.GetInternalConstructor(new[] { typeof(Stream) });
+            return ctor.Invoke(new[] { stream }) as IFeatureReader;
+        }
+
+        static IReader CreateXmlDataReader(Stream stream)
+        {
+            var xrType = typeof(IFeatureReader).Assembly.GetTypes().FirstOrDefault(t => t.Name == "XmlDataReader");
+            var ctor = xrType.GetInternalConstructor(new[] { typeof(Stream) });
+            return ctor.Invoke(new[] { stream }) as IReader;
+        }
+
+        [Fact]
         public void TestFeatureArrayReader()
         {
             var fcount = 5;
@@ -58,18 +69,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var reader = new FeatureArrayReader(features.ToArray());
             while (reader.ReadNext())
             {
-                Assert.AreEqual(1, reader.FieldCount);
-                Assert.AreEqual(iterations, reader.GetInt32("ID"));
-                Assert.AreEqual(iterations, reader.GetInt32(0));
-                Assert.AreEqual(PropertyValueType.Int32, reader.GetPropertyType(0));
-                Assert.AreEqual(PropertyValueType.Int32, reader.GetPropertyType("ID"));
+                Assert.Equal(1, reader.FieldCount);
+                Assert.Equal(iterations, reader.GetInt32("ID"));
+                Assert.Equal(iterations, reader.GetInt32(0));
+                Assert.Equal(PropertyValueType.Int32, reader.GetPropertyType(0));
+                Assert.Equal(PropertyValueType.Int32, reader.GetPropertyType("ID"));
                 iterations++;
             }
             reader.Close();
-            Assert.AreEqual(fcount, iterations);
+            Assert.Equal(fcount, iterations);
         }
 
-        [Test]
+        [Fact]
         public void TestLimitingFeatureReader()
         {
             int limit = 5;
@@ -118,68 +129,68 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
                 {
                     Assert.NotNull(lr.GetBlob(0));
                     Assert.NotNull(lr.GetBlob("BLOB"));
-                    Assert.AreEqual(1, lr.GetByte(1));
-                    Assert.AreEqual(1, lr.GetByte("BYTE"));
-                    Assert.AreEqual(false, lr.GetBoolean(2));
-                    Assert.AreEqual(false, lr.GetBoolean("BOOL"));
+                    Assert.Equal(1, lr.GetByte(1));
+                    Assert.Equal(1, lr.GetByte("BYTE"));
+                    Assert.Equal(false, lr.GetBoolean(2));
+                    Assert.Equal(false, lr.GetBoolean("BOOL"));
                     Assert.NotNull(lr.GetClob(3));
                     Assert.NotNull(lr.GetClob("CLOB"));
-                    Assert.AreEqual(new DateTime(2017, 1, 28), lr.GetDateTime(4));
-                    Assert.AreEqual(new DateTime(2017, 1, 28), lr.GetDateTime("DATE"));
-                    Assert.AreEqual(1.0, lr.GetDouble(5));
-                    Assert.AreEqual(1.0, lr.GetDouble("DOUBLE"));
-                    Assert.IsNotNull(lr.GetFeatureObject(6));
-                    Assert.IsNotNull(lr.GetFeatureObject("FEATURE"));
-                    Assert.AreEqual("POINT (0 0)", lr.GetGeometry(7).AsText());
-                    Assert.AreEqual("POINT (0 0)", lr.GetGeometry("GEOMETRY").AsText());
-                    Assert.AreEqual(2, lr.GetInt16(8));
-                    Assert.AreEqual(2, lr.GetInt16("INT16"));
-                    Assert.AreEqual(3, lr.GetInt32(9));
-                    Assert.AreEqual(3, lr.GetInt32("INT32"));
-                    Assert.AreEqual(4, lr.GetInt64(10));
-                    Assert.AreEqual(4, lr.GetInt64("INT64"));
-                    Assert.AreEqual(1.0f, lr.GetSingle(11));
-                    Assert.AreEqual(1.0f, lr.GetSingle("SINGLE"));
-                    Assert.AreEqual("Foo", lr.GetString(12));
-                    Assert.AreEqual("Foo", lr.GetString("STRING"));
+                    Assert.Equal(new DateTime(2017, 1, 28), lr.GetDateTime(4));
+                    Assert.Equal(new DateTime(2017, 1, 28), lr.GetDateTime("DATE"));
+                    Assert.Equal(1.0, lr.GetDouble(5));
+                    Assert.Equal(1.0, lr.GetDouble("DOUBLE"));
+                    Assert.NotNull(lr.GetFeatureObject(6));
+                    Assert.NotNull(lr.GetFeatureObject("FEATURE"));
+                    Assert.Equal("POINT (0 0)", lr.GetGeometry(7).AsText());
+                    Assert.Equal("POINT (0 0)", lr.GetGeometry("GEOMETRY").AsText());
+                    Assert.Equal(2, lr.GetInt16(8));
+                    Assert.Equal(2, lr.GetInt16("INT16"));
+                    Assert.Equal(3, lr.GetInt32(9));
+                    Assert.Equal(3, lr.GetInt32("INT32"));
+                    Assert.Equal(4, lr.GetInt64(10));
+                    Assert.Equal(4, lr.GetInt64("INT64"));
+                    Assert.Equal(1.0f, lr.GetSingle(11));
+                    Assert.Equal(1.0f, lr.GetSingle("SINGLE"));
+                    Assert.Equal("Foo", lr.GetString(12));
+                    Assert.Equal("Foo", lr.GetString("STRING"));
                     iterated++;
                 }
                 lr.Close();
-                Assert.AreEqual(limit, iterated);
+                Assert.Equal(limit, iterated);
             }
         }
 
-        [Test]
+        [Fact]
         public void TestXmlFeatureNullValues()
         {
             //Simulate post-#708 SELECTFEATURES and verify reader properly handles null values in response
-            var bytes = Encoding.UTF8.GetBytes(Properties.Resources.SelectFeatureSample);
-            var reader = new XmlFeatureReader(new MemoryStream(bytes));
 
-            Assert.AreEqual(3, reader.FieldCount);
+            var reader = CreateXmlFeatureReader(Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}SelectFeatureSample.xml"));
 
-            reader.ReadNext();
-
-            Assert.IsFalse(reader.IsNull(0));
-            Assert.IsFalse(reader.IsNull(1));
-            Assert.IsFalse(reader.IsNull(2));
+            Assert.Equal(3, reader.FieldCount);
 
             reader.ReadNext();
 
-            Assert.IsFalse(reader.IsNull(0));
-            Assert.IsFalse(reader.IsNull(1));
-            Assert.IsTrue(reader.IsNull(2));
+            Assert.False(reader.IsNull(0));
+            Assert.False(reader.IsNull(1));
+            Assert.False(reader.IsNull(2));
 
             reader.ReadNext();
 
-            Assert.IsFalse(reader.IsNull(0));
-            Assert.IsTrue(reader.IsNull(1));
-            Assert.IsTrue(reader.IsNull(2));
+            Assert.False(reader.IsNull(0));
+            Assert.False(reader.IsNull(1));
+            Assert.True(reader.IsNull(2));
 
-            Assert.IsFalse(reader.ReadNext()); //end of stream
+            reader.ReadNext();
+
+            Assert.False(reader.IsNull(0));
+            Assert.True(reader.IsNull(1));
+            Assert.True(reader.IsNull(2));
+
+            Assert.False(reader.ReadNext()); //end of stream
 
             //Test the IEnumerable approach
-            reader = new XmlFeatureReader(new MemoryStream(bytes));
+            reader = CreateXmlFeatureReader(Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}SelectFeatureSample.xml"));
 
             int i = 0;
             foreach (var feat in reader)
@@ -187,74 +198,72 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
                 switch (i)
                 {
                     case 0:
-                        Assert.IsFalse(feat.IsNull(0));
-                        Assert.IsFalse(feat.IsNull(1));
-                        Assert.IsFalse(feat.IsNull(2));
+                        Assert.False(feat.IsNull(0));
+                        Assert.False(feat.IsNull(1));
+                        Assert.False(feat.IsNull(2));
                         break;
 
                     case 1:
-                        Assert.IsFalse(feat.IsNull(0));
-                        Assert.IsFalse(feat.IsNull(1));
-                        Assert.IsTrue(feat.IsNull(2));
+                        Assert.False(feat.IsNull(0));
+                        Assert.False(feat.IsNull(1));
+                        Assert.True(feat.IsNull(2));
                         break;
 
                     case 2:
-                        Assert.IsFalse(feat.IsNull(0));
-                        Assert.IsTrue(feat.IsNull(1));
-                        Assert.IsTrue(feat.IsNull(2));
+                        Assert.False(feat.IsNull(0));
+                        Assert.True(feat.IsNull(1));
+                        Assert.True(feat.IsNull(2));
                         break;
                 }
                 i++;
             }
         }
 
-        [Test]
+        [Fact]
         public void TestXmlFeatureJoinValues()
         {
-            var bytes = Encoding.UTF8.GetBytes(Properties.Resources.FeatureJoinSelectSample);
-            var reader = new XmlFeatureReader(new MemoryStream(bytes));
+            var reader = CreateXmlFeatureReader(Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}FeatureJoinSelectSample.xml"));
 
-            Assert.AreEqual(40, reader.FieldCount);
+            Assert.Equal(40, reader.FieldCount);
 
             int count = 0;
             while (reader.ReadNext())
             {
                 count++;
             }
-            Assert.AreEqual(63, count);
+            Assert.Equal(63, count);
         }
 
-        [Test]
+        [Fact]
         public void TestXmlAggregateNullValues()
         {
             //Simulate post-#708 SELECTAGGREGATES and verify reader properly handles null values in response
-            var bytes = Encoding.UTF8.GetBytes(Properties.Resources.SelectAggregatesSample);
-            var reader = new XmlDataReader(new MemoryStream(bytes));
+            var reader = CreateXmlDataReader(Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}SelectAggregatesSample.xml"));
 
-            Assert.AreEqual(3, reader.FieldCount);
-
-            reader.ReadNext();
-
-            Assert.IsFalse(reader.IsNull(0));
-            Assert.IsFalse(reader.IsNull(1));
-            Assert.IsFalse(reader.IsNull(2));
+            Assert.Equal(3, reader.FieldCount);
 
             reader.ReadNext();
 
-            Assert.IsFalse(reader.IsNull(0));
-            Assert.IsFalse(reader.IsNull(1));
-            Assert.IsTrue(reader.IsNull(2));
+            Assert.False(reader.IsNull(0));
+            Assert.False(reader.IsNull(1));
+            Assert.False(reader.IsNull(2));
 
             reader.ReadNext();
 
-            Assert.IsFalse(reader.IsNull(0));
-            Assert.IsTrue(reader.IsNull(1));
-            Assert.IsTrue(reader.IsNull(2));
+            Assert.False(reader.IsNull(0));
+            Assert.False(reader.IsNull(1));
+            Assert.True(reader.IsNull(2));
 
-            Assert.IsFalse(reader.ReadNext()); //end of stream
+            reader.ReadNext();
+
+            Assert.False(reader.IsNull(0));
+            Assert.True(reader.IsNull(1));
+            Assert.True(reader.IsNull(2));
+
+            Assert.False(reader.ReadNext()); //end of stream
 
             //Test the IEnumerable approach
-            reader = new XmlDataReader(new MemoryStream(bytes));
+            reader = CreateXmlDataReader(Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}SelectAggregatesSample.xml"));
 
             int i = 0;
             while (reader.ReadNext())
@@ -262,21 +271,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
                 switch (i)
                 {
                     case 0:
-                        Assert.IsFalse(reader.IsNull(0));
-                        Assert.IsFalse(reader.IsNull(1));
-                        Assert.IsFalse(reader.IsNull(2));
+                        Assert.False(reader.IsNull(0));
+                        Assert.False(reader.IsNull(1));
+                        Assert.False(reader.IsNull(2));
                         break;
 
                     case 1:
-                        Assert.IsFalse(reader.IsNull(0));
-                        Assert.IsFalse(reader.IsNull(1));
-                        Assert.IsTrue(reader.IsNull(2));
+                        Assert.False(reader.IsNull(0));
+                        Assert.False(reader.IsNull(1));
+                        Assert.True(reader.IsNull(2));
                         break;
 
                     case 2:
-                        Assert.IsFalse(reader.IsNull(0));
-                        Assert.IsTrue(reader.IsNull(1));
-                        Assert.IsTrue(reader.IsNull(2));
+                        Assert.False(reader.IsNull(0));
+                        Assert.True(reader.IsNull(1));
+                        Assert.True(reader.IsNull(2));
                         break;
                 }
                 i++;

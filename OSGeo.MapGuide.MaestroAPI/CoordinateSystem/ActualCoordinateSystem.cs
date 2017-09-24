@@ -46,17 +46,17 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             m_transform = f.CreateFromCoordinateSystems(coordinateSystem, cf.CreateFromWkt(XY_M));
         }
 
-        protected override double CalculateScale(IEnvelope bbox, System.Drawing.Size size)
+        protected override double CalculateScale(Envelope bbox, System.Drawing.Size size)
         {
             double[] points = m_transform.MathTransform.Transform(new double[] { bbox.MinX, bbox.MinY, bbox.MaxX, bbox.MaxY });
-            IEnvelope localEnv = new Envelope(points[0], points[2], points[1], points[3]);
+            var localEnv = new Envelope(points[0], points[2], points[1], points[3]);
             return base.CalculateScale(localEnv, size);
         }
 
-        protected override IEnvelope AdjustBoundingBox(IEnvelope bbox, double scale, System.Drawing.Size size)
+        protected override Envelope AdjustBoundingBox(Envelope bbox, double scale, System.Drawing.Size size)
         {
             double[] points = m_transform.MathTransform.Transform(new double[] { bbox.MinX, bbox.MinY, bbox.MaxX, bbox.MaxY });
-            IEnvelope localEnv = new Envelope(points[0], points[2], points[1], points[3]);
+            var localEnv = new Envelope(points[0], points[2], points[1], points[3]);
             localEnv = base.AdjustBoundingBox(localEnv, scale, size);
             points = m_transform.MathTransform.Inverse().Transform(new double[] { localEnv.MinX, localEnv.MinY, localEnv.MaxX, localEnv.MaxY });
             return new Envelope(points[0], points[2], points[1], points[3]);
