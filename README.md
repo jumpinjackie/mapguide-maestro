@@ -1,5 +1,6 @@
 # MapGuide Maestro
 
+[![Build status](https://travis-ci.org/jumpinjackie/mapguide-maestro.svg)](https://travis-ci.org/jumpinjackie/mapguide-maestro)
 [![Build status](https://ci.appveyor.com/api/projects/status/7250l5cn21yfr1mb?svg=true)](https://ci.appveyor.com/project/jumpinjackie/mapguide-maestro)
 [![Coverage Status](https://coveralls.io/repos/github/jumpinjackie/mapguide-maestro/badge.svg)](https://coveralls.io/github/jumpinjackie/mapguide-maestro)
 
