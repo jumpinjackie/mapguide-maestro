@@ -213,7 +213,7 @@ namespace OSGeo.MapGuide.ObjectModels
             //UGLY: We have to peek inside the stream to determine the version number
 
             //House the stream inside a rewindable memory stream
-            using (var ms = new MemoryStream())
+            using (var ms = MemoryStreamPool.GetStream("ResourceTypeRegistry.Deserialize"))
             {
                 Utils.CopyStream(stream, ms);
                 ms.Position = 0L; //Rewind

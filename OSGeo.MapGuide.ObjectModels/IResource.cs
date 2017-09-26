@@ -79,7 +79,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public static Stream SerializeToStream(this IResource res)
         {
             string str = res.Serialize();
-            return new MemoryStream(Encoding.UTF8.GetBytes(str));
+            return MemoryStreamPool.GetStream("ResourceExtensions.SerializeToStream", Encoding.UTF8.GetBytes(str));
         }
 
         /// <summary>

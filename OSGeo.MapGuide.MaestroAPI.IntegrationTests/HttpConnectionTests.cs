@@ -60,7 +60,7 @@ namespace MaestroAPITests
             return "Http";
         }
 
-        //[Fact]
+        //[SkippableFact]
         public override void TestEncryptedFeatureSourceCredentials()
         {
             base.TestEncryptedFeatureSourceCredentials();

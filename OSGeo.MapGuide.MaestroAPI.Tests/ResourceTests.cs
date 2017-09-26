@@ -21,13 +21,17 @@
 #endregion Disclaimer / License
 using Moq;
 using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
+using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
+using System.IO;
 using System.Linq;
 using Xunit;
 
@@ -35,6 +39,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
     public class ResourceTests
     {
+        [Fact]
+        public void TestCredentialWriter()
+        {
+            var conn = new Mock<IServerConnection>();
+            var mockRs = new Mock<IResourceService>();
+            conn.Setup(c => c.ResourceService).Returns(mockRs.Object);
+
+            var fs = new Mock<IFeatureSource>();
+            Assert.Throws<ArgumentException>(() => fs.Object.SetEncryptedCredentials(conn.Object, "Foo", "bar"));
+            var fs2 = new Mock<IFeatureSource>();
+            fs2.Setup(f => f.ResourceID).Returns("Library://Test.FeatureSource");
+            fs2.Object.SetEncryptedCredentials(conn.Object, "Foo", "bar");
+
+            mockRs.Verify(r => r.SetResourceData("Library://Test.FeatureSource", StringConstants.MgUserCredentialsResourceData, ResourceDataType.String, It.IsAny<Stream>()), Times.Once);
+        }
+
+        [Fact]
+        public void TestDeserializeEmbeddedFlexLayout()
+        {
+            var flex1 = ObjectFactory.DeserializeEmbeddedFlexLayout(new Version(2, 3, 0));
+            Assert.NotNull(flex1);
+            var flex2 = ObjectFactory.DeserializeEmbeddedFlexLayout(new Version(2, 3, 0));
+            Assert.NotNull(flex2);
+        }
+
         [Fact]
         public void TestWebLayout()
         {

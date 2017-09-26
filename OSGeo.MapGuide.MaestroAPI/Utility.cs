@@ -307,13 +307,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
-        /// Parses a string with a decimal value in EN-US format
-        /// </summary>
-        /// <param name="digit">The string value</param>
-        /// <returns>The parsed value</returns>
-        public static float ParseDigit(string digit) => (float)double.Parse(digit, m_enCI);
-
-        /// <summary>
         /// Turns a decimal value into a string representation in EN-US format
         /// </summary>
         /// <param name="digit">The value to encode</param>
@@ -451,6 +444,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        /*
         /// <summary>
         /// Makes a deep copy of an object, by copying all the public properties.
         /// This overload tries to maintain object references by assigning properties
@@ -539,6 +533,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             return target;
         }
+        */
 
         /// <summary>
         /// Reads all data from a stream, and returns it as a single array.
@@ -570,6 +565,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        /*
         /// <summary>
         /// Serializes the given object as a UTF-8 encoded XML string. Any BOM is stripped from the XML string
         /// </summary>
@@ -593,6 +589,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 }
             }
         }
+        */
 
         /// <summary>
         /// Creates a copy of the stream, with removed Utf8 BOM, if any
@@ -939,6 +936,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             return res;
         }
 
+        /*
         /// <summary>
         /// Enumerates all objects by reflection, returns the list of referenced objects
         /// </summary>
@@ -1023,6 +1021,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 }
             }
         }
+        */
 
         /// <summary>
         /// Transforms the envelope.

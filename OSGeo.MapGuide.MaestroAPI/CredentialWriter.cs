@@ -115,7 +115,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         {
             string credentials;
             EncryptStrings(username, password, out credentials, RESERVED_CHARACTERS_CREDENTIALS);
-            return new MemoryStream(ASCIIEncoding.Default.GetBytes(credentials));
+            return MemoryStreamPool.GetStream("CredentialWriter.Write", ASCIIEncoding.Default.GetBytes(credentials));
         }
 
         private static void EncryptStrings(string plainText1, string plainText2, out string cipherText, string reservedCharacters)

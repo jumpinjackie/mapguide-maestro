@@ -44,7 +44,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="stream">The resource content stream. Inspection is done on a copy of this stream</param>
         public ResourceContentVersionChecker(Stream stream)
         {
-            var ms = new MemoryStream();
+            var ms = MemoryStreamPool.GetStream("ResourceContentVersionChecker.ctor");
             Utils.CopyStream(stream, ms);
             ms.Position = 0L; //Rewind
             _stream = ms;
@@ -57,7 +57,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="xmlContent"></param>
         public ResourceContentVersionChecker(string xmlContent)
         {
-            _stream = new MemoryStream(Encoding.UTF8.GetBytes(xmlContent));
+            _stream = MemoryStreamPool.GetStream("ResourceContentVersionChecker.ctor", Encoding.UTF8.GetBytes(xmlContent));
         }
 
         private ResourceTypeDescriptor _rtd;

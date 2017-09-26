@@ -2791,21 +2791,21 @@ namespace Maestro.MapViewer
                 switch (value)
                 {
                     case MapActiveTool.Pan:
-                        using (var ms = new MemoryStream(Properties.Resources.grab))
+                        using (var ms = MemoryStreamPool.GetStream("ActiveTool", Properties.Resources.grab))
                         {
                             this.Cursor = new Cursor(ms);
                         }
                         break;
 
                     case MapActiveTool.ZoomIn:
-                        using (var ms = new MemoryStream(Properties.Resources.zoomin))
+                        using (var ms = MemoryStreamPool.GetStream("ActiveTool", Properties.Resources.zoomin))
                         {
                             this.Cursor = new Cursor(ms);
                         }
                         break;
 
                     case MapActiveTool.ZoomOut:
-                        using (var ms = new MemoryStream(Properties.Resources.zoomout))
+                        using (var ms = MemoryStreamPool.GetStream("ActiveTool", Properties.Resources.zoomout))
                         {
                             this.Cursor = new Cursor(ms);
                         }

@@ -173,6 +173,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         public virtual bool SupportsMutableMetersPerUnit => true;
 
+        protected internal RuntimeMap() { } //For mock support
+
         /// <summary>
         /// Initializes this instance
         /// </summary>
@@ -1213,10 +1215,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             Check.ArgumentNotEmpty(groupName, nameof(groupName));
             List<RuntimeMapLayer> layers = new List<RuntimeMapLayer>();
-            foreach (var lyr in this.Layers)
+            if (this.Layers != null)
             {
-                if (groupName.Equals(lyr.Group))
-                    layers.Add(lyr);
+                foreach (var lyr in this.Layers)
+                {
+                    if (groupName.Equals(lyr.Group))
+                        layers.Add(lyr);
+                }
             }
             return layers.ToArray();
         }

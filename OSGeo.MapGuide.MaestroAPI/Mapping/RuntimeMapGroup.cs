@@ -48,7 +48,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     /// </summary>
     public class RuntimeMapGroup : MapObservable
     {
-        internal RuntimeMapGroup()
+        protected internal RuntimeMapGroup()
         {
             _disableChangeTracking = true;
             this.Group = string.Empty;
