@@ -55,8 +55,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="xmlContent"></param>
         public ResourceContentVersionChecker(string xmlContent)
         {
-            var ms = MemoryStreamPool.GetStream("ResourceContentVersionChecker.ctor", Encoding.UTF8.GetBytes(xmlContent)); ;
-            ms.Position = 0L; //Rewind
+            var ms = MemoryStreamPool.GetStream("ResourceContentVersionChecker.ctor", Encoding.UTF8.GetBytes(xmlContent));
             _stream = ms;
         }
 
