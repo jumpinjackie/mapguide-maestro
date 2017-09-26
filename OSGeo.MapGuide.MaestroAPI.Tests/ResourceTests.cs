@@ -33,12 +33,49 @@ using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Xunit;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
     public class ResourceTests
     {
+        [Fact]
+        public void TestResourceContentVersionChecker()
+        {
+            var xml = "<LayerDefinition xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"LayerDefinition-1.0.0.xsd\"></LayerDefinition>";
+            var bytes = new MemoryStream(Encoding.UTF8.GetBytes(xml));
+            var checker = new ResourceContentVersionChecker(xml);
+            var checker2 = new ResourceContentVersionChecker(bytes);
+
+            var rtd = checker.GetVersion();
+            var rtd2 = checker2.GetVersion();
+
+            Assert.Equal("1.0.0", rtd.Version);
+            Assert.Equal("1.0.0", rtd2.Version);
+
+            Assert.Equal(ResourceTypes.LayerDefinition.ToString(), rtd.ResourceType);
+            Assert.Equal(ResourceTypes.LayerDefinition.ToString(), rtd2.ResourceType);
+
+            xml = "<LayerDefinition schemaVersion=\"LayerDefinition-1.0.0.xsd\"></LayerDefinition>";
+            bytes = new MemoryStream(Encoding.UTF8.GetBytes(xml));
+            checker = new ResourceContentVersionChecker(xml);
+            checker2 = new ResourceContentVersionChecker(bytes);
+            rtd = checker.GetVersion();
+            rtd2 = checker2.GetVersion();
+            Assert.Null(rtd);
+            Assert.Null(rtd2);
+
+            xml = "<LayerDefinition xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"LayerDefinition1.0.0\"></LayerDefinition>";
+            bytes = new MemoryStream(Encoding.UTF8.GetBytes(xml));
+            checker = new ResourceContentVersionChecker(xml);
+            checker2 = new ResourceContentVersionChecker(bytes);
+            rtd = checker.GetVersion();
+            rtd2 = checker2.GetVersion();
+            Assert.Null(rtd);
+            Assert.Null(rtd2);
+        }
+
         [Fact]
         public void TestCredentialWriter()
         {

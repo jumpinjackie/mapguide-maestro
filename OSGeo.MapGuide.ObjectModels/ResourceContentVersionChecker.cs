@@ -35,7 +35,6 @@ namespace OSGeo.MapGuide.ObjectModels
     /// </summary>
     public sealed class ResourceContentVersionChecker : IDisposable
     {
-        private readonly XmlReader _reader;
         private readonly Stream _stream;
 
         /// <summary>
@@ -48,7 +47,6 @@ namespace OSGeo.MapGuide.ObjectModels
             Utils.CopyStream(stream, ms);
             ms.Position = 0L; //Rewind
             _stream = ms;
-            _reader = new XmlTextReader(_stream);
         }
 
         /// <summary>
@@ -57,7 +55,9 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="xmlContent"></param>
         public ResourceContentVersionChecker(string xmlContent)
         {
-            _stream = MemoryStreamPool.GetStream("ResourceContentVersionChecker.ctor", Encoding.UTF8.GetBytes(xmlContent));
+            var ms = MemoryStreamPool.GetStream("ResourceContentVersionChecker.ctor", Encoding.UTF8.GetBytes(xmlContent)); ;
+            ms.Position = 0L; //Rewind
+            _stream = ms;
         }
 
         private ResourceTypeDescriptor _rtd;
@@ -98,10 +98,15 @@ namespace OSGeo.MapGuide.ObjectModels
 
                 int start = (xsd.LastIndexOf("-")); //NOXLATE
                 int end = xsd.IndexOf(".xsd") - 1; //NOXLATE
-                version = xsd.Substring(start + 1, xsd.Length - end);
-                string typeStr = xsd.Substring(0, start);
-
-                return new ResourceTypeDescriptor(typeStr, version);
+                if ((start + 1) + (xsd.Length - end) <= xsd.Length)
+                {
+                    version = xsd.Substring(start + 1, xsd.Length - end);
+                    if (start > 0)
+                    {
+                        string typeStr = xsd.Substring(0, start);
+                        return new ResourceTypeDescriptor(typeStr, version);
+                    }
+                }
             }
             finally
             {
@@ -109,6 +114,7 @@ namespace OSGeo.MapGuide.ObjectModels
                 xr?.Dispose();
                 xr = null;
             }
+            return null;
         }
 
         /// <summary>
@@ -118,9 +124,6 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             if (_stream != null)
                 _stream.Dispose();
-
-            if (_reader != null)
-                _reader.Close();
         }
     }
 }
