@@ -51,6 +51,9 @@ namespace Maestro
             Application.SetCompatibleTextRenderingDefault(true);
             Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
 
+            //Init the Maestro connection registry with additional providers from ConnectionProviders.xml
+            ConnectionProviderRegistry.InitRegistry();
+
             string lang = PreferredSiteList.InitCulture();
 
             //var btw = BroadcastTextWriter.Instance;

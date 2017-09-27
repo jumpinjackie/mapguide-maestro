@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI;
 using System;
 using System.Windows.Forms;
 
@@ -35,6 +36,10 @@ namespace RtMapInspector
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //Init the Maestro connection registry with additional providers from ConnectionProviders.xml
+            ConnectionProviderRegistry.InitRegistry();
+
             Application.Run(new MainForm());
         }
     }

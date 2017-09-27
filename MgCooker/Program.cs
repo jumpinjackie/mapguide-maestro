@@ -58,6 +58,10 @@ namespace MgCooker
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.DoEvents();
             PreferredSiteList.InitCulture();
+
+            //Init the Maestro connection registry with additional providers from ConnectionProviders.xml
+            ConnectionProviderRegistry.InitRegistry();
+
             //Parameters:
             //mapagent=
             //username=

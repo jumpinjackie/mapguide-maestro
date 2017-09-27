@@ -146,8 +146,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         private readonly static List<ConnectionProviderEntry> _providers;
         private static Dictionary<string, int> _callCount;
 
-        private static string _dllRoot;
-
         const string HTTP_PROVIDER = "Maestro.Http";
 
         static ConnectionProviderRegistry()
@@ -164,49 +162,60 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return conn;
             });
             _providers.Add(new ConnectionProviderEntry(httpProvider, "HTTP Connection Provider", null, true));
-            _callCount[httpProvider] = 0;
+            _callCount[httpProvider] = 0;   
+        }
 
+        /// <summary>
+        /// Initializes the connection provider registry. You only need to do this if you intend to load connections
+        /// from providers registered in ConnectionProviders.xml
+        /// 
+        /// The HTTP connection provider is built-in and does not require calling this method first
+        /// </summary>
+        /// <param name="dir">The path to the directory containing ConnectionProviders.xml</param>
+        public static void InitRegistry(string dir = null)
+        {
+            var mainDir = dir ?? System.IO.Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
+            var path = System.IO.Path.Combine(mainDir, PROVIDER_CONFIG);
+            var dllRoot = System.IO.Path.GetDirectoryName(path);
 
-            var dir = System.IO.Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
-            var path = System.IO.Path.Combine(dir, PROVIDER_CONFIG);
-
-            _dllRoot = System.IO.Path.GetDirectoryName(path);
-
-            XmlDocument doc = new XmlDocument();
-            doc.Load(path);
-
-            XmlNodeList providers = doc.SelectNodes("//ConnectionProviderRegistry/ConnectionProvider"); //NOXLATE
-            foreach (XmlNode prov in providers)
+            if (System.IO.File.Exists(path))
             {
-                string name = prov["Name"].InnerText.ToUpper(); //NOXLATE
-                string desc = prov["Description"].InnerText; //NOXLATE
-                string dll = prov["Assembly"].InnerText; //NOXLATE
-                string type = prov["Type"].InnerText; //NOXLATE
+                XmlDocument doc = new XmlDocument();
+                doc.Load(path);
 
-                if (!System.IO.Path.IsPathRooted(dll))
-                    dll = System.IO.Path.Combine(_dllRoot, dll);
-
-                try
+                XmlNodeList providers = doc.SelectNodes("//ConnectionProviderRegistry/ConnectionProvider"); //NOXLATE
+                foreach (XmlNode prov in providers)
                 {
-                    Assembly asm = Assembly.LoadFrom(dll);
-                    MaestroApiProviderAttribute[] attr = asm.GetCustomAttributes(typeof(MaestroApiProviderAttribute), true) as MaestroApiProviderAttribute[];
-                    if (attr != null && attr.Length == 1)
+                    string name = prov["Name"].InnerText.ToUpper(); //NOXLATE
+                    string desc = prov["Description"].InnerText; //NOXLATE
+                    string dll = prov["Assembly"].InnerText; //NOXLATE
+                    string type = prov["Type"].InnerText; //NOXLATE
+
+                    if (!System.IO.Path.IsPathRooted(dll))
+                        dll = System.IO.Path.Combine(dllRoot, dll);
+
+                    try
                     {
-                        name = attr[0].Name.ToUpper();
-                        desc = attr[0].Description;
-                        var impl = attr[0].ImplType;
-                        _ctors[name] = new ConnectionFactoryMethod((initParams) =>
+                        Assembly asm = Assembly.LoadFrom(dll);
+                        MaestroApiProviderAttribute[] attr = asm.GetCustomAttributes(typeof(MaestroApiProviderAttribute), true) as MaestroApiProviderAttribute[];
+                        if (attr != null && attr.Length == 1)
                         {
-                            BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.CreateInstance;
-                            IServerConnection conn = (IServerConnection)impl.InvokeMember(null, flags, null, null, new object[] { initParams });
-                            return conn;
-                        });
-                        _providers.Add(new ConnectionProviderEntry(name, desc, dll, attr[0].IsMultiPlatform));
-                        _callCount[name] = 0;
+                            name = attr[0].Name.ToUpper();
+                            desc = attr[0].Description;
+                            var impl = attr[0].ImplType;
+                            _ctors[name] = new ConnectionFactoryMethod((initParams) =>
+                            {
+                                BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.CreateInstance;
+                                IServerConnection conn = (IServerConnection)impl.InvokeMember(null, flags, null, null, new object[] { initParams });
+                                return conn;
+                            });
+                            _providers.Add(new ConnectionProviderEntry(name, desc, dll, attr[0].IsMultiPlatform));
+                            _callCount[name] = 0;
+                        }
                     }
-                }
-                catch
-                {
+                    catch
+                    {
+                    }
                 }
             }
         }

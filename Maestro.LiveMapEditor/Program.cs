@@ -22,6 +22,7 @@
 
 using Maestro.Editors.Preview;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -47,6 +48,9 @@ namespace Maestro.LiveMapEditor
             Application.EnableVisualStyles();
             Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //Init the Maestro connection registry with additional providers from ConnectionProviders.xml
+            ConnectionProviderRegistry.InitRegistry();
 
             //Register previewers
             var urlLauncher = new OurUrlLauncher();

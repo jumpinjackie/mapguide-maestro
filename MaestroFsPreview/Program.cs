@@ -79,6 +79,8 @@ namespace MaestroFsPreview
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             PreferredSiteList.InitCulture();
+            //Init the Maestro connection registry with additional providers from ConnectionProviders.xml
+            ConnectionProviderRegistry.InitRegistry();
             IServerConnection conn = null;
             if (!parser.IsDefined(CommandLineArguments.Provider) || !parser.IsDefined(CommandLineArguments.Session))
             {
