@@ -84,6 +84,15 @@ artifacts:
 #    type: zip
 
 deploy:
+  provider: NuGet
+  server:                  # remove to push to NuGet.org
+  api_key:
+    secure: RZrLa/jeWJt/bpCN57l82c8+1r/I/3XKk92ZL6a7jafsM+3k26IUOEoa6VnYtB0v
+  skip_symbols: false
+  symbol_server:           # remove to push symbols to SymbolSource.org
+  artifact: /.*\.nupkg/
+
+deploy:
   release: $(appveyor_repo_tag_name)
   description: 'Release $(appveyor_repo_tag_name) ($(appveyor_build_version))'
   provider: GitHub

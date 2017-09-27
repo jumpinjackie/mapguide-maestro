@@ -10,6 +10,7 @@
     <PackageProjectUrl>https://github.com/jumpinjackie/mapguide-maestro</PackageProjectUrl>
     <RepositoryUrl>https://github.com/jumpinjackie/mapguide-maestro</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageTags>MapGuide</PackageTags>
   </PropertyGroup>
 
   <!-- Use full pdb generation for net461 -->

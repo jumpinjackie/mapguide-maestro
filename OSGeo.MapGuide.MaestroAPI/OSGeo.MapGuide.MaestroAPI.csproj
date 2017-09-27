@@ -10,6 +10,7 @@
     <RepositoryUrl>https://github.com/jumpinjackie/mapguide-maestro</RepositoryUrl>
     <PackageLicenseUrl>http://www.gnu.org/licenses/lgpl-2.1.txt</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageTags>MapGuide</PackageTags>
   </PropertyGroup>
 
   <!-- Use full pdb generation for net461 -->
