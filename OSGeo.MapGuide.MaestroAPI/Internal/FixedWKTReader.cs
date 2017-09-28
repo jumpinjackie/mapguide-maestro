@@ -35,7 +35,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
     /// <summary>
     /// A fixed version of WKTReader that can parse 3D geometry WKT
     /// </summary>
-    public class FixedWKTReader
+    public class FixedWKTReader : IGeometryTextReader
     {
         private readonly IGeometryFactory geometryFactory;
         private IPrecisionModel precisionModel;

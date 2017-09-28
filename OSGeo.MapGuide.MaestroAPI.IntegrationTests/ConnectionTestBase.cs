@@ -24,6 +24,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Internal;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
@@ -33,6 +34,7 @@ using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Xunit;
 
@@ -715,6 +717,124 @@ namespace MaestroAPITests
             {
                 Assert.True(false, "CreateMap with suppressErrors = true should not have thrown an exception: " + ex.ToString());
             }
+        }
+
+        protected void BinaryOpTest(string aWkt, string bWkt, bool expected, Func<IGeometryRef, IGeometryRef, bool> op)
+        {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+            var conn = _fixture.CreateTestConnection();
+            var reader = conn.CreateGeometryReader();
+
+            var a = reader.Read(aWkt);
+            var b = reader.Read(bWkt);
+
+            Assert.Equal(expected, op(a, b));
+        }
+
+        public static IEnumerable<object[]> TestGeometry_Contains_Data
+        {
+            get
+            {
+                yield return new object[] { "POLYGON((0 0, 2 0, 2 2, 0 2, 0 0))", "POINT(1 1)", true };
+            }
+        }
+
+        public virtual void TestGeometry_Contains(string aWkt, string bWkt, bool expected)
+        {
+            BinaryOpTest(aWkt, bWkt, expected, (a, b) => a.Contains(b));
+        }
+
+        public static IEnumerable<object[]> TestGeometry_Crosses_Data
+        {
+            get
+            {
+                yield return new object[] { "LINESTRING(0 2, 2 0)", "LINESTRING(0 0, 2 2)", true };
+            }
+        }
+
+        public virtual void TestGeometry_Crosses(string aWkt, string bWkt, bool expected)
+        {
+            BinaryOpTest(aWkt, bWkt, expected, (a, b) => a.Crosses(b));
+        }
+
+        public static IEnumerable<object[]> TestGeometry_Disjoint_Data
+        {
+            get
+            {
+                yield return new object[] { "LINESTRING (2 0, 0 2)", "POINT(0 0)", true };
+            }
+        }
+
+        public virtual void TestGeometry_Disjoint(string aWkt, string bWkt, bool expected)
+        {
+            BinaryOpTest(aWkt, bWkt, expected, (a, b) => a.Disjoint(b));
+        }
+
+        public static IEnumerable<object[]> TestGeometry_Equals_Data
+        {
+            get
+            {
+                yield return new object[] { "POINT(1 1)", "POINT(1 1)", true };
+                yield return new object[] { "LINESTRING(0 2, 2 0, 4 2)", "LINESTRING(0 2, 2 0, 4 2)", true };
+                yield return new object[] { "POLYGON((0 0, 2 0, 2 2, 0 2, 0 0))", "POLYGON((0 0, 2 0, 2 2, 0 2, 0 0))", true };
+            }
+        }
+
+        public virtual void TestGeometry_Equals(string aWkt, string bWkt, bool expected)
+        {
+            BinaryOpTest(aWkt, bWkt, expected, (a, b) => a.Equals(b));
+        }
+
+        public static IEnumerable<object[]> TestGeometry_Intersects_Data
+        {
+            get
+            {
+                yield return new object[] { "LINESTRING(0 2, 2 0, 4 2)", "POINT(1 1)", true };
+            }
+        }
+
+        public virtual void TestGeometry_Intersects(string aWkt, string bWkt, bool expected)
+        {
+            BinaryOpTest(aWkt, bWkt, expected, (a, b) => a.Intersects(b));
+        }
+
+        public static IEnumerable<object[]> TestGeometry_Overlaps_Data
+        {
+            get
+            {
+                yield return new object[] { "POLYGON((0 0, 2 0, 2 2, 0 2, 0 0))", "POLYGON((1 1, 3 1, 3 3, 1 3, 1 1))", true };
+            }
+        }
+
+        public virtual void TestGeometry_Overlaps(string aWkt, string bWkt, bool expected)
+        {
+            BinaryOpTest(aWkt, bWkt, expected, (a, b) => a.Intersects(b));
+        }
+
+        public static IEnumerable<object[]> TestGeometry_Touches_Data
+        {
+            get
+            {
+                yield return new object[] { "LINESTRING(0 2, 2 0, 4 2)", "POINT(1 1)", true };
+            }
+        }
+
+        public virtual void TestGeometry_Touches(string aWkt, string bWkt, bool expected)
+        {
+            BinaryOpTest(aWkt, bWkt, expected, (a, b) => a.Intersects(b));
+        }
+
+        public static IEnumerable<object[]> TestGeometry_Within_Data
+        {
+            get
+            {
+                yield return new object[] { "POLYGON((0 0, 2 0, 2 2, 0 2, 0 0))", "POLYGON((1 1, 3 1, 3 3, 1 3, 1 1))", true };
+            }
+        }
+
+        public virtual void TestGeometry_Within(string aWkt, string bWkt, bool expected)
+        {
+            BinaryOpTest(aWkt, bWkt, expected, (a, b) => a.Intersects(b));
         }
     }
 }

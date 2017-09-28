@@ -308,5 +308,61 @@ namespace MaestroAPITests
                 }
             }
         }
+
+        [SkippableTheory]
+        [MemberData(nameof(TestGeometry_Contains_Data))]
+        public override void TestGeometry_Contains(string aWkt, string bWkt, bool expected)
+        {
+            base.TestGeometry_Contains(aWkt, bWkt, expected);
+        }
+
+        [SkippableTheory]
+        [MemberData(nameof(TestGeometry_Crosses_Data))]
+        public override void TestGeometry_Crosses(string aWkt, string bWkt, bool expected)
+        {
+            base.TestGeometry_Crosses(aWkt, bWkt, expected);
+        }
+
+        [SkippableTheory]
+        [MemberData(nameof(TestGeometry_Disjoint_Data))]
+        public override void TestGeometry_Disjoint(string aWkt, string bWkt, bool expected)
+        {
+            base.TestGeometry_Disjoint(aWkt, bWkt, expected);
+        }
+
+        [SkippableTheory]
+        [MemberData(nameof(TestGeometry_Equals_Data))]
+        public override void TestGeometry_Equals(string aWkt, string bWkt, bool expected)
+        {
+            base.TestGeometry_Equals(aWkt, bWkt, expected);
+        }
+
+        [SkippableTheory]
+        [MemberData(nameof(TestGeometry_Intersects_Data))]
+        public override void TestGeometry_Intersects(string aWkt, string bWkt, bool expected)
+        {
+            base.TestGeometry_Intersects(aWkt, bWkt, expected);
+        }
+
+        [SkippableTheory]
+        [MemberData(nameof(TestGeometry_Overlaps_Data))]
+        public override void TestGeometry_Overlaps(string aWkt, string bWkt, bool expected)
+        {
+            base.TestGeometry_Overlaps(aWkt, bWkt, expected);
+        }
+
+        [SkippableTheory]
+        [MemberData(nameof(TestGeometry_Touches_Data))]
+        public override void TestGeometry_Touches(string aWkt, string bWkt, bool expected)
+        {
+            base.TestGeometry_Touches(aWkt, bWkt, expected);
+        }
+
+        [SkippableTheory]
+        [MemberData(nameof(TestGeometry_Within_Data))]
+        public override void TestGeometry_Within(string aWkt, string bWkt, bool expected)
+        {
+            base.TestGeometry_Within(aWkt, bWkt, expected);
+        }
     }
 }

@@ -402,12 +402,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Called when [request dispatched].
         /// </summary>
         /// <param name="data">The data.</param>
-        protected void OnRequestDispatched(string data)
-        {
-            var handler = this.RequestDispatched;
-            if (handler != null)
-                handler(this, new RequestEventArgs(data));
-        }
+        protected void OnRequestDispatched(string data) => this.RequestDispatched?.Invoke(this, new RequestEventArgs(data));
+
+        public virtual IGeometryTextReader CreateGeometryReader() => new Internal.FixedWKTReader();
 
         #region Resource Service
 

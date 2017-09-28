@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using System;
@@ -226,6 +227,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <returns></returns>
         IMpuCalculator GetCalculator();
+
+        /// <summary>
+        /// Creates a geometry text reader
+        /// </summary>
+        /// <returns></returns>
+        IGeometryTextReader CreateGeometryReader();
     }
 
     /// <summary>

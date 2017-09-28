@@ -42,6 +42,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 
 namespace OSGeo.MapGuide.MaestroAPI.Local
 {
@@ -1301,6 +1302,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 return ConfigurationDocument.Load(stream);
             }
         }
+
+        public override IGeometryTextReader CreateGeometryReader() => new MgGeometryTextReader();
     }
 
     internal class LocalLongTransaction : ILongTransaction

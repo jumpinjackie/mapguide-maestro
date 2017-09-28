@@ -23,28 +23,110 @@
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Geometry;
-using OSGeo.MapGuide.MaestroAPI.Internal;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels;
 using System;
+using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
+    public class MgGeometryTextReader : IGeometryTextReader
+    {
+        public IGeometryRef Read(string wellKnownText) => GeomConverter.CreateGeometry(wellKnownText);
+    }
+
+    internal static class GeomConverter
+    {
+        private static readonly MgAgfReaderWriter _agfRw;
+        private static readonly MgWktReaderWriter _wktRw;
+
+        static GeomConverter()
+        {
+            _agfRw = new MgAgfReaderWriter();
+            _wktRw = new MgWktReaderWriter();
+        }
+
+        public static MgByteReader GetAgf(IGeometryRef geom)
+        {
+            MgGeometry mgeom = _wktRw.Read(geom.AsText());
+            return _agfRw.Write(mgeom);
+        }
+
+        public static string GetWkt(MgGeometry geom)
+        {
+            return _wktRw.Write(geom);
+        }
+
+        public static IGeometryRef CreateGeometry(string text)
+        {
+            var result = _wktRw.Read(text);
+            return new MgGeometryRef(result);
+        }
+
+        public static IGeometryRef GetGeometry(MgByteReader agf)
+        {
+            MgGeometry mgeom = _agfRw.Read(agf);
+            return new MgGeometryRef(mgeom);
+        }
+    }
+
     internal class MgGeometryRef : IGeometryRef
     {
         readonly MgGeometry _geom;
-        readonly MgWktReaderWriter _wktRw;
 
-        public MgGeometryRef(MgGeometry geom, MgWktReaderWriter wktRw)
+        public double Area => _geom.GetArea();
+
+        public double Length => _geom.GetLength();
+
+        public bool IsEmpty => _geom.IsEmpty();
+
+        public bool IsSimple => _geom.IsSimple();
+
+        public bool IsValid => _geom.IsValid();
+
+        public MgGeometryRef(MgGeometry geom)
         {
             _geom = geom;
-            _wktRw = wktRw;
         }
 
-        public string AsText()
+        public string AsText() => GeomConverter.GetWkt(_geom);
+
+        static IGeometryRef BinaryOperator(MgGeometryRef thisRef, IGeometryRef otherRef, Func<MgGeometry, MgGeometry, MgGeometry> operation)
         {
-            return _wktRw.Write(_geom);
+            var impl = otherRef as MgGeometryRef;
+            if (impl != null)
+            {
+                var result = operation(thisRef._geom, impl._geom);
+                return new MgGeometryRef(result);
+            }
+            throw new ArgumentException("Incorrect IGeometryRef implementation");
         }
+
+        static bool BinaryPredicate(MgGeometryRef thisRef, IGeometryRef otherRef, Func<MgGeometry, MgGeometry, bool> operation)
+        {
+            var impl = otherRef as MgGeometryRef;
+            if (impl != null)
+            {
+                return operation(thisRef._geom, impl._geom);
+            }
+            throw new ArgumentException("Incorrect IGeometryRef implementation");
+        }
+
+        public IGeometryRef ConvexHull()
+        {
+            var result = _geom.ConvexHull();
+            return new MgGeometryRef(result);
+        }
+
+        public bool Contains(IGeometryRef other) => BinaryPredicate(this, other, (a, b) => a.Contains(b));
+        
+        public bool Crosses(IGeometryRef other) => BinaryPredicate(this, other, (a, b) => a.Crosses(b));
+
+        public IGeometryRef Difference(IGeometryRef other) => BinaryOperator(this, other, (a, b) => a.Difference(b));
+
+        public bool Disjoint(IGeometryRef other) => BinaryPredicate(this, other, (a, b) => a.Disjoint(b));
+
+        public bool Equals(IGeometryRef other) => BinaryPredicate(this, other, (a, b) => a.Equals(b));
 
         public ObjectModels.Common.IEnvelope GetEnvelope()
         {
@@ -52,6 +134,39 @@ namespace OSGeo.MapGuide.MaestroAPI
             var ll = env.GetLowerLeftCoordinate();
             var ur = env.GetUpperRightCoordinate();
             return ObjectFactory.CreateEnvelope(ll.X, ll.Y, ur.X, ur.Y);
+        }
+
+        public bool Intersects(IGeometryRef other) => BinaryPredicate(this, other, (a, b) => a.Intersects(b));
+
+        public IGeometryRef Intersection(IGeometryRef other) => BinaryOperator(this, other, (a, b) => a.Intersection(b));
+
+        public bool Overlaps(IGeometryRef other) => BinaryPredicate(this, other, (a, b) => a.Overlaps(b));
+
+        public IGeometryRef SymmetricDifference(IGeometryRef other) => BinaryOperator(this, other, (a, b) => a.SymetricDifference(b));
+
+        public bool Touches(IGeometryRef other) => BinaryPredicate(this, other, (a, b) => a.Touches(b));
+
+        public IGeometryRef Union(IGeometryRef other) => BinaryOperator(this, other, (a, b) => a.Union(b));
+
+        public bool Within(IGeometryRef other) => BinaryPredicate(this, other, (a, b) => a.Within(b));
+
+        public IPoint2D GetCentroid(bool envelope)
+        {
+            if (envelope)
+            {
+                var env = _geom.Envelope();
+                var ll = env.GetLowerLeftCoordinate();
+                var ur = env.GetUpperRightCoordinate();
+
+                return ObjectFactory.CreatePoint2D((ll.X + ur.X) / 2.0, (ll.Y + ur.Y) / 2.0);
+            }
+            else
+            {
+                var cnt = _geom.GetCentroid();
+                var coord = cnt.GetCoordinate();
+
+                return ObjectFactory.CreatePoint2D(coord.GetX(), coord.GetY());
+            }
         }
     }
 }
@@ -96,37 +211,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
         public string MgErrorDetails { get; set; }
 
         public string MgStackTrace { get; set; }
-    }
-
-    internal static class GeomConverter
-    {
-        private static readonly MgAgfReaderWriter _agfRw;
-        private static MgWktReaderWriter _wktRw;
-        private static readonly FixedWKTReader _reader;
-
-        static GeomConverter()
-        {
-            _agfRw = new MgAgfReaderWriter();
-            _wktRw = new MgWktReaderWriter();
-            _reader = new FixedWKTReader();
-        }
-
-        public static MgByteReader GetAgf(IGeometryRef geom)
-        {
-            MgGeometry mgeom = _wktRw.Read(geom.AsText());
-            return _agfRw.Write(mgeom);
-        }
-
-        public static string GetWkt(MgGeometry geom)
-        {
-            return _wktRw.Write(geom);
-        }
-
-        public static IGeometryRef GetGeometry(MgByteReader agf)
-        {
-            MgGeometry mgeom = _agfRw.Read(agf);
-            return new MgGeometryRef(mgeom, _wktRw);
-        }
     }
 
     internal static class MgFeatureCommandUtility

@@ -32,6 +32,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using OSGeo.MapGuide.MaestroAPI.Geometry;
 
 #pragma warning disable 1591
 
@@ -310,6 +311,11 @@ namespace Maestro.Base.Commands.SiteExplorer
         }
 
         public OSGeo.MapGuide.MaestroAPI.Resource.Preview.IResourcePreviewUrlGenerator GetPreviewUrlGenerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IGeometryTextReader CreateGeometryReader()
         {
             throw new NotImplementedException();
         }
