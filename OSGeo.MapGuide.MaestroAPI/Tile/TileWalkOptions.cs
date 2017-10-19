@@ -42,7 +42,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         {
             this.ResourceID = mdf.ResourceID;
             this.TileSet = mdf.BaseMap;
-            this.GroupNames = groupNames ?? mdf.BaseMap.BaseMapLayerGroups.Select(g => g.Name).ToArray();
+            this.GroupNames = groupNames?.Length > 0 ? groupNames : mdf.BaseMap.BaseMapLayerGroups.Select(g => g.Name).ToArray();
             this.Extents = ObjectFactory.CreateEnvelope(mdf.Extents.MinX, mdf.Extents.MinY, mdf.Extents.MaxX, mdf.Extents.MaxY);
             this.DPI = 96;
             this.TileWidth = 300;
@@ -58,7 +58,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         {
             this.ResourceID = tsd.ResourceID;
             this.TileSet = tsd;
-            this.GroupNames = groupNames ?? tsd.BaseMapLayerGroups.Select(g => g.Name).ToArray();
+            this.GroupNames = groupNames?.Length > 0 ? groupNames : tsd.BaseMapLayerGroups.Select(g => g.Name).ToArray();
             this.Extents = ObjectFactory.CreateEnvelope(tsd.Extents.MinX, tsd.Extents.MinY, tsd.Extents.MaxX, tsd.Extents.MaxY);
 
             this.DPI = 96;
