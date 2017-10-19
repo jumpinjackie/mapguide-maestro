@@ -1227,7 +1227,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
-        public string GetTile(string mapdefinition, string groupname, int row, int col, int scaleindex, string format, bool includeSessionID)
+        public string GetTile(string mapdefinition, string groupname, int row, int col, int scaleindex, bool includeSessionID)
         {
             NameValueCollection param = new NameValueCollection();
             param.Add("OPERATION", "GETTILEIMAGE");
@@ -1236,7 +1236,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                 param.Add("SESSION", m_sessionID);
             param.Add("SCALEINDEX", scaleindex.ToString());
             param.Add("MAPDEFINITION", mapdefinition);
-            param.Add("FORMAT", format);
             param.Add("BASEMAPLAYERGROUPNAME", groupname);
             param.Add("TILECOL", col.ToString());
             param.Add("TILEROW", row.ToString());
@@ -1245,7 +1244,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
-        public string GetTileAnonymous(string mapdefinition, string groupname, int row, int col, int scaleindex, string format)
+        public string GetTileAnonymous(string mapdefinition, string groupname, int row, int col, int scaleindex)
         {
             NameValueCollection param = new NameValueCollection();
             param.Add("OPERATION", "GETTILEIMAGE");
@@ -1254,7 +1253,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("PASSWORD", "");
             param.Add("SCALEINDEX", scaleindex.ToString());
             param.Add("MAPDEFINITION", mapdefinition);
-            param.Add("FORMAT", format);
             param.Add("BASEMAPLAYERGROUPNAME", groupname);
             param.Add("TILECOL", col.ToString());
             param.Add("TILEROW", row.ToString());

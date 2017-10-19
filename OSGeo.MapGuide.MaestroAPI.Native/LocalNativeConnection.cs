@@ -839,7 +839,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return m_cachedGroupList;
         }
 
-        public override Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
+        public override Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex)
         {
             MgTileService ts = this.Connection.CreateService(MgServiceType.TileService) as MgTileService;
             GetByteReaderMethod fetch = () =>

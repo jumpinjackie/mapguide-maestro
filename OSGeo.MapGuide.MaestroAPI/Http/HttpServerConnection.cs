@@ -1642,13 +1642,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         #endregion IDisposable Members
 
-        public override Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
+        public override Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex)
         {
             string req = string.Empty;
             if (mAnonymousUser)
-                req = m_reqBuilder.GetTileAnonymous(mapdefinition, baselayergroup, row, col, scaleindex, format);
+                req = m_reqBuilder.GetTileAnonymous(mapdefinition, baselayergroup, row, col, scaleindex);
             else
-                req = m_reqBuilder.GetTile(mapdefinition, baselayergroup, row, col, scaleindex, format, _cred == null);
+                req = m_reqBuilder.GetTile(mapdefinition, baselayergroup, row, col, scaleindex, _cred == null);
             return this.OpenRead(req);
         }
 

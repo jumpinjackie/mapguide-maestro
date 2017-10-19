@@ -725,7 +725,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return base.DeserializeObject<ResourceDataList>(new MgReadOnlyStream(fetch));
         }
 
-        public Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
+        public Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex)
         {
             var ts = GetTileService();
             GetByteReaderMethod fetch = () =>

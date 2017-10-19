@@ -46,8 +46,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="column">The column index of the tile</param>
         /// <param name="row">The row index of the tile</param>
         /// <param name="scaleIndex">The scale index for the tile set</param>
-        /// <param name="format">The format to return the tile in, either JPG, GIF, PNG or PNG8</param>
         /// <returns>An image stream</returns>
-        System.IO.Stream GetTile(string mapDefinition, string baseLayerGroup, int column, int row, int scaleIndex, string format);
+        System.IO.Stream GetTile(string mapDefinition, string baseLayerGroup, int column, int row, int scaleIndex);
     }
 }

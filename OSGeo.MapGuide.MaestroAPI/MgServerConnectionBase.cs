@@ -363,9 +363,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="col">The col.</param>
         /// <param name="row">The row.</param>
         /// <param name="scaleindex">The scaleindex.</param>
-        /// <param name="format">The format.</param>
         /// <returns></returns>
-        public abstract System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format);
+        public abstract System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex);
 
         #endregion Tile
     }

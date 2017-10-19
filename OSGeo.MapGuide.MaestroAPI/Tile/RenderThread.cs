@@ -357,7 +357,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                     if (!_parent.Cancel)
                     {
                         if (_parent.Config.RenderMethod == null)
-                            tileSvc.GetTile(_mapDefinition, group, (int)col, (int)row, scaleindex, "PNG").Dispose(); //NOXLATE
+                            tileSvc.GetTile(_mapDefinition, group, (int)col, (int)row, scaleindex).Dispose(); //NOXLATE
                         else
                             _parent.Config.RenderMethod(_mapDefinition, group, (int)col, (int)row, scaleindex);
                     }
