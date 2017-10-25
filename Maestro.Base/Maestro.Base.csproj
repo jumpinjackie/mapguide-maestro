@@ -725,19 +725,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DockPanelSuite">
-      <Version>3.0.0</Version>
+      <Version>3.0.1</Version>
     </PackageReference>
     <PackageReference Include="DockPanelSuite.ThemeVS2003">
-      <Version>3.0.0</Version>
+      <Version>3.0.1</Version>
     </PackageReference>
     <PackageReference Include="DockPanelSuite.ThemeVS2012">
-      <Version>3.0.0</Version>
+      <Version>3.0.1</Version>
     </PackageReference>
     <PackageReference Include="DockPanelSuite.ThemeVS2013">
-      <Version>3.0.0</Version>
+      <Version>3.0.1</Version>
     </PackageReference>
     <PackageReference Include="DockPanelSuite.ThemeVS2015">
-      <Version>3.0.0</Version>
+      <Version>3.0.1</Version>
     </PackageReference>
     <PackageReference Include="TreeViewAdv">
       <Version>1.7.0</Version>
