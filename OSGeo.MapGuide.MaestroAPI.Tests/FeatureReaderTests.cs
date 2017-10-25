@@ -131,8 +131,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
                     Assert.NotNull(lr.GetBlob("BLOB"));
                     Assert.Equal(1, lr.GetByte(1));
                     Assert.Equal(1, lr.GetByte("BYTE"));
-                    Assert.Equal(false, lr.GetBoolean(2));
-                    Assert.Equal(false, lr.GetBoolean("BOOL"));
+                    Assert.False(lr.GetBoolean(2));
+                    Assert.False(lr.GetBoolean("BOOL"));
                     Assert.NotNull(lr.GetClob(3));
                     Assert.NotNull(lr.GetClob("CLOB"));
                     Assert.Equal(new DateTime(2017, 1, 28), lr.GetDateTime(4));

@@ -66,14 +66,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Feature
             Assert.Throws<NotSupportedException>(() => { var v = value.ValueAsString(); });
             value.Value = new byte[] { 1 };
             Assert.NotNull(value.Value);
-            Assert.Equal(1, value.Value.Length);
+            Assert.Single(value.Value);
             Assert.Equal(1, value.Value[0]);
             Assert.False(value.IsNull);
 
             value = new BlobValue(new byte[] { 1 });
             Assert.False(value.IsNull);
             Assert.NotNull(value.Value);
-            Assert.Equal(1, value.Value.Length);
+            Assert.Single(value.Value);
             Assert.Equal(1, value.Value[0]);
 
             value.SetNull();
@@ -93,14 +93,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Feature
             Assert.Throws<Exception>(() => { var v = value.Value; });
             Assert.Throws<Exception>(() => { var v = value.ValueAsString(); });
             value.Value = d;
-            Assert.NotNull(value.Value);
             Assert.Equal(d, value.Value);
             Assert.Equal("1", value.ValueAsString());
             Assert.False(value.IsNull);
 
             value = new ByteValue(d);
             Assert.False(value.IsNull);
-            Assert.NotNull(value.Value);
             Assert.Equal(d, value.Value);
 
             value.SetNull();
@@ -120,14 +118,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Feature
             Assert.Throws<NotSupportedException>(() => { var v = value.ValueAsString(); });
             value.Value = new char[] { 'a' };
             Assert.NotNull(value.Value);
-            Assert.Equal(1, value.Value.Length);
+            Assert.Single(value.Value);
             Assert.Equal('a', value.Value[0]);
             Assert.False(value.IsNull);
 
             value = new ClobValue(new char[] { 'a' });
             Assert.False(value.IsNull);
             Assert.NotNull(value.Value);
-            Assert.Equal(1, value.Value.Length);
+            Assert.Single(value.Value);
             Assert.Equal('a', value.Value[0]);
 
             value.SetNull();
@@ -147,14 +145,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Feature
             Assert.Throws<Exception>(() => { var v = value.Value; });
             Assert.Throws<Exception>(() => { var v = value.ValueAsString(); });
             value.Value = dt;
-            Assert.NotNull(value.Value);
             Assert.Equal(dt, value.Value);
             Assert.Equal("TIMESTAMP '2017-01-01 00:00:00'", value.ValueAsString());
             Assert.False(value.IsNull);
 
             value = new DateTimeValue(dt);
             Assert.False(value.IsNull);
-            Assert.NotNull(value.Value);
             Assert.Equal(dt, value.Value);
 
             value.SetNull();
@@ -174,14 +170,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Feature
             Assert.Throws<Exception>(() => { var v = value.Value; });
             Assert.Throws<Exception>(() => { var v = value.ValueAsString(); });
             value.Value = d;
-            Assert.NotNull(value.Value);
             Assert.Equal(d, value.Value);
             Assert.Equal("1.2", value.ValueAsString());
             Assert.False(value.IsNull);
 
             value = new DoubleValue(d);
             Assert.False(value.IsNull);
-            Assert.NotNull(value.Value);
             Assert.Equal(d, value.Value);
 
             value.SetNull();
@@ -228,14 +222,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Feature
             Assert.Throws<Exception>(() => { var v = value.Value; });
             Assert.Throws<Exception>(() => { var v = value.ValueAsString(); });
             value.Value = d;
-            Assert.NotNull(value.Value);
             Assert.Equal(d, value.Value);
             Assert.Equal("1", value.ValueAsString());
             Assert.False(value.IsNull);
 
             value = new Int16Value(d);
             Assert.False(value.IsNull);
-            Assert.NotNull(value.Value);
             Assert.Equal(d, value.Value);
 
             value.SetNull();
@@ -255,14 +247,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Feature
             Assert.Throws<Exception>(() => { var v = value.Value; });
             Assert.Throws<Exception>(() => { var v = value.ValueAsString(); });
             value.Value = d;
-            Assert.NotNull(value.Value);
             Assert.Equal(d, value.Value);
             Assert.Equal("1", value.ValueAsString());
             Assert.False(value.IsNull);
 
             value = new Int32Value(d);
             Assert.False(value.IsNull);
-            Assert.NotNull(value.Value);
             Assert.Equal(d, value.Value);
 
             value.SetNull();
@@ -282,14 +272,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Feature
             Assert.Throws<Exception>(() => { var v = value.Value; });
             Assert.Throws<Exception>(() => { var v = value.ValueAsString(); });
             value.Value = d;
-            Assert.NotNull(value.Value);
             Assert.Equal(d, value.Value);
             Assert.Equal("1", value.ValueAsString());
             Assert.False(value.IsNull);
 
             value = new Int64Value(d);
             Assert.False(value.IsNull);
-            Assert.NotNull(value.Value);
             Assert.Equal(d, value.Value);
 
             value.SetNull();
@@ -308,14 +296,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Feature
             Assert.Throws<NotSupportedException>(() => { var v = value.ValueAsString(); });
             value.Value = new byte[] { 1 };
             Assert.NotNull(value.Value);
-            Assert.Equal(1, value.Value.Length);
+            Assert.Single(value.Value);
             Assert.Equal(1, value.Value[0]);
             Assert.False(value.IsNull);
 
             value = new RasterValue(new byte[] { 1 });
             Assert.False(value.IsNull);
             Assert.NotNull(value.Value);
-            Assert.Equal(1, value.Value.Length);
+            Assert.Single(value.Value);
             Assert.Equal(1, value.Value[0]);
 
             value.SetNull();
@@ -335,14 +323,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Feature
             Assert.Throws<Exception>(() => { var v = value.Value; });
             Assert.Throws<Exception>(() => { var v = value.ValueAsString(); });
             value.Value = d;
-            Assert.NotNull(value.Value);
             Assert.Equal(d, value.Value);
             Assert.Equal("1.4", value.ValueAsString());
             Assert.False(value.IsNull);
 
             value = new SingleValue(d);
             Assert.False(value.IsNull);
-            Assert.NotNull(value.Value);
             Assert.Equal(d, value.Value);
 
             value.SetNull();

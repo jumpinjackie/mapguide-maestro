@@ -64,7 +64,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             builder["Whatever"] = "asjd=gjh;sdgj"; //Note the ; and = in the value
 
             var values = ConnectionProviderRegistry.ParseConnectionString(builder.ToString());
-            Assert.Equal(values.Count, 4);
+            Assert.Equal(4, values.Count);
 
             Assert.Equal(builder["Foo"].ToString(), values["Foo"]);
             Assert.Equal(builder["Bar"].ToString(), values["Bar"]);
@@ -83,7 +83,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.True(parser.IsDefined("bar"));
             Assert.True(parser.IsDefined("whatever"));
             Assert.Equal(string.Empty, parser.GetValue("whatever"));
-            Assert.Equal(parser.GetValue("bar"), "snafu");
+            Assert.Equal("snafu", parser.GetValue("bar"));
 
             var nvc = parser.GetAllArgumentsWithValues();
             Assert.Null(nvc["foo"]);

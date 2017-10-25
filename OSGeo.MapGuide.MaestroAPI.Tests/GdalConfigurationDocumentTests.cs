@@ -32,10 +32,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var doc = new GdalConfigurationDocument();
             var loc = new GdalRasterLocationItem { Location = "C:\\temp\\location_1" };
             doc.AddLocation(loc);
-            Assert.Equal(1, doc.RasterLocations.Length);
+            Assert.Single(doc.RasterLocations);
             var loc2 = new GdalRasterLocationItem { Location = "C:\\temp\\location_1" };
             doc.AddLocation(loc2);
-            Assert.Equal(1, doc.RasterLocations.Length);
+            Assert.Single(doc.RasterLocations);
             var loc3 = new GdalRasterLocationItem { Location = "C:\\temp\\location_2" };
             doc.AddLocation(loc3);
             Assert.Equal(2, doc.RasterLocations.Length);

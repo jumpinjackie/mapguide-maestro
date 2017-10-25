@@ -54,7 +54,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             var els = doc.GetElementsByTagName("ResourceId");
             foreach (XmlNode el in els)
             {
-                Assert.True(el.InnerText.StartsWith("Library://Rebased/Layers/"));
+                Assert.StartsWith("Library://Rebased/Layers/", el.InnerText);
             }
         }
     }

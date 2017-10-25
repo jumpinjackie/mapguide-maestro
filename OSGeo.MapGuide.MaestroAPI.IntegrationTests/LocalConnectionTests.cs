@@ -74,13 +74,13 @@ namespace MaestroAPITests
         }
 
         [SkippableFact]
-        public void TestFeatureSourceCaching()
+        public void TestFeatureSourceCachingImplImpl()
         {
             base.TestFeatureSourceCaching("LocalFeatureSourceCaching");
         }
 
         [SkippableFact]
-        public void TestClassDefinitionCaching()
+        public void TestClassDefinitionCachingImplImpl()
         {
             base.TestClassDefinitionCaching("LocalClassCaching");
         }

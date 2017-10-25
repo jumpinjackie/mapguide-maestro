@@ -124,7 +124,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.True(wl.ContextMenu.ItemCount > 0);
             Assert.True(wl.ToolBar.ItemCount > 0);
 
-            Assert.Equal(wl.Map.ResourceId, "Library://Test.MapDefinition");
+            Assert.Equal("Library://Test.MapDefinition", wl.Map.ResourceId);
 
             //Verify all built-in commands are available
             Array cmdNames = Enum.GetValues(typeof(BuiltInCommandType));

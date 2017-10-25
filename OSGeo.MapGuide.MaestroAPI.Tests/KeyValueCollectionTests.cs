@@ -41,13 +41,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var collection = CreateCollection();
             var val1 = CreateTestValue1();
             Assert.True(collection.IndexOf(val1) < 0);
-            Assert.False(collection.Contains(val1));
+            Assert.DoesNotContain(val1, collection);
             collection.Add(val1);
             Assert.True(collection.IndexOf(val1) >= 0);
-            Assert.True(collection.Contains(val1));
+            Assert.Contains(val1, collection);
 
             collection.Clear();
-            Assert.Equal(0, collection.Count);
+            Assert.Empty(collection);
 
             var val2 = CreateTestValue2();
             collection.Insert(0, val1);

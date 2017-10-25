@@ -252,14 +252,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
         public void RemoveGroupTest()
         {
             var map = CreateTestMap();
-            Assert.Equal(1, map.Groups.Count);
+            Assert.Single(map.Groups);
             map.Groups.Remove("Base Layer Group");
-            Assert.Equal(0, map.Groups.Count);
+            Assert.Empty(map.Groups);
 
             map = CreateTestMap();
             var grp = map.Groups[0];
             map.Groups.Remove(grp);
-            Assert.Equal(0, map.Groups.Count);
+            Assert.Empty(map.Groups);
         }
 
         [Fact]
@@ -269,7 +269,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             var layers = map.GetLayersOfGroup("Base Layer Group");
             Assert.Equal(3, layers.Length);
             layers = map.GetLayersOfGroup("asdjgdsfd");
-            Assert.Equal(0, layers.Length);
+            Assert.Empty(layers);
         }
 
         [Fact]
@@ -277,18 +277,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
         {
             var map = CreateTestMap();
             var groups = map.GetGroupsOfGroup("Base Layer Group");
-            Assert.Equal(0, groups.Length);
+            Assert.Empty(groups);
             groups = map.GetGroupsOfGroup("asdjsdfdsfd");
-            Assert.Equal(0, groups.Length);
+            Assert.Empty(groups);
             var mapSvc = (IMappingService)map.CurrentConnection.GetService((int)ServiceType.Mapping);
             var grp = mapSvc.CreateMapGroup(map, "Test");
             grp.Group = "Base Layer Group";
             map.Groups.Add(grp);
             Assert.Equal(2, map.Groups.Count);
             groups = map.GetGroupsOfGroup("Base Layer Group");
-            Assert.Equal(1, groups.Length);
+            Assert.Single(groups);
             groups = map.GetGroupsOfGroup("Test");
-            Assert.Equal(0, groups.Length);
+            Assert.Empty(groups);
         }
         
         [Fact]

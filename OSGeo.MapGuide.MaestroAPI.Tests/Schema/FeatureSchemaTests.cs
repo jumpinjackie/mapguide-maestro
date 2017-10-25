@@ -33,12 +33,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             var fs = new FeatureSchema("Foo", "");
             Assert.Equal("Foo", fs.Name);
             Assert.True(String.IsNullOrEmpty(fs.Description));
-            Assert.Equal(0, fs.Classes.Count);
+            Assert.Empty(fs.Classes);
 
             fs = new FeatureSchema("Foo", "Bar");
             Assert.Equal("Foo", fs.Name);
             Assert.Equal("Bar", fs.Description);
-            Assert.Equal(0, fs.Classes.Count);
+            Assert.Empty(fs.Classes);
         }
 
         [Fact]
@@ -47,11 +47,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             var fs = new FeatureSchema("Foo", "Bar");
             Assert.Equal("Foo", fs.Name);
             Assert.Equal("Bar", fs.Description);
-            Assert.Equal(0, fs.Classes.Count);
+            Assert.Empty(fs.Classes);
 
             var cls = new ClassDefinition("Class1", "Test Class");
             fs.AddClass(cls);
-            Assert.Equal(1, fs.Classes.Count);
+            Assert.Single(fs.Classes);
         }
 
         [Fact]
@@ -60,22 +60,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             var fs = new FeatureSchema("Foo", "Bar");
             Assert.Equal("Foo", fs.Name);
             Assert.Equal("Bar", fs.Description);
-            Assert.Equal(0, fs.Classes.Count);
+            Assert.Empty(fs.Classes);
 
             var cls = new ClassDefinition("Class1", "Test Class");
             fs.AddClass(cls);
-            Assert.Equal(1, fs.Classes.Count);
+            Assert.Single(fs.Classes);
 
             fs.RemoveClass("asdgsdf");
-            Assert.Equal(1, fs.Classes.Count);
+            Assert.Single(fs.Classes);
 
             Assert.True(fs.RemoveClass(cls));
-            Assert.Equal(0, fs.Classes.Count);
+            Assert.Empty(fs.Classes);
 
             fs.AddClass(cls);
-            Assert.Equal(1, fs.Classes.Count);
+            Assert.Single(fs.Classes);
             fs.RemoveClass("Class1");
-            Assert.Equal(0, fs.Classes.Count);
+            Assert.Empty(fs.Classes);
         }
 
         [Fact]
@@ -84,7 +84,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             var fs = new FeatureSchema("Foo", "Bar");
             Assert.Equal("Foo", fs.Name);
             Assert.Equal("Bar", fs.Description);
-            Assert.Equal(0, fs.Classes.Count);
+            Assert.Empty(fs.Classes);
 
             var cls = new ClassDefinition("Class1", "Test Class");
             fs.AddClass(cls);
@@ -98,7 +98,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             var fs = new FeatureSchema("Foo", "Bar");
             Assert.Equal("Foo", fs.Name);
             Assert.Equal("Bar", fs.Description);
-            Assert.Equal(0, fs.Classes.Count);
+            Assert.Empty(fs.Classes);
 
             var cls = new ClassDefinition("Class1", "Test Class");
             fs.AddClass(cls);
@@ -114,7 +114,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             var fs = new FeatureSchema("Foo", "Bar");
             Assert.Equal("Foo", fs.Name);
             Assert.Equal("Bar", fs.Description);
-            Assert.Equal(0, fs.Classes.Count);
+            Assert.Empty(fs.Classes);
 
             var cls = new ClassDefinition("Class1", "Test Class");
             fs.AddClass(cls);
@@ -132,7 +132,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             var fs = new FeatureSchema("Foo", "Bar");
             Assert.Equal("Foo", fs.Name);
             Assert.Equal("Bar", fs.Description);
-            Assert.Equal(0, fs.Classes.Count);
+            Assert.Empty(fs.Classes);
 
             var cls = new ClassDefinition("Class1", "Test Class");
             var id = new DataPropertyDefinition("ID", "");
@@ -156,7 +156,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             var fs = new FeatureSchema("Foo", "Bar");
             Assert.Equal("Foo", fs.Name);
             Assert.Equal("Bar", fs.Description);
-            Assert.Equal(0, fs.Classes.Count);
+            Assert.Empty(fs.Classes);
 
             var cls = new ClassDefinition("Class1", "Test Class");
             var id = new DataPropertyDefinition("ID", "");

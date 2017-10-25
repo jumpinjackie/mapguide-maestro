@@ -97,7 +97,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Schema
                 ms.Position = 0L;
 
                 var fsd = new FeatureSourceDescription(ms);
-                Assert.Equal(1, fsd.SchemaNames.Length);
+                Assert.Single(fsd.SchemaNames);
                 foreach (var sn in fsd.SchemaNames)
                 {
                     var sch1 = fsd.GetSchema(sn);

@@ -96,9 +96,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             set.AddIssues(new ValidationIssue[] { msg1, msg2, msg3 });
 
             var totalIssues = set.GetAllIssues();
-            Assert.Equal(totalIssues.Length, 2);
-            Assert.Equal(set.ResourceIDs.Length, 1);
-            Assert.Equal(set.GetIssuesForResource("Library://Test.FeatureSource", ValidationStatus.Error).Count, 2);
+            Assert.Equal(2, totalIssues.Length);
+            Assert.Single(set.ResourceIDs);
+            Assert.Equal(2, set.GetIssuesForResource("Library://Test.FeatureSource", ValidationStatus.Error).Count);
         }
 
         [Fact]
@@ -153,7 +153,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             set.AddIssues(ResourceValidatorSet.Validate(context, lp, false));
 
             //Not supported
-            Assert.Equal(1, set.GetAllIssues().Length);
+            Assert.Single(set.GetAllIssues());
 
             lp = new OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.LoadProcedure()
             {
@@ -165,7 +165,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             set.AddIssues(ResourceValidatorSet.Validate(context, lp, false));
 
             //Not supported
-            Assert.Equal(1, set.GetAllIssues().Length);
+            Assert.Single(set.GetAllIssues());
         }
 
         static T CreateInstance<T>() where T : class
@@ -346,7 +346,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mockFs.Object, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_OdbcConfig_IncompleteXYZColumnMapping, issues.First().StatusCode);
 
             odbcTable.XColumn = null;
@@ -356,7 +356,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_OdbcConfig_IncompleteXYZColumnMapping, issues.First().StatusCode);
 
             odbcTable.XColumn = null;
@@ -367,7 +367,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_OdbcConfig_IncompleteXYZColumnMapping, issues.First().StatusCode);
 
             odbcTable.XColumn = "X";
@@ -378,7 +378,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_OdbcConfig_IncompleteXYZColumnMapping, issues.First().StatusCode);
 
             odbcTable.XColumn = "X";
@@ -388,7 +388,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
-            Assert.Equal(0, issues.Count());
+            Assert.Empty(issues);
 
             //Bogus mapping class target
             odbcTable.ClassName = "IDontExist";
@@ -397,7 +397,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_OdbcConfig_NoTableOverrideForFeatureClass, issues.First().StatusCode);
 
             //Bogus logical geometry property
@@ -408,7 +408,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_OdbcConfig_InvalidLogicalGeometryProperty, issues.First().StatusCode);
 
             //All good
@@ -417,7 +417,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs.Object, false);
-            Assert.Equal(0, issues.Count());
+            Assert.Empty(issues);
         }
 
         private ClassDefinition CreateTestClass(string scName, string className = "Test", string idName = "ID", string geomName = "Geometry")
@@ -506,7 +506,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mockFs.Object, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_FeatureSource_ConnectionTestFailed, issues.First().StatusCode);
         }
 
@@ -551,7 +551,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mockFs, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Warning_FeatureSource_Plaintext_Credentials, issues.First().StatusCode);
 
             mockFs.SetConnectionProperty("Username", StringConstants.MgUsernamePlaceholder);
@@ -608,7 +608,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mockFs.Object, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Warning_FeatureSource_NoSchemasFound, issues.First().StatusCode);
         }
 
@@ -720,28 +720,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mockFs2.Object, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Warning_FeatureSource_NoSpatialContext, issues.First().StatusCode);
 
             context = new ResourceValidationContext(mockConn.Object);
             validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs3.Object, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Warning_FeatureSource_EmptySpatialContext, issues.First().StatusCode);
 
             context = new ResourceValidationContext(mockConn.Object);
             validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs4.Object, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Warning_FeatureSource_DefaultSpatialContext, issues.First().StatusCode);
 
             context = new ResourceValidationContext(mockConn.Object);
             validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mockFs5.Object, false);
-            Assert.Equal(0, issues.Count());
+            Assert.Empty(issues);
         }
 
         [Fact]
@@ -787,7 +787,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<FeatureSourceValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mockFs.Object, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Warning_FeatureSource_EmptyJoinPrefix, issues.First().StatusCode);
         }
 
@@ -828,7 +828,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_LayerDefinition_ClassNotFound, issues.First().StatusCode);
         }
 
@@ -870,7 +870,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_LayerDefinition_GeometryNotFound, issues.First().StatusCode);
         }
 
@@ -914,7 +914,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_LayerDefinition_InvalidPropertyMapping, issues.First().StatusCode);
         }
 
@@ -1085,7 +1085,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_LayerDefinition_MinMaxScaleSwapped, issues.First().StatusCode);
         }
 
@@ -1135,7 +1135,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Info_LayerDefinition_ScaleRangeOverlap, issues.First().StatusCode);
         }
 
@@ -1193,7 +1193,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_LayerDefinition_DrawingSourceSheetNotFound, issues.First().StatusCode);
         }
 
@@ -1256,7 +1256,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<LayerDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, ldf, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_LayerDefinition_DrawingSourceSheetLayerNotFound, issues.First().StatusCode);
         }
 
@@ -1271,7 +1271,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<MapDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mdf, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Warning_MapDefinition_MissingCoordinateSystem, issues.First().StatusCode);
         }
 
@@ -1294,7 +1294,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<MapDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mdf, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Info_MapDefinition_GroupMissingLabelInformation, issues.First().StatusCode);
 
             grp.LegendLabel = "layer group";
@@ -1303,7 +1303,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             validator = CreateInstance<MapDefinitionValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mdf, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Info_MapDefinition_GroupHasDefaultLabel, issues.First().StatusCode);
 
             grp.LegendLabel = "Test Layer Group";
@@ -1316,7 +1316,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             validator = CreateInstance<MapDefinitionValidator>();
             validator.Connection = mockConn.Object;
             issues = validator.Validate(context, mdf, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_MapDefinition_GroupWithNonExistentGroup, issues.First().StatusCode);
         }
 
@@ -1336,7 +1336,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = CreateInstance<MapDefinitionValidator>();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, mdf, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(ValidationStatusCode.Error_MapDefinition_NoFiniteDisplayScales, issues.First().StatusCode);
         }
 
@@ -1511,7 +1511,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = new ApplicationDefinitionValidator();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, appDef, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Error_Fusion_MissingMap));
         }
 
@@ -1544,7 +1544,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = new ApplicationDefinitionValidator();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, appDef, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Warning_Fusion_MapCoordSysIncompatibleWithCommericalLayers));
         }
 
@@ -1560,7 +1560,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = new ApplicationDefinitionValidator();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, appDef, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Error_Fusion_InvalidMap));
         }
 
@@ -1588,7 +1588,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var validator = new ApplicationDefinitionValidator();
             validator.Connection = mockConn.Object;
             var issues = validator.Validate(context, appDef, false);
-            Assert.Equal(1, issues.Count());
+            Assert.Single(issues);
             Assert.Equal(1, issues.Count(i => i.StatusCode == ValidationStatusCode.Warning_Fusion_InitialViewOutsideMapExtents));
         }
 

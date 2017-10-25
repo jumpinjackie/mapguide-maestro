@@ -33,7 +33,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             var prop = new GeometricPropertyDefinition("Foo", "Bar");
             Assert.Equal("Foo", prop.Name);
             Assert.Equal("Bar", prop.Description);
-            Assert.Equal(0, prop.SpecificGeometryTypes.Length);
+            Assert.Empty(prop.SpecificGeometryTypes);
             Assert.True(String.IsNullOrEmpty(prop.SpatialContextAssociation));
         }
 
@@ -43,7 +43,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             var prop = new GeometricPropertyDefinition("Foo", "Bar");
             Assert.Equal("Foo", prop.Name);
             Assert.Equal("Bar", prop.Description);
-            Assert.Equal(0, prop.SpecificGeometryTypes.Length);
+            Assert.Empty(prop.SpecificGeometryTypes);
             Assert.True(String.IsNullOrEmpty(prop.SpatialContextAssociation));
 
             prop.GeometricTypes = FeatureGeometricType.Curve | FeatureGeometricType.Solid;
@@ -60,7 +60,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             var prop = new GeometricPropertyDefinition("Foo", "Bar");
             Assert.Equal("Foo", prop.Name);
             Assert.Equal("Bar", prop.Description);
-            Assert.Equal(0, prop.SpecificGeometryTypes.Length);
+            Assert.Empty(prop.SpecificGeometryTypes);
             Assert.True(String.IsNullOrEmpty(prop.SpatialContextAssociation));
 
             prop.GeometricTypes = FeatureGeometricType.Curve | FeatureGeometricType.Solid;
@@ -78,7 +78,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             var prop = new GeometricPropertyDefinition("Foo", "Bar");
             Assert.Equal("Foo", prop.Name);
             Assert.Equal("Bar", prop.Description);
-            Assert.Equal(0, prop.SpecificGeometryTypes.Length);
+            Assert.Empty(prop.SpecificGeometryTypes);
             Assert.True(String.IsNullOrEmpty(prop.SpatialContextAssociation));
 
             prop.GeometricTypes = FeatureGeometricType.Curve | FeatureGeometricType.Point;

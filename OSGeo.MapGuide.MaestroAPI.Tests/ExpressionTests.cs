@@ -136,7 +136,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             expr = FdoExpression.Parse("CurrentDate()");
             Assert.IsAssignableFrom<FdoFunction>(expr);
             Assert.Equal("CurrentDate", ((FdoFunction)expr).Identifier.Name);
-            Assert.Equal(0, ((FdoFunction)expr).Arguments.Count);
+            Assert.Empty(((FdoFunction)expr).Arguments);
 
             expr = FdoExpression.Parse("Concat(RNAME, ' ', RBILAD)");
             Assert.IsAssignableFrom<FdoFunction>(expr);

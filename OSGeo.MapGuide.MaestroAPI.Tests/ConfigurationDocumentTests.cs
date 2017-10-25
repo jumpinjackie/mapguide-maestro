@@ -34,7 +34,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         public void TestMySqlSchema()
         {
             var fds = new FeatureSourceDescription(Utils.OpenFile($"UserTestData{System.IO.Path.DirectorySeparatorChar}gen_default1_MySql_master.xml"));
-            Assert.Equal(1, fds.Schemas.Length);
+            Assert.Single(fds.Schemas);
 
             var fs = fds.GetSchema("AutoGen");
             Assert.NotNull(fs);
@@ -67,31 +67,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.NotNull(c11);
             Assert.NotNull(c12);
 
-            Assert.Equal(1, c1.IdentityProperties.Count);
-            Assert.Equal(1, c2.IdentityProperties.Count);
-            Assert.Equal(1, c3.IdentityProperties.Count);
-            Assert.Equal(1, c4.IdentityProperties.Count);
-            Assert.Equal(1, c5.IdentityProperties.Count);
-            Assert.Equal(1, c6.IdentityProperties.Count);
+            Assert.Single(c1.IdentityProperties);
+            Assert.Single(c2.IdentityProperties);
+            Assert.Single(c3.IdentityProperties);
+            Assert.Single(c4.IdentityProperties);
+            Assert.Single(c5.IdentityProperties);
+            Assert.Single(c6.IdentityProperties);
             Assert.Equal(2, c7.IdentityProperties.Count);
-            Assert.Equal(1, c8.IdentityProperties.Count);
-            Assert.Equal(1, c9.IdentityProperties.Count);
+            Assert.Single(c8.IdentityProperties);
+            Assert.Single(c9.IdentityProperties);
             Assert.Equal(2, c10.IdentityProperties.Count);
-            Assert.Equal(1, c11.IdentityProperties.Count);
-            Assert.Equal(0, c12.IdentityProperties.Count);
+            Assert.Single(c11.IdentityProperties);
+            Assert.Empty(c12.IdentityProperties);
 
-            Assert.Equal(c1.Properties.Count, 3);
-            Assert.Equal(c2.Properties.Count, 5);
-            Assert.Equal(c3.Properties.Count, 3);
-            Assert.Equal(c4.Properties.Count, 4);
-            Assert.Equal(c5.Properties.Count, 3);
-            Assert.Equal(c6.Properties.Count, 47);
-            Assert.Equal(c7.Properties.Count, 3);
-            Assert.Equal(c8.Properties.Count, 4);
-            Assert.Equal(c9.Properties.Count, 2);
-            Assert.Equal(c10.Properties.Count, 3);
-            Assert.Equal(c11.Properties.Count, 2);
-            Assert.Equal(c12.Properties.Count, 3);
+            Assert.Equal(3, c1.Properties.Count);
+            Assert.Equal(5, c2.Properties.Count);
+            Assert.Equal(3, c3.Properties.Count);
+            Assert.Equal(4, c4.Properties.Count);
+            Assert.Equal(3, c5.Properties.Count);
+            Assert.Equal(47, c6.Properties.Count);
+            Assert.Equal(3, c7.Properties.Count);
+            Assert.Equal(4, c8.Properties.Count);
+            Assert.Equal(2, c9.Properties.Count);
+            Assert.Equal(3, c10.Properties.Count);
+            Assert.Equal(2, c11.Properties.Count);
+            Assert.Equal(3, c12.Properties.Count);
 
             Assert.Equal(c1, fds.GetClass("AutoGen", "rtable1"));
             Assert.Equal(c2, fds.GetClass("AutoGen", "rtable2"));
@@ -295,7 +295,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             conf = ConfigurationDocument.LoadXml(xml) as WmsConfigurationDocument;
             Assert.NotNull(conf);
 
-            Assert.Equal(1, conf.RasterOverrides.Length);
+            Assert.Single(conf.RasterOverrides);
 
             var ritem = conf.RasterOverrides[0];
             cls = conf.GetClass("WMS", "NASAWMSGlobalPan");
