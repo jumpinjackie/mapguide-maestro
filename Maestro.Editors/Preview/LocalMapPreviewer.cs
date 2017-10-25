@@ -100,7 +100,8 @@ namespace Maestro.Editors.Preview
 
         private static bool SupportsMappingService(IServerConnection conn)
         {
-            return Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0;
+            return conn.SiteVersion >= new Version(2, 1) //Local preview needs APIs introduced in MGOS 2.1
+                && Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0;
         }
 
         /// <summary>
