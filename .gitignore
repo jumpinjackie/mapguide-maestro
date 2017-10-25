@@ -16,3 +16,5 @@ Reports/
 UserDoc/build
 TestResult.xml
 Packages/
+MgTileSeeder/publish_win
+MgTileSeeder/publish_linux
