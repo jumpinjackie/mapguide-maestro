@@ -41,12 +41,12 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
     {
         public ObjectFactoryTests()
         {
-            ObjectFactory.Reset();
+
         }
         
         public void Dispose()
         {
-            ObjectFactory.Reset();
+
         }
 
         [Fact]
@@ -55,10 +55,10 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             var ser = new Mock<ResourceSerializer>();
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterResource(null, null));
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterResource(null, ser.Object));
-            Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterResource(new ResourceTypeDescriptor("MyNewResourceType", "1.0.0"), null));
+            Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterResource(new ResourceTypeDescriptor($"ResourceType_{nameof(RegisterResourceTest)}", "1.0.0"), null));
             //Already exists
             Assert.Throws<ArgumentException>(() => ObjectFactory.RegisterResource(new ResourceTypeDescriptor("FeatureSource", "1.0.0"), ser.Object));
-            ObjectFactory.RegisterResource(new ResourceTypeDescriptor("MyNewResourceType", "1.0.0"), ser.Object);
+            ObjectFactory.RegisterResource(new ResourceTypeDescriptor($"ResourceType_{nameof(RegisterResourceTest)}", "1.0.0"), ser.Object);
         }
 
         [Fact]
@@ -74,7 +74,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterResourceSerializer(new ResourceTypeDescriptor("FeatureSource", "1.0.0"), null, deserFunc));
             //Already exists
             Assert.Throws<ArgumentException>(() => ObjectFactory.RegisterResourceSerializer(new ResourceTypeDescriptor("FeatureSource", "1.0.0"), serFunc, deserFunc));
-            ObjectFactory.RegisterResourceSerializer(new ResourceTypeDescriptor("MyNewResourceType", "1.0.0"), serFunc, deserFunc);
+            ObjectFactory.RegisterResourceSerializer(new ResourceTypeDescriptor($"ResourceType_{nameof(RegisterResourceSerializerTest)}", "1.0.0"), serFunc, deserFunc);
         }
 
         [Fact]
