@@ -29,6 +29,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
     public class UtilityTests
     {
         [Theory]
+        [InlineData(3, 2, 1, true, true, false)]
+        [InlineData(3, 2, 1, true, false, false)]
+        [InlineData(1, 2, 3, false, true, true)]
+        [InlineData(1, 1, 3, false, true, true)]
+        [InlineData(1, 3, 3, false, true, true)]
+        [InlineData(1, 0, 3, false, true, false)]
+        [InlineData(1, 4, 3, false, true, false)]
+        [InlineData(1, 2, 3, false, false, true)]
+        [InlineData(1, 1, 3, false, false, false)]
+        [InlineData(1, 3, 3, false, false, false)]
+        [InlineData(1, 0, 3, false, false, false)]
+        [InlineData(1, 4, 3, false, false, false)]
+        public void Utility_InRange(double min, double value, double max, bool expectThrow, bool inclusiveFlag, bool? expectResult)
+        {
+            if (expectThrow)
+            {
+                Assert.Throws<ArgumentException>(() => Utility.InRange(value, min, max, inclusiveFlag));
+            }
+            else
+            {
+                Assert.Equal(expectResult.Value, Utility.InRange(value, min, max, inclusiveFlag));
+            }
+        }
+
+        [Theory]
         [InlineData(0.0, true)]
         [InlineData(0.0f, true)]
         [InlineData(0.1, false)]

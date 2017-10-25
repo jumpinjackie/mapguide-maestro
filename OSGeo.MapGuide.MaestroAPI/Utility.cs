@@ -53,6 +53,30 @@ namespace OSGeo.MapGuide.MaestroAPI
     public static class Utility
     {
         /// <summary>
+        /// Returns true if the given value is in range
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="val"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <param name="bInclusive"></param>
+        /// <returns></returns>
+        public static bool InRange<T>(T val, T min, T max, bool bInclusive = true) where T : IComparable
+        {
+            Check.ThatPreconditionIsMet(min.CompareTo(max) <= 0, "min < max");
+            if (bInclusive)
+            {
+                return val.CompareTo(min) >= 0
+                    && val.CompareTo(max) <= 0;
+            }
+            else
+            {
+                return val.CompareTo(min) > 0
+                    && val.CompareTo(max) < 0;
+            }
+        }
+
+        /// <summary>
         /// Returns true if this value is zero for all intents and purposes
         /// </summary>
         /// <param name="val"></param>

@@ -70,7 +70,19 @@ namespace MgTileSeeder
 
         public override void Validate()
         {
-            
+            if (!Utility.InRange(this.MinX, -180, 180))
+                throw new Exception("minx not in range of [-180, 180]");
+            if (!Utility.InRange(this.MaxX, -180, 180))
+                throw new Exception("maxx not in range of [-180, 180]");
+            if (!Utility.InRange(this.MinY, -90, 90))
+                throw new Exception("miny not in range of [-90, 90]");
+            if (!Utility.InRange(this.MaxY, -90, 90))
+                throw new Exception("maxy not in range of [-90, 90]");
+
+            if (this.MinX > this.MaxX)
+                throw new Exception("Invalid BBOX: minx > maxx");
+            if (this.MinY > this.MaxY)
+                throw new Exception("Invalid BBOX: miny > maxy");
         }
     }
 
@@ -130,9 +142,17 @@ namespace MgTileSeeder
             switch (arg)
             {
                 case MgTileSeederOptions mgOpts:
-                    return RunMapGuide(mgOpts);
+                    {
+                        int ret = RunMapGuide(mgOpts);
+                        Environment.ExitCode = ret;
+                        return ret;
+                    }
                 case XYZSeederOptions xyzOpts:
-                    return RunXYZ(xyzOpts);
+                    {
+                        int ret = RunXYZ(xyzOpts);
+                        Environment.ExitCode = ret;
+                        return ret;
+                    }
                 default:
                     throw new ArgumentException();
             }
@@ -140,70 +160,92 @@ namespace MgTileSeeder
 
         static int RunXYZ(XYZSeederOptions options)
         {
-            options.Validate();
-
-            var xyz = new XYZTileService(options.UrlTemplate);
-            var walker = new XYZTileWalker(options.MinX, options.MinY, options.MaxX, options.MaxY);
-
-            var seederOptions = new TileSeederOptions();
-            var seeder = new TileSeeder(xyz, walker, seederOptions);
-
-            var progress = new ConsoleProgress();
-            var stats = seeder.Run(progress);
-
-            Console.WriteLine($"Rendered {stats.TilesRendered} tiles in {stats.Duration}");
-            if (options.Wait)
+            int ret = 0;
+            try
             {
-                Console.WriteLine("Press any key to continue");
-                Console.Read();
-            }
+                options.Validate();
 
-            return 0;
+                var xyz = new XYZTileService(options.UrlTemplate);
+                var walker = new XYZTileWalker(options.MinX, options.MinY, options.MaxX, options.MaxY);
+
+                var seederOptions = new TileSeederOptions();
+                var seeder = new TileSeeder(xyz, walker, seederOptions);
+
+                var progress = new ConsoleProgress();
+                var stats = seeder.Run(progress);
+
+                Console.WriteLine($"Rendered {stats.TilesRendered} tiles in {stats.Duration}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                ret = 1;
+            }
+            finally
+            {
+                if (options.Wait)
+                {
+                    Console.WriteLine("Press any key to continue");
+                    Console.Read();
+                }
+            }
+            return ret;
         }
 
         static int RunMapGuide(MgTileSeederOptions options)
         {
-            options.Validate();
+            int ret = 0;
+            try
+            { 
+                options.Validate();
 
-            var conn = ConnectionProviderRegistry.CreateConnection("Maestro.Http", 
-                "Url", options.MapAgentUri, 
-                "Username", options.Username, 
-                "Password", options.Password);
+                var conn = ConnectionProviderRegistry.CreateConnection("Maestro.Http", 
+                    "Url", options.MapAgentUri, 
+                    "Username", options.Username, 
+                    "Password", options.Password);
 
-            var tileSvc = (ITileService)conn.GetService((int)ServiceType.Tile);
-            var res = conn.ResourceService.GetResource(options.ResourceID);
-            TileWalkOptions walkOptions = null;
-            switch (res)
-            {
-                case IMapDefinition mdf:
-                    walkOptions = new TileWalkOptions(mdf, options.Groups.ToArray());
-                    //TODO: If meters-per-unit not specified and this is >= 2.6 or higher, use
-                    //CREATERUNTIMEMAP to get this value
-                    break;
-                case ITileSetDefinition tsd:
-                    walkOptions = new TileWalkOptions(tsd, options.Groups.ToArray());
-                    break;
-                default:
-                    throw new ArgumentException("Invalid resource type");
+                var tileSvc = (ITileService)conn.GetService((int)ServiceType.Tile);
+                var res = conn.ResourceService.GetResource(options.ResourceID);
+                TileWalkOptions walkOptions = null;
+                switch (res)
+                {
+                    case IMapDefinition mdf:
+                        walkOptions = new TileWalkOptions(mdf, options.Groups.ToArray());
+                        //TODO: If meters-per-unit not specified and this is >= 2.6 or higher, use
+                        //CREATERUNTIMEMAP to get this value
+                        break;
+                    case ITileSetDefinition tsd:
+                        walkOptions = new TileWalkOptions(tsd, options.Groups.ToArray());
+                        break;
+                    default:
+                        throw new ArgumentException("Invalid resource type");
+                }
+
+                walkOptions.MetersPerUnit = options.MetersPerUnit;
+                var walker = new DefaultTileWalker(walkOptions);
+
+                var seederOptions = new TileSeederOptions();
+                var seeder = new TileSeeder(tileSvc, walker, seederOptions);
+
+                var progress = new ConsoleProgress();
+                var stats = seeder.Run(progress);
+
+                Console.WriteLine($"Rendered {stats.TilesRendered} tiles in {stats.Duration}");
             }
-
-            walkOptions.MetersPerUnit = options.MetersPerUnit;
-            var walker = new DefaultTileWalker(walkOptions);
-
-            var seederOptions = new TileSeederOptions();
-            var seeder = new TileSeeder(tileSvc, walker, seederOptions);
-
-            var progress = new ConsoleProgress();
-            var stats = seeder.Run(progress);
-
-            Console.WriteLine($"Rendered {stats.TilesRendered} tiles in {stats.Duration}");
-            if (options.Wait)
+            catch (Exception ex)
             {
-                Console.WriteLine("Press any key to continue");
-                Console.Read();
+                Console.WriteLine(ex.ToString());
+                ret = 1;
             }
-
-            return 0;
+            finally
+            {
+                if (options.Wait)
+                {
+                    Console.WriteLine("Press any key to continue");
+                    Console.Read();
+                }
+            }
+            return ret;
         }
     }
 }
