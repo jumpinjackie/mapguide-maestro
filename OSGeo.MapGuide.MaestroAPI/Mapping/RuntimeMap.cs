@@ -484,6 +484,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
+        /// Gets whether this map is valid for rendering
+        /// </summary>
+        public bool IsValidForRendering => this.DisplayWidth > 0 && this.DisplayHeight > 0 && this.DisplayDpi > 0 && this.ViewScale > 0 && this.MetersPerUnit > 0;
+
+        /// <summary>
         /// Gets or sets the tile set definition resource id. Only applicable
         /// if the Map Definition used to create this map contains a reference
         /// to a tile set

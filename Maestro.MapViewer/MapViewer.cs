@@ -1191,9 +1191,7 @@ namespace Maestro.MapViewer
             _viewHistoryIndex = -1;
             OnPropertyChanged(nameof(ViewHistoryIndex));
 
-            var handler = this.MapLoaded;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.MapLoaded?.Invoke(this, EventArgs.Empty);
 
             if (initialScale.HasValue)
                 ZoomToScale(initialScale.Value);
@@ -1318,9 +1316,7 @@ namespace Maestro.MapViewer
                 _selectionImage = null;
             }
 
-            var handler = this.SelectionChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.SelectionChanged?.Invoke(this, EventArgs.Empty);
 
             this.Refresh();
         }
@@ -1408,6 +1404,8 @@ namespace Maestro.MapViewer
             public bool RaiseEvents { get; set; }
 
             public bool InvalidateRegardless { get; set; }
+
+            public bool IsNoop { get; set; }
         }
 
         /// <summary>
@@ -1437,9 +1435,7 @@ namespace Maestro.MapViewer
             RenderSelection();
             if (raise)
             {
-                var handler = this.SelectionChanged;
-                if (handler != null)
-                    handler(this, EventArgs.Empty);
+                this.SelectionChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -1491,9 +1487,7 @@ namespace Maestro.MapViewer
 
         internal void RefreshMap(bool raiseEvents)
         {
-            var h = this.MapRefreshing;
-            if (h != null)
-                h(this, EventArgs.Empty);
+            this.MapRefreshing?.Invoke(this, EventArgs.Empty);
 
             //This is our refresh action
             RefreshAction action = new RefreshAction(() =>
@@ -1793,9 +1787,7 @@ namespace Maestro.MapViewer
 
             if (Math.Abs(oldScale - _map.ViewScale) > double.Epsilon)
             {
-                var handler = this.MapScaleChanged;
-                if (handler != null)
-                    handler(this, EventArgs.Empty);
+                this.MapScaleChanged?.Invoke(this, EventArgs.Empty);
             }
 
             UpdateExtents();
@@ -1858,23 +1850,29 @@ namespace Maestro.MapViewer
         {
             _map.Save(); //We must sync up runtime map state before rendering
 
-            var args = (RenderWorkArgs)e.Argument;
-            var res = new RenderResult() { RaiseEvents = args.RaiseEvents, InvalidateRegardless = args.InvalidateRegardless };
-            if (args.MapRenderingOptions != null)
+            if (!_map.IsValidForRendering)
             {
-                if (args.UseRenderMap)
-                    res.Image = Image.FromStream(_map.Render(args.MapRenderingOptions.Format));
-                else
-                    res.Image = Image.FromStream(_map.RenderDynamicOverlay(null, args.MapRenderingOptions.Format, args.MapRenderingOptions.Color, args.MapRenderingOptions.Behavior));
+                e.Result = new RenderResult { IsNoop = true };
             }
-            if (args.SelectionRenderingOptions != null)
+            else
             {
-                //HACK: HTTP provider is stateless, so passing the selection is not only redundant, but will probably break on large selections.
-                var sel = (_map.CurrentConnection.ProviderName.ToUpper().Equals("MAESTRO.HTTP")) ? null : _map.Selection;
-                res.SelectionImage = Image.FromStream(_map.RenderDynamicOverlay(sel, args.SelectionRenderingOptions.Format, args.SelectionRenderingOptions.Color, args.SelectionRenderingOptions.Behavior));
+                var args = (RenderWorkArgs)e.Argument;
+                var res = new RenderResult() { RaiseEvents = args.RaiseEvents, InvalidateRegardless = args.InvalidateRegardless };
+                if (args.MapRenderingOptions != null)
+                {
+                    if (args.UseRenderMap)
+                        res.Image = Image.FromStream(_map.Render(args.MapRenderingOptions.Format));
+                    else
+                        res.Image = Image.FromStream(_map.RenderDynamicOverlay(null, args.MapRenderingOptions.Format, args.MapRenderingOptions.Color, args.MapRenderingOptions.Behavior));
+                }
+                if (args.SelectionRenderingOptions != null)
+                {
+                    //HACK: HTTP provider is stateless, so passing the selection is not only redundant, but will probably break on large selections.
+                    var sel = (_map.CurrentConnection.ProviderName.ToUpper().Equals("MAESTRO.HTTP")) ? null : _map.Selection;
+                    res.SelectionImage = Image.FromStream(_map.RenderDynamicOverlay(sel, args.SelectionRenderingOptions.Format, args.SelectionRenderingOptions.Color, args.SelectionRenderingOptions.Behavior));
+                }
+                e.Result = res;
             }
-
-            e.Result = res;
         }
 
         private void renderWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -1887,6 +1885,9 @@ namespace Maestro.MapViewer
             else
             {
                 var res = (RenderResult)e.Result;
+                if (res.IsNoop)
+                    return;
+
                 //reset translation
                 translate = new System.Drawing.Point();
 
@@ -1942,9 +1943,7 @@ namespace Maestro.MapViewer
                     */
                     if (res.RaiseEvents)
                     {
-                        var handler = this.MapRefreshed;
-                        if (handler != null)
-                            handler(this, EventArgs.Empty);
+                        this.MapRefreshed?.Invoke(this, EventArgs.Empty);
                     }
                 }
             }
@@ -2073,7 +2072,11 @@ namespace Maestro.MapViewer
         {
             //No intialized map
             if (_map == null)
-                return "";
+                return string.Empty;
+
+            //QueryMapFeatures *is* a rendering operation, so it must be in valid state for rendering
+            if (!_map.IsValidForRendering)
+                return string.Empty;
 
             //No change in position
             if (_lastTooltipX == x && _lastTooltipY == y && !string.IsNullOrEmpty(_activeTooltipText))
@@ -2182,9 +2185,7 @@ namespace Maestro.MapViewer
 #endif
 
             RenderSelection(true); //This is either async or queued up. Either way do this before firing off selection changed
-            var handler = this.SelectionChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.SelectionChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private QueryMapOptions CreateQueryOptionsForSelection()
