@@ -18,3 +18,4 @@ TestResult.xml
 Packages/
 MgTileSeeder/publish_win
 MgTileSeeder/publish_linux
+Install/vcredist_x86.exe

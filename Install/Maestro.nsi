@@ -25,6 +25,9 @@
 !include "WordFunc.nsh"
 !include "LogicLib.nsh"
 
+# VCRedist detection
+!include "VCRedist11.nsh"
+
 ;-------------------------------
 ; Installer compilation settings
 ;-------------------------------
@@ -176,6 +179,9 @@ Section
     !else
     SetRegView 32
     !endif
+
+    # Check for vcredist
+    !insertmacro InstallVCRedist11_32bit "$TEMP\MaestroSetup"
 
     # set installation dir
     SetOutPath $INSTDIR
