@@ -1,6 +1,9 @@
 Core Concepts
 =============
 
+.. todo::
+    Still has references to old SDK package
+
 Connections
 -----------
 
@@ -10,6 +13,8 @@ Overview
 Connections are the primary entry point into the functionality offered by the
 Maestro API. It abstracts away the various methods of interacting with a MapGuide
 Server into a single unified interface
+
+.. figure:: ../images/ConnectionOverview.PNG
 
 Known Implementations
 ^^^^^^^^^^^^^^^^^^^^^
