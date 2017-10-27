@@ -634,7 +634,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             else if (lr != null)
             {
                 var lineSym = lr.GetSymbolizationStyle();
-                var strokes = lineSym.Strokes;
+                var strokes = new List<IStroke>(lineSym.Strokes);
                 m_origLine = strokes;
                 m_editLine = (strokes == null) ? new List<IStroke>() : LayerElementCloningUtil.CloneStrokes(strokes);
 
