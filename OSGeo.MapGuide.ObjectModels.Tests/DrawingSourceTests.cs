@@ -34,7 +34,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         {
             IResource res = ObjectFactory.DeserializeXml(Utils.ReadAllText($"Resources{System.IO.Path.DirectorySeparatorChar}DrawingSource_1_0_0.txt"));
             Assert.NotNull(res);
-            Assert.Equal(res.ResourceType, "DrawingSource");
+            Assert.Equal("DrawingSource", res.ResourceType);
             Assert.Equal(res.ResourceVersion, new Version(1, 0, 0));
             IDrawingSource ds = res as IDrawingSource;
             Assert.NotNull(ds);

@@ -177,7 +177,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             var meta = ObjectFactory.CreateMetadata();
             Assert.NotNull(meta);
             Assert.NotNull(meta.Simple);
-            Assert.Equal(0, meta.Simple.Property.Count);
+            Assert.Empty(meta.Simple.Property);
         }
 
         [Fact]
@@ -185,7 +185,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         {
             var user = ObjectFactory.CreateSecurityUser();
             Assert.NotNull(user);
-            Assert.Equal(0, user.User.Count);
+            Assert.Empty(user.User);
         }
 
         [Fact]
@@ -204,8 +204,8 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Equal("Foo", ext.Name);
             Assert.NotNull(ext.AttributeRelate);
             Assert.NotNull(ext.CalculatedProperty);
-            Assert.Equal(0, ext.AttributeRelate.Count());
-            Assert.Equal(0, ext.CalculatedProperty.Count());
+            Assert.Empty(ext.AttributeRelate);
+            Assert.Empty(ext.CalculatedProperty);
         }
 
         [Fact]
@@ -281,7 +281,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             var ds = ObjectFactory.CreateDrawingSource();
             Assert.NotNull(ds);
             Assert.NotNull(ds.Sheet);
-            Assert.Equal(0, ds.Sheet.Count());
+            Assert.Empty(ds.Sheet);
             Assert.True(String.IsNullOrEmpty(ds.SourceName));
             Assert.True(String.IsNullOrEmpty(ds.CoordinateSpace));
         }
@@ -303,19 +303,19 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             var vl230 = (IVectorLayerDefinition)ldf230.SubLayer;
             var vl240 = (IVectorLayerDefinition)ldf240.SubLayer;
 
-            Assert.Equal(0, vl100.PropertyMapping.Count());
-            Assert.Equal(0, vl110.PropertyMapping.Count());
-            Assert.Equal(0, vl120.PropertyMapping.Count());
-            Assert.Equal(0, vl130.PropertyMapping.Count());
-            Assert.Equal(0, vl230.PropertyMapping.Count());
-            Assert.Equal(0, vl240.PropertyMapping.Count());
+            Assert.Empty(vl100.PropertyMapping);
+            Assert.Empty(vl110.PropertyMapping);
+            Assert.Empty(vl120.PropertyMapping);
+            Assert.Empty(vl130.PropertyMapping);
+            Assert.Empty(vl230.PropertyMapping);
+            Assert.Empty(vl240.PropertyMapping);
 
-            Assert.Equal(1, vl100.VectorScaleRange.Count());
-            Assert.Equal(1, vl110.VectorScaleRange.Count());
-            Assert.Equal(1, vl120.VectorScaleRange.Count());
-            Assert.Equal(1, vl130.VectorScaleRange.Count());
-            Assert.Equal(1, vl230.VectorScaleRange.Count());
-            Assert.Equal(1, vl240.VectorScaleRange.Count());
+            Assert.Single(vl100.VectorScaleRange);
+            Assert.Single(vl110.VectorScaleRange);
+            Assert.Single(vl120.VectorScaleRange);
+            Assert.Single(vl130.VectorScaleRange);
+            Assert.Single(vl230.VectorScaleRange);
+            Assert.Single(vl240.VectorScaleRange);
         }
 
         [Fact]
@@ -328,12 +328,12 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.False(fs.UsesEmbeddedDataFiles);
             var sc = fs.SupplementalSpatialContextInfo;
             Assert.NotNull(sc);
-            Assert.Equal(0, sc.Count());
+            Assert.Empty(sc);
             var ext = fs.Extension;
             Assert.NotNull(ext);
-            Assert.Equal(0, ext.Count());
+            Assert.Empty(ext);
             Assert.True(String.IsNullOrEmpty(fs.ConfigurationDocument));
-            Assert.Equal(0, fs.ConnectionPropertyNames.Length);
+            Assert.Empty(fs.ConnectionPropertyNames);
         }
 
         [Fact]
@@ -350,10 +350,10 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.False(fs.UsesEmbeddedDataFiles);
             var sc = fs.SupplementalSpatialContextInfo;
             Assert.NotNull(sc);
-            Assert.Equal(0, sc.Count());
+            Assert.Empty(sc);
             var ext = fs.Extension;
             Assert.NotNull(ext);
-            Assert.Equal(0, ext.Count());
+            Assert.Empty(ext);
             Assert.True(String.IsNullOrEmpty(fs.ConfigurationDocument));
             Assert.Equal(2, fs.ConnectionPropertyNames.Length);
             Assert.False(String.IsNullOrEmpty(fs.GetConnectionProperty("File")));
@@ -392,7 +392,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             var lib = ObjectFactory.CreateSymbolLibrary();
             Assert.NotNull(lib);
             Assert.NotNull(lib.Symbol);
-            Assert.Equal(0, lib.Symbol.Count());
+            Assert.Empty(lib.Symbol);
         }
 
         [Fact]
@@ -406,7 +406,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
                 var lp = ObjectFactory.CreateLoadProcedure(lt);
                 Assert.NotNull(lp);
                 Assert.NotNull(lp.SubType);
-                Assert.Equal(0, lp.SubType.SourceFile.Count);
+                Assert.Empty(lp.SubType.SourceFile);
             }
         }
 
@@ -427,8 +427,8 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
                 Assert.NotNull(lp);
                 Assert.NotNull(lp.SubType);
                 Assert.Equal(2, lp.SubType.SourceFile.Count);
-                Assert.True(lp.SubType.SourceFile.Contains("C:\\Temp\\Foo.bin"));
-                Assert.True(lp.SubType.SourceFile.Contains("C:\\Temp\\Bar.bin"));
+                Assert.Contains("C:\\Temp\\Foo.bin", lp.SubType.SourceFile);
+                Assert.Contains("C:\\Temp\\Bar.bin", lp.SubType.SourceFile);
             }
         }
 
@@ -450,9 +450,9 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
                 Assert.Null(mdf.ExtentCalculator);
                 Assert.Null(mdf.BaseMap);
                 Assert.NotNull(mdf.MapLayer);
-                Assert.Equal(0, mdf.MapLayer.Count());
+                Assert.Empty(mdf.MapLayer);
                 Assert.NotNull(mdf.MapLayerGroup);
-                Assert.Equal(0, mdf.MapLayerGroup.Count());
+                Assert.Empty(mdf.MapLayerGroup);
             }
         }
 
@@ -474,9 +474,9 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
                 Assert.Null(mdf.ExtentCalculator);
                 Assert.Null(mdf.BaseMap);
                 Assert.NotNull(mdf.MapLayer);
-                Assert.Equal(0, mdf.MapLayer.Count());
+                Assert.Empty(mdf.MapLayer);
                 Assert.NotNull(mdf.MapLayerGroup);
-                Assert.Equal(0, mdf.MapLayerGroup.Count());
+                Assert.Empty(mdf.MapLayerGroup);
             }
         }
 
@@ -503,9 +503,9 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
                 Assert.Null(mdf.ExtentCalculator);
                 Assert.Null(mdf.BaseMap);
                 Assert.NotNull(mdf.MapLayer);
-                Assert.Equal(0, mdf.MapLayer.Count());
+                Assert.Empty(mdf.MapLayer);
                 Assert.NotNull(mdf.MapLayerGroup);
-                Assert.Equal(0, mdf.MapLayerGroup.Count());
+                Assert.Empty(mdf.MapLayerGroup);
             }
         }
 
@@ -638,7 +638,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
                 Assert.Equal("Foo", comp.Name);
                 Assert.Equal("Bar", comp.Description);
                 Assert.NotNull(comp.SimpleSymbol);
-                Assert.Equal(0, comp.SimpleSymbol.Count());
+                Assert.Empty(comp.SimpleSymbol);
             }
         }
 

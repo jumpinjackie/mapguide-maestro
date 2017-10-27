@@ -109,7 +109,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Equal(43.6868578621819, ext.MinY);
             Assert.Equal(43.8037962206133, ext.MaxY);
 
-            Assert.Equal(1, tsd.BaseMapLayerGroups.Count());
+            Assert.Single(tsd.BaseMapLayerGroups);
             var grp = tsd.BaseMapLayerGroups.First();
             Assert.Equal("BaseLayers", grp.Name);
             Assert.True(grp.Visible);

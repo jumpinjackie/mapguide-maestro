@@ -34,7 +34,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         {
             IResource res = ObjectFactory.DeserializeXml(Utils.ReadAllText($"Resources{System.IO.Path.DirectorySeparatorChar}AppDef-1.0.txt"));
             Assert.NotNull(res);
-            Assert.Equal(res.ResourceType, "ApplicationDefinition");
+            Assert.Equal("ApplicationDefinition", res.ResourceType);
             Assert.Equal(res.ResourceVersion, new Version(1, 0, 0));
             IApplicationDefinition appDef = res as IApplicationDefinition;
             Assert.NotNull(appDef);

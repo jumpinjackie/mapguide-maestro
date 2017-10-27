@@ -35,7 +35,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         {
             IResource res = ObjectFactory.DeserializeXml(Utils.ReadAllText($"Resources{System.IO.Path.DirectorySeparatorChar}FeatureSource-1.0.0.txt"));
             Assert.NotNull(res);
-            Assert.Equal(res.ResourceType, "FeatureSource");
+            Assert.Equal("FeatureSource", res.ResourceType);
             Assert.Equal(res.ResourceVersion, new Version(1, 0, 0));
             IFeatureSource fs = res as IFeatureSource;
             Assert.NotNull(fs);
@@ -54,7 +54,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
 
             Assert.True(fs.UsesEmbeddedDataFiles);
             Assert.False(fs.UsesAliasedDataFiles);
-            Assert.Equal(fs.GetEmbeddedDataName(), "Foo.sdf");
+            Assert.Equal("Foo.sdf", fs.GetEmbeddedDataName());
             Assert.Throws<InvalidOperationException>(() => fs.GetAliasedFileName());
             Assert.Throws<InvalidOperationException>(() => fs.GetAliasName());
 
@@ -66,7 +66,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
 
             Assert.True(fs.UsesEmbeddedDataFiles);
             Assert.False(fs.UsesAliasedDataFiles);
-            Assert.Equal(fs.GetEmbeddedDataName(), "Bar.sdf");
+            Assert.Equal("Bar.sdf", fs.GetEmbeddedDataName());
             Assert.Throws<InvalidOperationException>(() => fs.GetAliasedFileName());
             Assert.Throws<InvalidOperationException>(() => fs.GetAliasName());
 
@@ -77,7 +77,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
 
             Assert.True(fs.UsesAliasedDataFiles);
             Assert.False(fs.UsesEmbeddedDataFiles);
-            Assert.Equal(fs.GetAliasName(), "foobar");
+            Assert.Equal("foobar", fs.GetAliasName());
             Assert.True(string.IsNullOrEmpty(fs.GetAliasedFileName()));
             Assert.Throws<InvalidOperationException>(() => fs.GetEmbeddedDataName());
 
@@ -88,8 +88,8 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
 
             Assert.True(fs.UsesAliasedDataFiles);
             Assert.False(fs.UsesEmbeddedDataFiles);
-            Assert.Equal(fs.GetAliasName(), "foobar");
-            Assert.Equal(fs.GetAliasedFileName(), "Test.sdf");
+            Assert.Equal("foobar", fs.GetAliasName());
+            Assert.Equal("Test.sdf", fs.GetAliasedFileName());
             Assert.Throws<InvalidOperationException>(() => fs.GetEmbeddedDataName());
 
             connParams.Clear();
@@ -100,8 +100,8 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
 
             Assert.True(fs.UsesAliasedDataFiles);
             Assert.False(fs.UsesEmbeddedDataFiles);
-            Assert.Equal(fs.GetAliasName(), "foobar");
-            Assert.Equal(fs.GetAliasedFileName(), "Test.sdf");
+            Assert.Equal("foobar", fs.GetAliasName());
+            Assert.Equal("Test.sdf", fs.GetAliasedFileName());
             Assert.Throws<InvalidOperationException>(() => fs.GetEmbeddedDataName());
 
             connParams.Clear();

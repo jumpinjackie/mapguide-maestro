@@ -440,40 +440,40 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         public void TestResourceTypeDescriptor()
         {
             var rtd = new ResourceTypeDescriptor(ResourceTypes.ApplicationDefinition.ToString(), "1.0.0");
-            Assert.Equal(rtd.XsdName, "ApplicationDefinition-1.0.0.xsd");
+            Assert.Equal("ApplicationDefinition-1.0.0.xsd", rtd.XsdName);
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.DrawingSource.ToString(), "1.0.0");
-            Assert.Equal(rtd.XsdName, "DrawingSource-1.0.0.xsd");
+            Assert.Equal("DrawingSource-1.0.0.xsd", rtd.XsdName);
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.FeatureSource.ToString(), "1.0.0");
-            Assert.Equal(rtd.XsdName, "FeatureSource-1.0.0.xsd");
+            Assert.Equal("FeatureSource-1.0.0.xsd", rtd.XsdName);
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "1.0.0");
-            Assert.Equal(rtd.XsdName, "LayerDefinition-1.0.0.xsd");
+            Assert.Equal("LayerDefinition-1.0.0.xsd", rtd.XsdName);
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "1.1.0");
-            Assert.Equal(rtd.XsdName, "LayerDefinition-1.1.0.xsd");
+            Assert.Equal("LayerDefinition-1.1.0.xsd", rtd.XsdName);
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.LoadProcedure.ToString(), "1.0.0");
-            Assert.Equal(rtd.XsdName, "LoadProcedure-1.0.0.xsd");
+            Assert.Equal("LoadProcedure-1.0.0.xsd", rtd.XsdName);
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.MapDefinition.ToString(), "1.0.0");
-            Assert.Equal(rtd.XsdName, "MapDefinition-1.0.0.xsd");
+            Assert.Equal("MapDefinition-1.0.0.xsd", rtd.XsdName);
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.DrawingSource.ToString(), "1.0.0");
-            Assert.Equal(rtd.XsdName, "DrawingSource-1.0.0.xsd");
+            Assert.Equal("DrawingSource-1.0.0.xsd", rtd.XsdName);
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.PrintLayout.ToString(), "1.0.0");
-            Assert.Equal(rtd.XsdName, "PrintLayout-1.0.0.xsd");
+            Assert.Equal("PrintLayout-1.0.0.xsd", rtd.XsdName);
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition.ToString(), "1.0.0");
-            Assert.Equal(rtd.XsdName, "SymbolDefinition-1.0.0.xsd");
+            Assert.Equal("SymbolDefinition-1.0.0.xsd", rtd.XsdName);
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.SymbolLibrary.ToString(), "1.0.0");
-            Assert.Equal(rtd.XsdName, "SymbolLibrary-1.0.0.xsd");
+            Assert.Equal("SymbolLibrary-1.0.0.xsd", rtd.XsdName);
 
             rtd = new ResourceTypeDescriptor(ResourceTypes.WebLayout.ToString(), "1.0.0");
-            Assert.Equal(rtd.XsdName, "WebLayout-1.0.0.xsd");
+            Assert.Equal("WebLayout-1.0.0.xsd", rtd.XsdName);
         }
     }
 }
