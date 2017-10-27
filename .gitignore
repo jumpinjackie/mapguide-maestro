@@ -13,7 +13,7 @@ SDK/LocalNativeProvider
 SDK/MaestroAPI.chm
 *.user
 Reports/
-UserDoc/build
+Docs/build
 TestResult.xml
 Packages/
 MgTileSeeder/publish_win
