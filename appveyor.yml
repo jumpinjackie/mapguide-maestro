@@ -35,7 +35,7 @@ before_build:
   - echo APPVEYOR_REPO_COMMIT_TIMESTAMP %APPVEYOR_REPO_COMMIT_TIMESTAMP%
   - nuget update -self
   - nuget restore Maestro.sln
-  - pip install -U sphinx
+  - pip install -r requirements.txt
 
 environment:
   COVERALLS_REPO_TOKEN:
