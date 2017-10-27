@@ -13,7 +13,7 @@ You can choose either the installer or zip file
 
 .. note::
 
- MapGuide Maestro requires .net Framework 4.0 or higher installed first.
+ MapGuide Maestro requires .net Framework 4.6.1 installed first. The installer will download and install this for you if it is not present
  
 .. note::
 
@@ -22,16 +22,22 @@ You can choose either the installer or zip file
 Installing on Linux/Mac OSX
 ---------------------------
 
-Before you run MapGuide Maestro, you need to install the Mono framework. Mono is available for download at `http://www.mono-project.com <http://www.mono-project.com>`_
+.. warning::
 
-The installation is simply unzipping the file::
+    MapGuide Maestro is not tested for these platforms. Binaries are only provided for the adventurous.
 
- unzip "MapGuideMaestro-5.0.0-Release.zip"
+.. note::
 
-Then run the application::
+    Before you run MapGuide Maestro, you need to install the Mono framework. Mono is available for download at `http://www.mono-project.com <http://www.mono-project.com>`_
 
- cd Maestro
- mono Maestro.exe
+    The installation is simply unzipping the file::
+
+     unzip "MapGuideMaestro-5.0.0-Release.zip"
+
+    Then run the application::
+
+     cd Maestro
+     mono Maestro.exe
  
 .. note::
 

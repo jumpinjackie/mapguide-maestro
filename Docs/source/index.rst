@@ -3,14 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Maestro User Guide
-==================
-
-Contents:
+MapGuide Maestro
+================
 
 .. toctree::
+   :caption: User Guide
    :maxdepth: 3
-   
+
    introduction
    installation
    mapguide_terminology
@@ -33,12 +32,25 @@ Contents:
    expr_editor
    resource_validation
    packaging
+
+.. toctree::
+   :caption: Tools and Addons
+   :maxdepth: 3
+
    mgcooker
    localpreview
    local_connection_mode
    scripting_and_automating_maestro
    other_tools
    other_resources
+
+.. toctree::
+   :caption: Maestro API Developer Guide
+   :maxdepth: 3
+
+   devguide/introduction
+   devguide/gettingstarted
+   devguide/coreconcepts
 
 Indices and tables
 ==================
