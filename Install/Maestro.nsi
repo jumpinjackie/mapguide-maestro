@@ -180,6 +180,9 @@ Section
     SetRegView 32
     !endif
 
+    # Check for .net Framework
+    !insertmacro CheckNetFramework 461
+
     # Check for vcredist
     !insertmacro InstallVCRedist11_32bit "$TEMP\MaestroSetup"
 
@@ -282,7 +285,6 @@ Function .onInit
     !endif
     
     !insertmacro MUI_LANGDLL_DISPLAY
-    !insertmacro CheckNetFramework 461
 FunctionEnd
 
 Function LaunchLink
