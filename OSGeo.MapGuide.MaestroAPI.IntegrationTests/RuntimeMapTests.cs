@@ -208,7 +208,7 @@ namespace MaestroAPITests
 
             Assert.NotNull(map.Layers["Parcels"]);
             var parcelsLayers = map.Layers["Parcels"];
-            Assert.Equal(1, parcelsLayers.ScaleRanges.Length);
+            Assert.Single(parcelsLayers.ScaleRanges);
             Assert.Equal(0.0, parcelsLayers.ScaleRanges[0].MinScale);
             Assert.Equal(13000.0, parcelsLayers.ScaleRanges[0].MaxScale);
 
@@ -302,7 +302,7 @@ namespace MaestroAPITests
             //Tweak some settings
             var parcels = map2.Layers["Parcels"];
             //Check these values still came through
-            Assert.Equal(1, parcels.ScaleRanges.Length);
+            Assert.Single(parcels.ScaleRanges);
             Assert.Equal(0.0, parcels.ScaleRanges[0].MinScale);
             Assert.Equal(13000.0, parcels.ScaleRanges[0].MaxScale);
 
@@ -884,8 +884,8 @@ namespace MaestroAPITests
             map.DisplayHeight = 1024;
             map.DisplayDpi = 96;
 
-            Assert.Equal(0, map.Layers.Count);
-            Assert.Equal(0, map.Groups.Count);
+            Assert.Empty(map.Layers);
+            Assert.Empty(map.Groups);
 
             map.Groups.Add(mapSvc.CreateMapGroup(map, "Group1"));//new RuntimeMapGroup(map, "Group1"));
             map.Groups.Add(mapSvc.CreateMapGroup(map, "Group2"));//new RuntimeMapGroup(map, "Group2"));
@@ -899,7 +899,7 @@ namespace MaestroAPITests
             layer.Group = "Group1";
 
             map.Layers.Insert(0, layer);
-            Assert.Equal(1, map.Layers.Count);
+            Assert.Single(map.Layers);
             Assert.NotNull(map.Layers["HydrographicPolygons"]);
             Assert.True(map.Layers["HydrographicPolygons"] == map.Layers[0]);
             Assert.NotNull(map.Layers.GetByObjectId(layer.ObjectId));
@@ -942,11 +942,11 @@ namespace MaestroAPITests
             Assert.NotNull(map.Layers.GetByObjectId(layer3.ObjectId));
 
             Assert.Equal(2, map.GetLayersOfGroup("Group1").Length);
-            Assert.Equal(1, map.GetLayersOfGroup("Group2").Length);
+            Assert.Single(map.GetLayersOfGroup("Group2"));
 
             //Group1 has 2 layers
             map.Groups.Remove("Group1");
-            Assert.Equal(1, map.Layers.Count);
+            Assert.Single(map.Layers);
             Assert.Null(map.Groups["Group1"]);
             Assert.True(map.Groups["Group2"] == map.Groups[0]);
             Assert.Null(map.Layers.GetByObjectId(layer.ObjectId));
@@ -955,16 +955,16 @@ namespace MaestroAPITests
 
             //Removing layer doesn't affect its group. It will still be there
             map.Layers.Remove(layer3.Name);
-            Assert.Equal(0, map.Layers.Count);
-            Assert.Equal(1, map.Groups.Count);
+            Assert.Empty(map.Layers);
+            Assert.Single(map.Groups);
             Assert.NotNull(map.Groups["Group2"]);
             Assert.Null(map.Layers.GetByObjectId(layer.ObjectId));
             Assert.Null(map.Layers.GetByObjectId(layer2.ObjectId));
             Assert.Null(map.Layers.GetByObjectId(layer3.ObjectId));
 
             map.Groups.Remove("Group2");
-            Assert.Equal(0, map.Layers.Count);
-            Assert.Equal(0, map.Groups.Count);
+            Assert.Empty(map.Layers);
+            Assert.Empty(map.Groups);
         }
 
         public virtual void TestMapManipulation3()
@@ -1015,8 +1015,8 @@ namespace MaestroAPITests
             map.DisplayHeight = 1024;
             map.DisplayDpi = 96;
 
-            Assert.Equal(0, map.Layers.Count);
-            Assert.Equal(0, map.Groups.Count);
+            Assert.Empty(map.Layers);
+            Assert.Empty(map.Groups);
 
             map.Groups.Add(mapSvc.CreateMapGroup(map, "Group1"));//new RuntimeMapGroup(map, "Group1"));
             map.Groups.Add(mapSvc.CreateMapGroup(map, "Group2"));//new RuntimeMapGroup(map, "Group2"));
@@ -1030,7 +1030,7 @@ namespace MaestroAPITests
             layer.Group = "Group1";
 
             map.Layers.Add(layer);
-            Assert.Equal(1, map.Layers.Count);
+            Assert.Single(map.Layers);
             Assert.NotNull(map.Layers["HydrographicPolygons"]);
             Assert.True(map.Layers["HydrographicPolygons"] == map.Layers[0]);
             Assert.NotNull(map.Layers.GetByObjectId(layer.ObjectId));
@@ -1073,11 +1073,11 @@ namespace MaestroAPITests
             Assert.NotNull(map.Layers.GetByObjectId(layer3.ObjectId));
 
             Assert.Equal(2, map.GetLayersOfGroup("Group1").Length);
-            Assert.Equal(1, map.GetLayersOfGroup("Group2").Length);
+            Assert.Single(map.GetLayersOfGroup("Group2"));
 
             //Group1 has 2 layers
             map.Groups.Remove("Group1");
-            Assert.Equal(1, map.Layers.Count);
+            Assert.Single(map.Layers);
             Assert.Null(map.Groups["Group1"]);
             Assert.True(map.Groups["Group2"] == map.Groups[0]);
             Assert.Null(map.Layers.GetByObjectId(layer.ObjectId));
@@ -1086,16 +1086,16 @@ namespace MaestroAPITests
 
             //Removing layer doesn't affect its group. It will still be there
             map.Layers.Remove(layer3.Name);
-            Assert.Equal(0, map.Layers.Count);
-            Assert.Equal(1, map.Groups.Count);
+            Assert.Empty(map.Layers);
+            Assert.Single(map.Groups);
             Assert.NotNull(map.Groups["Group2"]);
             Assert.Null(map.Layers.GetByObjectId(layer.ObjectId));
             Assert.Null(map.Layers.GetByObjectId(layer2.ObjectId));
             Assert.Null(map.Layers.GetByObjectId(layer3.ObjectId));
 
             map.Groups.Remove("Group2");
-            Assert.Equal(0, map.Layers.Count);
-            Assert.Equal(0, map.Groups.Count);
+            Assert.Empty(map.Layers);
+            Assert.Empty(map.Groups);
         }
 
         public virtual void TestMapManipulation4()

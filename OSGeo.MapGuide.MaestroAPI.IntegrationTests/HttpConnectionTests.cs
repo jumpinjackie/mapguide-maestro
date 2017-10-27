@@ -224,20 +224,20 @@ namespace MaestroAPITests
             var props = isvc.GetCustomPropertyNames();
 
             Assert.NotNull(props);
-            Assert.Equal(props.Length, 2);
+            Assert.Equal(2, props.Length);
             Assert.True(Array.IndexOf<string>(props, HttpServerConnectionProperties.PROP_USER_AGENT) >= 0);
             Assert.True(Array.IndexOf<string>(props, HttpServerConnectionProperties.PROP_BASE_URL) >= 0);
 
             //It is of type string
             var type = isvc.GetCustomPropertyType(HttpServerConnectionProperties.PROP_USER_AGENT);
-            Assert.Equal(type, typeof(string));
+            Assert.Equal(typeof(string), type);
             type = isvc.GetCustomPropertyType(HttpServerConnectionProperties.PROP_BASE_URL);
-            Assert.Equal(type, typeof(string));
+            Assert.Equal(typeof(string), type);
 
             //We can set and get it
             isvc.SetCustomProperty(HttpServerConnectionProperties.PROP_USER_AGENT, "MapGuide Maestro API Unit Test Fixture");
             var agent = (string)isvc.GetCustomProperty(HttpServerConnectionProperties.PROP_USER_AGENT);
-            Assert.Equal(agent, "MapGuide Maestro API Unit Test Fixture");
+            Assert.Equal("MapGuide Maestro API Unit Test Fixture", agent);
 
             //BaseUrl is read-only
             try

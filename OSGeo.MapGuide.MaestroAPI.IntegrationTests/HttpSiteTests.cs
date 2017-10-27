@@ -58,7 +58,7 @@ namespace MaestroAPITests
 
             var context = new ResourceValidationContext(conn);
             var issues = ResourceValidatorSet.Validate(context, mdf, false);
-            Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Warning_MapDefinition_MissingCoordinateSystem));
+            Assert.Contains(issues, x => x.StatusCode == ValidationStatusCode.Warning_MapDefinition_MissingCoordinateSystem);
 
             conn.ResourceService.SetResourceXmlData("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.ldf"));
 
@@ -66,19 +66,19 @@ namespace MaestroAPITests
             layer.Group = "foo"; //AddLayer no longer lets us put in bogus group names
             context = new ResourceValidationContext(conn);
             issues = ResourceValidatorSet.Validate(context, mdf, false);
-            Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Error_MapDefinition_LayerWithNonExistentGroup));
+            Assert.Contains(issues, x => x.StatusCode == ValidationStatusCode.Error_MapDefinition_LayerWithNonExistentGroup);
 
             mdf.AddLayer(null, "bar", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
             context = new ResourceValidationContext(conn);
             issues = ResourceValidatorSet.Validate(context, mdf, false);
-            Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Error_MapDefinition_DuplicateLayerName));
+            Assert.Contains(issues, x => x.StatusCode == ValidationStatusCode.Error_MapDefinition_DuplicateLayerName);
 
             var group = mdf.AddGroup("foo");
             group.Group = "bar";
 
             context = new ResourceValidationContext(conn);
             issues = ResourceValidatorSet.Validate(context, mdf, false);
-            Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Error_MapDefinition_GroupWithNonExistentGroup));
+            Assert.Contains(issues, x => x.StatusCode == ValidationStatusCode.Error_MapDefinition_GroupWithNonExistentGroup);
         }
 
         [SkippableFact]
@@ -92,7 +92,7 @@ namespace MaestroAPITests
 
             var context = new ResourceValidationContext(conn);
             var issues = ResourceValidatorSet.Validate(context, ssym, true);
-            Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Error_SymbolDefinition_NoGeometryUsageContexts));
+            Assert.Contains(issues, x => x.StatusCode == ValidationStatusCode.Error_SymbolDefinition_NoGeometryUsageContexts);
 
             var param = ssym.CreateParameter();
             param.Identifier = "TEST";
@@ -100,7 +100,7 @@ namespace MaestroAPITests
 
             context = new ResourceValidationContext(conn);
             issues = ResourceValidatorSet.Validate(context, ssym, true);
-            Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Warning_SymbolDefinition_SymbolParameterNotUsed));
+            Assert.Contains(issues, x => x.StatusCode == ValidationStatusCode.Warning_SymbolDefinition_SymbolParameterNotUsed);
 
             var imgRef = ssym.CreateImageReference("Library://UnitTest/IDontExist.LayerDefinition", "Foo.png");
             var img = ssym.CreateImageGraphics();
@@ -110,7 +110,7 @@ namespace MaestroAPITests
 
             context = new ResourceValidationContext(conn);
             issues = ResourceValidatorSet.Validate(context, ssym, true);
-            Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Error_SymbolDefinition_ImageGraphicReferenceResourceIdNotFound));
+            Assert.Contains(issues, x => x.StatusCode == ValidationStatusCode.Error_SymbolDefinition_ImageGraphicReferenceResourceIdNotFound);
 
             conn.ResourceService.SetResourceXmlData("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.ldf"));
 
@@ -122,7 +122,7 @@ namespace MaestroAPITests
 
             context = new ResourceValidationContext(conn);
             issues = ResourceValidatorSet.Validate(context, ssym, true);
-            Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Error_SymbolDefinition_ImageGraphicReferenceResourceDataNotFound));
+            Assert.Contains(issues, x => x.StatusCode == ValidationStatusCode.Error_SymbolDefinition_ImageGraphicReferenceResourceDataNotFound);
         }
     }
 }
