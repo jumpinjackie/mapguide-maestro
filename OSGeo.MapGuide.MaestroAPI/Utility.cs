@@ -1089,8 +1089,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             var att = node.Attributes[name];
             if (att == null)
-                return node.Attributes["fdo:" + name]; //NOXLATE
-
+            {
+                att = node.Attributes.Cast<XmlAttribute>().FirstOrDefault(a =>
+                {
+                    return a.Name.ToUpper() == $"FDO:{name.ToUpper()}"; //NOXLATE
+                });
+            }
             return att;
         }
 

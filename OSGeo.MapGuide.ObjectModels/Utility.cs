@@ -26,6 +26,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -169,22 +170,6 @@ namespace OSGeo.MapGuide.ObjectModels
             res += color.G.ToString("x02"); //NOXLATE
             res += color.B.ToString("x02"); //NOXLATE
             return res;
-        }
-
-        /// <summary>
-        /// Gets an fdo-related attribute from the specified xml element using the
-        /// unqualified name and trying again with the fdo: qualifier if it didn't exist
-        /// </summary>
-        /// <param name="node"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        internal static XmlAttribute GetFdoAttribute(XmlNode node, string name)
-        {
-            var att = node.Attributes[name];
-            if (att == null)
-                return node.Attributes["fdo:" + name]; //NOXLATE
-
-            return att;
         }
 
         /// <summary>
