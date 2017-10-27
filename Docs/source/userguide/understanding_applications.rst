@@ -20,7 +20,7 @@ The **General Settings** section of the editor allows you to configure the prima
  * Visibility of certain viewer elements
  * The initial task pane url
 
-.. figure:: images/wl_settings.png
+.. figure:: ../images/wl_settings.png
 
  *The General Settings*
 
@@ -37,7 +37,7 @@ Menu and Toolbar Command Layout
 The **Menus and Toolbars** section of the editor allows you to define the command layout of the toolbar and menus in the basic
 AJAX viewer
 
-.. figure:: images/wl_menus_toolbars.png
+.. figure:: ../images/wl_menus_toolbars.png
 
  *Menus and Toolbars*
  
@@ -52,7 +52,7 @@ Command Set Configuration
 
 The **Commands** section of the editor allows you to add and configure custom commands. 
 
-.. figure:: images/wl_commandset.png
+.. figure:: ../images/wl_commandset.png
 
  *Command configuration*
  
@@ -89,7 +89,7 @@ Template Selection
 
 The **Flexible Layout Settings** section allows you to select the template to use and the title to show when displayed in a web browser.
 
-.. figure:: images/fl_settings.png
+.. figure:: ../images/fl_settings.png
 
  *Template selection panel*
  
@@ -104,7 +104,7 @@ Map Configuration
 
 The **Map Configuration** section allows you to specify the Map Definition that this viewer is for.
 
-.. figure:: images/fl_maps.png
+.. figure:: ../images/fl_maps.png
 
  *Map Configuration*
 
@@ -123,7 +123,7 @@ Widget and Container Layout
 
 The **Widgets** section allows you to configure the layout of toolbar and menu widgets 
 
-.. figure:: images/fl_widgets.png
+.. figure:: ../images/fl_widgets.png
 
  *Widget and Container Layout*
  
@@ -136,17 +136,17 @@ The **Widget Management** dialog allows you to configure the main map widget and
 
 Widgets in the widget set can then be referenced in the **Widgets** section of the editor.
 
-.. figure:: images/fl_widget_config_map.png
+.. figure:: ../images/fl_widget_config_map.png
 
  *Widget Management Dialog (map widget)*
 
-.. figure:: images/fl_widget_config.png
+.. figure:: ../images/fl_widget_config.png
 
  *Widget Management Dialog (other widgets)*
  
 All widgets are edited via XML. Widget behaviour is customised by editing the `<Extension>` element of the widget XML. If you are not sure what elements are allowed in the widget's extension
 element, you can click the **Widget Info** button, which will list all the available extension properties for this widget
 
-.. figure:: images/fl_widget_info.png
+.. figure:: ../images/fl_widget_info.png
 
  *Widget Info Dialog (for Redline widget)*

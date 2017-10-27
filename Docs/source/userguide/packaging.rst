@@ -38,7 +38,7 @@ There are 2 ways to load a package:
 The time it takes to load a package is a function of how large the package is. Once loaded, the **Site Explorer**
 will refresh itself. When loading a package, you will be presented with the following options:
 
-.. figure:: images/package_load_options.png
+.. figure:: ../images/package_load_options.png
 
  *Package loading options*
 
@@ -59,13 +59,13 @@ Non-transactional loading is a new loading mechanism designed to work around the
  
 With the non-transaction loading approach, progress can be measured:
 
-.. figure:: images/package_non_trans.png
+.. figure:: ../images/package_non_trans.png
 
  *Non-transactional packaging progress*
 
 Should any package operations fail, they are logged and presented to the user at the end of the operation.
 
-.. figure:: images/package_failed_operations.png
+.. figure:: ../images/package_failed_operations.png
 
  *Failed Non-transactional packaging operations*
 
@@ -81,7 +81,7 @@ Editing Packages
 
 Maestro also includes a package editing tool. To edit a package, select **Package - Package Editor** from the menu. Select the package file to edit, and the Package Editor dialog will be displayed.
 
-.. figure:: images/package_editor.png
+.. figure:: ../images/package_editor.png
 
  *Package Editor Dialog*
 
@@ -94,7 +94,7 @@ To create a new folder, select **New Folder** to create a new folder at the sele
 
 To create a new resource to be loaded, select **New Resource** to create a new resource entry at the selected resource node. You will get a dialog to specify the location of the resource content file
 
-.. figure:: images/package_add_resource.png
+.. figure:: ../images/package_add_resource.png
 
  *Add Resource Dialog*
 

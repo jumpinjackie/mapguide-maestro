@@ -7,7 +7,7 @@ backdrop for your maps.
 
 This section covers the Drawing Source editor.
 
-.. figure:: images/ds_editor.png
+.. figure:: ../images/ds_editor.png
 
  *The Drawing Source Editor interface*
  

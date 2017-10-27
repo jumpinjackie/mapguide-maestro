@@ -42,7 +42,7 @@ The Generic Editor
 Maestro provides a specialized feature source editor for the most frequently used FDO providers. For third party or other unrecognised FDO providers, a generic editor is
 available to configure the connection parameters to your particular data store.
 
-.. figure:: images/fs_generic.png
+.. figure:: ../images/fs_generic.png
    
    *The Generic Feature Source Editor*
 
@@ -56,7 +56,7 @@ Coordinate System Overrides
 
 The Coordinate System Overrides section of the editor allows you to override the coordinate systems of this Feature Source. 
 
-.. figure:: images/fs_cs_overrides.png
+.. figure:: ../images/fs_cs_overrides.png
    
    *The Coordinate System Overrides Editor*
 
@@ -72,7 +72,7 @@ Joins and Extensions
 
 The Joins and Extensions section of the editor allows you to define **Extended Feature Classes**.
 
-.. figure:: images/fs_extensions.png
+.. figure:: ../images/fs_extensions.png
 
    *The Joins and Extensions Editor*
 
@@ -113,7 +113,7 @@ Some Feature Source editors (generic or specialized) support entering user login
 
 For the Generic Editor, a `Set Credentials` link allows you to specify credentials in a secure manner.
 
-.. figure:: images/fs_generic_set_credentials.png
+.. figure:: ../images/fs_generic_set_credentials.png
 
    *Specifying Credentials in the Generic editor*
 
@@ -129,7 +129,7 @@ Other Feature Source Options
 
 All Feature Source editors whether the generic one or a specialized one will provide extra options for you which will be enabled or disabled based on the underlying capabilities of the FDO provider.
 
-.. figure:: images/fs_other_options.png
+.. figure:: ../images/fs_other_options.png
 
    *Additional Feature Source Options*
 
@@ -146,7 +146,7 @@ Raster Configuration
 When creating Raster Feature Sources (with the GDAL provider), it is generally advised to use the **Composite** mode and build a configuration document by adding in the individual raster images. Adding in each raster image will update the
 configuration document with the details from that raster image such as the bounds and the physical file path.
 
-.. figure:: images/fs_gdal_composite.png
+.. figure:: ../images/fs_gdal_composite.png
 
    *GDAL Feature Source editor in composite mode*
 
@@ -155,7 +155,7 @@ closest matching raster images for resampling. This is a much faster way for Map
 
 After you have built your raster configuration document, be sure to check the overall final extents by clicking **Edit Configuration Document** under **Other Options** (see :ref:`fs-other-options`) to see the configuration document XML
 
-.. figure:: images/fs_gdal_configuration_document_extents.png
+.. figure:: ../images/fs_gdal_configuration_document_extents.png
 
    *Overall extents in the configuration document*
 

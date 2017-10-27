@@ -4,7 +4,7 @@ Editing via the XML editor
 The XML Editor is the generic editor that can be used to edit the XML form of any resource in the MapGuide Server. If you are intimately familiar with the XML schema
 of the resource in question, editing via the XML editor can often be much faster in terms of productivity than having to go through the specialized editor.
 
-.. figure:: images/xml_editor.png
+.. figure:: ../images/xml_editor.png
 
  *The Generic XML editor*
 
@@ -18,7 +18,7 @@ choose to open any resource in the XML editor by right clicking the resource in 
 If you are editing a resource via a specialized editor, you can instantly go to and edit the resource in its XML form via the XML editor with the **Edit as XML** toolbar
 command. 
 
-.. figure:: images/edit_as_xml_button.png
+.. figure:: ../images/edit_as_xml_button.png
 
  *The Edit as XML command*
 

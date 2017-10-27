@@ -8,7 +8,7 @@ Page and Layout Properties
 
 The **Page and Layout Properties** section of the editor allows you to configure the properties of this print layout
 
-.. figure:: images/pl_properties.png
+.. figure:: ../images/pl_properties.png
 
  *Page and Layout Properties*
 
@@ -17,7 +17,7 @@ Custom Logos
 
 The **Custom Logos** section of the editor allows you to configure the logos which will be in this Print Layout. 
 
-.. figure:: images/pl_logos.png
+.. figure:: ../images/pl_logos.png
 
  *Custom Logos*
  
@@ -28,7 +28,7 @@ Custom Text
 
 The **Custom Text** section of the editor allows you to configure the text labels which will be in this Print Layout
 
-.. figure:: images/pl_text.png
+.. figure:: ../images/pl_text.png
 
  *Custom Text*
 

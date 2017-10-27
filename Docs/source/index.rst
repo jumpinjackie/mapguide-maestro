@@ -10,39 +10,39 @@ MapGuide Maestro
    :caption: User Guide
    :maxdepth: 3
 
-   introduction
-   installation
-   mapguide_terminology
-   differences
+   userguide/introduction
+   userguide/installation
+   userguide/mapguide_terminology
+   userguide/differences
    
-   user_interface
-   publish_workflow
+   userguide/user_interface
+   userguide/publish_workflow
    
-   understanding_load_procedures
-   understanding_feature_sources
-   understanding_drawing_sources
-   understanding_layers
-   understanding_symbol_definitions
-   understanding_watermarks
-   understanding_maps
-   understanding_applications
-   understanding_print_layouts
+   userguide/understanding_load_procedures
+   userguide/understanding_feature_sources
+   userguide/understanding_drawing_sources
+   userguide/understanding_layers
+   userguide/understanding_symbol_definitions
+   userguide/understanding_watermarks
+   userguide/understanding_maps
+   userguide/understanding_applications
+   userguide/understanding_print_layouts
    
-   edit_xml
-   expr_editor
-   resource_validation
-   packaging
+   userguide/edit_xml
+   userguide/expr_editor
+   userguide/resource_validation
+   userguide/packaging
 
 .. toctree::
    :caption: Tools and Addons
    :maxdepth: 3
 
-   mgcooker
-   localpreview
-   local_connection_mode
-   scripting_and_automating_maestro
-   other_tools
-   other_resources
+   userguide/mgcooker
+   userguide/localpreview
+   userguide/local_connection_mode
+   userguide/scripting_and_automating_maestro
+   userguide/other_tools
+   userguide/other_resources
 
 .. toctree::
    :caption: Maestro API Developer Guide

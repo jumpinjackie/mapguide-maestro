@@ -5,7 +5,7 @@ The Maestro User Interface
 
 The main Maestro application window is composed of the following main components:
 
-.. image:: images/maestro_ui.png
+.. image:: ../images/maestro_ui.png
 
 Legend
     

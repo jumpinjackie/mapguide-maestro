@@ -29,7 +29,7 @@ Resource Settings
 
 The **Resource Settings** section of the Vector Layer editor specifies the core properties of this Vector Layer
 
-.. figure:: images/ldf_vector_settings.png
+.. figure:: ../images/ldf_vector_settings.png
 
  *Resource Settings section*
 
@@ -48,7 +48,7 @@ Layer Properties Visible in Viewer
 The **Layer Properties Visible in Viewer** section of the editor specifies what properties of this layer are visible in the **Properties Pane** of the AJAX or Fusion viewer when a feature
 from this layer is selected.
 
-.. figure:: images/ldf_vector_property_mappings.png
+.. figure:: ../images/ldf_vector_property_mappings.png
 
  *Layer Properties Visible in Viewer*
 
@@ -59,7 +59,7 @@ Layer Styles
 
 The **Layer Styles** section is the meat and potatoes of this editor. 
 
-.. figure:: images/ldf_vector_scale_range.png
+.. figure:: ../images/ldf_vector_scale_range.png
 
  *Layer Styles*
  
@@ -72,7 +72,7 @@ for a new scale range. Each scale range has:
 
 Each point/line/area style is represented by a control like the one below
 
-.. figure:: images/ldf_vector_rule_control.png
+.. figure:: ../images/ldf_vector_rule_control.png
 
  *A style rule control*
  
@@ -96,7 +96,7 @@ Theming Layers
 
 Clicking the theme button will display the following dialog
 
-.. figure:: images/ldf_vector_theme_generator.png
+.. figure:: ../images/ldf_vector_theme_generator.png
 
  *The theme creator dialog*
  
@@ -119,11 +119,11 @@ Point Style Rules
 
 Clicking the **...** button beside the previewed point style on the rule editor control will display the Point Style Dialog
 
-.. figure:: images/ldf_vector_point_rule.png
+.. figure:: ../images/ldf_vector_point_rule.png
 
  *The Point Style dialog*
  
-.. figure:: images/ldf_vector_point_rule_pt2.png
+.. figure:: ../images/ldf_vector_point_rule_pt2.png
 
  *The Point Style dialog (fill/border settings)*
  
@@ -147,7 +147,7 @@ Line Style Rules
 
 Clicking the **...** button beside the previewed line style on the rule editor control will display the Line Style Dialog
 
-.. figure:: images/ldf_vector_line_rule.png
+.. figure:: ../images/ldf_vector_line_rule.png
 
  *The Line Style Dialog*
 
@@ -160,7 +160,7 @@ parameter is to be interpreted when rendering.
 
 Line styles can be single or composite. The **Use composite lines** checkbox determines whether the line style will be single or composite. 
 
-.. figure:: images/ldf_vector_line_rule_composite.png
+.. figure:: ../images/ldf_vector_line_rule_composite.png
 
  *The Line Style Dialog with composite settings enabled*
  
@@ -173,7 +173,7 @@ Area Style Rules
 
 Clicking the **...** button beside the previewed area style on the rule editor control will display the Area Style Dialog
 
-.. figure:: images/ldf_vector_area_rule.png
+.. figure:: ../images/ldf_vector_area_rule.png
 
  *The Area Style Dialog*
  
@@ -189,13 +189,13 @@ Composite Style Rules
 
 Clicking the **...** button beside the previewed area style on the rule editor control will display the Symbol Instances Dialog
 
-.. figure:: images/ldf_vector_composite_rule.png
+.. figure:: ../images/ldf_vector_composite_rule.png
 
  *A Composite Style Rule control*
 
 This dialog allows you to include references to existing Symbol Defintions or define such Symbol Definitions inline.
 
-.. figure:: images/ldf_symbol_instances_dialog.png
+.. figure:: ../images/ldf_symbol_instances_dialog.png
 
  *The Symbol Instances Dialog*
 
@@ -215,7 +215,7 @@ Label Settings
 
 Clicking the **...** button beside the label preview on the rule editor control will display the Label Settings Dialog
 
-.. figure:: images/ldf_vector_label.png
+.. figure:: ../images/ldf_vector_label.png
 
  *The Label Settings Dialog*
  
@@ -227,7 +227,7 @@ Drawing Layer Editor
 
 Just like the Drawing Source editor, the Drawing Layer editor is pretty simple and straight forward.
 
-.. figure:: images/ldf_drawing_settings.png
+.. figure:: ../images/ldf_drawing_settings.png
 
  *The Drawing Layer Editor*
  
@@ -246,7 +246,7 @@ Raster Layer Settings
 
 The Raster Layer editor defines style settings for raster data coming from a Feature Source.
 
-.. figure:: images/ldf_raster_settings.png
+.. figure:: ../images/ldf_raster_settings.png
 
  *Raster Layer Settings*
  
@@ -259,7 +259,7 @@ Raster Layer Visibility
 
 The Raster Layer Visibility settings govern what scale this Raster Layer is visible at.  
  
-.. figure:: images/ldf_raster_visibility.png
+.. figure:: ../images/ldf_raster_visibility.png
 
  *Raster Layer Visibility*
  
@@ -270,6 +270,6 @@ Advanced Raster Settings
  
 The Advanced Raster Settings allows you to enable settings for raster formats that support such settings.
  
-.. figure:: images/ldf_raster_advanced.png
+.. figure:: ../images/ldf_raster_advanced.png
 
  *Advanced Raster Layer Settings*

@@ -10,7 +10,7 @@ Some uses of expressions include:
  
 Maestro provides an Expression Editor that can assist in writing these FDO expressions. Any resource editor field that can accept an FDO expression will give you the option of using this editor.
 
-.. figure:: images/expr_editor.png
+.. figure:: ../images/expr_editor.png
 
 The **Properties** toolbar button lists all the available feature class properties.
 
@@ -28,4 +28,4 @@ all the distinct values into the second dropdown.
 
 The Expression Editor also has built-in auto-complete that brings up possible property/function suggestions as you type. You can invoke auto-complete at any time by pressing `Alt` + `Right key`
 
-.. figure:: images/expr_autocomplete.png
+.. figure:: ../images/expr_autocomplete.png

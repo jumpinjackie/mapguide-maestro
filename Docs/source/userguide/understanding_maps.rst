@@ -12,7 +12,7 @@ Map Settings
 
 The **Map Settings** section of the editor allows you to define the core properties of this Map Definition
 
-.. figure:: images/mdf_settings.png
+.. figure:: ../images/mdf_settings.png
 
 You can specify the coordinate system, background color and the initial extents that this map encompasses. The
 coordinate system and initial extents are automatically set when the first layer is added to this map. You can
@@ -48,7 +48,7 @@ Layers by Group
 
 The **Layers by Group** tab allows you to organise the layers in your Map Definition logically into groups
 
-.. figure:: images/mdf_layers_grouping.png
+.. figure:: ../images/mdf_layers_grouping.png
 
 A Layer Group in this view may be converted to a Base Layer Group.
 
@@ -57,11 +57,11 @@ Layers by Drawing Order
 
 The **Layers by Group** tab allows you to organise the layers in your Map Definition by drawing order
 
-.. figure:: images/mdf_layers_draworder.png
+.. figure:: ../images/mdf_layers_draworder.png
 
 Base Layer Groups
 ^^^^^^^^^^^^^^^^^
 
 The **Base Layer Groups** tab allows you to define and configure tiled layer and group settings
 
-.. figure:: images/mdf_layers_base.png
+.. figure:: ../images/mdf_layers_base.png
