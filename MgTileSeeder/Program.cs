@@ -206,16 +206,16 @@ namespace MgTileSeeder
 
                 var tileSvc = (ITileService)conn.GetService((int)ServiceType.Tile);
                 var res = conn.ResourceService.GetResource(options.ResourceID);
-                TileWalkOptions walkOptions = null;
+                DefaultTileWalkOptions walkOptions = null;
                 switch (res)
                 {
                     case IMapDefinition mdf:
-                        walkOptions = new TileWalkOptions(mdf, options.Groups.ToArray());
+                        walkOptions = new DefaultTileWalkOptions(mdf, options.Groups.ToArray());
                         //TODO: If meters-per-unit not specified and this is >= 2.6 or higher, use
                         //CREATERUNTIMEMAP to get this value
                         break;
                     case ITileSetDefinition tsd:
-                        walkOptions = new TileWalkOptions(tsd, options.Groups.ToArray());
+                        walkOptions = new DefaultTileWalkOptions(tsd, options.Groups.ToArray());
                         break;
                     default:
                         throw new ArgumentException("Invalid resource type");

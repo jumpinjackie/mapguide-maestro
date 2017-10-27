@@ -25,7 +25,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Login
 {
-    public partial class ConnectionErrorDialog : Form
+    internal partial class ConnectionErrorDialog : Form
     {
         public ConnectionErrorDialog()
         {

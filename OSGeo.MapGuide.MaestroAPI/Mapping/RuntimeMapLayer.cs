@@ -188,6 +188,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             _visible = true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected internal RuntimeMapLayer() { } //For mock support
 
         /// <summary>

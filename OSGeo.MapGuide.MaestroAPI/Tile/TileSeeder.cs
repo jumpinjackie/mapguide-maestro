@@ -36,16 +36,30 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
     }
 
+    /// <summary>
+    /// A tile seeding progress event
+    /// </summary>
     public struct TileProgress
     {
+        /// <summary>
+        /// Constructs a new instance
+        /// </summary>
+        /// <param name="rendered"></param>
+        /// <param name="total"></param>
         public TileProgress(int rendered, int total)
         {
             this.Rendered = rendered;
             this.Total = total;
         }
 
+        /// <summary>
+        /// The number of rendered tiles
+        /// </summary>
         public int Rendered { get; }
 
+        /// <summary>
+        /// The total number of tiles to be rendered
+        /// </summary>
         public int Total { get; }
     }
 
@@ -69,6 +83,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// TileSeedStats stats = seeder.Run();
     /// ]]>
     /// </code>
+    /// </example>
     public class TileSeeder
     {
         readonly ITileService _tileSvc;

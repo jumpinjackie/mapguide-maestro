@@ -71,6 +71,9 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         bool IsFrozen { get; }
     }
 
+    /// <summary>
+    /// A list of FDO long transactions
+    /// </summary>
     partial class FdoLongTransactionList : ILongTransactionList
     {
         /// <summary>
@@ -85,6 +88,9 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         }
     }
 
+    /// <summary>
+    /// A FDO long transaction
+    /// </summary>
     partial class FdoLongTransactionListLongTransaction : ILongTransaction
     {
     }

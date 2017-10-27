@@ -26,16 +26,32 @@ using System.Net;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tile
 {
+    /// <summary>
+    /// An implementation of <see cref="ITileService"/> for fetching XYZ tiles
+    /// </summary>
     public class XYZTileService : ITileService
     {
         readonly string _urlTemplate;
 
+        /// <summary>
+        /// Constructs a new instance
+        /// </summary>
+        /// <param name="urlTemplate">The URL of the XYZ tile service/endpoint. The URL must have {x}, {y} and {z} placeholders</param>
         public XYZTileService(string urlTemplate)
         {
             //Convert into a string.Format-able form
             _urlTemplate = urlTemplate.Replace("{x}", "{0}").Replace("{y}", "{1}").Replace("{z}", "{2}");
         }
 
+        /// <summary>
+        /// Gets the tile at the given XYZ coordinate
+        /// </summary>
+        /// <param name="mapDefinition">Un-used parameter</param>
+        /// <param name="baseLayerGroup">Un-used parameters</param>
+        /// <param name="column">Y value</param>
+        /// <param name="row">X value</param>
+        /// <param name="scaleIndex">Z value</param>
+        /// <returns></returns>
         public Stream GetTile(string mapDefinition, string baseLayerGroup, int column /* Y */, int row /* X */, int scaleIndex /* Z */)
         {
             var url = string.Format(_urlTemplate, row, column, scaleIndex);

@@ -47,7 +47,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Tiling
             }
             mdf.SetExtents(-87.764986990962839, 43.691398128787782, -87.695521510899724, 43.797520000480347);
 
-            var walkOptions = new TileWalkOptions(mdf);
+            var walkOptions = new DefaultTileWalkOptions(mdf);
             walkOptions.MetersPerUnit = 111319.490793274;
             var walker = new DefaultTileWalker(walkOptions);
 
@@ -72,7 +72,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Tiling
             mdf.SetExtents(-87.764986990962839, 43.691398128787782, -87.695521510899724, 43.797520000480347);
             var ovExtents = ObjectFactory.CreateEnvelope(-87.7278601614039, 43.7443959276596, -87.7135994943579, 43.7592852552018);
 
-            var walkOptions = new TileWalkOptions(mdf);
+            var walkOptions = new DefaultTileWalkOptions(mdf);
             walkOptions.MetersPerUnit = 111319.490793274;
             var walker = new DefaultTileWalker(walkOptions);
 

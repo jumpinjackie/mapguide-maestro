@@ -22,8 +22,16 @@
 
 namespace System.Drawing
 {
+    /// <summary>
+    /// System.Drawing DTO conversion helper
+    /// </summary>
     public static class FontUtils
     {
+        /// <summary>
+        /// Converts <see cref="System.Drawing.Font"/> object to <see cref="OSGeo.MapGuide.ObjectModels.FontInfo"/> objects
+        /// </summary>
+        /// <param name="font"></param>
+        /// <returns></returns>
         public static OSGeo.MapGuide.ObjectModels.FontInfo ToFontInfo(this Font font)
         {
             return new OSGeo.MapGuide.ObjectModels.FontInfo
@@ -39,11 +47,15 @@ namespace System.Drawing
 
 namespace OSGeo.MapGuide.MaestroAPI.Services
 {
+    /// <summary>
+    /// <see cref="IMappingService"/> polyfill extension methods for previous public APIs in the Maestro API
+    /// </summary>
     public static class ServiceExtensions
     {
         /// <summary>
         /// Renders a minature bitmap of the layers style
         /// </summary>
+        /// <param name="service"></param>
         /// <param name="scale">The scale for the bitmap to match</param>
         /// <param name="layerdefinition">The layer definition resource id</param>
         /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
@@ -58,6 +70,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Renders a minature bitmap of the layers style
         /// </summary>
+        /// <param name="service"></param>
         /// <param name="scale">The scale for the bitmap to match</param>
         /// <param name="layerdefinition">The layer definition resource id</param>
         /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
@@ -76,6 +89,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
+    /// <summary>
+    /// <see cref="RuntimeMap"/> polyfill extension methods for previous public APIs in the Maestro API
+    /// </summary>
     public static class RuntimeMapExtensions
     {
         public static System.Drawing.Image GetLegendImage(this RuntimeMap map, string layerDefinitionID, double scale, int width, int height, string format, int geomType, int themeCategory)

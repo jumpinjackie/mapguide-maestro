@@ -173,6 +173,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         public virtual bool SupportsMutableMetersPerUnit => true;
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected internal RuntimeMap() { } //For mock support
 
         /// <summary>

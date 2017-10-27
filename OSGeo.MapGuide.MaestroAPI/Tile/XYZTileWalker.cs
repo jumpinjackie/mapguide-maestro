@@ -39,11 +39,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         public TComponent Y { get; }
     }
 
+    /// <summary>
+    /// An implementation of <see cref="ITileWalker"/> that can compute a list of tiles to request
+    /// for an XYZ tile set
+    /// </summary>
     public class XYZTileWalker : ITileWalker
     {
         readonly Point<double> _ll;
         readonly Point<double> _ur;
 
+        /// <summary>
+        /// Constructs a new instance for the given extent
+        /// </summary>
+        /// <param name="minX"></param>
+        /// <param name="minY"></param>
+        /// <param name="maxX"></param>
+        /// <param name="maxY"></param>
         public XYZTileWalker(double minX, double minY, double maxX, double maxY)
         {
             _ll = new Point<double>(minX, minY);
@@ -58,6 +69,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             return new Point<int>(x, y);
         }
 
+        /// <summary>
+        /// Un-used. Returns an empty string
+        /// </summary>
         public string ResourceID => string.Empty;
 
         struct TileSetRange
@@ -84,6 +98,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             public int Total => Rows * Cols;
         }
 
+        /// <summary>
+        /// Computes the list of all possible tiles to request
+        /// </summary>
+        /// <returns></returns>
         public TileRef[] GetTileList()
         {
             //Z goes from 0 to 19

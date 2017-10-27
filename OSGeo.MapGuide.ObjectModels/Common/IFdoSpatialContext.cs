@@ -96,6 +96,9 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         double ZTolerance { get; set; }
     }
 
+    /// <summary>
+    /// An FDO spatial context definition
+    /// </summary>
     partial class FdoSpatialContextListSpatialContext : IFdoSpatialContext
     {
         [XmlIgnore]

@@ -27,6 +27,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// </summary>
     public struct TileRef
     {
+        /// <summary>
+        /// Constructs a new instance
+        /// </summary>
+        /// <param name="groupName"></param>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+        /// <param name="scale"></param>
         public TileRef(string groupName, int row, int col, int scale)
         {
             this.GroupName = groupName;
@@ -35,12 +42,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             this.Scale = scale;
         }
 
+        /// <summary>
+        /// The base layer group
+        /// </summary>
         public string GroupName { get; }
 
+        /// <summary>
+        /// The row
+        /// </summary>
         public int Row { get; }
 
+        /// <summary>
+        /// The column
+        /// </summary>
         public int Col { get; }
         
+        /// <summary>
+        /// The scale index
+        /// </summary>
         public int Scale { get; }
     }
 

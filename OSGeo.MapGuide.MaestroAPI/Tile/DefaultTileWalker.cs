@@ -34,13 +34,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     {
         const double INCH_TO_METER = 0.0254;
 
-        readonly TileWalkOptions _options;
+        readonly DefaultTileWalkOptions _options;
 
-        public DefaultTileWalker(TileWalkOptions options)
+        /// <summary>
+        /// Constructs a new instance
+        /// </summary>
+        /// <param name="options"></param>
+        public DefaultTileWalker(DefaultTileWalkOptions options)
         {
             _options = options;
         }
 
+        /// <summary>
+        /// Gets the resource ID of the map definition or tile set being walked
+        /// </summary>
         public string ResourceID => _options.ResourceID;
 
         struct TileGroupSet
@@ -70,6 +77,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             public int Total => Rows * Cols;
         }
 
+        /// <summary>
+        /// Computes the list of all possible tiles to request
+        /// </summary>
+        /// <returns></returns>
         public TileRef[] GetTileList()
         {
             var extents = _options.Extents;
