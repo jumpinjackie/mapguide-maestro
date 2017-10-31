@@ -10,7 +10,7 @@ Introduction
 
  * Supports seeding of XYZ tile sets introduced in MapGuide Open Source 3.0
    * Can also function as a generic seeder for any tile set based on a XYZ tiling scheme (eg. OpenStreetMap)
- * A simpler, cleaner architecture with pluggable tile walking strategies
+ * A simpler, cleaner design with pluggable tile walking strategies
  * **MgTileSeeder** is a truly cross-platform console application, targeting .net Core 2.0 (and all the platforms supported by .net Core 2.0)
 
 Unlike **MgCooker**, the **MgTileSeeder** tool is currently a purely commandline tool. There is no GUI counterpart.
