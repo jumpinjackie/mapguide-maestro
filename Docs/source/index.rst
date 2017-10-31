@@ -38,6 +38,7 @@ MapGuide Maestro
    :maxdepth: 3
 
    userguide/mgcooker
+   userguide/mgtileseeder
    userguide/localpreview
    userguide/local_connection_mode
    userguide/scripting_and_automating_maestro
