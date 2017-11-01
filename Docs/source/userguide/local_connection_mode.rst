@@ -8,7 +8,7 @@ The Local Connection Mode is a new feature of Maestro that allows you to work wi
 The Local Connection Mode is designed for the following user scenarios:
 
  * Authoring resources and spatial data locally without requiring any connectivity to a MapGuide Server
- * Authoring/editing resources for a `mg-desktop <http://mg-desktop.googlecode.com>`_ based application
+ * Authoring/editing resources for a `mg-desktop <http://trac.osgeo.org/mapguide/wiki/mg-desktop>`_ based application
 
 .. note::
 
