@@ -1,5 +1,6 @@
 .vs
 .vscode
+.manifest
 bin/
 obj/
 out/

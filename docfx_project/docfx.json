@@ -66,10 +66,6 @@
       }
     ],
     "dest": "_site",
-    "globalMetadata": {
-      "_appTitle": "MapGuide Maestro",
-      "_enableSearch": true
-    },
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
