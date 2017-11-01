@@ -1,0 +1,83 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "OSGeo.FDO.Expressions/*.cs",
+            "OSGeo.MapGuide.ObjectModels/*.cs",
+            "OSGeo.MapGuide.MaestroAPI/*.cs"
+          ],
+          "exclude": [
+            "Generated/*.cs",
+            "*Impl.cs",
+            "**/obj/**",
+            "**/bin/**",
+            "_site/**"
+          ],
+          "cwd": ".."
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "api/**.yml",
+          "api/index.md",
+          "api/toc.yml"
+        ]
+      },
+      {
+        "files": [
+          "articles/**.md",
+          "articles/**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ],
+        "exclude": [
+          "obj/**",
+          "_site/**"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ],
+        "exclude": [
+          "obj/**",
+          "_site/**"
+        ]
+      }
+    ],
+    "overwrite": [
+      {
+        "files": [
+          "apidoc/**.md"
+        ],
+        "exclude": [
+          "obj/**",
+          "_site/**"
+        ]
+      }
+    ],
+    "dest": "_site",
+    "globalMetadata": {
+      "_appTitle": "MapGuide Maestro",
+      "_enableSearch": true
+    },
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "template": [
+      "default"
+    ],
+    "postProcessors": [],
+    "noLangKeyword": false,
+    "keepFileLink": false,
+    "cleanupCacheHistory": false
+  }
+}
