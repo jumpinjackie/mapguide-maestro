@@ -33,6 +33,12 @@
     "content": [
       {
         "files": [
+          "index.md",
+          "toc.yml"
+        ]
+      },
+      {
+        "files": [
           "api/**.yml",
           "api/index.md",
           "api/toc.yml"
@@ -40,14 +46,14 @@
       },
       {
         "files": [
-          "articles/**.md",
-          "articles/**/toc.yml",
-          "toc.yml",
-          "*.md"
-        ],
-        "exclude": [
-          "obj/**",
-          "_site/**"
+          "userguide/**.md",
+          "userguide/**/toc.yml"
+        ]
+      },
+      {
+        "files": [
+          "devguide/**.md",
+          "devguide/**/toc.yml"
         ]
       }
     ],

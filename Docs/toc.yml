@@ -1,7 +1,7 @@
 - name: User Guide
-  href: articles/
+  href: userguide/
 - name: Developer's Guide
-  href: articles/
+  href: devguide/
 - name: API Reference
   href: api/
   homepage: api/index.md
