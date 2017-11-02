@@ -1,11 +1,9 @@
 .. _maestro-differences:
 
-Differences between Maestro and MapGuide Studio
-===============================================
+# Differences between Maestro and MapGuide Studio
 
-.. note::
-
- As of the 2012 release, MapGuide Enterprise is now known as Autodesk Infrastructure Map Server and the MapGuide Studio product is now called Autodesk Infrastructure Studio. This section will refer to these products by their old names.
+> [!NOTE]
+> As of the 2012 release, MapGuide Enterprise is now known as Autodesk Infrastructure Map Server and the MapGuide Studio product is now > called Autodesk Infrastructure Studio. This section will refer to these products by their old names.
 
 Both Maestro and MapGuide Studio fulfill the same purpose: To create, author and publish spatial data on a MapGuide Server. However there are some main differences:
 
@@ -14,8 +12,7 @@ Both Maestro and MapGuide Studio fulfill the same purpose: To create, author and
 
 Fortunately, MapGuide Maestro is a capable alternative to MapGuide Studio. Besides the base shared features of loading/creating/publishing data, both tools have their own unique set of features, which this section will cover.
 
-Features unique to MapGuide Studio / Autodesk Infrastructure Studio
--------------------------------------------------------------------
+## Features unique to MapGuide Studio / Autodesk Infrastructure Studio
 
  * MapGuide Studio supports loading of DWG files and raster images. Due to licensing and/or the need to be multi-platform, Maestro does not (and probably will never) support these features.
  * MapGuide Studio supports creating and editing Symbol Libraries. Maestro cannot edit Symbol Libraries, however it has read support for these resources and Maestro supports symbol selection from Symbol Libraries.
@@ -23,8 +20,7 @@ Features unique to MapGuide Studio / Autodesk Infrastructure Studio
  * Autodesk Infrastructure Studio (2013 onwards) supports publishing DWG files directly with no conversion and full visual fidelity.
  * Autodesk Infrastructure Studio supports creating connections to Industry Model (Topobase) data sources.
 
-Features unique to MapGuide Maestro
------------------------------------
+## Features unique to MapGuide Maestro
 
  * Maestro is multi-platform. It runs on Windows, Linux and Mac OSX.
  * Maestro can connect to many different versions of MapGuide Open Source and MapGuide Enterprise (as far back as MGOS 1.2 / MGE 2008)

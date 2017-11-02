@@ -1,5 +1,4 @@
-Understanding Drawing Sources
-=============================
+# Understanding Drawing Sources
 
 Drawing Sources represent DWF-based drawing data. Drawing Sources provide full visual styling of the original DWF, but the associated data
 lacks any intelligence or viewer interaction elements. As such, the primary purpose of Drawing Sources is to provide a CAD-based contextual

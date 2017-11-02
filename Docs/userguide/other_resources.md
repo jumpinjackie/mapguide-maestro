@@ -1,5 +1,4 @@
-Other Resources
-===============
+# Other Resources
 
 It is hoped that this user guide has given you enough information to get comfortable in authoring data in Maestro.
 

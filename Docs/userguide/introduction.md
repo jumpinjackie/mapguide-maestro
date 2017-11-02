@@ -1,5 +1,4 @@
-Introduction
-============
+# Introduction
 
 MapGuide Maestro is an Open Source (LGPL) map authoring tool for MapGuide Open Source and Autodesk MapGuide Enterprise / Autodesk Infrastructure Map Server.
 

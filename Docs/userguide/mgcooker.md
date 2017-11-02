@@ -1,10 +1,8 @@
-Using MgCooker
-==============
+# Using MgCooker
 
-.. note::
-
-    A new tile seeder tool **MgTileSeeder** is in development that will supercede and eventually replace the **MgCooker** tool. For
-    information on how to use **MgTileSeeder**, see :ref:`using-mgtileseeder`
+> [!NOTE]
+> A new tile seeder tool **MgTileSeeder** is in development that will supercede and eventually replace the **MgCooker** tool. For
+> information on how to use **MgTileSeeder**, see :ref:`using-mgtileseeder`
 
 Tiled Maps improve display performance by rendering the maps in tiles and keeping them stored in a special directory
 known as the **Tile Cache**. Subsequent views of the same map area will skip the rendering process and serve the already
@@ -13,9 +11,8 @@ get a view of the map in a near instant, because the potentially costly renderin
 
 **MgCooker** is such a tool to allow you to pre-generate these tiles. **MgCooker** is available from the **Tools** menu in Maestro
 
-.. note::
-
-    If you installed Maestro via the installer, **MgCooker** is also available on the Maestro Start Menu folder.
+> [!NOTE]
+> If you installed Maestro via the installer, **MgCooker** is also available on the Maestro Start Menu folder.
 
 **MgCooker** requires you to login on startup. Once logged in, it will show the list of Map Definitions with
 tiled layers.

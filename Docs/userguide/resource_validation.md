@@ -1,7 +1,6 @@
 .. _resource-validation:
 
-Resource Validation
-===================
+# Resource Validation
 
 .. index::
     single: Resources; Validating
@@ -31,7 +30,6 @@ Upon completion of validation, any warnings or errors are displayed in a dialog 
 Any information or warnings encountered during validation do not affect display of the map. These are generally about performance, source data and
 non-sensical (but not error-causing) configuration values.
 
-.. note::
-
-    Resource Validation is automatically done by resource editors before saving a resource. If you are confident
-    in your authoring capabilities, this may be unnecessary. An option is available for you to turn this off.
+> [!NOTE]
+> Resource Validation is automatically done by resource editors before saving a resource. If you are confident
+> in your authoring capabilities, this may be unnecessary. An option is available for you to turn this off.

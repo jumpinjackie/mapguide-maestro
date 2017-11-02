@@ -1,10 +1,8 @@
-Understanding Watermarks
-========================
+# Understanding Watermarks
 
 Watermarks allow your Maps and Layers to be "branded" with text or images of your choosing
 
-The Watermark Definition Editor
--------------------------------
+## The Watermark Definition Editor
 
 The Watermark Definition Editor allows you create your own watermarks
 
@@ -16,10 +14,9 @@ Previews are supported by the Watermark Editor. Previewing the watermark will la
 
 .. figure:: ../images/wmd_preview.png
 
-The Watermark Instance Collection Editor
-----------------------------------------
+## The Watermark Instance Collection Editor
 
-The Watermark Instance Collection Editor allows you to attach watermark definitions to a Layer or Map Definition. If the schema version of the Layer or Map Definition supports Watermarks ( >= 2.3.0 ), the respective resource editor will include this Watermark Instance Collection Editor allowing you to attach watermarks to the respective layer or map.
+The Watermark Instance Collection Editor allows you to attach watermark definitions to a Layer or Map Definition. If the schema version of the Layer or Map Definition supports Watermarks ( >= `2.3.0` ), the respective resource editor will include this Watermark Instance Collection Editor allowing you to attach watermarks to the respective layer or map.
 
 .. figure:: ../images/wmd_collection_editor.png
 

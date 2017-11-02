@@ -1,10 +1,8 @@
 .. _using-mgtileseeder:
 
-Using MgTileSeeder
-==================
+# Using MgTileSeeder
 
-Introduction
-------------
+## Introduction
 
 **MgTileSeeder** is the successor to **MgCooker**. It has the following improvements over **MgCooker**:
 
@@ -15,12 +13,10 @@ Introduction
 
 Unlike **MgCooker**, the **MgTileSeeder** tool is currently a purely commandline tool. There is no GUI counterpart.
 
-.. note::
+> [!NOTE]
+> **MgTileSeeder** is also only available currently as a standalone package. It is not currently bundled with MapGuide Maestro.
 
-    **MgTileSeeder** is also only available currently as a standalone package. It is not currently bundled with MapGuide Maestro.
-
-Usage
------
+## Usage
 
 **MgTileSeeder** has 2 modes of operation:
 
@@ -41,8 +37,7 @@ The basic command syntax for xyz tiling is as follows:
 
     MgTileSeeder.exe xyz --url <url> --minx <BBOX minx> --miny <BBOX miny> --maxx <BBOX maxx> --maxy <BBOX maxy>
 
-Examples
---------
+## Examples
 
 The following example starts a tiling run for a tiled map ``Library://Samples/Sheboygan/MapsTiled/Sheboygan.MapDefinition``
 

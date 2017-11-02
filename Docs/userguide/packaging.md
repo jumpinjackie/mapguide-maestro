@@ -1,5 +1,4 @@
-Packaging Data
-==============
+# Packaging Data
 
 .. index::
     single: Resources; Packaging and Loading
@@ -17,8 +16,7 @@ downsides:
  
 MapGuide Maestro however, allows you to load and create such packages **completely on the client-side**.
 
-Creating Packages
------------------
+## Creating Packages
 
 There are 2 ways to load a package:
 
@@ -27,8 +25,7 @@ There are 2 ways to load a package:
 
 The time it takes to create a package is a function of how many resources in total are in the folder to be packaged up.
 
-Loading Packages
-----------------
+## Loading Packages
 
 There are 2 ways to load a package:
 
@@ -44,13 +41,11 @@ will refresh itself. When loading a package, you will be presented with the foll
 
 Each option is described below.
 
-Transactional Loading
-^^^^^^^^^^^^^^^^^^^^^
+### Transactional Loading
 
 Transactional loading is the default loading mechanism. There is no way to measure loading progress, but the operation itself will either wholly succeed or wholly fail (hence the transactional nature of this operation). This operation is safe to use on small to moderately sized package files, and does not affect the integrity of the repository regardless of the result.
 
-Non-Transactional Loading
-^^^^^^^^^^^^^^^^^^^^^^^^^
+### Non-Transactional Loading
 
 Non-transactional loading is a new loading mechanism designed to work around the limitations of the default loading mechanism:
 
@@ -71,13 +66,11 @@ Should any package operations fail, they are logged and presented to the user at
 
 At this point you can retry these failed operations, and only the failed operations will be re-executed. Otherwise you can close the dialog to complete this package loading operation.
 
-.. note::
-
-    Because Maestro communicates to the MapGuide Server over http, loading large packages (over several hundred MBs) can be problematic. As such
-    using the Site Administrator is recommended. Otherwise, an data moving strategy is required (eg. Repository backup/restore or use of aliases instead of embedded data files)
+> [!NOTE]
+> Because Maestro communicates to the MapGuide Server over http, loading large packages (over several hundred MBs) can be problematic. As such
+> using the Site Administrator is recommended. Otherwise, an data moving strategy is required (eg. Repository backup/restore or use of aliases instead of embedded data files)
     
-Editing Packages
-----------------
+## Editing Packages
 
 Maestro also includes a package editing tool. To edit a package, select **Package - Package Editor** from the menu. Select the package file to edit, and the Package Editor dialog will be displayed.
 
@@ -87,8 +80,7 @@ Maestro also includes a package editing tool. To edit a package, select **Packag
 
 The Package Editor shows the layout of the Package and the resources that would be created if this package were to be loaded. 
 
-Package Editing Options
-^^^^^^^^^^^^^^^^^^^^^^^
+### Package Editing Options
 
 To create a new folder, select **New Folder** to create a new folder at the selected folder node. To edit the name of this folder, click the node label until an edit box appears.
 

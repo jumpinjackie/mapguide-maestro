@@ -1,16 +1,13 @@
-Understanding MapGuide Applications
-===================================
+# Understanding MapGuide Applications
 
-Web Layouts
------------
+## Web Layouts
 
 Web Layouts describe the user interface and functionality of the basic AJAX viewer. Through the **Invoke Script**
 and **Invoke URL** commands, custom functionality can be added to this viewer.
 
 The Web Layout editor is composed of 3 main sections, each described below.
 
-General Settings
-^^^^^^^^^^^^^^^^
+### General Settings
 
 The **General Settings** section of the editor allows you to configure the primary aspects of the web layout
 
@@ -26,13 +23,12 @@ The **General Settings** section of the editor allows you to configure the prima
 
 When saved, the **AJAX Viewer URL** is used to publically access this web layout from the internet or intranet.
 
-.. note::
- If you are making this web layout for public consumption over the internet, the host name in the **AJAX Viewer URL**
- may need to be changed to match the publically accessible domain name. This URL is generated based on the mapagent URL
- you used when you logged in.
+> [!NOTE]
+> If you are making this web layout for public consumption over the internet, the host name in the **AJAX Viewer URL**
+> may need to be changed to match the publically accessible domain name. This URL is generated based on the mapagent URL
+> you used when you logged in.
 
-Menu and Toolbar Command Layout
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Menu and Toolbar Command Layout
 
 The **Menus and Toolbars** section of the editor allows you to define the command layout of the toolbar and menus in the basic
 AJAX viewer
@@ -43,12 +39,10 @@ AJAX viewer
  
 The **Available Commands** box lists all the commands (built-in and custom) that can be added to the toolbar and menus
 
-.. note::
+> [!NOTE]
+> Flyout Menus can only go one level deep. Although the XML schema permits nested flyout menus the AJAX viewer will not respect this.
 
- Flyout Menus can only go one level deep. Although the XML schema permits nested flyout menus the AJAX viewer will not respect this.
-
-Command Set Configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^
+### Command Set Configuration
 
 The **Commands** section of the editor allows you to add and configure custom commands. 
 
@@ -62,9 +56,8 @@ The **Custom Command Properties** box allows you to edit the specific launch par
  * Invoke URL
  * Search
 
-.. note::
-
-    Consult the MapGuide Developer's Guide for more information about implementing custom commands using the MapGuide API. 
+> [!NOTE]
+> Consult the MapGuide Developer's Guide for more information about implementing custom commands using the MapGuide API. 
  
 For built-in commands. This box provides a read-only view of the command properties.
 
@@ -75,8 +68,7 @@ To export commands, click the **Export** toolbar button and select the XML file 
 
 To import commands, click the **Import** toolbar button and select the XML file containing your previously exported commands.
 
-Application Definitions
------------------------
+## Application Definitions
 
 Application Definitions describe the user interface of a Fusion viewer. The Fusion viewer is more customizable than the basic AJAX viewer in terms of looks and out-of-the-box
 functionality. Looks are defined in terms of templates, functionality is defined in terms of widgets. A Fusion viewer application is a specified template, loaded up with your
@@ -84,8 +76,7 @@ specific selection of widgets.
 
 The Application Definition editor is composed of 4 main sections. Each is described below.
 
-Template Selection
-^^^^^^^^^^^^^^^^^^
+### Template Selection
 
 The **Flexible Layout Settings** section allows you to select the template to use and the title to show when displayed in a web browser.
 
@@ -95,12 +86,11 @@ The **Flexible Layout Settings** section allows you to select the template to us
  
 When saved, the **Public URL** will be generated which you allows end users to access this Application Definition publically over the intranet or internet.
 
-.. note::
- The same public URL generation rules apply to Application Definitions as it does for Web Layouts. It is generated based on the mapagent URL
- you used when you logged in.
+> [!NOTE]
+> The same public URL generation rules apply to Application Definitions as it does for Web Layouts. It is generated based on the mapagent URL
+> you used when you logged in.
 
-Map Configuration
-^^^^^^^^^^^^^^^^^
+### Map Configuration
 
 The **Map Configuration** section allows you to specify the Map Definition that this viewer is for.
 
@@ -110,16 +100,13 @@ The **Map Configuration** section allows you to specify the Map Definition that 
 
 In addition there are various settings for integrating your map with commercial map layers.
 
-.. note::
+> [!NOTE]
+> If you use the commerical map layer integration, your map must be in the `WGS84.PseudoMercator` coordinate system. Otherwise your map will not line up with the commercial layers
 
-    If you use the commerical map layer integration, your map must be in the `WGS84.PseudoMercator` coordinate system. Otherwise your map will not line up with the commercial layers
+> [!NOTE]
+> An API key is required for consuming Yahoo or Google layers. You are bound by the terms and conditions of the respective commercial layer providers you wish to use.
 
-.. note::
-
-    An API key is required for consuming Yahoo or Google layers. You are bound by the terms and conditions of the respective commercial layer providers you wish to use.
-
-Widget and Container Layout
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Widget and Container Layout
 
 The **Widgets** section allows you to configure the layout of toolbar and menu widgets 
 
@@ -129,8 +116,7 @@ The **Widgets** section allows you to configure the layout of toolbar and menu w
  
 Selecting a widget reference allows to you point to the correct widget in the widget set.
 
-Widget Management
-^^^^^^^^^^^^^^^^^
+### Widget Management
 
 The **Widget Management** dialog allows you to configure the main map widget and to add/configure other widgets in the widget set. 
 

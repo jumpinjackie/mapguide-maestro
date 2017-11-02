@@ -1,5 +1,4 @@
-The Expression Editor
-=====================
+# The Expression Editor
 
 MapGuide has a built-in expression language, which allows for flexible computations based off of existing feature class property values to be used for various Layer stylization purposes.
 
@@ -21,10 +20,9 @@ The **Filter** toolbar button lists all the available conditional and filtering 
 Also on the toolbar is the ability to fetch all distinct values for a given property. To do this, select the desired property in the first dropdown, then click the arrow on the right to load
 all the distinct values into the second dropdown.
 
-.. note::
-
-    The types of functions and expressions available depend on the underlying FDO provider's capabilities. For example, editing a Tooltip expression on a Layer Definition will only use functions
-    and expressions supported by the Feature Source the Layer Definition is referencing.
+> [!NOTE]
+> The types of functions and expressions available depend on the underlying FDO provider's capabilities. For example, editing a Tooltip expression on a Layer Definition will only use functions
+> and expressions supported by the Feature Source the Layer Definition is referencing.
 
 The Expression Editor also has built-in auto-complete that brings up possible property/function suggestions as you type. You can invoke auto-complete at any time by pressing `Alt` + `Right key`
 

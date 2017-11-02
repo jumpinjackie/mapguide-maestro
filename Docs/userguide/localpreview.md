@@ -1,13 +1,11 @@
 .. _local-fs-preview:
 
-Using Local Feature Source Preview 
-==================================
+# Using Local Feature Source Preview
 
-.. note::
-
-    Server support for the operations used by this tool have questionable reliability for MapGuide Open Source 2.1 and older releases 
-    (and corresponding MapGuide Enterprise versions). As such, this tool is only recommended for use in MapGuide Open Source 2.2 (MapGuide Enterprise 2011)
-    and newer releases.
+> [!NOTE]
+> Server support for the operations used by this tool have questionable reliability for MapGuide Open Source 2.1 and older releases 
+> (and corresponding MapGuide Enterprise versions). As such, this tool is only recommended for use in MapGuide Open Source 2.2 (MapGuide Enterprise 2011)
+> and newer releases.
 
 The **Preview** toolbar command when used on a Feature Source editor will bring up a web-based schema inspector on that Feature Source.
 
@@ -52,9 +50,8 @@ Once you have specified your query parameters, click **Run Query** to execute th
 
 .. figure:: ../images/fspreview_query_results.png
 
-.. note::
-
-    Avoid issuing feature queries without a filter, large result sets being transferred over http can bring heavy 
-    load to a MapGuide Server and the Web Tier.
+> [!NOTE]
+> Avoid issuing feature queries without a filter, large result sets being transferred over http can bring heavy 
+> load to a MapGuide Server and the Web Tier.
 
 To close any query interface, click the close button on the left pane toolbar (indicated by a cross).

@@ -1,16 +1,13 @@
 .. _scripting-and-automating-maestro:
 
-Scripting and Automating Maestro
-================================
+# Scripting and Automating Maestro
 
-.. note::
-
-    The IronPython Console feature is only available on Windows and is only bundled with the Windows installer package of Maestro
+> [!NOTE]
+> The IronPython Console feature is only available on Windows and is only bundled with the Windows installer package of Maestro
 
 As mentioned in the section (:ref:`user-interface`), Maestro includes an **IronPython Console** which provides the user an interactive scripting environment to drive and automate certain parts of the Maestro application with IronPython code
 
-About IronPython
-----------------
+## About IronPython
 
 IronPython is an open source implementation of the Python programming language which is tightly integrated with the .net Framework. IronPython can use the .net Framework and Python libraries and also allows for .net applications to easily use Python code.
 
@@ -18,8 +15,7 @@ Maestro embeds an IronPython scripting engine allowing for easy scripting and au
 
 For more information about the .net specific details of IronPython, `click here <http://www.ironpython.net/documentation/dotnet/>`_
 
-The Host Application
---------------------
+## The Host Application
 
 The IronPython Console exposes a top-level global object named ``app``, which represents the Maestro Host Application. The Host Application provides the following services:
 
@@ -122,8 +118,7 @@ You can bring up documentation of any object or function with the ``help`` comma
      |              
     >>> 
 
-Loading scripts
----------------
+## Loading scripts
 
 The IronPython console also supports loading pre-defined scripts. Click **Run File** and select the python script you want to load.
 
@@ -131,7 +126,6 @@ The IronPython console also supports loading pre-defined scripts. Click **Run Fi
 
 All classes and functions defined in that python script will be loaded into the console's global namespace.
 
-Example scripts
----------------
+## Example scripts
 
 You can find some example scripts `here <http://trac.osgeo.org/mapguide/wiki/CodeSamples/Other/MaestroScripts>`_ which may give you some ideas as to what you can do through scripting and automation with IronPython

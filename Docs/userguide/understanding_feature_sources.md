@@ -1,13 +1,11 @@
-Understanding Feature Sources
-=============================
+# Understanding Feature Sources
 
 As already covered, **Feature Sources** describe a FDO connection to a particular spatial or non-spatial data store. FDO technology provides a generic, 
 command-based interface to a number of back-end data source technologies for storing, retrieving, updating, and analyzing GIS (Geographic Information System) data.
 
 Support for various data sources exists in the form of FDO providers.
 
-File-based Data
----------------
+## File-based Data
 
 Spatial data exists in many different forms and data formats. MapGuide supports various file-based data sources out of the box:
 
@@ -19,8 +17,7 @@ Spatial data exists in many different forms and data formats. MapGuide supports 
 
 Support for other file formats exist via third party FDO providers.
 
-Relational Data
----------------
+## Relational Data
 
 MapGuide also supports various relational data sources
 
@@ -31,13 +28,11 @@ MapGuide also supports various relational data sources
 
 Support for other relational databases exist via third party FDO providers.
 
-Raster Data
------------
+## Raster Data
 
 MapGuide also supports raster data sources via the GDAL FDO provider.
 
-The Generic Editor
-------------------
+## The Generic Editor
 
 Maestro provides a specialized feature source editor for the most frequently used FDO providers. For third party or other unrecognised FDO providers, a generic editor is
 available to configure the connection parameters to your particular data store.
@@ -51,8 +46,7 @@ by prefixing `%MG_DATA_FILE_PATH%` in front of the resource data file name.
 
 .. _coordsys-override:
 
-Coordinate System Overrides
----------------------------
+## Coordinate System Overrides
 
 The Coordinate System Overrides section of the editor allows you to override the coordinate systems of this Feature Source. 
 
@@ -67,8 +61,7 @@ system.
 This is important if you require MapGuide to transform data. The source and target coordinate systems need to be correct. This override 
 mechanism allows you to fix the source side of the transformation.
 
-Joins and Extensions
---------------------
+## Joins and Extensions
 
 The Joins and Extensions section of the editor allows you to define **Extended Feature Classes**.
 
@@ -91,22 +84,17 @@ Also you have to specify at least one property from both participating Feature C
 
 Finally you can force a 1-to-1 cardinality to avoid redundant secondary Feature Class attributes for each primary feature or vice versa.
 
-.. note::
-
-    Feature Join performance is generally bad, especially when the join is performed across Feature Classes from different Feature Sources for different FDO providers. Consider doing joins at the database level, outside of MapGuide
+> [!NOTE]
+> Feature Join performance is generally bad, especially when the join is performed across Feature Classes from different Feature Sources for different FDO providers. Consider doing joins at the database level, outside of MapGuide
     
-.. note::
+> [!NOTE]
+> For best Feature Join performance, both sides of the join should support sortable query results. Providers that support sortable query results include:
+>  * SDF (single property only)
+>  * SHP (single property only)
+>  * Any of the RDBMS providers (ODBC, SQL Server, MySQL, PostgreSQL, Oracle)
+> Any join that involves any of the above providers on both sides **on a single property** should have generally decent performance. Still doing these joins at the datastore level is preferable
 
-    For best Feature Join performance, both sides of the join should support sortable query results. Providers that support sortable query results include:
-    
-        * SDF (single property only)
-        * SHP (single property only)
-        * Any of the RDBMS providers (ODBC, SQL Server, MySQL, PostgreSQL, Oracle)
-    
-    Any join that involves any of the above providers on both sides **on a single property** should have generally decent performance. Still doing these joins at the datastore level is preferable
-
-Specifying Credentials
-----------------------
+## Specifying Credentials
 
 Some Feature Source editors (generic or specialized) support entering user login credentials. The specialized editors will automatically substitute your entered credentails with the **%MG_USERNAME%** and
 **%MG_PASSWORD%** placeholder tokens, with the actual values encrypted and stored into the **MG_USER_CREDENTIALS** resource data item.
@@ -117,15 +105,13 @@ For the Generic Editor, a `Set Credentials` link allows you to specify credentia
 
    *Specifying Credentials in the Generic editor*
 
-.. note::
-
-    Versions of Maestro before 4.0 did not support these feature and credentials were stored plaintext in the Resource XML documents themselves. It is **strongly** advised to run a validation process (see :ref:`resource-validation`) on your
-    repository, which will pick up such resources (which will be flagged as warnings in the Validation Results dialog). You should re-open these resources in a newer version of Maestro and apply credentials in a secured manner.
+> [!NOTE]
+> Versions of Maestro before 4.0 did not support these feature and credentials were stored plaintext in the Resource XML documents themselves. It is **strongly** advised to run a validation process (see :ref:`resource-validation`) on your
+> repository, which will pick up such resources (which will be flagged as warnings in the Validation Results dialog). You should re-open these resources in a newer version of Maestro and apply credentials in a secured manner.
 
 .. _fs-other-options:
 
-Other Feature Source Options
-----------------------------
+## Other Feature Source Options
 
 All Feature Source editors whether the generic one or a specialized one will provide extra options for you which will be enabled or disabled based on the underlying capabilities of the FDO provider.
 
@@ -140,8 +126,7 @@ the contents by hand
 
 **Spatial Contexts** displays the spatial contexts of the Feature Source
 
-Raster Configuration
---------------------
+## Raster Configuration
 
 When creating Raster Feature Sources (with the GDAL provider), it is generally advised to use the **Composite** mode and build a configuration document by adding in the individual raster images. Adding in each raster image will update the
 configuration document with the details from that raster image such as the bounds and the physical file path.
@@ -161,6 +146,5 @@ After you have built your raster configuration document, be sure to check the ov
 
 This is the value used for previewing any layers you build off of this Feature Source and incorrect extents can cause massive performance issues.
     
-.. note::
-
-    After you have built your raster configuration document, you should also apply :ref:`coordsys-override` to ensure MapGuide will be reading this data under the correct coordinate system
+> [!NOTE]
+> After you have built your raster configuration document, you should also apply :ref:`coordsys-override` to ensure MapGuide will be reading this data under the correct coordinate system

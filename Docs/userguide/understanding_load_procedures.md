@@ -1,5 +1,4 @@
-Understanding Load Procedures
-=============================
+# Understanding Load Procedures
 
 Load Procedures are resources which describe how to load a certain set of data files into the MapGuide Server.
 
@@ -8,8 +7,7 @@ supports a subset of the features exposed by the Load Procedure schema. See :ref
 
 This section will cover the Load Procedure Editor
 
-Source Files
-------------
+## Source Files
 
 The source file section of the editor shows all the source data files that the Load Procedure will load when executed
 
@@ -17,13 +15,11 @@ The source file section of the editor shows all the source data files that the L
 
 You can add or remove files from this list. 
 
-.. note::
+> [!NOTE]
+> When executing a Load Procedure, Maestro will look for the source files on the **machine running Maestro**, and not the machine that's running the MapGuide Server.
+> Keep this in mind when executing this Load Procedure from another Maestro installation.
 
-    When executing a Load Procedure, Maestro will look for the source files on the **machine running Maestro**, and not the machine that's running the MapGuide Server.
-    Keep this in mind when executing this Load Procedure from another Maestro installation.
-
-Transformation Settings
------------------------
+## Transformation Settings
 
 The transformation settings section of the editor shows all the data transformation options available for the Load Procedure.
 
@@ -33,8 +29,7 @@ Elements that are disabled are not supported by Maestro and are ignored during e
 
 Transformation settings vary from different Load Procedure types.
 
-Load Settings
--------------
+## Load Settings
 
 The load settings section of the editor allows you to specify where the generated resources will be loaded into.
 

@@ -1,5 +1,4 @@
-The Maestro Publishing Workflow
-===============================
+# The Maestro Publishing Workflow
 
 The basic workflow for creating maps and publishing them in Maestro is shown below
 
@@ -7,8 +6,7 @@ The basic workflow for creating maps and publishing them in Maestro is shown bel
 
 The first step is to connect to a MapGuide Server. Maestro will always prompt for a login when starting up.
 
-Find Data
----------
+## 1. Find Data
 
 For this step, you have 2 choices.
 
@@ -24,8 +22,7 @@ For this step, you have 2 choices.
  2. **Create Feature Sources**. For data sources like relational databases or web services, you do not have the **Load Procedure** option available. So therefore 
     you have to create these **Feature Sources** manually. If you want to connect to externally stored or aliased data files, you have to use this approach.
   
-Build Layers
-------------
+## 2. Build Layers
 
 For this step, create **Layer Definitions** that point to a **Feature Source**. **Layer Definitions** give defines style and presentation rules for data coming from a
 **Feature Sources**. You can do things like:
@@ -44,8 +41,7 @@ For this step, create **Layer Definitions** that point to a **Feature Source**. 
 If you created and executed a **Load Procedure**, then these **Layer Definitions** have been created for you. However these are created with default settings 
 (monochromatic styles with basic symbology). So you will have to open and edit these resources to suit your needs.
 
-Make a Map
-----------
+## 3. Make a Map
 
 For this step, create a **Map Definition** and bring in the **Layer Definitions** you have created. Organise these layers into groups (optional) and sort them by drawing 
 order with rasters and polygon layers at the bottom, followed by line layers, then followed by point layers. You don't need to specifically follow this draw order, but
@@ -54,13 +50,11 @@ it's a generally useful rule to follow.
 For layers that change very rarely, you can set them as tiled layers. Tiled layers are rendered once as tiles and stored into a Tile Cache. Subsequent requests for the
 same view will request the cached tiles. This is a useful way to improve map performance.
 
-.. note::
+> [!NOTE]
+> If you edit and save a map with tiled layers, the existing Tile Cache is deleted, as the generated tiles most likely no longer apply to the new map. Maestro will
+> warn you about such situations.
 
-    If you edit and save a map with tiled layers, the existing Tile Cache is deleted, as the generated tiles most likely no longer apply to the new map. Maestro will
-    warn you about such situations.
-
-Make the map available
-----------------------
+## 4. Make the map available
 
 For this step. You can create either a **Web Layout** or a **Application Definition** which describe the viewer interface which to view and interact with the map.
 

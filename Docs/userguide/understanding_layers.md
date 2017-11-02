@@ -1,5 +1,4 @@
-Understanding Layers
-====================
+# Understanding Layers
 
 There are 3 types of Layer Definitions:
 
@@ -21,11 +20,9 @@ Layer Definition has a single scale range, with a specified color style and opti
 
 This section describes the Layer Definition editor and its various settings.
 
-Vector Layer Editor
--------------------
+## Vector Layer Editor
 
-Resource Settings
-^^^^^^^^^^^^^^^^^
+### Resource Settings
 
 The **Resource Settings** section of the Vector Layer editor specifies the core properties of this Vector Layer
 
@@ -42,8 +39,7 @@ All the fields under the **Layer Settings** group specify viewer interaction beh
  * **Hyperlink** specifies an FDO expression that represents the URL that will be launched when the user CTRL+clicks on a feature in this layer
  * **Tooltip** specifics an FDO expression that represents the HTML content that is displayed in a tooltip when the user hovers over any feature on this layer with the mouse pointer.
 
-Layer Properties Visible in Viewer
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Layer Properties Visible in Viewer
 
 The **Layer Properties Visible in Viewer** section of the editor specifies what properties of this layer are visible in the **Properties Pane** of the AJAX or Fusion viewer when a feature
 from this layer is selected.
@@ -54,8 +50,7 @@ from this layer is selected.
 
 Simply tick the desired properties to make them visible. You can edit cells in the **Display Name** column to change the label for each property.
 
-Layer Styles
-^^^^^^^^^^^^
+### Layer Styles
 
 The **Layer Styles** section is the meat and potatoes of this editor. 
 
@@ -91,8 +86,7 @@ Rules can be removed by clicking the remove button for the associated rule style
 
 .. _ldf-theming-layers:
 
-Theming Layers
-^^^^^^^^^^^^^^
+### Theming Layers
 
 Clicking the theme button will display the following dialog
 
@@ -114,8 +108,7 @@ from, avoiding the need to manually re-style each individual theme rule after ge
 Once you have specified the theme settings and clicked **OK**, the matching rules will be generated and will replace
 or be appended to your existing set of style rules for this scale range.
 
-Point Style Rules
-^^^^^^^^^^^^^^^^^
+### Point Style Rules
 
 Clicking the **...** button beside the previewed point style on the rule editor control will display the Point Style Dialog
 
@@ -142,8 +135,7 @@ be the same image if you were to look at this layer's icon in the AJAX or Fusion
 If you want an exact representation, use the **Preview** command in the main toolbar to view this Layer in your system default web browser. Here
 you can better verify your point style settings are correct.
 
-Line Style Rules
-^^^^^^^^^^^^^^^^
+### Line Style Rules
 
 Clicking the **...** button beside the previewed line style on the rule editor control will display the Line Style Dialog
 
@@ -168,8 +160,7 @@ Composite line styles consists of multiple line patterns stacked on top of each 
 geometries of each matching feature will be rendered with this line style. To add or remove lines from the composite line style,
 use the **Add** and **Remove** buttons on the Composite Line toolbar.
 
-Area Style Rules
-^^^^^^^^^^^^^^^^
+### Area Style Rules
 
 Clicking the **...** button beside the previewed area style on the rule editor control will display the Area Style Dialog
 
@@ -184,8 +175,7 @@ This dialog allows you to control the two main aspects of an area style:
  
 Once again, the preview at the bottom of the dialog reflects your current style settings. 
 
-Composite Style Rules
-^^^^^^^^^^^^^^^^^^^^^
+### Composite Style Rules
 
 Clicking the **...** button beside the previewed area style on the rule editor control will display the Symbol Instances Dialog
 
@@ -204,14 +194,12 @@ can use FDO expressions for override parameter values.
 
 The inline symbol definitions use the same editors as the normal symbol definition editor. See :ref:`symbol_definitions`
  
-.. note::
+> [!NOTE]
+> Unlike Point/Line/Area styles, the top-level preview is blank because rendering composite symbolization preview is not currently supported. However
+> the **Symbol Instances Dialog** does offer basic previewing support. What you see in the symbol preview is simply an enlarged version of the icon that
+> you would see for this layer if it was displayed in the AJAX or Fusion viewer legend.
 
-    Unlike Point/Line/Area styles, the top-level preview is blank because rendering composite symbolization preview is not currently supported. However
-    the **Symbol Instances Dialog** does offer basic previewing support. What you see in the symbol preview is simply an enlarged version of the icon that
-    you would see for this layer if it was displayed in the AJAX or Fusion viewer legend.
-
-Label Settings
-^^^^^^^^^^^^^^
+### Label Settings
 
 Clicking the **...** button beside the label preview on the rule editor control will display the Label Settings Dialog
 
@@ -222,8 +210,7 @@ Clicking the **...** button beside the label preview on the rule editor control 
 This dialog allows you to control the labelling of line/area/point styles. Label text can be hard-coded strings or more commonly: derived
 from an FDO expression or a Feature Class Property.
 
-Drawing Layer Editor
---------------------
+## Drawing Layer Editor
 
 Just like the Drawing Source editor, the Drawing Layer editor is pretty simple and straight forward.
 
@@ -238,11 +225,9 @@ All you need to specify are:
  * The DWF layers this layer will read from.
  * The min/max scale that this Drawing Layer will be visible at.
 
-Raster Layer Editor
--------------------
+## Raster Layer Editor
 
-Raster Layer Settings
-^^^^^^^^^^^^^^^^^^^^^
+### Raster Layer Settings
 
 The Raster Layer editor defines style settings for raster data coming from a Feature Source.
 
@@ -254,8 +239,7 @@ Just like the Vector Layer editor, the Raster Layer editor requires a reference 
 the **Geometry Property** (Raster Property) of a **Feature Class** so it knows where to source its raster 
 data from.
  
-Raster Layer Visibility
-^^^^^^^^^^^^^^^^^^^^^^^ 
+### Raster Layer Visibility 
 
 The Raster Layer Visibility settings govern what scale this Raster Layer is visible at.  
  
@@ -265,8 +249,7 @@ The Raster Layer Visibility settings govern what scale this Raster Layer is visi
  
 You can also define bitonal image color settings and the zoom factor which the raster is rebuilt.
 
-Advanced Raster Settings
-^^^^^^^^^^^^^^^^^^^^^^^^
+### Advanced Raster Settings
  
 The Advanced Raster Settings allows you to enable settings for raster formats that support such settings.
  
