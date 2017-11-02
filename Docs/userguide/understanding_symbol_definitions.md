@@ -28,13 +28,13 @@ Definition.
 
 The **General Settings** section of the editor allows you to specify the name and description of this symbol
 
-.. figure:: ../images/ssym_editor_general.png
+![](../images/ssym_editor_general.png)
 
 ### Graphics
 
 The **Graphics** section of the editor allows you to specify the visual elements of the symbol. 
 
-.. figure:: ../images/ssym_editor_graphics.png
+![](../images/ssym_editor_graphics.png)
 
 You can add 3 different types of graphics:
 
@@ -46,7 +46,7 @@ You can add 3 different types of graphics:
 
 The **Symbol Parameters** section of the editor allows you to specify parameters for this symbol. 
 
-.. figure:: ../images/ssym_editor_parameters.png
+![](../images/ssym_editor_parameters.png)
 
 Nearly all properties in the Simple Symbol Definition can reference a symbol parameter instead of specifying
 a hard-coded value. Such parameters can be specified on a per-layer basis via FDO expressions, allowing for
@@ -57,7 +57,7 @@ symbols whose stylization behaviour is driven by the underlying feature data.
 The **Symbol Usage** section of the editor allows you to define which geometry types this symbol can be
 used with
 
-.. figure:: ../images/ssym_editor_usage_contexts.png
+![](../images/ssym_editor_usage_contexts.png)
 
 > [!NOTE]
 > You must specify at least one usage context. Otherwise, your symbol is not usable in any layer definition.
@@ -66,13 +66,13 @@ used with
 
 The **Advanced Settings** section of the editor allows you to specify resize box settings of the Simple Symbol Definition
 
-.. figure:: ../images/ssym_editor_advanced.png
+![](../images/ssym_editor_advanced.png)
 
 ## The Compound Symbol Definition Editor
 
 The Compound Symbol Definition Editor allows you to combine multiple Simple Symbol Definitions into a single composite symbol.
 
-.. figure:: ../images/csym_editor.png
+![](../images/csym_editor.png)
 
 The Simple Symbol Definitions you combine can be either:
 

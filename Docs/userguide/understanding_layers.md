@@ -26,7 +26,7 @@ This section describes the Layer Definition editor and its various settings.
 
 The **Resource Settings** section of the Vector Layer editor specifies the core properties of this Vector Layer
 
-.. figure:: ../images/ldf_vector_settings.png
+![](../images/ldf_vector_settings.png)
 
  *Resource Settings section*
 
@@ -44,7 +44,7 @@ All the fields under the **Layer Settings** group specify viewer interaction beh
 The **Layer Properties Visible in Viewer** section of the editor specifies what properties of this layer are visible in the **Properties Pane** of the AJAX or Fusion viewer when a feature
 from this layer is selected.
 
-.. figure:: ../images/ldf_vector_property_mappings.png
+![](../images/ldf_vector_property_mappings.png)
 
  *Layer Properties Visible in Viewer*
 
@@ -54,7 +54,7 @@ Simply tick the desired properties to make them visible. You can edit cells in t
 
 The **Layer Styles** section is the meat and potatoes of this editor. 
 
-.. figure:: ../images/ldf_vector_scale_range.png
+![](../images/ldf_vector_scale_range.png)
 
  *Layer Styles*
  
@@ -67,7 +67,7 @@ for a new scale range. Each scale range has:
 
 Each point/line/area style is represented by a control like the one below
 
-.. figure:: ../images/ldf_vector_rule_control.png
+![](../images/ldf_vector_rule_control.png)
 
  *A style rule control*
  
@@ -90,7 +90,7 @@ Rules can be removed by clicking the remove button for the associated rule style
 
 Clicking the theme button will display the following dialog
 
-.. figure:: ../images/ldf_vector_theme_generator.png
+![](../images/ldf_vector_theme_generator.png)
 
  *The theme creator dialog*
  
@@ -112,11 +112,11 @@ or be appended to your existing set of style rules for this scale range.
 
 Clicking the **...** button beside the previewed point style on the rule editor control will display the Point Style Dialog
 
-.. figure:: ../images/ldf_vector_point_rule.png
+![](../images/ldf_vector_point_rule.png)
 
  *The Point Style dialog*
  
-.. figure:: ../images/ldf_vector_point_rule_pt2.png
+![](../images/ldf_vector_point_rule_pt2.png)
 
  *The Point Style dialog (fill/border settings)*
  
@@ -139,7 +139,7 @@ you can better verify your point style settings are correct.
 
 Clicking the **...** button beside the previewed line style on the rule editor control will display the Line Style Dialog
 
-.. figure:: ../images/ldf_vector_line_rule.png
+![](../images/ldf_vector_line_rule.png)
 
  *The Line Style Dialog*
 
@@ -152,7 +152,7 @@ parameter is to be interpreted when rendering.
 
 Line styles can be single or composite. The **Use composite lines** checkbox determines whether the line style will be single or composite. 
 
-.. figure:: ../images/ldf_vector_line_rule_composite.png
+![](../images/ldf_vector_line_rule_composite.png)
 
  *The Line Style Dialog with composite settings enabled*
  
@@ -164,7 +164,7 @@ use the **Add** and **Remove** buttons on the Composite Line toolbar.
 
 Clicking the **...** button beside the previewed area style on the rule editor control will display the Area Style Dialog
 
-.. figure:: ../images/ldf_vector_area_rule.png
+![](../images/ldf_vector_area_rule.png)
 
  *The Area Style Dialog*
  
@@ -179,13 +179,13 @@ Once again, the preview at the bottom of the dialog reflects your current style 
 
 Clicking the **...** button beside the previewed area style on the rule editor control will display the Symbol Instances Dialog
 
-.. figure:: ../images/ldf_vector_composite_rule.png
+![](../images/ldf_vector_composite_rule.png)
 
  *A Composite Style Rule control*
 
 This dialog allows you to include references to existing Symbol Defintions or define such Symbol Definitions inline.
 
-.. figure:: ../images/ldf_symbol_instances_dialog.png
+![](../images/ldf_symbol_instances_dialog.png)
 
  *The Symbol Instances Dialog*
 
@@ -203,7 +203,7 @@ The inline symbol definitions use the same editors as the normal symbol definiti
 
 Clicking the **...** button beside the label preview on the rule editor control will display the Label Settings Dialog
 
-.. figure:: ../images/ldf_vector_label.png
+![](../images/ldf_vector_label.png)
 
  *The Label Settings Dialog*
  
@@ -214,7 +214,7 @@ from an FDO expression or a Feature Class Property.
 
 Just like the Drawing Source editor, the Drawing Layer editor is pretty simple and straight forward.
 
-.. figure:: ../images/ldf_drawing_settings.png
+![](../images/ldf_drawing_settings.png)
 
  *The Drawing Layer Editor*
  
@@ -231,7 +231,7 @@ All you need to specify are:
 
 The Raster Layer editor defines style settings for raster data coming from a Feature Source.
 
-.. figure:: ../images/ldf_raster_settings.png
+![](../images/ldf_raster_settings.png)
 
  *Raster Layer Settings*
  
@@ -243,7 +243,7 @@ data from.
 
 The Raster Layer Visibility settings govern what scale this Raster Layer is visible at.  
  
-.. figure:: ../images/ldf_raster_visibility.png
+![](../images/ldf_raster_visibility.png)
 
  *Raster Layer Visibility*
  
@@ -253,6 +253,6 @@ You can also define bitonal image color settings and the zoom factor which the r
  
 The Advanced Raster Settings allows you to enable settings for raster formats that support such settings.
  
-.. figure:: ../images/ldf_raster_advanced.png
+![](../images/ldf_raster_advanced.png)
 
  *Advanced Raster Layer Settings*

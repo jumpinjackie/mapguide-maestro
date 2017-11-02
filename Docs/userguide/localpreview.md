@@ -30,7 +30,7 @@ Once again like **MgCooker**, this tool requires you to login on startup. Once l
 to be previewed. Once the feature source is selected, the left pane will be populated with all feature schemas found
 and their Feature Classes (and their properties)
 
-.. figure:: ../images/fspreview.png
+![](../images/fspreview.png)
 
 To open a specific feature class for running queries, select the desired Feature Class node (represented by a table/spreadsheet).
 
@@ -41,14 +41,14 @@ Two buttons on the toolbar will be activated when you do this:
  
 Click either one to open the query interface.
 
-.. figure:: ../images/fspreview_query.png
+![](../images/fspreview_query.png)
 
 From here specify an optional filter (which is a FDO filter expression), and optionally check/uncheck the properties
 you want to show as part of the query result, and any computed properties. Computed properties are FDO expressions.
 
 Once you have specified your query parameters, click **Run Query** to execute the query.
 
-.. figure:: ../images/fspreview_query_results.png
+![](../images/fspreview_query_results.png)
 
 > [!NOTE]
 > Avoid issuing feature queries without a filter, large result sets being transferred over http can bring heavy 

@@ -23,7 +23,7 @@ the **Validate** context menu item.
 
 Upon completion of validation, any warnings or errors are displayed in a dialog for you to review
 
-.. figure:: ../images/validation_results.png
+![](../images/validation_results.png)
 
  *Validation Results Dialog*
 

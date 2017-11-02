@@ -17,7 +17,7 @@ The **General Settings** section of the editor allows you to configure the prima
  * Visibility of certain viewer elements
  * The initial task pane url
 
-.. figure:: ../images/wl_settings.png
+![](../images/wl_settings.png)
 
  *The General Settings*
 
@@ -33,7 +33,7 @@ When saved, the **AJAX Viewer URL** is used to publically access this web layout
 The **Menus and Toolbars** section of the editor allows you to define the command layout of the toolbar and menus in the basic
 AJAX viewer
 
-.. figure:: ../images/wl_menus_toolbars.png
+![](../images/wl_menus_toolbars.png)
 
  *Menus and Toolbars*
  
@@ -46,7 +46,7 @@ The **Available Commands** box lists all the commands (built-in and custom) that
 
 The **Commands** section of the editor allows you to add and configure custom commands. 
 
-.. figure:: ../images/wl_commandset.png
+![](../images/wl_commandset.png)
 
  *Command configuration*
  
@@ -80,7 +80,7 @@ The Application Definition editor is composed of 4 main sections. Each is descri
 
 The **Flexible Layout Settings** section allows you to select the template to use and the title to show when displayed in a web browser.
 
-.. figure:: ../images/fl_settings.png
+![](../images/fl_settings.png)
 
  *Template selection panel*
  
@@ -94,7 +94,7 @@ When saved, the **Public URL** will be generated which you allows end users to a
 
 The **Map Configuration** section allows you to specify the Map Definition that this viewer is for.
 
-.. figure:: ../images/fl_maps.png
+![](../images/fl_maps.png)
 
  *Map Configuration*
 
@@ -110,7 +110,7 @@ In addition there are various settings for integrating your map with commercial 
 
 The **Widgets** section allows you to configure the layout of toolbar and menu widgets 
 
-.. figure:: ../images/fl_widgets.png
+![](../images/fl_widgets.png)
 
  *Widget and Container Layout*
  
@@ -122,17 +122,17 @@ The **Widget Management** dialog allows you to configure the main map widget and
 
 Widgets in the widget set can then be referenced in the **Widgets** section of the editor.
 
-.. figure:: ../images/fl_widget_config_map.png
+![](../images/fl_widget_config_map.png)
 
  *Widget Management Dialog (map widget)*
 
-.. figure:: ../images/fl_widget_config.png
+![](../images/fl_widget_config.png)
 
  *Widget Management Dialog (other widgets)*
  
 All widgets are edited via XML. Widget behaviour is customised by editing the `<Extension>` element of the widget XML. If you are not sure what elements are allowed in the widget's extension
 element, you can click the **Widget Info** button, which will list all the available extension properties for this widget
 
-.. figure:: ../images/fl_widget_info.png
+![](../images/fl_widget_info.png)
 
  *Widget Info Dialog (for Redline widget)*

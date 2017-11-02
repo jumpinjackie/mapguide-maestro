@@ -17,7 +17,7 @@ get a view of the map in a near instant, because the potentially costly renderin
 **MgCooker** requires you to login on startup. Once logged in, it will show the list of Map Definitions with
 tiled layers.
 
-.. figure:: ../images/mgcooker_main.png
+![](../images/mgcooker_main.png)
 
 From here, tick the Map Definitions and the Base Layer Groups that you want to pre-generate tiles for.
 

@@ -122,7 +122,7 @@ You can bring up documentation of any object or function with the ``help`` comma
 
 The IronPython console also supports loading pre-defined scripts. Click **Run File** and select the python script you want to load.
 
-.. figure:: ../images/ironpython_runfile.png
+![](../images/ironpython_runfile.png)
 
 All classes and functions defined in that python script will be loaded into the console's global namespace.
 

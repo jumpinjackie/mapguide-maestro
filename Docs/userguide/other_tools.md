@@ -9,7 +9,7 @@ in Maestro which provide valuable functionality. These are described below and a
 The **Server Status Monitor** tool provides current server uptime, memory and operation statistics. The information
 is refreshed every 5 seconds.
 
-.. figure:: ../images/servermon.png
+![](../images/servermon.png)
 
  *Server Status Monitor*
 
@@ -18,6 +18,6 @@ is refreshed every 5 seconds.
 The **Feature Source Cache Viewer** allows you to see what FDO providers are currently have cached connections and lists
 what Feature Sources currently have cached connections.
 
-.. figure:: ../images/fscacheview.png
+![](../images/fscacheview.png)
 
  *Feature Source Cache Viewer*

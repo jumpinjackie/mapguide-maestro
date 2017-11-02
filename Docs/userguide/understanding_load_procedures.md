@@ -11,7 +11,7 @@ This section will cover the Load Procedure Editor
 
 The source file section of the editor shows all the source data files that the Load Procedure will load when executed
 
-.. image:: ../images/lp_source_files.png
+![](../images/lp_source_files.png)
 
 You can add or remove files from this list. 
 
@@ -23,7 +23,7 @@ You can add or remove files from this list.
 
 The transformation settings section of the editor shows all the data transformation options available for the Load Procedure.
 
-.. image:: ../images/lp_trans_settings.png
+![](../images/lp_trans_settings.png)
 
 Elements that are disabled are not supported by Maestro and are ignored during execution.
 
@@ -33,6 +33,6 @@ Transformation settings vary from different Load Procedure types.
 
 The load settings section of the editor allows you to specify where the generated resources will be loaded into.
 
-.. image:: ../images/lp_load_settings.png
+![](../images/lp_load_settings.png)
 
 Clicking **Load Resources** will execute the Load Procedure with the current settings.

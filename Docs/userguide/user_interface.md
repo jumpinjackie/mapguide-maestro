@@ -1,10 +1,11 @@
-.. _user-interface:
-
+---
+uid: user-interface
+---
 # The Maestro User Interface
 
 The main Maestro application window is composed of the following main components:
 
-.. image:: ../images/maestro_ui.png
+![](../images/maestro_ui.png)
 
 Legend
     

@@ -2,7 +2,7 @@
 
 The basic workflow for creating maps and publishing them in Maestro is shown below
 
-.. image:: ../images/maestro_publish_workflow.png
+![](../images/maestro_publish_workflow.png)
 
 The first step is to connect to a MapGuide Server. Maestro will always prompt for a login when starting up.
 

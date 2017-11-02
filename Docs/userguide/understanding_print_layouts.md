@@ -6,7 +6,7 @@ Print Layouts describe the layout of a DWF plot. DWF plots are produced by the `
 
 The **Page and Layout Properties** section of the editor allows you to configure the properties of this print layout
 
-.. figure:: ../images/pl_properties.png
+![](../images/pl_properties.png)
 
  *Page and Layout Properties*
 
@@ -14,7 +14,7 @@ The **Page and Layout Properties** section of the editor allows you to configure
 
 The **Custom Logos** section of the editor allows you to configure the logos which will be in this Print Layout. 
 
-.. figure:: ../images/pl_logos.png
+![](../images/pl_logos.png)
 
  *Custom Logos*
  
@@ -24,7 +24,7 @@ Logos are symbols from a **Symbol Library** resource. Each logo has size and pos
 
 The **Custom Text** section of the editor allows you to configure the text labels which will be in this Print Layout
 
-.. figure:: ../images/pl_text.png
+![](../images/pl_text.png)
 
  *Custom Text*
 
