@@ -25,7 +25,7 @@ using System.IO;
 namespace OSGeo.MapGuide.ObjectModels
 {
     /// <summary>
-    /// Provides <see cref="MemoryStream"/> instances with pooled buffers to reduce heap fragmentation
+    /// Provides <see cref="System.IO.MemoryStream"/> instances with pooled buffers to reduce heap fragmentation
     /// and GC pressure
     /// </summary>
     public static class MemoryStreamPool
@@ -38,20 +38,20 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
-        /// Returns a recyclable <see cref="MemoryStream"/>
+        /// Returns a recyclable <see cref="System.IO.MemoryStream"/>
         /// </summary>
         /// <returns></returns>
         public static MemoryStream GetStream() => msManager.GetStream();
 
         /// <summary>
-        /// Returns a recyclable <see cref="MemoryStream"/>
+        /// Returns a recyclable <see cref="System.IO.MemoryStream"/>
         /// </summary>
         /// <param name="tag"></param>
         /// <returns></returns>
         public static MemoryStream GetStream(string tag) => msManager.GetStream(tag);
 
         /// <summary>
-        /// Returns a recyclable <see cref="MemoryStream"/> initialized with the given buffer
+        /// Returns a recyclable <see cref="System.IO.MemoryStream"/> initialized with the given buffer
         /// </summary>
         /// <param name="tag"></param>
         /// <param name="buffer"></param>
@@ -59,7 +59,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public static MemoryStream GetStream(string tag, byte[] buffer) => GetStream(tag, buffer, 0, buffer.Length);
 
         /// <summary>
-        /// Returns a recyclable <see cref="MemoryStream"/> initialized with the given buffer
+        /// Returns a recyclable <see cref="System.IO.MemoryStream"/> initialized with the given buffer
         /// </summary>
         /// <param name="tag"></param>
         /// <param name="buffer"></param>

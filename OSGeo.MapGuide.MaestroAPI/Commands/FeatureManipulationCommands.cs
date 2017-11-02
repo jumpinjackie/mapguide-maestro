@@ -202,7 +202,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// </summary>
         /// <returns>
         /// A collection of <see cref="T:OSGeo.MapGuide.MaestroAPI.Commands.InsertResult" /> instances.
-        /// Inspect the individual <see cref="P:OSGeo.MapGuide.MaestroAPI.Commands.InsertResult "/> properties to
+        /// Inspect the individual <see cref="P:OSGeo.MapGuide.MaestroAPI.Commands.InsertResult"/> properties to
         /// determine which features failed to be inserted.
         /// </returns>
         ICollection<InsertResult> Execute();

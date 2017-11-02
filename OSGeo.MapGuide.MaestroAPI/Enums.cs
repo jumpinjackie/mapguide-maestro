@@ -100,7 +100,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     }
 
     /// <summary>
-    /// Helper class to filter <see cref="ResourceTypes"/> into the ones that are
+    /// Helper class to filter <see cref="OSGeo.MapGuide.ObjectModels.ResourceTypes"/> into the ones that are
     /// editable
     /// </summary>
     public static class SiteResourceType
@@ -113,7 +113,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
-        /// Returns an array of all editable <see cref="ResourceTypes"/> values
+        /// Returns an array of all editable <see cref="OSGeo.MapGuide.ObjectModels.ResourceTypes"/> values
         /// </summary>
         /// <returns></returns>
         public static ResourceTypes[] All()

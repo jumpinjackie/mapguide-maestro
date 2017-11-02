@@ -110,7 +110,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         }
 
         /// <summary>
-        /// Returns a <see cref="NameValueCollection"/> of all the metadata properties
+        /// Returns a <see cref="System.Collections.Specialized.NameValueCollection"/> of all the metadata properties
         /// </summary>
         /// <returns></returns>
         public NameValueCollection GetProperties()

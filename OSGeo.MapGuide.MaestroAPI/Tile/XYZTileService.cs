@@ -27,7 +27,7 @@ using System.Net;
 namespace OSGeo.MapGuide.MaestroAPI.Tile
 {
     /// <summary>
-    /// An implementation of <see cref="ITileService"/> for fetching XYZ tiles
+    /// An implementation of <see cref="OSGeo.MapGuide.MaestroAPI.Services.ITileService"/> for fetching XYZ tiles
     /// </summary>
     public class XYZTileService : ITileService
     {

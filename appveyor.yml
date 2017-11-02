@@ -35,7 +35,7 @@ before_build:
   - echo APPVEYOR_REPO_COMMIT_TIMESTAMP %APPVEYOR_REPO_COMMIT_TIMESTAMP%
   - nuget update -self
   - nuget restore Maestro.sln
-  - pip install -r requirements.txt
+  - cinst -y docfx
 
 environment:
   COVERALLS_REPO_TOKEN:
@@ -52,9 +52,7 @@ after_build:
   - if not exist %APPVEYOR_BUILD_FOLDER%\artifacts mkdir %APPVEYOR_BUILD_FOLDER%\artifacts
   - set PATH=%PATH%;%APPVEYOR_BUILD_FOLDER%\Packages\nsis\2.51.0\tools
   - cd /D %APPVEYOR_BUILD_FOLDER%\Docs
-  - call make.bat html
-  - cd /D %APPVEYOR_BUILD_FOLDER%\Docs\build\html
-  - xcopy /S /Y *.* %APPVEYOR_BUILD_FOLDER%\out\%CONFIGURATION%\UserDoc\
+  - docfx build
   - cd /D %APPVEYOR_BUILD_FOLDER%\MgTileSeeder
   - dotnet publish -c release -f netcoreapp2.0 -r win-x64 -o publish_win
   - dotnet publish -c release -f netcoreapp2.0 -r linux-x64 -o publish_linux
@@ -69,10 +67,6 @@ after_build:
   - dotnet pack Core.sln --configuration %CONFIGURATION% --output %APPVEYOR_BUILD_FOLDER%\artifacts --include-symbols /p:Version=6.0.0-pre%APPVEYOR_BUILD_NUMBER%"
 
 test_script:
-- cmd: >-
-    cd /D %APPVEYOR_BUILD_FOLDER%\Docs
-
-    call make.bat linkcheck
 - ps: >-
     .\Packages\opencover\4.6.519\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:".\Packages\xunit.runner.console\2.3.0\tools\net452\xunit.console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\Release\net461\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModels.Tests\bin\Release\net461\OSGeo.MapGuide.ObjectModels.Tests.dll -noshadow -xml .\TestResult.xml" -output:OpenCoverCoverage.xml -coverbytest:*.Tests.dll
 

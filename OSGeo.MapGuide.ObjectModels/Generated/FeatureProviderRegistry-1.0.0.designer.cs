@@ -249,9 +249,9 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         private BindingList<FeatureProviderRegistryFeatureProviderConnectionProperty> connectionPropertiesField;
         
         private static System.Xml.Serialization.XmlSerializer serializer;
-        
+
         /// <summary>
-        /// Unique name of the feature provider. This name should be of the form <Company>.<Provider>.lt;Version>.
+        /// Unique name of the feature provider. This name should be of the form &lt;Company&gt;.&lt;Provider&gt;.&lt;Version&gt;.
         /// </summary>
         public string Name {
             get {
@@ -312,9 +312,9 @@ namespace OSGeo.MapGuide.ObjectModels.Common
                 }
             }
         }
-        
+
         /// <summary>
-        /// The version of the feature provider. The version number string has the form <VersionMajor>.<VersionMinor>.<BuildMajor>.<BuildMinor>.
+        /// The version of the feature provider. The version number string has the form &lt;VersionMajor&gt;.&lt;VersionMinor&gt;.&lt;BuildMajor&gt;.&lt;BuildMinor&gt;.
         /// </summary>
         public string Version {
             get {
@@ -333,9 +333,9 @@ namespace OSGeo.MapGuide.ObjectModels.Common
                 }
             }
         }
-        
+
         /// <summary>
-        /// The version of the feature data objects specification the feature provider conforms to. The version number string has the form <VersionMajor>.<VersionMinor>.<BuildMajor>.<BuildMinor>.
+        /// The version of the feature data objects specification the feature provider conforms to. The version number string has the form &lt;VersionMajor&gt;.&lt;VersionMinor&gt;.&lt;BuildMajor&gt;.&lt;BuildMinor&gt;.
         /// </summary>
         public string FeatureDataObjectsVersion {
             get {

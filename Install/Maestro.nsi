@@ -164,9 +164,6 @@ LicenseData "${INST_SRC}\${INST_LICENSE}"
 ; Installer Sections
 ;-------------------
 
-!define HELP_USER "FDOToolbox.chm"
-!define HELP_API "FDO Toolbox Core API.chm"
-
 # default section
 Section 
 
@@ -193,11 +190,8 @@ Section
     File /r "${INST_OUTPUT_MAESTRO}\AddIns"
     File /r "${INST_OUTPUT_MAESTRO}\Data"
     File /r "${INST_OUTPUT_MAESTRO}\Schemas"
-    File /r "${INST_OUTPUT_MAESTRO}\UserDoc"
     
     # docs
-    #File "${INST_OUTPUT_MAESTRO}\${HELP_USER}"
-    #File "${INST_OUTPUT_MAESTRO}\${HELP_API}"
     File "${INST_OUTPUT_MAESTRO}\*.txt"
     
     # data/config files
@@ -240,8 +234,6 @@ Section
     CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\MgCooker.lnk" "$INSTDIR\MgCooker.exe"
     CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Maestro Feature Source Preview.lnk" "$INSTDIR\MaestroFsPreview.exe"
     CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Live Map Definition Editor.lnk" "$INSTDIR\Maestro.LiveMapEditor.exe"
-    #CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\User Documentation.lnk" "$INSTDIR\${HELP_USER}"
-    #CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Core API Documentation.lnk" "$INSTDIR\${HELP_API}"
     CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Uninstall.lnk" "$INSTDIR\uninstall.exe"
     
     CreateShortCut "$DESKTOP\${LNK_MAESTRO}.lnk" "$INSTDIR\${EXE_MAESTRO}"

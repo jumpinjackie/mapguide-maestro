@@ -1,0 +1,56 @@
+# User Guide
+- name: Introduction
+  href: introduction.md
+- name: Installing MapGuide Maestro
+  href: installation.md
+- name: Understanding MapGuide Resources
+  href: mapguide_terminology.md
+- name: Differences between Maestro and MapGuide Studio
+  href: differences.md
+- name: The Maestro User Interface
+  href: user_interface.md
+- name: The Maestro Publishing Workflow
+  href: publish_workflow.md
+- name: Understanding Load Procedures
+  href: understanding_load_procedures.md
+- name: Understanding Feature Sources
+  href: understanding_feature_sources.md
+- name: Understanding Drawing Sources
+  href: understanding_drawing_sources.md
+- name: Understanding Layer Definitions
+  href: understanding_layers.md
+- name: Understanding Symbol Definitions
+  href: understanding_symbol_definitions.md
+- name: Understanding Watermarks
+  href: understanding_watermarks.md
+- name: Understanding Map Definitions
+  href: understanding_maps.md
+- name: Understanding MapGuide Applications
+  href: understanding_applications.md
+- name: Understanding Print Layouts
+  href: understanding_print_layouts.md
+- name: Editing via the XML editor
+  href: edit_xml.md
+- name: The Expression Editor
+  href: expr_editor.md
+- name: Resource Validation
+  href: resource_validation.md
+- name: Packaging Data
+  href: packaging.md
+
+# Tools and Addons
+
+- name: Using MgCooker
+  href: mgcooker.md
+- name: Using MgTileSeeder
+  href: mgtileseeder.md
+- name: Using Local Feature Source Preview
+  href: localpreview.md
+- name: The Local Connection Mode
+  href: local_connection_mode.md
+- name: Scripting and Automating Maestro
+  href: scripting_and_automating_maestro.md
+- name: Other Tools
+  href: other_tools.md
+- name: Other Resources
+  href: other_resources.md

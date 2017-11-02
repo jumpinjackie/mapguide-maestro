@@ -1588,7 +1588,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="correctionFactor">The brightness correction factor. Must be between -1 and 1.
         /// Negative values produce darker colors.</param>
         /// <returns>
-        /// Corrected <see cref="Color"/> structure.
+        /// Corrected <see cref="System.Drawing.Color"/> structure.
         /// </returns>
         public static Color ChangeColorBrightness(Color color, float correctionFactor)
         {

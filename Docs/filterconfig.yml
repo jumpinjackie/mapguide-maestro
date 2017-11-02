@@ -1,0 +1,4 @@
+apiRules:
+- exclude:
+    uidRegex: ^OSGeo\.MapGuide\.ObjectModels\.[a-zA-Z]+\.v\d_\d_\d$
+    type: Namespace

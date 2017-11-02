@@ -607,7 +607,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip);
 
         /// <summary>
-        /// Renders the legend for the specified <see cref="RuntimeMap"/> to the requested size and format
+        /// Renders the legend for the specified <see cref="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap"/> to the requested size and format
         /// </summary>
         /// <param name="map"></param>
         /// <param name="width"></param>

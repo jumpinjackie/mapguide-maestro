@@ -1,0 +1,8 @@
+- name: User Guide
+  href: userguide/
+- name: Developer's Guide
+  href: devguide/
+- name: API Reference
+  href: api/
+- name: GitHub
+  href: https://github.com/jumpinjackie/mapguide-maestro

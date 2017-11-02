@@ -405,7 +405,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         protected void OnRequestDispatched(string data) => this.RequestDispatched?.Invoke(this, new RequestEventArgs(data));
 
         /// <summary>
-        /// Creates a geometry text reader for creating <see cref="IGeometryRef"/> instances from WKT text
+        /// Creates a geometry text reader for creating <see cref="OSGeo.MapGuide.MaestroAPI.Geometry.IGeometryRef"/> instances from WKT text
         /// </summary>
         /// <returns></returns>
         public virtual IGeometryTextReader CreateGeometryReader() => new Internal.FixedWKTReader();

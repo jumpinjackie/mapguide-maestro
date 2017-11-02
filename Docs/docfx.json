@@ -1,0 +1,97 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "OSGeo.FDO.Expressions/**/*.cs",
+            "OSGeo.MapGuide.ObjectModels/**/*.cs",
+            "OSGeo.MapGuide.MaestroAPI/**/*.cs"
+          ],
+          "exclude": [
+            "*.designer.cs",
+            "**/obj/**",
+            "**/bin/**",
+            "_site/**"
+          ],
+          "cwd": ".."
+        }
+      ],
+      "dest": "api",
+      "filter": "filterconfig.yml"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "index.md",
+          "toc.yml"
+        ]
+      },
+      {
+        "files": [
+          "api/**.yml",
+          "api/index.md",
+          "api/toc.yml"
+        ]
+      },
+      {
+        "files": [
+          "userguide/**.md",
+          "userguide/**/toc.yml"
+        ]
+      },
+      {
+        "files": [
+          "devguide/**.md",
+          "devguide/**/toc.yml"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**",
+          "logo.svg",
+          "favicon.ico"
+        ],
+        "exclude": [
+          "obj/**",
+          "_site/**"
+        ]
+      }
+    ],
+    "overwrite": [
+      {
+        "files": [
+          "apidoc/**.md"
+        ],
+        "exclude": [
+          "obj/**",
+          "_site/**"
+        ]
+      }
+    ],
+    "dest": "_site",
+    "globalMetadata": {
+      "_appTitle": "MapGuide Maestro",
+      "_appFooter": "Copyright © 2009 - 2017 Jackie Ng",
+      "_appLogoPath": "logo.svg",
+      "_appFaviconPath": "favicon.ico",
+      "_disableBreadcrumb": false,
+      "_disableAffix": false,
+      "_disableContribution": false,
+      "_enableSearch": true
+    },
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "template": [
+      "default"
+    ],
+    "postProcessors": [],
+    "noLangKeyword": false,
+    "keepFileLink": false,
+    "cleanupCacheHistory": false
+  }
+}
