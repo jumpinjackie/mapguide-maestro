@@ -1047,7 +1047,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         }
 
         /// <summary>
-        /// Returns a <see cref="XmlElement"/> whose name matches the specified name
+        /// Returns a <see cref="System.Xml.XmlElement"/> whose name matches the specified name
         /// </summary>
         /// <param name="elements"></param>
         /// <param name="name"></param>

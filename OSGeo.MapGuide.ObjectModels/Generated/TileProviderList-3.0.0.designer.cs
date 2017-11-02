@@ -246,9 +246,9 @@ namespace OSGeo.MapGuide.ObjectModels.TileProviderList {
         private BindingList<TileProviderListTileProviderConnectionProperty> connectionPropertiesField;
         
         private static System.Xml.Serialization.XmlSerializer serializer;
-        
+
         /// <summary>
-        /// Unique name of the feature provider. This name should be of the form <Company>.<Provider>.lt;Version>.
+        /// Unique name of the feature provider. This name should be of the form &lt;Company&gt;.&lt;Provider&gt;.&lt;Version&gt;.
         /// </summary>
         public string Name {
             get {

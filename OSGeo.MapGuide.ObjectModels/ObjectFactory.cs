@@ -818,7 +818,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="templates">The set of available templates</param>
         /// <param name="widgets">The set of available widgets</param>
         /// <param name="containers">The set of available containers</param>
-        /// <param name="templateName">The name of the template. See <see cref="FusionTemplateNames"/> for the common pre-defined names</param>
+        /// <param name="templateName">The name of the template. See <see cref="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.FusionTemplateNames"/> for the common pre-defined names</param>
         /// <returns></returns>
         public static IApplicationDefinition CreateFlexibleLayout(Version siteVersion,
                                                                   IApplicationDefinitionTemplateInfoSet templates,
