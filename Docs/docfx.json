@@ -81,7 +81,8 @@
       "_appFaviconPath": "favicon.ico",
       "_disableBreadcrumb": false,
       "_disableAffix": false,
-      "_disableContribution": false
+      "_disableContribution": false,
+      "_enableSearch": true
     },
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
