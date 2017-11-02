@@ -1,0 +1,685 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class MgBinaryDeserializer
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class MgBinaryDeserializer
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer">
+  
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer" class="text-break">Class MgBinaryDeserializer
+  </h1>
+  <div class="markdown level0 summary"><p>A utility for serializing objects to the internal MapGuide Format</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">MgBinaryDeserializer</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Serialization.html">OSGeo.MapGuide.MaestroAPI.Serialization</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MgBinaryDeserializer</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.#ctor*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer__ctor_Stream_Version_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.#ctor(Stream,Version)">MgBinaryDeserializer(Stream, Version)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.html">MgBinaryDeserializer</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MgBinaryDeserializer(Stream stream, Version siteversion)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">siteversion</span></td>
+        <td><p>The siteversion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_SiteVersion_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.SiteVersion*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_SiteVersion" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.SiteVersion">SiteVersion</h4>
+  <div class="markdown level1 summary"><p>Gets the site version.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Version SiteVersion { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><p>The site version.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadBool_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadBool*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadBool" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadBool">ReadBool()</h4>
+  <div class="markdown level1 summary"><p>Reads the bool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ReadBool()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadByte_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadByte*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadByte" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadByte">ReadByte()</h4>
+  <div class="markdown level1 summary"><p>Reads the byte.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte ReadByte()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadClassId_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadClassId*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadClassId" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadClassId">ReadClassId()</h4>
+  <div class="markdown level1 summary"><p>Reads the class id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ReadClassId()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadCoordinates_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadCoordinates*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadCoordinates" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadCoordinates">ReadCoordinates()</h4>
+  <div class="markdown level1 summary"><p>Reads the coordinates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double[] ReadCoordinates()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadDouble_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadDouble*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadDouble" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadDouble">ReadDouble()</h4>
+  <div class="markdown level1 summary"><p>Reads the double.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double ReadDouble()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt16_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt16*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt16" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt16">ReadInt16()</h4>
+  <div class="markdown level1 summary"><p>Reads the int16.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short ReadInt16()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt32_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt32*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt32" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt32">ReadInt32()</h4>
+  <div class="markdown level1 summary"><p>Reads the int32.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ReadInt32()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt64_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt64*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt64" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt64">ReadInt64()</h4>
+  <div class="markdown level1 summary"><p>Reads the int64.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long ReadInt64()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInternalString_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInternalString*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInternalString" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInternalString">ReadInternalString()</h4>
+  <div class="markdown level1 summary"><p>Reads the internal string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ReadInternalString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadObject_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadObject*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadObject" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadObject">ReadObject()</h4>
+  <div class="markdown level1 summary"><p>Reads the object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IBinarySerializable ReadObject()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Serialization.IBinarySerializable.html">IBinarySerializable</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadResourceIdentifier_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadResourceIdentifier*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadResourceIdentifier" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadResourceIdentifier">ReadResourceIdentifier()</h4>
+  <div class="markdown level1 summary"><p>Reads the resource identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ReadResourceIdentifier()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadSingle_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadSingle*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadSingle" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadSingle">ReadSingle()</h4>
+  <div class="markdown level1 summary"><p>Reads the single.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float ReadSingle()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStream_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStream*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStream" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStream">ReadStream()</h4>
+  <div class="markdown level1 summary"><p>Reads the stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Stream ReadStream()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamEnd_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamEnd*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamEnd" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamEnd">ReadStreamEnd()</h4>
+  <div class="markdown level1 summary"><p>Reads the stream end.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReadStreamEnd()</code></pre>
+  </div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamRepeat_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamRepeat*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamRepeat_System_Byte___System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamRepeat(System.Byte[],System.Int32,System.Int32)">ReadStreamRepeat(Byte[], Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Internal helper that will read from a potentially fragmented stream</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReadStreamRepeat(byte[] buf, int offset, int len)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">buf</span></td>
+        <td><p>The buf.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The offset.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">len</span></td>
+        <td><p>The number of bytes to read</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamRepeat_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamRepeat*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamRepeat_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamRepeat(System.Int32)">ReadStreamRepeat(Int32)</h4>
+  <div class="markdown level1 summary"><p>Reads the stream repeat.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] ReadStreamRepeat(int len)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">len</span></td>
+        <td><p>The len.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadString_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadString*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadString" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadString">ReadString()</h4>
+  <div class="markdown level1 summary"><p>Reads the string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ReadString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Understanding MapGuide Applications | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Understanding MapGuide Applications | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="understanding-mapguide-applications">Understanding MapGuide Applications</h1>
+
+<h2 id="web-layouts">Web Layouts</h2>
+<p>Web Layouts describe the user interface and functionality of the basic AJAX viewer. Through the <strong>Invoke Script</strong>
+and <strong>Invoke URL</strong> commands, custom functionality can be added to this viewer.</p>
+<p>The Web Layout editor is composed of 3 main sections, each described below.</p>
+<h3 id="general-settings">General Settings</h3>
+<p>The <strong>General Settings</strong> section of the editor allows you to configure the primary aspects of the web layout</p>
+<ul>
+<li>The title that is shown when the basic AJAX viewer is displayed in the web browser</li>
+<li>The Map Definition that this viewer will be displaying.</li>
+<li>The custom initial starting view.</li>
+<li>Visibility of certain viewer elements</li>
+<li>The initial task pane url</li>
+</ul>
+<p><img src="../images/wl_settings.png" alt=""></p>
+<p> <em>The General Settings</em></p>
+<p>When saved, the <strong>AJAX Viewer URL</strong> is used to publically access this web layout from the internet or intranet.</p>
+<div class="NOTE"><h5>Note</h5><p>If you are making this web layout for public consumption over the internet, the host name in the <strong>AJAX Viewer URL</strong>
+may need to be changed to match the publically accessible domain name. This URL is generated based on the mapagent URL
+you used when you logged in.</p>
+</div>
+<h3 id="menu-and-toolbar-command-layout">Menu and Toolbar Command Layout</h3>
+<p>The <strong>Menus and Toolbars</strong> section of the editor allows you to define the command layout of the toolbar and menus in the basic
+AJAX viewer</p>
+<p><img src="../images/wl_menus_toolbars.png" alt=""></p>
+<p> <em>Menus and Toolbars</em></p>
+<p>The <strong>Available Commands</strong> box lists all the commands (built-in and custom) that can be added to the toolbar and menus</p>
+<div class="NOTE"><h5>Note</h5><p>Flyout Menus can only go one level deep. Although the XML schema permits nested flyout menus the AJAX viewer will not respect this.</p>
+</div>
+<h3 id="command-set-configuration">Command Set Configuration</h3>
+<p>The <strong>Commands</strong> section of the editor allows you to add and configure custom commands. </p>
+<p><img src="../images/wl_commandset.png" alt=""></p>
+<p> <em>Command configuration</em></p>
+<p>The <strong>Custom Command Properties</strong> box allows you to edit the specific launch parameters of a custom command. There are 3 types of custom commands:</p>
+<ul>
+<li>Invoke Script</li>
+<li>Invoke URL</li>
+<li>Search</li>
+</ul>
+<div class="NOTE"><h5>Note</h5><p>Consult the MapGuide Developer&#39;s Guide for more information about implementing custom commands using the MapGuide API. </p>
+</div>
+<p>For built-in commands. This box provides a read-only view of the command properties.</p>
+<p>If you have the same set of custom commands, having to re-add these custom commands to every web layout can be time consuming. The Web Layout editor
+provides you with the ability to export these custom commands out to an XML file. The commands in these XML files can be imported into another Web Layout.</p>
+<p>To export commands, click the <strong>Export</strong> toolbar button and select the XML file which you wish to save these exported commands to.</p>
+<p>To import commands, click the <strong>Import</strong> toolbar button and select the XML file containing your previously exported commands.</p>
+<h2 id="application-definitions">Application Definitions</h2>
+<p>Application Definitions describe the user interface of a Fusion viewer. The Fusion viewer is more customizable than the basic AJAX viewer in terms of looks and out-of-the-box
+functionality. Looks are defined in terms of templates, functionality is defined in terms of widgets. A Fusion viewer application is a specified template, loaded up with your
+specific selection of widgets.</p>
+<p>The Application Definition editor is composed of 4 main sections. Each is described below.</p>
+<h3 id="template-selection">Template Selection</h3>
+<p>The <strong>Flexible Layout Settings</strong> section allows you to select the template to use and the title to show when displayed in a web browser.</p>
+<p><img src="../images/fl_settings.png" alt=""></p>
+<p> <em>Template selection panel</em></p>
+<p>When saved, the <strong>Public URL</strong> will be generated which you allows end users to access this Application Definition publically over the intranet or internet.</p>
+<div class="NOTE"><h5>Note</h5><p>The same public URL generation rules apply to Application Definitions as it does for Web Layouts. It is generated based on the mapagent URL
+you used when you logged in.</p>
+</div>
+<h3 id="map-configuration">Map Configuration</h3>
+<p>The <strong>Map Configuration</strong> section allows you to specify the Map Definition that this viewer is for.</p>
+<p><img src="../images/fl_maps.png" alt=""></p>
+<p> <em>Map Configuration</em></p>
+<p>In addition there are various settings for integrating your map with commercial map layers.</p>
+<div class="NOTE"><h5>Note</h5><p>If you use the commerical map layer integration, your map must be in the <code>WGS84.PseudoMercator</code> coordinate system. Otherwise your map will not line up with the commercial layers</p>
+</div>
+<div class="NOTE"><h5>Note</h5><p>An API key is required for consuming Yahoo or Google layers. You are bound by the terms and conditions of the respective commercial layer providers you wish to use.</p>
+</div>
+<h3 id="widget-and-container-layout">Widget and Container Layout</h3>
+<p>The <strong>Widgets</strong> section allows you to configure the layout of toolbar and menu widgets </p>
+<p><img src="../images/fl_widgets.png" alt=""></p>
+<p> <em>Widget and Container Layout</em></p>
+<p>Selecting a widget reference allows to you point to the correct widget in the widget set.</p>
+<h3 id="widget-management">Widget Management</h3>
+<p>The <strong>Widget Management</strong> dialog allows you to configure the main map widget and to add/configure other widgets in the widget set. </p>
+<p>Widgets in the widget set can then be referenced in the <strong>Widgets</strong> section of the editor.</p>
+<p><img src="../images/fl_widget_config_map.png" alt=""></p>
+<p> <em>Widget Management Dialog (map widget)</em></p>
+<p><img src="../images/fl_widget_config.png" alt=""></p>
+<p> <em>Widget Management Dialog (other widgets)</em></p>
+<p>All widgets are edited via XML. Widget behaviour is customised by editing the <code>&lt;Extension&gt;</code> element of the widget XML. If you are not sure what elements are allowed in the widget&#39;s extension
+element, you can click the <strong>Widget Info</strong> button, which will list all the available extension properties for this widget</p>
+<p><img src="../images/fl_widget_info.png" alt=""></p>
+<p> <em>Widget Info Dialog (for Redline widget)</em></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/Docs/userguide/understanding_applications.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>The Maestro Publishing Workflow | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="The Maestro Publishing Workflow | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="the-maestro-publishing-workflow">The Maestro Publishing Workflow</h1>
+
+<p>The basic workflow for creating maps and publishing them in Maestro is shown below</p>
+<p><img src="../images/maestro_publish_workflow.png" alt=""></p>
+<p>The first step is to connect to a MapGuide Server. Maestro will always prompt for a login when starting up.</p>
+<h2 id="1-find-data">1. Find Data</h2>
+<p>For this step, you have 2 choices.</p>
+<ol>
+<li><p><strong>Create a Load Procedure</strong>. A <strong>Load Procedure</strong> specifies a set of source files to load from. When the <strong>Load Procedure</strong> is executed, the following occurs:</p>
+<ul>
+<li>A <strong>Feature Source</strong> is created for each source file</li>
+<li>A default <strong>Layer Definition</strong> is created for each created Feature Source</li>
+</ul>
+<p><strong>Load Procedures</strong> will always load the source files into the MapGuide Server as embedded resource data of the Feature Source. If you want to maintain
+a connection to externally stored files, then you will have to create these <strong>Feature Sources</strong> manually. This approach is a quick way to load data into MapGuide.
+<strong>Load Procedures</strong> can be saved and executed at a later point in time to refresh this data. </p>
+</li>
+<li><p><strong>Create Feature Sources</strong>. For data sources like relational databases or web services, you do not have the <strong>Load Procedure</strong> option available. So therefore 
+you have to create these <strong>Feature Sources</strong> manually. If you want to connect to externally stored or aliased data files, you have to use this approach.</p>
+</li>
+</ol>
+<h2 id="2-build-layers">2. Build Layers</h2>
+<p>For this step, create <strong>Layer Definitions</strong> that point to a <strong>Feature Source</strong>. <strong>Layer Definitions</strong> give defines style and presentation rules for data coming from a
+<strong>Feature Sources</strong>. You can do things like:</p>
+<ul>
+<li>Theme data by attributes</li>
+<li>Style line thickness by attributes (or a computed expression based on attributes)</li>
+<li>Size point features by attributes (or a computed expression based on attributes)</li>
+<li>Use attributes (or a computed expression based on attributes) for feature labels</li>
+<li>Filter data by an attribute filter</li>
+</ul>
+<p><strong>Layer Definitions</strong> also contains settings for viewer interactions.</p>
+<ul>
+<li>You can specify a tooltip that is shown when you put a mouse over a feature from this layer. This can be an attribute or a computed expression based on attributes</li>
+<li>You can specify a url that is launched when the user selects a feature from this layer. This can be an attribute or a computed expression based on attributes.</li>
+</ul>
+<p>If you created and executed a <strong>Load Procedure</strong>, then these <strong>Layer Definitions</strong> have been created for you. However these are created with default settings 
+(monochromatic styles with basic symbology). So you will have to open and edit these resources to suit your needs.</p>
+<h2 id="3-make-a-map">3. Make a Map</h2>
+<p>For this step, create a <strong>Map Definition</strong> and bring in the <strong>Layer Definitions</strong> you have created. Organise these layers into groups (optional) and sort them by drawing 
+order with rasters and polygon layers at the bottom, followed by line layers, then followed by point layers. You don&#39;t need to specifically follow this draw order, but
+it&#39;s a generally useful rule to follow.</p>
+<p>For layers that change very rarely, you can set them as tiled layers. Tiled layers are rendered once as tiles and stored into a Tile Cache. Subsequent requests for the
+same view will request the cached tiles. This is a useful way to improve map performance.</p>
+<div class="NOTE"><h5>Note</h5><p>If you edit and save a map with tiled layers, the existing Tile Cache is deleted, as the generated tiles most likely no longer apply to the new map. Maestro will
+warn you about such situations.</p>
+</div>
+<h2 id="4-make-the-map-available">4. Make the map available</h2>
+<p>For this step. You can create either a <strong>Web Layout</strong> or a <strong>Application Definition</strong> which describe the viewer interface which to view and interact with the map.</p>
+<p>A <strong>Web Layout</strong> describes the user interface and functionality for the basic AJAX viewer. The AJAX viewer provies basic functionality for map viewing and interaction.</p>
+<p>A <strong>Flexible Layout</strong> describes the user interface and functionality for the Fusion viewer. The Fusion viewer has greater flexibility in terms of looks and functionality.</p>
+<p>Once you saved either resource, a preview URL will be visible in the respective editor. This URL allows your users to view the specific map using the specified 
+viewer application.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/Docs/userguide/publish_workflow.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

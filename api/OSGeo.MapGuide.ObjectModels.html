@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace OSGeo.MapGuide.ObjectModels
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace OSGeo.MapGuide.ObjectModels
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.ObjectModels">
+  
+  <h1 id="OSGeo_MapGuide_ObjectModels" data-uid="OSGeo.MapGuide.ObjectModels" class="text-break">Namespace OSGeo.MapGuide.ObjectModels
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.BaseSerializable.html">BaseSerializable</a></h4>
+      <section><p>The base class of all serializable resource types</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.BaseSerializableMapDefinition.html">BaseSerializableMapDefinition</a></h4>
+      <section><p>The base class of all serializable map definition types</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.Check.html">Check</a></h4>
+      <section><p>Pre-condition verifier utility class</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.ExtensionMethods.html">ExtensionMethods</a></h4>
+      <section><p>Extension Methods</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.MemoryStreamPool.html">MemoryStreamPool</a></h4>
+      <section><p>Provides <span class="xref">System.IO.MemoryStream</span> instances with pooled buffers to reduce heap fragmentation
+and GC pressure</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.ObjectFactory.html">ObjectFactory</a></h4>
+      <section><p>Factory class to create MapGuide resource objects with either pre-defined or
+sensible default values. This is recommended over creating the objects directly
+as this ensures that there are no null child properties where the XML schema forbids
+it.</p>
+<p>By default this class will only create known versions of any top-level resource (as of writing, up to MapGuide
+Open Source 2.6 / AIMS 2015). In order to be able to create newer versions where support has not yet been added to
+this library, you will need to register the appropriate methods that can create resources of this version:</p>
+<ul>
+<li><a class="xref" href="OSGeo.MapGuide.ObjectModels.ObjectFactory.html#OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLayerFactoryMethod_Version_Func_LayerType_ILayerDefinition__">RegisterLayerFactoryMethod(Version, Func&lt;LayerType, ILayerDefinition&gt;)</a> for Layer Definitions</li>
+</ul>
+<p>This registration needs to be done as part of your application&apos;s startup/initialization phase.</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceContentVersionChecker.html">ResourceContentVersionChecker</a></h4>
+      <section><p>Inspects a resource content stream to determine the version of the resource content within</p>
+<p>The stream to be inspected is copied and the inspection is made on the copy</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceExtensions.html">ResourceExtensions</a></h4>
+      <section><p>Extension method class</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceIdentifier.html">ResourceIdentifier</a></h4>
+      <section><p>This class contains all the required code for maintaining resource identifiers.
+It has implicit conversions to and from a string, which makes it much easier to use.
+It has both static methods that operate on strings, as well as a class that can be manipulated.</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceSerializer.html">ResourceSerializer</a></h4>
+      <section><p>A resource serializer</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.html">ResourceTypeDescriptor</a></h4>
+      <section><p>Represents a unique resource type / version pair</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.UntypedResource.html">UntypedResource</a></h4>
+      <section><p>Represents resource content that could not be deserialized into a corresponding
+strongly-typed resource class. This is just a container of arbitrary xml content.</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.XmlNamespaces.html">XmlNamespaces</a></h4>
+      <section><p>A set of XML namespaces commonly used in FDO XML documents</p>
+</section>
+    <h3 id="structs">Structs
+  </h3>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.FontInfo.html">FontInfo</a></h4>
+      <section><p>Font information</p>
+</section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html">IResource</a></h4>
+      <section><p>Represents a MapGuide Resource</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.IVersionedEntity.html">IVersionedEntity</a></h4>
+      <section><p>An entity with an attached version</p>
+</section>
+    <h3 id="enums">Enums
+  </h3>
+      <h4><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypes.html">ResourceTypes</a></h4>
+      <section><p>Represents the common resource types in MapGuide</p>
+</section>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

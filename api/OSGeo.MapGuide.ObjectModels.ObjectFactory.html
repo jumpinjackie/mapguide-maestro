@@ -1,0 +1,2183 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ObjectFactory
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ObjectFactory
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory">
+  
+  
+  <h1 id="OSGeo_MapGuide_ObjectModels_ObjectFactory" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory" class="text-break">Class ObjectFactory
+  </h1>
+  <div class="markdown level0 summary"><p>Factory class to create MapGuide resource objects with either pre-defined or
+sensible default values. This is recommended over creating the objects directly
+as this ensures that there are no null child properties where the XML schema forbids
+it.</p>
+<p>By default this class will only create known versions of any top-level resource (as of writing, up to MapGuide
+Open Source 2.6 / AIMS 2015). In order to be able to create newer versions where support has not yet been added to
+this library, you will need to register the appropriate methods that can create resources of this version:</p>
+<ul>
+<li><a class="xref" href="OSGeo.MapGuide.ObjectModels.ObjectFactory.html#OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLayerFactoryMethod_Version_Func_LayerType_ILayerDefinition__">RegisterLayerFactoryMethod(Version, Func&lt;LayerType, ILayerDefinition&gt;)</a> for Layer Definitions</li>
+</ul>
+<p>This registration needs to be done as part of your application&apos;s startup/initialization phase.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ObjectFactory</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.html">OSGeo.MapGuide.ObjectModels</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class ObjectFactory</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateAttributeRelation_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateAttributeRelation*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateAttributeRelation" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateAttributeRelation">CreateAttributeRelation()</h4>
+  <div class="markdown level1 summary"><p>Creates the attribute relation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IAttributeRelation CreateAttributeRelation()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IAttributeRelation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCalculatedProperty_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCalculatedProperty*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCalculatedProperty" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCalculatedProperty">CreateCalculatedProperty()</h4>
+  <div class="markdown level1 summary"><p>Creates the calculated property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ICalculatedProperty CreateCalculatedProperty()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ICalculatedProperty</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCalculatedProperty_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCalculatedProperty*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCalculatedProperty_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCalculatedProperty(System.String,System.String)">CreateCalculatedProperty(String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates the calculated property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ICalculatedProperty CreateCalculatedProperty(string name, string expression)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the calculated property</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">expression</span></td>
+        <td><p>The FDO Expression</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ICalculatedProperty</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCompoundSymbol_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCompoundSymbol*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCompoundSymbol_Version_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCompoundSymbol(Version,System.String,System.String)">CreateCompoundSymbol(Version, String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates the compound symbol.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ICompoundSymbolDefinition CreateCompoundSymbol(Version version, string name, string description)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td><p>The version.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>The description.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ICompoundSymbolDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateDefaultLayer_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateDefaultLayer*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateDefaultLayer_LayerType_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateDefaultLayer(LayerType,Version)">CreateDefaultLayer(LayerType, Version)</h4>
+  <div class="markdown level1 summary"><p>Creates the default layer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ILayerDefinition CreateDefaultLayer(LayerType type, Version version)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">LayerType</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td><p>The version.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ILayerDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateDrawingSource_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateDrawingSource*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateDrawingSource" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateDrawingSource">CreateDrawingSource()</h4>
+  <div class="markdown level1 summary"><p>Creates the drawing source.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IDrawingSource CreateDrawingSource()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IDrawingSource</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateEnvelope_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateEnvelope*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateEnvelope_System_Double_System_Double_System_Double_System_Double_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateEnvelope(System.Double,System.Double,System.Double,System.Double)">CreateEnvelope(Double, Double, Double, Double)</h4>
+  <div class="markdown level1 summary"><p>Creates an envelope (bounding box)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnvelope CreateEnvelope(double minx, double miny, double maxx, double maxy)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">minx</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">miny</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">maxx</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">maxy</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnvelope</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSource_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSource*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSource_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSource(System.String)">CreateFeatureSource(String)</h4>
+  <div class="markdown level1 summary"><p>Creates the feature source.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IFeatureSource CreateFeatureSource(string provider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">provider</span></td>
+        <td><p>The provider.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IFeatureSource</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSource_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSource*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSource_System_String_NameValueCollection_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSource(System.String,NameValueCollection)">CreateFeatureSource(String, NameValueCollection)</h4>
+  <div class="markdown level1 summary"><p>Creates the feature source.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IFeatureSource CreateFeatureSource(string provider, NameValueCollection values)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">provider</span></td>
+        <td><p>The provider.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="parametername">values</span></td>
+        <td><p>The connection properties.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IFeatureSource</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSourceExtension_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSourceExtension*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSourceExtension" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSourceExtension">CreateFeatureSourceExtension()</h4>
+  <div class="markdown level1 summary"><p>Creates the feature source extension.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IFeatureSourceExtension CreateFeatureSourceExtension()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IFeatureSourceExtension</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSourceExtension_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSourceExtension*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSourceExtension_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSourceExtension(System.String,System.String)">CreateFeatureSourceExtension(String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates the feature source extension.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IFeatureSourceExtension CreateFeatureSourceExtension(string name, string featureClass)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">featureClass</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IFeatureSourceExtension</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFlexibleLayout_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFlexibleLayout*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFlexibleLayout_Version_IApplicationDefinitionTemplateInfoSet_IApplicationDefinitionWidgetInfoSet_IApplicationDefinitionContainerInfoSet_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFlexibleLayout(Version,IApplicationDefinitionTemplateInfoSet,IApplicationDefinitionWidgetInfoSet,IApplicationDefinitionContainerInfoSet,System.String)">CreateFlexibleLayout(Version, IApplicationDefinitionTemplateInfoSet, IApplicationDefinitionWidgetInfoSet, IApplicationDefinitionContainerInfoSet, String)</h4>
+  <div class="markdown level1 summary"><p>Creates a fusion flexible layout</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IApplicationDefinition CreateFlexibleLayout(Version siteVersion, IApplicationDefinitionTemplateInfoSet templates, IApplicationDefinitionWidgetInfoSet widgets, IApplicationDefinitionContainerInfoSet containers, string templateName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">siteVersion</span></td>
+        <td><p>The site version</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IApplicationDefinitionTemplateInfoSet</span></td>
+        <td><span class="parametername">templates</span></td>
+        <td><p>The set of available templates</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IApplicationDefinitionWidgetInfoSet</span></td>
+        <td><span class="parametername">widgets</span></td>
+        <td><p>The set of available widgets</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IApplicationDefinitionContainerInfoSet</span></td>
+        <td><span class="parametername">containers</span></td>
+        <td><p>The set of available containers</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">templateName</span></td>
+        <td><p>The name of the template. See <a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.FusionTemplateNames.html">FusionTemplateNames</a> for the common pre-defined names</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IApplicationDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateLoadProcedure_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateLoadProcedure*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateLoadProcedure_LoadType_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateLoadProcedure(LoadType)">CreateLoadProcedure(LoadType)</h4>
+  <div class="markdown level1 summary"><p>Creates the load procedure.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ILoadProcedure CreateLoadProcedure(LoadType type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">LoadType</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ILoadProcedure</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateLoadProcedure_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateLoadProcedure*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateLoadProcedure_LoadType_IEnumerable_System_String__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateLoadProcedure(LoadType,IEnumerable{System.String})">CreateLoadProcedure(LoadType, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates the load procedure.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ILoadProcedure CreateLoadProcedure(LoadType type, IEnumerable&lt;string&gt; fileNames)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">LoadType</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">fileNames</span></td>
+        <td><p>The file names.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ILoadProcedure</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_Version_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition(Version,System.String)">CreateMapDefinition(Version, String)</h4>
+  <div class="markdown level1 summary"><p>Creates the map definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IMapDefinition CreateMapDefinition(Version version, string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IMapDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_Version_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition(Version,System.String,System.String)">CreateMapDefinition(Version, String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates the map definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IMapDefinition CreateMapDefinition(Version ver, string name, string coordinateSystemWkt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">ver</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">coordinateSystemWkt</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IMapDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_Version_System_String_System_String_IEnvelope_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition(Version,System.String,System.String,IEnvelope)">CreateMapDefinition(Version, String, String, IEnvelope)</h4>
+  <div class="markdown level1 summary"><p>Creates the map definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IMapDefinition CreateMapDefinition(Version ver, string name, string coordinateSystemWkt, IEnvelope env)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">ver</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">coordinateSystemWkt</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnvelope</span></td>
+        <td><span class="parametername">env</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IMapDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMetadata_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMetadata*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMetadata" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMetadata">CreateMetadata()</h4>
+  <div class="markdown level1 summary"><p>Creates an empty resource document header metadata object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResourceDocumentHeaderTypeMetadata CreateMetadata()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ResourceDocumentHeaderTypeMetadata</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePoint2D_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePoint2D*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePoint2D_System_Double_System_Double_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePoint2D(System.Double,System.Double)">CreatePoint2D(Double, Double)</h4>
+  <div class="markdown level1 summary"><p>Creates a 2d point</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IPoint2D CreatePoint2D(double x, double y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IPoint2D</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePoint3D_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePoint3D*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePoint3D_System_Double_System_Double_System_Double_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePoint3D(System.Double,System.Double,System.Double)">CreatePoint3D(Double, Double, Double)</h4>
+  <div class="markdown level1 summary"><p>Creates a 3d point</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IPoint3D CreatePoint3D(double x, double y, double z)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">z</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IPoint3D</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePrintLayout_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePrintLayout*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePrintLayout" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePrintLayout">CreatePrintLayout()</h4>
+  <div class="markdown level1 summary"><p>Creates the print layout.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IPrintLayout CreatePrintLayout()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IPrintLayout</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSecurityGroup_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSecurityGroup*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSecurityGroup" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSecurityGroup">CreateSecurityGroup()</h4>
+  <div class="markdown level1 summary"><p>Creates an empty group security object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResourceSecurityTypeGroups CreateSecurityGroup()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ResourceSecurityTypeGroups</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSecurityUser_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSecurityUser*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSecurityUser" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSecurityUser">CreateSecurityUser()</h4>
+  <div class="markdown level1 summary"><p>Creates an empty user security object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResourceSecurityTypeUsers CreateSecurityUser()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ResourceSecurityTypeUsers</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleLabel_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleLabel*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleLabel_Version_GeometryContextType_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleLabel(Version,GeometryContextType)">CreateSimpleLabel(Version, GeometryContextType)</h4>
+  <div class="markdown level1 summary"><p>Creates a simple label symbol</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ISimpleSymbolDefinition CreateSimpleLabel(Version version, GeometryContextType type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">GeometryContextType</span></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ISimpleSymbolDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimplePoint_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimplePoint*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimplePoint_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimplePoint(Version)">CreateSimplePoint(Version)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ISimpleSymbolDefinition CreateSimplePoint(Version version)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ISimpleSymbolDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSolidFill_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSolidFill*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSolidFill_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSolidFill(Version)">CreateSimpleSolidFill(Version)</h4>
+  <div class="markdown level1 summary"><p>Creates a simple solid fill symbol</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ISimpleSymbolDefinition CreateSimpleSolidFill(Version version)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ISimpleSymbolDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSolidLine_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSolidLine*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSolidLine_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSolidLine(Version)">CreateSimpleSolidLine(Version)</h4>
+  <div class="markdown level1 summary"><p>Creates a simple solid line symbol</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ISimpleSymbolDefinition CreateSimpleSolidLine(Version version)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ISimpleSymbolDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSymbol_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSymbol*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSymbol_Version_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSymbol(Version,System.String,System.String)">CreateSimpleSymbol(Version, String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates a simple symbol definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ISimpleSymbolDefinition CreateSimpleSymbol(Version version, string name, string description)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td><p>The version.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>The description.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ISimpleSymbolDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSymbolLibrary_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSymbolLibrary*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSymbolLibrary" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSymbolLibrary">CreateSymbolLibrary()</h4>
+  <div class="markdown level1 summary"><p>Creates a new symbol library</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ISymbolLibrary CreateSymbolLibrary()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ISymbolLibrary</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateTileSetDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateTileSetDefinition*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateTileSetDefinition_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateTileSetDefinition(Version)">CreateTileSetDefinition(Version)</h4>
+  <div class="markdown level1 summary"><p>Creates the tile set definition</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ITileSetDefinition CreateTileSetDefinition(Version version)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ITileSetDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateTileSetDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateTileSetDefinition*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateTileSetDefinition_Version_IEnvelope_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateTileSetDefinition(Version,IEnvelope)">CreateTileSetDefinition(Version, IEnvelope)</h4>
+  <div class="markdown level1 summary"><p>Creates the tile set definition using the default provider</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ITileSetDefinition CreateTileSetDefinition(Version version, IEnvelope extents)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnvelope</span></td>
+        <td><span class="parametername">extents</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ITileSetDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateWatermark_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateWatermark*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateWatermark_SymbolDefinitionType_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateWatermark(SymbolDefinitionType,Version)">CreateWatermark(SymbolDefinitionType, Version)</h4>
+  <div class="markdown level1 summary"><p>Creates a Watermark Definition</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IWatermarkDefinition CreateWatermark(SymbolDefinitionType type, Version version)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SymbolDefinitionType</span></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IWatermarkDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateWebLayout_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateWebLayout*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateWebLayout_Version_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateWebLayout(Version,System.String)">CreateWebLayout(Version, String)</h4>
+  <div class="markdown level1 summary"><p>Creates the web layout.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IWebLayout CreateWebLayout(Version version, string mapDefinitionId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td><p>The version.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">mapDefinitionId</span></td>
+        <td><p>The map definition id.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IWebLayout</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_Deserialize_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.Deserialize*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_Deserialize_System_String_Stream_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.Deserialize(System.String,Stream)">Deserialize(String, Stream)</h4>
+  <div class="markdown level1 summary"><p>Deserializes the specified stream for the specified resource type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IResource Deserialize(string resourceType, Stream stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceType</span></td>
+        <td><p>Type of the resource.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html">IResource</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_DeserializeEmbeddedFlexLayout_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.DeserializeEmbeddedFlexLayout*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_DeserializeEmbeddedFlexLayout_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.DeserializeEmbeddedFlexLayout(Version)">DeserializeEmbeddedFlexLayout(Version)</h4>
+  <div class="markdown level1 summary"><p>Returns a deserialized copy of an embedded Flexible Layout</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IApplicationDefinition DeserializeEmbeddedFlexLayout(Version siteVersion)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">siteVersion</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IApplicationDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_DeserializeXml_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.DeserializeXml*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_DeserializeXml_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.DeserializeXml(System.String)">DeserializeXml(String)</h4>
+  <div class="markdown level1 summary"><p>Deserializes the specified XML.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IResource DeserializeXml(string xml)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">xml</span></td>
+        <td><p>The XML.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html">IResource</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterCompoundSymbolFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterCompoundSymbolFactoryMethod*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterCompoundSymbolFactoryMethod_Version_Func_ICompoundSymbolDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterCompoundSymbolFactoryMethod(Version,Func{ICompoundSymbolDefinition})">RegisterCompoundSymbolFactoryMethod(Version, Func&lt;ICompoundSymbolDefinition&gt;)</h4>
+  <div class="markdown level1 summary"><p>Registers the compound symbol factory method</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RegisterCompoundSymbolFactoryMethod(Version version, Func&lt;ICompoundSymbolDefinition&gt; func)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">ICompoundSymbolDefinition</span>&gt;</td>
+        <td><span class="parametername">func</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLayerFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterLayerFactoryMethod*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLayerFactoryMethod_Version_Func_LayerType_ILayerDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterLayerFactoryMethod(Version,Func{LayerType,ILayerDefinition})">RegisterLayerFactoryMethod(Version, Func&lt;LayerType, ILayerDefinition&gt;)</h4>
+  <div class="markdown level1 summary"><p>Registers the layer factory method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RegisterLayerFactoryMethod(Version version, Func&lt;LayerType, ILayerDefinition&gt; method)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td><p>The ver.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">LayerType</span>, <span class="xref">ILayerDefinition</span>&gt;</td>
+        <td><span class="parametername">method</span></td>
+        <td><p>The method.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLoadProcedureFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterLoadProcedureFactoryMethod*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLoadProcedureFactoryMethod_LoadType_Func_ILoadProcedure__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterLoadProcedureFactoryMethod(LoadType,Func{ILoadProcedure})">RegisterLoadProcedureFactoryMethod(LoadType, Func&lt;ILoadProcedure&gt;)</h4>
+  <div class="markdown level1 summary"><p>Registers the load procedure factory method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RegisterLoadProcedureFactoryMethod(LoadType type, Func&lt;ILoadProcedure&gt; method)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">LoadType</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">ILoadProcedure</span>&gt;</td>
+        <td><span class="parametername">method</span></td>
+        <td><p>The method.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterMapDefinitionFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterMapDefinitionFactoryMethod*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterMapDefinitionFactoryMethod_Version_Func_IMapDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterMapDefinitionFactoryMethod(Version,Func{IMapDefinition})">RegisterMapDefinitionFactoryMethod(Version, Func&lt;IMapDefinition&gt;)</h4>
+  <div class="markdown level1 summary"><p>Register the map definition factory method</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RegisterMapDefinitionFactoryMethod(Version version, Func&lt;IMapDefinition&gt; method)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">IMapDefinition</span>&gt;</td>
+        <td><span class="parametername">method</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterResource_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterResource*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterResource_OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_OSGeo_MapGuide_ObjectModels_ResourceSerializer_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterResource(OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor,OSGeo.MapGuide.ObjectModels.ResourceSerializer)">RegisterResource(ResourceTypeDescriptor, ResourceSerializer)</h4>
+  <div class="markdown level1 summary"><p>Registers a resource serializer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RegisterResource(ResourceTypeDescriptor desc, ResourceSerializer serializer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.html">ResourceTypeDescriptor</a></td>
+        <td><span class="parametername">desc</span></td>
+        <td><p>The desc.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceSerializer.html">ResourceSerializer</a></td>
+        <td><span class="parametername">serializer</span></td>
+        <td><p>The serializer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterResourceSerializer_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterResourceSerializer*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterResourceSerializer_OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_Func_OSGeo_MapGuide_ObjectModels_IResource_Stream__Func_System_String_OSGeo_MapGuide_ObjectModels_IResource__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterResourceSerializer(OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor,Func{OSGeo.MapGuide.ObjectModels.IResource,Stream},Func{System.String,OSGeo.MapGuide.ObjectModels.IResource})">RegisterResourceSerializer(ResourceTypeDescriptor, Func&lt;IResource, Stream&gt;, Func&lt;String, IResource&gt;)</h4>
+  <div class="markdown level1 summary"><p>Registers a resource serializer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RegisterResourceSerializer(ResourceTypeDescriptor resourceType, Func&lt;IResource, Stream&gt; serializer, Func&lt;string, IResource&gt; deserializer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.html">ResourceTypeDescriptor</a></td>
+        <td><span class="parametername">resourceType</span></td>
+        <td><p>The resource type descriptor.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html">IResource</a>, <span class="xref">Stream</span>&gt;</td>
+        <td><span class="parametername">serializer</span></td>
+        <td><p>The serialize method.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html">IResource</a>&gt;</td>
+        <td><span class="parametername">deserializer</span></td>
+        <td><p>The deserialize method.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterSimpleSymbolFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterSimpleSymbolFactoryMethod*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterSimpleSymbolFactoryMethod_Version_Func_ISimpleSymbolDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterSimpleSymbolFactoryMethod(Version,Func{ISimpleSymbolDefinition})">RegisterSimpleSymbolFactoryMethod(Version, Func&lt;ISimpleSymbolDefinition&gt;)</h4>
+  <div class="markdown level1 summary"><p>Regsiters the simple symbol factory method</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RegisterSimpleSymbolFactoryMethod(Version version, Func&lt;ISimpleSymbolDefinition&gt; func)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">ISimpleSymbolDefinition</span>&gt;</td>
+        <td><span class="parametername">func</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterTileSetDefinitionFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterTileSetDefinitionFactoryMethod*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterTileSetDefinitionFactoryMethod_Version_Func_ITileSetDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterTileSetDefinitionFactoryMethod(Version,Func{ITileSetDefinition})">RegisterTileSetDefinitionFactoryMethod(Version, Func&lt;ITileSetDefinition&gt;)</h4>
+  <div class="markdown level1 summary"><p>Registers the Tile Set Definition factory method</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RegisterTileSetDefinitionFactoryMethod(Version version, Func&lt;ITileSetDefinition&gt; func)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">ITileSetDefinition</span>&gt;</td>
+        <td><span class="parametername">func</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterWatermarkDefinitionFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterWatermarkDefinitionFactoryMethod*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterWatermarkDefinitionFactoryMethod_Version_Func_SymbolDefinitionType_IWatermarkDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(Version,Func{SymbolDefinitionType,IWatermarkDefinition})">RegisterWatermarkDefinitionFactoryMethod(Version, Func&lt;SymbolDefinitionType, IWatermarkDefinition&gt;)</h4>
+  <div class="markdown level1 summary"><p>Registers the Watermark Definition factory method</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RegisterWatermarkDefinitionFactoryMethod(Version version, Func&lt;SymbolDefinitionType, IWatermarkDefinition&gt; method)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">SymbolDefinitionType</span>, <span class="xref">IWatermarkDefinition</span>&gt;</td>
+        <td><span class="parametername">method</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterWebLayoutFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterWebLayoutFactoryMethod*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterWebLayoutFactoryMethod_Version_Func_System_String_IWebLayout__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterWebLayoutFactoryMethod(Version,Func{System.String,IWebLayout})">RegisterWebLayoutFactoryMethod(Version, Func&lt;String, IWebLayout&gt;)</h4>
+  <div class="markdown level1 summary"><p>Registers the web layout factory method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RegisterWebLayoutFactoryMethod(Version version, Func&lt;string, IWebLayout&gt; method)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td><span class="parametername">version</span></td>
+        <td><p>The version.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.String</span>, <span class="xref">IWebLayout</span>&gt;</td>
+        <td><span class="parametername">method</span></td>
+        <td><p>The method.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_Reset_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.Reset*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_Reset" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.Reset">Reset()</h4>
+  <div class="markdown level1 summary"><p>Resets the object factory by clearing all registered factories</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Reset()</code></pre>
+  </div>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_Serialize_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.Serialize*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_Serialize_OSGeo_MapGuide_ObjectModels_IResource_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.Serialize(OSGeo.MapGuide.ObjectModels.IResource)">Serialize(IResource)</h4>
+  <div class="markdown level1 summary"><p>Serializes the specified resource.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Stream Serialize(IResource resource)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html">IResource</a></td>
+        <td><span class="parametername">resource</span></td>
+        <td><p>The resource.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_SerializeAsString_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.SerializeAsString*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_SerializeAsString_OSGeo_MapGuide_ObjectModels_IResource_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.SerializeAsString(OSGeo.MapGuide.ObjectModels.IResource)">SerializeAsString(IResource)</h4>
+  <div class="markdown level1 summary"><p>Serializes the specified resource.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string SerializeAsString(IResource resource)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html">IResource</a></td>
+        <td><span class="parametername">resource</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

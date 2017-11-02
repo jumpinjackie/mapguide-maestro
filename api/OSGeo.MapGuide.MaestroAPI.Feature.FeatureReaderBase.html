@@ -1,0 +1,616 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class FeatureReaderBase
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class FeatureReaderBase
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase">
+  
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase" class="text-break">Class FeatureReaderBase
+  </h1>
+  <div class="markdown level0 summary"><p>Base implementation of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a>
+interface</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html">ReaderBase</a></div>
+    <div class="level2"><span class="xref">FeatureReaderBase</span></div>
+      <div class="level3"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.html">FeatureArrayReader</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a></div>
+    <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a></div>
+    <div><span class="xref">IDisposable</span></div>
+    <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a></div>
+    <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a></div>
+    <div><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Current">ReaderBase.Current</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_FieldCount">ReaderBase.FieldCount</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReadNext">ReaderBase.ReadNext()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Close">ReaderBase.Close()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Dispose">ReaderBase.Dispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Dispose_System_Boolean_">ReaderBase.Dispose(Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_IsNull_System_String_">ReaderBase.IsNull(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_IsNull_System_Int32_">ReaderBase.IsNull(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBoolean_System_String_">ReaderBase.GetBoolean(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetByte_System_String_">ReaderBase.GetByte(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBlob_System_String_">ReaderBase.GetBlob(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetClob_System_String_">ReaderBase.GetClob(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDouble_System_String_">ReaderBase.GetDouble(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDateTime_System_String_">ReaderBase.GetDateTime(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt16_System_String_">ReaderBase.GetInt16(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt32_System_String_">ReaderBase.GetInt32(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt64_System_String_">ReaderBase.GetInt64(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetSingle_System_String_">ReaderBase.GetSingle(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetString_System_String_">ReaderBase.GetString(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetGeometry_System_String_">ReaderBase.GetGeometry(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBoolean_System_Int32_">ReaderBase.GetBoolean(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetByte_System_Int32_">ReaderBase.GetByte(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBlob_System_Int32_">ReaderBase.GetBlob(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetClob_System_Int32_">ReaderBase.GetClob(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDouble_System_Int32_">ReaderBase.GetDouble(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDateTime_System_Int32_">ReaderBase.GetDateTime(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt16_System_Int32_">ReaderBase.GetInt16(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt32_System_Int32_">ReaderBase.GetInt32(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt64_System_Int32_">ReaderBase.GetInt64(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetSingle_System_Int32_">ReaderBase.GetSingle(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetString_System_Int32_">ReaderBase.GetString(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetGeometry_System_Int32_">ReaderBase.GetGeometry(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Item_System_Int32_">ReaderBase.Item[Int32]</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Item_System_String_">ReaderBase.Item[String]</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetPropertyType_System_String_">ReaderBase.GetPropertyType(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetPropertyType_System_Int32_">ReaderBase.GetPropertyType(Int32)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.html">OSGeo.MapGuide.MaestroAPI.Feature</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class FeatureReaderBase : ReaderBase, IFeatureReader, IReader, IDisposable, IFeature, IRecord, IEnumerable&lt;IFeature&gt;</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_ClassDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.ClassDefinition*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_ClassDefinition" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.ClassDefinition">ClassDefinition</h4>
+  <div class="markdown level1 summary"><p>Gets the class definition of the object currently being read. If the user has requested
+only a subset of the class properties (as specified in the filter text), the class
+definition reflects what the user has requested, rather than the full class definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ClassDefinition ClassDefinition { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ClassDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_ReaderType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.ReaderType*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_ReaderType" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.ReaderType">ReaderType</h4>
+  <div class="markdown level1 summary"><p>Gets the type of the reader.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override ReaderType ReaderType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderType.html">ReaderType</a></td>
+        <td><p>The type of the reader.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReaderType">ReaderBase.ReaderType</a></div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_GetEnumerator_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.GetEnumerator*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_GetEnumerator" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;IFeature&gt; GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerator</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a>&gt;</td>
+        <td><p>A <span class="xref">System.Collections.Generic.IEnumerator`1</span> that can be used to iterate through the collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_GetFeatureObject_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.GetFeatureObject*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_GetFeatureObject_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.GetFeatureObject(System.Int32)">GetFeatureObject(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets a <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a> containing
+all the nested features at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IFeatureReader GetFeatureObject(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_GetFeatureObject_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.GetFeatureObject*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_GetFeatureObject_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.GetFeatureObject(System.String)">GetFeatureObject(String)</h4>
+  <div class="markdown level1 summary"><p>Gets a <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a> containing
+all the nested features of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IFeatureReader GetFeatureObject(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_GetFieldType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.GetFieldType*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_GetFieldType_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.GetFieldType(System.Int32)">GetFieldType(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the CLR type of the field at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Type GetFieldType(int i)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">i</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetFieldType_System_Int32_">ReaderBase.GetFieldType(Int32)</a></div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_GetName_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.GetName*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_GetName_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.GetName(System.Int32)">GetName(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the field at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string GetName(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetName_System_Int32_">ReaderBase.GetName(Int32)</a></div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_ReadNextFeature_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.ReadNextFeature*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_ReadNextFeature" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.ReadNextFeature">ReadNextFeature()</h4>
+  <div class="markdown level1 summary"><p>Reads the next feature.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract IFeature ReadNextFeature()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_ReadNextRecord_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.ReadNextRecord*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_ReadNextRecord" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.ReadNextRecord">ReadNextRecord()</h4>
+  <div class="markdown level1 summary"><p>Reads the next record.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override IRecord ReadNextRecord()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReadNextRecord">ReaderBase.ReadNextRecord()</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a>
+  </div>
+  <div>
+      <span class="xref">IDisposable</span>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a>
+  </div>
+  <div>
+      <span class="xref">IEnumerable&lt;&gt;</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

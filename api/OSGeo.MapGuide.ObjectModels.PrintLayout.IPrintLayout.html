@@ -1,0 +1,719 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IPrintLayout
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IPrintLayout
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout">
+  
+  
+  <h1 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout" class="text-break">Interface IPrintLayout
+  </h1>
+  <div class="markdown level0 summary"><p>Print Layouts</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_ValidatingSchema">IResource.ValidatingSchema</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_ResourceID">IResource.ResourceID</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_ResourceType">IResource.ResourceType</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_Serialize">IResource.Serialize()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_IsStronglyTyped">IResource.IsStronglyTyped</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IVersionedEntity.html#OSGeo_MapGuide_ObjectModels_IVersionedEntity_ResourceVersion">IVersionedEntity.ResourceVersion</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.html">OSGeo.MapGuide.ObjectModels.PrintLayout</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IPrintLayout : IResource, IVersionedEntity, ICloneable, INotifyPropertyChanged</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CustomLogos_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CustomLogos*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CustomLogos" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CustomLogos">CustomLogos</h4>
+  <div class="markdown level1 summary"><p>Gets the custom logos.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;ILogo&gt; CustomLogos { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.ILogo.html">ILogo</a>&gt;</td>
+        <td><p>The custom logos.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CustomText_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CustomText*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CustomText" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CustomText">CustomText</h4>
+  <div class="markdown level1 summary"><p>Gets the custom text elements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;IText&gt; CustomText { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.IText.html">IText</a>&gt;</td>
+        <td><p>The custom text elements.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_LayoutProperties_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.LayoutProperties*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_LayoutProperties" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.LayoutProperties">LayoutProperties</h4>
+  <div class="markdown level1 summary"><p>Gets the layout properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IPrintLayoutProperties LayoutProperties { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayoutProperties.html">IPrintLayoutProperties</a></td>
+        <td><p>The layout properties.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_PageProperties_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.PageProperties*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_PageProperties" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.PageProperties">PageProperties</h4>
+  <div class="markdown level1 summary"><p>Gets the page properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IPrintLayoutPageProperties PageProperties { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayoutPageProperties.html">IPrintLayoutPageProperties</a></td>
+        <td><p>The page properties.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_AddLogo_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.AddLogo*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_AddLogo_OSGeo_MapGuide_ObjectModels_PrintLayout_ILogo_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.AddLogo(OSGeo.MapGuide.ObjectModels.PrintLayout.ILogo)">AddLogo(ILogo)</h4>
+  <div class="markdown level1 summary"><p>Adds the logo.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void AddLogo(ILogo logo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.ILogo.html">ILogo</a></td>
+        <td><span class="parametername">logo</span></td>
+        <td><p>The logo.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_AddText_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.AddText*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_AddText_OSGeo_MapGuide_ObjectModels_PrintLayout_IText_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.AddText(OSGeo.MapGuide.ObjectModels.PrintLayout.IText)">AddText(IText)</h4>
+  <div class="markdown level1 summary"><p>Adds the text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void AddText(IText text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.IText.html">IText</a></td>
+        <td><span class="parametername">text</span></td>
+        <td><p>The text.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CreateFont_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CreateFont*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CreateFont_System_String_System_Single_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CreateFont(System.String,System.Single,System.String)">CreateFont(String, Single, String)</h4>
+  <div class="markdown level1 summary"><p>Creates the font.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IFont CreateFont(string name, float height, string units)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">units</span></td>
+        <td><p>The units.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.IFont.html">IFont</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CreateLogo_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CreateLogo*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CreateLogo_System_String_System_String_OSGeo_MapGuide_ObjectModels_PrintLayout_ISize_OSGeo_MapGuide_ObjectModels_PrintLayout_IPosition_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CreateLogo(System.String,System.String,OSGeo.MapGuide.ObjectModels.PrintLayout.ISize,OSGeo.MapGuide.ObjectModels.PrintLayout.IPosition)">CreateLogo(String, String, ISize, IPosition)</h4>
+  <div class="markdown level1 summary"><p>Creates the logo.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ILogo CreateLogo(string symbolLibraryId, string symbolName, ISize size, IPosition position)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">symbolLibraryId</span></td>
+        <td><p>The symbol library id.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">symbolName</span></td>
+        <td><p>Name of the symbol.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.ISize.html">ISize</a></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.IPosition.html">IPosition</a></td>
+        <td><span class="parametername">position</span></td>
+        <td><p>The position.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.ILogo.html">ILogo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CreateLogoPosition_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CreateLogoPosition*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CreateLogoPosition_System_Single_System_Single_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CreateLogoPosition(System.Single,System.Single,System.String)">CreateLogoPosition(Single, Single, String)</h4>
+  <div class="markdown level1 summary"><p>Creates the logo position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IPosition CreateLogoPosition(float left, float bottom, string units)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The left.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">bottom</span></td>
+        <td><p>The bottom.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">units</span></td>
+        <td><p>The units.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.IPosition.html">IPosition</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CreateLogoSize_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CreateLogoSize*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CreateLogoSize_System_Single_System_Single_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CreateLogoSize(System.Single,System.Single,System.String)">CreateLogoSize(Single, Single, String)</h4>
+  <div class="markdown level1 summary"><p>Creates the size of the logo.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ISize CreateLogoSize(float width, float height, string units)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">units</span></td>
+        <td><p>The units.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.ISize.html">ISize</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CreateText_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CreateText*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CreateText_System_String_OSGeo_MapGuide_ObjectModels_PrintLayout_IFont_OSGeo_MapGuide_ObjectModels_PrintLayout_IPosition_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CreateText(System.String,OSGeo.MapGuide.ObjectModels.PrintLayout.IFont,OSGeo.MapGuide.ObjectModels.PrintLayout.IPosition)">CreateText(String, IFont, IPosition)</h4>
+  <div class="markdown level1 summary"><p>Creates the text element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IText CreateText(string value, IFont font, IPosition text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.IFont.html">IFont</a></td>
+        <td><span class="parametername">font</span></td>
+        <td><p>The font.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.IPosition.html">IPosition</a></td>
+        <td><span class="parametername">text</span></td>
+        <td><p>The text.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.IText.html">IText</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CreateTextPosition_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CreateTextPosition*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_CreateTextPosition_System_Single_System_Single_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.CreateTextPosition(System.Single,System.Single,System.String)">CreateTextPosition(Single, Single, String)</h4>
+  <div class="markdown level1 summary"><p>Creates the text position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IPosition CreateTextPosition(float left, float bottom, string units)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The left.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">bottom</span></td>
+        <td><p>The bottom.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">units</span></td>
+        <td><p>The units.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.IPosition.html">IPosition</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_RemoveLogo_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.RemoveLogo*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_RemoveLogo_OSGeo_MapGuide_ObjectModels_PrintLayout_ILogo_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.RemoveLogo(OSGeo.MapGuide.ObjectModels.PrintLayout.ILogo)">RemoveLogo(ILogo)</h4>
+  <div class="markdown level1 summary"><p>Removes the logo.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveLogo(ILogo logo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.ILogo.html">ILogo</a></td>
+        <td><span class="parametername">logo</span></td>
+        <td><p>The logo.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_RemoveText_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.RemoveText*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_PrintLayout_IPrintLayout_RemoveText_OSGeo_MapGuide_ObjectModels_PrintLayout_IText_" data-uid="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.RemoveText(OSGeo.MapGuide.ObjectModels.PrintLayout.IText)">RemoveText(IText)</h4>
+  <div class="markdown level1 summary"><p>Removes the text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveText(IText text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.IText.html">IText</a></td>
+        <td><span class="parametername">text</span></td>
+        <td><p>The text.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

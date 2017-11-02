@@ -1,0 +1,444 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IBaseMapGroup
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IBaseMapGroup
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup">
+  
+  
+  <h1 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup" class="text-break">Interface IBaseMapGroup
+  </h1>
+  <div class="markdown level0 summary"><p>Tiled map group</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLegendElementBase.html#OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLegendElementBase_Name">IMapLegendElementBase.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLegendElementBase.html#OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLegendElementBase_ShowInLegend">IMapLegendElementBase.ShowInLegend</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLegendElementBase.html#OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLegendElementBase_LegendLabel">IMapLegendElementBase.LegendLabel</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLegendElementBase.html#OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLegendElementBase_ExpandInLegend">IMapLegendElementBase.ExpandInLegend</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.html">OSGeo.MapGuide.ObjectModels.MapDefinition</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IBaseMapGroup : IMapLegendElementBase, INotifyPropertyChanged</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_BaseMapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.BaseMapLayer*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_BaseMapLayer" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.BaseMapLayer">BaseMapLayer</h4>
+  <div class="markdown level1 summary"><p>Gets the base map layers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;IBaseMapLayer&gt; BaseMapLayer { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a>&gt;</td>
+        <td><p>The base map layers.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_Visible_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.Visible*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_Visible" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.Visible">Visible</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether this <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.html">IBaseMapGroup</a> is visible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Visible { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if visible; otherwise, <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_AddLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.AddLayer*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_AddLayer_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.AddLayer(System.String,System.String)">AddLayer(String, String)</h4>
+  <div class="markdown level1 summary"><p>Adds the layer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IBaseMapLayer AddLayer(string layerName, string resourceId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">layerName</span></td>
+        <td><p>Name of the layer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceId</span></td>
+        <td><p>The resource id.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_GetIndex_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.GetIndex*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_GetIndex_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.GetIndex(OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer)">GetIndex(IBaseMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Gets the index of the specified layer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetIndex(IBaseMapLayer layer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a></td>
+        <td><span class="parametername">layer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_InsertLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.InsertLayer*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_InsertLayer_System_Int32_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.InsertLayer(System.Int32,OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer)">InsertLayer(Int32, IBaseMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Insert the base map layer at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void InsertLayer(int index, IBaseMapLayer layer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a></td>
+        <td><span class="parametername">layer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_MoveDown_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.MoveDown*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_MoveDown_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.MoveDown(OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer)">MoveDown(IBaseMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Moves the specified layer down.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int MoveDown(IBaseMapLayer layer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a></td>
+        <td><span class="parametername">layer</span></td>
+        <td><p>The layer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_MoveUp_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.MoveUp*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_MoveUp_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.MoveUp(OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer)">MoveUp(IBaseMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Moves the specified layer up.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int MoveUp(IBaseMapLayer layer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a></td>
+        <td><span class="parametername">layer</span></td>
+        <td><p>The layer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_RemoveBaseMapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.RemoveBaseMapLayer*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_RemoveBaseMapLayer_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.RemoveBaseMapLayer(OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer)">RemoveBaseMapLayer(IBaseMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Removes the base map layer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveBaseMapLayer(IBaseMapLayer layer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a></td>
+        <td><span class="parametername">layer</span></td>
+        <td><p>The layer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Understanding Feature Sources | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Understanding Feature Sources | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="fs-editor">
+<h1 id="understanding-feature-sources">Understanding Feature Sources</h1>
+
+<p>As already covered, <strong>Feature Sources</strong> describe a FDO connection to a particular spatial or non-spatial data store. FDO technology provides a generic, 
+command-based interface to a number of back-end data source technologies for storing, retrieving, updating, and analyzing GIS (Geographic Information System) data.</p>
+<p>Support for various data sources exists in the form of FDO providers.</p>
+<h2 id="file-based-data">File-based Data</h2>
+<p>Spatial data exists in many different forms and data formats. MapGuide supports various file-based data sources out of the box:</p>
+<ul>
+<li>SDF using the SDF FDO provider</li>
+<li>SHP using the SHP FDO provider</li>
+<li>SQLite using the SQLite FDO provider (for MapGuide Open Source 2.2 or newer)</li>
+<li>MS Access Databases and Excel Spreadsheets using the ODBC provider.</li>
+<li>Various other file formats using the OGR FDO provider.</li>
+</ul>
+<p>Support for other file formats exist via third party FDO providers.</p>
+<h2 id="relational-data">Relational Data</h2>
+<p>MapGuide also supports various relational data sources</p>
+<ul>
+<li>SQL Server</li>
+<li>MySQL</li>
+<li>Oracle</li>
+<li>PostgreSQL (for MapGuide Open Source 2.2 or newer)</li>
+</ul>
+<p>Support for other relational databases exist via third party FDO providers.</p>
+<h2 id="raster-data">Raster Data</h2>
+<p>MapGuide also supports raster data sources via the GDAL FDO provider.</p>
+<h2 id="the-generic-editor">The Generic Editor</h2>
+<p>Maestro provides a specialized feature source editor for the most frequently used FDO providers. For third party or other unrecognised FDO providers, a generic editor is
+available to configure the connection parameters to your particular data store.</p>
+<p><img src="../images/fs_generic.png" alt=""></p>
+<p>   <em>The Generic Feature Source Editor</em></p>
+<p>If a connection property involves an embedded data file, upload the file first as a <strong>Resource Data File</strong> and you can reference it 
+by prefixing <code>%MG_DATA_FILE_PATH%</code> in front of the resource data file name.</p>
+<h2 id="coordinate-system-overrides">Coordinate System Overrides</h2>
+<p>The Coordinate System Overrides section of the editor allows you to override the coordinate systems of this Feature Source. </p>
+<p><img src="../images/fs_cs_overrides.png" alt=""></p>
+<p>   <em>The Coordinate System Overrides Editor</em></p>
+<p>For example, a Feature Source may report an Arbitrary or incorrectly specified coordinate system, but the actual geometries themselves 
+have real world geographical relevance. You can use this editor to replace this Arbitrary coordinate system with a different coordinate 
+system. </p>
+<p>This is important if you require MapGuide to transform data. The source and target coordinate systems need to be correct. This override 
+mechanism allows you to fix the source side of the transformation.</p>
+<h2 id="joins-and-extensions">Joins and Extensions</h2>
+<p>The Joins and Extensions section of the editor allows you to define <strong>Extended Feature Classes</strong>.</p>
+<p><img src="../images/fs_extensions.png" alt=""></p>
+<p>   <em>The Joins and Extensions Editor</em></p>
+<p>Extended Feature Classes extend a given feature class in the edited feature source with:</p>
+<ul>
+<li>Extra calculated properties derived from FDO expressions</li>
+<li>Extra properties from another Feature Class in another Feature Source by performing a <strong>Feature Join</strong></li>
+</ul>
+<p>If extending a Feature Class via a <strong>Feature Join</strong> you may choose the type of join to perform:</p>
+<ul>
+<li>Left Outer</li>
+<li>Right Outer</li>
+<li>Inner </li>
+</ul>
+<p>Also you have to specify at least one property from both participating Feature Classes that will be joined on.</p>
+<p>Finally you can force a 1-to-1 cardinality to avoid redundant secondary Feature Class attributes for each primary feature or vice versa.</p>
+<div class="NOTE"><h5>Note</h5><p>Feature Join performance is generally bad, especially when the join is performed across Feature Classes from different Feature Sources for different FDO providers. Consider doing joins at the database level, outside of MapGuide</p>
+</div>
+<div class="NOTE"><h5>Note</h5><p>For best Feature Join performance, both sides of the join should support sortable query results. Providers that support sortable query results include:</p>
+<ul>
+<li>SDF (single property only)</li>
+<li>SHP (single property only)</li>
+<li>Any of the RDBMS providers (ODBC, SQL Server, MySQL, PostgreSQL, Oracle)
+Any join that involves any of the above providers on both sides <strong>on a single property</strong> should have generally decent performance. Still doing these joins at the datastore level is preferable</li>
+</ul>
+</div>
+<h2 id="specifying-credentials">Specifying Credentials</h2>
+<p>Some Feature Source editors (generic or specialized) support entering user login credentials. The specialized editors will automatically substitute your entered credentails with the <strong>%MG_USERNAME%</strong> and
+<strong>%MG_PASSWORD%</strong> placeholder tokens, with the actual values encrypted and stored into the <strong>MG_USER_CREDENTIALS</strong> resource data item.</p>
+<p>For the Generic Editor, a <code>Set Credentials</code> link allows you to specify credentials in a secure manner.</p>
+<p><img src="../images/fs_generic_set_credentials.png" alt=""></p>
+<p>   <em>Specifying Credentials in the Generic editor</em></p>
+<div class="NOTE"><h5>Note</h5><p>Versions of Maestro before 4.0 did not support these feature and credentials were stored plaintext in the Resource XML documents themselves. It is <strong>strongly</strong> advised to run a validation process (<a class="xref" href="resource_validation.html">Resource Validation</a>) on your
+repository, which will pick up such resources (which will be flagged as warnings in the Validation Results dialog). You should re-open these resources in a newer version of Maestro and apply credentials in a secured manner.</p>
+</div>
+<h2 id="other-feature-source-options">Other Feature Source Options</h2>
+<p>All Feature Source editors whether the generic one or a specialized one will provide extra options for you which will be enabled or disabled based on the underlying capabilities of the FDO provider.</p>
+<p><img src="../images/fs_other_options.png" alt=""></p>
+<p>   <em>Additional Feature Source Options</em></p>
+<p><strong>Local Preview</strong> opens the Local Feature Source Preview on this Feature Source allowing you to view the strucutre of this Feature Source and be able to do basic data queries on the Feature Source. See <a class="xref" href="localpreview.html">Using Local Feature Source Preview</a> for more information.</p>
+<p><strong>Edit Configuration Document</strong> opens the associated configuration XML document. Most specialized Feature Source editors that support configuration will build this document for you. This feature allows you to look at the document itself and if required, edit
+the contents by hand</p>
+<p><strong>Spatial Contexts</strong> displays the spatial contexts of the Feature Source</p>
+<h2 id="raster-configuration">Raster Configuration</h2>
+<p>When creating Raster Feature Sources (with the GDAL provider), it is generally advised to use the <strong>Composite</strong> mode and build a configuration document by adding in the individual raster images. Adding in each raster image will update the
+configuration document with the details from that raster image such as the bounds and the physical file path.</p>
+<p><img src="../images/fs_gdal_composite.png" alt=""></p>
+<p>   <em>GDAL Feature Source editor in composite mode</em></p>
+<p>The configuration document serves as a Raster Tile Index and is referred to by MapGuide when doing raster data queries when rendering maps. The raster queries will use the bounds information recorded in the configuration document to grab the
+closest matching raster images for resampling. This is a much faster way for MapGuide to access raster imagery.</p>
+<p>After you have built your raster configuration document, be sure to check the overall final extents by clicking <strong>Edit Configuration Document</strong> under <strong>Other Options</strong> (<a class="xref" href="understanding_feature_sources.html#other-feature-source-options">Understanding Feature Sources</a>) to see the configuration document XML</p>
+<p><img src="../images/fs_gdal_configuration_document_extents.png" alt=""></p>
+<p>   <em>Overall extents in the configuration document</em></p>
+<p>This is the value used for previewing any layers you build off of this Feature Source and incorrect extents can cause massive performance issues.</p>
+<div class="NOTE"><h5>Note</h5><p>After you have built your raster configuration document, you should also apply <a class="xref" href="understanding_feature_sources.html#coordinate-system-overrides">Understanding Feature Sources</a> to ensure MapGuide will be reading this data under the correct coordinate system</p>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/Docs/userguide/understanding_feature_sources.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

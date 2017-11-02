@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Packaging Data | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Packaging Data | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="packaging-data">Packaging Data</h1>
+
+<p><strong>MapGuide Packages</strong> allow you to import and export portions of the MapGuide Server repository to another MapGuide Server repostiory.</p>
+<p>It is a very useful way to backup, migrate and deploy data from one MapGuide Server to another.</p>
+<p>The MapGuide Server Site Administrator web application allows you to load and create these packages. But has some
+downsides:</p>
+<ul>
+<li>It is a server-side web application. Loading and retrieving packages requires the package be stored physically on the server&#39;s package directory</li>
+<li>Ability to automate such a process is limited.</li>
+<li>Questionable reliability with really large package files.</li>
+</ul>
+<p>MapGuide Maestro however, allows you to load and create such packages <strong>completely on the client-side</strong>.</p>
+<h2 id="creating-packages">Creating Packages</h2>
+<p>There are 2 ways to load a package:</p>
+<ol>
+<li>The <strong>Package - Package Folder</strong> menu option.</li>
+<li>Right clicking the desired folder in the <strong>Site Explorer</strong> and choosing the <strong>Package Folder</strong> option.</li>
+</ol>
+<p>The time it takes to create a package is a function of how many resources in total are in the folder to be packaged up.</p>
+<h2 id="loading-packages">Loading Packages</h2>
+<p>There are 2 ways to load a package:</p>
+<ol>
+<li>The <strong>Package - Load Package</strong> menu option</li>
+<li>Dragging and dropping the package file into the <strong>Site Explorer</strong></li>
+</ol>
+<p>The time it takes to load a package is a function of how large the package is. Once loaded, the <strong>Site Explorer</strong>
+will refresh itself. When loading a package, you will be presented with the following options:</p>
+<p><img src="../images/package_load_options.png" alt=""></p>
+<p> <em>Package loading options</em></p>
+<p>Each option is described below.</p>
+<h3 id="transactional-loading">Transactional Loading</h3>
+<p>Transactional loading is the default loading mechanism. There is no way to measure loading progress, but the operation itself will either wholly succeed or wholly fail (hence the transactional nature of this operation). This operation is safe to use on small to moderately sized package files, and does not affect the integrity of the repository regardless of the result.</p>
+<h3 id="non-transactional-loading">Non-Transactional Loading</h3>
+<p>Non-transactional loading is a new loading mechanism designed to work around the limitations of the default loading mechanism:</p>
+<ul>
+<li>The inability to measure/track progress</li>
+<li>More reliability with loading large package files (several hundred MBs in size)</li>
+</ul>
+<p>With the non-transaction loading approach, progress can be measured:</p>
+<p><img src="../images/package_non_trans.png" alt=""></p>
+<p> <em>Non-transactional packaging progress</em></p>
+<p>Should any package operations fail, they are logged and presented to the user at the end of the operation.</p>
+<p><img src="../images/package_failed_operations.png" alt=""></p>
+<p> <em>Failed Non-transactional packaging operations</em></p>
+<p>At this point you can retry these failed operations, and only the failed operations will be re-executed. Otherwise you can close the dialog to complete this package loading operation.</p>
+<div class="NOTE"><h5>Note</h5><p>Because Maestro communicates to the MapGuide Server over http, loading large packages (over several hundred MBs) can be problematic. As such
+using the Site Administrator is recommended. Otherwise, an data moving strategy is required (eg. Repository backup/restore or use of aliases instead of embedded data files)</p>
+</div>
+<h2 id="editing-packages">Editing Packages</h2>
+<p>Maestro also includes a package editing tool. To edit a package, select <strong>Package - Package Editor</strong> from the menu. Select the package file to edit, and the Package Editor dialog will be displayed.</p>
+<p><img src="../images/package_editor.png" alt=""></p>
+<p> <em>Package Editor Dialog</em></p>
+<p>The Package Editor shows the layout of the Package and the resources that would be created if this package were to be loaded. </p>
+<h3 id="package-editing-options">Package Editing Options</h3>
+<p>To create a new folder, select <strong>New Folder</strong> to create a new folder at the selected folder node. To edit the name of this folder, click the node label until an edit box appears.</p>
+<p>To create a new resource to be loaded, select <strong>New Resource</strong> to create a new resource entry at the selected resource node. You will get a dialog to specify the location of the resource content file</p>
+<p><img src="../images/package_add_resource.png" alt=""></p>
+<p> <em>Add Resource Dialog</em></p>
+<p>To delete a folder or resource, select the node and click <strong>Delete</strong> to delete the selected resource or folder node.</p>
+<p>To add resource data for a resource entyr, select the resource node and use the <strong>Data Files</strong> user interface to add your resource data files.</p>
+<p>Once you have made your changes, click <strong>OK</strong> to save this to a new package. Clicking <strong>Cancel</strong> will discard all modifications</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/Docs/userguide/packaging.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

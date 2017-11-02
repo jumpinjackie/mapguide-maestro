@@ -1,0 +1,579 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ConnectionProviderRegistry
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ConnectionProviderRegistry
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry">
+  
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry" class="text-break">Class ConnectionProviderRegistry
+  </h1>
+  <div class="markdown level0 summary"><p>
+The entry point of the Maestro API. The <a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.html">ConnectionProviderRegistry</a> is used to create <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a>
+objects. <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> is the root object of the Maestro API, and is where most of the functionality provided
+by this API is accessed from.
+</p>
+<p>
+The <a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.html">ConnectionProviderRegistry</a> supports dynamic creation of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> objects given a provider name
+and a connection string, which specifies the initialization parameters of the connection. The connection providers are defined in an XML
+file called ConnectionProviders.xml which contains all the registered providers. Each provider has the following properties:
+</p>
+<ol><li>The name of the provider</li><li>The assembly containing the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> implementation</li><li>The name of this <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> implementation</li></ol>
+<p>
+The <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> implementation is expected to have a non-public constructor which takes a single parameter,
+a <see cref="!:System.Collections.Specialized.NameValueCollection"></see> containing the initialization parameters parsed from the given connection
+string.
+</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ConnectionProviderRegistry</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.html">OSGeo.MapGuide.MaestroAPI</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class ConnectionProviderRegistry</code></pre>
+  </div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_examples"><strong>Examples</strong></h5>
+  <p>This example shows how to create a http-based MapGuide Server connection to the server&apos;s mapagent interface.</p>
+<pre><code>using OSGeo.MapGuide.MaestroAPI;
+
+...
+
+IServerConnection conn = ConnectionProviderRegistry.CreateConnection(&quot;Maestro.Http&quot;,
+    &quot;Url&quot;, &quot;http://localhost/mapguide/mapagent/mapagent.fcgi&quot;,
+    &quot;Username&quot;, &quot;Administrator&quot;,
+    &quot;Password&quot;, &quot;admin&quot;);</code></pre>
+
+  <p>This example shows how to create a TCP/IP connection that wraps the official MapGuide API</p>
+<pre><code>using OSGeo.MapGuide.MaestroAPI;
+
+...
+
+IServerConnection conn = ConnectionProviderRegistry.CreateConnection(&quot;Maestro.LocalNative&quot;,
+    &quot;ConfigFile&quot;, &quot;webconfig.ini&quot;,
+    &quot;Username&quot;, &quot;Administrator&quot;,
+    &quot;Password&quot;, &quot;admin&quot;);</code></pre>
+
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_System_String_NameValueCollection_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection(System.String,NameValueCollection)">CreateConnection(String, NameValueCollection)</h4>
+  <div class="markdown level1 summary"><p>Creates an initialized <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> object given the provider name and the initalization parameters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServerConnection CreateConnection(string provider, NameValueCollection connInitParams)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">provider</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="parametername">connInitParams</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection(System.String,System.String)">CreateConnection(String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates an initialized <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> object given the provider name and connection string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServerConnection CreateConnection(string provider, string connectionString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">provider</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">connectionString</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_System_String_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The Maestro.Local provider (that wraps mg-desktop) and Maestro.LocalNative providers (that wraps the official MapGuide API)
+are unique in that it has global connection state. What this means is that subsequent connections after the first one for
+these providers may re-use existing state for the first connection. The reason for this is that creating this connection
+internally calls MgdPlatform.Initialize(iniFile) and MapGuideApi.MgInitializeWebTier(iniFile) respectively, that initializes
+the necessary library parameters in the process space of your application. Creating another connection will call
+MgdPlatform.Initialize and MapGuideApi.MgInitializeWebTier again, but these methods are by-design only made to be called once
+as subsequent calls are returned immediately.</p>
+<p>Basically, the connection parameters you pass in are for initializing the provider the first time round. Subsequent calls may not
+(most likely will not) respect the values of your connection parameters.</p>
+<p>You can programmatically check this via the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionProviderEntry.html#OSGeo_MapGuide_MaestroAPI_ConnectionProviderEntry_HasGlobalState">HasGlobalState</a> property</p>
+</div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_System_String_System_String___" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection(System.String,System.String[])">CreateConnection(String, String[])</h4>
+  <div class="markdown level1 summary"><p>Creates an initialized <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> object given the provider name and the initalization parameters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServerConnection CreateConnection(string provider, params string[] initParameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">provider</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">initParameters</span></td>
+        <td><p>A variable list of initialization parameters. They must be specified in the form: [Param1], [Value1], [Param2], [Value2], etc</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_FindProvider_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.FindProvider*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_FindProvider_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.FindProvider(System.String)">FindProvider(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the entry for the given connection provider name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ConnectionProviderEntry FindProvider(string provider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">provider</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionProviderEntry.html">ConnectionProviderEntry</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_GetInvocationCount_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.GetInvocationCount*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_GetInvocationCount_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.GetInvocationCount(System.String)">GetInvocationCount(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the invocation count for the given provider (the number of times a connection has been created for that provider)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetInvocationCount(string provider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">provider</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The invocation count for the given provider. -1 if the provider is not registered or does not exist</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_GetInvocationCount_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This (in conjunction with the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionProviderEntry.html#OSGeo_MapGuide_MaestroAPI_ConnectionProviderEntry_HasGlobalState">HasGlobalState</a> property) can
+be used to programmatically determine if creating a connection for a given provider will respect the connection parameter values
+you pass to it. (0 calls will respect your parameter values. 1 or more will not)</p>
+</div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_GetProviders_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.GetProviders*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_GetProviders" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.GetProviders">GetProviders()</h4>
+  <div class="markdown level1 summary"><p>Gets a list of registered provider names. The returned names are in upper-case.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ConnectionProviderEntry[] GetProviders()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionProviderEntry.html">ConnectionProviderEntry</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_InitRegistry_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.InitRegistry*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_InitRegistry_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.InitRegistry(System.String)">InitRegistry(String)</h4>
+  <div class="markdown level1 summary"><p>Initializes the connection provider registry. You only need to do this if you intend to load connections
+from providers registered in ConnectionProviders.xml</p>
+<p>The HTTP connection provider is built-in and does not require calling this method first</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void InitRegistry(string dir = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">dir</span></td>
+        <td><p>The path to the directory containing ConnectionProviders.xml</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_ParseConnectionString_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.ParseConnectionString*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_ParseConnectionString_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.ParseConnectionString(System.String)">ParseConnectionString(String)</h4>
+  <div class="markdown level1 summary"><p>Parses the given Maestro connection string into a <span class="xref">System.Collections.Specialized.NameValueCollection</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NameValueCollection ParseConnectionString(string connectionString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">connectionString</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">NameValueCollection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_RegisterProvider_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.RegisterProvider*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_RegisterProvider_OSGeo_MapGuide_MaestroAPI_ConnectionProviderEntry_OSGeo_MapGuide_MaestroAPI_ConnectionFactoryMethod_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.RegisterProvider(OSGeo.MapGuide.MaestroAPI.ConnectionProviderEntry,OSGeo.MapGuide.MaestroAPI.ConnectionFactoryMethod)">RegisterProvider(ConnectionProviderEntry, ConnectionFactoryMethod)</h4>
+  <div class="markdown level1 summary"><p>Registers a new connection provider</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RegisterProvider(ConnectionProviderEntry entry, ConnectionFactoryMethod method)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionProviderEntry.html">ConnectionProviderEntry</a></td>
+        <td><span class="parametername">entry</span></td>
+        <td><p>The provider entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionFactoryMethod.html">ConnectionFactoryMethod</a></td>
+        <td><span class="parametername">method</span></td>
+        <td><p>The factory method.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

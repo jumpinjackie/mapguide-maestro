@@ -1,0 +1,1755 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IFeatureService
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IFeatureService
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService">
+  
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService" class="text-break">Interface IFeatureService
+  </h1>
+  <div class="markdown level0 summary"><p>Provides services for accessing, querying and inspecting feature sources</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.html">OSGeo.MapGuide.MaestroAPI.Services</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IFeatureService : IService</code></pre>
+  </div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Note that <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> provides
+built-in access to resource and feature services. Using the <span class="xref">OSGeo.MapGuide.MaestroAPI.IServerConnection.GetService</span>
+method is not necessary</p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_FeatureProviders_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.FeatureProviders*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_FeatureProviders" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.FeatureProviders">FeatureProviders</h4>
+  <div class="markdown level1 summary"><p>Gets an array of all registered providers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.FeatureProviderRegistryFeatureProvider[] FeatureProviders { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.FeatureProviderRegistryFeatureProvider</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_System_String_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource(System.String,System.String,System.String)">AggregateQueryFeatureSource(String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Executes an aggregate query on the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReader AggregateQueryFeatureSource(string resourceID, string className, string filter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">className</span></td>
+        <td><p>The feature class name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter</span></td>
+        <td><p>The FDO filter string that determines what features will be returned</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IReader</span></td>
+        <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a> containing the results of the query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_System_String_System_String_System_String_NameValueCollection_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource(System.String,System.String,System.String,NameValueCollection)">AggregateQueryFeatureSource(String, String, String, NameValueCollection)</h4>
+  <div class="markdown level1 summary"><p>Executes an aggregate query on the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReader AggregateQueryFeatureSource(string resourceID, string className, string filter, NameValueCollection aggregateFunctions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">className</span></td>
+        <td><p>The feature class name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter</span></td>
+        <td><p>The FDO filter string that determines what features will be returned</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="parametername">aggregateFunctions</span></td>
+        <td><p>A list of name/value pairs that contain the alias (name) for an FDO aggregate expression (value)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IReader</span></td>
+        <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a> containing the results of the query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_System_String_System_String_System_String_System_String___" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource(System.String,System.String,System.String,System.String[])">AggregateQueryFeatureSource(String, String, String, String[])</h4>
+  <div class="markdown level1 summary"><p>Executes an aggregate query on the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReader AggregateQueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">className</span></td>
+        <td><p>The feature class name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter</span></td>
+        <td><p>The FDO filter string that determines what features will be returned</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">propertyNames</span></td>
+        <td><p>An array of property names to include in the result</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IReader</span></td>
+        <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a> containing the results of the query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSource_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSource(System.String)">DescribeFeatureSource(String)</h4>
+  <div class="markdown level1 summary"><p>Describes the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">FeatureSourceDescription DescribeFeatureSource(string resourceID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">FeatureSourceDescription</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSource_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If you only need to list schemas and class names, use the respective <span class="xref">OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemas</span> and
+<span class="xref">OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames</span> methods. Using this API will have a noticeable performance impact on
+really large datastores (whose size is in the 100s of classes).</p>
+</div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSource_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSource(System.String,System.String)">DescribeFeatureSource(String, String)</h4>
+  <div class="markdown level1 summary"><p>Describes the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">FeatureSchema DescribeFeatureSource(string resourceID, string schema)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">schema</span></td>
+        <td><p>The name of the schema to describe</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">FeatureSchema</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSource_System_String_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If you only need to list schemas and class names, use the respective <span class="xref">OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemas</span> and
+<span class="xref">OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames</span> methods. Using this API will have a noticeable performance impact on
+really large datastores (whose size is in the 100s of classes).</p>
+</div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSourcePartial_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSourcePartial*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSourcePartial_System_String_System_String_System_String___" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSourcePartial(System.String,System.String,System.String[])">DescribeFeatureSourcePartial(String, String, String[])</h4>
+  <div class="markdown level1 summary"><p>Describes the specified feature source restricted to only the specified schema and the specified class names</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">FeatureSchema DescribeFeatureSourcePartial(string resourceID, string schema, string[] classNames)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The feature source id</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">schema</span></td>
+        <td><p>The schema name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">classNames</span></td>
+        <td><p>The array of class names to include in the resulting schema</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">FeatureSchema</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSourcePartial_System_String_System_String_System_String____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If you only need to list schemas and class names, use the respective <span class="xref">OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemas</span> and
+<span class="xref">OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames</span> methods. Using this API will have a noticeable performance impact on
+really large datastores (whose size is in the 100s of classes).</p>
+</div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_EnumerateDataStores_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.EnumerateDataStores*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_EnumerateDataStores_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.EnumerateDataStores(System.String,System.String)">EnumerateDataStores(String, String)</h4>
+  <div class="markdown level1 summary"><p>Enumerates all the data stores and if they are FDO enabled for the specified provider and partial connection string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DataStoreList EnumerateDataStores(string providerName, string partialConnString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">providerName</span></td>
+        <td><p>The FDO provider name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">partialConnString</span></td>
+        <td><p>The partial connection string. Certain providers require a partial conection string in order to be able to enumerate data stores</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.DataStoreList.html">DataStoreList</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_ExecuteSqlQuery_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.ExecuteSqlQuery*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_ExecuteSqlQuery_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.ExecuteSqlQuery(System.String,System.String)">ExecuteSqlQuery(String, String)</h4>
+  <div class="markdown level1 summary"><p>Executes a SQL query</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReader ExecuteSqlQuery(string featureSourceID, string sql)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">featureSourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sql</span></td>
+        <td><p>The SQL query string</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IReader</span></td>
+        <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a> containing the results of the query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_ExecuteSqlQuery_System_String_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>No validation is done on the SQL query string. The calling application should validate the SQL string to ensure
+that it does not contain any malicious operations.</p>
+</div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetClassDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassDefinition*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetClassDefinition_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassDefinition(System.String,System.String)">GetClassDefinition(String, String)</h4>
+  <div class="markdown level1 summary"><p>Gets the specified class definition</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ClassDefinition GetClassDefinition(string resourceID, string className)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">className</span></td>
+        <td><p>The feature class name. You can pass a qualified class name to be explicit about which class definition you are after</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ClassDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetClassNames_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetClassNames_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames(System.String,System.String)">GetClassNames(String, String)</h4>
+  <div class="markdown level1 summary"><p>Gets an array of qualified feature class names from the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string[] GetClassNames(string resourceID, string schemaName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The feature source id</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">schemaName</span></td>
+        <td><p>The name of the schema whose class names are to be returned. If null, class names from all schemas in the feature source
+are returned</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetConnectionPropertyValues_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetConnectionPropertyValues*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetConnectionPropertyValues_System_String_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetConnectionPropertyValues(System.String,System.String,System.String)">GetConnectionPropertyValues(String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Gets the possible values for a given connection property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string[] GetConnectionPropertyValues(string providerName, string propertyName, string partialConnectionString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">providerName</span></td>
+        <td><p>The FDO provider name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">propertyName</span></td>
+        <td><p>The property name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">partialConnectionString</span></td>
+        <td><p>A partial connection string if certain providers require such information</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><p>A list of possible values for the given property</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetFeatureProvider_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetFeatureProvider*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetFeatureProvider_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetFeatureProvider(System.String)">GetFeatureProvider(String)</h4>
+  <div class="markdown level1 summary"><p>Returns an installed provider, given the name of the provider</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.FeatureProviderRegistryFeatureProvider GetFeatureProvider(string providername)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">providername</span></td>
+        <td><p>The name of the provider</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.FeatureProviderRegistryFeatureProvider</span></td>
+        <td><p>The first matching provider or null</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetIdentityProperties_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetIdentityProperties*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetIdentityProperties_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetIdentityProperties(System.String,System.String)">GetIdentityProperties(String, String)</h4>
+  <div class="markdown level1 summary"><p>Gets the names of the identity properties from a feature</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string[] GetIdentityProperties(string resourceID, string classname)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">classname</span></td>
+        <td><p>The classname of the feature, including schema</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><p>A string array with the found identities</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetLongTransactions_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetLongTransactions*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetLongTransactions_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetLongTransactions(System.String,System.Boolean)">GetLongTransactions(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Gets the long transactions for the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ILongTransactionList GetLongTransactions(string resourceID, bool activeOnly)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">activeOnly</span></td>
+        <td><p>If true, will only return active long transactions</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ILongTransactionList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetProviderCapabilities_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetProviderCapabilities*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetProviderCapabilities_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetProviderCapabilities(System.String)">GetProviderCapabilities(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the capabilities of the specified provider</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IFdoProviderCapabilities GetProviderCapabilities(string provider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">provider</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Capabilities.IFdoProviderCapabilities.html">IFdoProviderCapabilities</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSchemaMapping_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemaMapping*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSchemaMapping_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemaMapping(System.String,System.String)">GetSchemaMapping(String, String)</h4>
+  <div class="markdown level1 summary"><p>Gets the schema mappings for the given FDO provider. These mappings form the basis for a custom configuration document
+for a feature source that supports configuration</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ConfigurationDocument GetSchemaMapping(string provider, string partialConnString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">provider</span></td>
+        <td><p>The FDO provider</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">partialConnString</span></td>
+        <td><p>The connection string</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ConfigurationDocument</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSchemas_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemas*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSchemas_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemas(System.String)">GetSchemas(String)</h4>
+  <div class="markdown level1 summary"><p>Gets an array of schema names from the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string[] GetSchemas(string resourceID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialContextInfo_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialContextInfo*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialContextInfo_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialContextInfo(System.String,System.Boolean)">GetSpatialContextInfo(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Get the spatial context information for the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.FdoSpatialContextList GetSpatialContextInfo(string resourceID, bool activeOnly)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">activeOnly</span></td>
+        <td><p>If true, will only return the active spatial context</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.FdoSpatialContextList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_System_String_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent(System.String,System.String,System.String)">GetSpatialExtent(String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Gets the geometric extent of the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string className, string geometryPropertyName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">className</span></td>
+        <td><p>The feature class name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">geometryPropertyName</span></td>
+        <td><p>The geometry property to get the geometric extent of</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.IEnvelope</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_System_String_System_String_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent(System.String,System.String,System.String,System.Boolean)">GetSpatialExtent(String, String, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Gets the geometric extent of the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string className, string geometryPropertyName, bool allowFallbackToContextInformation)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">className</span></td>
+        <td><p>The feature class name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">geometryPropertyName</span></td>
+        <td><p>The geometry property to get the geometric extent of</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">allowFallbackToContextInformation</span></td>
+        <td><p>If true, the geometric extent of the feature class&apos;s spatial context will be used in the event that computing the extents fails</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.IEnvelope</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Exceptions.NullExtentException.html">NullExtentException</a></td>
+        <td><p>Thrown if the geometric extent is null</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_System_String_System_String_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent(System.String,System.String,System.String,System.String)">GetSpatialExtent(String, String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Gets the geometric extent of the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string className, string geometryPropertyName, string filter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">className</span></td>
+        <td><p>The feature class name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">geometryPropertyName</span></td>
+        <td><p>The geometry property to get the geometric extent of</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter</span></td>
+        <td><p>The FDO filter string that determines what features will be returned</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.IEnvelope</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String,System.String)">QueryFeatureSource(String, String)</h4>
+  <div class="markdown level1 summary"><p>Executes a feature query on the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IFeatureReader QueryFeatureSource(string resourceID, string className)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">className</span></td>
+        <td><p>The feature class name</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IFeatureReader</span></td>
+        <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a> containing the results of the query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String,System.String,System.String)">QueryFeatureSource(String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Executes a feature query on the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IFeatureReader QueryFeatureSource(string resourceID, string className, string filter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">className</span></td>
+        <td><p>The feature class name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter</span></td>
+        <td><p>The FDO filter string that determines what features will be returned</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IFeatureReader</span></td>
+        <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a> containing the results of the query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_System_String_System_String___" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String,System.String,System.String,System.String[])">QueryFeatureSource(String, String, String, String[])</h4>
+  <div class="markdown level1 summary"><p>Executes a feature query on the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">className</span></td>
+        <td><p>The feature class name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter</span></td>
+        <td><p>The FDO filter string that determines what features will be returned</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">propertyNames</span></td>
+        <td><p>A list of properties that are to be returned in the query result</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IFeatureReader</span></td>
+        <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a> containing the results of the query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_System_String_System_String___NameValueCollection_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String,System.String,System.String,System.String[],NameValueCollection)">QueryFeatureSource(String, String, String, String[], NameValueCollection)</h4>
+  <div class="markdown level1 summary"><p>Executes a feature query on the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames, NameValueCollection computedProperties)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">className</span></td>
+        <td><p>The feature class name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter</span></td>
+        <td><p>The FDO filter string that determines what features will be returned</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">propertyNames</span></td>
+        <td><p>A list of properties that are to be returned in the query result</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="parametername">computedProperties</span></td>
+        <td><p>A list of name/value pairs that contain the alias (name) for an FDO expression (value)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IFeatureReader</span></td>
+        <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a> containing the results of the query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_System_String_System_String___NameValueCollection_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String,System.String,System.String,System.String[],NameValueCollection,System.Int32)">QueryFeatureSource(String, String, String, String[], NameValueCollection, Int32)</h4>
+  <div class="markdown level1 summary"><p>Executes a feature query on the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames, NameValueCollection computedProperties, int limit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The Feature Source ID</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">className</span></td>
+        <td><p>The feature class name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter</span></td>
+        <td><p>The FDO filter string that determines what features will be returned</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">propertyNames</span></td>
+        <td><p>A list of properties that are to be returned in the query result</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="parametername">computedProperties</span></td>
+        <td><p>A list of name/value pairs that contain the alias (name) for an FDO expression (value)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">limit</span></td>
+        <td><p>Limits the number of features returned in the reader. -1 for all features</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IFeatureReader</span></td>
+        <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a> containing the results of the query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_RemoveVersionFromProviderName_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.RemoveVersionFromProviderName*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_RemoveVersionFromProviderName_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.RemoveVersionFromProviderName(System.String)">RemoveVersionFromProviderName(String)</h4>
+  <div class="markdown level1 summary"><p>Removes the version numbers from a providername</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string RemoveVersionFromProviderName(string providername)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">providername</span></td>
+        <td><p>The name of the provider, with or without version numbers</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The provider name without version numbers</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_TestConnection_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.TestConnection*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_TestConnection_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.TestConnection(System.String)">TestConnection(String)</h4>
+  <div class="markdown level1 summary"><p>Tests the connection settings of the specified feature source</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string TestConnection(string featureSourceId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">featureSourceId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_TestConnection_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.TestConnection*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_TestConnection_System_String_NameValueCollection_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.TestConnection(System.String,NameValueCollection)">TestConnection(String, NameValueCollection)</h4>
+  <div class="markdown level1 summary"><p>Tests the specified connection settings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string TestConnection(string providername, NameValueCollection parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">providername</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="parametername">parameters</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

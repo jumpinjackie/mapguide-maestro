@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace OSGeo.MapGuide.MaestroAPI
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace OSGeo.MapGuide.MaestroAPI
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI">
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI" data-uid="OSGeo.MapGuide.MaestroAPI" class="text-break">Namespace OSGeo.MapGuide.MaestroAPI
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ArgumentParser.html">ArgumentParser</a></h4>
+      <section><p>A helper class to parse command-line arguments</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.CommandLineArguments.html">CommandLineArguments</a></h4>
+      <section><p>A set of common command-line arguments</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionProviderEntry.html">ConnectionProviderEntry</a></h4>
+      <section><p>Represents an entry in the Connection Provider Registry</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.html">ConnectionProviderRegistry</a></h4>
+      <section><p>
+The entry point of the Maestro API. The <a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.html">ConnectionProviderRegistry</a> is used to create <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a>
+objects. <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> is the root object of the Maestro API, and is where most of the functionality provided
+by this API is accessed from.
+</p>
+<p>
+The <a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.html">ConnectionProviderRegistry</a> supports dynamic creation of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> objects given a provider name
+and a connection string, which specifies the initialization parameters of the connection. The connection providers are defined in an XML
+file called ConnectionProviders.xml which contains all the registered providers. Each provider has the following properties:
+</p>
+<ol><li>The name of the provider</li><li>The assembly containing the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> implementation</li><li>The name of this <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> implementation</li></ol>
+<p>
+The <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> implementation is expected to have a non-public constructor which takes a single parameter,
+a <see cref="!:System.Collections.Specialized.NameValueCollection"></see> containing the initialization parameters parsed from the given connection
+string.
+</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.CsHelper.html">CsHelper</a></h4>
+      <section><p>Provides application-level overrides for coordinate system related functionality.</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ExplodeThemeOptions.html">ExplodeThemeOptions</a></h4>
+      <section><p>Defines parameter for exploding a theme into filtered layers</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ExtensionMethods.html">ExtensionMethods</a></h4>
+      <section><p>Extension methods</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.HttpCoordinateSystemDefinition.html">HttpCoordinateSystemDefinition</a></h4>
+      <section><p>Interface to MapGuide coordinate system functions.
+Only works with server &gt; 1.2, since the coordinate mapping is not avalible through Http on older versions</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.HttpServerConnectionParams.html">HttpServerConnectionParams</a></h4>
+      <section><p>HTTP connection provider parameters</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.HttpServerConnectionProperties.html">HttpServerConnectionProperties</a></h4>
+      <section><p>HTTP connection provider properties</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.LengthyOperationCallbackArgs.html">LengthyOperationCallbackArgs</a></h4>
+      <section><p>Represents progress of a lengthy operation</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.LengthyOperationCallbackArgs.LengthyOperationItem.html">LengthyOperationCallbackArgs.LengthyOperationItem</a></h4>
+      <section></section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressArgs.html">LengthyOperationProgressArgs</a></h4>
+      <section><p>Represents progress of a lengthy operation</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.MaestroApiProviderAttribute.html">MaestroApiProviderAttribute</a></h4>
+      <section><p>Marks this assembly as being an implementation of the Maestro API</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.html">MgServerConnectionBase</a></h4>
+      <section><p>Base class of all MapGuide connection classes. Covers functionality encompassed by
+the MapGuide Geospatial Platform API and the MapGuide-specific services (Site, Rendering,
+Mapping, Tile, Drawing)</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Platform.html">Platform</a></h4>
+      <section><p>Platform check helper class. Use this class to determine if this assembly is executing
+under the Mono Runtime environment.</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html">PlatformConnectionBase</a></h4>
+      <section><p>Base class of all connection classes. Covers functionality encompassed by
+the MapGuide Geospatial Platform API (ie. Feature Service and Resource Service)</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.RequestEventArgs.html">RequestEventArgs</a></h4>
+      <section><p>event object containing dispatched request infromation</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ResourceEventArgs.html">ResourceEventArgs</a></h4>
+      <section><p>Contains the resource id</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.SiteResourceType.html">SiteResourceType</a></h4>
+      <section><p>Helper class to filter <a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypes.html">ResourceTypes</a> into the ones that are
+editable</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.SiteVersions.html">SiteVersions</a></h4>
+      <section><p>Helper class containing known MapGuide Site Versions</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.StringConstants.html">StringConstants</a></h4>
+      <section><p>Commonly used string constants for MapGuide</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Strings.html">Strings</a></h4>
+      <section><p>A strongly-typed resource class, for looking up localized strings, etc.</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Utility.html">Utility</a></h4>
+      <section><p>Various helper functions</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.WeakEventHandler.html">WeakEventHandler</a></h4>
+      <section><p>A weak event handler factory</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.XmlValidator.html">XmlValidator</a></h4>
+      <section><p>Class that makes XSD validation</p>
+</section>
+    <h3 id="structs">Structs
+  </h3>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionCacheStats.html">ConnectionCacheStats</a></h4>
+      <section><p>Describes stats of cached objects in a connection</p>
+</section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.IConnectionCapabilities.html">IConnectionCapabilities</a></h4>
+      <section><p>Defines the capabilities of this connection. This is used to safely access supported
+features of the connection.</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.IMpuCalculator.html">IMpuCalculator</a></h4>
+      <section><p>An interface for calculating meters-per-unit values</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a></h4>
+      <section><p>
+MapGuide Platform connection interface. This is the root object of the Maestro API which typically
+represents a session with a MapGuide Server. Connections are created through the
+<a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.html">ConnectionProviderRegistry</a> class.
+</p>
+<p>
+All implementations supports the base services of the MapGuide Geospatial API:
+</p>
+<ul><li>Resource Service (<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.html">IResourceService</a>) for manipulation of repositories and resources</li><li>Feature Service (<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.html">IFeatureService</a>) an abstraction layer for querying feature data in technology-independent manner.</li><li>Coordinate System Catalog (<a class="xref" href="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.html">ICoordinateSystemCatalog</a> for querying coordinate systems and for translating WKT, cs code and EPSG codes to other forms</li></ul>
+<p>
+Additional services are supported at various levels depending on the implementation.
+The <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html#OSGeo_MapGuide_MaestroAPI_IServerConnection_Capabilities">Capabilities</a> property provides information about
+what features, services and resource types are not supported.
+</p>
+</section>
+    <h3 id="enums">Enums
+  </h3>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.html">KnownSiteVersions</a></h4>
+      <section><p>This file contains the current known versions of the MapGuide server.</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.LengthyOperationCallbackArgs.LengthyOperationItem.OperationStatus.html">LengthyOperationCallbackArgs.LengthyOperationItem.OperationStatus</a></h4>
+      <section><p>Defines the possible operation status values</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.QueryMapFeaturesLayerAttributes.html">QueryMapFeaturesLayerAttributes</a></h4>
+      <section><p>Flags that can be used for the QueryMapFeatures operation</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.UnmanagedDataTypes.html">UnmanagedDataTypes</a></h4>
+      <section><p>Defines the types of unmananged data</p>
+</section>
+    <h3 id="delegates">Delegates
+  </h3>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionFactoryMethod.html">ConnectionFactoryMethod</a></h4>
+      <section><p>A method that creates <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> instances from the given parameters</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.LengthyOperationCallBack.html">LengthyOperationCallBack</a></h4>
+      <section><p>A delegate used to represent relay progress for lengthy operations</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack.html">LengthyOperationProgressCallBack</a></h4>
+      <section><p>A delegate used to represent relay progress for lengthy operations</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.RequestEventHandler.html">RequestEventHandler</a></h4>
+      <section></section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ResourceEventHandler.html">ResourceEventHandler</a></h4>
+      <section><p>Represents a method involving a resource id</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate.html">Utility.StreamCopyProgressDelegate</a></h4>
+      <section><p>A delegate used to update a progress bar while copying a stream.</p>
+</section>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

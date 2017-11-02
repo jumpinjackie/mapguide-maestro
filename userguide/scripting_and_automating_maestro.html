@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Scripting and Automating Maestro | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Scripting and Automating Maestro | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="scripting-and-automating-maestro">
+<h1 id="scripting-and-automating-maestro">Scripting and Automating Maestro</h1>
+
+<div class="NOTE"><h5>Note</h5><p>The IronPython Console feature is only available on Windows and is only bundled with the Windows installer package of Maestro</p>
+</div>
+<p>As mentioned in the section (<a class="xref" href="user_interface.html">The Maestro User Interface</a>), Maestro includes an <strong>IronPython Console</strong> which provides the user an interactive scripting environment to drive and automate certain parts of the Maestro application with IronPython code</p>
+<h2 id="about-ironpython">About IronPython</h2>
+<p>IronPython is an open source implementation of the Python programming language which is tightly integrated with the .net Framework. IronPython can use the .net Framework and Python libraries and also allows for .net applications to easily use Python code.</p>
+<p>Maestro embeds an IronPython scripting engine allowing for easy scripting and automation of the application by users.</p>
+<p>For more information about the .net specific details of IronPython, <a href="http://www.ironpython.net/documentation/dotnet">click here</a></p>
+<h2 id="the-host-application">The Host Application</h2>
+<p>The IronPython Console exposes a top-level global object named <code>app</code>, which represents the Maestro Host Application. The Host Application provides the following services:</p>
+<ul>
+<li>Displaying messages/questions in a dialog box</li>
+<li>Displaying file pickers for file selection</li>
+<li>Obtaining <a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> references</li>
+<li>Convenience methods to fetch/set resource XML content by their resource id</li>
+<li>A UI-thread invoker for running UI interaction code from a background thread</li>
+</ul>
+<p>The <a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> interface represents the top-level interface of the Maestro API and is the gateway into most of the functionality that is offered by the Maestro API.</p>
+<p>Each root node (connection) in the <strong>Site Explorer</strong> represents an <a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> instance. The Host Application gives you the ability to retrieve such instances in order to be able to work with resources under that connection instance.</p>
+<p>You can bring up documentation of any object or function with the <code>help</code> command. For example, to describe the structure of our global Host Application:</p>
+<pre><code>&gt;&gt;&gt; help(app)
+?Help on HostApplication in module __builtin__
+ |      A simplified helper class that is exposed to python scripts to provide
+ |                  convenience functionality or to workaround concepts that don&#39;t cleanly
+ |                  translate to IronPython (eg. Generics)
+ |      
+ |      HostApplication()
+ |      
+ |      
+ |  Data and other attributes defined here:
+ |  
+ |      AskQuestion(...)
+ |              AskQuestion(self: HostApplication, title: str, question: str) -&gt; bool
+ |              
+ |                  Prompts for a question that requires a boolean response
+ |              
+ |      GetConnection(...)
+ |              GetConnection(self: HostApplication, name: str) -&gt; IServerConnection
+ |              
+ |                  Gets the connection by its specified name
+ |              
+ |      GetConnectionNames(...)
+ |              GetConnectionNames(self: HostApplication) -&gt; Array[str]
+ |              
+ |                  Returns a list of the names of all currently open connections
+ |              
+ |      GetResourceXml(...)
+ |              GetResourceXml(self: HostApplication, conn: IServerConnection, resourceId: str) -&gt; str
+ |              
+ |                  Gets the XML content of the given resource id
+ |              
+ |      OpenEditor(...)
+ |              OpenEditor(self: HostApplication, conn: IServerConnection, resourceId: str)
+ |                  Opens the default editor for the specified resource
+ |              
+ |      OpenUrl(...)
+ |              OpenUrl(self: HostApplication, url: str)
+ |                  Launches the specified url
+ |              
+ |      PickFolder(...)
+ |              PickFolder(self: HostApplication, conn: IServerConnection) -&gt; str
+ |              
+ |                  Prompts a dialog to select a folder
+ |              
+ |      PickResourceOpen(...)
+ |              PickResourceOpen(self: HostApplication, conn: IServerConnection, resourceType: str) -&gt; str
+ |              
+ |                  Displays a resource picker for opening
+ |              
+ |      PickResourceSave(...)
+ |              PickResourceSave(self: HostApplication, conn: IServerConnection, resourceType: str) -&gt; str
+ |              
+ |                  Displays a resource picker for saving
+ |              
+ |      PreviewResource(...)
+ |              PreviewResource(self: HostApplication, conn: IServerConnection, resourceId: str, locale: str)
+ |                  Launches a preview of the given open resource
+ |              
+ |      SetResourceXml(...)
+ |              SetResourceXml(self: HostApplication, conn: IServerConnection, resourceId: str, xml: str)
+ |                  Sets the XML content of the given resource id
+ |              
+ |      ShowError(...)
+ |              ShowError(self: HostApplication, ex: Exception)
+ |                  Displays an exception in a dialog
+ |              
+ |      ShowMessage(...)
+ |              ShowMessage(self: HostApplication, title: str, message: str)
+ |                  Displays a message
+ |              
+ |      UIInvoke(...)
+ |              UIInvoke(self: HostApplication, method: Delegate)
+ |                  Invokes the specified method on the UI thread. Methods that interact with the 
+ |                   UI or create UI components
+ |                          must be done on this thread
+ |              
+ |              
+ |      __repr__(...)
+ |              __repr__(self: object) -&gt; str
+ |              
+&gt;&gt;&gt; 
+</code></pre><h2 id="loading-scripts">Loading scripts</h2>
+<p>The IronPython console also supports loading pre-defined scripts. Click <strong>Run File</strong> and select the python script you want to load.</p>
+<p><img src="../images/ironpython_runfile.png" alt=""></p>
+<p>All classes and functions defined in that python script will be loaded into the console&#39;s global namespace.</p>
+<h2 id="example-scripts">Example scripts</h2>
+<p>You can find some example scripts <a href="http://trac.osgeo.org/mapguide/wiki/CodeSamples/Other/MaestroScripts">here</a> which may give you some ideas as to what you can do through scripting and automation with IronPython</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/Docs/userguide/scripting_and_automating_maestro.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

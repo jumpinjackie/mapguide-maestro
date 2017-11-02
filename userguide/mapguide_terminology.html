@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Understanding MapGuide Resources | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Understanding MapGuide Resources | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="understanding-mapguide-resources">Understanding MapGuide Resources</h1>
+
+<p>.. todo::
+    Currently copy/paste of existing wiki content</p>
+<p>Before you can start using MapGuide Maestro, you must understand how MapGuide divides the different parts that make up a map. To understand the MapGuide Maestro interface, you must also have a knowledgde of the names used in MapGuide. </p>
+<p>.. todo::
+    Detail the features offered with each schema revision. Most of this already is covered in resource-readme.txt in the Maestro source code.</p>
+<p>There are many types of resources that can be stored in a MapGuide Server</p>
+<h2 id="feature-sources">Feature Sources</h2>
+<p>Introduced: MapGuide Open Source 1.0 / MapGuide Enterprise 2007</p>
+<p>Version(s): </p>
+<ul>
+<li><code>1.0.0</code> - MapGuide Open Source 1.0 / MapGuide Enterprise 2007</li>
+</ul>
+<p>Feature Sources describe a FDO connection to a particular data store, which could be inside the MapGuide Server or stored externally. (see below: Spatial Data and Regular Data)</p>
+<h2 id="drawing-sources">Drawing Sources</h2>
+<p>Introduced: MapGuide Open Source 1.0 / MapGuide Enterprise 2007</p>
+<p>Version(s): </p>
+<ul>
+<li><code>1.0.0</code> - MapGuide Open Source 1.0 / MapGuide Enterprise 2007</li>
+</ul>
+<p>Drawing Sources are DWF data sources which provide drawing data with full visual fidelity. </p>
+<h2 id="layer-definitions">Layer Definitions</h2>
+<p>Introduced: MapGuide Open Source 1.0 / MapGuide Enterprise 2007</p>
+<p>Version(s): </p>
+<ul>
+<li><code>1.0.0</code> - MapGuide Open Source 1.0 / MapGuide Enterprise 2007</li>
+<li><code>1.1.0</code> - MapGuide Open Source 1.2 / MapGuide Enterprise 2008</li>
+<li><code>1.2.0</code> - MapGuide Open Source 2.0 / MapGuide Enterprise 2009</li>
+<li><code>1.3.0</code> - MapGuide Open Source 2.1 / MapGuide Enterprise 2010</li>
+<li><code>2.3.0</code> - Autodesk Infrastructure Map Server 2012</li>
+<li><code>2.4.0</code> - MapGuide Open Source 2.4 / Autodesk Infrastructure Map Server 2013</li>
+</ul>
+<p>Layer Definitions describe how data from a Feature Source is to be styled. (see below: Displaying Data)</p>
+<p>Layer Definitions are can be shared among different maps.</p>
+<h2 id="map-definitions">Map Definitions</h2>
+<p>Introduced: MapGuide Open Source 1.0 / MapGuide Enterprise 2007</p>
+<p>Version(s): </p>
+<ul>
+<li><code>1.0.0</code> - MapGuide Open Source 1.0 / MapGuide Enterprise 2007</li>
+<li><code>2.3.0</code> - MapGuide Open Source 2.3 / MapGuide Enterprise 2012</li>
+<li><code>2.4.0</code> - MapGuide Open Source 2.4 / Autodesk Infrastructure Map Server 2013</li>
+</ul>
+<p>Map Definitions contains one or more Layer Definitions grouped together and sorted by drawing order.</p>
+<h2 id="web-layouts">Web Layouts</h2>
+<p>Introduced: MapGuide Open Source 1.0 / MapGuide Enterprise 2007</p>
+<p>Version(s): </p>
+<ul>
+<li><code>1.0.0</code> - MapGuide Open Source 1.0 / MapGuide Enterprise 2007</li>
+<li><code>1.1.0</code> - MapGuide Open Source 2.2 / MapGuide Enterprise 2011</li>
+<li><code>2.4.0</code> - MapGuide Open Source 2.4 / Autodesk Infrastructure Map Server 2013</li>
+</ul>
+<p>Describes the user interface for the AJAX viewer (see: Understanding MapGuide Applications - Web Layouts)</p>
+<h2 id="application-definitions">Application Definitions</h2>
+<p>Introduced: MapGuide Open Source 2.0 / MapGuide Enterprise 2009</p>
+<p>Version(s): </p>
+<ul>
+<li><code>1.0.0</code> - MapGuide Open Source 2.0 / MapGuide Enterprise 2009</li>
+</ul>
+<p>Describes the user interface for the Fusion viewer (see: Understanding MapGuide Applications - Application Definitions)</p>
+<h2 id="load-procedures">Load Procedures</h2>
+<p>Introduced: MapGuide Open Source 1.0 / MapGuide Enterprise 2007</p>
+<p>Version(s): </p>
+<ul>
+<li><code>1.0.0</code> - MapGuide Open Source 1.0 / MapGuide Enterprise 2007</li>
+<li><code>1.1.0</code> - MapGuide Open Source 2.0 / MapGuide Enterprise 2009</li>
+<li><code>2.2.0</code> - MapGuide Open Source 2.2 / MapGuide Enterprise 2011</li>
+</ul>
+<p>Describes to a client application like MapGuide Studio, how to load a set of data files into the MapGuide Server</p>
+<h2 id="print-layouts">Print Layouts</h2>
+<p>Introduced: MapGuide Open Source 1.0 / MapGuide Enterprise 2007</p>
+<p>Version(s): </p>
+<ul>
+<li><code>1.0.0</code> - MapGuide Open Source 1.0 / MapGuide Enterprise 2007</li>
+</ul>
+<p>Describes the printing layout for a DWF plot operation</p>
+<h2 id="symbol-libraries">Symbol Libraries</h2>
+<p>Introduced: MapGuide Open Source 1.0 / MapGuide Enterprise 2007</p>
+<p>Version(s): </p>
+<ul>
+<li><code>1.0.0</code> - MapGuide Open Source 1.0 / MapGuide Enterprise 2007</li>
+</ul>
+<p>Describes a collection of DWF-based symbols that can be used for point styles in a Layer Definitions</p>
+<p>There is no specialized editor support for Symbol Libraries. Opening Symbol Libraries will default to the generic XML editor.</p>
+<h2 id="symbol-definitions">Symbol Definitions</h2>
+<p>Introduced: MapGuide Open Source 1.2 / MapGuide Enterprise 2008</p>
+<p>Version(s): </p>
+<ul>
+<li><code>1.0.0</code> - MapGuide Open Source 1.2 / MapGuide Enterprise 2008</li>
+<li><code>1.1.0</code> - MapGuide Open Source 2.0 / MapGuide Enterprise 2009</li>
+<li><code>2.4.0</code> - MapGuide Open Source 2.4 / Autodesk Infrastructure Map Server 2013</li>
+</ul>
+<p>Describes a cartographic symbol, which has lots of display and customisation parameters. Used by Layer Definitions.</p>
+<h2 id="watermark-definitions">Watermark Definitions</h2>
+<p>Introduced: MapGuide Open Source 2.3 / MapGuide Enterprise 2012</p>
+<p>Version(s): </p>
+<ul>
+<li><code>2.3.0</code> - MapGuide Open Source 2.3 / MapGuide Enterprise 2012</li>
+</ul>
+<p>Describes a watermark that is rendered as part of the map when viewing it. Used by Map Definitions.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/Docs/userguide/mapguide_terminology.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

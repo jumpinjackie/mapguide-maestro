@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Using MgTileSeeder | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Using MgTileSeeder | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="using-mgtileseeder">
+<h1 id="using-mgtileseeder">Using MgTileSeeder</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p><strong>MgTileSeeder</strong> is the successor to <strong>MgCooker</strong>. It has the following improvements over <strong>MgCooker</strong>:</p>
+<ul>
+<li>Supports seeding of XYZ tile sets introduced in MapGuide Open Source 3.0<ul>
+<li>Can also function as a generic seeder for any tile set based on a XYZ tiling scheme (eg. OpenStreetMap)</li>
+</ul>
+</li>
+<li>A simpler, cleaner design with pluggable tile walking strategies</li>
+<li><strong>MgTileSeeder</strong> is a truly cross-platform console application, targeting .net Core 2.0 (and all the platforms supported by .net Core 2.0)</li>
+</ul>
+<p>Unlike <strong>MgCooker</strong>, the <strong>MgTileSeeder</strong> tool is currently a purely commandline tool. There is no GUI counterpart.</p>
+<div class="NOTE"><h5>Note</h5><p><strong>MgTileSeeder</strong> is also only available currently as a standalone package. It is not currently bundled with MapGuide Maestro.</p>
+</div>
+<h2 id="usage">Usage</h2>
+<p><strong>MgTileSeeder</strong> has 2 modes of operation:</p>
+<ul>
+<li>Standard tiling of MapGuide tiled map definitions or tile sets (using the default provider)</li>
+<li>XYZ tiling of any XYZ tile set url with <code>{x}</code>, <code>{y}</code> and <code>{z}</code> placeholders and a specific bounding box in lat/long coordinates</li>
+</ul>
+<p>The basic command syntax for standard tiling is as follows:</p>
+<pre><code>MgTileSeeder.exe mapguide --mapagent &lt;mapagent url&gt; --map &lt;mapdefinition/tileset resource id&gt; --meters-per-unit &lt;meters per unit&gt; [--username &lt;MapGuide username&gt;] [--password &lt;MapGuide user password&gt;] [--groups &lt;Base Layer Group Names&gt;] [--minx &lt;BBOX minx&gt;] [--miny &lt;BBOX miny&gt;] [--maxx &lt;BBOX maxx&gt;] [--maxy &lt;BBOX maxy&gt;]
+</code></pre><p>The basic command syntax for xyz tiling is as follows:</p>
+<pre><code>MgTileSeeder.exe xyz --url &lt;url&gt; --minx &lt;BBOX minx&gt; --miny &lt;BBOX miny&gt; --maxx &lt;BBOX maxx&gt; --maxy &lt;BBOX maxy&gt;
+</code></pre><h2 id="examples">Examples</h2>
+<p>The following example starts a tiling run for a tiled map <code>Library://Samples/Sheboygan/MapsTiled/Sheboygan.MapDefinition</code></p>
+<pre><code>MgTileSeeder mapguide --mapagent &quot;http://localhost/mapguide/mapagent/mapagent.fcgi&quot; --map &quot;Library://Samples/Sheboygan/MapsTiled/Sheboygan.MapDefinition&quot; --meters-per-unit 111319.4908
+</code></pre><p>The following example starts a tiling run for a XYZ tileset <code>Library://Samples/Sheboygan/TileSets/Sheboygan.TileSetDefinition</code></p>
+<pre><code>MgTileSeeder xyz --url &quot;http://localhost/mapguide/mapagent/mapagent.fcgi?OPERATION=GETTILEIMAGE&amp;VERSION=1.2.0&amp;CLIENTAGENT=OpenLayers&amp;USERNAME=Anonymous&amp;MAPDEFINITION=Library://Samples/Sheboygan/MapsTiled/Sheboygan.MapDefinition&amp;BASEMAPLAYERGROUPNAME=Base+Layer+Group&amp;TILECOL=${y}&amp;TILEROW=${x}&amp;SCALEINDEX=${z}&quot; --minx -87.797866013832 --miny 43.6868578621819 --maxx -87.6645277718692 --maxy 43.8037962206133
+</code></pre><p>Note the <code>{x}</code>, <code>{y}</code> and <code>{z}</code> placeholders in the above example. MgTileSeeder&#39;s <code>xyz</code> mode can work with any XYZ tile set (not just ones served by MapGuide).</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/Docs/userguide/mgtileseeder.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

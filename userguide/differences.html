@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Differences between Maestro and MapGuide Studio | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Differences between Maestro and MapGuide Studio | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="maestro-differences">
+<h1 id="differences-between-maestro-and-mapguide-studio">Differences between Maestro and MapGuide Studio</h1>
+
+<div class="NOTE"><h5>Note</h5><p>As of the 2012 release, MapGuide Enterprise is now known as Autodesk Infrastructure Map Server and the MapGuide Studio product is now called Autodesk Infrastructure Studio. This section will refer to these products by their old names.</p>
+</div>
+<p>Both Maestro and MapGuide Studio fulfill the same purpose: To create, author and publish spatial data on a MapGuide Server. However there are some main differences:</p>
+<ul>
+<li>MapGuide Studio is a commerical product that comes with a MapGuide Enterprise licence only. It cannot be purchased separately.</li>
+<li>MapGuide Maestro is free and open-source. It is the only viable authoring solution for a MapGuide Open Source user. A licensed MapGuide Enterprise user has the choice of either tools when authoring.</li>
+</ul>
+<p>Fortunately, MapGuide Maestro is a capable alternative to MapGuide Studio. Besides the base shared features of loading/creating/publishing data, both tools have their own unique set of features, which this section will cover.</p>
+<h2 id="features-unique-to-mapguide-studio--autodesk-infrastructure-studio">Features unique to MapGuide Studio / Autodesk Infrastructure Studio</h2>
+<ul>
+<li>MapGuide Studio supports loading of DWG files and raster images. Due to licensing and/or the need to be multi-platform, Maestro does not (and probably will never) support these features.</li>
+<li>MapGuide Studio supports creating and editing Symbol Libraries. Maestro cannot edit Symbol Libraries, however it has read support for these resources and Maestro supports symbol selection from Symbol Libraries.</li>
+<li>MapGuide Studio supports the &quot;Convert to SDF&quot; and generalization options of Load Procedures.</li>
+<li>Autodesk Infrastructure Studio (2013 onwards) supports publishing DWG files directly with no conversion and full visual fidelity.</li>
+<li>Autodesk Infrastructure Studio supports creating connections to Industry Model (Topobase) data sources.</li>
+</ul>
+<h2 id="features-unique-to-mapguide-maestro">Features unique to MapGuide Maestro</h2>
+<ul>
+<li>Maestro is multi-platform. It runs on Windows, Linux and Mac OSX.</li>
+<li>Maestro can connect to many different versions of MapGuide Open Source and MapGuide Enterprise (as far back as MGOS 1.2 / MGE 2008)</li>
+<li>Maestro supports validating resources ensuring data/resource integrity and trapping common errors and pitfalls that would normally be silent under MapGuide Studio.</li>
+<li>Maestro has a small installation footprint compared to MapGuide Studio.</li>
+<li>Maestro allows you to edit any resource in its XML form. The XML editor is used as a fallback measure if Maestro encounters unsupported or unrecognised resources.</li>
+<li>Maestro supports all known resource versions. Maestro will <em>never</em> silently upgrade your resources to the latest version.</li>
+<li>Maestro&#39;s functionality can be extended by users, either through dedicated extension APIs or through the built-in IronPython scripting engine.</li>
+<li>Maestro supports custom resource templates</li>
+<li>Maestro supports the creation and loading of MapGuide Packages (MGP) without needing to use the Site Administrator web application.</li>
+<li>Maestro has a more active development cycle.</li>
+<li>Maestro offers plenty of tools and shortcuts that greatly improves authoring productivity.</li>
+<li>Maestro supports authoring data from an mg-desktop application</li>
+<li>Maestro includes other various tools and utilities that fully exploit the services provided by MapGuide<ul>
+<li>A Feature Source previewing utility</li>
+<li>A Runtime Map state inspection tool</li>
+<li>A tile pre-generation tool (MgCooker)</li>
+<li>A &quot;Live&quot; Map Definition editor that supports editing workflows similar to MapGuide Author 6.5</li>
+</ul>
+</li>
+<li>and much more!</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/Docs/userguide/differences.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
