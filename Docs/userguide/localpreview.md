@@ -1,5 +1,6 @@
-.. _local-fs-preview:
-
+---
+uid: local-fs-preview
+---
 # Using Local Feature Source Preview
 
 > [!NOTE]

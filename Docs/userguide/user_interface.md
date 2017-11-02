@@ -26,7 +26,7 @@ that it makes to the MapGuide Server. You can see these logged messages and requ
 
 The **IronPython Console** provides the user with an interactive REPL console, by which the user can run and evaluate snippets of IronPython code. The full Maestro API is
 exposed to the console, allowing the user to script and automate the application through IronPython code. IronPython is a dialect of Python geared towards integration with
-the .net Framework. For more information about this feature, see :ref:`scripting-and-automating-maestro`. For more information about IronPython, see `IronPython.net <http://ironpython.net/>`_
+the .net Framework. For more information about this feature, see <xref:scripting-and-automating-maestro>. For more information about IronPython, see [IronPython.net](http://ironpython.net)
 
 > [!NOTE]
 > The IronPython Console feature is only available on Windows and is only bundled with the Windows installer package of Maestro

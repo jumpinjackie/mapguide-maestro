@@ -1,3 +1,7 @@
+---
+uid: fs-editor
+---
+
 # Understanding Feature Sources
 
 As already covered, **Feature Sources** describe a FDO connection to a particular spatial or non-spatial data store. FDO technology provides a generic, 
@@ -43,8 +47,6 @@ available to configure the connection parameters to your particular data store.
 
 If a connection property involves an embedded data file, upload the file first as a **Resource Data File** and you can reference it 
 by prefixing `%MG_DATA_FILE_PATH%` in front of the resource data file name.
-
-.. _coordsys-override:
 
 ## Coordinate System Overrides
 
@@ -106,10 +108,8 @@ For the Generic Editor, a `Set Credentials` link allows you to specify credentia
    *Specifying Credentials in the Generic editor*
 
 > [!NOTE]
-> Versions of Maestro before 4.0 did not support these feature and credentials were stored plaintext in the Resource XML documents themselves. It is **strongly** advised to run a validation process (see :ref:`resource-validation`) on your
+> Versions of Maestro before 4.0 did not support these feature and credentials were stored plaintext in the Resource XML documents themselves. It is **strongly** advised to run a validation process (<xref:resource-validation>) on your
 > repository, which will pick up such resources (which will be flagged as warnings in the Validation Results dialog). You should re-open these resources in a newer version of Maestro and apply credentials in a secured manner.
-
-.. _fs-other-options:
 
 ## Other Feature Source Options
 
@@ -119,7 +119,7 @@ All Feature Source editors whether the generic one or a specialized one will pro
 
    *Additional Feature Source Options*
 
-**Local Preview** opens the Local Feature Source Preview on this Feature Source allowing you to view the strucutre of this Feature Source and be able to do basic data queries on the Feature Source. See :ref:`local-fs-preview` for more information.
+**Local Preview** opens the Local Feature Source Preview on this Feature Source allowing you to view the strucutre of this Feature Source and be able to do basic data queries on the Feature Source. See <xref:local-fs-preview> for more information.
 
 **Edit Configuration Document** opens the associated configuration XML document. Most specialized Feature Source editors that support configuration will build this document for you. This feature allows you to look at the document itself and if required, edit
 the contents by hand
@@ -138,7 +138,7 @@ configuration document with the details from that raster image such as the bound
 The configuration document serves as a Raster Tile Index and is referred to by MapGuide when doing raster data queries when rendering maps. The raster queries will use the bounds information recorded in the configuration document to grab the
 closest matching raster images for resampling. This is a much faster way for MapGuide to access raster imagery.
 
-After you have built your raster configuration document, be sure to check the overall final extents by clicking **Edit Configuration Document** under **Other Options** (see :ref:`fs-other-options`) to see the configuration document XML
+After you have built your raster configuration document, be sure to check the overall final extents by clicking **Edit Configuration Document** under **Other Options** (<xref:fs-editor#other-feature-source-options>) to see the configuration document XML
 
 ![](../images/fs_gdal_configuration_document_extents.png)
 
@@ -147,4 +147,4 @@ After you have built your raster configuration document, be sure to check the ov
 This is the value used for previewing any layers you build off of this Feature Source and incorrect extents can cause massive performance issues.
     
 > [!NOTE]
-> After you have built your raster configuration document, you should also apply :ref:`coordsys-override` to ensure MapGuide will be reading this data under the correct coordinate system
+> After you have built your raster configuration document, you should also apply <xref:fs-editor#coordinate-system-overrides> to ensure MapGuide will be reading this data under the correct coordinate system

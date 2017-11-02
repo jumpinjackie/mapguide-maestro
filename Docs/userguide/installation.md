@@ -21,7 +21,7 @@ You can choose either the installer or zip file
 > MapGuide Maestro is not tested for these platforms. Binaries are only provided for the adventurous.
 
 > [!NOTE]
-> Before you run MapGuide Maestro, you need to install the Mono framework. Mono is available for download at `http://www.mono-project.com <http://www.mono-project.com>`_
+> Before you run MapGuide Maestro, you need to install the Mono framework. Mono is available for download [here](http://www.mono-project.com)
 
 The installation is simply unzipping the file:
 

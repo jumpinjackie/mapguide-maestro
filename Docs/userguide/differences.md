@@ -1,5 +1,6 @@
-.. _maestro-differences:
-
+---
+uid: maestro-differences
+---
 # Differences between Maestro and MapGuide Studio
 
 > [!NOTE]

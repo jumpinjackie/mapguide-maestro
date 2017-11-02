@@ -3,7 +3,7 @@
 Load Procedures are resources which describe how to load a certain set of data files into the MapGuide Server.
 
 Load Procedures are a very quick way to load spatial data files into MapGuide or to refresh existing resources. However, unlike MapGuide Studio, Maestro only
-supports a subset of the features exposed by the Load Procedure schema. See :ref:`maestro-differences` for more information.
+supports a subset of the features exposed by the Load Procedure schema. See <xref:maestro-differences> for more information.
 
 This section will cover the Load Procedure Editor
 

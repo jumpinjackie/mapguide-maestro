@@ -1,11 +1,12 @@
-.. _scripting-and-automating-maestro:
-
+---
+uid: scripting-and-automating-maestro
+---
 # Scripting and Automating Maestro
 
 > [!NOTE]
 > The IronPython Console feature is only available on Windows and is only bundled with the Windows installer package of Maestro
 
-As mentioned in the section (:ref:`user-interface`), Maestro includes an **IronPython Console** which provides the user an interactive scripting environment to drive and automate certain parts of the Maestro application with IronPython code
+As mentioned in the section (<xref:user-interface>), Maestro includes an **IronPython Console** which provides the user an interactive scripting environment to drive and automate certain parts of the Maestro application with IronPython code
 
 ## About IronPython
 
@@ -13,28 +14,23 @@ IronPython is an open source implementation of the Python programming language w
 
 Maestro embeds an IronPython scripting engine allowing for easy scripting and automation of the application by users.
 
-For more information about the .net specific details of IronPython, `click here <http://www.ironpython.net/documentation/dotnet/>`_
+For more information about the .net specific details of IronPython, [click here](http://www.ironpython.net/documentation/dotnet)
 
 ## The Host Application
 
-The IronPython Console exposes a top-level global object named ``app``, which represents the Maestro Host Application. The Host Application provides the following services:
+The IronPython Console exposes a top-level global object named `app`, which represents the Maestro Host Application. The Host Application provides the following services:
 
  * Displaying messages/questions in a dialog box
  * Displaying file pickers for file selection
- * Obtaining ``IServerConnection`` references
+ * Obtaining <xref:OSGeo.MapGuide.MaestroAPI.IServerConnection> references
  * Convenience methods to fetch/set resource XML content by their resource id
  * A UI-thread invoker for running UI interaction code from a background thread
 
-The `IServerConnection` interface represents the top-level interface of the Maestro API and is the gateway into most of the functionality that is offered by the Maestro API.
+The <xref:OSGeo.MapGuide.MaestroAPI.IServerConnection> interface represents the top-level interface of the Maestro API and is the gateway into most of the functionality that is offered by the Maestro API.
 
-Each root node (connection) in the **Site Explorer** represents an ``IServerConnection`` instance. The Host Application gives you the ability to retrieve such instances in order to be able to work with resources under that connection instance.
+Each root node (connection) in the **Site Explorer** represents an <xref:OSGeo.MapGuide.MaestroAPI.IServerConnection> instance. The Host Application gives you the ability to retrieve such instances in order to be able to work with resources under that connection instance.
 
-For more information about the ``IServerConnection`` interface, consult the Maestro API documentation which is included with the `Maestro SDK <http://trac.osgeo.org/mapguide/wiki/maestro/Downloads>`_
-
-You can bring up documentation of any object or function with the ``help`` command. For example, to describe the structure of our global Host Application:
-
-.. highlight:: Python
-.. code-block:: Python
+You can bring up documentation of any object or function with the `help` command. For example, to describe the structure of our global Host Application:
 
     >>> help(app)
     ?Help on HostApplication in module __builtin__
@@ -128,4 +124,4 @@ All classes and functions defined in that python script will be loaded into the 
 
 ## Example scripts
 
-You can find some example scripts `here <http://trac.osgeo.org/mapguide/wiki/CodeSamples/Other/MaestroScripts>`_ which may give you some ideas as to what you can do through scripting and automation with IronPython
+You can find some example scripts [here](http://trac.osgeo.org/mapguide/wiki/CodeSamples/Other/MaestroScripts) which may give you some ideas as to what you can do through scripting and automation with IronPython

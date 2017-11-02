@@ -1,8 +1,5 @@
 # Packaging Data
 
-.. index::
-    single: Resources; Packaging and Loading
-
 **MapGuide Packages** allow you to import and export portions of the MapGuide Server repository to another MapGuide Server repostiory.
 
 It is a very useful way to backup, migrate and deploy data from one MapGuide Server to another.

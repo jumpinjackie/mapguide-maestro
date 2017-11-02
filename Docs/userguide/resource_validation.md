@@ -1,10 +1,8 @@
-.. _resource-validation:
-
+---
+uid: resource-validation
+---
 # Resource Validation
 
-.. index::
-    single: Resources; Validating
-    
 Resource integrity is a very important issue when authoring and publishing data in MapGuide. Doing
 something as innocuous as deleting a resource may inadvertently break any number of resources that 
 may be depending on it.  

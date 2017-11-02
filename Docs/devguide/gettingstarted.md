@@ -28,4 +28,4 @@ The MapGuide Maestro API targets the following platforms:
 
 ## Acquiring the Maestro API
 
-The MapGuide Maestro API is available as a `pre-release NuGet package <https://www.nuget.org/packages/OSGeo.MapGuide.MaestroAPI>`_ and can be installed through the NuGet package manager in Visual Studio or the ``dotnet add package`` command from the dotnet CLI.
+The MapGuide Maestro API is available as a [pre-release NuGet package](https://www.nuget.org/packages/OSGeo.MapGuide.MaestroAPI) and can be installed through the NuGet package manager in Visual Studio or the ``dotnet add package`` command from the dotnet CLI.

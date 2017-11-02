@@ -1,5 +1,6 @@
-.. _local-connection-mode:
-
+---
+uid: local-connection-mode
+---
 # The Local Connection Mode
 
 The Local Connection Mode is a new feature of Maestro that allows you to work with a resource repository that is local on your machine.
@@ -7,19 +8,17 @@ The Local Connection Mode is a new feature of Maestro that allows you to work wi
 The Local Connection Mode is designed for the following user scenarios:
 
  * Authoring resources and spatial data locally without requiring any connectivity to a MapGuide Server
- * Authoring/editing resources for a `mg-desktop <http://trac.osgeo.org/mapguide/wiki/mg-desktop>`_ based application
+ * Authoring/editing resources for a [mg-desktop](http://trac.osgeo.org/mapguide/wiki/mg-desktop>) based application
 
 > [!NOTE]
 > The Local Connection Mode feature is only available on Windows.
     
 > [!NOTE]
-> The physical location of the local repository is situated in: %APPDATA%\MgLocal\Repositories
+> The physical location of the local repository is situated in: `%APPDATA%\MgLocal\Repositories`
 
 To connect to your local repository, select the **Connect Locally** option.
 
-![](../images/connect_local.png)
-
-    *Connecting to the local repository*
+![Connecting to the local repository](../images/connect_local.png)
 
 For the **Platform Configuration File**, select the **Platform.ini** file in the Maestro installation directory. Then click **OK** to connect to your local repository.
 

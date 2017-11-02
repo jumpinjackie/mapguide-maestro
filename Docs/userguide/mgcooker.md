@@ -2,7 +2,7 @@
 
 > [!NOTE]
 > A new tile seeder tool **MgTileSeeder** is in development that will supercede and eventually replace the **MgCooker** tool. For
-> information on how to use **MgTileSeeder**, see :ref:`using-mgtileseeder`
+> information on how to use **MgTileSeeder**, see <xref:using-mgtileseeder>
 
 Tiled Maps improve display performance by rendering the maps in tiles and keeping them stored in a special directory
 known as the **Tile Cache**. Subsequent views of the same map area will skip the rendering process and serve the already

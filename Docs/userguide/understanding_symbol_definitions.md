@@ -1,5 +1,6 @@
-.. _symbol_definitions:
-
+---
+uid: symbol_definitions
+---
 # Understanding Symbol Definitions
 
 Symbol Definitions provide signifcantly advanced stylization options for map features as opposed to the stylization options provided by the Layer Definition.
