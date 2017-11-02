@@ -26,7 +26,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
     /// Defines a coordinate system catalog
     /// </summary>
     /// <example>
-    /// This example uses the <see cref="T:OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordindateSystemCatalog"/>
+    /// This example uses the <see cref="T:OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog"/>
     /// to create a simple coordinate system transformation to transform points.
     /// <code>
     /// <![CDATA[
