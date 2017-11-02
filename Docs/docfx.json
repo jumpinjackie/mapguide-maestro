@@ -52,7 +52,9 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "images/**",
+          "logo.svg",
+          "favicon.ico"
         ],
         "exclude": [
           "obj/**",
@@ -72,6 +74,15 @@
       }
     ],
     "dest": "_site",
+    "globalMetadata": {
+      "_appTitle": "MapGuide Maestro",
+      "_appFooter": "Copyright © 2009 - 2017 Jackie Ng",
+      "_appLogoPath": "logo.svg",
+      "_appFaviconPath": "favicon.ico",
+      "_disableBreadcrumb": false,
+      "_disableAffix": false,
+      "_disableContribution": false
+    },
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
