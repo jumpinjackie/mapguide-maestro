@@ -35,7 +35,7 @@ before_build:
   - echo APPVEYOR_REPO_COMMIT_TIMESTAMP %APPVEYOR_REPO_COMMIT_TIMESTAMP%
   - nuget update -self
   - nuget restore Maestro.sln
-  - pip install -r requirements.txt
+  - cinst -y docfx
 
 environment:
   COVERALLS_REPO_TOKEN:
@@ -51,6 +51,8 @@ after_build:
   - if "%APPVEYOR_REPO_TAG%" == "true" set ARTIFACT_RELEASE_LABEL=%APPVEYOR_REPO_TAG_NAME%
   - if not exist %APPVEYOR_BUILD_FOLDER%\artifacts mkdir %APPVEYOR_BUILD_FOLDER%\artifacts
   - set PATH=%PATH%;%APPVEYOR_BUILD_FOLDER%\Packages\nsis\2.51.0\tools
+  - cd /D %APPVEYOR_BUILD_FOLDER%\Docs
+  - docfx build
   - cd /D %APPVEYOR_BUILD_FOLDER%\MgTileSeeder
   - dotnet publish -c release -f netcoreapp2.0 -r win-x64 -o publish_win
   - dotnet publish -c release -f netcoreapp2.0 -r linux-x64 -o publish_linux
