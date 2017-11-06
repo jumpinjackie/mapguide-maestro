@@ -106,7 +106,7 @@ namespace MgTileSeeder
         [Option("password", Default = "", HelpText = "The password of the specified MapGuide user")]
         public string Password { get; set; }
 
-        [Option("meters-per-unit", HelpText = "The meters per unit value. If connecting to a 2.6 or higher server and tiling a map definition, this value can be inferred automatically")]
+        [Option("meters-per-unit", HelpText = "The meters per unit value. If connecting to a 2.6 or higher server and tiling a map definition, this value does not have to be specified as we can infer it from a CREATERUNTIMEMAP operation")]
         public double MetersPerUnit { get; set; }
 
         [Option("minx", SetName = "bbox")]
