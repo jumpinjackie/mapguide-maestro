@@ -64,7 +64,7 @@ after_build:
   - appveyor DownloadFile https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe
   - makensis.exe /DSLN_CONFIG=%CONFIGURATION% /DCPU=x86 /DRELEASE_VERSION=%ARTIFACT_RELEASE_LABEL% Maestro.nsi
   - cd %APPVEYOR_BUILD_FOLDER%
-  - dotnet pack Core.sln --configuration %CONFIGURATION% --output %APPVEYOR_BUILD_FOLDER%\artifacts --include-symbols /p:Version=6.0.0-pre%APPVEYOR_BUILD_NUMBER%"
+  - dotnet pack Core.sln --configuration %CONFIGURATION% --output %APPVEYOR_BUILD_FOLDER%\artifacts --include-symbols /p:Version=6.0.0-pre%ARTIFACT_RELEASE_LABEL%"
 
 test_script:
 - ps: >-

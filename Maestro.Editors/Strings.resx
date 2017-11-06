@@ -1727,4 +1727,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="CmsBingAerialsWithLabels" xml:space="preserve">
     <value>Bing Maps Aerials (with Labels)</value>
   </data>
+  <data name="CalculatingFeatureCount" xml:space="preserve">
+    <value>Calculating Feature Count</value>
+  </data>
 </root>

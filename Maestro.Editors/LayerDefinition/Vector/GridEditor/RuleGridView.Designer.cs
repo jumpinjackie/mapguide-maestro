@@ -45,6 +45,7 @@
             this.btnDisplayAsText = new System.Windows.Forms.ToolStripButton();
             this.btnAllowOverpost = new System.Windows.Forms.ToolStripButton();
             this.grdRules = new System.Windows.Forms.DataGridView();
+            this.btnFeatureCount = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRules)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +66,8 @@
             this.btnRefreshStylePreviews,
             this.btnShowInLegend,
             this.btnDisplayAsText,
-            this.btnAllowOverpost});
+            this.btnAllowOverpost,
+            this.btnFeatureCount});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(785, 25);
@@ -219,6 +221,15 @@
             this.grdRules.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdRules_CellClick);
             this.grdRules.SelectionChanged += new System.EventHandler(this.grdRules_SelectionChanged);
             // 
+            // btnFeatureCount
+            // 
+            this.btnFeatureCount.Image = global::Maestro.Editors.Properties.Resources.sum;
+            this.btnFeatureCount.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFeatureCount.Name = "btnFeatureCount";
+            this.btnFeatureCount.Size = new System.Drawing.Size(102, 22);
+            this.btnFeatureCount.Text = "Feature Count";
+            this.btnFeatureCount.Click += new System.EventHandler(this.btnFeatureCount_Click);
+            // 
             // RuleGridView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,5 +264,6 @@
         private System.Windows.Forms.ToolStripButton btnDown;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton btnDuplicateRule;
+        private System.Windows.Forms.ToolStripButton btnFeatureCount;
     }
 }

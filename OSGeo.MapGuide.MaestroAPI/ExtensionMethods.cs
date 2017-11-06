@@ -26,8 +26,10 @@ using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.DrawingSource;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI
@@ -59,6 +61,89 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static string GenerateSessionResourceId(this IServerConnection conn, string name, string resType)
         {
             return "Session:" + conn.SessionID + "//" + name + "." + resType; //NOXLATE
+        }
+
+        /// <summary>
+        /// Gets the total number of features in the feature class
+        /// </summary>
+        /// <param name="featSvc"></param>
+        /// <param name="featureSourceId"></param>
+        /// <param name="featureClass"></param>
+        /// <param name="filter"></param>
+        /// <returns></returns>
+        public static int GetFeatureCount(this IServerConnection conn, string featureSourceId, string featureClass, string filter)
+        {
+            //Implementation ported from schemareport/displayschemafunctions.php
+
+            int total = -1;
+            var fs = (IFeatureSource)conn.ResourceService.GetResource(featureSourceId);
+            var caps = conn.FeatureService.GetProviderCapabilities(fs.Provider);
+            bool canCount = (caps.Expression.SupportedFunctions.Any(func => func.Name.ToLower() == "count"));
+            bool gotCount = false;
+            var clsDef = conn.FeatureService.GetClassDefinition(featureSourceId, featureClass);
+            if (canCount)
+            {
+                if (clsDef.IdentityProperties.Count > 0)
+                {
+                    const string TotalCount = nameof(TotalCount);
+                    var aggFuncs = new System.Collections.Specialized.NameValueCollection();
+                    aggFuncs.Add(TotalCount, $"COUNT({clsDef.IdentityProperties[0].Name})");
+
+                    try
+                    {
+                        using (var ar = conn.FeatureService.AggregateQueryFeatureSource(featureSourceId, featureClass, filter, aggFuncs))
+                        {
+                            if (ar.ReadNext())
+                            {
+                                if (ar.IsNull(TotalCount))
+                                {
+                                    total = 0;
+                                    gotCount = true;
+                                }
+                                else
+                                {
+                                    var val = ar[TotalCount];
+                                    total = Convert.ToInt32(val);
+                                    gotCount = true;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex) //Some providers like OGR can lie
+                    {
+                        gotCount = false;
+                    }
+                }
+            }
+
+            if (!gotCount)
+            {
+                string propName = null;
+                if (clsDef.IdentityProperties.Count > 0)
+                {
+                    propName = clsDef.IdentityProperties[0].Name;
+                }
+                else
+                {
+                    propName = clsDef.Properties.OfType<DataPropertyDefinition>().First().Name;
+                }
+                //Raw spin a feature reader. To reduce transmission overhead, only request one output property
+                try
+                {
+                    using (var fr = conn.FeatureService.QueryFeatureSource(featureSourceId, featureClass, filter, new[] { propName }))
+                    {
+                        total = 0;
+                        while (fr.ReadNext())
+                            total++;
+                        fr.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    total = -1; //Can't count or raw spin???
+                }
+            }
+            return total;
         }
     }
 }

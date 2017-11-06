@@ -124,6 +124,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calculating Feature Count.
+        /// </summary>
+        internal static string CalculatingFeatureCount {
+            get {
+                return ResourceManager.GetString("CalculatingFeatureCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Theming composite styles with this editor is not supported.
         /// </summary>
         internal static string CannotCreateThemeForCompositeStyleClassicEditor {

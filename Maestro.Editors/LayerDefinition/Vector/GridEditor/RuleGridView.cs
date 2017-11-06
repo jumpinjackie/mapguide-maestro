@@ -1032,5 +1032,48 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 }
             }
         }
+
+        private void btnFeatureCount_Click(object sender, EventArgs e)
+        {
+            var rules = _rules;
+            var ldf = ((ILayerDefinition)_edSvc.GetEditedResource());
+            var fsId = ldf.SubLayer.ResourceId;
+            if (ldf.SubLayer is IVectorLayerDefinition vl)
+            {
+                var conn = _edSvc.CurrentConnection;
+                BusyWaitDialog.Run(Strings.CalculatingFeatureCount, () =>
+                {
+                    var totals = new List<RuleCountTotal>();
+
+                    foreach (IRuleModel r in rules)
+                    {
+                        if (string.IsNullOrEmpty(r.Filter))
+                        {
+                            totals.Add(new RuleCountTotal(r.Filter, r.LegendLabel, -1));
+                        }
+                        else
+                        {
+                            int total = conn.GetFeatureCount(vl.ResourceId, vl.FeatureName, r.Filter);
+                            totals.Add(new RuleCountTotal(r.Filter, r.LegendLabel, total));
+                        }
+                    }
+
+                    return totals;
+                }, (res, ex) =>
+                {
+                    if (ex != null)
+                    {
+                        ErrorDialog.Show(ex);
+                    }
+                    else if (res is List<RuleCountTotal> totals)
+                    {
+                        using (var diag = new RuleFeatureCountDialog(totals))
+                        {
+                            diag.ShowDialog();
+                        }
+                    }
+                });
+            }
+        }
     }
 }
