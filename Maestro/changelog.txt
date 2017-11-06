@@ -1,4 +1,25 @@
-﻿6.0m7
+﻿6.0m8
+=====
+ - API: Now targeting net461/netstandard2.0
+ - API: Primary acquisition method is now via NuGet packages
+   - No SDK package/examples for this release.
+ - API: HTTP provider now integrated into MaestroAPI itself. ConnectionProviders.xml only needed if using other connection providers.
+ - API: Most MemoryStreams are now pooled to reduce GC pressure
+ - Fix: Basic line styles trashed on cancellation of the Edit Style dialog
+ - Fix: Can now read configuration documents where FDO-related attributes have incorrect casing
+ - Fix: No-op map viewer rendering requests if any display parameter is <= 0
+ - Fix: Disable local map preview if connecting to a MapGuide Server older than 2.1
+ - Fix: Installer now installs vcredist so that (mg-desktop) local connection mode will work out of the box
+ - Fix: Fusion editor no longer adds obsolete <VirtualEarthScript> element when adding Bing Maps layers
+ - Added new "feature count" tool that provides feature totals for thematic rules in a layer
+ - User and Developer guides now moved online to GitHub Pages
+ - New MgTileSeeder tool which will eventually be the successor to MgCooker
+   - Supports XYZ tile seeding
+ - Various external library updates
+   - DockPanel 3.0.1
+   - NetTopologySuite 1.15 (pre-release)
+
+6.0m7
 =====
 
  - WMS Advanced Configuration dialog now auto-infers coordinate systems for discovered spatial contexts whose name matches the pattern 'EPSG:XXXX'
