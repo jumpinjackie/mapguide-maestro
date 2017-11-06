@@ -59,7 +59,6 @@ namespace Maestro.Editors.Fusion.MapEditors
 
         internal const string OSM_URL = "http://www.openstreetmap.org/openlayers/OpenStreetMap.js"; //NOXLATE
         internal const string GOOGLE_URL = "http://maps.google.com/maps/api/js?sensor=false"; //NOXLATE
-        internal const string BING_URL = "http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.2"; //NOXLATE
         internal const string STAMEN_URL = "http://maps.stamen.com/js/tile.stamen.js?v1.3.0"; //NOXLATE
 
         internal static Control GetEditor(IEditorService edSvc, IMapGroup group, IMap map)

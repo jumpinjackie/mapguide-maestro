@@ -122,7 +122,6 @@ namespace Maestro.Editors.Fusion
                             bAddedCommercialLayer = true;
                             break;
                         case EditorFactory.Type_Bing:
-                            _appDef.SetValue("VirtualEarthScript", EditorFactory.BING_URL);
                             bAddedCommercialLayer = true;
                             break;
                         case EditorFactory.Type_OSM:
