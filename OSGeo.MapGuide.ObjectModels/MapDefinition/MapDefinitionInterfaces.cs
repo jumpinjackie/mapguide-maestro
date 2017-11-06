@@ -648,7 +648,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         }
 
         /// <summary>
-        /// Convers the given base map section to a Tile Set Definition reference
+        /// Converts the given base map section to a Tile Set Definition reference
         /// </summary>
         /// <param name="map"></param>
         /// <param name="schemaVersion"></param>

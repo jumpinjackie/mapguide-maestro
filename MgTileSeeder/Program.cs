@@ -22,8 +22,10 @@
 
 using CommandLine;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI.Tile;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
@@ -211,11 +213,45 @@ namespace MgTileSeeder
                 {
                     case IMapDefinition mdf:
                         walkOptions = new DefaultTileWalkOptions(mdf, options.Groups.ToArray());
-                        //TODO: If meters-per-unit not specified and this is >= 2.6 or higher, use
+                        //If meters-per-unit not specified and this is >= 2.6 or higher, we can use
                         //CREATERUNTIMEMAP to get this value
+                        if (options.MetersPerUnit == default(double))
+                        {
+                            if (conn.SiteVersion >= new Version(2, 6))
+                            {
+                                Console.WriteLine("Using CREATERUNTIMEMAP to obtain required meters-per-unit value");
+                                var createRt = (ICreateRuntimeMap)conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+                                createRt.MapDefinition = options.ResourceID;
+                                createRt.RequestedFeatures = (int)RuntimeMapRequestedFeatures.None;
+                                var rtMapInfo = createRt.Execute();
+                                options.MetersPerUnit = rtMapInfo.CoordinateSystem.MetersPerUnit;
+                                Console.WriteLine($"Using meters-per-unit value of: {options.MetersPerUnit}");
+                            }
+                        }
                         break;
                     case ITileSetDefinition tsd:
                         walkOptions = new DefaultTileWalkOptions(tsd, options.Groups.ToArray());
+                        //If meters-per-unit not specified and the tile set is using the "Default" provider, we can create
+                        //a Map Definition linked to the tile set, save it to a temp resource and call CREATERUNTIMEMAP
+                        //from it to obtain the reuqired meters-per-unit value
+                        if (options.MetersPerUnit == default(double) && tsd.TileStoreParameters.TileProvider == "Default")
+                        {
+                            IMapDefinition3 mdf3 = (IMapDefinition3)ObjectFactory.CreateMapDefinition(new Version(3, 0, 0), "LinkedTileSet");
+                            string tmpId = $"Session:{conn.SessionID}//{mdf3.Name}.MapDefinition";
+                            var text = tsd.Extents;
+                            mdf3.SetExtents(text.MinX, text.MinY, text.MaxX, text.MaxY);
+                            mdf3.CoordinateSystem = tsd.GetDefaultCoordinateSystem();
+                            mdf3.TileSetDefinitionID = tsd.ResourceID;
+                            conn.ResourceService.SaveResourceAs(mdf3, tmpId);
+
+                            Console.WriteLine("Using CREATERUNTIMEMAP to obtain required meters-per-unit value");
+                            var createRt = (ICreateRuntimeMap)conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+                            createRt.MapDefinition = tmpId;
+                            createRt.RequestedFeatures = (int)RuntimeMapRequestedFeatures.None;
+                            var rtMapInfo = createRt.Execute();
+                            options.MetersPerUnit = rtMapInfo.CoordinateSystem.MetersPerUnit;
+                            Console.WriteLine($"Using meters-per-unit value of: {options.MetersPerUnit}");
+                        }
                         break;
                     default:
                         throw new ArgumentException("Invalid resource type");
