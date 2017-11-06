@@ -30,15 +30,7 @@ namespace Maestro.Base.Commands
     {
         public override void Run()
         {
-            var path = Path.Combine(FileUtility.ApplicationRootPath, "UserDoc/index.html"); //NOXLATE
-            if (!File.Exists(path))
-            {
-                MessageService.ShowError(Strings.HelpFileNotFound);
-            }
-            else
-            {
-                Process.Start(path);
-            }
+            Process.Start("https://jumpinjackie.github.io/mapguide-maestro/userguide/introduction.html"); //NOXLATE
         }
     }
 }
