@@ -231,6 +231,31 @@ namespace MgTileSeeder
                         break;
                     case ITileSetDefinition tsd:
                         walkOptions = new DefaultTileWalkOptions(tsd, options.Groups.ToArray());
+
+                        //Wrong options. Fortunately we have enough information here to tell them what the *correct*
+                        //arguments are
+                        if (tsd.TileStoreParameters.TileProvider == "XYZ")
+                        {
+                            var bbox = tsd.Extents;
+                            var urls = new List<string>();
+                            foreach (var grp in tsd.BaseMapLayerGroups)
+                            {
+                                urls.Add(options.MapAgentUri + "?OPERATION=GETTILEIMAGE&VERSION=1.2.0&USERNAME=Anonymous&MAPDEFINITION=" + tsd.ResourceID + "&BASEMAPLAYERGROUPNAME=" + grp.Name + "&TILECOL={y}&TILEROW={x}&SCALEINDEX={z}");
+                            }
+
+                            Console.WriteLine("[ERROR]: Cannot use mapguide tiling mode for seeding XYZ tile sets. Use xyz tiling mode instead. Example(s):");
+                            foreach (var url in urls)
+                            {
+                                Console.WriteLine($"  MgTileSeeder xyz --url \"{url}\" --minx {bbox.MinX} --miny {bbox.MinY} --maxx {bbox.MaxX} --maxy {bbox.MaxY}");
+                            }
+                            if (options.Wait)
+                            {
+                                Console.WriteLine("Press any key to continue");
+                                Console.Read();
+                            }
+                            return 1;
+                        }
+
                         //If meters-per-unit not specified and the tile set is using the "Default" provider, we can create
                         //a Map Definition linked to the tile set, save it to a temp resource and call CREATERUNTIMEMAP
                         //from it to obtain the reuqired meters-per-unit value
