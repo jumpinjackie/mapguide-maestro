@@ -156,11 +156,14 @@ namespace Maestro.AddIn.Rest.UI
                     var list = resp.Data.DataConfigurationFileList;
                     this.UIThreadInvoke(() =>
                     {
-                        foreach (var file in list.File)
+                        if (list.File != null)
                         {
-                            var n = e.Node.Nodes.Add(file);
-                            n.Tag = list;
-                            n.ImageIndex = n.SelectedImageIndex = IDX_FILE;
+                            foreach (var file in list.File)
+                            {
+                                var n = e.Node.Nodes.Add(file);
+                                n.Tag = list;
+                                n.ImageIndex = n.SelectedImageIndex = IDX_FILE;
+                            }
                         }
                     });
                 });

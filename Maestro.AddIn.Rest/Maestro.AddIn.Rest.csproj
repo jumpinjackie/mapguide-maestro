@@ -212,7 +212,7 @@
       <Version>10.0.3</Version>
     </PackageReference>
     <PackageReference Include="RestSharp">
-      <Version>105.2.3</Version>
+      <Version>106.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
