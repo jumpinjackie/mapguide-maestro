@@ -22,9 +22,8 @@ The MapGuide Maestro API targets the following platforms:
  * .net Framework 4.6.1
  * .net Standard 2.0
 
-.. note::
-
-    Until further notice, due to constraints imposed by upstream dependencies, the **.net Standard 2.0** target is not strong-named, while the **.net Framework 4.6.1** target is strong-named
+> [!NOTE]
+> Until further notice, due to constraints imposed by upstream dependencies, the **.net Standard 2.0** target is not strong-named, while the **.net Framework 4.6.1** target is strong-named
 
 ## Acquiring the Maestro API
 
