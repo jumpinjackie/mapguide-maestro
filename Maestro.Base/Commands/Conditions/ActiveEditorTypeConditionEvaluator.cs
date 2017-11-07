@@ -35,11 +35,15 @@ namespace Maestro.Base.Commands.Conditions
                 var wb = Workbench.Instance;
                 if (wb != null)
                 {
-                    if (wb.ActiveEditor != null)
+                    if (wb.ActiveEditor != null && wb.ActiveEditor.EditorService.CauseForInvalidState == null)
                     {
-                        var rtype = wb.ActiveEditor.EditorService.GetEditedResource().ResourceType.ToString();
-                        var resTypes = new List<string>(types.Split(',')); //NOXLATE
-                        return resTypes.Contains(rtype);
+                        var er = wb.ActiveEditor.EditorService.GetEditedResource();
+                        if (er != null)
+                        {
+                            var rtype = er.ResourceType.ToString();
+                            var resTypes = new List<string>(types.Split(',')); //NOXLATE
+                            return resTypes.Contains(rtype);
+                        }
                     }
                 }
             }

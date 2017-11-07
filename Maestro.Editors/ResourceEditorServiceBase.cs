@@ -112,10 +112,11 @@ namespace Maestro.Editors
         /// <summary>
         /// Gets the attached server connection
         /// </summary>
-        public IServerConnection CurrentConnection
-        {
-            get { return _conn; }
-        }
+        public IServerConnection CurrentConnection => _conn;
+
+        private Exception _causeForInvalidation;
+
+        public Exception CauseForInvalidState => _causeForInvalidation;
 
         /// <summary>
         /// Initiates the editing process. The resource to be edited is copied to the session repository and
@@ -127,14 +128,24 @@ namespace Maestro.Editors
         /// </returns>
         public IResource GetEditedResource()
         {
+            if (_causeForInvalidation != null)
+                return null;
+
             if (_editCopy == null)
             {
-                string copy = _conn.GenerateSessionResourceId(ResourceIdentifier.GetResourceTypeAsString(this.ResourceID));
+                try
+                {
+                    string copy = _conn.GenerateSessionResourceId(ResourceIdentifier.GetResourceTypeAsString(this.ResourceID));
 
-                _conn.ResourceService.CopyResource(this.ResourceID, copy, true);
+                    _conn.ResourceService.CopyResource(this.ResourceID, copy, true);
 
-                _editCopy = _conn.ResourceService.GetResource(copy);
-                _editCopy.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnResourcePropertyChanged, (eh) => _editCopy.PropertyChanged -= eh);
+                    _editCopy = _conn.ResourceService.GetResource(copy);
+                    _editCopy.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnResourcePropertyChanged, (eh) => _editCopy.PropertyChanged -= eh);
+                }
+                catch (Exception ex)
+                {
+                    _causeForInvalidation = ex;
+                }
             }
             return _editCopy;
         }
@@ -285,6 +296,8 @@ namespace Maestro.Editors
         {
             get
             {
+                if (_causeForInvalidation != null)
+                    return false;
                 if (_editCopy == null)
                     return false;
                 return _conn.Capabilities.GetMaxSupportedResourceVersion(_editCopy.ResourceType) > _editCopy.ResourceVersion;

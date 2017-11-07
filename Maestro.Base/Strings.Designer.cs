@@ -542,6 +542,15 @@ namespace Maestro.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The editor service for this resource has entered an invalid state and cannot continue.
+        /// </summary>
+        internal static string EditorServiceInvalidState {
+            get {
+                return ResourceManager.GetString("EditorServiceInvalidState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resource ID: {0}{1}Connection: {2}{1}Resource Version: {3}.
         /// </summary>
         internal static string EditorTitleTemplate {

@@ -158,5 +158,7 @@ namespace Maestro.Editors.SymbolDefinition
             get;
             set;
         }
+
+        public Exception CauseForInvalidState { get; }
     }
 }

@@ -106,6 +106,10 @@ namespace Maestro.Base.Editor
 
                 {
                     var res = _svc.GetEditedResource();
+                    if (res == null && _svc.CauseForInvalidState != null)
+                    {
+                        throw new Exception(Strings.EditorServiceInvalidState, _svc.CauseForInvalidState);
+                    }
                     var conn = _svc.CurrentConnection;
                     conn.SessionIDChanged += WeakEventHandler.Wrap(OnSessionIdChanged, (eh) => conn.SessionIDChanged -= eh);
                 }
@@ -124,10 +128,7 @@ namespace Maestro.Base.Editor
             }
         }
 
-        private void OnSessionIdChanged(object sender, EventArgs e)
-        {
-            this.RequiresReload = true;
-        }
+        private void OnSessionIdChanged(object sender, EventArgs e) => this.RequiresReload = true;
 
         /// <summary>
         /// Gets the XML content of the edited resource
@@ -154,10 +155,7 @@ namespace Maestro.Base.Editor
             }
         }
 
-        private void OpenAffectedResource(IResource res)
-        {
-            _svc.OpenResource(res.ResourceID);
-        }
+        private void OpenAffectedResource(IResource res) => _svc.OpenResource(res.ResourceID);
 
         /// <summary>
         /// Performs any pre-save validation logic. The base implementation performs
@@ -221,13 +219,7 @@ namespace Maestro.Base.Editor
         /// <summary>
         /// Gets whether this view can only be housed within the document region
         /// </summary>
-        public override bool IsExclusiveToDocumentRegion
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool IsExclusiveToDocumentRegion => true;
 
         /// <summary>
         /// Performs any pre-save validation on the currently edited resource, by default
@@ -253,7 +245,7 @@ namespace Maestro.Base.Editor
 
         private string GetTooltip(string item)
         {
-            return string.Format(Strings.EditorTitleTemplate, item, Environment.NewLine, this.EditorService.CurrentConnection.DisplayName, this.Resource.ResourceVersion);
+            return string.Format(Strings.EditorTitleTemplate, item, Environment.NewLine, this.EditorService.CurrentConnection.DisplayName, this.Resource?.ResourceVersion);
         }
 
         private void UpdateTitle()
@@ -301,6 +293,9 @@ namespace Maestro.Base.Editor
         {
             get
             {
+                if (this.EditorService.CauseForInvalidState != null)
+                    return false;
+
                 var res = this.Resource;
                 if (res != null)
                 {
@@ -327,43 +322,29 @@ namespace Maestro.Base.Editor
             set
             {
                 _dirty = value;
-                var handler = this.DirtyStateChanged;
-                if (handler != null)
-                    handler(this, EventArgs.Empty);
+                this.DirtyStateChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
         /// <summary>
         /// Gets whether this resource is a new un-saved resource
         /// </summary>
-        public bool IsNew
-        {
-            get { return _svc == null || _svc.IsNew; } //Mono
-        }
+        public bool IsNew => _svc == null || _svc.IsNew; //Mono
 
         /// <summary>
         /// Gets whether this resource can be profiled
         /// </summary>
-        public virtual bool CanProfile
-        {
-            get { return false; }
-        }
+        public virtual bool CanProfile => false;
 
         /// <summary>
         /// Gets whether this resource can be validated
         /// </summary>
-        public virtual bool CanBeValidated
-        {
-            get { return true; }
-        }
+        public virtual bool CanBeValidated => true;
 
         /// <summary>
         /// Gets whether this resource can be edited in its raw XML form
         /// </summary>
-        public virtual bool CanEditAsXml
-        {
-            get { return true; }
-        }
+        public virtual bool CanEditAsXml => true;
 
         /// <summary>
         /// Previews this resource
@@ -380,10 +361,7 @@ namespace Maestro.Base.Editor
         /// <summary>
         /// Synchronizes the in-memory resource object back to its session-based resource id
         /// </summary>
-        public virtual void SyncSessionCopy()
-        {
-            this.EditorService.SyncSessionCopy();
-        }
+        public virtual void SyncSessionCopy() => this.EditorService.SyncSessionCopy();
 
         /// <summary>
         /// Gets whether to discard unsaved changes when closed

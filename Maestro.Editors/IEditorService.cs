@@ -257,5 +257,13 @@ namespace Maestro.Editors
         /// <param name="processName"></param>
         /// <param name="args"></param>
         void RunProcess(string processName, params string[] args);
+
+        /// <summary>
+        /// If the editor service ever falls into an invalid state, the editor for this resource is effectively unusable.
+        /// 
+        /// This property contains the last caught exception. If this returns an exception, the service should be considered
+        /// in an invalid state
+        /// </summary>
+        Exception CauseForInvalidState { get; }
     }
 }

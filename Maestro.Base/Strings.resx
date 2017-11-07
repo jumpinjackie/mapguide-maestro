@@ -1007,4 +1007,7 @@ Error message: {0}</value>
   <data name="SelectFileHandlerDesc" xml:space="preserve">
     <value>Select File Handler to handle this action</value>
   </data>
+  <data name="EditorServiceInvalidState" xml:space="preserve">
+    <value>The editor service for this resource has entered an invalid state and cannot continue</value>
+  </data>
 </root>
