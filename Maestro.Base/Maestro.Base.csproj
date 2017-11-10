@@ -705,6 +705,10 @@
       <Project>{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}</Project>
       <Name>ICSharpCode.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.TextEditor\ICSharpCode.TextEditor.csproj">
+      <Project>{2d18be89-d210-49eb-a9dd-2246fbb3df6d}</Project>
+      <Name>ICSharpCode.TextEditor</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
