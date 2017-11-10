@@ -823,7 +823,13 @@ namespace Maestro.Base.UI
                 ILayerDefinition ldef = (ILayerDefinition)m_connection.ResourceService.GetResource(m_resourceId);
                 string csWkt;
                 var env = ldef.GetSpatialExtent(m_connection, true, out csWkt);
-                //TODO: Convert wkt to EPSG code and use that?
+
+                var epsg = m_connection.CoordinateSystemCatalog.ConvertWktToEpsgCode(csWkt);
+                if (!string.IsNullOrEmpty(epsg) && epsg != "0")
+                {
+                    srs = $"EPSG:{epsg}";
+                }
+
                 //TODO: Convert to lon/lat
 
                 bounds = $"<Bounds west=\"{env.MinX.ToString(ic)}\" east=\"{env.MaxX.ToString(ic)}\" south=\"{env.MinY.ToString(ic)}\" north=\"{env.MaxY.ToString(ic)}\" "; //NOXLATE

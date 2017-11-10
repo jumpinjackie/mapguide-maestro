@@ -12,6 +12,7 @@
  - Fix: Installer now installs vcredist so that (mg-desktop) local connection mode will work out of the box
  - Fix: Fusion editor no longer adds obsolete <VirtualEarthScript> element when adding Bing Maps layers
  - Fix: Gracefully handle invalid resources with open editors
+ - Fix: A long standing annoyance where setting WMS bounds will set the coordinate system to EPSG:???? requiring you to manually enter in the EPSG code. This should now be automatic most of the time.
  - Now uses ICSharpCode.TextEditor for dialog to edit raw resource header XML
  - Added new "feature count" tool that provides feature totals for thematic rules in a layer
  - User and Developer guides now moved online to GitHub Pages
