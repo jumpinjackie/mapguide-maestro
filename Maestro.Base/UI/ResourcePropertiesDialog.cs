@@ -823,10 +823,16 @@ namespace Maestro.Base.UI
                 ILayerDefinition ldef = (ILayerDefinition)m_connection.ResourceService.GetResource(m_resourceId);
                 string csWkt;
                 var env = ldef.GetSpatialExtent(m_connection, true, out csWkt);
-
                 var epsg = m_connection.CoordinateSystemCatalog.ConvertWktToEpsgCode(csWkt);
                 if (!string.IsNullOrEmpty(epsg) && epsg != "0")
                 {
+                    if (epsg != "4326")
+                    {
+                        var targetWkt = m_connection.CoordinateSystemCatalog.ConvertEpsgCodeToWkt("4326"); //NOXLATE
+                        env = Utility.TransformEnvelope(env, csWkt, targetWkt);
+                        epsg = "4326";
+                    }
+
                     srs = $"EPSG:{epsg}";
                 }
 
