@@ -204,6 +204,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var featSvc = new Mock<IFeatureService>();
             var resSvc = new Mock<IResourceService>();
 
+            conn.Setup(c => c.ResourceService).Returns(resSvc.Object);
+
             var validator = CreateInstance<LayerDefinitionValidator>();
 
             var context = new ResourceValidationContext(conn.Object);
