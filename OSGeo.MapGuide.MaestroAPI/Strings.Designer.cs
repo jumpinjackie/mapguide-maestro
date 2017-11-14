@@ -1843,6 +1843,24 @@ namespace OSGeo.MapGuide.MaestroAPI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The layer is marked as published for WMS, but is missing required bounds information in its metadata..
+        /// </summary>
+        public static string LDF_WmsPublishedLayerMissingBounds {
+            get {
+                return ResourceManager.GetString("LDF_WmsPublishedLayerMissingBounds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The layer is marked as queryable for WMS, but has no property mappings defined. Add one or more property mappings to this layer, otherwise WMS GetFeatureInfo requests against this layer will return nothing..
+        /// </summary>
+        public static string LDF_WmsQueryableLayerNoPropertyMappings {
+            get {
+                return ResourceManager.GetString("LDF_WmsQueryableLayerNoPropertyMappings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Convert to SDF option is not supported by Maestro.
         /// </summary>
         public static string LPROC_ConvertToSdf3NotSupported {

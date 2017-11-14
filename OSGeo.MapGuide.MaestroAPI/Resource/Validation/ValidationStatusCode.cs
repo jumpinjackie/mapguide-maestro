@@ -246,6 +246,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Warning_LayerDefinition_SymbolParameterOverrideToNonExistentParameter,
 
         /// <summary>
+        /// A layer definition has metadata that indicates it is a queryable WMS layer, but the layer has no property mappings defined. If a WMS GetFeatureInfo
+        /// request is made against this layer, nothing will be returned. You should expose one or more properties in the property mappings.
+        /// </summary>
+        Warning_LayerDefinition_NoPropertyMappingsForWmsQueryableLayer,
+
+        /// <summary>
         /// The web layout's initial view lies outside the referenced map definition's extents. Usually means you will see nothing when the AJAX viewer loads.
         /// </summary>
         Warning_WebLayout_InitialViewOutsideMapExtents = 3601,
@@ -436,6 +442,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// The Layer Definition does not specify a class name
         /// </summary>
         Error_LayerDefinition_MissingFeatureName,
+
+        /// <summary>
+        /// The Layer Definition is marked as published for WMS, but it has no bounds information applied
+        /// </summary>
+        Error_LayerDefinition_WmsPublishedLayerMissingBounds,
 
         /// <summary>
         /// Unclassified validation error

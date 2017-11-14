@@ -351,8 +351,11 @@ namespace Maestro.Base.UI
 
         private void ClearHeaderButton_Click(object sender, EventArgs e)
         {
+            WMSAbstract.Text = WMSTitle.Text = WMSBounds.Text = WMSKeyWords.Text = WMSMetadata.Text = string.Empty;
+            WMSAvalible.Checked = WMSQueryable.Checked = WMSOpaque.Checked = false;
             m_resourceHeader.Metadata = null;
             UpdateCustomDisplay();
+            MessageBox.Show("WMS metadata cleared");
         }
 
         private void WMSTitle_TextChanged(object sender, EventArgs e)

@@ -994,4 +994,10 @@
   &lt;/Position&gt;
 &lt;/WatermarkDefinition&gt;</value>
   </data>
+  <data name="LDF_WmsPublishedLayerMissingBounds" xml:space="preserve">
+    <value>The layer is marked as published for WMS, but is missing required bounds information in its metadata.</value>
+  </data>
+  <data name="LDF_WmsQueryableLayerNoPropertyMappings" xml:space="preserve">
+    <value>The layer is marked as queryable for WMS, but has no property mappings defined. Add one or more property mappings to this layer, otherwise WMS GetFeatureInfo requests against this layer will return nothing.</value>
+  </data>
 </root>

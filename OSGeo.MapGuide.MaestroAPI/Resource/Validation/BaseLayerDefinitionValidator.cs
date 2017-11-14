@@ -30,6 +30,7 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {
@@ -81,6 +82,36 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             var dldef = ldef.SubLayer as IDrawingLayerDefinition;
 
             List<ValidationIssue> issues = new List<ValidationIssue>();
+
+            var header = context.Connection.ResourceService.GetResourceHeader(resource.ResourceID);
+            var meta = header?.Metadata?.Simple;
+
+            if (meta != null)
+            {
+                //Is WMS published?
+                if (meta.Property.Any(p => p.Name == "_IsPublished" && p.Value == "1"))
+                {
+                    //Check that it has bounds
+                    var b = meta.Property.FirstOrDefault(p => p.Name == "_Bounds");
+                    bool hasBounds = true;
+                    if (b != null)
+                    {
+                        if (string.IsNullOrEmpty(b.Value?.Trim()))
+                        {
+                            hasBounds = false;
+                        }
+                    }
+                    else
+                    {
+                        hasBounds = false;
+                    }
+
+                    if (!hasBounds)
+                    {
+                        issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_WmsPublishedLayerMissingBounds, Strings.LDF_WmsPublishedLayerMissingBounds));
+                    }
+                }
+            }
 
             if (ldef.SubLayer == null)
                 issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_LayerNull, Strings.LDF_LayerNullError));
@@ -292,6 +323,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         for (int j = i + 1; j < ranges.Count; j++)
                             if (ranges[i].Key > ranges[j].Value || ranges[i].Value > ranges[j].Value)
                                 issues.Add(new ValidationIssue(resource, ValidationStatus.Information, ValidationStatusCode.Info_LayerDefinition_ScaleRangeOverlap, string.Format(Strings.LDF_ScaleRangesOverlapInformation, ranges[i].Value, ranges[i].Key, ranges[j].Value, ranges[j].Key)));
+                }
+
+                if (meta != null)
+                {
+                    //Is this WMS queryable?
+                    if (meta.Property.Any(p => p.Name == "_Queryable" && p.Value == "1"))
+                    {
+                        //We should have some property mappings, otherwise WMS GetFeatureInfo will return nothing
+                        if (!(vldef.PropertyMapping?.Any() == true))
+                        {
+                            issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LayerDefinition_NoPropertyMappingsForWmsQueryableLayer, Strings.LDF_WmsQueryableLayerNoPropertyMappings));
+                        }
+                    }
                 }
             }
             else if (gldef != null)
