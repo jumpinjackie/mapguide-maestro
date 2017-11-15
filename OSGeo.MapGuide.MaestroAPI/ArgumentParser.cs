@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 
@@ -33,6 +34,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     ///
     /// -name1 -name2[:value2] -name3[:value3]
     /// </remarks>
+    [Obsolete("This is primarily for servicing the (soon to be deprecated) MgCooker utility. You should use an alternative command-line parsing library")]
     public class ArgumentParser
     {
         private readonly Dictionary<string, string> _values;
@@ -105,6 +107,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// <summary>
     /// A set of common command-line arguments
     /// </summary>
+    [Obsolete("This is primarily for servicing the (soon to be deprecated) MgCooker utility")]
     public static class CommandLineArguments
     {
         /// <summary>

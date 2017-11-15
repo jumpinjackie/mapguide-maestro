@@ -27,10 +27,12 @@ using System.Threading;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tile
 {
+    [Obsolete("This is infrastructure for the (soon to be deprecated) MgCooker utility")]
     internal class RenderThreads : IDisposable
     {
         private class EventPassing
         {
+            [Obsolete("This is infrastructure for the (soon to be deprecated) MgCooker utility")]
             public enum EventType
             {
                 Begin,

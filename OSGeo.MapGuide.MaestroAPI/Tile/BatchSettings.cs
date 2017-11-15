@@ -32,6 +32,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// <summary>
     /// Tile progress event
     /// </summary>
+    [Obsolete("This is infrastructure for the (soon to be deprecated) MgCooker utility")]
     public class TileProgressEventArgs : EventArgs
     {
         /// <summary>
@@ -94,6 +95,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// <summary>
     /// The rendering error event
     /// </summary>
+    [Obsolete("This is infrastructure for the (soon to be deprecated) MgCooker utility")]
     public class TileRenderingErrorEventArgs : EventArgs
     {
         /// <summary>
@@ -158,6 +160,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="args"></param>
+    [Obsolete("This is infrastructure for the (soon to be deprecated) MgCooker utility")]
     public delegate void TileProgressEventHandler(object sender, TileProgressEventArgs args);
 
     /// <summary>
@@ -165,11 +168,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="args"></param>
+    [Obsolete("This is infrastructure for the (soon to be deprecated) MgCooker utility")]
     public delegate void TileErrorEventHandler(object sender, TileRenderingErrorEventArgs args);
 
     /// <summary>
     /// These are the avalible states for callbacks
     /// </summary>
+    [Obsolete("This is infrastructure for the (soon to be deprecated) MgCooker utility")]
     public enum CallbackStates
     {
         /// <summary>
@@ -231,6 +236,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// <summary>
     /// Class to hold settings for a batch run of tile building
     /// </summary>
+    [Obsolete("This is infrastructure for the (soon to be deprecated) MgCooker utility")]
     public class TilingRunCollection : IDisposable
     {
         /// <summary>
@@ -542,6 +548,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// <summary>
     /// Class that represents a single map to build tiles for
     /// </summary>
+    [Obsolete("This is infrastructure for the (soon to be deprecated) MgCooker utility")]
     public class MapTilingConfiguration
     {
         /// <summary>
@@ -937,6 +944,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// <summary>
     /// Defines global parameters for a tiling run
     /// </summary>
+    [Obsolete("This is infrastructure for the (soon to be deprecated) MgCooker utility")]
     public class TileRunParameters
     {
         /// <summary>
@@ -1083,6 +1091,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <param name="col"></param>
         /// <param name="row"></param>
         /// <param name="scale"></param>
+        [Obsolete("This is infrastructure for the (soon to be deprecated) MgCooker utility")]
         public delegate void RenderMethodDelegate(string map, string group, int col, int row, int scale);
     }
 }
