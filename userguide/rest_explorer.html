@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>The REST Explorer | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="The REST Explorer | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="the-rest-explorer">The REST Explorer</h1>
+
+<p>The <strong>REST Explorer</strong> is an optional addin for connecting to and working with <a href="https://github.com/jumpinjackie/mapguide-rest">mapguide-rest</a> configurations</p>
+<h2 id="about-configurations">About configurations</h2>
+<p>A mapguide-rest configuration is a JSON document that defines how a particular Feature Source or Layer Definition is exposed in a RESTful manner via mapguide-rest.</p>
+<p>Feature data in a Feature Source or Layer Definition configured for RESTful access can be accessed through a standard HTTP client with standard verbs (<code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>) and established conventions for each particular verb.</p>
+<p>The <strong>REST Explorer</strong> provides a specialized user interface for browsing, creating and editing mapguide-rest configurations.</p>
+<p>You can read more about mapguide-rest configurations from the <a href="https://github.com/jumpinjackie/mapguide-rest/wiki/Data-configuration">mapguide-rest wiki</a></p>
+<h2 id="connecting-to-a-mapguide-rest-instance">Connecting to a mapguide-rest instance</h2>
+<p>To connect to a mapguide-rest instance, click the connect button on the <strong>REST Explorer</strong> toolbar</p>
+<p><img src="../images/rest_explorer_connect.png" alt=""></p>
+<p>This will open a login dialog for you to enter the endpoint and credentials. Use the same Administrator/Author credentials as you would for a normal MapGuide Site connection.</p>
+<p><img src="../images/rest_explorer_login.png" alt=""></p>
+<p>Once connected, the <strong>REST Explorer</strong> will enumerate all known configurations</p>
+<p><img src="../images/rest_explorer_configs.png" alt=""></p>
+<p>Expanding a configuration node will list any associated template files for that configuration</p>
+<p><img src="../images/rest_explorer_config_templates.png" alt=""></p>
+<h2 id="creating-a-new-configuration">Creating a new configuration</h2>
+<p>To create a new mapguide-rest configuration, establish a mapguide-rest connection and click the add button.</p>
+<p><img src="../images/rest_explorer_add.png" alt=""></p>
+<p>This will open the <strong>REST Configuration</strong> dialog where you can proceed to edit the configuration.</p>
+<h3 id="1-set-the-uri-part">1. Set the URI part</h3>
+<p>Enter the URI part in the provided text box.</p>
+<p><img src="../images/rest_config_uri_part.png" alt=""></p>
+<p>The basically defines the RESTful endpoint where this resource is accessible from. For example, assuming mapguide-rest is available at <code>http://localhost/mapguide/rest</code>, a URI part of <code>parcels</code> means the RESTful endpoint for this resource is available at:</p>
+<p><code>http://localhost/mapguide/rest/data/parcels</code></p>
+<p>The various representations you can configure for this resource hang off of this base URL endpoint. For example, if you configured an XML representation, you can access XML feature data for your resource by doing a <code>GET</code> request to:</p>
+<p><code>http://localhost/mapguide/rest/data/parcels/.xml</code></p>
+<h3 id="2-set-a-source">2. Set a source</h3>
+<p>Choose either a <strong>Feature Source</strong> or <strong>Layer Definition</strong>, </p>
+<p><img src="../images/rest_config_set_source.png" alt=""></p>
+<p>Either option will present a resource picker where you can select the Feature Source or Layer Definition to use.</p>
+<p>Once selected, the source JSON fragment will be added to the document</p>
+<p><img src="../images/rest_config_source_json.png" alt=""></p>
+<h3 id="3-add-one-or-more-representations">3. Add one or more representations</h3>
+<p>Once you&#39;ve set a source, you need to add one or more representations via the <strong>Add Representation</strong> menu.</p>
+<p><img src="../images/rest_config_add_representation.png" alt=""></p>
+<p>The following representations are available:</p>
+<ul>
+<li>XML - Feature data in this source can be accessed as XML</li>
+<li>GeoJSON - Feature data in this source can be accessed as GeoJSON</li>
+<li>CSV - Feature data in this source can be accessed as CSV (Comma-Separated Values)</li>
+<li>Image - Feature data in this source can be rendered out as a map image</li>
+<li>Template - Feature data in this source can be rendered out through user-defined textual templates</li>
+</ul>
+<p>Depending on the representation you chose you will get a new dialog that lets you configure each supported verb of the selected representation.</p>
+<p><img src="../images/rest_config_new_representation.png" alt=""></p>
+<p>Each method is detailed below</p>
+<h4 id="representation-details---get">Representation Details - GET</h4>
+<p>The <code>GET</code> representation UI lets to you define the behavior of how responses are returned when an application makes a <code>GET</code> request to this RESTful endpoint</p>
+<p><img src="../images/rest_config_get_representation.png" alt=""></p>
+<p>The main options mainly revolve around:</p>
+<ul>
+<li>Feature Limit and Pagination</li>
+<li>Exposing what feature properties can be returned</li>
+<li>The coordinate system to transform feature geometries to</li>
+<li>Any additional computed properties to expose in the response</li>
+<li>Permissions on what users/groups can access this RESTful endpoint via the <code>GET</code> method</li>
+</ul>
+<h4 id="representation-details---postputdelete">Representation Details - POST/PUT/DELETE</h4>
+<p>The UI for specifying <code>POST</code>, <code>PUT</code> and <code>DELETE</code> all concern permissions to define which users and groups are allowed to make requests to this RESTful endpoint for the given method</p>
+<p><img src="../images/rest_config_postputdelete_representation.png" alt=""></p>
+<p>The settings are the same as the <strong>Permissions</strong> section of the <code>GET</code> represenation configuration</p>
+<h2 id="adding-template-files">Adding template files</h2>
+<p>If you configured a RESTful endpoint with a template representation, you will need to upload the required template files under that configuration. To do this, select the endpoint configuration node and click the button to add files.</p>
+<p><img src="../images/rest_explorer_add_template.png" alt=""></p>
+<p>This will present a file picker where you can select the template file to upload.</p>
+<p>Once uploaded, the file will appear as a child node under the configuration node, and the file name can be referenced in the template representation settings</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/Docs/userguide/rest_explorer.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

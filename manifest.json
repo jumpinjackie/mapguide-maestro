@@ -1242,7 +1242,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OSGeo.MapGuide.MaestroAPI.ExtensionMethods.html",
-          "hash": "LDWhX0H6svXxNcaSUCqvVg=="
+          "hash": "r35DlLHqV5r8uTrF4SgDAg=="
         }
       },
       "is_incremental": false,
@@ -2598,7 +2598,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OSGeo.MapGuide.MaestroAPI.Resource.Validation.ValidationStatusCode.html",
-          "hash": "8AoaljH2gYrIcknwK5bz9A=="
+          "hash": "6jSUCNagx2DfDjAFGarG8g=="
         }
       },
       "is_incremental": false,
@@ -3234,7 +3234,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OSGeo.MapGuide.MaestroAPI.Strings.html",
-          "hash": "N702k7b6CAn3Tve7e/Ohqw=="
+          "hash": "TuwgLEcWad9Jrn1x6qSblw=="
         }
       },
       "is_incremental": false,
@@ -6630,7 +6630,7 @@
       "output": {
         ".html": {
           "relative_path": "api/OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html",
-          "hash": "Er15366yeXByUThXVZNYkA=="
+          "hash": "HJjrTuCREf38xK027iUeUg=="
         }
       },
       "is_incremental": false,
@@ -8730,7 +8730,7 @@
       "output": {
         ".html": {
           "relative_path": "devguide/gettingstarted.html",
-          "hash": "PYj45t7MeKLm/bJLIXdMrA=="
+          "hash": "nje8nC0WtTFi5LoEYKm44w=="
         }
       },
       "is_incremental": false,
@@ -9444,6 +9444,149 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/rest_config_add_representation.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/rest_config_add_representation.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/rest_config_get_representation.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/rest_config_get_representation.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/rest_config_new_representation.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/rest_config_new_representation.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/rest_config_postputdelete_representation.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/rest_config_postputdelete_representation.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/rest_config_set_source.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/rest_config_set_source.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/rest_config_source_json.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/rest_config_source_json.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/rest_config_uri_part.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/rest_config_uri_part.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/rest_explorer_add.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/rest_explorer_add.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/rest_explorer_add_template.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/rest_explorer_add_template.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/rest_explorer_config_templates.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/rest_explorer_config_templates.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/rest_explorer_configs.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/rest_explorer_configs.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/rest_explorer_connect.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/rest_explorer_connect.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/rest_explorer_login.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/rest_explorer_login.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/servermon.png",
       "output": {
         "resource": {
@@ -9824,6 +9967,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "userguide/rest_explorer.md",
+      "output": {
+        ".html": {
+          "relative_path": "userguide/rest_explorer.html",
+          "hash": "AnEc/CVccplL5cGYLNR/zw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "userguide/scripting_and_automating_maestro.md",
       "output": {
         ".html": {
@@ -9840,7 +9995,7 @@
       "output": {
         ".html": {
           "relative_path": "userguide/toc.html",
-          "hash": "MVglcT/k8Q2vVKZDqm5t+g=="
+          "hash": "aGMslm49lnAB1vX7mVCz9Q=="
         }
       },
       "is_incremental": false,

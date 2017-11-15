@@ -248,6 +248,11 @@ matching MG_USER_CREDENTIALS resource data item that contains the encrypted cred
 </td>
       </tr>
       <tr>
+        <td id="OSGeo_MapGuide_MaestroAPI_Resource_Validation_ValidationStatusCode_Error_LayerDefinition_WmsPublishedLayerMissingBounds">Error_LayerDefinition_WmsPublishedLayerMissingBounds</td>
+        <td><p>The Layer Definition is marked as published for WMS, but it has no bounds information applied</p>
+</td>
+      </tr>
+      <tr>
         <td id="OSGeo_MapGuide_MaestroAPI_Resource_Validation_ValidationStatusCode_Error_MapDefinition_DuplicateLayerName">Error_MapDefinition_DuplicateLayerName</td>
         <td><p>A layer with an already existing name was found. Layer names must be unique</p>
 </td>
@@ -485,6 +490,12 @@ composite style will always take precedence and the point/line/area style will h
       <tr>
         <td id="OSGeo_MapGuide_MaestroAPI_Resource_Validation_ValidationStatusCode_Warning_LayerDefinition_MultipleGridScaleRanges">Warning_LayerDefinition_MultipleGridScaleRanges</td>
         <td><p>Multiple raster scale ranges were found</p>
+</td>
+      </tr>
+      <tr>
+        <td id="OSGeo_MapGuide_MaestroAPI_Resource_Validation_ValidationStatusCode_Warning_LayerDefinition_NoPropertyMappingsForWmsQueryableLayer">Warning_LayerDefinition_NoPropertyMappingsForWmsQueryableLayer</td>
+        <td><p>A layer definition has metadata that indicates it is a queryable WMS layer, but the layer has no property mappings defined. If a WMS GetFeatureInfo
+request is made against this layer, nothing will be returned. You should expose one or more properties in the property mappings.</p>
 </td>
       </tr>
       <tr>
