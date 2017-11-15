@@ -50,6 +50,8 @@
   href: local_connection_mode.md
 - name: Scripting and Automating Maestro
   href: scripting_and_automating_maestro.md
+- name: The REST Explorer
+  href: rest_explorer.md
 - name: Other Tools
   href: other_tools.md
 - name: Other Resources
