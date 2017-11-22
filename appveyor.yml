@@ -59,9 +59,9 @@ after_build:
   - dotnet publish -c release -f netcoreapp2.0 -r win-x64 -o publish_win
   - dotnet publish -c release -f netcoreapp2.0 -r linux-x64 -o publish_linux
   - cd /D %APPVEYOR_BUILD_FOLDER%\MgTileSeeder\publish_win
-  - 7z a -mx9 %APPVEYOR_BUILD_FOLDER%\artifacts\MgTileSeeder-win-x64-%ARTIFACT_RELEASE_LABEL%.zip *.*
+  - 7z a -mx9 %APPVEYOR_BUILD_FOLDER%\artifacts\MgTileSeeder-win-x64-%ARTIFACT_RELEASE_LABEL%.zip *
   - cd /D %APPVEYOR_BUILD_FOLDER%\MgTileSeeder\publish_linux
-  - 7z a -mx9 %APPVEYOR_BUILD_FOLDER%\artifacts\MgTileSeeder-linux-x64-%ARTIFACT_RELEASE_LABEL%.zip *.*
+  - 7z a -mx9 %APPVEYOR_BUILD_FOLDER%\artifacts\MgTileSeeder-linux-x64-%ARTIFACT_RELEASE_LABEL%.zip *
   - cd /D %APPVEYOR_BUILD_FOLDER%\Install
   - appveyor DownloadFile https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe
   - makensis.exe /DSLN_CONFIG=%CONFIGURATION% /DCPU=x86 /DRELEASE_VERSION=%ARTIFACT_RELEASE_LABEL% Maestro.nsi
