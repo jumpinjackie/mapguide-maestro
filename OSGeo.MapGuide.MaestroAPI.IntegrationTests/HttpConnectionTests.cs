@@ -42,6 +42,8 @@ namespace MaestroAPITests
             return TestControl.IgnoreHttpConnectionTests;
         }
 
+        protected override string Provider => "Http";
+
         public override IServerConnection CreateTestConnection()
         {
             return ConnectionUtil.CreateTestHttpConnection();

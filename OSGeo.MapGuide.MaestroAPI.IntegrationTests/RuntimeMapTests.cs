@@ -67,64 +67,16 @@ namespace MaestroAPITests
             return false;
         }
 
-        static readonly object initLock = new object();
-
-        static bool _init = false;
-
         private void SetupTestData()
         {
-            lock (initLock)
-            {
-                if (_init)
-                    return;
-
-                var conn = CreateTestConnection();
-                var resSvc = conn.ResourceService;
-
-                resSvc.DeleteResource("Library://UnitTests/");
-
-                resSvc.SetResourceXmlData("Library://UnitTests/Maps/Sheboygan.MapDefinition", File.OpenRead("TestData/MappingService/UT_Sheboygan.mdf"));
-                resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganTiled.MapDefinition", File.OpenRead("UserTestData/TestTiledMap.xml"));
-                resSvc.SetResourceXmlData("Library://UnitTests/Maps/DuplicateLayerIds.MapDefinition", File.OpenRead("UserTestData/TestDuplicateLayerIds.xml"));
-
-                resSvc.SetResourceXmlData("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.ldf"));
-                resSvc.SetResourceXmlData("Library://UnitTests/Layers/Rail.LayerDefinition", File.OpenRead("TestData/MappingService/UT_Rail.ldf"));
-                resSvc.SetResourceXmlData("Library://UnitTests/Layers/Parcels.LayerDefinition", File.OpenRead("TestData/TileService/UT_Parcels.ldf"));
-
-                resSvc.SetResourceXmlData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.fs"));
-                resSvc.SetResourceXmlData("Library://UnitTests/Data/Rail.FeatureSource", File.OpenRead("TestData/MappingService/UT_Rail.fs"));
-                resSvc.SetResourceXmlData("Library://UnitTests/Data/Parcels.FeatureSource", File.OpenRead("TestData/TileService/UT_Parcels.fs"));
-
-                resSvc.SetResourceData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", "UT_HydrographicPolygons.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.sdf"));
-                resSvc.SetResourceData("Library://UnitTests/Data/Rail.FeatureSource", "UT_Rail.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_Rail.sdf"));
-                resSvc.SetResourceData("Library://UnitTests/Data/Parcels.FeatureSource", "UT_Parcels.sdf", ResourceDataType.File, File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"));
-
-                resSvc.SetResourceXmlData("Library://UnitTests/Data/SpaceShip.DrawingSource", File.OpenRead("TestData/DrawingService/SpaceShipDrawingSource.xml"));
-                resSvc.SetResourceData("Library://UnitTests/Data/SpaceShip.DrawingSource", "SpaceShip.dwf", ResourceDataType.File, File.OpenRead("TestData/DrawingService/SpaceShip.dwf"));
-
-                if (conn.SiteVersion >= new Version(3, 0))
-                {
-                    resSvc.SetResourceXmlData("Library://UnitTests/Data/RoadCenterLines.FeatureSource", File.OpenRead("TestData/TileService/UT_RoadCenterLines.fs"));
-                    resSvc.SetResourceData("Library://UnitTests/Data/RoadCenterLines.FeatureSource", "RoadCenterLines.sdf", ResourceDataType.File, File.OpenRead("TestData/TileService/UT_RoadCenterLines.sdf"));
-
-                    resSvc.SetResourceXmlData("Library://UnitTests/Layers/RoadCenterLines.LayerDefinition", File.OpenRead("TestData/TileService/UT_RoadCenterLines.ldf"));
-
-                    resSvc.SetResourceXmlData("Library://UnitTests/Data/VotingDistricts.FeatureSource", File.OpenRead("TestData/TileService/UT_VotingDistricts.fs"));
-                    resSvc.SetResourceData("Library://UnitTests/Data/VotingDistricts.FeatureSource", "VotingDistricts.sdf", ResourceDataType.File, File.OpenRead("TestData/TileService/UT_VotingDistricts.sdf"));
-
-                    resSvc.SetResourceXmlData("Library://UnitTests/Layers/VotingDistricts.LayerDefinition", File.OpenRead("TestData/TileService/UT_VotingDistricts.ldf"));
-
-                    resSvc.SetResourceXmlData("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", File.OpenRead("TestData/TileService/UT_BaseMap.tsd"));
-                    resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganLinked.MapDefinition", File.OpenRead("TestData/TileService/UT_LinkedTileSet.mdf"));
-                }
-
-                _init = true;
-            }
+            TestEnvironment.SetupTestData(this.Provider, () => this.CreateTestConnection());
         }
 
         public void Dispose()
         {
         }
+
+        public abstract string Provider { get; }
 
         public abstract IServerConnection CreateTestConnection();
     }
@@ -341,7 +293,7 @@ namespace MaestroAPITests
             Assert.False(rail.Selectable);
         }
 
-        public abstract string TestPrefix { get; }
+        public string TestPrefix => _fixture.Provider;
 
         protected virtual bool CaresAboutRuntimeMapState => true;
 
@@ -1292,6 +1244,8 @@ namespace MaestroAPITests
             return TestControl.IgnoreHttpRuntimeMapTests;
         }
 
+        public override string Provider => "Http";
+
         public override IServerConnection CreateTestConnection()
         {
             return ConnectionUtil.CreateTestHttpConnection();
@@ -1303,11 +1257,6 @@ namespace MaestroAPITests
         public HttpRuntimeMapTests(HttpRuntimeMapFixture fixture) 
             : base(fixture)
         {
-        }
-
-        public override string TestPrefix
-        {
-            get { return "Http"; }
         }
 
         [SkippableFact]

@@ -22,7 +22,9 @@
 
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
+using OSGeo.MapGuide.ObjectModels.Common;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 
@@ -113,6 +115,60 @@ namespace MaestroAPITests
             Console.WriteLine("IgnoreLocalNativePerformanceTests    = {0}", TestControl.IgnoreLocalNativePerformanceTests);
             Console.WriteLine("IgnoreLocalNativeFeatureTests        = {0}", TestControl.IgnoreLocalNativeFeatureTests);
             Console.WriteLine("IgnoreLocalFeatureTests              = {0}", TestControl.IgnoreLocalFeatureTests);
+        }
+
+        static readonly object initLock = new object();
+        static HashSet<string> initProviders = new HashSet<string>();
+
+        public static void SetupTestData(string provider, Func<IServerConnection> connFactory)
+        {
+            lock (initLock)
+            {
+                if (initProviders.Contains(provider))
+                    return;
+
+                var conn = connFactory();
+                var resSvc = conn.ResourceService;
+
+                resSvc.DeleteResource("Library://UnitTests/");
+
+                resSvc.SetResourceXmlData("Library://UnitTests/Maps/Sheboygan.MapDefinition", File.OpenRead("TestData/MappingService/UT_Sheboygan.mdf"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganTiled.MapDefinition", File.OpenRead("UserTestData/TestTiledMap.xml"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Maps/DuplicateLayerIds.MapDefinition", File.OpenRead("UserTestData/TestDuplicateLayerIds.xml"));
+
+                resSvc.SetResourceXmlData("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.ldf"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Layers/Rail.LayerDefinition", File.OpenRead("TestData/MappingService/UT_Rail.ldf"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Layers/Parcels.LayerDefinition", File.OpenRead("TestData/TileService/UT_Parcels.ldf"));
+
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.fs"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/Rail.FeatureSource", File.OpenRead("TestData/MappingService/UT_Rail.fs"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/Parcels.FeatureSource", File.OpenRead("TestData/TileService/UT_Parcels.fs"));
+
+                resSvc.SetResourceData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", "UT_HydrographicPolygons.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.sdf"));
+                resSvc.SetResourceData("Library://UnitTests/Data/Rail.FeatureSource", "UT_Rail.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_Rail.sdf"));
+                resSvc.SetResourceData("Library://UnitTests/Data/Parcels.FeatureSource", "UT_Parcels.sdf", ResourceDataType.File, File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"));
+
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/SpaceShip.DrawingSource", File.OpenRead("TestData/DrawingService/SpaceShipDrawingSource.xml"));
+                resSvc.SetResourceData("Library://UnitTests/Data/SpaceShip.DrawingSource", "SpaceShip.dwf", ResourceDataType.File, File.OpenRead("TestData/DrawingService/SpaceShip.dwf"));
+
+                if (conn.SiteVersion >= new Version(3, 0))
+                {
+                    resSvc.SetResourceXmlData("Library://UnitTests/Data/RoadCenterLines.FeatureSource", File.OpenRead("TestData/TileService/UT_RoadCenterLines.fs"));
+                    resSvc.SetResourceData("Library://UnitTests/Data/RoadCenterLines.FeatureSource", "RoadCenterLines.sdf", ResourceDataType.File, File.OpenRead("TestData/TileService/UT_RoadCenterLines.sdf"));
+
+                    resSvc.SetResourceXmlData("Library://UnitTests/Layers/RoadCenterLines.LayerDefinition", File.OpenRead("TestData/TileService/UT_RoadCenterLines.ldf"));
+
+                    resSvc.SetResourceXmlData("Library://UnitTests/Data/VotingDistricts.FeatureSource", File.OpenRead("TestData/TileService/UT_VotingDistricts.fs"));
+                    resSvc.SetResourceData("Library://UnitTests/Data/VotingDistricts.FeatureSource", "VotingDistricts.sdf", ResourceDataType.File, File.OpenRead("TestData/TileService/UT_VotingDistricts.sdf"));
+
+                    resSvc.SetResourceXmlData("Library://UnitTests/Layers/VotingDistricts.LayerDefinition", File.OpenRead("TestData/TileService/UT_VotingDistricts.ldf"));
+
+                    resSvc.SetResourceXmlData("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", File.OpenRead("TestData/TileService/UT_BaseMap.tsd"));
+                    resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganLinked.MapDefinition", File.OpenRead("TestData/TileService/UT_LinkedTileSet.mdf"));
+                }
+
+                initProviders.Add(provider);
+            }
         }
     }
 

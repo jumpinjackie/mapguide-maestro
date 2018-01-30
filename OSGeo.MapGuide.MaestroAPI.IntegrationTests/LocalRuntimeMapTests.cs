@@ -36,6 +36,8 @@ namespace MaestroAPITests
             return TestControl.IgnoreLocalRuntimeMapTests;
         }
 
+        public override string Provider => "Local";
+
         public override IServerConnection CreateTestConnection()
         {
             return ConnectionUtil.CreateTestLocalConnection();
@@ -47,11 +49,6 @@ namespace MaestroAPITests
         public LocalRuntimeMapTests(LocalRuntimeMapFixture fixture) 
             : base(fixture)
         {
-        }
-
-        public override string TestPrefix
-        {
-            get { return "Local"; }
         }
 
         protected override bool CaresAboutRuntimeMapState => false;

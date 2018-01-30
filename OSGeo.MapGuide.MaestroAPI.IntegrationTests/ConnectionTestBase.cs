@@ -80,43 +80,12 @@ namespace MaestroAPITests
 
         }
 
-        static readonly object initLock = new object();
-
-        static bool _init = false;
-
         private void SetupTestData()
         {
-            lock (initLock)
-            {
-                if (_init)
-                    return;
-
-                var conn = CreateTestConnection();
-                var resSvc = conn.ResourceService;
-
-                resSvc.DeleteResource("Library://UnitTests/");
-
-                resSvc.SetResourceXmlData("Library://UnitTests/Maps/Sheboygan.MapDefinition", File.OpenRead("TestData/MappingService/UT_Sheboygan.mdf"));
-                resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganTiled.MapDefinition", File.OpenRead("UserTestData/TestTiledMap.xml"));
-
-                resSvc.SetResourceXmlData("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.ldf"));
-                resSvc.SetResourceXmlData("Library://UnitTests/Layers/Rail.LayerDefinition", File.OpenRead("TestData/MappingService/UT_Rail.ldf"));
-                resSvc.SetResourceXmlData("Library://UnitTests/Layers/Parcels.LayerDefinition", File.OpenRead("TestData/TileService/UT_Parcels.ldf"));
-
-                resSvc.SetResourceXmlData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.fs"));
-                resSvc.SetResourceXmlData("Library://UnitTests/Data/Rail.FeatureSource", File.OpenRead("TestData/MappingService/UT_Rail.fs"));
-                resSvc.SetResourceXmlData("Library://UnitTests/Data/Parcels.FeatureSource", File.OpenRead("TestData/TileService/UT_Parcels.fs"));
-
-                resSvc.SetResourceData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", "UT_HydrographicPolygons.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.sdf"));
-                resSvc.SetResourceData("Library://UnitTests/Data/Rail.FeatureSource", "UT_Rail.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_Rail.sdf"));
-                resSvc.SetResourceData("Library://UnitTests/Data/Parcels.FeatureSource", "UT_Parcels.sdf", ResourceDataType.File, File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"));
-
-                resSvc.SetResourceXmlData("Library://UnitTests/Data/SpaceShip.DrawingSource", File.OpenRead("TestData/DrawingService/SpaceShipDrawingSource.xml"));
-                resSvc.SetResourceData("Library://UnitTests/Data/SpaceShip.DrawingSource", "SpaceShip.dwf", ResourceDataType.File, File.OpenRead("TestData/DrawingService/SpaceShip.dwf"));
-
-                _init = true;
-            }
+            TestEnvironment.SetupTestData(this.Provider, () => this.CreateTestConnection());
         }
+
+        protected abstract string Provider { get; }
 
         public abstract IServerConnection CreateTestConnection();
     }
@@ -663,7 +632,8 @@ namespace MaestroAPITests
 
         public virtual void TestSchemaMapping()
         {
-            Skip.If(_fixture.Skip, _fixture.SkipReason);
+            //Skip.If(_fixture.Skip, _fixture.SkipReason);
+            Skip.If(true, "Need a replacement WMS source (this one's broken)");
 
             var conn = _fixture.CreateTestConnection();
             var doc1 = conn.FeatureService.GetSchemaMapping("OSGeo.WMS", "FeatureServer=http://mapconnect.ga.gov.au/wmsconnector/com.esri.wms.Esrimap?Servicename=GDA94_MapConnect_SDE_250kmap_WMS");

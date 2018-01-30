@@ -36,6 +36,8 @@ namespace MaestroAPITests
             return TestControl.IgnoreLocalNativeFeatureTests;
         }
 
+        protected override string Provider => "LocalNative";
+
         public override IServerConnection CreateTestConnection()
         {
             return ConnectionUtil.CreateTestLocalNativeConnection();
