@@ -1263,6 +1263,49 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         }
 
         [Fact]
+        public void TestCase_LayerValidator_DoesNotGetResourceHeaderForSessionBasedLayers()
+        {
+            var resId = "Library://Test.FeatureSource";
+            var ldfId = $"Session:{Guid.NewGuid().ToString()}//Test.LayerDefinition";
+            var schemaName = "Default";
+            var className = "Test";
+            var idName = "ID";
+            var geomName = "Geometry";
+            var klass = CreateTestClass("Default", className, idName, geomName);
+
+            var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
+            fs.ResourceID = resId;
+
+            var ldf = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
+            ldf.SubLayer.ResourceId = resId;
+            ldf.ResourceID = ldfId;
+            var vl = (IVectorLayerDefinition)ldf.SubLayer;
+            vl.FeatureName = $"{schemaName}:{klass.Name}";
+            vl.Geometry = geomName;
+
+            var mockConn = new Mock<IServerConnection>();
+            var mockFeatSvc = new Mock<IFeatureService>();
+            var mockResSvc = new Mock<IResourceService>();
+
+            mockResSvc.Setup(rsvc => rsvc.GetResource(It.Is<string>(arg => arg == resId))).Returns(fs);
+
+            mockFeatSvc.Setup(fsvc => fsvc.TestConnection(It.Is<string>(arg => arg == resId))).Returns("false");
+            mockFeatSvc.Setup(fsvc => fsvc.GetSchemas(It.Is<string>(arg => arg == resId))).Returns(new[] { schemaName });
+            mockFeatSvc.Setup(fsvc => fsvc.GetClassDefinition(It.Is<string>(arg => arg == resId), It.Is<string>(arg => arg == $"{schemaName}:{className}"))).Returns(klass);
+
+            mockConn.Setup(c => c.FeatureService).Returns(mockFeatSvc.Object);
+            mockConn.Setup(c => c.ResourceService).Returns(mockResSvc.Object);
+
+            var context = new ResourceValidationContext(mockConn.Object);
+            var validator = CreateInstance<LayerDefinitionValidator>();
+            validator.Connection = mockConn.Object;
+            var issues = validator.Validate(context, ldf, false);
+            Assert.Empty(issues);
+
+            mockResSvc.Verify(r => r.GetResourceHeader(It.IsAny<string>()), Times.Never);
+        }
+
+        [Fact]
         public void TestCase_MapDefinitionValidator_EmptyCS()
         {
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "Sheboygan");

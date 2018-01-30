@@ -83,7 +83,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 
             List<ValidationIssue> issues = new List<ValidationIssue>();
 
-            var header = context.Connection.ResourceService.GetResourceHeader(resource.ResourceID);
+            var header = ResourceIdentifier.IsSessionBased(resource.ResourceID)
+                ? null
+                : context.Connection.ResourceService.GetResourceHeader(resource.ResourceID);
             var meta = header?.Metadata?.Simple;
 
             if (meta != null)

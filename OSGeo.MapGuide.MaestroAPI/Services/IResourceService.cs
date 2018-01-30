@@ -135,6 +135,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Gets the document header of the specified resource
         /// </summary>
+        /// <remarks>This operation does not work with session-based resources.</remarks>
         /// <param name="resourceID"></param>
         /// <returns></returns>
         ObjCommon.ResourceDocumentHeaderType GetResourceHeader(string resourceID);
