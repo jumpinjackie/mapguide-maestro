@@ -670,15 +670,15 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="IronPython">
-      <Version>2.7.7</Version>
+      <Version>2.7.8.1</Version>
     </PackageReference>
     <PackageReference Include="IronPython.StdLib">
-      <Version>2.7.7</Version>
+      <Version>2.7.8.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /S /Y /I "$(MSBuildProjectDirectory)\..\Packages\ironpython.stdlib\2.7.7\content\Lib" "$(TargetDir)Lib"
+    <PostBuildEvent>xcopy /S /Y /I "$(MSBuildProjectDirectory)\..\Packages\ironpython.stdlib\2.7.8.1\contentFiles\any\any\Lib" "$(TargetDir)Lib"
 call "$(SolutionDir)addin_clean.bat" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
