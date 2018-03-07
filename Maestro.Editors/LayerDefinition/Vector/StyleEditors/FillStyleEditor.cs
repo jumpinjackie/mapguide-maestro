@@ -61,16 +61,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         private void foregroundColor_RequestExpressionEditor(object sender, EventArgs e)
         {
-            var handler = this.ForegroundRequiresExpression;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.ForegroundRequiresExpression?.Invoke(this, EventArgs.Empty);
         }
 
         private void backgroundColor_RequestExpressionEditor(object sender, EventArgs e)
         {
-            var handler = this.BackgroundRequiresExpression;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.BackgroundRequiresExpression?.Invoke(this, EventArgs.Empty);
         }
     }
 }

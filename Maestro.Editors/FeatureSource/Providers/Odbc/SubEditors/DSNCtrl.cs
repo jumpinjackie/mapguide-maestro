@@ -50,9 +50,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
 
         private void OnConnectionChanged()
         {
-            var handler = this.ConnectionChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.ConnectionChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public NameValueCollection ConnectionProperties
@@ -102,9 +100,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
 
         private void OnRequestDocumentReset()
         {
-            var handler = this.RequestDocumentReset;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.RequestDocumentReset?.Invoke(this, EventArgs.Empty);
         }
 
         public event EventHandler RequestDocumentReset;

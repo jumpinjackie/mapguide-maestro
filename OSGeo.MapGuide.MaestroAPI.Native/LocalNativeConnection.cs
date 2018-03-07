@@ -1037,8 +1037,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         {
             System.IO.FileInfo fi = new System.IO.FileInfo(filename);
 
-            if (callback != null)
-                callback(0, fi.Length, fi.Length);
+            callback?.Invoke(0, fi.Length, fi.Length);
 
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
             MgByteSource pkgSource = new MgByteSource(filename);
@@ -1047,8 +1046,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             rd.Dispose();
             LogMethodCall("MgResourceService::ApplyResourcePackage", true, "MgByteReader");
 
-            if (callback != null)
-                callback(fi.Length, 0, fi.Length);
+            callback?.Invoke(fi.Length, 0, fi.Length);
         }
 
         public override string[] GetCustomPropertyNames() => new string[] { };

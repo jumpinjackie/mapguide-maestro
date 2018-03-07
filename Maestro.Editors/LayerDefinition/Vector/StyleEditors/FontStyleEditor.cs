@@ -171,8 +171,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item.FontName = (string)fontCombo.Text;
             previewPicture.Refresh();
 
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void sizeContextCombo_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -182,8 +181,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item.SizeContext = (SizeContextType)Enum.Parse(typeof(SizeContextType), (string)sizeContextCombo.SelectedValue);
             previewPicture.Refresh();
 
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void unitsCombo_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -193,8 +191,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item.Unit = (LengthUnitType)Enum.Parse(typeof(LengthUnitType), (string)unitsCombo.SelectedValue);
             previewPicture.Refresh();
 
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void sizeCombo_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -220,8 +217,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item.Bold = boldCheck.Checked ? "true" : null;
             previewPicture.Refresh();
 
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void italicCheck_CheckedChanged(object sender, System.EventArgs e)
@@ -231,8 +227,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item.Italic = italicCheck.Checked ? "true" : null;
             previewPicture.Refresh();
 
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void underlineCheck_CheckedChanged(object sender, System.EventArgs e)
@@ -242,8 +237,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item.Underlined = underlineCheck.Checked ? "true" : null;
             previewPicture.Refresh();
 
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void textColor_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -253,8 +247,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item.ForegroundColor = textColor.ColorExpression;
             previewPicture.Refresh();
 
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void backgroundColor_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -264,8 +257,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item.BackgroundColor = backgroundColor.ColorExpression;
             previewPicture.Refresh();
 
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void backgroundTypeCombo_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -275,8 +267,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item.BackgroundStyle = (BackgroundStyleType)Enum.Parse(typeof(BackgroundStyleType), (string)backgroundTypeCombo.SelectedValue);
             previewPicture.Refresh();
 
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void horizontalCombo_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -367,8 +358,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item.Text = propertyCombo.Text;
             previewPicture.Refresh();
 
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         public ITextSymbol Item
@@ -412,8 +402,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item.SizeX = m_item.SizeY = sizeCombo.Text;
             previewPicture.Refresh();
 
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void fontCombo_TextChanged(object sender, EventArgs e)
@@ -452,8 +441,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item.HorizontalAlignment = (string)horizontalCombo.Text;
             previewPicture.Refresh();
 
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void verticalCombo_TextChanged(object sender, EventArgs e)
@@ -464,8 +452,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item.VerticalAlignment = (string)verticalCombo.Text;
             previewPicture.Refresh();
 
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void rotationCombo_TextChanged(object sender, EventArgs e)
@@ -477,8 +464,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item.Rotation = rotationCombo.Text;
             previewPicture.Refresh();
 
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void TextColor_RequestExpressionEditor(object sender, EventArgs e)

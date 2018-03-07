@@ -175,9 +175,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         private void colorCombo_RequestExpressionEditor(object sender, EventArgs e)
         {
-            var handler = this.RequiresExpressionEditor;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.RequiresExpressionEditor?.Invoke(this, EventArgs.Empty);
         }
 
         public string ColorExpression

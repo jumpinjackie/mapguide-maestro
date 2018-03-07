@@ -52,9 +52,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
 
         private void OnConnectionChanged()
         {
-            var handler = this.ConnectionChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.ConnectionChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private static string InferDriver(string fileName, bool use64Bit)

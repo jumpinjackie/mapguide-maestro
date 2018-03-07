@@ -51,15 +51,11 @@ namespace Maestro.Login
         {
             if (!string.IsNullOrEmpty(this.Username) && !string.IsNullOrEmpty(this.Password))
             {
-                var h = EnableOk;
-                if (h != null)
-                    h(this, EventArgs.Empty);
+                EnableOk?.Invoke(this, EventArgs.Empty);
             }
             else
             {
-                var h = DisabledOk;
-                if (h != null)
-                    h(this, EventArgs.Empty);
+                DisabledOk?.Invoke(this, EventArgs.Empty);
             }
         }
 

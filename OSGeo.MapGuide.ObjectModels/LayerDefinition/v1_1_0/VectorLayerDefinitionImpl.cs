@@ -2072,9 +2072,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_1_0
 
         private void OnPropertyChanged(string name)
         {
-            var handler = this.PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(name));
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 

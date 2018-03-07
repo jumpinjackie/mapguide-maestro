@@ -371,23 +371,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                         else if (m_parent as IAreaRule != null)
                             ((IAreaRule)m_parent).Label = m_label;
 
-                        if (ItemChanged != null)
-                            ItemChanged(m_label, null);
+                        ItemChanged?.Invoke(m_label, null);
                     }
                     else if (isPoint || isW2dSymbol)
                     {
-                        if (ItemChanged != null)
-                            ItemChanged(m_point, null);
+                        ItemChanged?.Invoke(m_point, null);
                     }
                     else if (isLine)
                     {
-                        if (ItemChanged != null)
-                            ItemChanged(m_line, null);
+                        ItemChanged?.Invoke(m_line, null);
                     }
                     else if (isArea)
                     {
-                        if (ItemChanged != null)
-                            ItemChanged(m_area, null);
+                        ItemChanged?.Invoke(m_area, null);
                     }
 
                     this.Refresh();

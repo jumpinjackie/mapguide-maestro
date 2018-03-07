@@ -228,8 +228,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             c.BorderStyle = BorderStyle.None;
 
             m_selectedItem = null;
-            if (SelectionChanged != null)
-                SelectionChanged(this, null);
+            SelectionChanged?.Invoke(this, null);
         }
 
         private void Rule_Enter(object sender, EventArgs e)
@@ -240,8 +239,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
             c.BorderStyle = BorderStyle.FixedSingle;
             m_selectedItem = c.Item;
-            if (SelectionChanged != null)
-                SelectionChanged(this, null);
+            SelectionChanged?.Invoke(this, null);
         }
 
         private void SignalItemChanged()

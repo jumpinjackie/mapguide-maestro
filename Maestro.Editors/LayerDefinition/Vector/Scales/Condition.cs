@@ -228,23 +228,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
             if (m_prt != null)
             {
-                if (ItemChanged != null)
-                    ItemChanged(m_prt, null);
+                ItemChanged?.Invoke(m_prt, null);
             }
             else if (m_lrt != null)
             {
-                if (ItemChanged != null)
-                    ItemChanged(m_lrt, null);
+                ItemChanged?.Invoke(m_lrt, null);
             }
             else if (m_art != null)
             {
-                if (ItemChanged != null)
-                    ItemChanged(m_art, null);
+                ItemChanged?.Invoke(m_art, null);
             }
             else if (m_comp != null)
             {
-                if (ItemChanged != null)
-                    ItemChanged(m_comp, null);
+                ItemChanged?.Invoke(m_comp, null);
             }
         }
 

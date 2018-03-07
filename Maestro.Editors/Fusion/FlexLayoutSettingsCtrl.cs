@@ -170,11 +170,7 @@ namespace Maestro.Editors.Fusion
                 var template = (IApplicationDefinitionTemplateInfo)item.Tag;
                 txtTemplateUrl.Text = template.LocationUrl;
                 GeneratePreviewUrl();
-                var handler = this.TemplateChanged;
-                if (handler != null)
-                {
-                    handler(template);
-                }
+                this.TemplateChanged?.Invoke(template);
             }
         }
 

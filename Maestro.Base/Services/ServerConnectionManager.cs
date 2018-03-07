@@ -145,9 +145,7 @@ namespace Maestro.Base.Services
         public void AddConnection(string name, IServerConnection conn)
         {
             _connections.Add(name, conn);
-            var handler = this.ConnectionAdded;
-            if (handler != null)
-                handler(this, new ServerConnectionEventArgs(name));
+            this.ConnectionAdded?.Invoke(this, new ServerConnectionEventArgs(name));
         }
 
         /// <summary>
@@ -161,8 +159,7 @@ namespace Maestro.Base.Services
             {
                 var removing = this.ConnectionRemoving;
                 var ce = new ServerConnectionRemovingEventArgs(name);
-                if (removing != null)
-                    removing(this, ce);
+                removing?.Invoke(this, ce);
 
                 if (ce.Cancel)
                     return null;
@@ -170,9 +167,7 @@ namespace Maestro.Base.Services
                 IServerConnection conn = _connections[name];
                 _connections.Remove(name);
 
-                var removed = this.ConnectionRemoved;
-                if (removed != null)
-                    removed(this, new ServerConnectionEventArgs(name));
+                this.ConnectionRemoved?.Invoke(this, new ServerConnectionEventArgs(name));
                 return conn;
             }
             return null;

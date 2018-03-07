@@ -54,8 +54,7 @@ namespace Maestro.Base.Services
             }
             _init = true;
             EventWatcher.Initialize();
-            if (callback != null)
-                callback();
+            callback?.Invoke();
         }
 
         /// <summary>

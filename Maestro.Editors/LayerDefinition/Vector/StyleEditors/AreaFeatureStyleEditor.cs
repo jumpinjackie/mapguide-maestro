@@ -209,8 +209,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             m_item.Fill.FillPattern = fillStyleEditor.fillCombo.Text;
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void displayFill_CheckedChanged(object sender, EventArgs e)
@@ -227,8 +226,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 m_item.Fill = null;
             }
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void foregroundColor_CurrentColorChanged(object sender, EventArgs e)
@@ -238,8 +236,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             m_item.Fill.ForegroundColor = fillStyleEditor.foregroundColor.ColorExpression;
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void backgroundColor_CurrentColorChanged(object sender, EventArgs e)
@@ -249,8 +246,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             m_item.Fill.BackgroundColor = fillStyleEditor.backgroundColor.ColorExpression;
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void displayLine_CheckedChanged(object sender, EventArgs e)
@@ -267,8 +263,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 m_item.Stroke = null;
             }
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void colorCombo_CurrentColorChanged(object sender, EventArgs e)
@@ -278,8 +273,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             m_item.Stroke.Color = lineStyleEditor.colorCombo.ColorExpression;
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void fillCombo_Line_SelectedIndexChanged(object sender, EventArgs e)
@@ -290,8 +284,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             //TODO: Validate
             m_item.Stroke.LineStyle = lineStyleEditor.fillCombo.Text;
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void thicknessCombo_TextChanged(object sender, EventArgs e)
@@ -302,8 +295,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             //TODO: Validate
             m_item.Stroke.Thickness = lineStyleEditor.thicknessCombo.Text;
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void thicknessCombo_SelectedIndexChanged(object sender, EventArgs e)

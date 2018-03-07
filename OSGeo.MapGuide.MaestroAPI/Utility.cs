@@ -423,8 +423,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             long copied = 0;
             long freqCount = 0;
 
-            if (callback != null)
-                callback(copied, length > 0 ? (length - copied) : -1, length);
+            callback?.Invoke(copied, length > 0 ? (length - copied) : -1, length);
 
             int r;
             byte[] buf = new byte[1024];
@@ -439,13 +438,11 @@ namespace OSGeo.MapGuide.MaestroAPI
                 if (freqCount > updateFrequence)
                 {
                     freqCount = 0;
-                    if (callback != null)
-                        callback(copied, length > 0 ? (length - copied) : -1, length);
+                    callback?.Invoke(copied, length > 0 ? (length - copied) : -1, length);
                 }
             } while (r > 0);
 
-            if (callback != null)
-                callback(copied, 0, copied);
+            callback?.Invoke(copied, 0, copied);
         }
 
         /// <summary>
@@ -1199,8 +1196,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
                 conn.ResourceService.SaveResourceAs(newLayer, newResId);
                 processed++;
-                if (progress != null)
-                    progress(null, new LengthyOperationProgressArgs(newResId, (processed / origStyle.RuleCount) * 100));
+                progress?.Invoke(null, new LengthyOperationProgressArgs(newResId, (processed / origStyle.RuleCount) * 100));
             }
         }
 

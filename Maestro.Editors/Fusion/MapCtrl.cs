@@ -163,9 +163,7 @@ namespace Maestro.Editors.Fusion
 
         private void OnResourceChanged()
         {
-            var handler = this.ResourceChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.ResourceChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public event EventHandler ResourceChanged;

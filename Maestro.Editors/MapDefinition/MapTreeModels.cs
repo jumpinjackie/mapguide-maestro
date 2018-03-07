@@ -140,27 +140,21 @@ namespace Maestro.Editors.MapDefinition
 
         protected void OnNodesInserted(TreeModelEventArgs e)
         {
-            var handler = this.NodesInserted;
-            if (handler != null)
-                handler(this, e);
+            this.NodesInserted?.Invoke(this, e);
         }
 
         public event EventHandler<TreeModelEventArgs> NodesInserted;
 
         protected void OnNodesRemoved(TreeModelEventArgs e)
         {
-            var handler = this.NodesRemoved;
-            if (handler != null)
-                handler(this, e);
+            this.NodesRemoved?.Invoke(this, e);
         }
 
         public event EventHandler<TreeModelEventArgs> NodesRemoved;
 
         protected void OnStructureChanged(TreePathEventArgs e)
         {
-            var handler = this.StructureChanged;
-            if (handler != null)
-                handler(this, e);
+            this.StructureChanged?.Invoke(this, e);
         }
 
         public event EventHandler<TreePathEventArgs> StructureChanged;

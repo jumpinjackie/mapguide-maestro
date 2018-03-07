@@ -51,9 +51,7 @@ namespace Maestro.Login
 
         public void UpdateLoginStatus()
         {
-            var h = EnableOk;
-            if (h != null)
-                h(this, EventArgs.Empty);
+            EnableOk?.Invoke(this, EventArgs.Empty);
         }
 
         public event EventHandler EnableOk;

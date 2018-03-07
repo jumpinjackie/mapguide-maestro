@@ -136,9 +136,7 @@ namespace Maestro.Editors.Common
         private void SetSelectedItem(RepositoryModelItem item)
         {
             this.SelectedItem = item;
-            var handler = this.ItemSelected;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.ItemSelected?.Invoke(this, EventArgs.Empty);
         }
 
         private bool IsNodeNotPopulated(TreeNode node)

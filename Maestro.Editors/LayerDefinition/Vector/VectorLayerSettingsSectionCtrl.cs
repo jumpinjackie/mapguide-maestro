@@ -256,9 +256,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
         private void OnFeatureClassChanged()
         {
-            var handler = this.FeatureClassChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.FeatureClassChanged?.Invoke(this, EventArgs.Empty);
 
             if (_lastClassName != _selectedClass.QualifiedName && _lastClassName != null)
             {

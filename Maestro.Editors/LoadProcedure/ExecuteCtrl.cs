@@ -38,9 +38,7 @@ namespace Maestro.Editors.LoadProcedure
 
         private void btnExecute_Click(object sender, EventArgs e)
         {
-            var handler = this.Execute;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.Execute?.Invoke(this, EventArgs.Empty);
         }
     }
 }

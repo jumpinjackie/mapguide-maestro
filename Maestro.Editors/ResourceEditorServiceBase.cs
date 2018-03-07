@@ -351,9 +351,7 @@ namespace Maestro.Editors
         private bool OnBeforeSave()
         {
             var e = new CancelEventArgs();
-            var handler = this.BeforeSave;
-            if (handler != null)
-                handler(this, e);
+            this.BeforeSave?.Invoke(this, e);
 
             return e.Cancel;
         }
@@ -412,9 +410,7 @@ namespace Maestro.Editors
         /// </summary>
         protected void OnSaved()
         {
-            var handler = this.Saved;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.Saved?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -506,9 +502,7 @@ namespace Maestro.Editors
         public void PrePreviewProcess()
         {
             SyncSessionCopy();
-            var handler = this.BeforePreview;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.BeforePreview?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>

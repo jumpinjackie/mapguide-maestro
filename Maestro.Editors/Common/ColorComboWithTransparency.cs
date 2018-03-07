@@ -67,8 +67,7 @@ namespace Maestro.Editors.Common
                         colorCombo.CurrentColor = Color.FromArgb(byte.MaxValue, value);
                     transparencySlider.Value = byte.MaxValue - value.A;
 
-                    if (CurrentColorChanged != null)
-                        CurrentColorChanged(this, null);
+                    CurrentColorChanged?.Invoke(this, null);
 
                     colorCombo.Refresh();
                 }
@@ -84,8 +83,7 @@ namespace Maestro.Editors.Common
             if (m_isUpdating)
                 return;
 
-            if (CurrentColorChanged != null)
-                CurrentColorChanged(this, null);
+            CurrentColorChanged?.Invoke(this, null);
         }
 
         private void transparencySlider_ValueChanged(object sender, EventArgs e)
@@ -95,8 +93,7 @@ namespace Maestro.Editors.Common
             if (m_isUpdating)
                 return;
 
-            if (CurrentColorChanged != null)
-                CurrentColorChanged(this, null);
+            CurrentColorChanged?.Invoke(this, null);
         }
     }
 }

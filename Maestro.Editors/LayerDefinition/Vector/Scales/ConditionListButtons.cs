@@ -158,8 +158,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 m_comp.AddCompositeRule(cr);
             }
 
-            if (ItemChanged != null)
-                ItemChanged(this, null);
+            ItemChanged?.Invoke(this, null);
         }
 
         private void CreateThemeButton_Click(object sender, EventArgs e)
@@ -256,8 +255,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
             conditionList.AddRuleControl(rule, idx).Focus();
 
-            if (ItemChanged != null)
-                ItemChanged(this, null);
+            ItemChanged?.Invoke(this, null);
         }
 
         private void MoveRuleUpButton_Click(object sender, EventArgs e)
@@ -265,8 +263,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             if (m_currentSelection == null)
                 conditionList.SelectedItem = m_lastSelection;
             conditionList.MoveSelectedRule(false);
-            if (ItemChanged != null)
-                ItemChanged(this, null);
+            ItemChanged?.Invoke(this, null);
         }
 
         private void MoveRuleDownButton_Click(object sender, EventArgs e)
@@ -274,14 +271,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             if (m_currentSelection == null)
                 conditionList.SelectedItem = m_lastSelection;
             conditionList.MoveSelectedRule(true);
-            if (ItemChanged != null)
-                ItemChanged(this, null);
+            ItemChanged?.Invoke(this, null);
         }
 
         private void conditionList_ItemChanged(object sender, EventArgs e)
         {
-            if (ItemChanged != null)
-                ItemChanged(sender, null);
+            ItemChanged?.Invoke(sender, null);
         }
 
         public void ResizeAuto()

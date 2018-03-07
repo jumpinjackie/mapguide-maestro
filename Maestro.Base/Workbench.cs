@@ -138,9 +138,7 @@ namespace Maestro.Base
         /// <param name="content"></param>
         protected override void OnViewActivated(object sender, IViewContent content)
         {
-            var h = this.ActiveDocumentChanged;
-            if (h != null)
-                h(this, EventArgs.Empty);
+            this.ActiveDocumentChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>

@@ -39,9 +39,7 @@ namespace Maestro.Editors.Generic
 
         private void OnDataListChanged()
         {
-            var handler = this.DataListChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.DataListChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public void Init(IEditorService ed)

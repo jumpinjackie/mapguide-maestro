@@ -1107,8 +1107,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             }
 
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void SizeContext_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -1129,8 +1128,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             }
 
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void SizeUnits_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -1141,8 +1139,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font || m_item.Symbol.Type == PointSymbolType.W2D)
                 m_item.Symbol.Unit = (LengthUnitType)Enum.Parse(typeof(LengthUnitType), (string)SizeUnits.SelectedValue);
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         public delegate void UpdateComboTextFromSelectChangedDelegate(ComboBox owner, string text, bool userChange);
@@ -1233,8 +1230,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     m_item.Symbol.InsertionPointX = ReferenceX.Text;
             }
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void ReferenceY_TextChanged(object sender, System.EventArgs e)
@@ -1251,8 +1247,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     m_item.Symbol.InsertionPointY = "0.5";
             }
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void RotationBox_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -1530,8 +1525,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font || m_item.Symbol.Type == PointSymbolType.W2D)
                 m_item.Symbol.SizeX = WidthText.Text;
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void HeightText_TextChanged(object sender, EventArgs e)

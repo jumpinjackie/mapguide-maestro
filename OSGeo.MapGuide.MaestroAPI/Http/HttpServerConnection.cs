@@ -1850,8 +1850,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 //Unfortunately because this is all batched server-side, there is no
                 //meaningful way to track progress
                 LengthyOperationProgressArgs la = new LengthyOperationProgressArgs("Moving resource...", -1); //LOCALIZEME
-                if (progress != null)
-                    progress(this, la);
+                progress?.Invoke(this, la);
 
                 oldpath = FixAndValidateFolderPath(oldpath);
                 newpath = FixAndValidateFolderPath(newpath);
@@ -1877,8 +1876,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 //Unfortunately because this is all batched server-side, there is no
                 //meaningful way to track progress
                 LengthyOperationProgressArgs la = new LengthyOperationProgressArgs("Moving resource...", -1); //LOCALIZEME
-                if (progress != null)
-                    progress(this, la);
+                progress?.Invoke(this, la);
 
                 string req = m_reqBuilder.MoveResource(oldpath, newpath, true);
                 req += "&CASCADE=1"; //NOXLATE

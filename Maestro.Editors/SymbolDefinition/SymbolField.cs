@@ -210,9 +210,7 @@ namespace Maestro.Editors.SymbolDefinition
                 }
             }
 
-            var handler = this.ContentChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.ContentChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private string[] _items;
@@ -241,9 +239,7 @@ namespace Maestro.Editors.SymbolDefinition
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            var handler = this.RequestBrowse;
-            if (handler != null)
-                handler(this);
+            this.RequestBrowse?.Invoke(this);
         }
 
         //Important: We need to set this otherwise the Winforms Designer will put you in a world of pain

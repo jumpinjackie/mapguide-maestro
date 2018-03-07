@@ -86,9 +86,7 @@ namespace Maestro.Editors.Common
 
         private void OnItemSelectedInternal(object sender, EventArgs e)
         {
-            var h = this.ItemSelected;
-            if (h != null)
-                h(this, EventArgs.Empty);
+            this.ItemSelected?.Invoke(this, EventArgs.Empty);
         }
 
         private RepositoryFolderTreeModel _model;
@@ -182,9 +180,7 @@ namespace Maestro.Editors.Common
                 }
             }
 
-            var h = this.ItemDrag;
-            if (h != null)
-                h(this, e);
+            this.ItemDrag?.Invoke(this, e);
         }
     }
 }

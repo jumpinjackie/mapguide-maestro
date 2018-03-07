@@ -101,9 +101,7 @@ namespace Maestro.Base.UI
 
         private void OnActiveConnectionChanged()
         {
-            var h = this.ActiveConnectionChanged;
-            if (h != null)
-                h(this, EventArgs.Empty);
+            this.ActiveConnectionChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private string _currentConnectionName;
@@ -122,9 +120,7 @@ namespace Maestro.Base.UI
                 OnActiveConnectionChanged();
             }
 
-            var h = this.ItemsSelected;
-            if (h != null)
-                h(this, new RepositoryItemEventArgs(this.SelectedItems));
+            this.ItemsSelected?.Invoke(this, new RepositoryItemEventArgs(this.SelectedItems));
         }
 
         public event RepositoryItemEventHandler ItemsSelected;

@@ -81,9 +81,7 @@ namespace Maestro.Editors
         /// </summary>
         protected virtual void OnResourceChanged()
         {
-            var handler = this.ResourceChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.ResourceChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>

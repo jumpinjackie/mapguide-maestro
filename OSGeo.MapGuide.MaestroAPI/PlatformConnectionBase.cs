@@ -771,20 +771,17 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             LengthyOperationProgressArgs la = new LengthyOperationProgressArgs(Strings.MovingResource, -1);
 
-            if (progress != null)
-                progress(this, la);
+            progress?.Invoke(this, la);
             if (la.Cancel)
                 return false;
             MoveResource(oldpath, newpath, true);
             la.Progress = 100;
-            if (progress != null)
-                progress(this, la);
+            progress?.Invoke(this, la);
             if (la.Cancel)
                 return false;
 
             la.Progress = -1;
-            if (progress != null)
-                progress(this, la);
+            progress?.Invoke(this, la);
             if (la.Cancel)
                 return false;
 
@@ -802,15 +799,13 @@ namespace OSGeo.MapGuide.MaestroAPI
                 }
 
             la.Progress = 100;
-            if (progress != null)
-                progress(this, la);
+            progress?.Invoke(this, la);
             if (la.Cancel)
                 return false;
 
             LengthyOperationCallbackArgs args = new LengthyOperationCallbackArgs((LengthyOperationCallbackArgs.LengthyOperationItem[])items.ToArray(typeof(LengthyOperationCallbackArgs.LengthyOperationItem)));
 
-            if (callback != null)
-                callback(this, args);
+            callback?.Invoke(this, args);
 
             if (args.Cancel)
                 return false;
@@ -881,23 +876,20 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             LengthyOperationProgressArgs la = new LengthyOperationProgressArgs(Strings.ProgressMovingFolder, -1);
 
-            if (progress != null)
-                progress(this, la);
+            progress?.Invoke(this, la);
             if (la.Cancel)
                 return false;
 
             MoveFolder(oldpath, newpath, true);
             la.Progress = 100;
-            if (progress != null)
-                progress(this, la);
+            progress?.Invoke(this, la);
             if (la.Cancel)
                 return false;
 
             int pg = 0;
             la.Progress = 0;
             la.StatusMessage = Strings.ProgressFindingFolderRefs;
-            if (progress != null)
-                progress(this, la);
+            progress?.Invoke(this, la);
             if (la.Cancel)
                 return false;
 
@@ -921,15 +913,13 @@ namespace OSGeo.MapGuide.MaestroAPI
                 pg++;
                 la.Progress = Math.Max(Math.Min(99, (int)(((double)pg / (double)lst.Items.Count) * (double)100)), 0);
 
-                if (progress != null)
-                    progress(this, la);
+                progress?.Invoke(this, la);
                 if (la.Cancel)
                     return false;
             }
 
             la.Progress = 100;
-            if (progress != null)
-                progress(this, la);
+            progress?.Invoke(this, la);
             if (la.Cancel)
                 return false;
 
@@ -937,8 +927,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             items.Values.CopyTo(vi, 0);
             LengthyOperationCallbackArgs args = new LengthyOperationCallbackArgs(vi);
 
-            if (callback != null)
-                callback(this, args);
+            callback?.Invoke(this, args);
 
             if (args.Cancel)
                 return false;
@@ -1011,22 +1000,19 @@ namespace OSGeo.MapGuide.MaestroAPI
             ResourceList lst = GetRepositoryResources(oldpath);
 
             LengthyOperationProgressArgs la = new LengthyOperationProgressArgs(Strings.ProgressCopyingFolder, -1);
-            if (progress != null)
-                progress(this, la);
+            progress?.Invoke(this, la);
             if (la.Cancel)
                 return false;
             CopyFolder(oldpath, newpath, true);
             la.Progress = 100;
-            if (progress != null)
-                progress(this, la);
+            progress?.Invoke(this, la);
             if (la.Cancel)
                 return false;
 
             la.Progress = 0;
             la.StatusMessage = Strings.ProgressFindingFolderRefs;
             int pg = 0;
-            if (progress != null)
-                progress(this, la);
+            progress?.Invoke(this, la);
             if (la.Cancel)
                 return false;
             ArrayList items = new ArrayList();
@@ -1050,22 +1036,19 @@ namespace OSGeo.MapGuide.MaestroAPI
                 pg++;
                 la.Progress = Math.Max(Math.Min(99, (int)(((double)pg / (double)lst.Items.Count) * (double)100)), 0);
 
-                if (progress != null)
-                    progress(this, la);
+                progress?.Invoke(this, la);
                 if (la.Cancel)
                     return false;
             }
 
             la.Progress = 100;
-            if (progress != null)
-                progress(this, la);
+            progress?.Invoke(this, la);
             if (la.Cancel)
                 return false;
 
             LengthyOperationCallbackArgs args = new LengthyOperationCallbackArgs((LengthyOperationCallbackArgs.LengthyOperationItem[])items.ToArray(typeof(LengthyOperationCallbackArgs.LengthyOperationItem)));
 
-            if (callback != null)
-                callback(this, args);
+            callback?.Invoke(this, args);
 
             if (args.Cancel)
                 return false;

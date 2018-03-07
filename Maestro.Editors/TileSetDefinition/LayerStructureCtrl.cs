@@ -482,9 +482,7 @@ namespace Maestro.Editors.TileSetDefinition
                 var layer = node.Tag as BaseLayerItem;
                 if (layer != null)
                 {
-                    var handler = this.RequestLayerOpen;
-                    if (handler != null)
-                        handler(this, layer.Tag.ResourceId);
+                    this.RequestLayerOpen?.Invoke(this, layer.Tag.ResourceId);
                 }
             }
         }

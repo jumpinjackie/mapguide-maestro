@@ -71,16 +71,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         private void btnExpr_Click(object sender, EventArgs e)
         {
-            var handler = this.RequestExpressionEditor;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.RequestExpressionEditor?.Invoke(this, EventArgs.Empty);
         }
 
         private void txtColor_TextChanged(object sender, EventArgs e)
         {
-            var handler = this.CurrentColorChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.CurrentColorChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnColor_Click(object sender, EventArgs e)

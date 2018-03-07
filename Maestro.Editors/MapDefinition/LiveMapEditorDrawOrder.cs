@@ -141,9 +141,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void OnLayerSelected(RuntimeMapLayer layer)
         {
-            var h = this.LayerSelected;
-            if (h != null)
-                h(this, layer);
+            this.LayerSelected?.Invoke(this, layer);
         }
 
         /// <summary>

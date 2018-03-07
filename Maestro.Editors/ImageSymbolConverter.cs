@@ -110,8 +110,7 @@ namespace Maestro.Editors
                         {
                             ExtractSymbol(targetFolder, drawSvc, ds, sect, res);
                             processed++;
-                            if (progressCallback != null)
-                                progressCallback(processed, symbolNames.Count);
+                            progressCallback?.Invoke(processed, symbolNames.Count);
                         }
                     }
                 }

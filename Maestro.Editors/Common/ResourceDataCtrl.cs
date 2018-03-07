@@ -210,17 +210,13 @@ namespace Maestro.Editors.Common
             {
                 LoadResourceData();
                 OnDataListChanged();
-                var handler = this.ResourceDataUploaded;
-                if (handler != null)
-                    handler(Path.GetFileName(fileName), fileName);
+                this.ResourceDataUploaded?.Invoke(Path.GetFileName(fileName), fileName);
             });
         }
 
         private void OnDataListChanged()
         {
-            var handler = this.DataListChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.DataListChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -375,9 +371,7 @@ namespace Maestro.Editors.Common
 
         private void OnResourceDataMarked(string name)
         {
-            var handler = this.ResourceDataMarked;
-            if (handler != null)
-                handler(this, name);
+            this.ResourceDataMarked?.Invoke(this, name);
         }
 
         private void lstDataFiles_DragEnter(object sender, DragEventArgs e)

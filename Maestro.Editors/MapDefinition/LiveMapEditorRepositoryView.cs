@@ -69,16 +69,12 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnAddToMap_Click(object sender, EventArgs e)
         {
-            var h = this.RequestAddToMap;
-            if (h != null)
-                h(this, EventArgs.Empty);
+            this.RequestAddToMap?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            var h = this.RequestEdit;
-            if (h != null)
-                h(this, EventArgs.Empty);
+            this.RequestEdit?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -116,9 +112,7 @@ namespace Maestro.Editors.MapDefinition
             btnAddToMap.Enabled = condition && (item.ResourceType == ResourceTypes.LayerDefinition.ToString());
             btnEdit.Enabled = condition && IsEditableType(item.ResourceType);
             btnRefresh.Enabled = !condition;
-            var h = this.ItemSelected;
-            if (h != null)
-                h(this, EventArgs.Empty);
+            this.ItemSelected?.Invoke(this, EventArgs.Empty);
         }
 
         private bool IsEditableType(string rt)
@@ -142,9 +136,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void repoView_ItemDrag(object sender, ItemDragEventArgs e)
         {
-            var h = this.ItemDrag;
-            if (h != null)
-                h(this, e);
+            this.ItemDrag?.Invoke(this, e);
         }
     }
 }

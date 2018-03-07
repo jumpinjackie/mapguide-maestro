@@ -51,9 +51,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void OnInnerNodeSelected(object sender, TreeNode e)
         {
-            var h = this.NodeSelected;
-            if (h != null)
-                h(this, e);
+            this.NodeSelected?.Invoke(this, e);
         }
 
         /// <summary>

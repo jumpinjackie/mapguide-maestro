@@ -535,8 +535,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 st2.SizeContext = (SizeContextType)Enum.Parse(typeof(SizeContextType), (string)sizeContextCombo.SelectedValue);
                 UpdatePreviewResult();
                 lineStyles.Refresh();
-                if (Changed != null)
-                    Changed(this, new EventArgs());
+                Changed?.Invoke(this, new EventArgs());
             }
         }
 
@@ -547,8 +546,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.CurrentStrokeType.Unit = (LengthUnitType)Enum.Parse(typeof(LengthUnitType), (string)sizeUnitsCombo.SelectedValue);
             UpdatePreviewResult();
             lineStyles.Refresh();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         public IList<IStroke> Item
@@ -569,8 +567,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             //TODO: Validate
             this.CurrentStrokeType.Thickness = lineStyleEditor.thicknessCombo.Text;
             UpdatePreviewResult();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void thicknessCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -594,8 +591,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.CurrentStrokeType.Color = lineStyleEditor.colorCombo.ColorExpression;
             UpdatePreviewResult();
             lineStyles.Refresh();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void fillCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -607,8 +603,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 this.CurrentStrokeType.LineStyle = (lineStyleEditor.fillCombo.SelectedItem as ImageStylePicker.NamedImage).Name;
             UpdatePreviewResult();
             lineStyles.Refresh();
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void applyLineStyle_CheckedChanged(object sender, System.EventArgs e)
@@ -649,8 +644,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             if (m_inUpdate)
                 return;
-            if (Changed != null)
-                Changed(this, new EventArgs());
+            Changed?.Invoke(this, new EventArgs());
         }
 
         private void UpdatePreviewImage()

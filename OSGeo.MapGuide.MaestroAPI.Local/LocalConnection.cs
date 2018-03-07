@@ -372,8 +372,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             System.IO.FileInfo fi = new System.IO.FileInfo(filename);
 
-            if (callback != null)
-                callback(0, fi.Length, fi.Length);
+            callback?.Invoke(0, fi.Length, fi.Length);
 
             var res = GetResourceService();
             MgByteSource pkgSource = new MgByteSource(filename);
@@ -381,8 +380,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             res.ApplyResourcePackage(rd);
             rd.Dispose();
             LogMethodCall("MgResourceService::ApplyResourcePackage", true, "MgByteReader");
-            if (callback != null)
-                callback(fi.Length, 0, fi.Length);
+            callback?.Invoke(fi.Length, 0, fi.Length);
         }
 
         public override void UpdateRepository(string resourceId, ResourceFolderHeaderType header)

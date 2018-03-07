@@ -300,10 +300,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// </summary>
         private static void OnUserSchemaAdded()
         {
-            if (UserSchemaAdded != null)
-            {
-                UserSchemaAdded(manager, new EventArgs());
-            }
+            UserSchemaAdded?.Invoke(manager, new EventArgs());
         }
 
         /// <summary>
@@ -311,10 +308,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// </summary>
         private static void OnUserSchemaRemoved()
         {
-            if (UserSchemaRemoved != null)
-            {
-                UserSchemaRemoved(manager, new EventArgs());
-            }
+            UserSchemaRemoved?.Invoke(manager, new EventArgs());
         }
     }
 }

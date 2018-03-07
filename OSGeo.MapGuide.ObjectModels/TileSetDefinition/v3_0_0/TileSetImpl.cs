@@ -370,9 +370,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0
 
         private void OnParametersChanged()
         {
-            var h = this.ParametersChanged;
-            if (h != null)
-                h(this, EventArgs.Empty);
+            this.ParametersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public event EventHandler ParametersChanged;

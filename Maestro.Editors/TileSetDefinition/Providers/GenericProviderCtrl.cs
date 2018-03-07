@@ -103,8 +103,7 @@ namespace Maestro.Editors.TileSetDefinition.Providers
                 if (_value != value)
                 {
                     _value = value;
-                    if (_valueChangeListener != null)
-                        _valueChangeListener(this);
+                    _valueChangeListener?.Invoke(this);
                 }
             }
         }

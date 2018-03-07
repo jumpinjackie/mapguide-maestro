@@ -104,9 +104,7 @@ namespace Maestro.Shared.UI
                     if (type.IsAssignableFrom(cnt.GetType()))
                     {
                         cnt.Hide();
-                        var handler = this.ViewHidden;
-                        if (handler != null)
-                            handler(this, EventArgs.Empty);
+                        this.ViewHidden?.Invoke(this, EventArgs.Empty);
 
                         //var wb = GetWorkbench();
                         //if (wb != null)
@@ -138,9 +136,7 @@ namespace Maestro.Shared.UI
                         if (!cnt.IsAttached)
                             wb.ShowContent(cnt);
                         cnt.Activate();
-                        var h = this.ViewActivated;
-                        if (h != null)
-                            h(this, new ViewEventArgs(cnt));
+                        this.ViewActivated?.Invoke(this, new ViewEventArgs(cnt));
                         //wb.CheckContainerStatus();
                         return;
                     }
@@ -210,9 +206,7 @@ namespace Maestro.Shared.UI
                         if (!cnt.IsAttached)
                             wb.ShowContent(cnt);
                         cnt.Activate();
-                        var h = this.ViewActivated;
-                        if (h != null)
-                            h(this, new ViewEventArgs(cnt));
+                        this.ViewActivated?.Invoke(this, new ViewEventArgs(cnt));
                         //wb.CheckContainerStatus();
                         return (T)cnt;
                     }
