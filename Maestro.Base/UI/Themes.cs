@@ -23,9 +23,6 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Maestro.Base.UI
 {
-    //NOTE: Dark themes disabled as they don't properly mesh with toolstrips (esp wrt label colors)
-    //Possibly related to: https://github.com/dockpanelsuite/dockpanelsuite/issues/415
-
     /// <summary>
     /// Available themes
     /// </summary>
