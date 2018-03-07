@@ -40,7 +40,11 @@ namespace Maestro.Base.UI
         /// The VS2012 blue theme
         /// </summary>
         public const string VS2012Blue = nameof(VS2012Blue);
-        //public const string VS2012Dark = nameof(VS2012Dark);
+
+        /// <summary>
+        /// The VS2012 dark theme
+        /// </summary>
+        public const string VS2012Dark = nameof(VS2012Dark);
 
         /// <summary>
         /// The VS2012 light theme
@@ -51,7 +55,11 @@ namespace Maestro.Base.UI
         /// The VS2013 blue theme
         /// </summary>
         public const string VS2013Blue = nameof(VS2013Blue);
-        //public const string VS2013Dark = nameof(VS2013Dark);
+
+        /// <summary>
+        /// The VS2013 dark theme
+        /// </summary>
+        public const string VS2013Dark = nameof(VS2013Dark);
 
         /// <summary>
         /// The VS2013 light theme
@@ -62,7 +70,11 @@ namespace Maestro.Base.UI
         /// The VS2015 blue theme
         /// </summary>
         public const string VS2015Blue = nameof(VS2015Blue);
-        //public const string VS2015Dark = nameof(VS2015Dark);
+
+        /// <summary>
+        /// The VS2015 dark theme
+        /// </summary>
+        public const string VS2015Dark = nameof(VS2015Dark);
 
         /// <summary>
         /// The VS2015 light theme
@@ -75,13 +87,13 @@ namespace Maestro.Base.UI
         public static string[] List { get; } = new string[]
         {
             VS2012Blue,
-            //VS2012Dark,
+            VS2012Dark,
             VS2012Light,
             VS2013Blue,
-            //VS2013Dark,
+            VS2013Dark,
             VS2013Light,
             VS2015Blue,
-            //VS2015Dark,
+            VS2015Dark,
             VS2015Light
         };
 
@@ -96,20 +108,20 @@ namespace Maestro.Base.UI
             {
                 case VS2012Blue:
                     return new VS2012BlueTheme();
-                //case VS2012Dark:
-                //    return new VS2012DarkTheme();
+                case VS2012Dark:
+                    return new VS2012DarkTheme();
                 case VS2012Light:
                     return new VS2012LightTheme();
                 case VS2013Blue:
                     return new VS2013BlueTheme();
-                //case VS2013Dark:
-                //    return new VS2013DarkTheme();
+                case VS2013Dark:
+                    return new VS2013DarkTheme();
                 case VS2013Light:
                     return new VS2013LightTheme();
                 case VS2015Blue:
                     return new VS2015BlueTheme();
-                //case VS2015Dark:
-                //    return new VS2015DarkTheme();
+                case VS2015Dark:
+                    return new VS2015DarkTheme();
                 case VS2015Light:
                     return new VS2015LightTheme();
                 default:
