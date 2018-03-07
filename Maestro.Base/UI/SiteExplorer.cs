@@ -153,6 +153,7 @@ namespace Maestro.Base.UI
 
         protected override void OnLoad(EventArgs e)
         {
+            Themes.Apply(trvResources);
         }
 
         public override bool AllowUserClose
@@ -235,6 +236,16 @@ namespace Maestro.Base.UI
             }
         }
 
+        private void ShowContextMenu(object owner, string addInTreePath, Control parent, int x, int y)
+        {
+            ContextMenuStrip menu = MenuService.CreateContextMenu(owner, addInTreePath);
+            if (menu != null)
+            {
+                Workbench.Instance.ApplyThemeTo(menu);
+                menu.Show(parent, new Point(x, y));
+            }
+        }
+
         private void trvResources_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -246,9 +257,9 @@ namespace Maestro.Base.UI
                     {
                         RepositoryItem item = items[0];
                         if (item.IsFolder)
-                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedFolder", trvResources, e.X, e.Y); //NOXLATE
+                            ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedFolder", trvResources, e.X, e.Y); //NOXLATE
                         else
-                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedDocument", trvResources, e.X, e.Y); //NOXLATE
+                            ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedDocument", trvResources, e.X, e.Y); //NOXLATE
                     }
                     else //Multi select
                     {
@@ -263,15 +274,15 @@ namespace Maestro.Base.UI
 
                         if (folderCount == 0) //All selected documents
                         {
-                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedDocuments", trvResources, e.X, e.Y); //NOXLATE
+                            ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedDocuments", trvResources, e.X, e.Y); //NOXLATE
                         }
                         else if (folderCount == items.Length) //All selected folders
                         {
-                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedFolders", trvResources, e.X, e.Y); //NOXLATE
+                            ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedFolders", trvResources, e.X, e.Y); //NOXLATE
                         }
                         else //Mixed selection
                         {
-                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedMixedResources", trvResources, e.X, e.Y); //NOXLATE
+                            ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedMixedResources", trvResources, e.X, e.Y); //NOXLATE
                         }
                     }
                 }

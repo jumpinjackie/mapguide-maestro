@@ -22,6 +22,7 @@
 using Maestro.AddIn.Rest.Model;
 using Maestro.Base;
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using RestSharp;
@@ -45,6 +46,7 @@ namespace Maestro.AddIn.Rest.UI
         protected override void OnLoad(EventArgs e)
         {
             Workbench.Instance.ApplyThemeTo(toolStrip1);
+            Themes.Apply(trvRestExplorer);
             base.OnLoad(e);
         }
 
