@@ -37,9 +37,8 @@ namespace Maestro.Base.UI
             : this()
         {
             txtOld.Text = oldName;
-            existingNames.AddRange(names);
+            existingNames.UnionWith(names);
             txtNew.Text = oldName;
-            txtNew_MouseLeave(this, EventArgs.Empty);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -48,24 +47,16 @@ namespace Maestro.Base.UI
             txtNew.Focus();
             txtNew.SelectionStart = txtNew.Text.Length;
             txtNew.SelectionLength = 0;
+            this.CheckUIState();
         }
 
-        public string NewName
-        {
-            get { return txtNew.Text; }
-        }
+        public string OldName => txtOld.Text;
 
-        public bool UpdateReferences
-        {
-            get { return chkUpdateRefs.Checked; }
-        }
+        public string NewName => txtNew.Text;
 
-        public bool Overwrite
-        {
-            get { return chkOverwrite.Checked; }
-        }
+        public bool UpdateReferences => chkUpdateRefs.Checked;
 
-        private List<string> existingNames = new List<string>();
+        private HashSet<string> existingNames = new HashSet<string>();
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -79,18 +70,13 @@ namespace Maestro.Base.UI
 
         private void txtNew_TextChanged(object sender, EventArgs e)
         {
-            btnRename.Enabled = (txtNew.Text.Length > 0) && (txtNew.Text != txtOld.Text);
+            CheckUIState();
         }
 
-        private void txtNew_MouseLeave(object sender, EventArgs e)
+        private void CheckUIState()
         {
+            btnRename.Enabled = (txtNew.Text.Length > 0) && (txtNew.Text != txtOld.Text) && !existingNames.Contains(txtNew.Text);
             lblExists.Visible = existingNames.Contains(txtNew.Text);
-        }
-
-        private void chkUpdateRefs_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkUpdateRefs.Checked)
-                chkOverwrite.Checked = true;
         }
     }
 }

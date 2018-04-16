@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RenameItemDialog));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.chkOverwrite = new System.Windows.Forms.CheckBox();
             this.chkUpdateRefs = new System.Windows.Forms.CheckBox();
             this.btnRename = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -50,12 +49,6 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // chkOverwrite
-            // 
-            resources.ApplyResources(this.chkOverwrite, "chkOverwrite");
-            this.chkOverwrite.Name = "chkOverwrite";
-            this.chkOverwrite.UseVisualStyleBackColor = true;
-            // 
             // chkUpdateRefs
             // 
             resources.ApplyResources(this.chkUpdateRefs, "chkUpdateRefs");
@@ -63,7 +56,6 @@
             this.chkUpdateRefs.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkUpdateRefs.Name = "chkUpdateRefs";
             this.chkUpdateRefs.UseVisualStyleBackColor = true;
-            this.chkUpdateRefs.CheckedChanged += new System.EventHandler(this.chkUpdateRefs_CheckedChanged);
             // 
             // btnRename
             // 
@@ -91,7 +83,6 @@
             resources.ApplyResources(this.txtNew, "txtNew");
             this.txtNew.Name = "txtNew";
             this.txtNew.TextChanged += new System.EventHandler(this.txtNew_TextChanged);
-            this.txtNew.MouseLeave += new System.EventHandler(this.txtNew_MouseLeave);
             // 
             // lblExists
             // 
@@ -112,7 +103,6 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnRename);
             this.Controls.Add(this.chkUpdateRefs);
-            this.Controls.Add(this.chkOverwrite);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "RenameItemDialog";
@@ -125,7 +115,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox chkOverwrite;
         private System.Windows.Forms.CheckBox chkUpdateRefs;
         private System.Windows.Forms.Button btnRename;
         private System.Windows.Forms.Button btnCancel;

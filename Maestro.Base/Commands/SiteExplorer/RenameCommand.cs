@@ -92,7 +92,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                         if (dlg.UpdateReferences)
                             conn.ResourceService.MoveResourceWithReferences(oldid, newid, null, cb);
                         else
-                            conn.ResourceService.MoveResource(oldid, newid, dlg.Overwrite);
+                            conn.ResourceService.MoveResource(oldid, newid, true); // dlg.Overwrite);
                         /*
                         if (current.IsFolder)
                         {
@@ -112,8 +112,6 @@ namespace Maestro.Base.Commands.SiteExplorer
                         }*/
 
                         current.Name = dlg.NewName;
-                        if (dlg.Overwrite)
-                            parent.RemoveChild(parent[dlg.NewName]);
 
                         return true;
                     });
