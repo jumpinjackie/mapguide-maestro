@@ -801,6 +801,18 @@ namespace OSGeo.MapGuide.ObjectModels
             KnownWidgetNames.ViewSize
         };
 
+        private static readonly string[] reactLayoutIncompatibleWidgets =
+        {
+            KnownWidgetNames.ColorPicker,
+            KnownWidgetNames.ActivityIndicator,
+            KnownWidgetNames.Print,
+            KnownWidgetNames.SaveMap,
+            KnownWidgetNames.LinkToView,
+            KnownWidgetNames.SelectRadiusValue,
+            KnownWidgetNames.PanQuery,
+            KnownWidgetNames.PanOnClick
+        };
+
         private static IUIWidget CreateVerticalWidget(IUIWidget widget)
         {
             var vert = widget.Clone();
@@ -879,6 +891,10 @@ namespace OSGeo.MapGuide.ObjectModels
             //Add all known non-parameterized widgets to this widget set
             foreach (var wgt in widgets.WidgetInfo)
             {
+                //Skip any widgets not compatible with mapguide-react-layout, these can always be added later on
+                if (Array.IndexOf(reactLayoutIncompatibleWidgets, wgt.Type) >= 0)
+                    continue;
+
                 if (Array.IndexOf(parameterizedWidgets, wgt.Type) < 0)
                 {
                     var widget = appDef.CreateWidget(wgt.Type, wgt);
@@ -1000,9 +1016,6 @@ namespace OSGeo.MapGuide.ObjectModels
 
             //Now here's where things may diverge completely between templates
             //So let's try for something that is somewhat consistent
-
-            //Init primary toolbar
-            toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Print));
 
             //2.2 specific stuff
             if (siteVersion >= new Version(2, 2))
