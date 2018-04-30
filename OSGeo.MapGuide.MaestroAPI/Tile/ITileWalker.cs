@@ -20,6 +20,8 @@
 
 #endregion Disclaimer / License
 
+using System.Linq;
+
 namespace OSGeo.MapGuide.MaestroAPI.Tile
 {
     /// <summary>
@@ -41,6 +43,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             this.Col = col;
             this.Scale = scale;
         }
+
+        public static TileRef? Parse(string str)
+        {
+            var tokens = str.Split('/');
+            if (tokens.Length >= 4 && int.TryParse(tokens[0], out var r) && int.TryParse(tokens[1], out var c) && int.TryParse(tokens[2], out var s))
+            {
+                var grpName = string.Join("/", tokens.Skip(3));
+                return new TileRef(grpName, r, c, s);
+            }
+            return null;
+        }
+
+        public string Serialize() => $"{Row}/{Col}/{Scale}/{GroupName}";
 
         /// <summary>
         /// The base layer group

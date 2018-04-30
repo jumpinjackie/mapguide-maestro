@@ -30,11 +30,23 @@ using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace MgTileSeeder
 {
-    class CommonSeederOptions
+    class BaseOptions
+    {
+        [Option("max-parallelism", HelpText = "The maximum degree of parallelism")]
+        public int? MaxDegreeOfParallelism { get; set; }
+
+        [Option("wait", Default = false)]
+        public bool Wait { get; set; }
+
+        public virtual void Validate() { }
+    }
+
+    class CommonSeederOptions : BaseOptions
     {
         // Making these virtual so that we can override and tack on [Option] in subclasses
 
@@ -46,10 +58,40 @@ namespace MgTileSeeder
 
         public virtual double MaxY { get; set; }
 
-        [Option("wait", Default = false)]
-        public bool Wait { get; set; }
+        [Option("failed-requests", HelpText = "Path to file where failed requests will be logged to")]
+        public string FailedRequestsFile { get; set; }
+    }
 
-        public virtual void Validate() { }
+    class BaseReplayOptions : BaseOptions
+    {
+        [Option("tile-list", Required = true, HelpText = "Path to file containing logged tiles")]
+        public string TileListFile { get; set; }
+
+        [Option("failed-requests", HelpText = "Path to file where failed requests will be logged to")]
+        public string FailedRequestsFile { get; set; }
+    }
+
+    [Verb("xyz_replay", HelpText = "XYZ replay options")]
+    class XYZReplayOptions : BaseReplayOptions
+    {
+        [Option("url", Required = true, HelpText = "The URL of the XYZ tile source. It must have {x}, {y} and {z} placeholders")]
+        public string UrlTemplate { get; set; }
+    }
+
+    [Verb("mapguide_replay", HelpText = "MapGuide replay options")]
+    class MgReplayOptions : BaseReplayOptions
+    {
+        [Option('m', "mapagent", Required = true, HelpText = "The mapagent endpoint URL")]
+        public string MapAgentUri { get; set; }
+
+        [Option("map", Required = true, HelpText = "The resource id of the tiled map definition or tile set definition to seed")]
+        public string ResourceID { get; set; }
+
+        [Option('u', "username", Default = "Anonymous", HelpText = "The MapGuide username")]
+        public string Username { get; set; }
+
+        [Option("password", Default = "", HelpText = "The password of the specified MapGuide user")]
+        public string Password { get; set; }
     }
 
     [Verb("xyz", HelpText = "XYZ tiling options")]
@@ -122,12 +164,43 @@ namespace MgTileSeeder
         public override double MaxY { get; set; }
     }
 
+    class TileListWalker : ITileWalker
+    {
+        readonly string _file;
+
+        public TileListWalker(string file)
+        {
+            _file = file;
+        }
+
+        public string ResourceID { get; set; }
+
+        public TileRef[] GetTileList()
+        {
+            var tiles = new List<TileRef>();
+            using (var sr = new StreamReader(_file))
+            {
+                string line = sr.ReadLine();
+                while (line != null)
+                {
+                    var t = TileRef.Parse(line);
+                    if (t.HasValue)
+                    {
+                        tiles.Add(t.Value);
+                    }
+                    line = sr.ReadLine();
+                }
+            }
+            return tiles.ToArray();
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
             Parser.Default
-                  .ParseArguments<MgTileSeederOptions, XYZSeederOptions>(args)
+                  .ParseArguments<MgTileSeederOptions, XYZSeederOptions, MgReplayOptions, XYZReplayOptions>(args)
                   .MapResult(opts => Run(opts), _ => 1);
         }
 
@@ -135,29 +208,109 @@ namespace MgTileSeeder
         {
             public void Report(TileProgress value)
             {
-                Console.WriteLine($"Rendered {value.Rendered} of {value.Total} tiles [{((double)value.Rendered / (double)value.Total):P}]");
+                var processed = value.Rendered + value.Failed;
+                Console.WriteLine($"Processed ({processed}/{value.Total}) tiles [{((double)processed / (double)value.Total):P}] - {value.Rendered} rendered, {value.Failed} failed");
+            }
+        }
+
+        static readonly object _errorLoggerLock = new object();
+
+        static StreamWriter _output;
+
+        static void ErrorLogger(TileRef tile, Exception ex)
+        {
+            if (_output != null)
+            {
+                lock (_errorLoggerLock)
+                {
+                    _output.WriteLine(tile.Serialize());
+                }
             }
         }
 
         static int Run(object arg)
         {
-            switch (arg)
+            try
             {
-                case MgTileSeederOptions mgOpts:
-                    {
-                        int ret = RunMapGuide(mgOpts);
-                        Environment.ExitCode = ret;
-                        return ret;
-                    }
-                case XYZSeederOptions xyzOpts:
-                    {
-                        int ret = RunXYZ(xyzOpts);
-                        Environment.ExitCode = ret;
-                        return ret;
-                    }
-                default:
-                    throw new ArgumentException();
+                switch (arg)
+                {
+                    case MgReplayOptions mgReplay:
+                        {
+                            if (!string.IsNullOrEmpty(mgReplay.FailedRequestsFile))
+                                _output = new StreamWriter(mgReplay.FailedRequestsFile);
+                            int ret = ReplayMapGuide(mgReplay);
+                            Environment.ExitCode = ret;
+                            return ret;
+                        }
+                    case MgTileSeederOptions mgOpts:
+                        {
+                            if (!string.IsNullOrEmpty(mgOpts.FailedRequestsFile))
+                                _output = new StreamWriter(mgOpts.FailedRequestsFile);
+                            int ret = RunMapGuide(mgOpts);
+                            Environment.ExitCode = ret;
+                            return ret;
+                        }
+                    case XYZReplayOptions xyzReplay:
+                        {
+                            if (!string.IsNullOrEmpty(xyzReplay.FailedRequestsFile))
+                                _output = new StreamWriter(xyzReplay.FailedRequestsFile);
+                            int ret = ReplayXYZ(xyzReplay);
+                            Environment.ExitCode = ret;
+                            return ret;
+                        }
+                    case XYZSeederOptions xyzOpts:
+                        {
+                            if (!string.IsNullOrEmpty(xyzOpts.FailedRequestsFile))
+                                _output = new StreamWriter(xyzOpts.FailedRequestsFile);
+                            int ret = RunXYZ(xyzOpts);
+                            Environment.ExitCode = ret;
+                            return ret;
+                        }
+                    default:
+                        throw new ArgumentException();
+                }
             }
+            finally
+            {
+                _output?.Close();
+                _output?.Dispose();
+            }
+        }
+
+        static int ReplayXYZ(XYZReplayOptions options)
+        {
+            int ret = 0;
+            try
+            {
+                options.Validate();
+
+                var xyz = new XYZTileService(options.UrlTemplate);
+                var walker = new TileListWalker(options.TileListFile);
+
+                var seederOptions = new TileSeederOptions();
+                seederOptions.MaxDegreeOfParallelism = options.MaxDegreeOfParallelism;
+                seederOptions.ErrorLogger = ErrorLogger;
+                var seeder = new TileSeeder(xyz, walker, seederOptions);
+
+                var progress = new ConsoleProgress();
+                var stats = seeder.Run(progress);
+
+                Console.WriteLine($"Rendered {stats.TilesRendered} tiles in {stats.Duration}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                ret = 1;
+            }
+            finally
+            {
+                if (options.Wait)
+                {
+                    Console.WriteLine("Press any key to continue");
+                    Console.Read();
+                }
+            }
+            return ret;
         }
 
         static int RunXYZ(XYZSeederOptions options)
@@ -171,7 +324,52 @@ namespace MgTileSeeder
                 var walker = new XYZTileWalker(options.MinX, options.MinY, options.MaxX, options.MaxY);
 
                 var seederOptions = new TileSeederOptions();
+                seederOptions.MaxDegreeOfParallelism = options.MaxDegreeOfParallelism;
+                seederOptions.ErrorLogger = ErrorLogger;
                 var seeder = new TileSeeder(xyz, walker, seederOptions);
+
+                var progress = new ConsoleProgress();
+                var stats = seeder.Run(progress);
+
+                Console.WriteLine($"Rendered {stats.TilesRendered} tiles in {stats.Duration}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                ret = 1;
+            }
+            finally
+            {
+                if (options.Wait)
+                {
+                    Console.WriteLine("Press any key to continue");
+                    Console.Read();
+                }
+            }
+            return ret;
+        }
+
+        static int ReplayMapGuide(MgReplayOptions options)
+        {
+            int ret = 0;
+            try
+            {
+                options.Validate();
+
+                var conn = ConnectionProviderRegistry.CreateConnection("Maestro.Http",
+                    "Url", options.MapAgentUri,
+                    "Username", options.Username,
+                    "Password", options.Password);
+
+                var tileSvc = (ITileService)conn.GetService((int)ServiceType.Tile);
+
+                var walker = new TileListWalker(options.TileListFile);
+                walker.ResourceID = options.ResourceID;
+
+                var seederOptions = new TileSeederOptions();
+                seederOptions.MaxDegreeOfParallelism = options.MaxDegreeOfParallelism;
+                seederOptions.ErrorLogger = ErrorLogger;
+                var seeder = new TileSeeder(tileSvc, walker, seederOptions);
 
                 var progress = new ConsoleProgress();
                 var stats = seeder.Run(progress);
@@ -286,6 +484,8 @@ namespace MgTileSeeder
                 var walker = new DefaultTileWalker(walkOptions);
 
                 var seederOptions = new TileSeederOptions();
+                seederOptions.MaxDegreeOfParallelism = options.MaxDegreeOfParallelism;
+                seederOptions.ErrorLogger = ErrorLogger;
                 var seeder = new TileSeeder(tileSvc, walker, seederOptions);
 
                 var progress = new ConsoleProgress();

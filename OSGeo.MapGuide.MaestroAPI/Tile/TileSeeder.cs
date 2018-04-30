@@ -33,7 +33,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// </summary>
     public class TileSeederOptions
     {
+        public int? MaxDegreeOfParallelism { get; set; }
 
+        public Action<Action<TileRef>, TileRef> Executor { get; set; }
+
+        public Action<TileRef, Exception> ErrorLogger { get; set; }
     }
 
     /// <summary>
@@ -46,10 +50,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// </summary>
         /// <param name="rendered"></param>
         /// <param name="total"></param>
-        public TileProgress(int rendered, int total)
+        /// <param name="failed"></param>
+        public TileProgress(int rendered, int total, int failed)
         {
             this.Rendered = rendered;
             this.Total = total;
+            this.Failed = failed;
         }
 
         /// <summary>
@@ -61,6 +67,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// The total number of tiles to be rendered
         /// </summary>
         public int Total { get; }
+
+        /// <summary>
+        /// The number of failed tile requests
+        /// </summary>
+        public int Failed { get; }
     }
 
     /// <summary>
@@ -103,6 +114,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             _options = options;
         }
 
+        static void DefaultExecutor(Action<TileRef> fetcher, TileRef tile) => fetcher(tile);
+
         /// <summary>
         /// Populates the tile cache for the configured tiled map definition or tile set
         /// </summary>
@@ -110,26 +123,46 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <returns></returns>
         public TileSeedStats Run(IProgress<TileProgress> progress = null)
         {
+            var failed = 0;
             var rendered = 0;
             var sw = new Stopwatch();
             sw.Start();
 
+            Action<Action<TileRef>, TileRef> executor = _options.Executor ?? DefaultExecutor;
+            var maxThreads = _options.MaxDegreeOfParallelism;
             var resId = _walker.ResourceID;
             var tiles = _walker.GetTileList();
             var total = tiles.Length;
             var interval = 1000; //Every second
 
-            using (new Timer(_ => progress?.Report(new TileProgress(rendered, total)), null, interval, interval))
+            using (new Timer(_ => progress?.Report(new TileProgress(rendered, total, failed)), null, interval, interval))
             {
-                // And here's our multi-threaded tile seeding. One big Parallel.ForEach loop!
-                // Simple isn't it?
-                Parallel.ForEach(tiles, tile =>
+                Action<TileRef> fetcher = tile =>
                 {
-                    using (_tileSvc.GetTile(resId, tile.GroupName, tile.Col, tile.Row, tile.Scale))
+                    try
                     {
-                        Interlocked.Increment(ref rendered);
+                        using (_tileSvc.GetTile(resId, tile.GroupName, tile.Col, tile.Row, tile.Scale))
+                        {
+                            Interlocked.Increment(ref rendered);
+                        }
                     }
-                });
+                    catch (Exception ex)
+                    {
+                        _options.ErrorLogger?.Invoke(tile, ex);
+                        Interlocked.Increment(ref failed);
+                    }
+                };
+
+                if (maxThreads.HasValue)
+                {
+                    var popts = new ParallelOptions();
+                    popts.MaxDegreeOfParallelism = maxThreads.Value;
+                    Parallel.ForEach(tiles, popts, t => executor(fetcher, t));
+                }
+                else
+                {
+                    Parallel.ForEach(tiles, t => executor(fetcher, t));
+                }
             }
 
             // And this method blocks! So if we get to this point, everything has been iterated through and

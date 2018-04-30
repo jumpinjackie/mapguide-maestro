@@ -180,5 +180,51 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.NotNull(args5.Error);
             Assert.Equal("uh-oh", args5.Error.Message);
         }
+
+        [Fact]
+        public void Test_TileRef_Serialization()
+        {
+            var tr = new TileRef("abc", 1, 2, 3);
+            var str = tr.Serialize();
+
+            Assert.Equal("1/2/3/abc", str);
+
+            var tr2 = TileRef.Parse(str);
+            Assert.NotNull(tr2);
+            Assert.Equal(1, tr2.Value.Row);
+            Assert.Equal(2, tr2.Value.Col);
+            Assert.Equal(3, tr2.Value.Scale);
+            Assert.Equal("abc", tr2.Value.GroupName);
+        }
+
+        [Theory]
+        [InlineData("1/2/3/", false, 1, 2, 3, "")]
+        [InlineData("1/2/3/4", false, 1, 2, 3, "4")]
+        [InlineData("1/2/3/4/5", false, 1, 2, 3, "4/5")]
+        [InlineData("1/2/3/4/ 5", false, 1, 2, 3, "4/ 5")]
+        [InlineData("1/2/3/4 /5", false, 1, 2, 3, "4 /5")]
+        [InlineData("1/2/3", true, null, null, null, null)]
+        [InlineData("1/2/a", true, null, null, null, null)]
+        [InlineData("1/a/3", true, null, null, null, null)]
+        [InlineData("a/2/3", true, null, null, null, null)]
+        [InlineData("1/2/a/asdf", true, null, null, null, null)]
+        [InlineData("1/a/3/asdf", true, null, null, null, null)]
+        [InlineData("a/2/3/asdf", true, null, null, null, null)]
+        public void Test_TileRef_Deserialization(string str, bool expectNull, int? row, int? col, int? scale, string groupName)
+        {
+            var tr = TileRef.Parse(str);
+            if (expectNull)
+            {
+                Assert.Null(tr);
+            }
+            else
+            {
+                Assert.NotNull(tr);
+                Assert.Equal(row, tr.Value.Row);
+                Assert.Equal(col, tr.Value.Col);
+                Assert.Equal(scale, tr.Value.Scale);
+                Assert.Equal(groupName, tr.Value.GroupName);
+            }
+        }
     }
 }
