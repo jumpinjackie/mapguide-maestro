@@ -435,6 +435,12 @@
     <Compile Include="FeatureSource\Providers\Odbc\SubEditors\UnmanagedCtrl.Designer.cs">
       <DependentUpon>UnmanagedCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="FeatureSource\Providers\Ogr\OgrProviderCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Ogr\OgrProviderCtrl.Designer.cs">
+      <DependentUpon>OgrProviderCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="FeatureSource\Providers\Rdbms\MySqlCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1576,6 +1582,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSource\Providers\Odbc\SubEditors\UnmanagedCtrl.resx">
       <DependentUpon>UnmanagedCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Ogr\OgrProviderCtrl.resx">
+      <DependentUpon>OgrProviderCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSource\Providers\Rdbms\MySqlCtrl.resx">
       <DependentUpon>MySqlCtrl.cs</DependentUpon>
