@@ -28,12 +28,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Converters
             switch (provider)
             {
                 case "OSGEO.OGR":
-                    throw new Exception("Feature source to be converted must not already be using the OGR provider");
+                    throw new Exception(Strings.CannotConvertOgrProviderToItself);
                 case "OSGEO.SHP":
                     ConvertSHP(newFeatureSourceId);
                     break;
                 default:
-                    throw new Exception("Conversion of this feature source to use the OGR provider is not supported");
+                    throw new Exception(Strings.UnsupportedOgrProviderSourceProvider);
             }
         }
 

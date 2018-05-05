@@ -493,11 +493,29 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Converted feature source to use OGR provider: {0}.
+        /// </summary>
+        internal static string ConvertedToOgrFeatureSource {
+            get {
+                return ResourceManager.GetString("ConvertedToOgrFeatureSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to transform coordinates: {0}.
         /// </summary>
         internal static string CoordinateTransformationFailed {
             get {
                 return ResourceManager.GetString("CoordinateTransformationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Credentials applied. You can now reference the applied credentials with the %MG_USERNAME% and %MG_PASSWORD% placeholders.
+        /// </summary>
+        internal static string CredentialsApplied {
+            get {
+                return ResourceManager.GetString("CredentialsApplied", resourceCulture);
             }
         }
         

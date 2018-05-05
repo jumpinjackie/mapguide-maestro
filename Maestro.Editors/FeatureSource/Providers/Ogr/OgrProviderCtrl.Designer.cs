@@ -40,6 +40,7 @@
             this.txtConnectionStatus = new System.Windows.Forms.TextBox();
             this.resDataCtrl = new Maestro.Editors.Common.ResourceDataCtrl();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnApplyCredentials = new System.Windows.Forms.Button();
             this.contentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdOtherProperties)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -47,6 +48,7 @@
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.btnApplyCredentials);
             this.contentPanel.Controls.Add(this.label3);
             this.contentPanel.Controls.Add(this.resDataCtrl);
             this.contentPanel.Controls.Add(this.groupBox3);
@@ -182,6 +184,16 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Resource Data Files";
             // 
+            // btnApplyCredentials
+            // 
+            this.btnApplyCredentials.Location = new System.Drawing.Point(17, 257);
+            this.btnApplyCredentials.Name = "btnApplyCredentials";
+            this.btnApplyCredentials.Size = new System.Drawing.Size(105, 23);
+            this.btnApplyCredentials.TabIndex = 12;
+            this.btnApplyCredentials.Text = "Apply Credentials";
+            this.btnApplyCredentials.UseVisualStyleBackColor = true;
+            this.btnApplyCredentials.Click += new System.EventHandler(this.btnApplyCredentials_Click);
+            // 
             // OgrProviderCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,5 +224,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.Label label3;
         private Editors.Common.ResourceDataCtrl resDataCtrl;
+        private System.Windows.Forms.Button btnApplyCredentials;
     }
 }

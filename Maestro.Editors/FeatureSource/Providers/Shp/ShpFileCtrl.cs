@@ -153,7 +153,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Shp
                     var conv = new OgrFeatureSourceConverter(_fs, _service.CurrentConnection.ResourceService, _service.CurrentConnection.FeatureService);
                     conv.Convert(picker.ResourceID);
 
-                    System.Windows.Forms.MessageBox.Show($"Converted feature source to: {picker.ResourceID}");
+                    System.Windows.Forms.MessageBox.Show(string.Format(Strings.ConvertedToOgrFeatureSource, picker.ResourceID));
                 }
             }
         }

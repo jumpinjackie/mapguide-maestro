@@ -435,6 +435,12 @@
     <Compile Include="FeatureSource\Providers\Odbc\SubEditors\UnmanagedCtrl.Designer.cs">
       <DependentUpon>UnmanagedCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="FeatureSource\Providers\Ogr\CredentialsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\Providers\Ogr\CredentialsDialog.Designer.cs">
+      <DependentUpon>CredentialsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FeatureSource\Providers\Ogr\OgrProviderCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1582,6 +1588,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSource\Providers\Odbc\SubEditors\UnmanagedCtrl.resx">
       <DependentUpon>UnmanagedCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\Providers\Ogr\CredentialsDialog.resx">
+      <DependentUpon>CredentialsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSource\Providers\Ogr\OgrProviderCtrl.resx">
       <DependentUpon>OgrProviderCtrl.cs</DependentUpon>

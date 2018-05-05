@@ -42,8 +42,8 @@ namespace Maestro.Editors.FeatureSource.Providers.Ogr
             InitializeComponent();
         }
 
-        const string P_DATASOURCE = "DataSource";
-        const string P_READONLY = "ReadOnly";
+        const string P_DATASOURCE = "DataSource"; //NOXLATE
+        const string P_READONLY = "ReadOnly"; //NOXLATE
 
         private IEditorService _service;
         private IFeatureSource _fs;
@@ -65,9 +65,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Ogr
             var values = _fs.GetConnectionProperties();
 
             txtDataSource.Text = values[P_DATASOURCE];
-            chkReadOnly.Checked = values[P_READONLY] == "TRUE";
+            chkReadOnly.Checked = values[P_READONLY] == "TRUE"; //NOXLATE
 
-            var prov = _service.CurrentConnection.FeatureService.GetFeatureProvider("OSGeo.OGR");
+            var prov = _service.CurrentConnection.FeatureService.GetFeatureProvider("OSGeo.OGR"); //NOXLATE
             foreach (var p in prov.ConnectionProperties.Where(p => p.Name != P_DATASOURCE && p.Name != P_READONLY))
             {
                 var row = new DataGridViewRow();
@@ -130,7 +130,8 @@ namespace Maestro.Editors.FeatureSource.Providers.Ogr
             if (_init)
                 return;
 
-            _fs.SetConnectionProperty(P_READONLY, chkReadOnly.Checked ? "TRUE" : "FALSE");
+            _fs.SetConnectionProperty(P_READONLY, chkReadOnly.Checked ? "TRUE" : "FALSE"); //NOXLATE
+            OnResourceChanged();
         }
 
         private void txtDataSource_TextChanged(object sender, EventArgs e)
@@ -139,6 +140,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Ogr
                 return;
 
             _fs.SetConnectionProperty(P_DATASOURCE, txtDataSource.Text);
+            OnResourceChanged();
         }
 
         private void grdOtherProperties_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -177,6 +179,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Ogr
                 var name = grdOtherProperties[0, e.RowIndex].Value.ToString();
                 var value = grdOtherProperties[e.ColumnIndex, e.RowIndex].Value;
                 _fs.SetConnectionProperty(name, value == null ? string.Empty : value.ToString());
+                OnResourceChanged();
             }
         }
 
@@ -185,7 +188,22 @@ namespace Maestro.Editors.FeatureSource.Providers.Ogr
             if (_init)
                 return;
 
-            txtDataSource.Text = $"%MG_DATA_FILE_PATH%{dataName}";
+            txtDataSource.Text = $"%MG_DATA_FILE_PATH%{dataName}"; //NOXLATE
+            OnResourceChanged();
+        }
+
+        private void btnApplyCredentials_Click(object sender, EventArgs e)
+        {
+            using (var diag = new CredentialsDialog())
+            {
+                if (diag.ShowDialog() == DialogResult.OK)
+                {
+                    _fs.SetEncryptedCredentials(_service.CurrentConnection, diag.Username, diag.Password);
+                    resDataCtrl.RefreshList();
+                    OnResourceChanged();
+                    MessageBox.Show(Strings.CredentialsApplied);
+                }
+            }
         }
     }
 }

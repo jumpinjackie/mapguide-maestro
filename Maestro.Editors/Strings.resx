@@ -1730,4 +1730,10 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="CalculatingFeatureCount" xml:space="preserve">
     <value>Calculating Feature Count</value>
   </data>
+  <data name="ConvertedToOgrFeatureSource" xml:space="preserve">
+    <value>Converted feature source to use OGR provider: {0}</value>
+  </data>
+  <data name="CredentialsApplied" xml:space="preserve">
+    <value>Credentials applied. You can now reference the applied credentials with the %MG_USERNAME% and %MG_PASSWORD% placeholders</value>
+  </data>
 </root>

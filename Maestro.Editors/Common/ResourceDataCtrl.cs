@@ -214,6 +214,12 @@ namespace Maestro.Editors.Common
             });
         }
 
+        public void RefreshList()
+        {
+            LoadResourceData();
+            OnDataListChanged();
+        }
+
         private void OnDataListChanged()
         {
             this.DataListChanged?.Invoke(this, EventArgs.Empty);

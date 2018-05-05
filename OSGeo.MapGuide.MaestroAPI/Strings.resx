@@ -1000,4 +1000,10 @@
   <data name="LDF_WmsQueryableLayerNoPropertyMappings" xml:space="preserve">
     <value>The layer is marked as queryable for WMS, but has no property mappings defined. Add one or more property mappings to this layer, otherwise WMS GetFeatureInfo requests against this layer will return nothing.</value>
   </data>
+  <data name="CannotConvertOgrProviderToItself" xml:space="preserve">
+    <value>Feature source to be converted must not already be using the OGR provider</value>
+  </data>
+  <data name="UnsupportedOgrProviderSourceProvider" xml:space="preserve">
+    <value>Conversion of this feature source to use the OGR provider is not supported</value>
+  </data>
 </root>

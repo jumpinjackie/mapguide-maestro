@@ -151,6 +151,15 @@ namespace OSGeo.MapGuide.MaestroAPI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Feature source to be converted must not already be using the OGR provider.
+        /// </summary>
+        public static string CannotConvertOgrProviderToItself {
+            get {
+                return ResourceManager.GetString("CannotConvertOgrProviderToItself", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not create load procedure of type: .
         /// </summary>
         public static string CannotCreateLoadProcedureSubType {
@@ -2526,6 +2535,15 @@ namespace OSGeo.MapGuide.MaestroAPI {
         public static string UnsupportedLoadProcedureType {
             get {
                 return ResourceManager.GetString("UnsupportedLoadProcedureType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conversion of this feature source to use the OGR provider is not supported.
+        /// </summary>
+        public static string UnsupportedOgrProviderSourceProvider {
+            get {
+                return ResourceManager.GetString("UnsupportedOgrProviderSourceProvider", resourceCulture);
             }
         }
         
