@@ -20,8 +20,11 @@
 
 #endregion Disclaimer / License
 
+using Maestro.Editors.Generic;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Converters;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.ComponentModel;
@@ -138,6 +141,20 @@ namespace Maestro.Editors.FeatureSource.Providers.Shp
                 _service.SyncSessionCopy();
                 var result = _service.CurrentConnection.FeatureService.TestConnection(_fs.ResourceID);
                 txtStatus.Text = string.Format(Strings.FdoConnectionStatus, result);
+            }
+        }
+
+        private void btnToOGR_Click(object sender, EventArgs e)
+        {
+            using (var picker = new ResourcePicker(_service.CurrentConnection, ResourcePickerMode.SaveResource, new[] { ResourceTypes.FeatureSource.ToString() }))
+            {
+                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    var conv = new OgrFeatureSourceConverter(_fs, _service.CurrentConnection.ResourceService, _service.CurrentConnection.FeatureService);
+                    conv.Convert(picker.ResourceID);
+
+                    System.Windows.Forms.MessageBox.Show($"Converted feature source to: {picker.ResourceID}");
+                }
             }
         }
     }

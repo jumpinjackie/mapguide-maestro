@@ -31,11 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShpFileCtrl));
             this.btnTest = new System.Windows.Forms.Button();
             this.txtStatus = new System.Windows.Forms.TextBox();
+            this.btnToOGR = new System.Windows.Forms.Button();
             this.contentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
+            // resDataCtrl
+            // 
+            this.resDataCtrl.MarkEnabled = false;
+            // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.btnToOGR);
             this.contentPanel.Controls.Add(this.txtStatus);
             this.contentPanel.Controls.Add(this.btnTest);
             this.contentPanel.Controls.SetChildIndex(this.resDataCtrl, 0);
@@ -43,6 +49,7 @@
             this.contentPanel.Controls.SetChildIndex(this.rdUnmanaged, 0);
             this.contentPanel.Controls.SetChildIndex(this.btnTest, 0);
             this.contentPanel.Controls.SetChildIndex(this.txtStatus, 0);
+            this.contentPanel.Controls.SetChildIndex(this.btnToOGR, 0);
             // 
             // btnTest
             // 
@@ -56,6 +63,13 @@
             resources.ApplyResources(this.txtStatus, "txtStatus");
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.ReadOnly = true;
+            // 
+            // btnToOGR
+            // 
+            resources.ApplyResources(this.btnToOGR, "btnToOGR");
+            this.btnToOGR.Name = "btnToOGR";
+            this.btnToOGR.UseVisualStyleBackColor = true;
+            this.btnToOGR.Click += new System.EventHandler(this.btnToOGR_Click);
             // 
             // ShpFileCtrl
             // 
@@ -72,5 +86,6 @@
 
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.TextBox txtStatus;
+        private System.Windows.Forms.Button btnToOGR;
     }
 }
