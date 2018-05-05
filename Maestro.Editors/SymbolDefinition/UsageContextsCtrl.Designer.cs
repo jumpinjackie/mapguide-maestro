@@ -61,9 +61,9 @@
             this.symLineStartOffset = new Maestro.Editors.SymbolDefinition.SymbolField();
             this.symLineVertexControl = new Maestro.Editors.SymbolDefinition.SymbolField();
             this.symLineAngleControl = new Maestro.Editors.SymbolDefinition.SymbolField();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.btnDeleteDefaultPath = new System.Windows.Forms.Button();
+            this.btnEditDefaultPath = new System.Windows.Forms.Button();
+            this.txtDefaultPath = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -136,8 +136,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.RepeatY};
             this.toolTip.SetToolTip(this.symAreaRepeatY, resources.GetString("symAreaRepeatY.ToolTip"));
-            this.symAreaRepeatY.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symAreaRepeatY.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symAreaRepeatY.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symAreaOriginY
             // 
@@ -147,8 +147,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Integer,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real};
             this.toolTip.SetToolTip(this.symAreaOriginY, resources.GetString("symAreaOriginY.ToolTip"));
-            this.symAreaOriginY.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symAreaOriginY.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symAreaOriginY.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symAreaAngle
             // 
@@ -159,8 +159,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Angle};
             this.toolTip.SetToolTip(this.symAreaAngle, resources.GetString("symAreaAngle.ToolTip"));
-            this.symAreaAngle.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symAreaAngle.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symAreaAngle.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symAreaOriginControl
             // 
@@ -169,8 +169,8 @@
             this.symAreaOriginControl.SupportedEnhancedDataTypes = new OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2[] {
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.String};
             this.toolTip.SetToolTip(this.symAreaOriginControl, resources.GetString("symAreaOriginControl.ToolTip"));
-            this.symAreaOriginControl.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symAreaOriginControl.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symAreaOriginControl.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symAreaBufferWidth
             // 
@@ -180,8 +180,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Integer,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real};
             this.toolTip.SetToolTip(this.symAreaBufferWidth, resources.GetString("symAreaBufferWidth.ToolTip"));
-            this.symAreaBufferWidth.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symAreaBufferWidth.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symAreaBufferWidth.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symAreaRepeatX
             // 
@@ -192,8 +192,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.RepeatX};
             this.toolTip.SetToolTip(this.symAreaRepeatX, resources.GetString("symAreaRepeatX.ToolTip"));
-            this.symAreaRepeatX.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symAreaRepeatX.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symAreaRepeatX.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symAreaOriginX
             // 
@@ -203,8 +203,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Integer,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real};
             this.toolTip.SetToolTip(this.symAreaOriginX, resources.GetString("symAreaOriginX.ToolTip"));
-            this.symAreaOriginX.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symAreaOriginX.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symAreaOriginX.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symAreaClippingControl
             // 
@@ -213,8 +213,8 @@
             this.symAreaClippingControl.SupportedEnhancedDataTypes = new OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2[] {
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.String};
             this.toolTip.SetToolTip(this.symAreaClippingControl, resources.GetString("symAreaClippingControl.ToolTip"));
-            this.symAreaClippingControl.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symAreaClippingControl.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symAreaClippingControl.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symAreaAngleControl
             // 
@@ -223,8 +223,8 @@
             this.symAreaAngleControl.SupportedEnhancedDataTypes = new OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2[] {
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.String};
             this.toolTip.SetToolTip(this.symAreaAngleControl, resources.GetString("symAreaAngleControl.ToolTip"));
-            this.symAreaAngleControl.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symAreaAngleControl.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symAreaAngleControl.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // label1
             // 
@@ -291,9 +291,9 @@
             this.grpLine.Controls.Add(this.symLineStartOffset);
             this.grpLine.Controls.Add(this.symLineVertexControl);
             this.grpLine.Controls.Add(this.symLineAngleControl);
-            this.grpLine.Controls.Add(this.button2);
-            this.grpLine.Controls.Add(this.button1);
-            this.grpLine.Controls.Add(this.textBox16);
+            this.grpLine.Controls.Add(this.btnDeleteDefaultPath);
+            this.grpLine.Controls.Add(this.btnEditDefaultPath);
+            this.grpLine.Controls.Add(this.txtDefaultPath);
             this.grpLine.Controls.Add(this.label20);
             this.grpLine.Controls.Add(this.label19);
             this.grpLine.Controls.Add(this.label18);
@@ -317,8 +317,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Integer,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real};
             this.toolTip.SetToolTip(this.symLineVertexMiterLimit, resources.GetString("symLineVertexMiterLimit.ToolTip"));
-            this.symLineVertexMiterLimit.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symLineVertexMiterLimit.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineVertexMiterLimit.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symLineVertexAngleLimit
             // 
@@ -328,8 +328,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Integer,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real};
             this.toolTip.SetToolTip(this.symLineVertexAngleLimit, resources.GetString("symLineVertexAngleLimit.ToolTip"));
-            this.symLineVertexAngleLimit.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symLineVertexAngleLimit.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineVertexAngleLimit.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symLineEndOffset
             // 
@@ -340,8 +340,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.EndOffset};
             this.toolTip.SetToolTip(this.symLineEndOffset, resources.GetString("symLineEndOffset.ToolTip"));
-            this.symLineEndOffset.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symLineEndOffset.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineEndOffset.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symLineAngle
             // 
@@ -352,8 +352,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Angle};
             this.toolTip.SetToolTip(this.symLineAngle, resources.GetString("symLineAngle.ToolTip"));
-            this.symLineAngle.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symLineAngle.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineAngle.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symLineUnitsControl
             // 
@@ -362,8 +362,8 @@
             this.symLineUnitsControl.SupportedEnhancedDataTypes = new OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2[] {
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.String};
             this.toolTip.SetToolTip(this.symLineUnitsControl, resources.GetString("symLineUnitsControl.ToolTip"));
-            this.symLineUnitsControl.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symLineUnitsControl.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineUnitsControl.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symLineVertexJoin
             // 
@@ -372,8 +372,8 @@
             this.symLineVertexJoin.SupportedEnhancedDataTypes = new OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2[] {
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.String};
             this.toolTip.SetToolTip(this.symLineVertexJoin, resources.GetString("symLineVertexJoin.ToolTip"));
-            this.symLineVertexJoin.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symLineVertexJoin.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineVertexJoin.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symLineRepeat
             // 
@@ -383,8 +383,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Integer,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real};
             this.toolTip.SetToolTip(this.symLineRepeat, resources.GetString("symLineRepeat.ToolTip"));
-            this.symLineRepeat.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symLineRepeat.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineRepeat.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symLineStartOffset
             // 
@@ -395,8 +395,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.StartOffset};
             this.toolTip.SetToolTip(this.symLineStartOffset, resources.GetString("symLineStartOffset.ToolTip"));
-            this.symLineStartOffset.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symLineStartOffset.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineStartOffset.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symLineVertexControl
             // 
@@ -405,8 +405,8 @@
             this.symLineVertexControl.SupportedEnhancedDataTypes = new OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2[] {
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.String};
             this.toolTip.SetToolTip(this.symLineVertexControl, resources.GetString("symLineVertexControl.ToolTip"));
-            this.symLineVertexControl.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symLineVertexControl.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineVertexControl.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symLineAngleControl
             // 
@@ -415,27 +415,29 @@
             this.symLineAngleControl.SupportedEnhancedDataTypes = new OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2[] {
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.String};
             this.toolTip.SetToolTip(this.symLineAngleControl, resources.GetString("symLineAngleControl.ToolTip"));
-            this.symLineAngleControl.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symLineAngleControl.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineAngleControl.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
-            // button2
+            // btnDeleteDefaultPath
             // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnDeleteDefaultPath, "btnDeleteDefaultPath");
+            this.btnDeleteDefaultPath.Name = "btnDeleteDefaultPath";
+            this.btnDeleteDefaultPath.UseVisualStyleBackColor = true;
+            this.btnDeleteDefaultPath.Click += new System.EventHandler(this.btnDeleteDefaultPath_Click);
             // 
-            // button1
+            // btnEditDefaultPath
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnEditDefaultPath, "btnEditDefaultPath");
+            this.btnEditDefaultPath.Name = "btnEditDefaultPath";
+            this.btnEditDefaultPath.UseVisualStyleBackColor = true;
+            this.btnEditDefaultPath.Click += new System.EventHandler(this.btnEditDefaultPath_Click);
             // 
-            // textBox16
+            // txtDefaultPath
             // 
-            resources.ApplyResources(this.textBox16, "textBox16");
-            this.textBox16.Name = "textBox16";
-            this.textBox16.ReadOnly = true;
-            this.toolTip.SetToolTip(this.textBox16, resources.GetString("textBox16.ToolTip"));
+            resources.ApplyResources(this.txtDefaultPath, "txtDefaultPath");
+            this.txtDefaultPath.Name = "txtDefaultPath";
+            this.txtDefaultPath.ReadOnly = true;
+            this.toolTip.SetToolTip(this.txtDefaultPath, resources.GetString("txtDefaultPath.ToolTip"));
             // 
             // label20
             // 
@@ -522,8 +524,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Integer,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real};
             this.toolTip.SetToolTip(this.symPointOriginOffsetY, resources.GetString("symPointOriginOffsetY.ToolTip"));
-            this.symPointOriginOffsetY.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symPointOriginOffsetY.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symPointOriginOffsetY.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symPointAngle
             // 
@@ -534,8 +536,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Angle};
             this.toolTip.SetToolTip(this.symPointAngle, resources.GetString("symPointAngle.ToolTip"));
-            this.symPointAngle.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symPointAngle.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symPointAngle.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symPointOriginOffsetX
             // 
@@ -545,8 +547,8 @@
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Integer,
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.Real};
             this.toolTip.SetToolTip(this.symPointOriginOffsetX, resources.GetString("symPointOriginOffsetX.ToolTip"));
-            this.symPointOriginOffsetX.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symPointOriginOffsetX.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symPointOriginOffsetX.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symPointAngleControl
             // 
@@ -555,8 +557,8 @@
             this.symPointAngleControl.SupportedEnhancedDataTypes = new OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2[] {
         OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.String};
             this.toolTip.SetToolTip(this.symPointAngleControl, resources.GetString("symPointAngleControl.ToolTip"));
-            this.symPointAngleControl.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symPointAngleControl.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symPointAngleControl.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // label9
             // 
@@ -589,9 +591,8 @@
             // UsageContextsCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "Symbol Usage";
-            this.Name = "UsageContextsCtrl";
             resources.ApplyResources(this, "$this");
+            this.Name = "UsageContextsCtrl";
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
             this.grpArea.ResumeLayout(false);
@@ -609,9 +610,9 @@
         private System.Windows.Forms.GroupBox grpArea;
         private System.Windows.Forms.CheckBox chkArea;
         private System.Windows.Forms.GroupBox grpLine;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.Button btnDeleteDefaultPath;
+        private System.Windows.Forms.Button btnEditDefaultPath;
+        private System.Windows.Forms.TextBox txtDefaultPath;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;

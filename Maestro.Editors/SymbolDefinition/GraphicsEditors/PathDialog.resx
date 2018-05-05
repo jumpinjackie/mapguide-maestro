@@ -406,7 +406,7 @@
     <value>symLineMiterLimit</value>
   </data>
   <data name="&gt;&gt;symLineMiterLimit.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symLineMiterLimit.Parent" xml:space="preserve">
     <value>TAB_GENERAL</value>
@@ -427,7 +427,7 @@
     <value>symLineJoin</value>
   </data>
   <data name="&gt;&gt;symLineJoin.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symLineJoin.Parent" xml:space="preserve">
     <value>TAB_GENERAL</value>
@@ -448,7 +448,7 @@
     <value>symLineCap</value>
   </data>
   <data name="&gt;&gt;symLineCap.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symLineCap.Parent" xml:space="preserve">
     <value>TAB_GENERAL</value>
@@ -469,7 +469,7 @@
     <value>symLineWeightScalable</value>
   </data>
   <data name="&gt;&gt;symLineWeightScalable.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symLineWeightScalable.Parent" xml:space="preserve">
     <value>TAB_GENERAL</value>
@@ -490,7 +490,7 @@
     <value>symLineWeight</value>
   </data>
   <data name="&gt;&gt;symLineWeight.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symLineWeight.Parent" xml:space="preserve">
     <value>TAB_GENERAL</value>
@@ -511,7 +511,7 @@
     <value>symLineColor</value>
   </data>
   <data name="&gt;&gt;symLineColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symLineColor.Parent" xml:space="preserve">
     <value>TAB_GENERAL</value>
@@ -532,7 +532,7 @@
     <value>symFillColor</value>
   </data>
   <data name="&gt;&gt;symFillColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symFillColor.Parent" xml:space="preserve">
     <value>TAB_GENERAL</value>
@@ -640,7 +640,7 @@
     <value>symScaleX</value>
   </data>
   <data name="&gt;&gt;symScaleX.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symScaleX.Parent" xml:space="preserve">
     <value>TAB_ADVANCED</value>
@@ -661,7 +661,7 @@
     <value>symScaleY</value>
   </data>
   <data name="&gt;&gt;symScaleY.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symScaleY.Parent" xml:space="preserve">
     <value>TAB_ADVANCED</value>

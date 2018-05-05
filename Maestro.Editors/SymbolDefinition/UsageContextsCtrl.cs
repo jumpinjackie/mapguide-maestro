@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using Maestro.Editors.Common;
+using Maestro.Editors.SymbolDefinition.GraphicsEditors;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;
 using System.ComponentModel;
@@ -119,6 +120,8 @@ namespace Maestro.Editors.SymbolDefinition
                 symLineVertexJoin.Bind(_lu, nameof(_lu.VertexJoin));
                 symLineVertexMiterLimit.Bind(_lu, nameof(_lu.VertexMiterLimit));
 
+                txtDefaultPath.Text = _lu.DefaultPath?.Geometry;
+
                 symPointAngle.Bind(_pu, nameof(_pu.Angle));
                 symPointAngleControl.Bind(_pu, nameof(_pu.AngleControl));
                 symPointOriginOffsetX.Bind(_pu, nameof(_pu.OriginOffsetX));
@@ -163,5 +166,22 @@ namespace Maestro.Editors.SymbolDefinition
         private void OnRequestBrowse(SymbolField sender) => ParameterSelector.ShowParameterSelector(_sym.ParameterDefinition.Parameter, sender);
 
         private void OnContentChanged(object sender, EventArgs e) => OnResourceChanged();
+
+        private void btnEditDefaultPath_Click(object sender, EventArgs e)
+        {
+            var path = _lu.DefaultPath ?? _sym.CreatePathGraphics();
+            using (var diag = new PathDialog(this, _sym, path))
+            {
+                diag.ShowDialog();
+                _lu.DefaultPath = path;
+                txtDefaultPath.Text = _lu.DefaultPath.Geometry;
+            }
+        }
+
+        private void btnDeleteDefaultPath_Click(object sender, EventArgs e)
+        {
+            _lu.DefaultPath = null;
+            txtDefaultPath.Text = string.Empty;
+        }
     }
 }

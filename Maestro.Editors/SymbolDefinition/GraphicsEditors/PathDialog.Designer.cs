@@ -41,18 +41,18 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TAB_GENERAL = new System.Windows.Forms.TabPage();
+            this.symLineMiterLimit = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.symLineJoin = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.symLineCap = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.symLineWeightScalable = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.symLineWeight = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.symLineColor = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.symFillColor = new Maestro.Editors.SymbolDefinition.SymbolField();
             this.TAB_ADVANCED = new System.Windows.Forms.TabPage();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.symScaleX = new Maestro.Editors.SymbolDefinition.SymbolField();
             this.symScaleY = new Maestro.Editors.SymbolDefinition.SymbolField();
-            this.symFillColor = new Maestro.Editors.SymbolDefinition.SymbolField();
-            this.symLineColor = new Maestro.Editors.SymbolDefinition.SymbolField();
-            this.symLineWeight = new Maestro.Editors.SymbolDefinition.SymbolField();
-            this.symLineWeightScalable = new Maestro.Editors.SymbolDefinition.SymbolField();
-            this.symLineCap = new Maestro.Editors.SymbolDefinition.SymbolField();
-            this.symLineJoin = new Maestro.Editors.SymbolDefinition.SymbolField();
-            this.symLineMiterLimit = new Maestro.Editors.SymbolDefinition.SymbolField();
             this.tabControl1.SuspendLayout();
             this.TAB_GENERAL.SuspendLayout();
             this.TAB_ADVANCED.SuspendLayout();
@@ -139,6 +139,62 @@
             this.TAB_GENERAL.Name = "TAB_GENERAL";
             this.TAB_GENERAL.UseVisualStyleBackColor = true;
             // 
+            // symLineMiterLimit
+            // 
+            resources.ApplyResources(this.symLineMiterLimit, "symLineMiterLimit");
+            this.symLineMiterLimit.Name = "symLineMiterLimit";
+            this.symLineMiterLimit.SupportedEnhancedDataTypes = null;
+            this.symLineMiterLimit.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineMiterLimit.ContentChanged += new System.EventHandler(this.OnContentChanged);
+            // 
+            // symLineJoin
+            // 
+            resources.ApplyResources(this.symLineJoin, "symLineJoin");
+            this.symLineJoin.Name = "symLineJoin";
+            this.symLineJoin.SupportedEnhancedDataTypes = null;
+            this.symLineJoin.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineJoin.ContentChanged += new System.EventHandler(this.OnContentChanged);
+            // 
+            // symLineCap
+            // 
+            resources.ApplyResources(this.symLineCap, "symLineCap");
+            this.symLineCap.Name = "symLineCap";
+            this.symLineCap.SupportedEnhancedDataTypes = null;
+            this.symLineCap.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineCap.ContentChanged += new System.EventHandler(this.OnContentChanged);
+            // 
+            // symLineWeightScalable
+            // 
+            resources.ApplyResources(this.symLineWeightScalable, "symLineWeightScalable");
+            this.symLineWeightScalable.Name = "symLineWeightScalable";
+            this.symLineWeightScalable.SupportedEnhancedDataTypes = null;
+            this.symLineWeightScalable.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineWeightScalable.ContentChanged += new System.EventHandler(this.OnContentChanged);
+            // 
+            // symLineWeight
+            // 
+            resources.ApplyResources(this.symLineWeight, "symLineWeight");
+            this.symLineWeight.Name = "symLineWeight";
+            this.symLineWeight.SupportedEnhancedDataTypes = null;
+            this.symLineWeight.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineWeight.ContentChanged += new System.EventHandler(this.OnContentChanged);
+            // 
+            // symLineColor
+            // 
+            resources.ApplyResources(this.symLineColor, "symLineColor");
+            this.symLineColor.Name = "symLineColor";
+            this.symLineColor.SupportedEnhancedDataTypes = null;
+            this.symLineColor.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineColor.ContentChanged += new System.EventHandler(this.OnContentChanged);
+            // 
+            // symFillColor
+            // 
+            resources.ApplyResources(this.symFillColor, "symFillColor");
+            this.symFillColor.Name = "symFillColor";
+            this.symFillColor.SupportedEnhancedDataTypes = null;
+            this.symFillColor.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symFillColor.ContentChanged += new System.EventHandler(this.OnContentChanged);
+            // 
             // TAB_ADVANCED
             // 
             this.TAB_ADVANCED.Controls.Add(this.label13);
@@ -164,54 +220,16 @@
             resources.ApplyResources(this.symScaleX, "symScaleX");
             this.symScaleX.Name = "symScaleX";
             this.symScaleX.SupportedEnhancedDataTypes = null;
+            this.symScaleX.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symScaleX.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symScaleY
             // 
             resources.ApplyResources(this.symScaleY, "symScaleY");
             this.symScaleY.Name = "symScaleY";
             this.symScaleY.SupportedEnhancedDataTypes = null;
-            // 
-            // symFillColor
-            // 
-            resources.ApplyResources(this.symFillColor, "symFillColor");
-            this.symFillColor.Name = "symFillColor";
-            this.symFillColor.SupportedEnhancedDataTypes = null;
-            // 
-            // symLineColor
-            // 
-            resources.ApplyResources(this.symLineColor, "symLineColor");
-            this.symLineColor.Name = "symLineColor";
-            this.symLineColor.SupportedEnhancedDataTypes = null;
-            // 
-            // symLineWeight
-            // 
-            resources.ApplyResources(this.symLineWeight, "symLineWeight");
-            this.symLineWeight.Name = "symLineWeight";
-            this.symLineWeight.SupportedEnhancedDataTypes = null;
-            // 
-            // symLineWeightScalable
-            // 
-            resources.ApplyResources(this.symLineWeightScalable, "symLineWeightScalable");
-            this.symLineWeightScalable.Name = "symLineWeightScalable";
-            this.symLineWeightScalable.SupportedEnhancedDataTypes = null;
-            // 
-            // symLineCap
-            // 
-            resources.ApplyResources(this.symLineCap, "symLineCap");
-            this.symLineCap.Name = "symLineCap";
-            this.symLineCap.SupportedEnhancedDataTypes = null;
-            // 
-            // symLineJoin
-            // 
-            resources.ApplyResources(this.symLineJoin, "symLineJoin");
-            this.symLineJoin.Name = "symLineJoin";
-            this.symLineJoin.SupportedEnhancedDataTypes = null;
-            // 
-            // symLineMiterLimit
-            // 
-            resources.ApplyResources(this.symLineMiterLimit, "symLineMiterLimit");
-            this.symLineMiterLimit.Name = "symLineMiterLimit";
-            this.symLineMiterLimit.SupportedEnhancedDataTypes = null;
+            this.symScaleY.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symScaleY.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // PathDialog
             // 
