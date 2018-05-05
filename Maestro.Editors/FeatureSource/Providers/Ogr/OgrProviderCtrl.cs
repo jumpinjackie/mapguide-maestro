@@ -55,6 +55,13 @@ namespace Maestro.Editors.FeatureSource.Providers.Ogr
             _service = service;
             _fs = (IFeatureSource)_service.GetEditedResource();
 
+            resDataCtrl.Init(service);
+            if (_fs.UsesEmbeddedDataFiles)
+            {
+                var df = _fs.GetEmbeddedDataName();
+                resDataCtrl.MarkedFile = df;
+            }
+
             var values = _fs.GetConnectionProperties();
 
             txtDataSource.Text = values[P_DATASOURCE];
@@ -171,6 +178,14 @@ namespace Maestro.Editors.FeatureSource.Providers.Ogr
                 var value = grdOtherProperties[e.ColumnIndex, e.RowIndex].Value;
                 _fs.SetConnectionProperty(name, value == null ? string.Empty : value.ToString());
             }
+        }
+
+        private void resDataCtrl_ResourceDataMarked(object sender, string dataName)
+        {
+            if (_init)
+                return;
+
+            txtDataSource.Text = $"%MG_DATA_FILE_PATH%{dataName}";
         }
     }
 }

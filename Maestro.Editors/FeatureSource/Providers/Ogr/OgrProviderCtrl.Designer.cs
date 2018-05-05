@@ -33,11 +33,13 @@
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.grdOtherProperties = new System.Windows.Forms.DataGridView();
+            this.COL_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnTest = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtConnectionStatus = new System.Windows.Forms.TextBox();
-            this.COL_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resDataCtrl = new Maestro.Editors.Common.ResourceDataCtrl();
+            this.label3 = new System.Windows.Forms.Label();
             this.contentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdOtherProperties)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -45,6 +47,8 @@
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.label3);
+            this.contentPanel.Controls.Add(this.resDataCtrl);
             this.contentPanel.Controls.Add(this.groupBox3);
             this.contentPanel.Controls.Add(this.btnTest);
             this.contentPanel.Controls.Add(this.grdOtherProperties);
@@ -52,7 +56,7 @@
             this.contentPanel.Controls.Add(this.chkReadOnly);
             this.contentPanel.Controls.Add(this.txtDataSource);
             this.contentPanel.Controls.Add(this.label1);
-            this.contentPanel.Size = new System.Drawing.Size(510, 302);
+            this.contentPanel.Size = new System.Drawing.Size(543, 302);
             // 
             // label1
             // 
@@ -69,14 +73,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDataSource.Location = new System.Drawing.Point(137, 15);
             this.txtDataSource.Name = "txtDataSource";
-            this.txtDataSource.Size = new System.Drawing.Size(367, 20);
+            this.txtDataSource.Size = new System.Drawing.Size(316, 20);
             this.txtDataSource.TabIndex = 1;
             this.txtDataSource.TextChanged += new System.EventHandler(this.txtDataSource_TextChanged);
             // 
             // chkReadOnly
             // 
+            this.chkReadOnly.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkReadOnly.AutoSize = true;
-            this.chkReadOnly.Location = new System.Drawing.Point(137, 41);
+            this.chkReadOnly.Location = new System.Drawing.Point(461, 17);
             this.chkReadOnly.Name = "chkReadOnly";
             this.chkReadOnly.Size = new System.Drawing.Size(76, 17);
             this.chkReadOnly.TabIndex = 2;
@@ -87,7 +92,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 70);
+            this.label2.Location = new System.Drawing.Point(14, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 3;
@@ -103,13 +108,24 @@
             this.grdOtherProperties.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.COL_NAME,
             this.Value});
-            this.grdOtherProperties.Location = new System.Drawing.Point(137, 64);
+            this.grdOtherProperties.Location = new System.Drawing.Point(137, 40);
             this.grdOtherProperties.Name = "grdOtherProperties";
-            this.grdOtherProperties.Size = new System.Drawing.Size(367, 146);
+            this.grdOtherProperties.Size = new System.Drawing.Size(400, 81);
             this.grdOtherProperties.TabIndex = 4;
             this.grdOtherProperties.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.grdOtherProperties_CellPainting);
             this.grdOtherProperties.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdOtherProperties_CellValueChanged);
             this.grdOtherProperties.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.grdOtherProperties_EditingControlShowing);
+            // 
+            // COL_NAME
+            // 
+            this.COL_NAME.HeaderText = "Name";
+            this.COL_NAME.Name = "COL_NAME";
+            // 
+            // Value
+            // 
+            this.Value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Value.HeaderText = "Value";
+            this.Value.Name = "Value";
             // 
             // btnTest
             // 
@@ -129,7 +145,7 @@
             this.groupBox3.Controls.Add(this.txtConnectionStatus);
             this.groupBox3.Location = new System.Drawing.Point(137, 228);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(370, 61);
+            this.groupBox3.Size = new System.Drawing.Size(403, 61);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Messages";
@@ -142,19 +158,29 @@
             this.txtConnectionStatus.Name = "txtConnectionStatus";
             this.txtConnectionStatus.ReadOnly = true;
             this.txtConnectionStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtConnectionStatus.Size = new System.Drawing.Size(364, 42);
+            this.txtConnectionStatus.Size = new System.Drawing.Size(397, 42);
             this.txtConnectionStatus.TabIndex = 7;
             // 
-            // COL_NAME
+            // resDataCtrl
             // 
-            this.COL_NAME.HeaderText = "Name";
-            this.COL_NAME.Name = "COL_NAME";
+            this.resDataCtrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.resDataCtrl.Location = new System.Drawing.Point(137, 127);
+            this.resDataCtrl.MarkedFile = "";
+            this.resDataCtrl.MarkEnabled = true;
+            this.resDataCtrl.Name = "resDataCtrl";
+            this.resDataCtrl.Size = new System.Drawing.Size(400, 92);
+            this.resDataCtrl.TabIndex = 10;
+            this.resDataCtrl.ResourceDataMarked += new Maestro.Editors.Common.ResourceDataSelectionEventHandler(this.resDataCtrl_ResourceDataMarked);
             // 
-            // Value
+            // label3
             // 
-            this.Value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Value.HeaderText = "Value";
-            this.Value.Name = "Value";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 134);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(103, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Resource Data Files";
             // 
             // OgrProviderCtrl
             // 
@@ -162,7 +188,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.HeaderText = "OGR Feature Source";
             this.Name = "OgrProviderCtrl";
-            this.Size = new System.Drawing.Size(510, 329);
+            this.Size = new System.Drawing.Size(543, 329);
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdOtherProperties)).EndInit();
@@ -184,5 +210,7 @@
         private System.Windows.Forms.TextBox txtConnectionStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn COL_NAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
+        private System.Windows.Forms.Label label3;
+        private Editors.Common.ResourceDataCtrl resDataCtrl;
     }
 }
