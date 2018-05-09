@@ -151,6 +151,16 @@ namespace Maestro.Editors.SymbolDefinition
 
         public void PrePreviewProcess() => this.BeforePreview?.Invoke(this, EventArgs.Empty);
 
+        public IPreviewUrl[] GetAlternateWebLayoutPreviewUrls(string resourceID, string locale)
+        {
+            return Array.Empty<IPreviewUrl>();
+        }
+
+        public IPreviewUrl[] GetAlternateFlexibleLayoutPreviewUrls(string resourceID, string locale)
+        {
+            return Array.Empty<IPreviewUrl>();
+        }
+
         public event EventHandler BeforePreview;
 
         public string PreviewLocale

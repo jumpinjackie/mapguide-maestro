@@ -23,6 +23,8 @@
 using ICSharpCode.Core;
 using Maestro.Base.Editor;
 using Maestro.Base.UI;
+using Maestro.Base.UI.Preferences;
+using Maestro.Editors;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
@@ -40,7 +42,7 @@ namespace Maestro.Base.Services
     /// <item><description>Handling unsupported resource types and/or versions</description></item>
     /// </list>
     /// </summary>
-    public class OpenResourceManager : ServiceBase
+    public class OpenResourceManager : ServiceBase, IAlternatePreviewFactory
     {
         private Dictionary<string, IEditorViewContent> _openItems;
 
@@ -184,7 +186,7 @@ namespace Maestro.Base.Services
                     ed = FindEditor(svc, res.GetResourceTypeDescriptor());
                 }
                 var launcher = ServiceRegistry.GetService<UrlLauncherService>();
-                var editorSvc = new ResourceEditorService(res.ResourceID, conn, launcher, siteExp, this);
+                var editorSvc = new ResourceEditorService(res.ResourceID, conn, launcher, siteExp, this, this);
                 ed.EditorService = editorSvc;
                 _openItems[key] = ed;
                 CancelEventHandler vcClosing = (sender, e) =>
@@ -297,6 +299,49 @@ namespace Maestro.Base.Services
         internal IEditorViewContent GetOpenEditor(string resourceId, IServerConnection conn)
         {
             return _openItems[ComputeResourceKey(resourceId, conn)];
+        }
+
+        static string Template(string url, string resourceId, string locale) => url.Replace("{resource}", resourceId).Replace("{locale}", locale);
+        
+        IPreviewUrl[] IAlternatePreviewFactory.GetAlternateWebLayoutPreviewUrls(string resourceID, string locale)
+        {
+            var baseUrl = PropertyService.Get(ConfigProperties.ReactLayoutBaseUrl);
+            if (string.IsNullOrEmpty(baseUrl))
+            {
+                return Array.Empty<IPreviewUrl>();
+            }
+
+            if (!baseUrl.EndsWith("/"))
+                baseUrl += "/";
+
+            return new[]
+            {
+                new PreviewUrl { Name = "React - Sidebar", Url = Template(baseUrl + "sidebar.html?resource={resource}&locale={locale}", resourceID, locale) },
+                new PreviewUrl { Name = "React - AJAX Viewer", Url = Template(baseUrl + "index.html?resource={resource}&locale={locale}", resourceID, locale) }
+            };
+        }
+
+        IPreviewUrl[] IAlternatePreviewFactory.GetAlternateFlexibleLayoutPreviewUrls(string resourceID, string locale)
+        {
+            var baseUrl = PropertyService.Get(ConfigProperties.ReactLayoutBaseUrl);
+            if (string.IsNullOrEmpty(baseUrl))
+            {
+                return Array.Empty<IPreviewUrl>();
+            }
+
+            if (!baseUrl.EndsWith("/"))
+                baseUrl += "/";
+
+            return new[]
+            {
+                new PreviewUrl { Name = "React - Sidebar", Url = Template(baseUrl + "sidebar.html?resource={resource}&locale={locale}", resourceID, locale) },
+                new PreviewUrl { Name = "React - AJAX Viewer", Url = Template(baseUrl + "index.html?resource={resource}&locale={locale}", resourceID, locale) },
+                new PreviewUrl { Name = "React - Slate", Url = Template(baseUrl + "slate.html?resource={resource}&locale={locale}", resourceID, locale) },
+                new PreviewUrl { Name = "React - TurquoiseYellow", Url = Template(baseUrl + "turquoiseyellow.html?resource={resource}&locale={locale}", resourceID, locale) },
+                new PreviewUrl { Name = "React - Aqua", Url = Template(baseUrl + "aqua.html?resource={resource}&locale={locale}", resourceID, locale) },
+                new PreviewUrl { Name = "React - Maroon", Url = Template(baseUrl + "maroon.html?resource={resource}&locale={locale}", resourceID, locale) },
+                new PreviewUrl { Name = "React - LimeGold", Url = Template(baseUrl + "limegold.html?resource={resource}&locale={locale}", resourceID, locale) }
+            };
         }
     }
 }

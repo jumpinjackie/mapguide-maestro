@@ -511,6 +511,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Viewer URL copied to clipboard.
+        /// </summary>
+        internal static string CopiedUrlToClipboard {
+            get {
+                return ResourceManager.GetString("CopiedUrlToClipboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Credentials applied. You can now reference the applied credentials with the %MG_USERNAME% and %MG_PASSWORD% placeholders.
         /// </summary>
         internal static string CredentialsApplied {

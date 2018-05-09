@@ -30,17 +30,26 @@ using System.ComponentModel;
 
 namespace Maestro.Base.Editor
 {
+    internal interface IAlternatePreviewFactory
+    {
+        IPreviewUrl[] GetAlternateWebLayoutPreviewUrls(string resourceID, string locale);
+
+        IPreviewUrl[] GetAlternateFlexibleLayoutPreviewUrls(string resourceID, string locale);
+    }
+
     internal class ResourceEditorService : ResourceEditorServiceBase
     {
-        private IUrlLauncherService _launcher;
-        private ISiteExplorer _siteExp;
-        private OpenResourceManager _orm;
+        readonly IUrlLauncherService _launcher;
+        readonly ISiteExplorer _siteExp;
+        readonly OpenResourceManager _orm;
+        readonly IAlternatePreviewFactory _factory;
 
-        internal ResourceEditorService(string resourceID, IServerConnection conn, IUrlLauncherService launcher, ISiteExplorer siteExp, OpenResourceManager orm)
+        internal ResourceEditorService(string resourceID, IServerConnection conn, IUrlLauncherService launcher, ISiteExplorer siteExp, IAlternatePreviewFactory factory, OpenResourceManager orm)
             : base(resourceID, conn)
         {
             _siteExp = siteExp;
             _launcher = launcher;
+            _factory = factory;
             _orm = orm;
         }
 
@@ -86,6 +95,16 @@ namespace Maestro.Base.Editor
             {
                 throw new ApplicationException(string.Format(Strings.ErrorUnknownExecutable, processName));
             }
+        }
+
+        public override IPreviewUrl[] GetAlternateWebLayoutPreviewUrls(string resourceID, string locale)
+        {
+            return _factory.GetAlternateWebLayoutPreviewUrls(resourceID, locale);
+        }
+
+        public override IPreviewUrl[] GetAlternateFlexibleLayoutPreviewUrls(string resourceID, string locale)
+        {
+            return _factory.GetAlternateFlexibleLayoutPreviewUrls(resourceID, locale);
         }
     }
 }

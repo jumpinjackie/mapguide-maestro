@@ -1067,6 +1067,7 @@
     <Compile Include="Packaging\PackageEditorDialog.designer.cs">
       <DependentUpon>PackageEditorDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="PreviewUrl.cs" />
     <Compile Include="Preview\DefaultResourcePreviewer.cs" />
     <Compile Include="Preview\IResourcePreviewer.cs" />
     <Compile Include="Preview\IUrlLauncherService.cs" />

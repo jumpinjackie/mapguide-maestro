@@ -505,6 +505,10 @@ namespace Maestro.Editors
             this.BeforePreview?.Invoke(this, EventArgs.Empty);
         }
 
+        public abstract IPreviewUrl[] GetAlternateWebLayoutPreviewUrls(string resourceID, string locale);
+
+        public abstract IPreviewUrl[] GetAlternateFlexibleLayoutPreviewUrls(string resourceID, string locale);
+
         /// <summary>
         /// Raised when processing is required before a preview is generated
         /// </summary>

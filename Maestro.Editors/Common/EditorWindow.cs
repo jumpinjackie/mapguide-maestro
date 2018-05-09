@@ -89,6 +89,16 @@ namespace Maestro.Editors.Common
             {
                 throw new NotImplementedException();
             }
+
+            public override IPreviewUrl[] GetAlternateWebLayoutPreviewUrls(string resourceID, string locale)
+            {
+                return Array.Empty<IPreviewUrl>();
+            }
+
+            public override IPreviewUrl[] GetAlternateFlexibleLayoutPreviewUrls(string resourceID, string locale)
+            {
+                return Array.Empty<IPreviewUrl>();
+            }
         }
 
         private EditorWindow()

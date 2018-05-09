@@ -25,6 +25,7 @@ using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Net;
@@ -91,10 +92,16 @@ namespace Maestro.Editors.Fusion
             GeneratePreviewUrl();
         }
 
+        class UnavailablePreviewUrl : IPreviewUrl
+        {
+            public string Url => "about:blank";
+
+            public string Display => Strings.PreviewUrlNotAvailable;
+        }
+
         private void GeneratePreviewUrl()
         {
             btnShowInBrowser.Enabled = false;
-            txtPublicUrl.Text = string.Empty;
 
             try
             {
@@ -103,15 +110,20 @@ namespace Maestro.Editors.Fusion
                 if (!baseUrl.EndsWith("/")) //NOXLATE
                     baseUrl += "/"; //NOXLATE
 
+                var list = new List<IPreviewUrl>();
                 if (!_edsvc.IsNew)
                 {
-                    txtPublicUrl.Text = $"{baseUrl + txtTemplateUrl.Text}?ApplicationDefinition={_edsvc.ResourceID}&locale={_edsvc.PreviewLocale}"; //NOXLATE
+                    list.Add(new PreviewUrl { Name = "Selected Fusion Template", Url = $"{baseUrl + txtTemplateUrl.Text}?ApplicationDefinition={_edsvc.ResourceID}&locale={_edsvc.PreviewLocale}" }); //NOXLATE
+                    list.AddRange(_edsvc.GetAlternateFlexibleLayoutPreviewUrls(_edsvc.ResourceID, _edsvc.PreviewLocale));
                     btnShowInBrowser.Enabled = true;
                 }
                 else
                 {
-                    txtPublicUrl.Text = Strings.PreviewUrlNotAvailable;
+                    list.Add(new UnavailablePreviewUrl());
                 }
+
+                cmbPublicUrl.DataSource = list;
+                cmbPublicUrl.SelectedIndex = 0;
             }
             catch { }
         }
@@ -176,7 +188,13 @@ namespace Maestro.Editors.Fusion
 
         private void btnShowInBrowser_Click(object sender, EventArgs e)
         {
-            _edsvc.OpenUrl(txtPublicUrl.Text);
+            _edsvc.OpenUrl(((IPreviewUrl)cmbPublicUrl.SelectedItem).Url);
+        }
+
+        private void btnCopyClipboard_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(((IPreviewUrl)cmbPublicUrl.SelectedItem).Url);
+            MessageBox.Show(Strings.CopiedUrlToClipboard);
         }
     }
 }

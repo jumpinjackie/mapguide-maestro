@@ -43,6 +43,8 @@ namespace Maestro.Base.UI.Preferences
             chkUseGridBasedStyleEditor.Checked = useGrid;
 
             txtPreviewLocale.Text = Props.Get(ConfigProperties.PreviewLocale, ConfigProperties.DefaultPreviewLocale);
+
+            txtReactBaseUrl.Text = Props.Get(ConfigProperties.ReactLayoutBaseUrl, ConfigProperties.DefaultReactLayoutBaseUrl);
         }
 
         public string Title
@@ -64,6 +66,7 @@ namespace Maestro.Base.UI.Preferences
             Apply(ConfigProperties.AddDebugWatermark, chkAddDebugWatermark.Checked);
             Apply(ConfigProperties.PreviewLocale, txtPreviewLocale.Text);
             Apply(ConfigProperties.UseGridStyleEditor, chkUseGridBasedStyleEditor.Checked);
+            Apply(ConfigProperties.ReactLayoutBaseUrl, txtReactBaseUrl.Text);
 
             //These changes require restart
             if (Apply(ConfigProperties.XsdSchemaPath, txtXsdPath.Text))

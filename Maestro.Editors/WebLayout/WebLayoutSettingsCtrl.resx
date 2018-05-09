@@ -117,11 +117,66 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnCopyClipboard.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnCopyClipboard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnCopyClipboard.Location" type="System.Drawing.Point, System.Drawing">
+    <value>535, 394</value>
+  </data>
+  <data name="btnCopyClipboard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 23</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnCopyClipboard.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="btnCopyClipboard.Text" xml:space="preserve">
+    <value>Copy to Clipboard</value>
+  </data>
+  <data name="&gt;&gt;btnCopyClipboard.Name" xml:space="preserve">
+    <value>btnCopyClipboard</value>
+  </data>
+  <data name="&gt;&gt;btnCopyClipboard.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCopyClipboard.Parent" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;btnCopyClipboard.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cmbViewerUrl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="cmbViewerUrl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 396</value>
+  </data>
+  <data name="cmbViewerUrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 21</value>
+  </data>
+  <data name="cmbViewerUrl.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;cmbViewerUrl.Name" xml:space="preserve">
+    <value>cmbViewerUrl</value>
+  </data>
+  <data name="&gt;&gt;cmbViewerUrl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbViewerUrl.Parent" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;cmbViewerUrl.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="chkPingServer.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkPingServer.Location" type="System.Drawing.Point, System.Drawing">
     <value>152, 67</value>
   </data>
@@ -144,14 +199,13 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;chkPingServer.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnShowInBrowser.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="btnShowInBrowser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>547, 394</value>
+    <value>433, 394</value>
   </data>
   <data name="btnShowInBrowser.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 23</value>
@@ -172,31 +226,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;btnShowInBrowser.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="txtAjaxViewerUrl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="txtAjaxViewerUrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 396</value>
-  </data>
-  <data name="txtAjaxViewerUrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>389, 20</value>
-  </data>
-  <data name="txtAjaxViewerUrl.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;txtAjaxViewerUrl.Name" xml:space="preserve">
-    <value>txtAjaxViewerUrl</value>
-  </data>
-  <data name="&gt;&gt;txtAjaxViewerUrl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtAjaxViewerUrl.Parent" xml:space="preserve">
-    <value>contentPanel</value>
-  </data>
-  <data name="&gt;&gt;txtAjaxViewerUrl.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -205,13 +235,13 @@
     <value>16, 399</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 13</value>
+    <value>64, 13</value>
   </data>
   <data name="label11.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
-    <value>AJAX Viewer URL</value>
+    <value>Viewer URL</value>
   </data>
   <data name="&gt;&gt;label11.Name" xml:space="preserve">
     <value>label11</value>
@@ -223,7 +253,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -250,7 +280,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="cmbHyperlinkTarget.Location" type="System.Drawing.Point, System.Drawing">
     <value>152, 369</value>
@@ -271,7 +301,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;cmbHyperlinkTarget.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="txtHyperlinkFrame.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -295,7 +325,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;txtHyperlinkFrame.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="txtInitialTaskPaneUrl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -319,7 +349,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;txtInitialTaskPaneUrl.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -346,7 +376,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -761,7 +791,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -984,7 +1014,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="btnBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1011,7 +1041,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;btnBrowse.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="txtMapDefinition.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1035,7 +1065,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;txtMapDefinition.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1062,7 +1092,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="txtBrowserTitle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1086,7 +1116,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;txtBrowserTitle.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1113,7 +1143,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="contentPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>662, 426</value>
@@ -1143,6 +1173,6 @@
     <value>WebLayoutSettingsCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=5.0.0.6640, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -65,9 +65,10 @@
             this.cmbHyperlinkTarget = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtAjaxViewerUrl = new System.Windows.Forms.TextBox();
             this.btnShowInBrowser = new System.Windows.Forms.Button();
             this.chkPingServer = new System.Windows.Forms.CheckBox();
+            this.cmbViewerUrl = new System.Windows.Forms.ComboBox();
+            this.btnCopyClipboard = new System.Windows.Forms.Button();
             this.contentPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -78,9 +79,10 @@
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.btnCopyClipboard);
+            this.contentPanel.Controls.Add(this.cmbViewerUrl);
             this.contentPanel.Controls.Add(this.chkPingServer);
             this.contentPanel.Controls.Add(this.btnShowInBrowser);
-            this.contentPanel.Controls.Add(this.txtAjaxViewerUrl);
             this.contentPanel.Controls.Add(this.label11);
             this.contentPanel.Controls.Add(this.label10);
             this.contentPanel.Controls.Add(this.cmbHyperlinkTarget);
@@ -323,12 +325,6 @@
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
             // 
-            // txtAjaxViewerUrl
-            // 
-            resources.ApplyResources(this.txtAjaxViewerUrl, "txtAjaxViewerUrl");
-            this.txtAjaxViewerUrl.Name = "txtAjaxViewerUrl";
-            this.txtAjaxViewerUrl.ReadOnly = true;
-            // 
             // btnShowInBrowser
             // 
             resources.ApplyResources(this.btnShowInBrowser, "btnShowInBrowser");
@@ -341,6 +337,21 @@
             resources.ApplyResources(this.chkPingServer, "chkPingServer");
             this.chkPingServer.Name = "chkPingServer";
             this.chkPingServer.UseVisualStyleBackColor = true;
+            // 
+            // cmbViewerUrl
+            // 
+            resources.ApplyResources(this.cmbViewerUrl, "cmbViewerUrl");
+            this.cmbViewerUrl.DisplayMember = "Display";
+            this.cmbViewerUrl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbViewerUrl.FormattingEnabled = true;
+            this.cmbViewerUrl.Name = "cmbViewerUrl";
+            // 
+            // btnCopyClipboard
+            // 
+            resources.ApplyResources(this.btnCopyClipboard, "btnCopyClipboard");
+            this.btnCopyClipboard.Name = "btnCopyClipboard";
+            this.btnCopyClipboard.UseVisualStyleBackColor = true;
+            this.btnCopyClipboard.Click += new System.EventHandler(this.btnCopyClipboard_Click);
             // 
             // WebLayoutSettingsCtrl
             // 
@@ -395,7 +406,6 @@
         private System.Windows.Forms.CheckBox chkTaskBar;
         private System.Windows.Forms.CheckBox chkTaskPane;
         private System.Windows.Forms.Button btnShowInBrowser;
-        private System.Windows.Forms.TextBox txtAjaxViewerUrl;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cmbHyperlinkTarget;
@@ -403,5 +413,7 @@
         private System.Windows.Forms.TextBox txtInitialTaskPaneUrl;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox chkPingServer;
+        private System.Windows.Forms.ComboBox cmbViewerUrl;
+        private System.Windows.Forms.Button btnCopyClipboard;
     }
 }

@@ -122,6 +122,11 @@ namespace Maestro.Base.UI.Preferences
         /// </summary>
         public const string UseGridStyleEditor = "Editor.UseGridStyleEditor";
 
+        /// <summary>
+        /// The base URL for your mapguide-react-layout installation
+        /// </summary>
+        public const string ReactLayoutBaseUrl = "Preview.ReactLayoutBaseUrl";
+
         internal static void ApplyDefaults()
         {
             ApplyGeneralDefaults();
@@ -242,5 +247,10 @@ namespace Maestro.Base.UI.Preferences
         /// Default user template directory
         /// </summary>
         public static string DefaultUserTemplatesDirectory { get { return Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates"); } } //NOXLATE
+
+        /// <summary>
+        /// Default mapguide-react-layout base URL
+        /// </summary>
+        public static string DefaultReactLayoutBaseUrl => string.Empty;
     }
 }

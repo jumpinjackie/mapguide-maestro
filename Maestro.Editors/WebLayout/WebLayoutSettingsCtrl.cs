@@ -27,6 +27,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -122,10 +123,17 @@ namespace Maestro.Editors.WebLayout
             zoom.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => zoom.PropertyChanged -= eh);
         }
 
+        class UnavailablePreviewUrl : IPreviewUrl
+        {
+            public string Url => "about:blank";
+
+            public string Display => Strings.PreviewUrlNotAvailable;
+        }
+
         private void GeneratePreviewUrl()
         {
             btnShowInBrowser.Enabled = false;
-            txtAjaxViewerUrl.Text = string.Empty;
+
             try
             {
                 var conn = _edsvc.CurrentConnection;
@@ -133,15 +141,20 @@ namespace Maestro.Editors.WebLayout
                 if (!baseUrl.EndsWith("/"))
                     baseUrl += "/";
 
+                var list = new List<IPreviewUrl>();
                 if (!_edsvc.IsNew)
                 {
-                    txtAjaxViewerUrl.Text = $"{baseUrl}mapviewerajax/?WEBLAYOUT={_edsvc.ResourceID}&LOCALE={_edsvc.PreviewLocale}"; //NOXLATE
+                    list.Add(new PreviewUrl { Name = "AJAX Viewer", Url = $"{baseUrl}mapviewerajax/?WEBLAYOUT={_edsvc.ResourceID}&LOCALE={_edsvc.PreviewLocale}" }); //NOXLATE
+                    list.AddRange(_edsvc.GetAlternateWebLayoutPreviewUrls(_edsvc.ResourceID, _edsvc.PreviewLocale));
                     btnShowInBrowser.Enabled = true;
                 }
                 else
                 {
-                    txtAjaxViewerUrl.Text = Strings.PreviewUrlNotAvailable;
+                    list.Add(new UnavailablePreviewUrl());
                 }
+
+                cmbViewerUrl.DataSource = list;
+                cmbViewerUrl.SelectedIndex = 0;
             }
             catch { }
         }
@@ -216,6 +229,12 @@ namespace Maestro.Editors.WebLayout
             }
         }
 
-        private void btnShowInBrowser_Click(object sender, EventArgs e) => _edsvc.OpenUrl(txtAjaxViewerUrl.Text);
+        private void btnShowInBrowser_Click(object sender, EventArgs e) => _edsvc.OpenUrl(((IPreviewUrl)cmbViewerUrl.SelectedItem).Url);
+
+        private void btnCopyClipboard_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(((IPreviewUrl)cmbViewerUrl.SelectedItem).Url);
+            MessageBox.Show(Strings.CopiedUrlToClipboard);
+        }
     }
 }

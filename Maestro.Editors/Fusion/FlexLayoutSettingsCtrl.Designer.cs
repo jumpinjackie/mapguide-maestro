@@ -38,16 +38,18 @@
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.txtTemplateUrl = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtPublicUrl = new System.Windows.Forms.TextBox();
             this.btnShowInBrowser = new System.Windows.Forms.Button();
+            this.cmbPublicUrl = new System.Windows.Forms.ComboBox();
+            this.btnCopyClipboard = new System.Windows.Forms.Button();
             this.contentPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.btnCopyClipboard);
+            this.contentPanel.Controls.Add(this.cmbPublicUrl);
             this.contentPanel.Controls.Add(this.btnShowInBrowser);
-            this.contentPanel.Controls.Add(this.txtPublicUrl);
             this.contentPanel.Controls.Add(this.label3);
             this.contentPanel.Controls.Add(this.txtTemplateUrl);
             this.contentPanel.Controls.Add(this.txtTitle);
@@ -103,12 +105,6 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // txtPublicUrl
-            // 
-            resources.ApplyResources(this.txtPublicUrl, "txtPublicUrl");
-            this.txtPublicUrl.Name = "txtPublicUrl";
-            this.txtPublicUrl.ReadOnly = true;
-            // 
             // btnShowInBrowser
             // 
             resources.ApplyResources(this.btnShowInBrowser, "btnShowInBrowser");
@@ -116,10 +112,25 @@
             this.btnShowInBrowser.UseVisualStyleBackColor = true;
             this.btnShowInBrowser.Click += new System.EventHandler(this.btnShowInBrowser_Click);
             // 
+            // cmbPublicUrl
+            // 
+            resources.ApplyResources(this.cmbPublicUrl, "cmbPublicUrl");
+            this.cmbPublicUrl.DisplayMember = "Display";
+            this.cmbPublicUrl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPublicUrl.FormattingEnabled = true;
+            this.cmbPublicUrl.Name = "cmbPublicUrl";
+            // 
+            // btnCopyClipboard
+            // 
+            resources.ApplyResources(this.btnCopyClipboard, "btnCopyClipboard");
+            this.btnCopyClipboard.Name = "btnCopyClipboard";
+            this.btnCopyClipboard.UseVisualStyleBackColor = true;
+            this.btnCopyClipboard.Click += new System.EventHandler(this.btnCopyClipboard_Click);
+            // 
             // FlexLayoutSettingsCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "Flexible Layout Settings";
+            resources.ApplyResources(this, "$this");
             this.Name = "FlexLayoutSettingsCtrl";
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
@@ -138,7 +149,8 @@
         private System.Windows.Forms.ImageList tplImageList;
         private System.Windows.Forms.TextBox txtTemplateUrl;
         private System.Windows.Forms.Button btnShowInBrowser;
-        private System.Windows.Forms.TextBox txtPublicUrl;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbPublicUrl;
+        private System.Windows.Forms.Button btnCopyClipboard;
     }
 }

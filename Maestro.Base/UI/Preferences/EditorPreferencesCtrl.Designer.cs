@@ -41,10 +41,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.chkUseGridBasedStyleEditor = new System.Windows.Forms.CheckBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtReactBaseUrl = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
@@ -56,7 +61,7 @@
             this.groupBox4.Controls.Add(this.chkValidateOnSave);
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(399, 78);
+            this.groupBox4.Size = new System.Drawing.Size(529, 78);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "General";
@@ -102,7 +107,7 @@
             this.groupBox1.Controls.Add(this.txtXsdPath);
             this.groupBox1.Location = new System.Drawing.Point(3, 87);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(398, 66);
+            this.groupBox1.Size = new System.Drawing.Size(528, 66);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "XML Editor";
@@ -111,7 +116,7 @@
             // 
             this.btnBrowseXsdPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBrowseXsdPath.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnBrowseXsdPath.Location = new System.Drawing.Point(367, 22);
+            this.btnBrowseXsdPath.Location = new System.Drawing.Point(497, 22);
             this.btnBrowseXsdPath.Name = "btnBrowseXsdPath";
             this.btnBrowseXsdPath.Size = new System.Drawing.Size(25, 23);
             this.btnBrowseXsdPath.TabIndex = 14;
@@ -136,7 +141,7 @@
             this.txtXsdPath.Location = new System.Drawing.Point(112, 24);
             this.txtXsdPath.Name = "txtXsdPath";
             this.txtXsdPath.ReadOnly = true;
-            this.txtXsdPath.Size = new System.Drawing.Size(249, 20);
+            this.txtXsdPath.Size = new System.Drawing.Size(379, 20);
             this.txtXsdPath.TabIndex = 13;
             // 
             // groupBox2
@@ -147,7 +152,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(3, 159);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(398, 60);
+            this.groupBox2.Size = new System.Drawing.Size(528, 60);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Localization";
@@ -175,31 +180,73 @@
             this.groupBox3.Controls.Add(this.chkUseGridBasedStyleEditor);
             this.groupBox3.Location = new System.Drawing.Point(3, 223);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(398, 51);
+            this.groupBox3.Size = new System.Drawing.Size(528, 51);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Layer Editor";
             // 
-            // chkGridBaseStyleEditor
+            // chkUseGridBasedStyleEditor
             // 
             this.chkUseGridBasedStyleEditor.AutoSize = true;
             this.chkUseGridBasedStyleEditor.Location = new System.Drawing.Point(18, 19);
-            this.chkUseGridBasedStyleEditor.Name = "chkGridBaseStyleEditor";
+            this.chkUseGridBasedStyleEditor.Name = "chkUseGridBasedStyleEditor";
             this.chkUseGridBasedStyleEditor.Size = new System.Drawing.Size(152, 17);
             this.chkUseGridBasedStyleEditor.TabIndex = 0;
             this.chkUseGridBasedStyleEditor.Text = "Use Grid-based style editor";
             this.chkUseGridBasedStyleEditor.UseVisualStyleBackColor = true;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.label3);
+            this.groupBox5.Controls.Add(this.txtReactBaseUrl);
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Location = new System.Drawing.Point(4, 281);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(527, 85);
+            this.groupBox5.TabIndex = 14;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Viewer Previews";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(162, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "mapguide-react-layout base URL";
+            // 
+            // txtReactBaseUrl
+            // 
+            this.txtReactBaseUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtReactBaseUrl.Location = new System.Drawing.Point(182, 22);
+            this.txtReactBaseUrl.Name = "txtReactBaseUrl";
+            this.txtReactBaseUrl.Size = new System.Drawing.Size(339, 20);
+            this.txtReactBaseUrl.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 56);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(376, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Setting this value will unlock extra preview URLs for Web and Flexible Layouts";
+            // 
             // EditorPreferencesCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
             this.Name = "EditorPreferencesCtrl";
-            this.Size = new System.Drawing.Size(405, 326);
+            this.Size = new System.Drawing.Size(535, 402);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -208,6 +255,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -227,5 +276,9 @@
         private System.Windows.Forms.CheckBox chkAddDebugWatermark;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox chkUseGridBasedStyleEditor;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox txtReactBaseUrl;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -265,5 +265,9 @@ namespace Maestro.Editors
         /// in an invalid state
         /// </summary>
         Exception CauseForInvalidState { get; }
+
+        IPreviewUrl[] GetAlternateWebLayoutPreviewUrls(string resourceID, string locale);
+
+        IPreviewUrl[] GetAlternateFlexibleLayoutPreviewUrls(string resourceID, string locale);
     }
 }
