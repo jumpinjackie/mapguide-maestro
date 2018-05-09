@@ -1,4 +1,21 @@
-﻿6.0m8
+﻿6.0m9
+=====
+ - New dedicated feature source editor for the OGR provider
+ - Added support converting SHP feature sources to equivalent OGR feature sources
+ - MgTileSeeder improvements:
+   - Failed requests can be logged out to a failed requests log
+   - New replay command to re-run requests from a failed request log
+   - Configurable max degrees of parallelism
+ - Added support for mapguide-react-layout
+   - Default Flexible Layout no longer contains widgets incompatible with mapguide-react-layout. Most of these are really esoteric anyways, no one will really notice.
+   - New preference for specifying the base URL of a mapguide-react-layout installation. If specified, this will unlock a whole set of additional viewer URLs for preview in the Web and Flexible Layout editors.
+ - Fix: Rename resource with "update references" checked will disregard overwrite flag
+ - Fix: NRE when ticking a new geometry type and adding a rule to the grid for the first time in Layer Definition editor
+ - Fix: MgInvalidRepositoryTypeException when validating layers
+ - Fix: Editing default path in line usage context in Symbol Definition editor does nothing
+ - Fix: Cannot browse symbol definiton parameters in any field of the Path editor dialog
+
+6.0m8
 =====
  - API: Now targeting net461/netstandard2.0
  - API: Primary acquisition method is now via NuGet packages
