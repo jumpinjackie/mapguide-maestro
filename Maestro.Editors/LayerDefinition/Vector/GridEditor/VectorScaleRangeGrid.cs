@@ -101,6 +101,24 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             }
         }
 
+        private void EnsurePointStyle()
+        {
+            if (_pts == null)
+                _pts = _editedLayer.CreateDefaultPointStyle();
+        }
+
+        private void EnsureLineStyle()
+        {
+            if (_lts == null)
+                _lts = _editedLayer.CreateDefaultLineStyle();
+        }
+
+        private void EnsureAreaStyle()
+        {
+            if (_ats == null)
+                _ats = _editedLayer.CreateDefaultAreaStyle();
+        }
+
         private void chkPoints_CheckedChanged(object sender, EventArgs e)
         {
             if (_init) return;
@@ -111,6 +129,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         private void SetPointUI()
         {
             SetPointTabVisibility(chkPoints.Checked);
+            EnsurePointStyle();
             _vsr.PointStyle = (chkPoints.Checked) ? _pts : null;
             pointRuleGrid.Init(_parent.EditorService, _vsr, _vsr.PointStyle);
             if (!_init)
@@ -127,6 +146,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         private void SetLineUI()
         {
             SetLineTabVisibility(chkLine.Checked);
+            EnsureLineStyle();
             _vsr.LineStyle = (chkLine.Checked) ? _lts : null;
             lineRuleGrid.Init(_parent.EditorService, _vsr, _vsr.LineStyle);
             if (!_init)
@@ -143,6 +163,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         private void SetAreaUI()
         {
             SetAreaTabVisibility(chkArea.Checked);
+            EnsureAreaStyle();
             _vsr.AreaStyle = (chkArea.Checked) ? _ats : null;
             areaRuleGrid.Init(_parent.EditorService, _vsr, _vsr.AreaStyle);
             if (!_init)
