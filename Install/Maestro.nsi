@@ -178,7 +178,7 @@ Section
     !endif
 
     # Check for .net Framework
-    !insertmacro CheckNetFramework 461
+    !insertmacro CheckNetFramework 471
 
     # Check for vcredist
     !insertmacro InstallVCRedist11_32bit "$TEMP\MaestroSetup"
