@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net471</TargetFrameworks>
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <SignAssembly>true</SignAssembly>
@@ -13,7 +13,7 @@
     <PackageTags>MapGuide</PackageTags>
   </PropertyGroup>
 
-  <!-- Use full pdb generation for net461 -->
+  <!-- Use full pdb generation for net471 -->
   <PropertyGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
     <DebugType>full</DebugType>
     <DebugSymbols>True</DebugSymbols>
