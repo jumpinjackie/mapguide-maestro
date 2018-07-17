@@ -7,6 +7,10 @@ image: Visual Studio 2017
 matrix:
   fast_finish: true
 
+environment:
+  NETCORE_MONIKER: 'netcoreapp2.1'
+  FULLFX_MONIKER: 'net471'
+
 # enable AssemblyInfo.cs patching with build version number
 assembly_info:
   patch: true
@@ -56,8 +60,8 @@ after_build:
   - cd /D %APPVEYOR_BUILD_FOLDER%\out\Release
   - 7z a -mx9 %APPVEYOR_BUILD_FOLDER%\artifacts\MapGuideMaestro-%CONFIGURATION%-%ARTIFACT_RELEASE_LABEL%.zip * -x!LocalConfigure.* -x!Addins\Local -x!Addins\Scripting
   - cd /D %APPVEYOR_BUILD_FOLDER%\MgTileSeeder
-  - dotnet publish -c release -f netcoreapp2.1 -r win-x64 -o publish_win
-  - dotnet publish -c release -f netcoreapp2.1 -r linux-x64 -o publish_linux
+  - dotnet publish -c release -f %NETCORE_MONIKER% -r win-x64 -o publish_win
+  - dotnet publish -c release -f %NETCORE_MONIKER% -r linux-x64 -o publish_linux
   - cd /D %APPVEYOR_BUILD_FOLDER%\MgTileSeeder\publish_win
   - 7z a -mx9 %APPVEYOR_BUILD_FOLDER%\artifacts\MgTileSeeder-win-x64-%ARTIFACT_RELEASE_LABEL%.zip *
   - cd /D %APPVEYOR_BUILD_FOLDER%\MgTileSeeder\publish_linux
@@ -70,7 +74,7 @@ after_build:
 
 test_script:
 - ps: >-
-    .\Packages\opencover\4.6.519\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:".\Packages\xunit.runner.console\2.3.1\tools\net452\xunit.console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\Release\net461\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModels.Tests\bin\Release\net461\OSGeo.MapGuide.ObjectModels.Tests.dll -noshadow -xml .\TestResult.xml" -output:OpenCoverCoverage.xml -coverbytest:*.Tests.dll
+    .\Packages\opencover\4.6.519\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:".\Packages\xunit.runner.console\2.3.1\tools\net452\xunit.console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\Release\$($env:FULLFX_MONIKER)\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModels.Tests\bin\Release\$($env:FULLFX_MONIKER)\OSGeo.MapGuide.ObjectModels.Tests.dll -noshadow -xml .\TestResult.xml" -output:OpenCoverCoverage.xml -coverbytest:*.Tests.dll
 
     $coveralls = (Resolve-Path "Packages/coveralls.net/0.412.0/tools/csmacnz.coveralls.exe").ToString()
 
