@@ -33,6 +33,8 @@ before_build:
   - echo APPVEYOR_REPO_TAG_NAME         %APPVEYOR_REPO_TAG_NAME%
   - echo APPVEYOR_REPO_COMMIT           %APPVEYOR_REPO_COMMIT%
   - echo APPVEYOR_REPO_COMMIT_TIMESTAMP %APPVEYOR_REPO_COMMIT_TIMESTAMP%
+  - echo NETCORE_MONIKER                %NETCORE_MONIKER%
+  - echo FULLFX_MONIKER                 %FULLFX_MONIKER%
   - nuget update -self
   - nuget restore Maestro.sln
   - cinst -y docfx
