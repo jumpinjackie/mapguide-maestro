@@ -7,10 +7,6 @@ image: Visual Studio 2017
 matrix:
   fast_finish: true
 
-environment:
-  NETCORE_MONIKER: 'netcoreapp2.1'
-  FULLFX_MONIKER: 'net471'
-
 # enable AssemblyInfo.cs patching with build version number
 assembly_info:
   patch: true
@@ -42,6 +38,8 @@ before_build:
   - cinst -y docfx
 
 environment:
+  NETCORE_MONIKER: 'netcoreapp2.1'
+  FULLFX_MONIKER: 'net471'
   COVERALLS_REPO_TOKEN:
     secure: brg0Fy+w8aO/4JhYrsjvumIqAMCi26QNT3nJGUQNaKvLXSoXgywWn/WPCEnUJEEK
 
