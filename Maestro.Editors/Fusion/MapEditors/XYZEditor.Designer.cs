@@ -33,9 +33,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grdUrls = new System.Windows.Forms.DataGridView();
+            this.URL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAddTileSet = new System.Windows.Forms.ToolStripButton();
-            this.URL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdUrls)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -83,7 +83,6 @@
             // 
             // grdUrls
             // 
-            this.grdUrls.AllowUserToDeleteRows = false;
             this.grdUrls.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdUrls.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.URL});
@@ -93,6 +92,14 @@
             this.grdUrls.Size = new System.Drawing.Size(738, 217);
             this.grdUrls.TabIndex = 1;
             this.grdUrls.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdUrls_CellEndEdit);
+            this.grdUrls.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.grdUrls_UserDeletedRow);
+            // 
+            // URL
+            // 
+            this.URL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.URL.DataPropertyName = "URL";
+            this.URL.HeaderText = "URL";
+            this.URL.Name = "URL";
             // 
             // toolStrip1
             // 
@@ -112,13 +119,6 @@
             this.btnAddTileSet.Size = new System.Drawing.Size(198, 22);
             this.btnAddTileSet.Text = "Add from XYZ Tile Set Definition";
             this.btnAddTileSet.Click += new System.EventHandler(this.btnAddTileSet_Click);
-            // 
-            // URL
-            // 
-            this.URL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.URL.DataPropertyName = "URL";
-            this.URL.HeaderText = "URL";
-            this.URL.Name = "URL";
             // 
             // XYZEditor
             // 

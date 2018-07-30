@@ -72,7 +72,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
         {
             string url = GetRootUrl();
 
-            var resId = $"Session:{sessionID}//{Guid.NewGuid()}.WebLayout"; //NOXLATE
+            var resId = $"Session:{sessionID}//Preview{counter++}.WebLayout"; //NOXLATE
             
             _conn.ResourceService.SaveResourceAs(res, resId);
             url += $"mapviewerajax/?WEBLAYOUT={resId}&SESSION={sessionID}&LOCALE={GetLocale(locale)}"; //NOXLATE
@@ -84,7 +84,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
         {
             string url = GetRootUrl();
 
-            var mdfId = $"Session:{sessionID}//{Guid.NewGuid()}.MapDefinition"; //NOXLATE
+            var mdfId = $"Session:{sessionID}//Preview{counter++}.MapDefinition"; //NOXLATE
             var mdf = res as IMapDefinition;
             if (mdf != null)
             {
@@ -102,7 +102,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                 //Add a custom zoom command (to assist previews of layers that aren't [0, infinity] scale)
                 AttachPreviewCommands(wl);
 
-                var resId = $"Session:{sessionID}//{Guid.NewGuid()}.WebLayout"; //NOXLATE
+                var resId = $"Session:{sessionID}//Preview{counter++}.WebLayout"; //NOXLATE
 
                 _conn.ResourceService.SaveResourceAs(wl, resId);
                 url += $"mapviewerajax/?WEBLAYOUT={resId}&SESSION={sessionID}&LOCALE={GetLocale(locale)}"; //NOXLATE
@@ -130,7 +130,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
         private IMapDefinition CreateLayerPreviewMapDefinition(ILayerDefinition ldf, string sessionId, string layerName, IServerConnection conn)
         {
             //Create temp map definition to house our current layer
-            var mdfId = $"Session:{sessionId}//{Guid.NewGuid()}.MapDefinition"; //NOXLATE
+            var mdfId = $"Session:{sessionId}//Preview{counter++}.MapDefinition"; //NOXLATE
             string csWkt;
             var extent = ldf.GetSpatialExtent(_conn, true, out csWkt);
             if (extent == null)
@@ -169,7 +169,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                 //Add a custom zoom command (to assist previews of layers that aren't [0, infinity] scale)
                 AttachPreviewCommands(wl);
 
-                var resId = $"Session:{sessionID}//{Guid.NewGuid()}.WebLayout"; //NOXLATE
+                var resId = $"Session:{sessionID}//Preview{counter++}.WebLayout"; //NOXLATE
 
                 _conn.ResourceService.SaveResourceAs(wl, resId);
                 url += $"mapviewerajax/?WEBLAYOUT={resId}&SESSION={sessionID}&LOCALE={GetLocale(locale)}"; //NOXLATE
@@ -189,17 +189,29 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             return url;
         }
 
+        static int counter = 0;
+
         protected override string GenerateFlexLayoutPreviewUrl(IResource res, string locale, bool isNew, string sessionID)
         {
-            string url = GetRootUrl();
-
             //Create temp flex layout
             var appDef = (IApplicationDefinition)res;
-            var resId = $"Session:{sessionID}//{Guid.NewGuid()}.ApplicationDefinition"; //NOXLATE
+            var resId = $"Session:{sessionID}//Preview{counter++}.ApplicationDefinition"; //NOXLATE
 
             _conn.ResourceService.SaveResourceAs(appDef, resId);
-            url += $"{appDef.TemplateUrl}?Session={sessionID}&ApplicationDefinition={resId}&locale={GetLocale(locale)}"; //NOXLATE
-            return url;
+
+            var baseUrl = $"{GetRootUrl()}{appDef.TemplateUrl}";
+            var builder = new UriBuilder(baseUrl);
+
+            var queryPart = $"session={sessionID}&ApplicationDefinition={resId}&locale={GetLocale(locale)}"; //NOXLATE
+            if (builder.Query != null && builder.Query.Length > 1)
+            {
+                builder.Query = builder.Query.Substring(1) + "&" + queryPart;
+            }
+            else
+            {
+                builder.Query = queryPart;
+            }
+            return builder.ToString();
         }
 
         protected override string GenerateFeatureSourcePreviewUrl(IResource res, string locale, bool isNew, string sessionID)

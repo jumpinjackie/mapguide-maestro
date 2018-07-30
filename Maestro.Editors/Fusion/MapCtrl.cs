@@ -130,6 +130,9 @@ namespace Maestro.Editors.Fusion
                         case EditorFactory.Type_Stamen:
                             bAddedCommercialLayer = true;
                             break;
+                        case EditorFactory.Type_XYZ:
+                            bAddedCommercialLayer = true;
+                            break;
                     }
 
                     _group.AddMap(map);

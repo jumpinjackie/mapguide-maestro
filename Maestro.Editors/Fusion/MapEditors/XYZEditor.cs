@@ -168,5 +168,14 @@ namespace Maestro.Editors.Fusion.MapEditors
 
             SetName(txtName.Text);
         }
+
+        private void grdUrls_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            if (_init)
+                return;
+
+            SyncCurrentUrls();
+            _edSvc.MarkDirty();
+        }
     }
 }
