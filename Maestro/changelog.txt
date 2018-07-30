@@ -2,6 +2,7 @@
 ======
 
  - Fusion editor changes
+   - Updated Google Maps base URL
    - Added XYZ layer editor support
      - Editor support for adding an existing Tile Set Definition (using XYZ provider)
      - The XYZ layer editor is also the recommended way to consume alternate OSM tile sets (whether 3rd party or self-hosted)
