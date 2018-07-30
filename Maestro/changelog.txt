@@ -1,4 +1,15 @@
-﻿6.0m9
+﻿6.0m10
+======
+
+ - Fusion editor changes
+   - Added XYZ layer editor support
+     - Editor support for adding an existing Tile Set Definition (using XYZ provider)
+     - The XYZ layer editor is also the recommended way to consume alternate OSM tile sets (whether 3rd party or self-hosted)
+ - Now targeting .net Framework 4.7.1 for better netstandard2.0 compatibility. Windows installer updated to check for this version.
+ - Updated NetTopologySuite and GeoAPI to their latest respective stable releases
+ - MgTileSeeder now targets .net Core 2.1
+
+6.0m9
 =====
  - New dedicated feature source editor for the OGR provider
  - Added support converting SHP feature sources to equivalent OGR feature sources
