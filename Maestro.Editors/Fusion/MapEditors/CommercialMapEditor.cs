@@ -103,14 +103,16 @@ namespace Maestro.Editors.Fusion.MapEditors
                 googleMapsUrl = EditorFactory.GOOGLE_URL;
 
             var tokens = new HashSet<string>();
-            var uri = new Uri(googleMapsUrl);
-            var param = Utility.ParseQueryString(uri.Query);
-            param["key"] = txtGoogleMapsApiKey.Text;
+            
+            var baseUri = new UriBuilder(googleMapsUrl);
+            var queryToAppend = "key=" + txtGoogleMapsApiKey.Text;
+            if (baseUri.Query != null && baseUri.Query.Length > 1)
+                baseUri.Query = baseUri.Query.Substring(1) + "&" + queryToAppend;
+            else
+                baseUri.Query = queryToAppend;
 
-            googleMapsUrl = googleMapsUrl.Substring(0, googleMapsUrl.IndexOf("?"));
-            googleMapsUrl += string.Join("&", param.Select(kvp => $"{kvp.Key}={kvp.Value}"));
-
-            appDef.SetValue(GOOGLE_MAPS_EXTENSION_NAME, googleMapsUrl); //NOXLATE
+            var url = baseUri.Uri.GetComponents(UriComponents.AbsoluteUri & ~UriComponents.Port, UriFormat.UriEscaped);
+            appDef.SetValue(GOOGLE_MAPS_EXTENSION_NAME, url);
             _edSvc.HasChanged();
             btnSetGoogleMapsApiKey.Enabled = false;
         }

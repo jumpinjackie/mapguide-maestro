@@ -58,7 +58,7 @@ namespace Maestro.Editors.Fusion.MapEditors
         private const string STAMEN_TONER = "toner"; //NOXLATE
         private const string STAMEN_WATERCOLOR = "watercolor"; //NOXLATE
 
-        internal const string GOOGLE_URL = "http://maps.google.com/maps/api/js?sensor=false"; //NOXLATE
+        internal const string GOOGLE_URL = "https://maps.googleapis.com/maps/api/js"; //NOXLATE
 
         internal static Control GetEditor(IEditorService edSvc, IMapGroup group, IMap map)
         {
