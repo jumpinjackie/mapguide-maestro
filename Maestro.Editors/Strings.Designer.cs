@@ -304,6 +304,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generic XYZ Layer.
+        /// </summary>
+        internal static string CmsXYZ {
+            get {
+                return ResourceManager.GetString("CmsXYZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yahoo! Maps Hybrid.
         /// </summary>
         internal static string CmsYahooHybrid {
@@ -1765,6 +1774,15 @@ namespace Maestro.Editors {
         internal static string InvalidRestorePathError {
             get {
                 return ResourceManager.GetString("InvalidRestorePathError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected tile set is not a XYZ tile set and not valid for use as an XYZ layer in Fusion.
+        /// </summary>
+        internal static string InvalidTileSetForFusionXYZLayer {
+            get {
+                return ResourceManager.GetString("InvalidTileSetForFusionXYZLayer", resourceCulture);
             }
         }
         

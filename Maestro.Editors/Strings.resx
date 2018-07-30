@@ -1739,4 +1739,10 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="CopiedUrlToClipboard" xml:space="preserve">
     <value>Viewer URL copied to clipboard</value>
   </data>
+  <data name="CmsXYZ" xml:space="preserve">
+    <value>Generic XYZ Layer</value>
+  </data>
+  <data name="InvalidTileSetForFusionXYZLayer" xml:space="preserve">
+    <value>The selected tile set is not a XYZ tile set and not valid for use as an XYZ layer in Fusion</value>
+  </data>
 </root>

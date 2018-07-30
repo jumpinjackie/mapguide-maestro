@@ -47,6 +47,7 @@ namespace Maestro.Editors.Fusion.MapEditors
         internal const string Type_OSM = "OpenStreetMap"; //NOXLATE
         internal const string Type_MapGuide = "MapGuide"; //NOXLATE
         internal const string Type_Stamen = "Stamen"; //NOXLATE
+        internal const string Type_XYZ = "XYZ"; //NOXLATE
         private const string Type_Generic = "Generic"; //NOXLATE
 
         private const string OSM_MAP_MAPNIK = "Mapnik"; //NOXLATE
@@ -57,9 +58,7 @@ namespace Maestro.Editors.Fusion.MapEditors
         private const string STAMEN_TONER = "toner"; //NOXLATE
         private const string STAMEN_WATERCOLOR = "watercolor"; //NOXLATE
 
-        internal const string OSM_URL = "http://www.openstreetmap.org/openlayers/OpenStreetMap.js"; //NOXLATE
         internal const string GOOGLE_URL = "http://maps.google.com/maps/api/js?sensor=false"; //NOXLATE
-        internal const string STAMEN_URL = "http://maps.stamen.com/js/tile.stamen.js?v1.3.0"; //NOXLATE
 
         internal static Control GetEditor(IEditorService edSvc, IMapGroup group, IMap map)
         {
@@ -79,6 +78,9 @@ namespace Maestro.Editors.Fusion.MapEditors
 
                 case Type_MapGuide:
                     return new MapGuideEditor(edSvc, group, map);
+
+                case Type_XYZ:
+                    return new XYZEditor(edSvc, group, map);
 
                 default:
                     return new GenericEditor(edSvc, map);
@@ -148,16 +150,6 @@ namespace Maestro.Editors.Fusion.MapEditors
                     return group.CreateCmsMapEntry(Type_Bing, false, Strings.CmsBingSatellite, BING_AERIAL);
                 }
             };
-            /*
-            yield return new EditorInvoker()
-            {
-                Name = Strings.CmsBingHybrid,
-                Action = () =>
-                {
-                    return group.CreateCmsMapEntry(Type_Bing, false, Strings.CmsBingHybrid, BING_HYBRID);
-                }
-            };
-            */
             yield return new EditorInvoker()
             {
                 Name = Strings.CmsBingAerialsWithLabels,
@@ -214,6 +206,14 @@ namespace Maestro.Editors.Fusion.MapEditors
                     Action = () =>
                     {
                         return group.CreateCmsMapEntry(Type_Stamen, false, Strings.CmsStamenWaterColor, STAMEN_WATERCOLOR);
+                    }
+                };
+                yield return new EditorInvoker()
+                {
+                    Name = Strings.CmsXYZ,
+                    Action = () =>
+                    {
+                        return group.CreateCmsMapEntry(Type_XYZ, false, Strings.CmsXYZ, "XYZ");
                     }
                 };
             }

@@ -125,11 +125,9 @@ namespace Maestro.Editors.Fusion
                             bAddedCommercialLayer = true;
                             break;
                         case EditorFactory.Type_OSM:
-                            _appDef.SetValue("OpenStreetMapScript", EditorFactory.OSM_URL);
                             bAddedCommercialLayer = true;
                             break;
                         case EditorFactory.Type_Stamen:
-                            _appDef.SetValue("StamenScript", EditorFactory.STAMEN_URL);
                             bAddedCommercialLayer = true;
                             break;
                     }

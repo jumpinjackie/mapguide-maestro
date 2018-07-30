@@ -1024,6 +1024,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
             Trace.TraceInformation("Extensible element property {0} set to: {1}", name, value); //NOXLATE
         }
 
+        public static XmlElement CreateExtensionElement(this IExtensibleElement ext, string name) => AppDefDocument.Instance.CreateElement(name);
+
         /// <summary>
         /// Gets the value of a property in this extensible element. If none exists, an empty string is returned
         /// </summary>

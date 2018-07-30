@@ -564,6 +564,12 @@
     <Compile Include="Fusion\MapEditors\MapGuideEditor.Designer.cs">
       <DependentUpon>MapGuideEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fusion\MapEditors\XYZEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\MapEditors\XYZEditor.Designer.cs">
+      <DependentUpon>XYZEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fusion\MapSettingsCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1655,6 +1661,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fusion\MapEditors\MapGuideEditor.resx">
       <DependentUpon>MapGuideEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\MapEditors\XYZEditor.resx">
+      <DependentUpon>XYZEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fusion\MapSettingsCtrl.resx">
       <DependentUpon>MapSettingsCtrl.cs</DependentUpon>
