@@ -123,4 +123,7 @@
   <data name="ErrIncompatibleConnection" xml:space="preserve">
     <value>The selected connection is not compatible</value>
   </data>
+  <data name="LayerDialogTitle" xml:space="preserve">
+    <value>Layer: {0}</value>
+  </data>
 </root>

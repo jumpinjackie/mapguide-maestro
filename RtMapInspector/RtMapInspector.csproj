@@ -57,8 +57,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Maestro.Shared.UI, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Maestro.Shared.UI\bin\Debug\Maestro.Shared.UI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -70,11 +75,23 @@
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="LayerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayerDialog.Designer.cs">
+      <DependentUpon>LayerDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapImageDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapImageDialog.Designer.cs">
+      <DependentUpon>MapImageDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,8 +100,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="LayerDialog.resx">
+      <DependentUpon>LayerDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapImageDialog.resx">
+      <DependentUpon>MapImageDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -112,9 +135,29 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj">
+      <Project>{5ad2cdba-952e-4148-98a1-31d2e0d540d5}</Project>
+      <Name>Maestro.Editors</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Maestro.Login\Maestro.Login.csproj">
       <Project>{07588440-5F9F-4C30-AA06-9CF30BA6DDE6}</Project>
       <Name>Maestro.Login</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.MapViewer\Maestro.MapViewer.csproj">
+      <Project>{4f9658de-d16f-4b40-b830-bb1e0136dbd7}</Project>
+      <Name>Maestro.MapViewer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.Packaging\Maestro.Packaging.csproj">
+      <Project>{0ea33e36-9c33-4d60-b378-b87fadaa0f40}</Project>
+      <Name>Maestro.Packaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSGeo.FDO.Expressions\OSGeo.FDO.Expressions.csproj">
+      <Project>{da2cc031-200b-4f99-a0a9-2e95374be78f}</Project>
+      <Name>OSGeo.FDO.Expressions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.FxBridge\OSGeo.MapGuide.MaestroAPI.FxBridge.csproj">
+      <Project>{f7fab7b1-5a96-496e-a74b-428b3ec8e98b}</Project>
+      <Name>OSGeo.MapGuide.MaestroAPI.FxBridge</Name>
     </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
@@ -123,6 +166,10 @@
     <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj">
       <Project>{48c5eb23-45ae-4c4c-8fab-635428ae8ca1}</Project>
       <Name>OSGeo.MapGuide.ObjectModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.TextEditor\ICSharpCode.TextEditor.csproj">
+      <Project>{2d18be89-d210-49eb-a9dd-2246fbb3df6d}</Project>
+      <Name>ICSharpCode.TextEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

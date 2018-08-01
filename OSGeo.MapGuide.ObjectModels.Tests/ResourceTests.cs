@@ -475,5 +475,15 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             rtd = new ResourceTypeDescriptor(ResourceTypes.WebLayout.ToString(), "1.0.0");
             Assert.Equal("WebLayout-1.0.0.xsd", rtd.XsdName);
         }
+
+        [Fact]
+        public void TestResourceIdentifier()
+        {
+            var session = ResourceIdentifier.GetSessionID("Library://Foo.MapDefinition");
+            Assert.Null(session);
+            session = ResourceIdentifier.GetSessionID("Session:abcd1234//Foo.MapDefinition");
+            Assert.NotNull(session);
+            Assert.Equal("abcd1234", session);
+        }
     }
 }

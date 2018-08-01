@@ -2234,6 +2234,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 map.DeserializeLayerData(new MgBinaryDeserializer(this.GetResourceData(runtimeMapResourceId, "LayerGroupData"), this.SiteVersion)); //NOXLATE
 
             map.IsDirty = false;
+            map.SessionId = ResourceIdentifier.GetSessionID(runtimeMapResourceId);
             return map;
         }
 

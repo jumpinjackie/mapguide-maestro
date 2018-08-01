@@ -77,5 +77,14 @@ namespace RtMapInspector {
                 return ResourceManager.GetString("ErrIncompatibleConnection", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Layer: {0}.
+        /// </summary>
+        internal static string LayerDialogTitle {
+            get {
+                return ResourceManager.GetString("LayerDialogTitle", resourceCulture);
+            }
+        }
     }
 }

@@ -140,6 +140,10 @@ namespace RtMapInspector
 
             [Category("Map Properties")]
             [ReadOnly(true)]
+            public double ViewScale => _map.ViewScale;
+
+            [Category("Map Properties")]
+            [ReadOnly(true)]
             public BoxDecorator DataExtent => new BoxDecorator(_map.DataExtent);
 
             public MapDecorator(RuntimeMap map)
@@ -375,7 +379,7 @@ namespace RtMapInspector
         private void btnLoad_Click(object sender, EventArgs e)
         {
             _rtMap = null;
-            properties.SelectedObject = null;
+            SetSelectedObject(null);
             trvLayersAndGroups.Nodes.Clear();
             lstDrawOrder.Items.Clear();
             trvSelection.Nodes.Clear();
@@ -390,10 +394,11 @@ namespace RtMapInspector
 
             if (_rtMap == null)
             {
+                btnMapImage.Enabled = false;
                 MessageBox.Show(Strings.ErrFailedRuntimeMapOpen);
                 return;
             }
-
+            btnMapImage.Enabled = true;
             InitTabs();
         }
 
@@ -499,16 +504,41 @@ namespace RtMapInspector
             return string.Join("', '", list);
         }
 
-        private void trvLayersAndGroups_AfterSelect(object sender, TreeViewEventArgs e)
+        private void SetSelectedObject(object obj)
         {
-            properties.SelectedObject = e.Node.Tag;
+            properties.SelectedObject = obj;
+            btnInspectLayer.Enabled = false;
+            if (obj is LayerDecorator ld)
+            {
+                btnInspectLayer.Enabled = true;
+                btnInspectLayer.Tag = ld;
+            }
         }
+
+        private void trvLayersAndGroups_AfterSelect(object sender, TreeViewEventArgs e) => SetSelectedObject(e.Node.Tag);
 
         private void lstDrawOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
             var item = lstDrawOrder.SelectedItem as DrawOrderDisplayItem;
             if (item != null)
-                properties.SelectedObject = item.Decorator;
+                SetSelectedObject(item.Decorator);
+        }
+
+        private void btnInspectLayer_Click(object sender, EventArgs e)
+        {
+            if (btnInspectLayer.Tag is LayerDecorator ld)
+            {
+                var diag = new LayerDialog(_conn, ld.Name, ld.LayerDefinition);
+                diag.Show(this);
+            }
+        }
+
+        private void btnMapImage_Click(object sender, EventArgs e)
+        {
+            using (var diag = new MapImageDialog(_rtMap))
+            {
+                diag.ShowDialog();
+            }
         }
     }
 }

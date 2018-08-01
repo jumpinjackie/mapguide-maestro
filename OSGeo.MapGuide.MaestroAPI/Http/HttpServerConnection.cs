@@ -1067,7 +1067,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (this.SiteVersion < new Version(2, 1, 0))
                 throw new NotSupportedException();
 
-            var req = m_reqBuilder.GetDynamicMapOverlayImage(map.Name, (selection == null ? string.Empty : selection.ToXml()), format, selectionColor, behaviour);
+            var req = m_reqBuilder.GetDynamicMapOverlayImage(map.Name, map.SessionId, (selection == null ? string.Empty : selection.ToXml()), format, selectionColor, behaviour);
             return this.OpenRead(req);
         }
 

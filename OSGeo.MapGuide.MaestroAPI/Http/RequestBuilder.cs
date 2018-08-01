@@ -1655,12 +1655,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
-        internal string GetDynamicMapOverlayImage(string mapname, string selectionXml, string format, Color selectionColor, int behavior)
+        internal string GetDynamicMapOverlayImage(string mapname, string sessionId, string selectionXml, string format, Color selectionColor, int behavior)
         {
             NameValueCollection param = new NameValueCollection();
             param.Add("OPERATION", "GETDYNAMICMAPOVERLAYIMAGE");
             param.Add("VERSION", "2.1.0");
-            param.Add("SESSION", m_sessionID);
+            param.Add("SESSION", sessionId); //Don't use m_sessionID as that may not be the same one we opened the map from. Let the call be explicit about it
             param.Add("MAPNAME", mapname);
             param.Add("CLIENTAGENT", m_userAgent);
             param.Add("SELECTIONCOLOR", Utility.SerializeHTMLColorRGBA(selectionColor, true));

@@ -43,19 +43,25 @@
             this.TAB_LAYERS = new System.Windows.Forms.TabPage();
             this.trvLayersAndGroups = new System.Windows.Forms.TreeView();
             this.imgList = new System.Windows.Forms.ImageList(this.components);
+            this.TAB_DRAW_ORDER = new System.Windows.Forms.TabPage();
+            this.lstDrawOrder = new System.Windows.Forms.ListBox();
             this.TAB_SELECTION = new System.Windows.Forms.TabPage();
             this.trvSelection = new System.Windows.Forms.TreeView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.properties = new System.Windows.Forms.PropertyGrid();
-            this.TAB_DRAW_ORDER = new System.Windows.Forms.TabPage();
-            this.lstDrawOrder = new System.Windows.Forms.ListBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnInspectLayer = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.btnMapImage = new System.Windows.Forms.ToolStripButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TAB_LAYERS.SuspendLayout();
+            this.TAB_DRAW_ORDER.SuspendLayout();
             this.TAB_SELECTION.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.TAB_DRAW_ORDER.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -117,6 +123,7 @@
             // 
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.tabControl1);
+            this.groupBox2.Controls.Add(this.toolStrip2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
@@ -153,6 +160,20 @@
             this.imgList.Images.SetKeyName(3, "layer--minus.png");
             this.imgList.Images.SetKeyName(4, "map.png");
             // 
+            // TAB_DRAW_ORDER
+            // 
+            this.TAB_DRAW_ORDER.Controls.Add(this.lstDrawOrder);
+            resources.ApplyResources(this.TAB_DRAW_ORDER, "TAB_DRAW_ORDER");
+            this.TAB_DRAW_ORDER.Name = "TAB_DRAW_ORDER";
+            this.TAB_DRAW_ORDER.UseVisualStyleBackColor = true;
+            // 
+            // lstDrawOrder
+            // 
+            resources.ApplyResources(this.lstDrawOrder, "lstDrawOrder");
+            this.lstDrawOrder.FormattingEnabled = true;
+            this.lstDrawOrder.Name = "lstDrawOrder";
+            this.lstDrawOrder.SelectedIndexChanged += new System.EventHandler(this.lstDrawOrder_SelectedIndexChanged);
+            // 
             // TAB_SELECTION
             // 
             this.TAB_SELECTION.Controls.Add(this.trvSelection);
@@ -170,6 +191,7 @@
             // 
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.properties);
+            this.groupBox3.Controls.Add(this.toolStrip1);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
@@ -178,19 +200,31 @@
             resources.ApplyResources(this.properties, "properties");
             this.properties.Name = "properties";
             // 
-            // TAB_DRAW_ORDER
+            // toolStrip1
             // 
-            this.TAB_DRAW_ORDER.Controls.Add(this.lstDrawOrder);
-            resources.ApplyResources(this.TAB_DRAW_ORDER, "TAB_DRAW_ORDER");
-            this.TAB_DRAW_ORDER.Name = "TAB_DRAW_ORDER";
-            this.TAB_DRAW_ORDER.UseVisualStyleBackColor = true;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnInspectLayer});
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
+            this.toolStrip1.Name = "toolStrip1";
             // 
-            // lstDrawOrder
+            // btnInspectLayer
             // 
-            resources.ApplyResources(this.lstDrawOrder, "lstDrawOrder");
-            this.lstDrawOrder.FormattingEnabled = true;
-            this.lstDrawOrder.Name = "lstDrawOrder";
-            this.lstDrawOrder.SelectedIndexChanged += new System.EventHandler(this.lstDrawOrder_SelectedIndexChanged);
+            resources.ApplyResources(this.btnInspectLayer, "btnInspectLayer");
+            this.btnInspectLayer.Name = "btnInspectLayer";
+            this.btnInspectLayer.Click += new System.EventHandler(this.btnInspectLayer_Click);
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnMapImage});
+            resources.ApplyResources(this.toolStrip2, "toolStrip2");
+            this.toolStrip2.Name = "toolStrip2";
+            // 
+            // btnMapImage
+            // 
+            resources.ApplyResources(this.btnMapImage, "btnMapImage");
+            this.btnMapImage.Name = "btnMapImage";
+            this.btnMapImage.Click += new System.EventHandler(this.btnMapImage_Click);
             // 
             // MainForm
             // 
@@ -203,11 +237,17 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.TAB_LAYERS.ResumeLayout(false);
+            this.TAB_DRAW_ORDER.ResumeLayout(false);
             this.TAB_SELECTION.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            this.TAB_DRAW_ORDER.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -233,6 +273,10 @@
         private System.Windows.Forms.TreeView trvSelection;
         private System.Windows.Forms.TabPage TAB_DRAW_ORDER;
         private System.Windows.Forms.ListBox lstDrawOrder;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton btnInspectLayer;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton btnMapImage;
     }
 }
 

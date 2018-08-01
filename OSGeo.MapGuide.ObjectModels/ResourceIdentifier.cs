@@ -451,6 +451,25 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
+        /// Gets the session id from a resource identifier. Must be a valid session-based id, otherwise null is returned
+        /// </summary>
+        /// <param name="resourceId"></param>
+        /// <returns></returns>
+        public static string GetSessionID(string resourceId)
+        {
+            if (Validate(resourceId))
+            {
+                if (IsSessionBased(resourceId))
+                {
+                    var start = "Session:".Length;
+                    var end = resourceId.IndexOf("//");
+                    return resourceId.Substring(start, end - start);
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
         /// Converts a resource id to be placed in the library
         /// </summary>
         /// <param name="identifier">The identifier to convert</param>
