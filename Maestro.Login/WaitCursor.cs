@@ -64,7 +64,7 @@ namespace Maestro.Login
         /// </summary>
         public void Dispose()
         {
-            Dispose(false);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
