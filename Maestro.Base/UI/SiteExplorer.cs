@@ -211,7 +211,11 @@ namespace Maestro.Base.UI
                     while (node.Children.Count == 0 && node != trvResources.Root)
                         node = node.Parent;
                 }
-                trvResources.SelectedNode = node;
+                try
+                {
+                    trvResources.SelectedNode = node;
+                }
+                catch { }
             }
             _model.Refresh();
             if (!string.IsNullOrEmpty(resId))
