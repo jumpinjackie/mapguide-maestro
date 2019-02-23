@@ -569,24 +569,67 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
             var grp = group as MapLayerGroupType;
             if (grp != null)
             {
-                var idx = this.MapLayerGroup.IndexOf(grp);
-                if (idx > 0)
+                var GroupIndex = this.MapLayerGroup.IndexOf(grp);
+                if (GroupIndex > 0)
                 {
-                    int idst = idx - 1;
+                    int GroupMovedToIndex = GroupIndex - 1;
 
-                    var src = this.MapLayerGroup[idx];
-                    var dst = this.MapLayerGroup[idst];
+                    var GroupToMove = this.MapLayerGroup[GroupIndex];
 
-                    this.MapLayerGroup[idx] = dst;
-                    this.MapLayerGroup[idst] = src;
+                    bool MoveGroupUpOneLevel = true;
+
+                    //Move Group if group-1 is in the same group.
+                    for (var i = GroupIndex - 1; i >= 0; i--)
+                    {
+
+                        if (GroupToMove.Group == this.MapLayerGroup[i].Group)
+                        {
+                            var temp = this.MapLayerGroup[i];
+                            this.MapLayerGroup[i] = GroupToMove;
+                            this.MapLayerGroup[GroupIndex] = temp;
+                            MoveGroupUpOneLevel = false;
+                            GroupMovedToIndex = i;
+
+                            break;
+                        }
+                    }
+
+                    //Move this group if group is the first group in the one level up group
+                    if (MoveGroupUpOneLevel)
+                    {
+                        for (var i = 0; i < this.MapLayerGroup.Count; i++)
+                        {
+                            if (this.MapLayerGroup[i].Name == GroupToMove.Group)
+                            {
+                                //if the group is in the right place, just change group it´s in
+                                if (i > GroupIndex)
+                                {
+                                    this.MapLayerGroup[GroupIndex].Group = this.MapLayerGroup[i].Group;
+                                }
+                                else
+                                {
+                                    var dst = this.MapLayerGroup[i];
+                                    GroupToMove.Group = dst.Group;
+                                    this.MapLayerGroup[i] = GroupToMove;
+                                    this.MapLayerGroup[GroupIndex] = dst;
+
+                                    GroupMovedToIndex = i;
+                                }
+
+
+                                break;
+                            }
+                        }
+                    }
+
 
                     OnPropertyChanged(nameof(MapLayerGroup));
 
-                    return idst;
+                    return GroupMovedToIndex;
                 }
-                else if (idx == 0)
+                else if (GroupIndex == 0)
                 {
-                    return idx; //Unchanged
+                    return GroupIndex; //Unchanged
                 }
             }
 
