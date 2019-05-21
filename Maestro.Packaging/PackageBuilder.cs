@@ -839,8 +839,7 @@ namespace Maestro.Packaging
 
         private void ZipDirectory(string zipfile, string folder, string comment, List<KeyValuePair<string, string>> filemap)
         {
-            ZipConstants.DefaultCodePage = System.Text.Encoding.UTF8.CodePage;
-            ICSharpCode.SharpZipLib.Checksums.Crc32 crc = new ICSharpCode.SharpZipLib.Checksums.Crc32();
+            ZipStrings.CodePage = System.Text.Encoding.UTF8.CodePage;
             using (FileStream ofs = new FileStream(zipfile, FileMode.Create, FileAccess.Write, FileShare.None))
             using (ICSharpCode.SharpZipLib.Zip.ZipOutputStream zip = new ICSharpCode.SharpZipLib.Zip.ZipOutputStream(ofs))
             {
