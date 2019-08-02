@@ -43,7 +43,8 @@ before_build:
 environment:
   NETCORE_MONIKER: 'netcoreapp2.1'
   FULLFX_MONIKER: 'net471'
-  XUNIT_VERSION: '2.4.0'
+  XUNIT_VERSION: '2.4.1'
+  OPENCOVER_VERSION: '4.7.922'
   COVERALLS_REPO_TOKEN:
     secure: brg0Fy+w8aO/4JhYrsjvumIqAMCi26QNT3nJGUQNaKvLXSoXgywWn/WPCEnUJEEK
 
@@ -76,7 +77,7 @@ after_build:
 
 test_script:
 - ps: >-
-    .\Packages\opencover\4.6.519\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:".\Packages\xunit.runner.console\$($env:XUNIT_VERSION)\tools\$($env:FULLFX_MONIKER)\xunit.console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\Release\$($env:FULLFX_MONIKER)\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModels.Tests\bin\Release\$($env:FULLFX_MONIKER)\OSGeo.MapGuide.ObjectModels.Tests.dll -noshadow -xml .\TestResult.xml" -output:OpenCoverCoverage.xml -coverbytest:*.Tests.dll
+    .\Packages\opencover\$($env:OPENCOVER_VERSION)\tools\OpenCover.Console.exe -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:".\Packages\xunit.runner.console\$($env:XUNIT_VERSION)\tools\$($env:FULLFX_MONIKER)\xunit.console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\Release\$($env:FULLFX_MONIKER)\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModels.Tests\bin\Release\$($env:FULLFX_MONIKER)\OSGeo.MapGuide.ObjectModels.Tests.dll -noshadow -xml .\TestResult.xml" -output:OpenCoverCoverage.xml -coverbytest:*.Tests.dll
 
     & csmacnz.coveralls --opencover -i OpenCoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
 
