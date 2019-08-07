@@ -59,6 +59,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbTheme = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnProviderTemplate = new System.Windows.Forms.Button();
+            this.txtProviderTemplateTool = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -131,6 +134,9 @@
             // groupBox2
             // 
             resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.btnProviderTemplate);
+            this.groupBox2.Controls.Add(this.txtProviderTemplateTool);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.btnBrowseLiveMapEditor);
             this.groupBox2.Controls.Add(this.txtLiveMapEditor);
@@ -262,6 +268,24 @@
             this.cmbTheme.FormattingEnabled = true;
             this.cmbTheme.Name = "cmbTheme";
             // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // btnProviderTemplate
+            // 
+            resources.ApplyResources(this.btnProviderTemplate, "btnProviderTemplate");
+            this.btnProviderTemplate.Name = "btnProviderTemplate";
+            this.btnProviderTemplate.UseVisualStyleBackColor = true;
+            this.btnProviderTemplate.Click += new System.EventHandler(this.btnProviderTemplate_Click);
+            // 
+            // txtProviderTemplateTool
+            // 
+            resources.ApplyResources(this.txtProviderTemplateTool, "txtProviderTemplateTool");
+            this.txtProviderTemplateTool.Name = "txtProviderTemplateTool";
+            this.txtProviderTemplateTool.ReadOnly = true;
+            // 
             // GeneralPreferencesCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -321,5 +345,8 @@
         private System.Windows.Forms.TextBox txtLiveMapEditor;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbTheme;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnProviderTemplate;
+        private System.Windows.Forms.TextBox txtProviderTemplateTool;
     }
 }

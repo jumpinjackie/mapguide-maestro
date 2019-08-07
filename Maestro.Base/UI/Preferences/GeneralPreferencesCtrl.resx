@@ -238,7 +238,7 @@
     <value>120, 65</value>
   </data>
   <data name="txtTemplatePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 20</value>
+    <value>529, 20</value>
   </data>
   <data name="txtTemplatePath.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -259,7 +259,7 @@
     <value>Top, Right</value>
   </data>
   <data name="btnBrowseTemplatePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>417, 63</value>
+    <value>655, 63</value>
   </data>
   <data name="btnBrowseTemplatePath.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 23</value>
@@ -370,7 +370,7 @@
     <value>16, 93</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>426, 50</value>
+    <value>664, 50</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -392,6 +392,90 @@
   </data>
   <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 126</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 13</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>ProviderTemplate.exe</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnProviderTemplate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnProviderTemplate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnProviderTemplate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>624, 121</value>
+  </data>
+  <data name="btnProviderTemplate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 23</value>
+  </data>
+  <data name="btnProviderTemplate.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="btnProviderTemplate.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;btnProviderTemplate.Name" xml:space="preserve">
+    <value>btnProviderTemplate</value>
+  </data>
+  <data name="&gt;&gt;btnProviderTemplate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnProviderTemplate.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;btnProviderTemplate.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtProviderTemplateTool.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="txtProviderTemplateTool.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 123</value>
+  </data>
+  <data name="txtProviderTemplateTool.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 20</value>
+  </data>
+  <data name="txtProviderTemplateTool.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;txtProviderTemplateTool.Name" xml:space="preserve">
+    <value>txtProviderTemplateTool</value>
+  </data>
+  <data name="&gt;&gt;txtProviderTemplateTool.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtProviderTemplateTool.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtProviderTemplateTool.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -421,7 +505,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="btnBrowseLiveMapEditor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -430,7 +514,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnBrowseLiveMapEditor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>386, 95</value>
+    <value>624, 95</value>
   </data>
   <data name="btnBrowseLiveMapEditor.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 23</value>
@@ -451,7 +535,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;btnBrowseLiveMapEditor.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="txtLiveMapEditor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -460,7 +544,7 @@
     <value>159, 97</value>
   </data>
   <data name="txtLiveMapEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 20</value>
+    <value>459, 20</value>
   </data>
   <data name="txtLiveMapEditor.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -475,7 +559,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtLiveMapEditor.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -502,7 +586,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="btnBrowseRtMapInspector.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -511,7 +595,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnBrowseRtMapInspector.Location" type="System.Drawing.Point, System.Drawing">
-    <value>386, 69</value>
+    <value>624, 69</value>
   </data>
   <data name="btnBrowseRtMapInspector.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 23</value>
@@ -532,7 +616,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;btnBrowseRtMapInspector.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="txtRtMapInspector.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -541,7 +625,7 @@
     <value>159, 71</value>
   </data>
   <data name="txtRtMapInspector.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 20</value>
+    <value>459, 20</value>
   </data>
   <data name="txtRtMapInspector.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -556,13 +640,13 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtRtMapInspector.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="btnBrowseFsPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="btnBrowseFsPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>386, 43</value>
+    <value>624, 43</value>
   </data>
   <data name="btnBrowseFsPreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 23</value>
@@ -583,7 +667,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;btnBrowseFsPreview.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="txtFsPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -592,7 +676,7 @@
     <value>159, 45</value>
   </data>
   <data name="txtFsPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 20</value>
+    <value>459, 20</value>
   </data>
   <data name="txtFsPreview.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -607,13 +691,13 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtFsPreview.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="btnBrowseMgCooker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="btnBrowseMgCooker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>386, 17</value>
+    <value>624, 17</value>
   </data>
   <data name="btnBrowseMgCooker.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 23</value>
@@ -634,7 +718,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;btnBrowseMgCooker.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -661,7 +745,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="txtMgCooker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -670,7 +754,7 @@
     <value>159, 19</value>
   </data>
   <data name="txtMgCooker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 20</value>
+    <value>459, 20</value>
   </data>
   <data name="txtMgCooker.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -685,7 +769,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;txtMgCooker.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -712,13 +796,13 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 245</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>426, 142</value>
+    <value>664, 174</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -754,7 +838,7 @@
     <value>cmbModifiedColor</value>
   </data>
   <data name="&gt;&gt;cmbModifiedColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cmbModifiedColor.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -775,7 +859,7 @@
     <value>cmbOpenedColor</value>
   </data>
   <data name="&gt;&gt;cmbOpenedColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cmbOpenedColor.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -841,7 +925,7 @@
     <value>16, 149</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>426, 90</value>
+    <value>664, 90</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -898,7 +982,7 @@
     <value>226, 8</value>
   </data>
   <data name="cmbTheme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 21</value>
+    <value>454, 21</value>
   </data>
   <data name="cmbTheme.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -919,7 +1003,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 411</value>
+    <value>697, 460</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>GeneralPreferencesCtrl</value>

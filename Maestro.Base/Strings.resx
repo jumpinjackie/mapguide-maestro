@@ -1010,4 +1010,7 @@ Error message: {0}</value>
   <data name="EditorServiceInvalidState" xml:space="preserve">
     <value>The editor service for this resource has entered an invalid state and cannot continue</value>
   </data>
+  <data name="ProviderTemplate" xml:space="preserve">
+    <value>Maestro API Provider Template Tool</value>
+  </data>
 </root>

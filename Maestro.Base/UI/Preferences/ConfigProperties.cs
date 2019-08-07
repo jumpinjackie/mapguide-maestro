@@ -78,6 +78,11 @@ namespace Maestro.Base.UI.Preferences
         public const string MgCookerPath = "General.MgCookerPath"; //NOXLATE
 
         /// <summary>
+        /// The path to ProviderTemplate.exe
+        /// </summary>
+        public const string ProviderToolPath = "General.ProviderToolPath"; //NOXLATE
+
+        /// <summary>
         /// The path to RtMapInspector.exe
         /// </summary>
         public const string RtMapInspectorPath = "General.RtMapInspectorPath"; //NOXLATE

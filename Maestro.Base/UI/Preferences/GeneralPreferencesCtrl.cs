@@ -192,5 +192,18 @@ namespace Maestro.Base.UI.Preferences
                 }
             }
         }
+
+        private void btnProviderTemplate_Click(object sender, EventArgs e)
+        {
+            using (var dlg = DialogFactory.OpenFile())
+            {
+                dlg.Title = string.Format(Strings.LocateExecutable, "ProviderTemplate.exe"); //NOXLATE
+                dlg.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickExe, "exe"); //NOXLATE
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    txtProviderTemplateTool.Text = dlg.FileName;
+                }
+            }
+        }
     }
 }

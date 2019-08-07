@@ -726,6 +726,9 @@
         <MenuItem id="MgCooker"
                   label="${res:MgCooker}"
                   class="Maestro.Base.Commands.MgCookerCommand" />
+        <MenuItem id="ProviderTemplate"
+                  label="${res:ProviderTemplate}"
+                  class="Maestro.Base.Commands.ProviderTemplateToolCommand" />
         <MenuItem id="LocalFsPreview"
                   label="${res:LocalFsPreview}"
                   class="Maestro.Base.Commands.LocalFeatureSourcePreviewCommand" />
