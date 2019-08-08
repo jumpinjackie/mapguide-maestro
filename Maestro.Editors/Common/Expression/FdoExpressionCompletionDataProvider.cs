@@ -47,11 +47,13 @@ namespace Maestro.Editors.Common.Expression
     {
         private ClassDefinition _klass;
         private IFdoProviderCapabilities _caps;
+        readonly SortedList<string, IFdoFunctionDefintion> _applicableFunctions;
 
-        public FdoExpressionCompletionDataProvider(ClassDefinition cls, IFdoProviderCapabilities caps)
+        public FdoExpressionCompletionDataProvider(ClassDefinition cls, IFdoProviderCapabilities caps, SortedList<string, IFdoFunctionDefintion> applicableFunctions)
         {
             _klass = cls;
             _caps = caps;
+            _applicableFunctions = applicableFunctions;
             this.DefaultIndex = 0;
             this.PreSelection = null;
             this.ImageList = new System.Windows.Forms.ImageList();
@@ -240,7 +242,7 @@ namespace Maestro.Editors.Common.Expression
 
         private IEnumerable<IFdoFunctionDefintion> GetMatchingFdoFunctions(string name)
         {
-            foreach (var func in _caps.Expression.SupportedFunctions.Concat(Utility.GetStylizationFunctions()))
+            foreach (var func in _applicableFunctions.Values)
             {
                 if (func.Name.StartsWith(name))
                     yield return func;

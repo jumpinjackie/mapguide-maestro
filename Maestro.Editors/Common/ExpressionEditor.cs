@@ -51,7 +51,7 @@ namespace Maestro.Editors.Common
         private string m_featureSource = null;
         private IFdoProviderCapabilities _caps;
         private ITextEditor _editor;
-
+        private SortedList<string, IFdoFunctionDefintion> _functions;
         /// <summary>
         /// Initializes a new instance of the <see cref="ExpressionEditor"/> class.
         /// </summary>
@@ -63,7 +63,7 @@ namespace Maestro.Editors.Common
             _editor.KeyPress += OnEditorKeyPress;
             _editor.DialogKeyPress += OnEditorDialogKeyPress;
             _contextualBuffer = new StringBuilder();
-
+            _functions = new SortedList<string, IFdoFunctionDefintion>();
             this.Disposed += OnDisposed;
         }
 
@@ -198,21 +198,20 @@ namespace Maestro.Editors.Common
         private void LoadFunctions(IFdoProviderCapabilities caps, bool attachStylizationFunctions)
         {
             //Functions
-            var sortedFuncs = new SortedList<string, IFdoFunctionDefintion>();
             foreach (var func in caps.Expression.SupportedFunctions)
             {
-                sortedFuncs.Add(func.Name, func);
+                _functions.Add(func.Name, func);
             }
 
             if (attachStylizationFunctions)
             {
                 foreach (var func in Utility.GetStylizationFunctions())
                 {
-                    sortedFuncs.Add(func.Name, func);
+                    _functions.Add(func.Name, func);
                 }
             }
 
-            foreach (var func in sortedFuncs.Values)
+            foreach (var func in _functions.Values)
             {
                 string name = func.Name;
                 string desc = func.Description;
@@ -342,7 +341,7 @@ namespace Maestro.Editors.Common
 
         private void ShowAutoComplete(char ch)
         {
-            using (var provider = new FdoExpressionCompletionDataProvider(_cls, _caps))
+            using (var provider = new FdoExpressionCompletionDataProvider(_cls, _caps, _functions))
             {
                 _editor.ShowCompletionWindow(provider, ch);
             }
