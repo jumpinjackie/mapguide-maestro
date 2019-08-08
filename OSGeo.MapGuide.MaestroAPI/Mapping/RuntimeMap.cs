@@ -209,6 +209,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             this.Layers = new RuntimeMapLayerCollection(this);
             this.Groups = new RuntimeMapGroupCollection(this);
+
+            this.TileFormat = string.Empty;
+            this.TileSetProvider = string.Empty;
+            this.TilePixelRatio = 1;
         }
 
         private static IEnumerable<string> GetLayerIds(IMapDefinition mdf)
@@ -350,6 +354,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     for (int i = 0; i < bm.ScaleCount; i++)
                     {
                         _finiteDisplayScales[i] = bm.GetScaleAt(i);
+                    }
+                }
+            }
+
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                if (mdf is IMapDefinition3 mdf3)
+                {
+                    if (mdf3.TileSourceType == TileSourceType.External)
+                    {
+                        this.TileSetDefinition = mdf3.TileSetDefinitionID;
+                        var tsd = (ITileSetDefinition)conn.ResourceService.GetResource(this.TileSetDefinition);
+                        this.TileSetProvider = tsd.TileStoreParameters.TileProvider;
+                        var tp = tsd.TileStoreParameters.Parameters;
+                        this.TileFormat = tp.FirstOrDefault(p => p.Name == "TileFormat")?.Value;
+                        if (int.TryParse(tp.FirstOrDefault(p => p.Name == "RetinaScale")?.Value ?? string.Empty, out var ratio))
+                            this.TilePixelRatio = ratio;
+                        else
+                            this.TilePixelRatio = 1;
                     }
                 }
             }
@@ -497,6 +520,33 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// to a tile set
         /// </summary>
         public virtual string TileSetDefinition
+        {
+            get;
+            internal set;
+        }
+
+        /// <summary>
+        /// Gets the tile set provider. Only applicable for MapGuide Open Source 4.0 or later
+        /// </summary>
+        public virtual string TileSetProvider
+        {
+            get;
+            internal set;
+        }
+
+        /// <summary>
+        /// Gets the tile format. Only applicable for MapGuide Open Source 4.0 or later
+        /// </summary>
+        public virtual string TileFormat
+        {
+            get;
+            internal set;
+        }
+
+        /// <summary>
+        /// Gets the tile pixel ratio. Only applicable for MapGuide Open Source 4.0 or later
+        /// </summary>
+        public virtual int TilePixelRatio
         {
             get;
             internal set;
@@ -719,6 +769,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             bool bNewerThanMGOS12 = s.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2);
             bool bNewerThanMGOS23 = s.SiteVersion >= new Version(2, 3);
             bool bNewerThanMGOS30 = s.SiteVersion >= new Version(3, 0);
+            bool bNewerThanMGOS40 = s.SiteVersion >= new Version(4, 0);
 
             if (bNewerThanMGOS12)
             {
@@ -758,6 +809,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 if (bNewerThanMGOS30)
                 {
                     s.WriteResourceIdentifier(this.TileSetDefinition);
+                }
+                if (bNewerThanMGOS40)
+                {
+                    s.Write(this.TileSetProvider);
+                    s.Write(this.TileFormat);
+                    s.Write(this.TilePixelRatio);
                 }
                 s.Write((int)0);
             }
@@ -926,6 +983,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             bool bNewerThanMGOS12 = d.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2);
             bool bNewerThanMGOS23 = d.SiteVersion >= new Version(2, 3);
             bool bNewerThanMGOS30 = d.SiteVersion >= new Version(3, 0);
+            bool bNewerThanMGOS40 = d.SiteVersion >= new Version(4, 0);
 
             if (bNewerThanMGOS12)
             {
@@ -981,6 +1039,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 if (bNewerThanMGOS30)
                 {
                     this.TileSetDefinition = d.ReadResourceIdentifier();
+                }
+                if (bNewerThanMGOS40)
+                {
+                    this.TileSetProvider = d.ReadString();
+                    this.TileFormat = d.ReadString();
+                    this.TilePixelRatio = d.ReadInt32();
                 }
                 int mapLayerCount = d.ReadInt32();
                 if (mapLayerCount != 0)
