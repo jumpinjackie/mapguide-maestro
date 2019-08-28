@@ -99,10 +99,14 @@
             this.OutReferenceList = new System.Windows.Forms.ListView();
             this.ctxReferences = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyResourceIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnReferencesOpenSelected = new System.Windows.Forms.ToolStripButton();
             this.InReferences = new System.Windows.Forms.GroupBox();
             this.InReferenceList = new System.Windows.Forms.ListView();
             this.ctxReferenced = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyResourceIDToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.btnReferencedByOpenSelected = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ResourceID = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -112,10 +116,7 @@
             this.ReferenceWorker = new System.ComponentModel.BackgroundWorker();
             this.UserAndGroupImages = new System.Windows.Forms.ImageList(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.btnReferencesOpenSelected = new System.Windows.Forms.ToolStripButton();
-            this.btnReferencedByOpenSelected = new System.Windows.Forms.ToolStripButton();
+            this.chkWmsEnableGeometry = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.SecurityTab.SuspendLayout();
             this.securityContextMenu.SuspendLayout();
@@ -128,17 +129,18 @@
             this.CustomTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.ReferenceTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.OutReferences.SuspendLayout();
             this.ctxReferences.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.InReferences.SuspendLayout();
             this.ctxReferenced.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -247,6 +249,7 @@
             // groupBox2
             // 
             resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.chkWmsEnableGeometry);
             this.groupBox2.Controls.Add(this.AutoGenerateWMSBounds);
             this.groupBox2.Controls.Add(this.EditWMSBounds);
             this.groupBox2.Controls.Add(this.WMSBounds);
@@ -642,6 +645,20 @@
             resources.ApplyResources(this.copyResourceIDToolStripMenuItem, "copyResourceIDToolStripMenuItem");
             this.copyResourceIDToolStripMenuItem.Click += new System.EventHandler(this.referencesCopyResourceIDToolStripMenuItem_Click);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnReferencesOpenSelected});
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
+            this.toolStrip1.Name = "toolStrip1";
+            // 
+            // btnReferencesOpenSelected
+            // 
+            resources.ApplyResources(this.btnReferencesOpenSelected, "btnReferencesOpenSelected");
+            this.btnReferencesOpenSelected.Image = global::Maestro.Base.Properties.Resources.folder_open_document;
+            this.btnReferencesOpenSelected.Name = "btnReferencesOpenSelected";
+            this.btnReferencesOpenSelected.Click += new System.EventHandler(this.btnReferencesOpenSelected_Click);
+            // 
             // InReferences
             // 
             this.InReferences.Controls.Add(this.InReferenceList);
@@ -675,6 +692,20 @@
             this.copyResourceIDToolStripMenuItem1.Name = "copyResourceIDToolStripMenuItem1";
             resources.ApplyResources(this.copyResourceIDToolStripMenuItem1, "copyResourceIDToolStripMenuItem1");
             this.copyResourceIDToolStripMenuItem1.Click += new System.EventHandler(this.referencedCopyResourceIDToolStripMenuItem_Click);
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnReferencedByOpenSelected});
+            resources.ApplyResources(this.toolStrip2, "toolStrip2");
+            this.toolStrip2.Name = "toolStrip2";
+            // 
+            // btnReferencedByOpenSelected
+            // 
+            resources.ApplyResources(this.btnReferencedByOpenSelected, "btnReferencedByOpenSelected");
+            this.btnReferencedByOpenSelected.Image = global::Maestro.Base.Properties.Resources.folder_open_document;
+            this.btnReferencedByOpenSelected.Name = "btnReferencedByOpenSelected";
+            this.btnReferencedByOpenSelected.Click += new System.EventHandler(this.btnReferencedByOpenSelected_Click);
             // 
             // panel2
             // 
@@ -736,33 +767,12 @@
             this.UserAndGroupImages.Images.SetKeyName(6, "InheritedUser.ico");
             this.UserAndGroupImages.Images.SetKeyName(7, "InheritedGroup.ico");
             // 
-            // toolStrip1
+            // chkWmsEnableGeometry
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnReferencesOpenSelected});
-            resources.ApplyResources(this.toolStrip1, "toolStrip1");
-            this.toolStrip1.Name = "toolStrip1";
-            // 
-            // toolStrip2
-            // 
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnReferencedByOpenSelected});
-            resources.ApplyResources(this.toolStrip2, "toolStrip2");
-            this.toolStrip2.Name = "toolStrip2";
-            // 
-            // btnReferencesOpenSelected
-            // 
-            resources.ApplyResources(this.btnReferencesOpenSelected, "btnReferencesOpenSelected");
-            this.btnReferencesOpenSelected.Image = global::Maestro.Base.Properties.Resources.folder_open_document;
-            this.btnReferencesOpenSelected.Name = "btnReferencesOpenSelected";
-            this.btnReferencesOpenSelected.Click += new System.EventHandler(this.btnReferencesOpenSelected_Click);
-            // 
-            // btnReferencedByOpenSelected
-            // 
-            resources.ApplyResources(this.btnReferencedByOpenSelected, "btnReferencedByOpenSelected");
-            this.btnReferencedByOpenSelected.Image = global::Maestro.Base.Properties.Resources.folder_open_document;
-            this.btnReferencedByOpenSelected.Name = "btnReferencedByOpenSelected";
-            this.btnReferencedByOpenSelected.Click += new System.EventHandler(this.btnReferencedByOpenSelected_Click);
+            resources.ApplyResources(this.chkWmsEnableGeometry, "chkWmsEnableGeometry");
+            this.chkWmsEnableGeometry.Name = "chkWmsEnableGeometry";
+            this.chkWmsEnableGeometry.UseVisualStyleBackColor = true;
+            this.chkWmsEnableGeometry.CheckedChanged += new System.EventHandler(this.ChkWmsEnableGeometry_CheckedChanged);
             // 
             // ResourcePropertiesDialog
             // 
@@ -792,20 +802,21 @@
             this.ReferenceTab.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.OutReferences.ResumeLayout(false);
             this.OutReferences.PerformLayout();
             this.ctxReferences.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.InReferences.ResumeLayout(false);
             this.InReferences.PerformLayout();
             this.ctxReferenced.ResumeLayout(false);
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -895,5 +906,6 @@
         private System.Windows.Forms.ToolStripButton btnReferencesOpenSelected;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton btnReferencedByOpenSelected;
+        private System.Windows.Forms.CheckBox chkWmsEnableGeometry;
     }
 }

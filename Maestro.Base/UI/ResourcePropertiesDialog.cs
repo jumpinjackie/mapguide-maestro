@@ -266,6 +266,7 @@ namespace Maestro.Base.UI
                     WMSQueryable.Checked = props["_Queryable"] == "1"; //NOXLATE
                     WMSOpaque.Checked = props["_Opaque"] == "1"; //NOXLATE
                     WMSAvalible.Checked = props["_IsPublished"] == "1"; //NOXLATE
+                    chkWmsEnableGeometry.Checked = props["_EnableGeometry"] == "1"; //NOXLATE
                     WMSBounds.Text = props["_Bounds"]; //NOXLATE
                 }
                 else
@@ -277,6 +278,7 @@ namespace Maestro.Base.UI
 
                     WMSQueryable.Checked =
                     WMSOpaque.Checked =
+                    chkWmsEnableGeometry.Checked =
                     WMSAvalible.Checked = false;
 
                     WMSBounds.Text = string.Empty;
@@ -352,7 +354,7 @@ namespace Maestro.Base.UI
         private void ClearHeaderButton_Click(object sender, EventArgs e)
         {
             WMSAbstract.Text = WMSTitle.Text = WMSBounds.Text = WMSKeyWords.Text = WMSMetadata.Text = string.Empty;
-            WMSAvalible.Checked = WMSQueryable.Checked = WMSOpaque.Checked = false;
+            WMSAvalible.Checked = WMSQueryable.Checked = WMSOpaque.Checked = chkWmsEnableGeometry.Checked = false;
             m_resourceHeader.Metadata = null;
             UpdateCustomDisplay();
             MessageBox.Show("WMS metadata cleared");
@@ -1155,6 +1157,14 @@ namespace Maestro.Base.UI
             {
                 _openMgr.Open(item.Text, m_connection, false, _siteExp);
             }
+        }
+
+        private void ChkWmsEnableGeometry_CheckedChanged(object sender, EventArgs e)
+        {
+            if (m_isUpdating)
+                return;
+            EnsureMetaData();
+            m_resourceHeader.Metadata.SetProperty("_EnableGeometry", Convert.ToInt32(chkWmsEnableGeometry.Checked).ToString()); //NOXLATE
         }
     }
 }
