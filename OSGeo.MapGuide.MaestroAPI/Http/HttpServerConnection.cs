@@ -117,6 +117,8 @@ namespace OSGeo.MapGuide.MaestroAPI
     {
         private RequestBuilder m_reqBuilder;
 
+        internal RequestBuilder RequestBuilder => m_reqBuilder;
+
         //These only change after server reboot, so it is probably safe to cache them
         private FeatureProviderRegistry m_featureProviders = null; //SHARED
 

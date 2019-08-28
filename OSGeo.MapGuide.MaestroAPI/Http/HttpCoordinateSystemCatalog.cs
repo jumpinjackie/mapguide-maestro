@@ -23,7 +23,7 @@
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using System.Xml;
 
-namespace OSGeo.MapGuide.MaestroAPI
+namespace OSGeo.MapGuide.MaestroAPI.Http
 {
     internal class HttpCoordinateSystemCatalog : CoordinateSystemCatalog
     {
@@ -134,5 +134,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         public override CoordinateSystemDefinitionBase CreateEmptyCoordinateSystem() => new HttpCoordinateSystemDefinition();
+
+        public override ISimpleTransform CreateTransform(string sourceWkt, string targetWkt)
+        {
+            // MGOS 4.0 finally supports transforming coordinates in the mapagent!
+            if (this.Connection.SiteVersion >= new System.Version(4, 0))
+                return new HttpCoordinateSystemTransform(this.Connection, sourceWkt, targetWkt);
+            return base.CreateTransform(sourceWkt, targetWkt);
+        }
     }
 }

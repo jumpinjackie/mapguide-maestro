@@ -368,7 +368,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
                         mdf.CoordinateSystem = res.LayerCoordinateSystem;
                     }
                     //Set the bounds if empty
-                    if (mdf.Extents.IsEmpty())
+                    if (mdf.Extents.IsEmpty() && res.Extent != null)
                     {
                         var env = res.Extent;
                         mdf.SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);

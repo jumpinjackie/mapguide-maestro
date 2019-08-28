@@ -26,6 +26,7 @@ using System;
 using System.Collections.Specialized;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -35,6 +36,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     internal class RequestBuilder
     {
         private string m_userAgent = "MapGuide Maestro API"; //NOXLATE
+
         private readonly string m_hosturi;
         private string m_sessionID = null;
         private string m_locale = null;
@@ -119,6 +121,26 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("DEPTH", depth.ToString());
             param.Add("TYPE", type);
             param.Add("COMPUTECHILDREN", computeChildren ? "1" : "0");
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
+        internal string TransformCoordinates(string source, string target, (double x, double y)[] coordinates)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "CS.TRANSFORMCOORDINATES");
+            param.Add("VERSION", "4.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", m_userAgent);
+
+            param.Add("SOURCE", source);
+            param.Add("TARGET", target);
+            // A comma-delimited list of space-separated coordinate pairs
+            param.Add("COORDINATES", string.Join(",", coordinates.Select(c => $"{c.x} {c.y}")));
+
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
             return m_hosturi + "?" + EncodeParameters(param);
         }
 

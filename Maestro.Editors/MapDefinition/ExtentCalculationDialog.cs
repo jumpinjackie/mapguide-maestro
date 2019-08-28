@@ -176,7 +176,7 @@ namespace Maestro.Editors.MapDefinition
                     //Transform if not the same, otherwise assume either arbitrary or same as the map
                     if (!string.IsNullOrEmpty(wkt))
                     {
-                        e1 = Utility.TransformEnvelope(e1, wkt, _coordSys);
+                        e1 = Utility.TransformEnvelope(_conn.CoordinateSystemCatalog, e1, wkt, _coordSys);
                         res.TransformedResult = e1;
                     }
                 }

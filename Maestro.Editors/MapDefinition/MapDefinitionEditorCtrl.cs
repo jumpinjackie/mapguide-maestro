@@ -61,7 +61,7 @@ namespace Maestro.Editors.MapDefinition
                 if (env != null)
                 {
                     if (!string.IsNullOrEmpty(mapCoordSys) && csWkt != mapCoordSys)
-                        env = Utility.TransformEnvelope(env, csWkt, mapCoordSys);
+                        env = Utility.TransformEnvelope(_conn.CoordinateSystemCatalog, env, csWkt, mapCoordSys);
 
                     return new LayerExtent()
                     {

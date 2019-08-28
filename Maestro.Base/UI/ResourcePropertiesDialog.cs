@@ -832,7 +832,7 @@ namespace Maestro.Base.UI
                     if (epsg != "4326")
                     {
                         var targetWkt = m_connection.CoordinateSystemCatalog.ConvertEpsgCodeToWkt("4326"); //NOXLATE
-                        env = Utility.TransformEnvelope(env, csWkt, targetWkt);
+                        env = Utility.TransformEnvelope(m_connection.CoordinateSystemCatalog, env, csWkt, targetWkt);
                         epsg = "4326";
                     }
 

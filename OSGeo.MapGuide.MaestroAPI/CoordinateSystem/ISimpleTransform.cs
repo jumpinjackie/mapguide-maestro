@@ -40,7 +40,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="y">The Y coordinate</param>
         /// <param name="tx">The transformed X coordinate</param>
         /// <param name="ty">The transformed Y coordinate</param>
-        void Transform(double x, double y, out double tx, out double ty);
+        bool Transform(double x, double y, out double tx, out double ty);
     }
 
     /// <summary>
@@ -102,7 +102,7 @@ AUTHORITY[""EPSG"",""3785""]]"; //NOXLATE
         /// <param name="y">The Y coordinate</param>
         /// <param name="tx">The transformed X coordinate</param>
         /// <param name="ty">The transformed Y coordinate</param>
-        public void Transform(double x, double y, out double tx, out double ty)
+        public bool Transform(double x, double y, out double tx, out double ty)
         {
             tx = Double.NaN;
             ty = Double.NaN;
@@ -110,6 +110,7 @@ AUTHORITY[""EPSG"",""3785""]]"; //NOXLATE
             double[] pts = _trans.MathTransform.Transform(new double[] { x, y });
             tx = pts[0];
             ty = pts[1];
+            return true;
         }
 
         /// <summary>

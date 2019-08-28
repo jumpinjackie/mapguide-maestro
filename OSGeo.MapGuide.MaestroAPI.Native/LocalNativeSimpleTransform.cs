@@ -38,7 +38,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             _trans = fact.GetTransform(source, target);
         }
 
-        public void Transform(double x, double y, out double tx, out double ty)
+        public bool Transform(double x, double y, out double tx, out double ty)
         {
             tx = Double.NaN;
             ty = Double.NaN;
@@ -47,6 +47,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
             tx = coord.X;
             ty = coord.Y;
+            return true;
         }
 
         ~LocalNativeSimpleTransform()

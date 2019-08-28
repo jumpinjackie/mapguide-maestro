@@ -1051,12 +1051,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="srcCsWkt">The source coordinate system WKT.</param>
         /// <param name="dstCsWkt">The destination coordinate system WKT.</param>
         /// <returns></returns>
-        public static ObjectModels.Common.IEnvelope TransformEnvelope(ObjectModels.Common.IEnvelope env, string srcCsWkt, string dstCsWkt)
+        public static ObjectModels.Common.IEnvelope TransformEnvelope(ICoordinateSystemCatalog csCatalog, ObjectModels.Common.IEnvelope env, string srcCsWkt, string dstCsWkt)
         {
             try
             {
                 ISimpleTransform trans = null;
-                trans = CsHelper.DefaultCatalog != null ? CsHelper.DefaultCatalog.CreateTransform(srcCsWkt, dstCsWkt) : new DefaultSimpleTransform(srcCsWkt, dstCsWkt);
+                trans = CsHelper.DefaultCatalog != null ? CsHelper.DefaultCatalog.CreateTransform(srcCsWkt, dstCsWkt) : csCatalog.CreateTransform(srcCsWkt, dstCsWkt);
                 var oldExt = env;
 
                 double llx;
@@ -1064,10 +1064,12 @@ namespace OSGeo.MapGuide.MaestroAPI
                 double urx;
                 double ury;
 
-                trans.Transform(oldExt.MinX, oldExt.MinY, out llx, out lly);
-                trans.Transform(oldExt.MaxX, oldExt.MaxY, out urx, out ury);
-
-                return ObjectFactory.CreateEnvelope(llx, lly, urx, ury);
+                if (trans.Transform(oldExt.MinX, oldExt.MinY, out llx, out lly) &&
+                    trans.Transform(oldExt.MaxX, oldExt.MaxY, out urx, out ury))
+                {
+                    return ObjectFactory.CreateEnvelope(llx, lly, urx, ury);
+                }
+                return null;
             }
             catch
             {
