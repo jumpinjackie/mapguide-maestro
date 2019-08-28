@@ -2082,7 +2082,8 @@ namespace Maestro.Editors.MapDefinition
                 if (picker.ShowDialog() == DialogResult.OK )
                 {
                     var tsd = (ITileSetDefinition)_edSvc.CurrentConnection.ResourceService.GetResource(picker.ResourceID);
-                    if (tsd.TileStoreParameters.TileProvider != "Default") //NOXLATE
+                    // The tile set linkage restriction only applies for MapGuide releases older than 4.0
+                    if (_edSvc.CurrentConnection.SiteVersion < new Version(4, 0) && tsd.TileStoreParameters.TileProvider != "Default") //NOXLATE
                     {
                         MessageBox.Show(string.Format(Maestro.Editors.Strings.CannotLinkIncompatibleTileSet, tsd.TileStoreParameters.TileProvider));
                         return;
@@ -2098,6 +2099,17 @@ namespace Maestro.Editors.MapDefinition
                         var env = tsd.Extents;
                         _map.SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
                         MessageBox.Show(Maestro.Editors.Strings.LinkedTileSetNote);
+                    }
+                    else if (_edSvc.CurrentConnection.SiteVersion >= new Version(4, 0))
+                    {
+                        //For MGOS 4.0, we allow linkage to XYZ tile sets, but there won't
+                        //be a coordinate system to read from, because for XYZ, this will
+                        //always be: WGS84.PseudoMercator
+                        coordSys = _edSvc.CurrentConnection.CoordinateSystemCatalog.ConvertCoordinateSystemCodeToWkt("WGS84.PseudoMercator");
+                        _map.CoordinateSystem = coordSys;
+                        var env = tsd.Extents;
+                        _map.SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
+                        MessageBox.Show(Maestro.Editors.Strings.LinkedXYZTileSetNote);
                     }
                 }
             }

@@ -19,7 +19,7 @@ namespace Maestro.Editors {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Strings {
@@ -1918,6 +1918,15 @@ namespace Maestro.Editors {
         internal static string LinkedTileSetNote {
             get {
                 return ResourceManager.GetString("LinkedTileSetNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NOTE: MapGuide Open Source 4.0 and Maestro as a result now allows you to link a Map Definition to a XYZ tile set. However, this type of Map Definition is still not supported in any of our provided viewer offerings. This type of Map Definition can still be previewd, but layers from the XYZ tile set will not be visible. This restriction has been lifted to enable any custom viewer that would want to take advantage of this particular combination..
+        /// </summary>
+        internal static string LinkedXYZTileSetNote {
+            get {
+                return ResourceManager.GetString("LinkedXYZTileSetNote", resourceCulture);
             }
         }
         
