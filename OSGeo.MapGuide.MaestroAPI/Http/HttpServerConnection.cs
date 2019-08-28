@@ -44,7 +44,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI
@@ -116,7 +118,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                                         ISiteService
     {
         private RequestBuilder m_reqBuilder;
-
+        private HttpClient _http;
         internal RequestBuilder RequestBuilder => m_reqBuilder;
 
         //These only change after server reboot, so it is probably safe to cache them
@@ -2087,6 +2089,16 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 return this.DeserializeObject<OSGeo.MapGuide.ObjectModels.Common.TileProviderList>(s);
             }
+        }
+
+        // ==================================== Begin Async APIs ============================= //
+
+        public async Task<System.IO.Stream> GetTileAsync(string mapDefinition, string baseLayerGroup, int column, int row, int scaleIndex)
+        {
+            var req = m_reqBuilder.GetTile(mapDefinition, baseLayerGroup, row, column, scaleIndex, _cred == null);
+            var resp = await _http.GetAsync(req);
+            resp.EnsureSuccessStatusCode();
+            return await resp.Content.ReadAsStreamAsync();
         }
     }
 }

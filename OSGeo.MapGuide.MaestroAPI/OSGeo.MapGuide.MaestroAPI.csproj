@@ -13,6 +13,11 @@
     <PackageTags>MapGuide</PackageTags>
   </PropertyGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
+    <!-- // HttpClient for full .NET -->
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
   <!-- Use full pdb generation for net471 -->
   <PropertyGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
     <DebugType>full</DebugType>

@@ -23,6 +23,8 @@
 using OSGeo.MapGuide.MaestroAPI.Services;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tile
 {
@@ -31,6 +33,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// </summary>
     public class XYZTileService : ITileService
     {
+        readonly HttpClient _http;
         readonly string _urlTemplate;
 
         /// <summary>
@@ -39,6 +42,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <param name="urlTemplate">The URL of the XYZ tile service/endpoint. The URL must have {x}, {y} and {z} placeholders</param>
         public XYZTileService(string urlTemplate)
         {
+            _http = new HttpClient();
             //Convert into a string.Format-able form
             _urlTemplate = urlTemplate.Replace("{x}", "{0}").Replace("{y}", "{1}").Replace("{z}", "{2}");
         }
@@ -59,6 +63,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
             var resp = req.GetResponse();
             return resp.GetResponseStream();
+        }
+
+        /// <summary>
+        /// Reads a tile from MapGuide
+        /// </summary>
+        /// <param name="mapDefinition"></param>
+        /// <param name="baseLayerGroup"></param>
+        /// <param name="column"></param>
+        /// <param name="row"></param>
+        /// <param name="scaleIndex"></param>
+        /// <returns></returns>
+        public async Task<System.IO.Stream> GetTileAsync(string mapDefinition, string baseLayerGroup, int column, int row, int scaleIndex)
+        {
+            var url = string.Format(_urlTemplate, row, column, scaleIndex);
+            var response = await _http.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStreamAsync();
         }
     }
 }

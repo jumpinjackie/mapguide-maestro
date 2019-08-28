@@ -20,6 +20,8 @@
 
 #endregion Disclaimer / License
 
+using System.Threading.Tasks;
+
 namespace OSGeo.MapGuide.MaestroAPI.Services
 {
     /// <summary>
@@ -48,5 +50,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="scaleIndex">The scale index for the tile set</param>
         /// <returns>An image stream</returns>
         System.IO.Stream GetTile(string mapDefinition, string baseLayerGroup, int column, int row, int scaleIndex);
+
+        /// <summary>
+        /// Reads a tile from MapGuide
+        /// </summary>
+        /// <param name="mapDefinition"></param>
+        /// <param name="baseLayerGroup"></param>
+        /// <param name="column"></param>
+        /// <param name="row"></param>
+        /// <param name="scaleIndex"></param>
+        /// <returns></returns>
+        Task<System.IO.Stream> GetTileAsync(string mapDefinition, string baseLayerGroup, int column, int row, int scaleIndex);
     }
 }
