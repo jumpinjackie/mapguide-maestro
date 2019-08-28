@@ -2022,7 +2022,15 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal IRuntimeMapInfo DescribeRuntimeMap(string mapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight)
         {
-            if (m_siteVersion >= new Version(3, 0))
+            if (m_siteVersion >= new Version(4, 0))
+            {
+                var req = m_reqBuilder.DescribeRuntimeMap(mapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight, "4.0.0");
+                using (var s = this.OpenRead(req))
+                {
+                    return this.DeserializeObject<OSGeo.MapGuide.ObjectModels.RuntimeMap.v4_0_0.RuntimeMap>(s);
+                }
+            }
+            else if (m_siteVersion >= new Version(3, 0))
             {
                 var req = m_reqBuilder.DescribeRuntimeMap(mapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight, "3.0.0");
                 using (var s = this.OpenRead(req))
@@ -2042,7 +2050,15 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal IRuntimeMapInfo CreateRuntimeMap(string mapDefinition, string targetMapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight)
         {
-            if (m_siteVersion >= new Version(3, 0))
+            if (m_siteVersion >= new Version(4, 0))
+            {
+                var req = m_reqBuilder.CreateRuntimeMap(mapDefinition, targetMapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight, "4.0.0");
+                using (var s = this.OpenRead(req))
+                {
+                    return this.DeserializeObject<OSGeo.MapGuide.ObjectModels.RuntimeMap.v4_0_0.RuntimeMap>(s);
+                }
+            }
+            else if (m_siteVersion >= new Version(3, 0))
             {
                 var req = m_reqBuilder.CreateRuntimeMap(mapDefinition, targetMapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight, "3.0.0");
                 using (var s = this.OpenRead(req))

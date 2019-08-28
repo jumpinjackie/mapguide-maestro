@@ -122,6 +122,27 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
     }
 
     /// <summary>
+    /// Describes the structure of a Runtime Map. Based on RuntimeMap v4.0.0 schema
+    /// </summary>
+    public interface IRuntimeMapInfo3 : IRuntimeMapInfo2
+    {
+        /// <summary>
+        /// The provider for the Tile Set Definition
+        /// </summary>
+        string TileSetProvider { get; set; }
+
+        /// <summary>
+        /// The tile content format
+        /// </summary>
+        string TileFormat { get; set; }
+
+        /// <summary>
+        /// The tile pixel ratio for retina tiles
+        /// </summary>
+        int TilePixelRatio { get; set; }
+    }
+
+    /// <summary>
     /// Represents coordinate system information for a Runtime Map
     /// </summary>
     public interface ICoordinateSystemInfo

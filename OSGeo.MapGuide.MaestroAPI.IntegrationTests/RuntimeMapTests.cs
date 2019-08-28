@@ -1376,6 +1376,11 @@ namespace MaestroAPITests
                 var test = rtInfo as MapModel.IRuntimeMapInfo2;
                 Assert.NotNull(test);
             }
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                var test = rtInfo as MapModel.IRuntimeMapInfo3;
+                Assert.NotNull(test);
+            }
 
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.True(String.IsNullOrEmpty(rtInfo.IconMimeType));
@@ -1393,6 +1398,11 @@ namespace MaestroAPITests
             if (conn.SiteVersion >= new Version(3, 0))
             {
                 var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
+            }
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                var test = rtInfo as MapModel.IRuntimeMapInfo3;
                 Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
@@ -1414,6 +1424,11 @@ namespace MaestroAPITests
             if (conn.SiteVersion >= new Version(3, 0))
             {
                 var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
+            }
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                var test = rtInfo as MapModel.IRuntimeMapInfo3;
                 Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
@@ -1438,6 +1453,11 @@ namespace MaestroAPITests
             if (conn.SiteVersion >= new Version(3, 0))
             {
                 var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
+            }
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                var test = rtInfo as MapModel.IRuntimeMapInfo3;
                 Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
@@ -1477,6 +1497,11 @@ namespace MaestroAPITests
             if (conn.SiteVersion >= new Version(3, 0))
             {
                 var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
+            }
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                var test = rtInfo as MapModel.IRuntimeMapInfo3;
                 Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
@@ -1575,12 +1600,22 @@ namespace MaestroAPITests
                 var test = map as MapModel.IRuntimeMapInfo2;
                 Assert.NotNull(test);
             }
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                var test = map as MapModel.IRuntimeMapInfo3;
+                Assert.NotNull(test);
+            }
             describe = (IDescribeRuntimeMap)conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
             rtInfo = describe.Execute();
             if (conn.SiteVersion >= new Version(3, 0))
             {
                 var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
+            }
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                var test = rtInfo as MapModel.IRuntimeMapInfo3;
                 Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
@@ -1603,6 +1638,11 @@ namespace MaestroAPITests
                 var test = map as MapModel.IRuntimeMapInfo2;
                 Assert.NotNull(test);
             }
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                var test = map as MapModel.IRuntimeMapInfo3;
+                Assert.NotNull(test);
+            }
             describe = (IDescribeRuntimeMap)conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
             describe.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups);
@@ -1610,6 +1650,11 @@ namespace MaestroAPITests
             if (conn.SiteVersion >= new Version(3, 0))
             {
                 var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
+            }
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                var test = rtInfo as MapModel.IRuntimeMapInfo3;
                 Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
@@ -1635,6 +1680,11 @@ namespace MaestroAPITests
                 var test = map as MapModel.IRuntimeMapInfo2;
                 Assert.NotNull(test);
             }
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                var test = map as MapModel.IRuntimeMapInfo3;
+                Assert.NotNull(test);
+            }
             describe = (IDescribeRuntimeMap)conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
             describe.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons);
@@ -1642,6 +1692,11 @@ namespace MaestroAPITests
             if (conn.SiteVersion >= new Version(3, 0))
             {
                 var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
+            }
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                var test = rtInfo as MapModel.IRuntimeMapInfo3;
                 Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
@@ -1682,6 +1737,11 @@ namespace MaestroAPITests
                 var test = map as MapModel.IRuntimeMapInfo2;
                 Assert.NotNull(test);
             }
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                var test = map as MapModel.IRuntimeMapInfo3;
+                Assert.NotNull(test);
+            }
             describe = (IDescribeRuntimeMap)conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
             describe.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons | RuntimeMapRequestedFeatures.FeatureSourceInformation);
@@ -1689,6 +1749,11 @@ namespace MaestroAPITests
             if (conn.SiteVersion >= new Version(3, 0))
             {
                 var test = rtInfo as MapModel.IRuntimeMapInfo2;
+                Assert.NotNull(test);
+            }
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                var test = rtInfo as MapModel.IRuntimeMapInfo3;
                 Assert.NotNull(test);
             }
             Assert.NotNull(rtInfo.CoordinateSystem);
