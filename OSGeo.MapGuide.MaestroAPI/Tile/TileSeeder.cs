@@ -23,6 +23,7 @@
 using OSGeo.MapGuide.MaestroAPI.Services;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -38,6 +39,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         public Action<Action<TileRef>, TileRef> Executor { get; set; }
 
         public Action<TileRef, Exception> ErrorLogger { get; set; }
+
+        /// <summary>
+        /// An optional action to save the specified tile image stream. By default
+        /// (if this action isn't specified) the request for the given tile is discarded
+        /// as the seeder's purpose is to ensure the tile is generated and cached on
+        /// the server side.
+        /// </summary>
+        public Action<TileRef, Stream> SaveTile { get; set; }
     }
 
     /// <summary>
@@ -141,8 +150,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 {
                     try
                     {
-                        using (_tileSvc.GetTile(resId, tile.GroupName, tile.Col, tile.Row, tile.Scale))
+                        using (var tileStream = _tileSvc.GetTile(resId, tile.GroupName, tile.Col, tile.Row, tile.Scale))
                         {
+                            _options.SaveTile?.Invoke(tile, tileStream);
                             Interlocked.Increment(ref rendered);
                         }
                     }

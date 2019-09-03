@@ -34,7 +34,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     public class XYZTileService : ITileService
     {
         readonly HttpClient _http;
-        readonly string _urlTemplate;
+        private string _urlTemplate;
 
         /// <summary>
         /// Constructs a new instance
@@ -43,6 +43,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         public XYZTileService(string urlTemplate)
         {
             _http = new HttpClient();
+            this.SetUrlTemplate(urlTemplate);
+        }
+
+        public void SetUrlTemplate(string urlTemplate)
+        {
             //Convert into a string.Format-able form
             _urlTemplate = urlTemplate.Replace("{x}", "{0}").Replace("{y}", "{1}").Replace("{z}", "{2}");
         }

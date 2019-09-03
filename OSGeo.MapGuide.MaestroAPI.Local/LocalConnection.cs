@@ -43,6 +43,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Geometry;
+using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Local
 {
@@ -1302,6 +1303,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         }
 
         public override IGeometryTextReader CreateGeometryReader() => new MgGeometryTextReader();
+
+        public Task<Stream> GetTileAsync(string mapDefinition, string baseLayerGroup, int column, int row, int scaleIndex)
+        {
+            return Task.FromResult(GetTile(mapDefinition, baseLayerGroup, column, row, scaleIndex));
+        }
     }
 
     internal class LocalLongTransaction : ILongTransaction

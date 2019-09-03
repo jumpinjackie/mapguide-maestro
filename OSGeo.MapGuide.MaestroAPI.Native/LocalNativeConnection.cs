@@ -40,6 +40,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Native
 {
@@ -1506,6 +1507,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             {
                 return ConfigurationDocument.Load(stream);
             }
+        }
+
+        public Task<Stream> GetTileAsync(string mapDefinition, string baseLayerGroup, int column, int row, int scaleIndex)
+        {
+            return Task.FromResult(GetTile(mapDefinition, baseLayerGroup, column, row, scaleIndex));
         }
     }
 
