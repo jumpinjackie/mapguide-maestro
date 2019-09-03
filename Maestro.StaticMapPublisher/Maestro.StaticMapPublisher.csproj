@@ -6,6 +6,7 @@
     <Description>A tool to publish static interactive maps</Description>
     <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
     <Authors>Jackie Ng</Authors>
+    <LangVersion>latest</LangVersion>
     <Company />
   </PropertyGroup>
 
