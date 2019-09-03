@@ -113,7 +113,7 @@ namespace Maestro.Editors.Fusion
                 var list = new List<IPreviewUrl>();
                 if (!_edsvc.IsNew)
                 {
-                    list.Add(new PreviewUrl { Name = "Selected Fusion Template", Url = $"{baseUrl + txtTemplateUrl.Text}?ApplicationDefinition={_edsvc.ResourceID}&locale={_edsvc.PreviewLocale}" }); //NOXLATE
+                    list.Add(new PreviewUrl { Name = "Selected Fusion Template", Url = $"{baseUrl + txtTemplateUrl.Text}{(txtTemplateUrl.Text.Contains("?") ? "&" : "?")}ApplicationDefinition={_edsvc.ResourceID}&locale={_edsvc.PreviewLocale}" }); //NOXLATE
                     list.AddRange(_edsvc.GetAlternateFlexibleLayoutPreviewUrls(_edsvc.ResourceID, _edsvc.PreviewLocale));
                     btnShowInBrowser.Enabled = true;
                 }
