@@ -43,7 +43,7 @@ before_build:
   - cinst -y docfx
 
 environment:
-  NETCORE_MONIKER: 'netcoreapp2.1'
+  NETCORE_MONIKER: 'netcoreapp2.2'
   FULLFX_MONIKER: 'net471'
   XUNIT_VERSION: '2.4.1'
   OPENCOVER_VERSION: '4.7.922'
