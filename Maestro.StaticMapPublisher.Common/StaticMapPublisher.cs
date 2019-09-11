@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI.Tile;
 using System;
@@ -40,22 +41,26 @@ namespace Maestro.StaticMapPublisher.Common
             _stdout = stdout;
         }
 
-        static string BuildUrlTemplate(IStaticMapPublishingOptions options, Func<IStaticMapPublishingOptions, string> getResource)
+        static string BuildUrlTemplate(IStaticMapPublishingOptions options, Func<IStaticMapPublishingOptions, string> getResource, Func<IStaticMapPublishingOptions, string> getGroupName)
         {
-            return $"{options.MapAgent}?USERNAME={options.Username}&PASSWORD={options.Password}&LOCALE=en&CLIENTAGENT=Maestro.StaticMapPublisher&OPERATION=GETTILEIMAGE&VERSION=1.2.0&MAPDEFINITION={getResource(options)}&SCALE={{z}}&ROW={{x}}&COL={{y}}";
+            return $"{options.MapAgent}?USERNAME={options.Username}&PASSWORD={options.Password}&LOCALE=en&CLIENTAGENT=Maestro.StaticMapPublisher&OPERATION=GETTILEIMAGE&VERSION=1.2.0&MAPDEFINITION={getResource(options)}&BASEMAPLAYERGROUPNAME={getGroupName(options)}&SCALEINDEX={{z}}&TILEROW={{x}}&TILECOL={{y}}";
         }
 
         static string GetImageTileSaveDirectory(IStaticMapPublishingOptions options, Func<IStaticMapPublishingOptions, string> getResource)
         {
             return Path.Combine(options.OutputDirectory,
                                 getResource(options)
-                                    .Replace(":", string.Empty)
+                                    .Replace(".TileSetDefinition", string.Empty)
+                                    .Replace("Library://", string.Empty)
                                     .Replace(".", string.Empty)
                                     .Replace("/", "_"));
         }
 
+        private DateTime _tileStart;
+
         public async Task<int> PublishAsync(IStaticMapPublishingOptions options)
         {
+            _tileStart = DateTime.UtcNow;
             string imgDir = null;
             string utfDir = null;
 
@@ -69,48 +74,86 @@ namespace Maestro.StaticMapPublisher.Common
                 utfDir = GetImageTileSaveDirectory(options, o => o.UTFGridTileSetDefinition);
                 Directory.CreateDirectory(utfDir);
             }
-            var tileSvc = new XYZTileService(BuildUrlTemplate(options, o => o.ImageTileSetDefinition));
-            var walker = new XYZTileWalker(options.Bounds.MinX, options.Bounds.MinY, options.Bounds.MaxX, options.Bounds.MaxY);
-            var seedOpts = new TileSeederOptions();
-            if (Directory.Exists(imgDir))
-            {
-                seedOpts.SaveTile = (tr, stream) =>
-                {
-                    var tilePath = Path.Combine(imgDir, tr.GroupName, $"{tr.Scale}" /* z */, $"{tr.Row}"  /* x */, $"{tr.Col}" /* y */);
-                    using (var fw = File.OpenWrite(tilePath))
-                    {
-                        stream.CopyTo(fw);
-                    }
-                };
-            }
-            var seeder = new TileSeeder(tileSvc, walker, seedOpts);
-            seeder.Run(this);
 
-            tileSvc.SetUrlTemplate(BuildUrlTemplate(options, o => o.UTFGridTileSetDefinition));
-            if (Directory.Exists(utfDir))
+            if (!string.IsNullOrEmpty(options.ImageTileSetDefinition))
             {
-                seedOpts.SaveTile = (tr, stream) =>
+                var tileSvc = new XYZTileService(BuildUrlTemplate(options, o => o.ImageTileSetDefinition, o => o.ImageTileSetGroup));
+                var walker = new XYZTileWalker(options.Bounds.MinX, options.Bounds.MinY, options.Bounds.MaxX, options.Bounds.MaxY);
+                var seedOpts = new TileSeederOptions();
+                if (Directory.Exists(imgDir))
                 {
-                    var tilePath = Path.Combine(utfDir, tr.GroupName, $"{tr.Scale}" /* z */, $"{tr.Row}"  /* x */, $"{tr.Col}" /* y */);
-                    using (var fw = File.OpenWrite(tilePath))
+                    seedOpts.SaveTile = (tr, stream) =>
                     {
-                        stream.CopyTo(fw);
-                    }
+                        var tilePath = Path.Combine(imgDir, tr.GroupName, $"{tr.Scale}" /* z */, $"{tr.Row}"  /* x */, $"{tr.Col}.png" /* y */);
+                        var parentDir = Path.GetDirectoryName(tilePath);
+                        if (!Directory.Exists(parentDir))
+                            Directory.CreateDirectory(parentDir);
+                        using (var fw = File.OpenWrite(tilePath))
+                        {
+                            //stream.CopyTo(fw);
+                            Utility.CopyStream(stream, fw);
+                        }
+                    };
+                }
+                else
+                {
+                    seedOpts.SaveTile = null;
+                }
+                seedOpts.ErrorLogger = (tr, ex) =>
+                {
+
                 };
+
+                var seeder = new TileSeeder(tileSvc, walker, seedOpts);
+                seeder.Run(this);
             }
-            else
+
+            var imageElapsed = DateTime.UtcNow - _tileStart;
+            if (!string.IsNullOrEmpty(options.UTFGridTileSetDefinition))
             {
-                seedOpts.SaveTile = null;
+                var tileSvc = new XYZTileService(BuildUrlTemplate(options, o => o.UTFGridTileSetDefinition, o => o.UTFGridTileSetGroup));
+                var walker = new XYZTileWalker(options.Bounds.MinX, options.Bounds.MinY, options.Bounds.MaxX, options.Bounds.MaxY);
+                var seedOpts = new TileSeederOptions();
+                if (Directory.Exists(utfDir))
+                {
+                    seedOpts.SaveTile = (tr, stream) =>
+                    {
+                        var tilePath = Path.Combine(utfDir, tr.GroupName, $"{tr.Scale}" /* z */, $"{tr.Row}"  /* x */, $"{tr.Col}.utfgrid" /* y */);
+                        var parentDir = Path.GetDirectoryName(tilePath);
+                        if (!Directory.Exists(parentDir))
+                            Directory.CreateDirectory(parentDir);
+                        using (var fw = File.OpenWrite(tilePath))
+                        {
+                            //stream.CopyTo(fw);
+                            Utility.CopyStream(stream, fw);
+                        }
+                    };
+                }
+                else
+                {
+                    seedOpts.SaveTile = null;
+                }
+                seedOpts.ErrorLogger = (tr, ex) =>
+                {
+
+                };
+                var seeder = new TileSeeder(tileSvc, walker, seedOpts);
+                seeder.Run(this);
             }
-            seeder = new TileSeeder(tileSvc, walker, seedOpts);
-            seeder.Run(this);
+
+            var utfElapsed = DateTime.UtcNow - _tileStart;
+            _stdout.WriteLine($"Image tiles downloaded in {(int)imageElapsed.TotalSeconds}s");
+            _stdout.WriteLine($"UTFGrid tiles downloaded in {(int)utfElapsed.TotalSeconds}s");
             return 0;
         }
 
         public void Report(TileProgress value)
         {
+            //NOTE: This method is being called at a resolution such that using DateTime 
+            //subtraction is an acceptable means of measuring elapsed duration
+            var elapsed = DateTime.UtcNow - _tileStart;
             var processed = value.Rendered + value.Failed;
-            _stdout.WriteLine($"Processed ({processed}/{value.Total}) tiles [{((double)processed / (double)value.Total):P}] - {value.Rendered} rendered, {value.Failed} failed");
+            _stdout.WriteLine($"Processed ({processed}/{value.Total}) tiles [{((double)processed / (double)value.Total):P}] - {value.Rendered} rendered, {value.Failed} failed ({(int)elapsed.TotalSeconds}s elapsed)");
         }
     }
 }

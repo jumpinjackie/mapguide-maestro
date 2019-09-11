@@ -26,6 +26,9 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Maestro.StaticMapPublisher
@@ -38,7 +41,7 @@ namespace Maestro.StaticMapPublisher
         [Option("wait", Default = false)]
         public bool Wait { get; set; }
 
-        public virtual void Validate() { }
+        public virtual void Validate(TextWriter stdout) { }
     }
 
     class PublishOptions : BaseOptions, IStaticMapPublishingOptions
@@ -50,16 +53,22 @@ namespace Maestro.StaticMapPublisher
         public string OutputDirectory { get; set; }
 
         [Option("external-base-layers", HelpText = "Any external base layers to include (in addition to the primary tile sets)")]
-        public ExternalBaseLayer[] ExternalBaseLayers { get; set; }
+        public IEnumerable<ExternalBaseLayer> ExternalBaseLayers { get; set; }
 
-        [Option("viewer-library", Required = true, Default = ViewerType.OpenLayers, HelpText = "The viewer library to use")]
+        [Option("viewer-library", Default = ViewerType.OpenLayers, HelpText = "The viewer library to use")]
         public ViewerType Viewer { get; set; }
 
         [Option("image-tileset", HelpText = "The image tile set definition id. This tile set must be one using the XYZ tile access scheme")]
         public string ImageTileSetDefinition { get; set; }
 
+        [Option("image-tileset-group", HelpText = "The group within the specified image tile set definition to fetch tiles for. If not specified, the first group in the tile set is used")]
+        public string ImageTileSetGroup { get; set; }
+
         [Option("utfgrid-tileset", HelpText = "The utfgird tile set definition id")]
         public string UTFGridTileSetDefinition { get; set; }
+
+        [Option("utfgrid-tileset-group", HelpText = "The group within the specified utfgrid tile set definition to fetch tiles for. If not specified, the first group in the tile set is used")]
+        public string UTFGridTileSetGroup { get; set; }
 
         public OSGeo.MapGuide.ObjectModels.Common.IEnvelope Bounds => ObjectFactory.CreateEnvelope(MinX, MinY, MaxX, MaxY);
 
@@ -83,7 +92,7 @@ namespace Maestro.StaticMapPublisher
 
         public IServerConnection Connection { get; private set; }
 
-        public override void Validate()
+        public override void Validate(TextWriter stdout)
         {
             if (!Utility.InRange(this.MinX, -180, 180))
                 throw new Exception("minx not in range of [-180, 180]");
@@ -133,6 +142,17 @@ namespace Maestro.StaticMapPublisher
                 {
                     throw new Exception("Not a XYZ image tile set definition resource");
                 }
+
+                if (string.IsNullOrEmpty(this.ImageTileSetGroup))
+                {
+                    this.ImageTileSetGroup = tsd.BaseMapLayerGroups.First().Name;
+                    stdout.WriteLine($"Defaulting to layer group ({this.ImageTileSetGroup}) for image tileset");
+                }
+                else
+                {
+                    if (!tsd.GroupExists(this.ImageTileSetGroup))
+                        throw new Exception($"The specified group ({this.ImageTileSetGroup}) does not exist in the specified image tile set definition");
+                }
             }
             if (!string.IsNullOrEmpty(this.UTFGridTileSetDefinition))
             {
@@ -149,6 +169,17 @@ namespace Maestro.StaticMapPublisher
                 if (tsd.TileStoreParameters.TileProvider != "XYZ")
                 {
                     throw new Exception("Not a XYZ UTFGrid tile set definition resource");
+                }
+
+                if (string.IsNullOrEmpty(this.UTFGridTileSetGroup))
+                {
+                    this.UTFGridTileSetGroup = tsd.BaseMapLayerGroups.First().Name;
+                    stdout.WriteLine($"Defaulting to layer group ({this.UTFGridTileSetGroup}) for utfgrid tileset");
+                }
+                else
+                {
+                    if (!tsd.GroupExists(this.UTFGridTileSetGroup))
+                        throw new Exception($"The specified group ({this.UTFGridTileSetGroup}) does not exist in the specified utfgrid tile set definition");
                 }
             }
 
@@ -177,9 +208,10 @@ namespace Maestro.StaticMapPublisher
                 {
                     case PublishOptions pubOpts:
                         {
-                            pubOpts.Validate();
+                            var stdout = Console.Out;
+                            pubOpts.Validate(stdout);
 
-                            var pub = new Maestro.StaticMapPublisher.Common.StaticMapPublisher(Console.Out);
+                            var pub = new Maestro.StaticMapPublisher.Common.StaticMapPublisher(stdout);
                             var ret = await pub.PublishAsync(pubOpts);
                             return ret;
                         }

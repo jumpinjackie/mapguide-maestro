@@ -34,13 +34,17 @@ namespace Maestro.StaticMapPublisher.Common
 
         string OutputDirectory { get; set; }
 
-        ExternalBaseLayer[] ExternalBaseLayers { get; set; }
+        IEnumerable<ExternalBaseLayer> ExternalBaseLayers { get; set; }
 
         ViewerType Viewer { get; set; }
 
         string ImageTileSetDefinition { get; set; }
 
+        string ImageTileSetGroup { get; set; }
+
         string UTFGridTileSetDefinition { get; set; }
+
+        string UTFGridTileSetGroup { get; set; }
 
         IEnvelope Bounds { get; }
 
