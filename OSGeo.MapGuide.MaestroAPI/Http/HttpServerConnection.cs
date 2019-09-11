@@ -36,6 +36,7 @@ using OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.RuntimeMap;
+using Polly;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -1408,7 +1409,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     httpreq.Credentials = _cred;
                 var httpresp = (HttpWebResponse)httpreq.GetResponse();
                 LogResponse(httpresp);
-                return httpresp.GetResponseStream();
+                return new WebResponseStream(httpresp);
             }
             catch (Exception ex)
             {
@@ -1432,10 +1433,57 @@ namespace OSGeo.MapGuide.MaestroAPI
                     var httpreq = HttpWebRequest.Create(req);
                     if (_cred != null)
                         httpreq.Credentials = _cred;
-                    var httpresp = httpreq.GetResponse();
-                    return httpresp.GetResponseStream();
+                    var httpresp = (HttpWebResponse)httpreq.GetResponse();
+                    return new WebResponseStream(httpresp);
                 }
             }
+        }
+
+        const int SECONDS = 1000;
+
+        internal Stream OpenReadWithExponentialBackoff(string url)
+        {
+            var jitterer = new Random();
+            const int retries = 5;
+            Stream stream = null;
+            try
+            {
+                stream = Policy
+                    .Handle<Exception>()
+                    .WaitAndRetry(retries, retryAttempt => //Calculate delay for next attempt
+                    {
+                        return TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+                            + TimeSpan.FromMilliseconds(jitterer.Next(0, 100));
+                    }, (lastException, nextRetry) => //OnRetry
+                    {
+                        var sessionRecreated = false;
+                        if (this.IsSessionExpiredException(lastException))
+                            sessionRecreated = this.RestartSession(false);
+                    })
+                    .Execute(() =>
+                    {
+                        var httpreq = (HttpWebRequest)HttpWebRequest.Create(url);
+                        httpreq.Timeout = 10 * SECONDS;
+                        httpreq.KeepAlive = true;
+                        if (_cred != null)
+                            httpreq.Credentials = _cred;
+                        var httpresp = (HttpWebResponse)httpreq.GetResponse();
+                        LogResponse(httpresp);
+                        return new WebResponseStream(httpresp);
+                    });
+            }
+            catch (Exception ex)
+            {
+                if (typeof(WebException).IsAssignableFrom(ex.GetType()))
+                    LogFailedRequest((WebException)ex);
+
+                Exception ex2 = Utility.ThrowAsWebException(ex);
+                if (ex2 != ex)
+                    throw ex2;
+                else
+                    throw;
+            }
+            return stream;
         }
 
         /// <summary>
@@ -1653,7 +1701,15 @@ namespace OSGeo.MapGuide.MaestroAPI
                 req = m_reqBuilder.GetTileAnonymous(mapdefinition, baselayergroup, row, col, scaleindex);
             else
                 req = m_reqBuilder.GetTile(mapdefinition, baselayergroup, row, col, scaleindex, _cred == null);
-            return this.OpenRead(req);
+
+            //As the common use case of this method is primarily for tile seeding, it is expected this is going
+            //to be called:
+            //
+            // 1. From multiple threads
+            // 2. Against a server under some load as a result of other concurrent GetTile requests
+            //
+            //Thus, we'll use the polly-backed OpenReadWithExponentialBackoff() for extra resilience
+            return this.OpenReadWithExponentialBackoff(req);
         }
 
         /// <summary>

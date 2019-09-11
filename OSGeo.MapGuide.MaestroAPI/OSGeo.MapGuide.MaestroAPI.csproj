@@ -52,6 +52,7 @@
 
   <ItemGroup>
     <PackageReference Include="NetTopologySuite" Version="1.15.3" />
+    <PackageReference Include="Polly" Version="7.1.1" />
     <PackageReference Include="ProjNET4GeoAPI" Version="1.4.1" />
   </ItemGroup>
 
