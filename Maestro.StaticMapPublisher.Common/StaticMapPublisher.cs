@@ -110,6 +110,7 @@ namespace Maestro.StaticMapPublisher.Common
             }
 
             var imageElapsed = DateTime.UtcNow - _tileStart;
+            _tileStart = DateTime.UtcNow;
             if (!string.IsNullOrEmpty(options.UTFGridTileSetDefinition))
             {
                 var tileSvc = new XYZTileService(BuildUrlTemplate(options, o => o.UTFGridTileSetDefinition, o => o.UTFGridTileSetGroup));
