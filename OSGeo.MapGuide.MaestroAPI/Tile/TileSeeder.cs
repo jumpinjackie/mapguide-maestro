@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI.Services;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
@@ -124,6 +125,78 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         }
 
         static void DefaultExecutor(Action<TileRef> fetcher, TileRef tile) => fetcher(tile);
+
+        public async Task<TileSeedStats> RunAsync(IProgress<TileProgress> progress = null)
+        {
+            var failed = 0;
+            var rendered = 0;
+            var sw = new Stopwatch();
+            sw.Start();
+
+            Action<Action<TileRef>, TileRef> executor = _options.Executor ?? DefaultExecutor;
+            var maxThreads = _options.MaxDegreeOfParallelism;
+            var resId = _walker.ResourceID;
+            var tiles = _walker.GetTileList();
+            var total = tiles.Length;
+            var interval = 1000; //Every second
+
+            using (new Timer(_ => progress?.Report(new TileProgress(rendered, total, failed)), null, interval, interval))
+            {
+                Func<TileRef, Task> fetcher = async tile =>
+                {
+                    try
+                    {
+                        using (var tileStream = await _tileSvc.GetTileAsync(resId, tile.GroupName, tile.Col, tile.Row, tile.Scale))
+                        {
+                            _options.SaveTile?.Invoke(tile, tileStream);
+                            Interlocked.Increment(ref rendered);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _options.ErrorLogger?.Invoke(tile, ex);
+                        Interlocked.Increment(ref failed);
+                    }
+                };
+
+                var parallelism = Environment.ProcessorCount * 2;
+                if (maxThreads.HasValue)
+                {
+                    parallelism = maxThreads.Value;
+                }
+
+                var fetchTasks = new List<Task>(parallelism);
+                //For the async version, we will loop through all the tiles
+                //we need to fetch and load up an intermediate list of async tasks 
+                //(up to the specified parallelism limit) and then await the whole 
+                //lot once we hit that limit. Once we await that lot, we clear the
+                //intermediate list and fill it up with the next batch. Rinse
+                //and repeat until we've gone through all the tiles.
+                foreach (var tr in tiles)
+                {
+                    fetchTasks.Add(fetcher(tr));
+                    if (fetchTasks.Count == parallelism)
+                    {
+                        await Task.WhenAll(fetchTasks);
+                        fetchTasks.Clear();
+                    }
+                }
+
+                if (fetchTasks.Count > 0)
+                {
+                    await Task.WhenAll(fetchTasks);
+                    fetchTasks.Clear();
+                }
+            }
+
+            sw.Stop();
+            return new TileSeedStats
+            {
+                ResourceID = resId,
+                TilesRendered = rendered,
+                Duration = sw.Elapsed
+            };
+        }
 
         /// <summary>
         /// Populates the tile cache for the configured tiled map definition or tile set

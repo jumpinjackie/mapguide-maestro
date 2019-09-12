@@ -105,7 +105,7 @@ namespace Maestro.StaticMapPublisher.Common
                 };
 
                 var seeder = new TileSeeder(tileSvc, walker, seedOpts);
-                seeder.Run(this);
+                await seeder.RunAsync(this);
             }
 
             var imageElapsed = DateTime.UtcNow - _tileStart;
@@ -138,7 +138,7 @@ namespace Maestro.StaticMapPublisher.Common
 
                 };
                 var seeder = new TileSeeder(tileSvc, walker, seedOpts);
-                seeder.Run(this);
+                await seeder.RunAsync(this);
             }
 
             var utfElapsed = DateTime.UtcNow - _tileStart;
