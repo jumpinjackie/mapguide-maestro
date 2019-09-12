@@ -33,5 +33,7 @@ namespace Maestro.StaticMapPublisher
         public string XYZImageRelPath { get; set; }
 
         public string UTFGridRelPath { get; set; }
+
+        public double[] LatLngBounds { get; set; }
     }
 }

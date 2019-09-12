@@ -214,15 +214,15 @@ namespace Maestro.StaticMapPublisher
                             pubOpts.Validate(stdout);
 
                             var pub = new Maestro.StaticMapPublisher.Common.StaticMapPublisher(stdout);
-                            //var ret = await pub.PublishAsync(pubOpts);
-                            var ret = 0;
+                            var ret = await pub.PublishAsync(pubOpts);
 
                             // Generate index.html
                             var vm = new MapViewerModel
                             {
                                 Title = "Published Map",
                                 UTFGridRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.UTFGridTileSetDefinition),
-                                XYZImageRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.ImageTileSetDefinition)
+                                XYZImageRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.ImageTileSetDefinition),
+                                LatLngBounds = new [] { pubOpts.MinX, pubOpts.MinY, pubOpts.MaxX, pubOpts.MaxY }
                             };
                             string template = File.ReadAllText("viewer_content/viewer.cshtml");
                             var result =

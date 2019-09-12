@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@Model.Title</title>
     <link rel="stylesheet" href="assets/ol.css" />
     <style type="text/css">
@@ -44,8 +46,12 @@
         </div>
     </div>
     }
-    <script type="text/javascript" src="assets/ol.js"></script>
+    <script type="text/javascript" src="assets/ol.js" charset="utf-8"></script>
     <script type="text/javascript">
+
+        var mapBounds = [ @Model.LatLngBounds[0], @Model.LatLngBounds[1], @Model.LatLngBounds[2], @Model.LatLngBounds[3] ];
+        var viewBounds = ol.proj.transformExtent(mapBounds, 'EPSG:4326', 'EPSG:3857');
+
         @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
         {<text>
         var utfGridSource = new ol.source.UTFGrid({
@@ -56,9 +62,13 @@
                 ]
             }
         });
-        var utfGridLayer = new ol.layer.Tile({ source: utfGridSource });
+        var utfGridLayer = new ol.layer.Tile({
+            extent: viewBounds,
+            source: utfGridSource
+        });
         </text>
         }
+
         var mapElement = document.getElementById('map');
         var mapLayers = [];
         var baseGroup = new ol.layer.Group({
@@ -102,6 +112,7 @@
         mapLayers.push(new ol.layer.Tile({
             title: 'MapGuide XYZ',
             type: 'base',
+            extent: viewBounds,
             source: new ol.source.XYZ({
                 url: "@Model.XYZImageRelPath/{z}/{x}/{y}.png"
             })
@@ -134,10 +145,9 @@
             layers: mapLayers
         });
         var mapView = new ol.View({
-            projection: 'EPSG:3857',
-            center: [0, 0],
-            zoom: 2
+            projection: 'EPSG:3857'
         });
+        mapView.fit(viewBounds, { size: map.getSize() });
         map.setView(mapView);
 
         @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
@@ -200,6 +210,7 @@
         });
         </text>
         }
+
     </script>
 </body>
 
