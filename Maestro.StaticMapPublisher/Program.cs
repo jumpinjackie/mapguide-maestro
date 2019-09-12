@@ -92,6 +92,9 @@ namespace Maestro.StaticMapPublisher
         [Option("password")]
         public string Password { get; set; }
 
+        [Option("randomize-requests")]
+        public bool RandomizeRequests { get; set; }
+
         public IServerConnection Connection { get; private set; }
 
         public override void Validate(TextWriter stdout)

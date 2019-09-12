@@ -21,13 +21,10 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI.Tile;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Maestro.StaticMapPublisher.Common
@@ -108,6 +105,7 @@ namespace Maestro.StaticMapPublisher.Common
                 };
 
                 var seeder = new TileSeeder(tileSvc, walker, seedOpts);
+                seeder.RandomizeRequests = options.RandomizeRequests;
                 await seeder.RunAsync(this);
             }
 
@@ -140,6 +138,7 @@ namespace Maestro.StaticMapPublisher.Common
 
                 };
                 var seeder = new TileSeeder(tileSvc, walker, seedOpts);
+                seeder.RandomizeRequests = options.RandomizeRequests;
                 await seeder.RunAsync(this);
             }
 

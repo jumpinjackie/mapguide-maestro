@@ -111,6 +111,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         readonly ITileWalker _walker;
         readonly TileSeederOptions _options;
 
+        public bool RandomizeRequests { get; set; }
+
         /// <summary>
         /// Constructs a new instance
         /// </summary>
@@ -125,6 +127,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         }
 
         static void DefaultExecutor(Action<TileRef> fetcher, TileRef tile) => fetcher(tile);
+
+        static Random rng = new Random();
+
+        static void Shuffle<T>(IList<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
 
         public async Task<TileSeedStats> RunAsync(IProgress<TileProgress> progress = null)
         {
@@ -166,6 +183,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 }
 
                 var fetchTasks = new List<Task>(parallelism);
+                if (this.RandomizeRequests)
+                    Shuffle(tiles);
+
                 //For the async version, we will loop through all the tiles
                 //we need to fetch and load up an intermediate list of async tasks 
                 //(up to the specified parallelism limit) and then await the whole 
@@ -235,6 +255,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                         Interlocked.Increment(ref failed);
                     }
                 };
+
+                if (this.RandomizeRequests)
+                    Shuffle(tiles);
 
                 if (maxThreads.HasValue)
                 {

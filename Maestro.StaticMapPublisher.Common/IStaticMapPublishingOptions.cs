@@ -53,6 +53,8 @@ namespace Maestro.StaticMapPublisher.Common
         string Password { get; }
 
         IServerConnection Connection { get; }
+
+        bool RandomizeRequests { get; }
     }
 
     public enum ExternalBaseLayer
