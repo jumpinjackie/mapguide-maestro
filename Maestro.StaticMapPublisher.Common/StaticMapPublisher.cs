@@ -46,14 +46,18 @@ namespace Maestro.StaticMapPublisher.Common
             return $"{options.MapAgent}?USERNAME={options.Username}&PASSWORD={options.Password}&LOCALE=en&CLIENTAGENT=Maestro.StaticMapPublisher&OPERATION=GETTILEIMAGE&VERSION=1.2.0&MAPDEFINITION={getResource(options)}&BASEMAPLAYERGROUPNAME={getGroupName(options)}&SCALEINDEX={{z}}&TILEROW={{x}}&TILECOL={{y}}";
         }
 
+        public static string GetResourceRelPath(IStaticMapPublishingOptions options, Func<IStaticMapPublishingOptions, string> getResource)
+        {
+            return getResource(options)
+                ?.Replace(".TileSetDefinition", string.Empty)
+                ?.Replace("Library://", string.Empty)
+                ?.Replace(".", string.Empty)
+                ?.Replace("/", "_");
+        }
+
         static string GetImageTileSaveDirectory(IStaticMapPublishingOptions options, Func<IStaticMapPublishingOptions, string> getResource)
         {
-            return Path.Combine(options.OutputDirectory,
-                                getResource(options)
-                                    .Replace(".TileSetDefinition", string.Empty)
-                                    .Replace("Library://", string.Empty)
-                                    .Replace(".", string.Empty)
-                                    .Replace("/", "_"));
+            return Path.Combine(options.OutputDirectory, GetResourceRelPath(options, getResource));
         }
 
         private DateTime _tileStart;
@@ -90,7 +94,6 @@ namespace Maestro.StaticMapPublisher.Common
                             Directory.CreateDirectory(parentDir);
                         using (var fw = File.OpenWrite(tilePath))
                         {
-                            //stream.CopyTo(fw);
                             Utility.CopyStream(stream, fw);
                         }
                     };
@@ -118,13 +121,12 @@ namespace Maestro.StaticMapPublisher.Common
                 {
                     seedOpts.SaveTile = (tr, stream) =>
                     {
-                        var tilePath = Path.Combine(utfDir, tr.GroupName, $"{tr.Scale}" /* z */, $"{tr.Row}"  /* x */, $"{tr.Col}.utfgrid" /* y */);
+                        var tilePath = Path.Combine(utfDir, tr.GroupName, $"{tr.Scale}" /* z */, $"{tr.Row}"  /* x */, $"{tr.Col}.json" /* y */);
                         var parentDir = Path.GetDirectoryName(tilePath);
                         if (!Directory.Exists(parentDir))
                             Directory.CreateDirectory(parentDir);
                         using (var fw = File.OpenWrite(tilePath))
                         {
-                            //stream.CopyTo(fw);
                             Utility.CopyStream(stream, fw);
                         }
                     };

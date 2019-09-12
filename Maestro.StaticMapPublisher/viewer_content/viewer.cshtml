@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@Model.Title</title>
+    <link rel="stylesheet" href="assets/ol.css" />
+    <style type="text/css">
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body,
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
+        {<text>
+        #feature-info {
+            font-family: Verdana, sans-serif;
+            border-radius: 3px;
+            padding: 4px;
+            font-size: 0.8em;
+            background-color: white;
+        }
+        </text>
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map">
+
+    </div>
+    @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
+    {
+    <div style="display: none;">
+        <!-- Overlay with the feature info -->
+        <div id="feature-info">
+            <div id="feature-name">&nbsp;</div>
+        </div>
+    </div>
+    }
+    <script type="text/javascript" src="assets/ol.js"></script>
+    <script type="text/javascript">
+        @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
+        {<text>
+        var utfGridSource = new ol.source.UTFGrid({
+            tileJSON: {
+            scheme: "xyz",
+                grids: [
+                    "Samples_Sheboygan_TileSets_SheboyganUTFGrid/{z}/{x}/{y}.json"
+                ]
+            }
+        });
+        var utfGridLayer = new ol.layer.Tile({ source: utfGridSource });
+        </text>
+        }
+        var mapElement = document.getElementById('map');
+        var mapLayers = [];
+        var baseGroup = new ol.layer.Group({
+            title: "Base Maps",
+            layers: [
+                new ol.layer.Tile({
+                    title: 'Stamen Toner',
+                    type: 'base',
+                    visible: false,
+                    source: new ol.source.Stamen({
+                        layer: 'toner'
+                    })
+                }),
+                new ol.layer.Tile({
+                    title: 'Stamen Watercolor',
+                    type: 'base',
+                    visible: false,
+                    source: new ol.source.Stamen({
+                        layer: 'watercolor'
+                    })
+                }),
+                new ol.layer.Tile({
+                    title: 'Stamen Terrain',
+                    type: 'base',
+                    visible: false,
+                    source: new ol.source.Stamen({
+                        layer: 'terrain'
+                    })
+                }),
+                new ol.layer.Tile({
+                    title: 'OpenStreetMap',
+                    type: 'base',
+                    visible: true,
+                    source: new ol.source.OSM()
+                })
+            ]
+        });
+        mapLayers.push(baseGroup);
+        @if (!string.IsNullOrEmpty(Model.XYZImageRelPath))
+        {<text>
+        mapLayers.push(new ol.layer.Tile({
+            title: 'MapGuide XYZ',
+            type: 'base',
+            source: new ol.source.XYZ({
+                url: "@Model.XYZImageRelPath/{z}/{x}/{y}.png"
+            })
+        }));
+        </text>
+        }
+        @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
+        {<text>
+        mapLayers.push(utfGridLayer);
+        </text>
+        }
+
+        var map = new ol.Map({
+            target: mapElement,
+            controls: ol.control.defaults({
+                attributionOptions: {
+                    collapsible: true
+                }
+            }).extend([
+                new ol.control.ScaleLine(),
+                new ol.control.MousePosition({
+                    projection: 'EPSG:4326',
+                    coordinateFormat: function (coordinate) {
+                        return ol.coordinate.format(coordinate, 'Lat: {y}, Lng: {x}', 4);
+                    }
+                }),
+                new ol.control.ZoomSlider(),
+                new ol.control.ZoomToExtent()
+            ]),
+            layers: mapLayers
+        });
+        var mapView = new ol.View({
+            projection: 'EPSG:3857',
+            center: [0, 0],
+            zoom: 2
+        });
+        map.setView(mapView);
+
+        @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
+        {<text>
+        var infoElement = document.getElementById('feature-info');
+        var nameElement = document.getElementById('feature-name');
+
+        var infoOverlay = new ol.Overlay({
+            element: infoElement,
+            offset: [15, 15],
+            stopEvent: false
+        });
+        map.addOverlay(infoOverlay);
+
+        var displayFeatureInfo = function (coordinate) {
+            var viewResolution = /** @@type {number} */ (mapView.getResolution());
+            utfGridSource.forDataAtCoordinateAndResolution(coordinate, viewResolution,
+                function (data) {
+                    // If you want to use the template from the TileJSON,
+                    //  load the mustache.js library separately and call
+                    //
+                    mapElement.style.cursor = (data && data.MG_URL) ? 'pointer' : '';
+                    if (data) {
+                        /*
+                        var html = "<table>";
+                        for (var key in data) {
+                            html += "<tr><td>" + key + "</td><td>" + data[key] + "</td></tr>";
+                        }
+                        html += "</table>";
+                        */
+                        var html = "";
+                        if (data.MG_TOOLTIP)
+                            html += data.MG_TOOLTIP.replace(/(\\n)+/g, '<br />');
+                        if (data.MG_URL) {
+                            html += "<br/><br/>";
+                            html += "<strong>CTRL + Click for more information</strong>";
+                        }
+                        nameElement.innerHTML = html
+                    }
+                    infoOverlay.setPosition(data ? coordinate : undefined);
+                });
+        };
+        map.on('pointermove', function (evt) {
+            if (evt.dragging) {
+                return;
+            }
+            var coordinate = map.getEventCoordinate(evt.originalEvent);
+            displayFeatureInfo(coordinate);
+        });
+        map.on('click', function (evt) {
+            if (evt.originalEvent.ctrlKey == true) {
+                var viewResolution = /** @@type {number} */ (view.getResolution());
+                gridSource.forDataAtCoordinateAndResolution(evt.coordinate, viewResolution,
+                    function (data) {
+                        if (data && data.MG_URL) {
+                            window.open(data.MG_URL);
+                        }
+                    });
+            }
+        });
+        </text>
+        }
+    </script>
+</body>
+
+</html>

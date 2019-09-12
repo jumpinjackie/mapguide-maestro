@@ -30,6 +30,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using RazorEngine;
+using RazorEngine.Templating;
 
 namespace Maestro.StaticMapPublisher
 {
@@ -212,7 +214,39 @@ namespace Maestro.StaticMapPublisher
                             pubOpts.Validate(stdout);
 
                             var pub = new Maestro.StaticMapPublisher.Common.StaticMapPublisher(stdout);
-                            var ret = await pub.PublishAsync(pubOpts);
+                            //var ret = await pub.PublishAsync(pubOpts);
+                            var ret = 0;
+
+                            // Generate index.html
+                            var vm = new MapViewerModel
+                            {
+                                Title = "Published Map",
+                                UTFGridRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.UTFGridTileSetDefinition),
+                                XYZImageRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.ImageTileSetDefinition)
+                            };
+                            string template = File.ReadAllText("viewer_content/viewer.cshtml");
+                            var result =
+                                Engine.Razor.RunCompile(template, "templateKey", null, vm);
+
+                            var outputHtmlPath = Path.Combine(pubOpts.OutputDirectory, "index.html");
+                            File.WriteAllText(outputHtmlPath, result);
+                            stdout.WriteLine($"Written: {outputHtmlPath}");
+
+                            // Copy assets
+                            var assetsDir = Path.Combine(pubOpts.OutputDirectory, "assets");
+                            if (!Directory.Exists(assetsDir))
+                            {
+                                Directory.CreateDirectory(assetsDir);
+                            }
+                            var files = Directory.GetFiles("viewer_content/assets", "*");
+                            foreach (var f in files)
+                            {
+                                var fileName = Path.GetFileName(f);
+                                var targetFileName = Path.Combine(assetsDir, fileName);
+                                File.Copy(f, targetFileName, true);
+                                stdout.WriteLine($"Copied to assets: {targetFileName}");
+                            }
+
                             return ret;
                         }
                     default:
