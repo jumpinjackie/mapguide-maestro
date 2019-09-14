@@ -119,7 +119,7 @@ deploy:
     release: $(appveyor_repo_tag_name)
     description: 'Release $(appveyor_repo_tag_name) ($(appveyor_build_version))'
     auth_token:
-      secure: d+aY+YJPCp6KzWE2XcGKdp5XFXoh66H7le3SJiqxtAHDZ1P2+kw/PgIF5Unj3kxG
+      secure: Dw0UkS+M9jDa7xofORbKLKgTBWZsBTN56QA7xD7F0pCCdNqnLH3K5oFk3smWjRfX
   #  artifact: installer_windows,sdk
     artifact: installer_windows,portable_package,nuget_packages,seeder_windows,seeder_linux
     draft: true
