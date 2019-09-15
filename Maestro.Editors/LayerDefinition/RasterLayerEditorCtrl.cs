@@ -20,7 +20,9 @@
 
 #endregion Disclaimer / License
 
+using Maestro.Editors.WatermarkDefinition;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition
 {
@@ -54,6 +56,23 @@ namespace Maestro.Editors.LayerDefinition
             rasterLayerSettingsSectionCtrl.Bind(_edsvc);
             rasterLayerVisibilitySectionCtrl.Bind(_edsvc);
             rasterLayerAdvancedSectionCtrl.Bind(_edsvc);
+
+            //Add watermark component if supported
+            var sl2 = _rldf as ISubLayerDefinition2;
+            if (sl2 != null)
+            {
+                this.Controls.Remove(rasterLayerSettingsSectionCtrl);
+                this.Controls.Remove(rasterLayerVisibilitySectionCtrl);
+                this.Controls.Remove(rasterLayerAdvancedSectionCtrl);
+
+                var wm = new WatermarkCollectionEditorCtrl(service, sl2);
+                wm.Dock = DockStyle.Top;
+
+                this.Controls.Add(wm);
+                this.Controls.Add(rasterLayerAdvancedSectionCtrl);
+                this.Controls.Add(rasterLayerVisibilitySectionCtrl);
+                this.Controls.Add(rasterLayerSettingsSectionCtrl);
+            }
         }
     }
 }

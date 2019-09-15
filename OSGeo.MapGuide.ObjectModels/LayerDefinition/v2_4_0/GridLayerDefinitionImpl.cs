@@ -50,6 +50,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
     using System.Xml.Serialization;
 
     partial class GridLayerDefinitionType : IRasterLayerDefinition
+#if LDF_240
+, IRasterLayerDefinition2
+#endif
     {
         [XmlIgnore]
         public override LayerType LayerType

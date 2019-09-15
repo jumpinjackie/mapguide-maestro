@@ -19,7 +19,7 @@ namespace Maestro.AddIn.ExtendedObjectModels {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Strings {
@@ -264,6 +264,24 @@ namespace Maestro.AddIn.ExtendedObjectModels {
         internal static string TPL_MDF_300_NAME {
             get {
                 return ResourceManager.GetString("TPL_MDF_300_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new Raster Layer Definition using the v2.4.0 schema.
+        /// </summary>
+        internal static string TPL_RLDF_240_DESC {
+            get {
+                return ResourceManager.GetString("TPL_RLDF_240_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Raster Layer Definition (v2.4.0).
+        /// </summary>
+        internal static string TPL_RLDF_240_NAME {
+            get {
+                return ResourceManager.GetString("TPL_RLDF_240_NAME", resourceCulture);
             }
         }
         

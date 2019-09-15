@@ -649,6 +649,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         int GridScaleRangeCount { get; }
     }
 
+    public interface IRasterLayerDefinition2 : ISubLayerDefinition2
+    {
+
+    }
+
     //If only all layers were as simple as this one...
 
     /// <summary>

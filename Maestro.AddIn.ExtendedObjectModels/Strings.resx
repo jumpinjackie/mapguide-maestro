@@ -276,4 +276,10 @@
   <data name="SelectTileProvider" xml:space="preserve">
     <value>Select Tile Provider</value>
   </data>
+  <data name="TPL_RLDF_240_DESC" xml:space="preserve">
+    <value>Create a new Raster Layer Definition using the v2.4.0 schema</value>
+  </data>
+  <data name="TPL_RLDF_240_NAME" xml:space="preserve">
+    <value>Raster Layer Definition (v2.4.0)</value>
+  </data>
 </root>
