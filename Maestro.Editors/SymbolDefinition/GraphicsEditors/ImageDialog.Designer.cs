@@ -43,18 +43,18 @@
             this.btnBrowse = new System.Windows.Forms.Button();
             this.btnResData = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.symSizeX = new Maestro.Editors.SymbolDefinition.SymbolField();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.symPositionX = new Maestro.Editors.SymbolDefinition.SymbolField();
-            this.symPositionY = new Maestro.Editors.SymbolDefinition.SymbolField();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.symSizeY = new Maestro.Editors.SymbolDefinition.SymbolField();
             this.symAngle = new Maestro.Editors.SymbolDefinition.SymbolField();
             this.label7 = new System.Windows.Forms.Label();
             this.symSizeScalable = new Maestro.Editors.SymbolDefinition.SymbolField();
             this.label8 = new System.Windows.Forms.Label();
+            this.symPositionY = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.symSizeY = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.symPositionX = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.symSizeX = new Maestro.Editors.SymbolDefinition.SymbolField();
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -163,33 +163,39 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // symSizeX
+            // symAngle
             // 
-            resources.ApplyResources(this.symSizeX, "symSizeX");
-            this.symSizeX.Name = "symSizeX";
-            this.symSizeX.SupportedEnhancedDataTypes = null;
+            resources.ApplyResources(this.symAngle, "symAngle");
+            this.symAngle.Name = "symAngle";
+            this.symAngle.SupportedEnhancedDataTypes = null;
+            this.symAngle.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symAngle.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
-            // label3
+            // label7
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
             // 
-            // label4
+            // symSizeScalable
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
+            resources.ApplyResources(this.symSizeScalable, "symSizeScalable");
+            this.symSizeScalable.Name = "symSizeScalable";
+            this.symSizeScalable.SupportedEnhancedDataTypes = null;
+            this.symSizeScalable.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symSizeScalable.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
-            // symPositionX
+            // label8
             // 
-            resources.ApplyResources(this.symPositionX, "symPositionX");
-            this.symPositionX.Name = "symPositionX";
-            this.symPositionX.SupportedEnhancedDataTypes = null;
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
             // 
             // symPositionY
             // 
             resources.ApplyResources(this.symPositionY, "symPositionY");
             this.symPositionY.Name = "symPositionY";
             this.symPositionY.SupportedEnhancedDataTypes = null;
+            this.symPositionY.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symPositionY.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // label5
             // 
@@ -206,28 +212,34 @@
             resources.ApplyResources(this.symSizeY, "symSizeY");
             this.symSizeY.Name = "symSizeY";
             this.symSizeY.SupportedEnhancedDataTypes = null;
+            this.symSizeY.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symSizeY.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
-            // symAngle
+            // symPositionX
             // 
-            resources.ApplyResources(this.symAngle, "symAngle");
-            this.symAngle.Name = "symAngle";
-            this.symAngle.SupportedEnhancedDataTypes = null;
+            resources.ApplyResources(this.symPositionX, "symPositionX");
+            this.symPositionX.Name = "symPositionX";
+            this.symPositionX.SupportedEnhancedDataTypes = null;
+            this.symPositionX.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symPositionX.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
-            // label7
+            // label4
             // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
             // 
-            // symSizeScalable
+            // label3
             // 
-            resources.ApplyResources(this.symSizeScalable, "symSizeScalable");
-            this.symSizeScalable.Name = "symSizeScalable";
-            this.symSizeScalable.SupportedEnhancedDataTypes = null;
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
             // 
-            // label8
+            // symSizeX
             // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
+            resources.ApplyResources(this.symSizeX, "symSizeX");
+            this.symSizeX.Name = "symSizeX";
+            this.symSizeX.SupportedEnhancedDataTypes = null;
+            this.symSizeX.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symSizeX.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // ImageDialog
             // 

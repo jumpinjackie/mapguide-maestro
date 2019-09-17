@@ -457,7 +457,7 @@
     <value>symAngle</value>
   </data>
   <data name="&gt;&gt;symAngle.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symAngle.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -508,7 +508,7 @@
     <value>symSizeScalable</value>
   </data>
   <data name="&gt;&gt;symSizeScalable.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symSizeScalable.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -559,7 +559,7 @@
     <value>symPositionY</value>
   </data>
   <data name="&gt;&gt;symPositionY.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symPositionY.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -640,7 +640,7 @@
     <value>symSizeY</value>
   </data>
   <data name="&gt;&gt;symSizeY.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symSizeY.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -661,7 +661,7 @@
     <value>symPositionX</value>
   </data>
   <data name="&gt;&gt;symPositionX.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symPositionX.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -736,7 +736,7 @@
     <value>symSizeX</value>
   </data>
   <data name="&gt;&gt;symSizeX.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symSizeX.Parent" xml:space="preserve">
     <value>groupBox1</value>

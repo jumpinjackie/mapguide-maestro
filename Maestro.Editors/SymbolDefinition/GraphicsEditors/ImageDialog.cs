@@ -225,5 +225,9 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
                 txtResData.Text = $"'{result}'"; //To avoid Expression Engine invocation
             }
         }
+
+        private void OnContentChanged(object sender, EventArgs e) => _ed.RaiseResourceChanged();
+
+        private void OnRequestBrowse(SymbolField sender) => ParameterSelector.ShowParameterSelector(_ssd.ParameterDefinition.Parameter, sender);
     }
 }
