@@ -31,6 +31,8 @@ namespace Maestro.StaticMapPublisher.Common
         public abstract ExternalBaseLayerType Type { get; }
 
         public string Name { get; set; }
+
+        public bool Visible { get; set; }
     }
 
     public class OSMBaseLayer : ExternalBaseLayer

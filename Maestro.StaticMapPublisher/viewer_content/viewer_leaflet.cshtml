@@ -11,6 +11,7 @@
         body {
             padding: 0;
             margin: 0;
+            overflow: hidden;
         }
 
         html,
@@ -27,6 +28,9 @@
             padding: 4px;
             font-size: 0.8em;
             background-color: white;
+            will-change: left,right,top,bottom;
+            z-index: 500;
+            user-select: text;
         }
         </text>
         }
@@ -39,11 +43,9 @@
     </div>
     @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
     {
-        <div style="display: none;">
+        <div id="feature-info" style="display: none; position: absolute">
             <!-- Overlay with the feature info -->
-            <div id="feature-info">
-                <div id="feature-name">&nbsp;</div>
-            </div>
+            <div id="feature-name">&nbsp;</div>
         </div>
     }
     <script type="text/javascript" src="assets/leaflet-src.js" charset="utf-8"></script>
@@ -112,11 +114,50 @@
 
         @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
         {<text>
-        var mainUTFGrid = L.utfGrid("@Model.UTFGridRelPath/{z}/{x}/{y}.json");
+        var mainUTFGrid = L.utfGridCanvas("@Model.UTFGridRelPath/{z}/{x}/{y}.json", {
+            fillColor: 'rgba(0, 0, 0, 0.5)',
+            //shadowBlur: 2,
+            //shadowColor: 'black'
+            // debug: false  // if true, show tile borders and tile keys
+        });
+        var infoElement = document.getElementById('feature-info');
+        var nameElement = document.getElementById('feature-name');
+        mainUTFGrid.on('mouseover', function (e) {
+            console.log("utfgrid mouseover");
+            //console.log(e);
+            if (e.data) {
+                /*
+                var html = "<table>";
+                for (var key in data) {
+                    html += "<tr><td>" + key + "</td><td>" + data[key] + "</td></tr>";
+                }
+                html += "</table>";
+                */
+                var html = "";
+                if (e.data.MG_TOOLTIP)
+                    html += e.data.MG_TOOLTIP.replace(/(\\n)+/g, '<br />');
+                if (e.data.MG_URL) {
+                    html += "<br/><br/>";
+                    html += "<strong>CTRL + Click for more information</strong>";
+                }
+                nameElement.innerHTML = html
+                infoElement.style.display = null;
+                var cntPt = map.latLngToContainerPoint(e.latlng);
+                infoElement.style.left = cntPt.x + "px";
+                infoElement.style.top = cntPt.y + "px";
+            }
+            //infoOverlay.setPosition(data ? coordinate : undefined);
+        });
+        mainUTFGrid.on('mouseout', function (e) {
+            //console.log("utfgrid mouseout");
+            //console.log(e);
+            //info.update();
+            infoElement.style.display = "none";
+        });
         </text>
         }
 
-        var mainLayers = L.layerGroup([mainXYZImage, mainXYZImage]);
+        var mainLayers = L.layerGroup([mainXYZImage, mainUTFGrid]);
         var base = {};
         var overlays = {};
 

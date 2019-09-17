@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@Model.Title</title>
     <link rel="stylesheet" href="assets/ol.css" />
+    <link rel="stylesheet" href="assets/ol-ext.min.css" />
     <style type="text/css">
         html,
         body {
@@ -39,14 +40,15 @@
     </div>
     @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
     {
-    <div style="display: none;">
-        <!-- Overlay with the feature info -->
-        <div id="feature-info">
-            <div id="feature-name">&nbsp;</div>
+        <div style="display: none;">
+            <!-- Overlay with the feature info -->
+            <div id="feature-info">
+                <div id="feature-name">&nbsp;</div>
+            </div>
         </div>
-    </div>
     }
     <script type="text/javascript" src="assets/ol.js" charset="utf-8"></script>
+    <script type="text/javascript" src="assets/ol-ext.min.js" charset="utf-8"></script>
     <script type="text/javascript">
 
         var mapBounds = [ @Model.LatLngBounds[0], @Model.LatLngBounds[1], @Model.LatLngBounds[2], @Model.LatLngBounds[3] ];
@@ -63,54 +65,72 @@
             }
         });
         var utfGridLayer = new ol.layer.Tile({
+            title: "MapGuide XYZ UTFGrid",
             extent: viewBounds,
             source: utfGridSource
         });
         </text>
         }
 
+        var baseLayerList = [];
+        @if (Model.ExternalBaseLayers != null)
+        {
+            int counter = 0;
+            foreach (var extLayer in Model.ExternalBaseLayers)
+            {
+                switch (extLayer.Type)
+                {
+                    case Maestro.StaticMapPublisher.Common.ExternalBaseLayerType.OSM:
+                        <text>
+        var @(extLayer.Type)_@(counter) = new ol.source.OSM();
+        baseLayerList.push({ name: "@extLayer.Name", visible: @(counter == 0 ? "true" : "false"), source: @(extLayer.Type)_@(counter) });
+                        </text>
+                        break;
+                    case Maestro.StaticMapPublisher.Common.ExternalBaseLayerType.Stamen:
+                        <text>
+        var @(extLayer.Type)_@(counter) = new ol.source.Stamen({
+            layer: "@extLayer.LayerType.ToString().ToLower()"
+        });
+        baseLayerList.push({ name: "@extLayer.Name", visible: @(counter == 0 ? "true" : "false"), source: @(extLayer.Type)_@(counter) });
+                        </text>
+                        break;
+                    case Maestro.StaticMapPublisher.Common.ExternalBaseLayerType.XYZ:
+                        <text>
+        var @(extLayer.Type)_@(counter) = new ol.source.XYZ({
+            url: "@extLayer.UrlTemplate"
+        });
+        baseLayerList.push({ name: "@extLayer.Name", visible: @(counter == 0 ? "true" : "false"), source: @(extLayer.Type)_@(counter) });
+                        </text>
+                        break;
+                    case Maestro.StaticMapPublisher.Common.ExternalBaseLayerType.BingMaps:
+                        <text>
+        console.warn("Bing Maps not yet supported");
+                        </text>
+                        break;
+                }
+                counter++;
+            }
+        }
+
         var mapElement = document.getElementById('map');
         var mapLayers = [];
         var baseGroup = new ol.layer.Group({
             title: "Base Maps",
-            layers: [
-                new ol.layer.Tile({
-                    title: 'Stamen Toner',
-                    type: 'base',
-                    visible: false,
-                    source: new ol.source.Stamen({
-                        layer: 'toner'
-                    })
-                }),
-                new ol.layer.Tile({
-                    title: 'Stamen Watercolor',
-                    type: 'base',
-                    visible: false,
-                    source: new ol.source.Stamen({
-                        layer: 'watercolor'
-                    })
-                }),
-                new ol.layer.Tile({
-                    title: 'Stamen Terrain',
-                    type: 'base',
-                    visible: false,
-                    source: new ol.source.Stamen({
-                        layer: 'terrain'
-                    })
-                }),
-                new ol.layer.Tile({
-                    title: 'OpenStreetMap',
-                    type: 'base',
-                    visible: true,
-                    source: new ol.source.OSM()
-                })
-            ]
+            openInLayerSwitcher: true,
+            layers: baseLayerList.map(function (bl) {
+                return new ol.layer.Tile({
+                    title: bl.name,
+                    baseLayer: true,
+                    visible: bl.visible,
+                    source: bl.source
+                });
+            })
         });
         mapLayers.push(baseGroup);
         @if (!string.IsNullOrEmpty(Model.XYZImageRelPath))
         {<text>
         mapLayers.push(new ol.layer.Tile({
-            title: 'MapGuide XYZ',
+            title: 'MapGuide XYZ Image',
             type: 'base',
             extent: viewBounds,
             source: new ol.source.XYZ({
@@ -210,6 +230,9 @@
         });
         </text>
         }
+
+        var ctrl = new ol.control.LayerSwitcher();
+        map.addControl(ctrl);
 
     </script>
 </body>

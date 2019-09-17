@@ -11,6 +11,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="viewer_content\assets\extra\Cloud.js" />
+    <None Remove="viewer_content\assets\extra\Exif2Geojson.js" />
+    <None Remove="viewer_content\assets\extra\ExportMap.js" />
+    <None Remove="viewer_content\assets\extra\FontAwesomeDef.js" />
+    <None Remove="viewer_content\assets\extra\FontMaki2Def.js" />
+    <None Remove="viewer_content\assets\extra\FontMakiDef.js" />
+    <None Remove="viewer_content\assets\extra\TextureImage.js" />
+    <None Remove="viewer_content\assets\extra\WSynchro.js" />
     <None Remove="viewer_content\assets\images\layers-2x.png" />
     <None Remove="viewer_content\assets\images\layers.png" />
     <None Remove="viewer_content\assets\images\marker-icon-2x.png" />
@@ -26,6 +34,10 @@
     <None Remove="viewer_content\assets\leaflet.css" />
     <None Remove="viewer_content\assets\leaflet.js" />
     <None Remove="viewer_content\assets\leaflet.js.map" />
+    <None Remove="viewer_content\assets\ol-ext.css" />
+    <None Remove="viewer_content\assets\ol-ext.js" />
+    <None Remove="viewer_content\assets\ol-ext.min.css" />
+    <None Remove="viewer_content\assets\ol-ext.min.js" />
     <None Remove="viewer_content\assets\ol.css" />
     <None Remove="viewer_content\assets\ol.js" />
     <None Remove="viewer_content\assets\ol.js.map" />
@@ -34,6 +46,30 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="viewer_content\assets\extra\Cloud.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\extra\Exif2Geojson.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\extra\ExportMap.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\extra\FontAwesomeDef.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\extra\FontMaki2Def.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\extra\FontMakiDef.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\extra\TextureImage.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\extra\WSynchro.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="viewer_content\assets\images\layers-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -77,6 +113,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="viewer_content\assets\leaflet.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\ol-ext.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\ol-ext.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\ol-ext.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\ol-ext.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="viewer_content\assets\ol.css">
