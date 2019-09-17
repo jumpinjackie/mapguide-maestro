@@ -20,12 +20,17 @@
 
 #endregion Disclaimer / License
 
+using Maestro.StaticMapPublisher.Common.Serialization;
+using Newtonsoft.Json;
 
 namespace Maestro.StaticMapPublisher.Common
 {
-    public abstract class ExternalBaseLayer
+    [JsonConverter(typeof(ExternalBaseLayerConverter))]
+    public abstract class ExternalBaseLayer : INamedLayer
     {
         public abstract ExternalBaseLayerType Type { get; }
+
+        public string Name { get; set; }
     }
 
     public class OSMBaseLayer : ExternalBaseLayer
