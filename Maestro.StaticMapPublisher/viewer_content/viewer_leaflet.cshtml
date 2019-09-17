@@ -159,6 +159,34 @@
         </text>
         }
 
+        @if (Model.OverlayLayers != null)
+        {
+            int counter = 0;
+            foreach(var extLayer in Model.OverlayLayers)
+            {
+                switch (extLayer.Type)
+                {
+                    case Maestro.StaticMapPublisher.Common.OverlayLayerType.WMS:
+                        <text>
+        var @(extLayer.Type)_@(counter) = L.tileLayer.wms("@(((Maestro.StaticMapPublisher.Common.WMSOverlayLayer)extLayer).Service)", {
+            layers: "@(((Maestro.StaticMapPublisher.Common.WMSOverlayLayer)extLayer).Layer)",
+            format: "image/png",
+            transparent: true,
+            uppercase: true
+        });
+        overlayList.push({ name: "@(((Maestro.StaticMapPublisher.Common.WMSOverlayLayer)extLayer).Name)", visible: @(extLayer.InitiallyVisible ? "true" : "false"), layer: @(extLayer.Type)_@(counter) });
+                        </text>
+                        break;
+                    default:
+                        <text>
+        console.warn("Overlay layer type (@extLayer.Type) not yet supported");
+                        </text>
+                        break;
+                }
+                counter++;
+            }
+        }
+
         var mainLayers = L.layerGroup([mainXYZImage, mainUTFGrid]);
         var base = {};
         var overlays = {};
@@ -168,12 +196,12 @@
             base[bn.name] = bn.layer;
         }
 
+        overlays["Main Map"] = mainLayers;
+
         for (var i = 0; i < overlayList.length; i++) {
             var bn = overlayList[i];
             overlays[bn.name] = bn.layer;
         }
-
-        overlays["Main Map"] = mainLayers;
 
         var initLayers = [];
         if (baseLayerList.length > 0) {

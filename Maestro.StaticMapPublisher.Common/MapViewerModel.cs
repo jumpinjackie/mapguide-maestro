@@ -37,5 +37,7 @@ namespace Maestro.StaticMapPublisher.Common
         public double[] LatLngBounds { get; set; }
 
         public IEnumerable<ExternalBaseLayer> ExternalBaseLayers { get; set; }
+
+        public IEnumerable<OverlayLayer> OverlayLayers { get; set; }
     }
 }

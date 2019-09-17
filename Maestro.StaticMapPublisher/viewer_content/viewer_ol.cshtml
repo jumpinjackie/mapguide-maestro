@@ -158,6 +158,41 @@
         </text>
         }
 
+        var overlayList = [];
+        @if (Model.OverlayLayers != null)
+        {
+            int counter = 0;
+            foreach(var extLayer in Model.OverlayLayers)
+            {
+                switch (extLayer.Type)
+                {
+                    case Maestro.StaticMapPublisher.Common.OverlayLayerType.WMS:
+                        <text>
+        var @(extLayer.Type)_@(counter) = new ol.layer.Tile({
+            title: "@extLayer.Name",
+            visible: @(extLayer.InitiallyVisible ? "true" : "false"),
+            source: new ol.source.TileWMS({
+                url: "@(((Maestro.StaticMapPublisher.Common.WMSOverlayLayer)extLayer).Service)",
+                params: {
+                    "LAYERS": "@(((Maestro.StaticMapPublisher.Common.WMSOverlayLayer)extLayer).Layer)"
+                }
+            })
+        });
+        overlayList.push(@(extLayer.Type)_@(counter));
+                        </text>
+                        break;
+                    default:
+                        <text>
+        console.warn("Overlay layer type (@extLayer.Type) not yet supported");
+                        </text>
+                        break;
+                }
+                counter++;
+            }
+        }
+        for (var i = 0; i < overlayList.length; i++) {
+            mapLayers.push(overlayList[i]);
+        }
         var map = new ol.Map({
             target: mapElement,
             controls: ol.control.defaults({

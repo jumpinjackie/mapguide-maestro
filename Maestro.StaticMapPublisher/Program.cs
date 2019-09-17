@@ -94,7 +94,8 @@ namespace Maestro.StaticMapPublisher
                                 UTFGridRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.UTFGridTileSetDefinition),
                                 XYZImageRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.ImageTileSetDefinition),
                                 LatLngBounds = new [] { bounds.MinX, bounds.MinY, bounds.MaxX, bounds.MaxY },
-                                ExternalBaseLayers = pubOpts.ExternalBaseLayers
+                                ExternalBaseLayers = pubOpts.ExternalBaseLayers,
+                                OverlayLayers = pubOpts.OverlayLayers
                             };
 
                             string result;
