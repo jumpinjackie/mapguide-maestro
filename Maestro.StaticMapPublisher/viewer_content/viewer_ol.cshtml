@@ -12,6 +12,7 @@
         body {
             padding: 0;
             margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
         html,
@@ -20,6 +21,18 @@
             width: 100%;
             height: 100%;
         }
+
+        .ol-mouse-position {
+            position: absolute;
+            bottom: auto;
+            left: auto;
+            right: 5px;
+            top: 5px;
+            background-color: rgba(0, 60, 136, 0.5);
+            color: white;
+            font-size: 8pt;
+        }
+
         @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
         {<text>
         #feature-info {
