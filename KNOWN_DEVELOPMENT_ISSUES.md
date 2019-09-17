@@ -17,6 +17,14 @@ Exit Visual Studio and momentarily edit the following projects and remove the `n
  * `OSGeo.MapGuide.ObjectModels`
  * `OSGeo.MapGuide.MaestroAPI`
 
+Temporarily unload the following tools and projects:
+
+ * `MgTileSeeder`
+ * `Maestro.StaticMapPublisher`
+ * `Maestro.StaticMapPublisher.Common`
+
+Temporarily unload all test projects
+
 Rebuild and your Form, Control and UserControl items should now be able to open in the VS WinForms designer.
 
 Once you've made whatever changes in your Form/Control/UserControl, make sure to restore the above projects to their original settings.
