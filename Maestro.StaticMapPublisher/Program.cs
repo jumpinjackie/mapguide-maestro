@@ -22,173 +22,38 @@
 
 using CommandLine;
 using Maestro.StaticMapPublisher.Common;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 using RazorEngine;
 using RazorEngine.Templating;
+using System;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Maestro.StaticMapPublisher
 {
-    class BaseOptions
+    [Verb("publish")]
+    public class PublishOptions
     {
-        [Option("max-parallelism", HelpText = "The maximum degree of parallelism")]
-        public int? MaxDegreeOfParallelism { get; set; }
-
         [Option("wait", Default = false)]
         public bool Wait { get; set; }
 
-        public virtual void Validate(TextWriter stdout) { }
-    }
+        [Option("publish-profile-path", Required = true, HelpText = "The path of the publish profile")]
+        public string PublishProfilePath { get; set; }
 
-    class PublishOptions : BaseOptions, IStaticMapPublishingOptions
-    {
-        [Option("mapagent", HelpText = "The mapagent endpoint")]
-        public string MapAgent { get; set; }
+        public IStaticMapPublishingOptions PublishingOptions { get; set; }
 
-        [Option("output-directory", HelpText = "The path where published content will be output to. Tiles will be output relative to this directory")]
-        public string OutputDirectory { get; set; }
-
-        [Option("external-base-layers", HelpText = "Any external base layers to include (in addition to the primary tile sets)")]
-        public IEnumerable<ExternalBaseLayer> ExternalBaseLayers { get; set; }
-
-        [Option("viewer-library", Default = ViewerType.OpenLayers, HelpText = "The viewer library to use")]
-        public ViewerType Viewer { get; set; }
-
-        [Option("image-tileset", HelpText = "The image tile set definition id. This tile set must be one using the XYZ tile access scheme")]
-        public string ImageTileSetDefinition { get; set; }
-
-        [Option("image-tileset-group", HelpText = "The group within the specified image tile set definition to fetch tiles for. If not specified, the first group in the tile set is used")]
-        public string ImageTileSetGroup { get; set; }
-
-        [Option("utfgrid-tileset", HelpText = "The utfgird tile set definition id")]
-        public string UTFGridTileSetDefinition { get; set; }
-
-        [Option("utfgrid-tileset-group", HelpText = "The group within the specified utfgrid tile set definition to fetch tiles for. If not specified, the first group in the tile set is used")]
-        public string UTFGridTileSetGroup { get; set; }
-
-        public OSGeo.MapGuide.ObjectModels.Common.IEnvelope Bounds => ObjectFactory.CreateEnvelope(MinX, MinY, MaxX, MaxY);
-
-        [Option("minx", SetName = "bbox", Required = true)]
-        public double MinX { get; set; }
-
-        [Option("miny", SetName = "bbox", Required = true)]
-        public double MinY { get; set; }
-
-        [Option("maxx", SetName = "bbox", Required = true)]
-        public double MaxX { get; set; }
-
-        [Option("maxy", SetName = "bbox", Required = true)]
-        public double MaxY { get; set; }
-
-        [Option("username", Default = "Anonymous")]
-        public string Username { get; set; }
-
-        [Option("password")]
-        public string Password { get; set; }
-
-        [Option("randomize-requests")]
-        public bool RandomizeRequests { get; set; }
-
-        public IServerConnection Connection { get; private set; }
-
-        public override void Validate(TextWriter stdout)
+        public void Validate(TextWriter stdout)
         {
-            if (!Utility.InRange(this.MinX, -180, 180))
-                throw new Exception("minx not in range of [-180, 180]");
-            if (!Utility.InRange(this.MaxX, -180, 180))
-                throw new Exception("maxx not in range of [-180, 180]");
-            if (!Utility.InRange(this.MinY, -90, 90))
-                throw new Exception("miny not in range of [-90, 90]");
-            if (!Utility.InRange(this.MaxY, -90, 90))
-                throw new Exception("maxy not in range of [-90, 90]");
+            if (!File.Exists(this.PublishProfilePath))
+                throw new Exception("Specified publish profile not found");
 
-            if (this.MinX > this.MaxX)
-                throw new Exception("Invalid BBOX: minx > maxx");
-            if (this.MinY > this.MaxY)
-                throw new Exception("Invalid BBOX: miny > maxy");
+            stdout.WriteLine($"Loading publishing profile from: {this.PublishProfilePath}");
 
-            var builder = new System.Data.Common.DbConnectionStringBuilder();
-            builder["Url"] = this.MapAgent; //NOXLATE
-            builder["Username"] = this.Username; //NOXLATE
-            builder["Password"] = this.Password; //NOXLATE
-            builder["Locale"] = "en"; //NOXLATE
-            builder["AllowUntestedVersion"] = true; //NOXLATE
+            var content = File.ReadAllText(this.PublishProfilePath);
+            var pp = JsonConvert.DeserializeObject<PublishProfile>(content);
 
-            string agent = "MapGuide Maestro v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); //NOXLATE
-
-            var conn = ConnectionProviderRegistry.CreateConnection("Maestro.Http", builder.ToString()); //NOXLATE
-            conn.SetCustomProperty("UserAgent", agent); //NOXLATE
-
-            // Must be MapGuide Open Source 4.0
-            if (conn.SiteVersion < new Version(4, 0))
-            {
-                throw new Exception($"This tool requires capabilities present in MapGuide Open Source 4.0 and newer. Version {conn.SiteVersion} is not supported");
-            }
-
-            if (!string.IsNullOrEmpty(this.ImageTileSetDefinition))
-            {
-                var resId = new ResourceIdentifier(this.ImageTileSetDefinition);
-                if (resId.ResourceType != ResourceTypes.TileSetDefinition.ToString())
-                {
-                    throw new Exception("Image tile set definiiton is not a tile set definition resource id");
-                }
-
-                var tsd = conn.ResourceService.GetResource(this.ImageTileSetDefinition) as ITileSetDefinition;
-                if (tsd == null)
-                    throw new Exception("Not an image tile set definition resource");
-
-                if (tsd.TileStoreParameters.TileProvider != "XYZ")
-                {
-                    throw new Exception("Not a XYZ image tile set definition resource");
-                }
-
-                if (string.IsNullOrEmpty(this.ImageTileSetGroup))
-                {
-                    this.ImageTileSetGroup = tsd.BaseMapLayerGroups.First().Name;
-                    stdout.WriteLine($"Defaulting to layer group ({this.ImageTileSetGroup}) for image tileset");
-                }
-                else
-                {
-                    if (!tsd.GroupExists(this.ImageTileSetGroup))
-                        throw new Exception($"The specified group ({this.ImageTileSetGroup}) does not exist in the specified image tile set definition");
-                }
-            }
-            if (!string.IsNullOrEmpty(this.UTFGridTileSetDefinition))
-            {
-                var resId = new ResourceIdentifier(this.UTFGridTileSetDefinition);
-                if (resId.ResourceType != ResourceTypes.TileSetDefinition.ToString())
-                {
-                    throw new Exception("UTFGrid tile set definiiton is not a tile set definition resource id");
-                }
-
-                var tsd = conn.ResourceService.GetResource(this.UTFGridTileSetDefinition) as ITileSetDefinition;
-                if (tsd == null)
-                    throw new Exception("Not an UTFGrid tile set definition resource");
-
-                if (tsd.TileStoreParameters.TileProvider != "XYZ")
-                {
-                    throw new Exception("Not a XYZ UTFGrid tile set definition resource");
-                }
-
-                if (string.IsNullOrEmpty(this.UTFGridTileSetGroup))
-                {
-                    this.UTFGridTileSetGroup = tsd.BaseMapLayerGroups.First().Name;
-                    stdout.WriteLine($"Defaulting to layer group ({this.UTFGridTileSetGroup}) for utfgrid tileset");
-                }
-                else
-                {
-                    if (!tsd.GroupExists(this.UTFGridTileSetGroup))
-                        throw new Exception($"The specified group ({this.UTFGridTileSetGroup}) does not exist in the specified utfgrid tile set definition");
-                }
-            }
-
-            Connection = conn;
+            pp.Validate(stdout);
+            this.PublishingOptions = pp;
         }
     }
 
@@ -207,29 +72,30 @@ namespace Maestro.StaticMapPublisher
 
         static async Task<int> Run(object arg)
         {
+            var stdout = Console.Out;
             try
             {
                 switch (arg)
                 {
-                    case PublishOptions pubOpts:
+                    case PublishOptions po:
                         {
-                            var stdout = Console.Out;
-                            pubOpts.Validate(stdout);
+                            po.Validate(stdout);
 
+                            var pubOpts = po.PublishingOptions;
                             var pub = new Maestro.StaticMapPublisher.Common.StaticMapPublisher(stdout);
                             var ret = await pub.PublishAsync(pubOpts);
+                            var bounds = pubOpts.Bounds;
 
                             // Generate index.html
                             var vm = new MapViewerModel
                             {
-                                Title = "Published Map",
+                                Title = pubOpts.Title,
                                 UTFGridRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.UTFGridTileSetDefinition),
                                 XYZImageRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.ImageTileSetDefinition),
-                                LatLngBounds = new [] { pubOpts.MinX, pubOpts.MinY, pubOpts.MaxX, pubOpts.MaxY }
+                                LatLngBounds = new [] { bounds.MinX, bounds.MinY, bounds.MaxX, bounds.MaxY }
                             };
-                            string template = File.ReadAllText("viewer_content/viewer.cshtml");
-                            var result =
-                                Engine.Razor.RunCompile(template, "templateKey", null, vm);
+                            string template = File.ReadAllText("viewer_content/viewer_ol.cshtml");
+                            var result = Engine.Razor.RunCompile(template, "templateKey", null, vm);
 
                             var outputHtmlPath = Path.Combine(pubOpts.OutputDirectory, "index.html");
                             File.WriteAllText(outputHtmlPath, result);
@@ -250,6 +116,12 @@ namespace Maestro.StaticMapPublisher
                                 stdout.WriteLine($"Copied to assets: {targetFileName}");
                             }
 
+                            if (po.Wait)
+                            {
+                                stdout.WriteLine("Press any key to continue");
+                                Console.Read();
+                            }
+
                             return ret;
                         }
                     default:
@@ -258,6 +130,7 @@ namespace Maestro.StaticMapPublisher
             }
             catch (Exception ex)
             {
+                stdout.WriteLine($"ERROR: {ex}");
                 return 1;
             }
         }

@@ -30,21 +30,27 @@ namespace Maestro.StaticMapPublisher.Common
 {
     public interface IStaticMapPublishingOptions
     {
-        string MapAgent { get; set; }
+        string Title { get; }
 
-        string OutputDirectory { get; set; }
+        int? MaxDegreeOfParallelism { get; }
 
-        IEnumerable<ExternalBaseLayer> ExternalBaseLayers { get; set; }
+        string MapAgent { get; }
 
-        ViewerType Viewer { get; set; }
+        string OutputDirectory { get; }
 
-        string ImageTileSetDefinition { get; set; }
+        IEnumerable<ExternalBaseLayer> ExternalBaseLayers { get; }
 
-        string ImageTileSetGroup { get; set; }
+        IEnumerable<OverlayLayer> OverlayLayers { get; }
 
-        string UTFGridTileSetDefinition { get; set; }
+        ViewerType Viewer { get; }
 
-        string UTFGridTileSetGroup { get; set; }
+        string ImageTileSetDefinition { get; }
+
+        string ImageTileSetGroup { get; }
+
+        string UTFGridTileSetDefinition { get; }
+
+        string UTFGridTileSetGroup { get; }
 
         IEnvelope Bounds { get; }
 
@@ -57,11 +63,12 @@ namespace Maestro.StaticMapPublisher.Common
         bool RandomizeRequests { get; }
     }
 
-    public enum ExternalBaseLayer
+    public enum ExternalBaseLayerType
     {
         OSM,
         Stamen,
-        BingMaps
+        BingMaps,
+        XYZ
     }
 
     public enum ViewerType

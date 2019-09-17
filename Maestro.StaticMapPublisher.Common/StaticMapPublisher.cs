@@ -80,7 +80,10 @@ namespace Maestro.StaticMapPublisher.Common
             {
                 var tileSvc = new XYZTileService(BuildUrlTemplate(options, o => o.ImageTileSetDefinition, o => o.ImageTileSetGroup));
                 var walker = new XYZTileWalker(options.Bounds.MinX, options.Bounds.MinY, options.Bounds.MaxX, options.Bounds.MaxY);
-                var seedOpts = new TileSeederOptions();
+                var seedOpts = new TileSeederOptions
+                {
+                    MaxDegreeOfParallelism = options.MaxDegreeOfParallelism
+                };
                 if (Directory.Exists(imgDir))
                 {
                     seedOpts.SaveTile = (tr, stream) =>
@@ -115,7 +118,10 @@ namespace Maestro.StaticMapPublisher.Common
             {
                 var tileSvc = new XYZTileService(BuildUrlTemplate(options, o => o.UTFGridTileSetDefinition, o => o.UTFGridTileSetGroup));
                 var walker = new XYZTileWalker(options.Bounds.MinX, options.Bounds.MinY, options.Bounds.MaxX, options.Bounds.MaxY);
-                var seedOpts = new TileSeederOptions();
+                var seedOpts = new TileSeederOptions
+                {
+                    MaxDegreeOfParallelism = options.MaxDegreeOfParallelism
+                };
                 if (Directory.Exists(utfDir))
                 {
                     seedOpts.SaveTile = (tr, stream) =>
