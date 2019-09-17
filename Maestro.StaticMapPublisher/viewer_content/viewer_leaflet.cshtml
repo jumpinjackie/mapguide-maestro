@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@Model.Title</title>
+    <link rel="stylesheet" href="assets/leaflet.css" />
+    <style type="text/css">
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body,
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
+        {<text>
+        #feature-info {
+            font-family: Verdana, sans-serif;
+            border-radius: 3px;
+            padding: 4px;
+            font-size: 0.8em;
+            background-color: white;
+        }
+        </text>
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map">
+
+    </div>
+    @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
+    {
+        <div style="display: none;">
+            <!-- Overlay with the feature info -->
+            <div id="feature-info">
+                <div id="feature-name">&nbsp;</div>
+            </div>
+        </div>
+    }
+    <script type="text/javascript" src="assets/leaflet-src.js" charset="utf-8"></script>
+    @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
+    {
+        <script type="text/javascript" src="assets/L.UTFGrid-min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="assets/L.UTFGridCanvas.js" charset="utf-8"></script>
+    }
+    <script type="text/javascript">
+
+        var mapBounds = [
+            [@Model.LatLngBounds[1], @Model.LatLngBounds[0]],
+            [@Model.LatLngBounds[3], @Model.LatLngBounds[2]]
+        ];
+        var baseLayerList = [];
+        var overlayList = [];
+        @if (Model.ExternalBaseLayers != null)
+        {
+            int counter = 0;
+            foreach (var extLayer in Model.ExternalBaseLayers)
+            {
+                switch (extLayer.Type)
+                {
+                    case Maestro.StaticMapPublisher.Common.ExternalBaseLayerType.OSM:
+                        <text>
+        var @(extLayer.Type)_@(counter) = L.tileLayer( '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            subdomains: ['a','b','c']
+        });
+        baseLayerList.push({ name: "@extLayer.Name", layer: @(extLayer.Type)_@(counter) });
+                        </text>
+                        break;
+                    case Maestro.StaticMapPublisher.Common.ExternalBaseLayerType.Stamen:
+                        <text>
+        var @(extLayer.Type)_@(counter) = L.tileLayer( '//stamen-tiles-{s}.a.ssl.fastly.net/@(extLayer.LayerType.ToString().ToLower())/{z}/{x}/{y}.png', {
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
+            subdomains: ['a','b','c']
+        });
+        baseLayerList.push({ name: "@extLayer.Name", layer: @(extLayer.Type)_@(counter) });
+                        </text>
+                        break;
+                    case Maestro.StaticMapPublisher.Common.ExternalBaseLayerType.XYZ:
+                        <text>
+        var @(extLayer.Type)_@(counter) = L.tileLayer("@extLayer.UrlTemplate");
+        baseLayerList.push({ name: "@extLayer.Name", layer: @(extLayer.Type)_@(counter) });
+                        </text>
+                        break;
+                    case Maestro.StaticMapPublisher.Common.ExternalBaseLayerType.BingMaps:
+                        <text>
+        console.warn("Bing Maps not yet supported");
+                        </text>
+                        break;
+                }
+                counter++;
+            }
+        }
+
+        @if (!string.IsNullOrEmpty(Model.XYZImageRelPath))
+        {<text>
+        var mainXYZImage = L.tileLayer("@Model.XYZImageRelPath/{z}/{x}/{y}.png", {
+            attribution: 'Powered by MapGuide',
+            maxZoom: 19
+        });
+        </text>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
+        {<text>
+        var mainUTFGrid = L.utfGrid("@Model.UTFGridRelPath/{z}/{x}/{y}.json");
+        </text>
+        }
+
+        var mainLayers = L.layerGroup([mainXYZImage, mainXYZImage]);
+        var base = {};
+        var overlays = {};
+
+        for (var i = 0; i < baseLayerList.length; i++) {
+            var bn = baseLayerList[i];
+            base[bn.name] = bn.layer;
+        }
+
+        for (var i = 0; i < overlayList.length; i++) {
+            var bn = overlayList[i];
+            overlays[bn.name] = bn.layer;
+        }
+
+        overlays["Main Map"] = mainLayers;
+
+        var initLayers = [];
+        if (baseLayerList.length > 0) {
+            initLayers.push(baseLayerList[0].layer);
+        }
+        initLayers.push(mainLayers);
+        var map = L.map('map', {
+            layers: initLayers
+        }).fitBounds(mapBounds);
+        L.control.layers(base, overlays).addTo(map);
+
+    </script>
+</body>
+
+</html>

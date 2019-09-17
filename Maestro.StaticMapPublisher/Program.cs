@@ -83,7 +83,8 @@ namespace Maestro.StaticMapPublisher
 
                             var pubOpts = po.PublishingOptions;
                             var pub = new Maestro.StaticMapPublisher.Common.StaticMapPublisher(stdout);
-                            var ret = await pub.PublishAsync(pubOpts);
+                            //var ret = await pub.PublishAsync(pubOpts);
+                            var ret = 0;
                             var bounds = pubOpts.Bounds;
 
                             // Generate index.html
@@ -92,10 +93,28 @@ namespace Maestro.StaticMapPublisher
                                 Title = pubOpts.Title,
                                 UTFGridRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.UTFGridTileSetDefinition),
                                 XYZImageRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.ImageTileSetDefinition),
-                                LatLngBounds = new [] { bounds.MinX, bounds.MinY, bounds.MaxX, bounds.MaxY }
+                                LatLngBounds = new [] { bounds.MinX, bounds.MinY, bounds.MaxX, bounds.MaxY },
+                                ExternalBaseLayers = pubOpts.ExternalBaseLayers
                             };
-                            string template = File.ReadAllText("viewer_content/viewer_ol.cshtml");
-                            var result = Engine.Razor.RunCompile(template, "templateKey", null, vm);
+
+                            string result;
+                            switch (pubOpts.Viewer)
+                            {
+                                case ViewerType.OpenLayers:
+                                    {
+                                        string template = File.ReadAllText("viewer_content/viewer_ol.cshtml");
+                                        result = Engine.Razor.RunCompile(template, "templateKey", null, vm);
+                                    }
+                                    break;
+                                case ViewerType.Leaflet:
+                                    {
+                                        string template = File.ReadAllText("viewer_content/viewer_leaflet.cshtml");
+                                        result = Engine.Razor.RunCompile(template, "templateKey", null, vm);
+                                    }
+                                    break;
+                                default:
+                                    throw new ArgumentOutOfRangeException("Unknown or unsupported viewer type");
+                            }
 
                             var outputHtmlPath = Path.Combine(pubOpts.OutputDirectory, "index.html");
                             File.WriteAllText(outputHtmlPath, result);
@@ -107,11 +126,14 @@ namespace Maestro.StaticMapPublisher
                             {
                                 Directory.CreateDirectory(assetsDir);
                             }
-                            var files = Directory.GetFiles("viewer_content/assets", "*");
+                            var files = Directory.GetFiles("viewer_content/assets", "*", SearchOption.AllDirectories);
                             foreach (var f in files)
                             {
-                                var fileName = Path.GetFileName(f);
-                                var targetFileName = Path.Combine(assetsDir, fileName);
+                                var fileName = f.Substring("viewer_content/assets".Length).Trim('\\', '/'); //Path.GetFileName(f);
+                                var targetFileName = Path.GetFullPath(Path.Combine(assetsDir, fileName));
+                                var targetParentDir = Path.GetDirectoryName(targetFileName);
+                                if (!Directory.Exists(targetParentDir))
+                                    Directory.CreateDirectory(targetParentDir);
                                 File.Copy(f, targetFileName, true);
                                 stdout.WriteLine($"Copied to assets: {targetFileName}");
                             }

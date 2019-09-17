@@ -35,5 +35,7 @@ namespace Maestro.StaticMapPublisher.Common
         public string UTFGridRelPath { get; set; }
 
         public double[] LatLngBounds { get; set; }
+
+        public IEnumerable<ExternalBaseLayer> ExternalBaseLayers { get; set; }
     }
 }

@@ -11,13 +11,74 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="viewer_content\assets\images\layers-2x.png" />
+    <None Remove="viewer_content\assets\images\layers.png" />
+    <None Remove="viewer_content\assets\images\marker-icon-2x.png" />
+    <None Remove="viewer_content\assets\images\marker-icon.png" />
+    <None Remove="viewer_content\assets\images\marker-shadow.png" />
+    <None Remove="viewer_content\assets\L.UTFGrid-min.js" />
+    <None Remove="viewer_content\assets\L.UTFGrid.js" />
+    <None Remove="viewer_content\assets\L.UTFGridCanvas.js" />
+    <None Remove="viewer_content\assets\leaflet-src.esm.js" />
+    <None Remove="viewer_content\assets\leaflet-src.esm.js.map" />
+    <None Remove="viewer_content\assets\leaflet-src.js" />
+    <None Remove="viewer_content\assets\leaflet-src.js.map" />
+    <None Remove="viewer_content\assets\leaflet.css" />
+    <None Remove="viewer_content\assets\leaflet.js" />
+    <None Remove="viewer_content\assets\leaflet.js.map" />
     <None Remove="viewer_content\assets\ol.css" />
     <None Remove="viewer_content\assets\ol.js" />
     <None Remove="viewer_content\assets\ol.js.map" />
+    <None Remove="viewer_content\viewer_leaflet.cshtml" />
     <None Remove="viewer_content\viewer_ol.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="viewer_content\assets\images\layers-2x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\images\layers.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\images\marker-icon-2x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\images\marker-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\images\marker-shadow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\L.UTFGrid-min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\L.UTFGrid.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\L.UTFGridCanvas.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\leaflet-src.esm.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\leaflet-src.esm.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\leaflet-src.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\leaflet-src.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\leaflet.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\leaflet.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\leaflet.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="viewer_content\assets\ol.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -25,6 +86,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="viewer_content\assets\ol.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\viewer_leaflet.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="viewer_content\viewer_ol.cshtml">
