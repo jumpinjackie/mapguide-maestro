@@ -107,7 +107,8 @@
         {<text>
         var mainXYZImage = L.tileLayer("@Model.XYZImageRelPath/{z}/{x}/{y}.png", {
             attribution: 'Powered by MapGuide',
-            maxZoom: 19
+            maxZoom: 19,
+            bounds: mapBounds
         });
         </text>
         }
@@ -116,6 +117,7 @@
         {<text>
         var mainUTFGrid = L.utfGridCanvas("@Model.UTFGridRelPath/{z}/{x}/{y}.json", {
             fillColor: 'rgba(0, 0, 0, 0.5)',
+            bounds: mapBounds
             //shadowBlur: 2,
             //shadowColor: 'black'
             // debug: false  // if true, show tile borders and tile keys
@@ -123,7 +125,7 @@
         var infoElement = document.getElementById('feature-info');
         var nameElement = document.getElementById('feature-name');
         mainUTFGrid.on('mouseover', function (e) {
-            console.log("utfgrid mouseover");
+            //console.log("utfgrid mouseover");
             //console.log(e);
             if (e.data) {
                 /*
@@ -143,8 +145,8 @@
                 nameElement.innerHTML = html
                 infoElement.style.display = null;
                 var cntPt = map.latLngToContainerPoint(e.latlng);
-                infoElement.style.left = cntPt.x + "px";
-                infoElement.style.top = cntPt.y + "px";
+                infoElement.style.left = (cntPt.x + 15) + "px";
+                infoElement.style.top = (cntPt.y + 15) + "px";
             }
             //infoOverlay.setPosition(data ? coordinate : undefined);
         });

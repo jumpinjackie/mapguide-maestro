@@ -231,7 +231,10 @@
         </text>
         }
 
-        var ctrl = new ol.control.LayerSwitcher();
+        var ctrl = new ol.control.LayerSwitcher({
+            show_progress:true,
+            extent: true
+        });
         map.addControl(ctrl);
 
     </script>
