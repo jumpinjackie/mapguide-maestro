@@ -83,8 +83,8 @@ namespace Maestro.StaticMapPublisher
 
                             var pubOpts = po.PublishingOptions;
                             var pub = new Maestro.StaticMapPublisher.Common.StaticMapPublisher(stdout);
-                            //var ret = await pub.PublishAsync(pubOpts);
-                            var ret = 0;
+                            var ret = await pub.PublishAsync(pubOpts);
+                            
                             var bounds = pubOpts.Bounds;
 
                             // Generate index.html
