@@ -60,7 +60,7 @@ namespace Maestro.StaticMapPublisher.Common
 
         public string Service { get; set; }
 
-        public string Layer { get; set; }
+        public string FeatureName { get; set; }
     }
 
     public class GeoJSONExternalOverlayLayer : OverlayLayer

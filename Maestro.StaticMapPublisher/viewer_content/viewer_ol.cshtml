@@ -181,6 +181,26 @@
         overlayList.push(@(extLayer.Type)_@(counter));
                         </text>
                         break;
+                    case Maestro.StaticMapPublisher.Common.OverlayLayerType.WFS:
+                        <text>
+        var @(extLayer.Type)_@(counter) = new ol.layer.Vector({
+            title: "@extLayer.Name",
+            visible: @(extLayer.InitiallyVisible ? "true" : "false"),
+            source: new ol.source.Vector({
+                format: new ol.format.GeoJSON(),
+                url: function (extent) {
+                    return "@(((Maestro.StaticMapPublisher.Common.WFSOverlayLayer)extLayer).Service)?" +
+                        'version=1.1.0&request=GetFeature&typename=' +
+                        "@(((Maestro.StaticMapPublisher.Common.WFSOverlayLayer)extLayer).FeatureName)" +
+                        '&outputFormat=application/json&srsname=EPSG:3857&' +
+                        'bbox=' + extent.join(',') + ',EPSG:3857';
+                },
+                strategy: ol.loadingstrategy.bbox,
+            })
+        });
+        overlayList.push(@(extLayer.Type)_@(counter));
+                        </text>
+                        break;
                     default:
                         <text>
         console.warn("Overlay layer type (@extLayer.Type) not yet supported");
