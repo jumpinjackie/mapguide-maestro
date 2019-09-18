@@ -42,8 +42,8 @@ namespace Maestro.StaticMapPublisher.Common
         {
             switch (layer.Source.Origin)
             {
-                case GeoJSONFromMapGuideOrigin.FeatureSource:
-                    return DownloadFromFeatureSourceAsync(layerNumber, layer.Name, (GeoJSONFromFeatureSource)layer.Source);
+                //case GeoJSONFromMapGuideOrigin.FeatureSource:
+                //    return DownloadFromFeatureSourceAsync(layerNumber, layer.Name, (GeoJSONFromFeatureSource)layer.Source);
                 case GeoJSONFromMapGuideOrigin.LayerDefinition:
                     return DownloadFromLayerDefinitionAsync(layerNumber, layer.Name, (GeoJSONFromLayerDefinition)layer.Source);
             }
@@ -112,7 +112,11 @@ namespace Maestro.StaticMapPublisher.Common
         {
             var grcUrl = GetResourceContentUrl(source.LayerDefinition);
             var resp = await httpClient.GetAsync(grcUrl);
-            resp.EnsureSuccessStatusCode();
+            if (!resp.IsSuccessStatusCode)
+            {
+                var respContent = await resp.Content.ReadAsStringAsync();
+                resp.EnsureSuccessStatusCode();
+            }
             var grcStream = await resp.Content.ReadAsStreamAsync();
 
             var ldf = ObjectFactory.Deserialize(nameof(ResourceTypes.LayerDefinition), grcStream) as ILayerDefinition;
@@ -128,13 +132,18 @@ namespace Maestro.StaticMapPublisher.Common
 
             var url = BuildSelectFeaturesUrl(vl.ResourceId, vl.FeatureName, vl.Filter);
             resp = await httpClient.GetAsync(url);
-            resp.EnsureSuccessStatusCode();
+            if (!resp.IsSuccessStatusCode)
+            {
+                var respContent = await resp.Content.ReadAsStringAsync();
+                resp.EnsureSuccessStatusCode();
+            }
+
             using (var stream = await resp.Content.ReadAsStreamAsync())
             {
                 return await DownloadFeatureDataAsync(layerNumber, name, stream);
             }
         }
-
+        /*
         private async Task<DownloadedFeaturesRef> DownloadFromFeatureSourceAsync(int layerNumber, string name, GeoJSONFromFeatureSource source)
         {
             var url = BuildSelectFeaturesUrl(source.FeatureSource, source.ClassName, source.Filter);
@@ -145,5 +154,6 @@ namespace Maestro.StaticMapPublisher.Common
                 return await DownloadFeatureDataAsync(layerNumber, name, stream);
             }
         }
+        */
     }
 }

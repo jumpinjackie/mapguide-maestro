@@ -72,7 +72,7 @@ namespace Maestro.StaticMapPublisher.Common
 
     public enum GeoJSONFromMapGuideOrigin
     {
-        FeatureSource,
+        //FeatureSource,
         LayerDefinition
     }
 
@@ -88,7 +88,7 @@ namespace Maestro.StaticMapPublisher.Common
 
         public string LayerDefinition { get; set; }
     }
-
+    /*
     public class GeoJSONFromFeatureSource : GeoJSONFromMapGuide
     {
         public override GeoJSONFromMapGuideOrigin Origin => GeoJSONFromMapGuideOrigin.FeatureSource;
@@ -99,7 +99,7 @@ namespace Maestro.StaticMapPublisher.Common
 
         public string Filter { get; set; }
     }
-
+    */
     public class GeoJSONFromMapGuideOverlayLayer : OverlayLayer
     {
         public override OverlayLayerType Type => OverlayLayerType.GeoJSON_FromMapGuide;

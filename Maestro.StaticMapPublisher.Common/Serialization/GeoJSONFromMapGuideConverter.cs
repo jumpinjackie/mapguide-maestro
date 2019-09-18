@@ -33,8 +33,8 @@ namespace Maestro.StaticMapPublisher.Common.Serialization
         {
             switch (discriminator)
             {
-                case nameof(GeoJSONFromMapGuideOrigin.FeatureSource):
-                    return JsonConvert.DeserializeObject<GeoJSONFromFeatureSource>(json, SpecifiedSubclassConversion);
+                //case nameof(GeoJSONFromMapGuideOrigin.FeatureSource):
+                    //return JsonConvert.DeserializeObject<GeoJSONFromFeatureSource>(json, SpecifiedSubclassConversion);
                 case nameof(GeoJSONFromMapGuideOrigin.LayerDefinition):
                     return JsonConvert.DeserializeObject<GeoJSONFromLayerDefinition>(json, SpecifiedSubclassConversion);
                 default:
