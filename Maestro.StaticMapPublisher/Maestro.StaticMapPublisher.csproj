@@ -38,6 +38,7 @@
     <None Remove="viewer_content\assets\ol-ext.js" />
     <None Remove="viewer_content\assets\ol-ext.min.css" />
     <None Remove="viewer_content\assets\ol-ext.min.js" />
+    <None Remove="viewer_content\assets\ol-style-support.js" />
     <None Remove="viewer_content\assets\ol.css" />
     <None Remove="viewer_content\assets\ol.js" />
     <None Remove="viewer_content\assets\ol.js.map" />
@@ -125,6 +126,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="viewer_content\assets\ol-ext.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\ol-style-support.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="viewer_content\assets\ol.css">

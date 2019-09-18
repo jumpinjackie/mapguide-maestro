@@ -62,7 +62,7 @@
     }
     <script type="text/javascript" src="assets/ol.js" charset="utf-8"></script>
     <script type="text/javascript" src="assets/ol-ext.min.js" charset="utf-8"></script>
-
+    <script type="text/javascript" src="assets/ol-style-support.js" charset="utf-8"></script>
     @if (Model.OverlayLayers != null)
     {
         foreach (var extLayer in Model.OverlayLayers)
@@ -183,6 +183,7 @@
         var @(extLayer.Type)_@(counter) = new ol.layer.Vector({
             title: "@extLayer.Name",
             visible: @(extLayer.InitiallyVisible ? "true" : "false"),
+            style: @(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_style,
             source: new ol.source.Vector({
                 features: (new ol.format.GeoJSON({
                     dataProjection: "EPSG:4326",

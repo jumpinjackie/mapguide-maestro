@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OSGeo.FDO.Expressions\OSGeo.FDO.Expressions.csproj" />
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj" />
   </ItemGroup>
 
