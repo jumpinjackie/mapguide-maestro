@@ -22,6 +22,7 @@
 
 using OSGeo.FDO.Expressions;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,11 +31,11 @@ using System.Threading.Tasks;
 
 namespace Maestro.StaticMapPublisher.Common
 {
-    public class OLStyleTranslator : StyleTranslatorBase
+    public class LeafletStyleTranslator : StyleTranslatorBase
     {
         readonly string _featureVarName;
 
-        public OLStyleTranslator(string featureVarName)
+        public LeafletStyleTranslator(string featureVarName)
         {
             _featureVarName = featureVarName;
         }
@@ -51,8 +52,6 @@ namespace Maestro.StaticMapPublisher.Common
             var sb = new StringBuilder(512);
             var defaultRuleBlock = "";
             var themes = new List<(string conditon, string filter, string block)>();
-
-            await sw.WriteLineAsync(INDENT + "var pointStyle = OLPointCircle;");
 
             foreach (var rule in pointStyle.Rules)
             {
@@ -114,10 +113,10 @@ namespace Maestro.StaticMapPublisher.Common
 
             await sw.WriteLineAsync(INDENT + "var style = {");
             await sw.WriteLineAsync(INDENT + INDENT + "radius: pointRadius,");
-            await sw.WriteLineAsync(INDENT + INDENT + $"fill: new ol.style.Fill({{ color: fillColor }}),");
-            await sw.WriteLineAsync(INDENT + INDENT + $"stroke: new ol.style.Stroke({{ color: edgeColor, width: edgeThickness }})");
+            await sw.WriteLineAsync(INDENT + INDENT + $"fillColor: fillColor,");
+            await sw.WriteLineAsync(INDENT + INDENT + $"color: edgeColor, weight: edgeThickness");
             await sw.WriteLineAsync(INDENT + "}");
-            await sw.WriteLineAsync(INDENT + "return new ol.style.Style({ image: pointStyle(style) });");
+            await sw.WriteLineAsync(INDENT + "return style;");
         }
 
         public async Task WriteLineStyleFunctionAsync(StreamWriter sw, IVectorLayerDefinition vl, ILineVectorStyle lineStyle)
@@ -188,9 +187,9 @@ namespace Maestro.StaticMapPublisher.Common
             }
 
             await sw.WriteLineAsync(INDENT + "var style = {");
-            await sw.WriteLineAsync(INDENT + INDENT + $"stroke: new ol.style.Stroke({{ color: edgeColor, width: edgeThickness }})");
+            await sw.WriteLineAsync(INDENT + INDENT + $"color: edgeColor, weight: edgeThickness");
             await sw.WriteLineAsync(INDENT + "}");
-            await sw.WriteLineAsync(INDENT + "return new ol.style.Style(style);");
+            await sw.WriteLineAsync(INDENT + "return style;");
         }
 
         public async Task WritePolygonStyleFunctionAsync(StreamWriter sw, IVectorLayerDefinition vl, IAreaVectorStyle areaStyle)
@@ -262,10 +261,11 @@ namespace Maestro.StaticMapPublisher.Common
             }
 
             await sw.WriteLineAsync(INDENT + "var style = {");
-            await sw.WriteLineAsync(INDENT + INDENT + $"fill: new ol.style.Fill({{ color: fillColor }}),");
-            await sw.WriteLineAsync(INDENT + INDENT + $"stroke: new ol.style.Stroke({{ color: edgeColor, width: edgeThickness }})");
+            await sw.WriteLineAsync(INDENT + INDENT + $"opacity: 1, fillOpacity: 1,");
+            await sw.WriteLineAsync(INDENT + INDENT + $"fillColor: fillColor,");
+            await sw.WriteLineAsync(INDENT + INDENT + $"color: edgeColor, weight: Math.max(edgeThickness, 1)");
             await sw.WriteLineAsync(INDENT + "}");
-            await sw.WriteLineAsync(INDENT + "return new ol.style.Style(style);");
+            await sw.WriteLineAsync(INDENT + "return style;");
         }
 
         private static void BuildPointRuleAssignment(StringBuilder sb, IMarkSymbol sym)
@@ -280,28 +280,6 @@ namespace Maestro.StaticMapPublisher.Common
                 sb.Append(INDENT + INDENT).AppendLine($"edgeColor = '#{ToHtmlColor(sym.Edge.Color)}';");
                 sb.Append(INDENT + INDENT).AppendLine($"edgeThickness = '{sym.Edge.Thickness}';");
             }
-            switch (sym.Shape)
-            {
-                case ShapeType.Circle:
-                    sb.Append(INDENT + INDENT).AppendLine($"pointStyle = OLPointCircle");
-                    break;
-                case ShapeType.Cross:
-                    sb.Append(INDENT + INDENT).AppendLine($"pointStyle = OLPointCross");
-                    break;
-                case ShapeType.Square:
-                    sb.Append(INDENT + INDENT).AppendLine($"pointStyle = OLPointSquare");
-                    break;
-                case ShapeType.Star:
-                    sb.Append(INDENT + INDENT).AppendLine($"pointStyle = OLPointStar");
-                    break;
-                case ShapeType.Triangle:
-                    sb.Append(INDENT + INDENT).AppendLine($"pointStyle = OLPointTriangle");
-                    break;
-                case ShapeType.X:
-                    sb.Append(INDENT + INDENT).AppendLine($"pointStyle = OLPointX");
-                    break;
-            }
-            
         }
 
         private static void BuildLineRuleAssignment(StringBuilder sb, ILineRule rule)
@@ -328,6 +306,6 @@ namespace Maestro.StaticMapPublisher.Common
         }
 
         protected override string TryTranslateIdentifier(FdoIdentifier ident, string featureVar)
-            => $"({featureVar}.get('{ident.Name}'))";
+            => $"({featureVar}.properties.{ident.Name})";
     }
 }

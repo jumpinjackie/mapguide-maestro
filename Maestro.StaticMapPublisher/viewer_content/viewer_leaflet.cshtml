@@ -191,7 +191,7 @@
                     case Maestro.StaticMapPublisher.Common.OverlayLayerType.GeoJSON_FromMapGuide:
                         <text>
         var @(extLayer.Type)_@(counter) = L.geoJSON(@(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar), {
-            style: defaultStyle
+            style: @(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_style || defaultStyle
         });
         overlayList.push({ name: "@(extLayer.Name)", visible: @(extLayer.InitiallyVisible ? "true" : "false"), layer: @(extLayer.Type)_@(counter) });
                         </text>

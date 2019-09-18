@@ -164,15 +164,33 @@ namespace Maestro.StaticMapPublisher.Common
                 await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_style = function ({olx.FeatureVariableName}, resolution) {{");
                 if (vsr.AreaStyle != null)
                 {
-                    await olx.WriteOLPolygonStyleFunctionAsync(sw, vl, vsr.AreaStyle);
+                    await olx.WritePolygonStyleFunctionAsync(sw, vl, vsr.AreaStyle);
                 }
                 else if (vsr.LineStyle != null)
                 {
-                    await olx.WriteOLLineStyleFunctionAsync(sw, vl, vsr.LineStyle);
+                    await olx.WriteLineStyleFunctionAsync(sw, vl, vsr.LineStyle);
                 }
                 else if (vsr.PointStyle != null)
                 {
-                    await olx.WriteOLPointStyleFunctionAsync(sw, vl, vsr.PointStyle);
+                    await olx.WritePointStyleFunctionAsync(sw, vl, vsr.PointStyle);
+                }
+                await sw.WriteLineAsync("}");
+            }  
+            else if (_options.Viewer == ViewerType.Leaflet)
+            {
+                var lst = new LeafletStyleTranslator("feature");
+                await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_style = function ({lst.FeatureVariableName}) {{");
+                if (vsr.AreaStyle != null)
+                {
+                    await lst.WritePolygonStyleFunctionAsync(sw, vl, vsr.AreaStyle);
+                }
+                else if (vsr.LineStyle != null)
+                {
+                    await lst.WriteLineStyleFunctionAsync(sw, vl, vsr.LineStyle);
+                }
+                else if (vsr.PointStyle != null)
+                {
+                    await lst.WritePointStyleFunctionAsync(sw, vl, vsr.PointStyle);
                 }
                 await sw.WriteLineAsync("}");
             }
