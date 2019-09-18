@@ -91,7 +91,8 @@
         var utfGridLayer = new ol.layer.Tile({
             title: "MapGuide XYZ UTFGrid",
             extent: viewBounds,
-            source: utfGridSource
+            source: utfGridSource,
+            displayInLayerSwitcher: false //There's no point providing toggle-ability for this layer
         });
         </text>
         }
