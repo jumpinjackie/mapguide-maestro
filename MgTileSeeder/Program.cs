@@ -32,6 +32,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MgTileSeeder
 {
@@ -197,11 +198,14 @@ namespace MgTileSeeder
 
     class Program
     {
-        static void Main(string[] args)
+        static async Task<int> Main(string[] args)
         {
-            Parser.Default
+            var result = Parser.Default
                   .ParseArguments<MgTileSeederOptions, XYZSeederOptions, MgReplayOptions, XYZReplayOptions>(args)
-                  .MapResult(opts => Run(opts), _ => 1);
+                  .MapResult(opts => RunAsync(opts), _ => Task.FromResult(1));
+
+            var retCode = await result;
+            return retCode;
         }
 
         class ConsoleProgress : IProgress<TileProgress>
@@ -228,7 +232,7 @@ namespace MgTileSeeder
             }
         }
 
-        static int Run(object arg)
+        static async Task<int> RunAsync(object arg)
         {
             try
             {
@@ -238,7 +242,7 @@ namespace MgTileSeeder
                         {
                             if (!string.IsNullOrEmpty(mgReplay.FailedRequestsFile))
                                 _output = new StreamWriter(mgReplay.FailedRequestsFile);
-                            int ret = ReplayMapGuide(mgReplay);
+                            int ret = await ReplayMapGuideAsync(mgReplay);
                             Environment.ExitCode = ret;
                             return ret;
                         }
@@ -246,7 +250,7 @@ namespace MgTileSeeder
                         {
                             if (!string.IsNullOrEmpty(mgOpts.FailedRequestsFile))
                                 _output = new StreamWriter(mgOpts.FailedRequestsFile);
-                            int ret = RunMapGuide(mgOpts);
+                            int ret = await RunMapGuideAsync(mgOpts);
                             Environment.ExitCode = ret;
                             return ret;
                         }
@@ -254,7 +258,7 @@ namespace MgTileSeeder
                         {
                             if (!string.IsNullOrEmpty(xyzReplay.FailedRequestsFile))
                                 _output = new StreamWriter(xyzReplay.FailedRequestsFile);
-                            int ret = ReplayXYZ(xyzReplay);
+                            int ret = await ReplayXYZAsync(xyzReplay);
                             Environment.ExitCode = ret;
                             return ret;
                         }
@@ -262,7 +266,7 @@ namespace MgTileSeeder
                         {
                             if (!string.IsNullOrEmpty(xyzOpts.FailedRequestsFile))
                                 _output = new StreamWriter(xyzOpts.FailedRequestsFile);
-                            int ret = RunXYZ(xyzOpts);
+                            int ret = await RunXYZAsync(xyzOpts);
                             Environment.ExitCode = ret;
                             return ret;
                         }
@@ -277,7 +281,7 @@ namespace MgTileSeeder
             }
         }
 
-        static int ReplayXYZ(XYZReplayOptions options)
+        static async Task<int> ReplayXYZAsync(XYZReplayOptions options)
         {
             int ret = 0;
             try
@@ -293,7 +297,7 @@ namespace MgTileSeeder
                 var seeder = new TileSeeder(xyz, walker, seederOptions);
 
                 var progress = new ConsoleProgress();
-                var stats = seeder.Run(progress);
+                var stats = await seeder.RunAsync(progress);
 
                 Console.WriteLine($"Rendered {stats.TilesRendered} tiles in {stats.Duration}");
             }
@@ -313,7 +317,7 @@ namespace MgTileSeeder
             return ret;
         }
 
-        static int RunXYZ(XYZSeederOptions options)
+        static async Task<int> RunXYZAsync(XYZSeederOptions options)
         {
             int ret = 0;
             try
@@ -329,7 +333,7 @@ namespace MgTileSeeder
                 var seeder = new TileSeeder(xyz, walker, seederOptions);
 
                 var progress = new ConsoleProgress();
-                var stats = seeder.Run(progress);
+                var stats = await seeder.RunAsync(progress);
 
                 Console.WriteLine($"Rendered {stats.TilesRendered} tiles in {stats.Duration}");
             }
@@ -349,7 +353,7 @@ namespace MgTileSeeder
             return ret;
         }
 
-        static int ReplayMapGuide(MgReplayOptions options)
+        static async Task<int> ReplayMapGuideAsync(MgReplayOptions options)
         {
             int ret = 0;
             try
@@ -372,7 +376,7 @@ namespace MgTileSeeder
                 var seeder = new TileSeeder(tileSvc, walker, seederOptions);
 
                 var progress = new ConsoleProgress();
-                var stats = seeder.Run(progress);
+                var stats = await seeder.RunAsync(progress);
 
                 Console.WriteLine($"Rendered {stats.TilesRendered} tiles in {stats.Duration}");
             }
@@ -392,7 +396,7 @@ namespace MgTileSeeder
             return ret;
         }
 
-        static int RunMapGuide(MgTileSeederOptions options)
+        static async Task<int> RunMapGuideAsync(MgTileSeederOptions options)
         {
             int ret = 0;
             try
@@ -489,7 +493,7 @@ namespace MgTileSeeder
                 var seeder = new TileSeeder(tileSvc, walker, seederOptions);
 
                 var progress = new ConsoleProgress();
-                var stats = seeder.Run(progress);
+                var stats = await seeder.RunAsync(progress);
 
                 Console.WriteLine($"Rendered {stats.TilesRendered} tiles in {stats.Duration}");
             }
