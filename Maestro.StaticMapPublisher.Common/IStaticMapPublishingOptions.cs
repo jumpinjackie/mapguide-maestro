@@ -61,6 +61,8 @@ namespace Maestro.StaticMapPublisher.Common
         IServerConnection Connection { get; }
 
         bool RandomizeRequests { get; }
+
+        bool SkipTileDownloading { get; }
     }
 
     public enum ExternalBaseLayerType

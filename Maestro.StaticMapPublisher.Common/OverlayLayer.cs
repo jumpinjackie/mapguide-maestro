@@ -105,5 +105,11 @@ namespace Maestro.StaticMapPublisher.Common
         public override OverlayLayerType Type => OverlayLayerType.GeoJSON_FromMapGuide;
 
         public GeoJSONFromMapGuide Source { get; set; }
+
+        /// <summary>
+        /// Will be set by the publisher before outputting the HTML template
+        /// </summary>
+        [JsonIgnore]
+        public DownloadedFeaturesRef Downloaded { get; set; }
     }
 }

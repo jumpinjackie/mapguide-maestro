@@ -62,6 +62,17 @@
     }
     <script type="text/javascript" src="assets/ol.js" charset="utf-8"></script>
     <script type="text/javascript" src="assets/ol-ext.min.js" charset="utf-8"></script>
+
+    @if (Model.OverlayLayers != null)
+    {
+        foreach (var extLayer in Model.OverlayLayers)
+        {
+            if (extLayer.Type == Maestro.StaticMapPublisher.Common.OverlayLayerType.GeoJSON_FromMapGuide)
+            {
+    <script type="text/javascript" src="@(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
+            }
+        }
+    }
     <script type="text/javascript">
 
         var mapBounds = [ @Model.LatLngBounds[0], @Model.LatLngBounds[1], @Model.LatLngBounds[2], @Model.LatLngBounds[3] ];
@@ -166,6 +177,18 @@
             {
                 switch (extLayer.Type)
                 {
+                    case Maestro.StaticMapPublisher.Common.OverlayLayerType.GeoJSON_FromMapGuide:
+                        <text>
+        var @(extLayer.Type)_@(counter) = new ol.layer.Vector({
+            title: "@extLayer.Name",
+            visible: @(extLayer.InitiallyVisible ? "true" : "false"),
+            source: new ol.source.Vector({
+                features: (new ol.format.GeoJSON()).readFeatures(@(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar))
+            })
+        });
+        overlayList.push(@(extLayer.Type)_@(counter));
+                        </text>
+                        break;
                     case Maestro.StaticMapPublisher.Common.OverlayLayerType.WMS:
                         <text>
         var @(extLayer.Type)_@(counter) = new ol.layer.Tile({

@@ -83,6 +83,8 @@ namespace Maestro.StaticMapPublisher.Common
 
         public bool RandomizeRequests { get; set; }
 
+        public bool SkipTileDownloading { get; set; }
+
         public ViewerOptionsBase ViewerOptions { get; set; }
 
         public BoundingBox Bounds { get; set; }

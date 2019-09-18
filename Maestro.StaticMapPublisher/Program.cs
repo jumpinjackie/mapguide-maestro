@@ -83,9 +83,31 @@ namespace Maestro.StaticMapPublisher
 
                             var pubOpts = po.PublishingOptions;
                             var pub = new Maestro.StaticMapPublisher.Common.StaticMapPublisher(stdout);
-                            var ret = await pub.PublishAsync(pubOpts);
-                            
+                            var ret = 0;
+                            if (!pubOpts.SkipTileDownloading)
+                            {
+                                ret = await pub.PublishAsync(pubOpts);
+                            }
+                            else
+                            {
+                                await stdout.WriteLineAsync("Skipping tile downloading");
+                            }
                             var bounds = pubOpts.Bounds;
+
+                            int counter = 0;
+                            // Download any GeoJSON sources
+                            foreach (var source in pubOpts.OverlayLayers)
+                            {
+                                if (source.Type == OverlayLayerType.GeoJSON_FromMapGuide)
+                                {
+                                    var mgSource = ((GeoJSONFromMapGuideOverlayLayer)source);
+                                    await stdout.WriteLineAsync($"Start downloading GeoJSON data for: {source.Name}");
+                                    var downloader = new FeatureDataDownloader(pubOpts);
+                                    mgSource.Downloaded = await downloader.DownloadAsync(counter, mgSource);
+                                    await stdout.WriteLineAsync($"GeoJSON data for ({source.Name}) downloaded to: {mgSource.Downloaded.ScriptRelPath}");
+                                }
+                                counter++;
+                            }
 
                             // Generate index.html
                             var vm = new MapViewerModel
@@ -119,7 +141,7 @@ namespace Maestro.StaticMapPublisher
 
                             var outputHtmlPath = Path.Combine(pubOpts.OutputDirectory, "index.html");
                             File.WriteAllText(outputHtmlPath, result);
-                            stdout.WriteLine($"Written: {outputHtmlPath}");
+                            await stdout.WriteLineAsync($"Written: {outputHtmlPath}");
 
                             // Copy assets
                             var assetsDir = Path.Combine(pubOpts.OutputDirectory, "assets");
@@ -136,12 +158,12 @@ namespace Maestro.StaticMapPublisher
                                 if (!Directory.Exists(targetParentDir))
                                     Directory.CreateDirectory(targetParentDir);
                                 File.Copy(f, targetFileName, true);
-                                stdout.WriteLine($"Copied to assets: {targetFileName}");
+                                await stdout.WriteLineAsync($"Copied to assets: {targetFileName}");
                             }
 
                             if (po.Wait)
                             {
-                                stdout.WriteLine("Press any key to continue");
+                                await stdout.WriteLineAsync("Press any key to continue");
                                 Console.Read();
                             }
 
@@ -153,7 +175,7 @@ namespace Maestro.StaticMapPublisher
             }
             catch (Exception ex)
             {
-                stdout.WriteLine($"ERROR: {ex}");
+                await stdout.WriteLineAsync($"ERROR: {ex}");
                 return 1;
             }
         }
