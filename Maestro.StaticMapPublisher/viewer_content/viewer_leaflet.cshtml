@@ -54,7 +54,29 @@
         <script type="text/javascript" src="assets/L.UTFGrid-min.js" charset="utf-8"></script>
         <script type="text/javascript" src="assets/L.UTFGridCanvas.js" charset="utf-8"></script>
     }
+    @if (Model.OverlayLayers != null)
+    {
+        foreach (var extLayer in Model.OverlayLayers)
+        {
+            if (extLayer.Type == Maestro.StaticMapPublisher.Common.OverlayLayerType.GeoJSON_FromMapGuide)
+            {
+                <script type="text/javascript" src="@(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
+            }
+        }
+    }
     <script type="text/javascript">
+
+         var defaultStyle = {
+            "clickable": true,
+            "color": "#00D",
+            "fillColor": "#00D",
+            "weight": 1.0,
+            "opacity": 0.3,
+            "fillOpacity": 0.2
+        };
+        var defaultHoverStyle = {
+            "fillOpacity": 0.5
+        };
 
         var mapBounds = [
             [@Model.LatLngBounds[1], @Model.LatLngBounds[0]],
@@ -166,6 +188,14 @@
             {
                 switch (extLayer.Type)
                 {
+                    case Maestro.StaticMapPublisher.Common.OverlayLayerType.GeoJSON_FromMapGuide:
+                        <text>
+        var @(extLayer.Type)_@(counter) = L.geoJSON(@(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar), {
+            style: defaultStyle
+        });
+        overlayList.push({ name: "@(extLayer.Name)", visible: @(extLayer.InitiallyVisible ? "true" : "false"), layer: @(extLayer.Type)_@(counter) });
+                        </text>
+                        break;
                     case Maestro.StaticMapPublisher.Common.OverlayLayerType.WMS:
                         <text>
         var @(extLayer.Type)_@(counter) = L.tileLayer.wms("@(((Maestro.StaticMapPublisher.Common.WMSOverlayLayer)extLayer).Service)", {
@@ -174,7 +204,7 @@
             transparent: true,
             uppercase: true
         });
-        overlayList.push({ name: "@(((Maestro.StaticMapPublisher.Common.WMSOverlayLayer)extLayer).Name)", visible: @(extLayer.InitiallyVisible ? "true" : "false"), layer: @(extLayer.Type)_@(counter) });
+        overlayList.push({ name: "@(extLayer.Name)", visible: @(extLayer.InitiallyVisible ? "true" : "false"), layer: @(extLayer.Type)_@(counter) });
                         </text>
                         break;
                     default:
@@ -213,7 +243,7 @@
         }).fitBounds(mapBounds);
         L.control.layers(base, overlays).addTo(map);
 
-    </script>
+</script>
 </body>
 
 </html>

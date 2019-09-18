@@ -25,25 +25,27 @@ namespace Maestro.StaticMapPublisher.Common
         public string GlobalVar { get; }
     }
 
-    public class FeatureDataDownloader
+    public class GeoJSONDataDownloader
     {
         static HttpClient httpClient = new HttpClient();
 
         readonly IStaticMapPublishingOptions _options;
+        readonly string _outputCsCode;
 
-        public FeatureDataDownloader(IStaticMapPublishingOptions options)
+        public GeoJSONDataDownloader(IStaticMapPublishingOptions options, string outputCsCode = "LL84")
         {
             _options = options;
+            _outputCsCode = outputCsCode;
         }
 
-        public async Task<DownloadedFeaturesRef> DownloadAsync(int layerNumber, GeoJSONFromMapGuideOverlayLayer layer)
+        public Task<DownloadedFeaturesRef> DownloadAsync(int layerNumber, GeoJSONFromMapGuideOverlayLayer layer)
         {
             switch (layer.Source.Origin)
             {
                 case GeoJSONFromMapGuideOrigin.FeatureSource:
-                    return await DownloadFromFeatureSourceAsync(layerNumber, layer.Name, (GeoJSONFromFeatureSource)layer.Source);
+                    return DownloadFromFeatureSourceAsync(layerNumber, layer.Name, (GeoJSONFromFeatureSource)layer.Source);
                 case GeoJSONFromMapGuideOrigin.LayerDefinition:
-                    return await DownloadFromLayerDefinitionAsync(layerNumber, layer.Name, (GeoJSONFromLayerDefinition)layer.Source);
+                    return DownloadFromLayerDefinitionAsync(layerNumber, layer.Name, (GeoJSONFromLayerDefinition)layer.Source);
             }
             throw new ArgumentOutOfRangeException("Unknown origin");
         }
@@ -84,7 +86,7 @@ namespace Maestro.StaticMapPublisher.Common
             var reqUrl = $"{_options.MapAgent}?OPERATION=SELECTFEATURES&VERSION=4.0.0&FORMAT=application/json&CLEAN=1";
             reqUrl += "&CLIENTAGENT=Maestro.StaticMapPublisher";
             reqUrl += $"&RESOURCEID={featureSource}&CLASSNAME={className}";
-            reqUrl += "&TRANSFORMTO=WGS84.PseudoMercator";
+            reqUrl += $"&TRANSFORMTO={_outputCsCode}";
             reqUrl += $"&USERNAME={_options.Username ?? "Anonymous"}";
             if (!string.IsNullOrEmpty(_options.Password))
                 reqUrl += $"&PASSWORD={_options.Password}";
@@ -127,8 +129,10 @@ namespace Maestro.StaticMapPublisher.Common
             var url = BuildSelectFeaturesUrl(vl.ResourceId, vl.FeatureName, vl.Filter);
             resp = await httpClient.GetAsync(url);
             resp.EnsureSuccessStatusCode();
-            var stream = await resp.Content.ReadAsStreamAsync();
-            return await DownloadFeatureDataAsync(layerNumber, name, stream);
+            using (var stream = await resp.Content.ReadAsStreamAsync())
+            {
+                return await DownloadFeatureDataAsync(layerNumber, name, stream);
+            }
         }
 
         private async Task<DownloadedFeaturesRef> DownloadFromFeatureSourceAsync(int layerNumber, string name, GeoJSONFromFeatureSource source)
@@ -136,8 +140,10 @@ namespace Maestro.StaticMapPublisher.Common
             var url = BuildSelectFeaturesUrl(source.FeatureSource, source.ClassName, source.Filter);
             var resp = await httpClient.GetAsync(url);
             resp.EnsureSuccessStatusCode();
-            var stream = await resp.Content.ReadAsStreamAsync();
-            return await DownloadFeatureDataAsync(layerNumber, name, stream);
+            using (var stream = await resp.Content.ReadAsStreamAsync())
+            {
+                return await DownloadFeatureDataAsync(layerNumber, name, stream);
+            }
         }
     }
 }
