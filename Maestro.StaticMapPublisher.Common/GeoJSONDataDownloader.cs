@@ -95,10 +95,7 @@ namespace Maestro.StaticMapPublisher.Common
             using (var sw = new StreamWriter(filePath))
             {
                 await sw.WriteLineAsync($"//Vector overlay configuration for: {name}");
-                if (vl.PropertyMapping.Any())
-                {
-                    await WritePopupConfigurationAsync(vl, layerNumber, name, sw);
-                }
+                await WritePopupConfigurationAsync(vl, layerNumber, name, sw);
                 await WriteStyleConfigurationAsync(vl, layerNumber, name, sw);
                 await sw.WriteLineAsync($"//Downloaded features for: {name}");
                 await sw.WriteAsync($"var {GetVariableName(layerNumber)} = ");
@@ -117,26 +114,77 @@ namespace Maestro.StaticMapPublisher.Common
         private async Task WritePopupConfigurationAsync(IVectorLayerDefinition vl, int layerNumber, string name, StreamWriter sw)
         {
             await sw.WriteLineAsync($"//{_options.Viewer} popup template configuration for: {name}");
-            await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_popup_template = {{");
-            var lines = new List<string>();
-            switch (_options.Viewer)
+            if (vl.PropertyMapping.Any())
             {
-                case ViewerType.Leaflet:
-                    {
-
-                    }
-                    break;
-                case ViewerType.OpenLayers:
-                    {
-                        foreach (var pm in vl.PropertyMapping)
+                switch (_options.Viewer)
+                {
+                    case ViewerType.Leaflet:
                         {
-                            lines.Add($"'{pm.Name}': {{ title: '{pm.Value}' }}");
+                            await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_popup_template = function(feature, layer) {{");
+                            await sw.WriteLineAsync("    var html = '<h3>" + name + "</h3><table>';");
+                            await sw.WriteLineAsync("    html += '<tbody>';");
+                            foreach (var pm in vl.PropertyMapping)
+                            {
+                                await sw.WriteLineAsync("    html += '<tr>';");
+                                await sw.WriteLineAsync("    html += '<td>';");
+                                await sw.WriteLineAsync("    html += '" + pm.Value + "';");
+                                await sw.WriteLineAsync("    html += '</td>';");
+                                await sw.WriteLineAsync("    html += '<td>';");
+                                await sw.WriteLineAsync("    html += feature.properties." + pm.Name + " || '';");
+                                await sw.WriteLineAsync("    html += '</td>';");
+                                await sw.WriteLineAsync("    html += '</tr>';");
+                            }
+                            await sw.WriteLineAsync("    html += '</tbody>';");
+                            await sw.WriteLineAsync("    html += '</table>';");
+                            if (!string.IsNullOrEmpty(vl.Url))
+                            {
+                                try
+                                {
+                                    //Only supports property references in the URL
+                                    var expr = FdoExpression.Parse(vl.Url);
+                                    if (expr is FdoIdentifier ident)
+                                    {
+                                        await sw.WriteLineAsync($"    if (feature.properties.{ident.Name}) {{");
+                                        await sw.WriteLineAsync($"        html += \"<hr /><a href='\" + feature.properties.{ident.Name} + \"' target='_blank'>Open Link</a>\"");
+                                        await sw.WriteLineAsync ("    }");
+                                    }
+                                }
+                                catch { }
+                            }
+                            await sw.WriteLineAsync("    layer.bindPopup(html);");
+                            await sw.WriteLineAsync("}");
                         }
-                    }
-                    break;
+                        break;
+                    case ViewerType.OpenLayers:
+                        {
+                            var lines = new List<string>();
+                            await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_popup_template = {{");
+                            foreach (var pm in vl.PropertyMapping)
+                            {
+                                lines.Add($"'{pm.Name}': {{ title: '{pm.Value}' }}");
+                            }
+                            await sw.WriteLineAsync("    " + string.Join(",\n    ", lines));
+                            await sw.WriteLineAsync("}");
+                        }
+                        break;
+                }
             }
-            await sw.WriteLineAsync("    " + string.Join(",\n    ", lines));
-            await sw.WriteLineAsync("}");
+            else
+            {
+                switch (_options.Viewer)
+                {
+                    case ViewerType.Leaflet:
+                        {
+                            await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_popup_template = function(feature, layer) {{ }}");
+                        }
+                        break;
+                    case ViewerType.OpenLayers:
+                        {
+                            await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_popup_template = null;");
+                        }
+                        break;
+                }
+            }
         }
 
         private async Task WriteStyleConfigurationAsync(IVectorLayerDefinition vl, int layerNumber, string name, StreamWriter sw)
@@ -193,34 +241,7 @@ namespace Maestro.StaticMapPublisher.Common
                     await lst.WritePointStyleFunctionAsync(sw, vl, vsr.PointStyle);
                 }
                 await sw.WriteLineAsync("}");
-                //TODO: This should be offloaded to LeafletStyleTranslator
-                await sw.WriteLineAsync("//Point feature function");
-                if (vsr.PointStyle != null && vsr.PointStyle.RuleCount > 0)
-                {
-                    var pr = vsr.PointStyle.Rules.First();
-                    if (pr.PointSymbolization2D != null && pr.PointSymbolization2D.Symbol is IMarkSymbol msm)
-                    {
-                        await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_style_point = function(point, latlng) {{;");
-                        switch (msm.Shape)
-                        {
-                            case ShapeType.Circle:
-                                await sw.WriteLineAsync("    return L.circleMarker(latlng);");
-                                break;
-                            default:
-                                await sw.WriteLineAsync("    return L.marker(latlng);");
-                                break;
-                        }
-                        await sw.WriteLineAsync("};");
-                    }
-                    else
-                    {
-                        await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_style_point = null;");
-                    }
-                }
-                else
-                {
-                    await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_style_point = null;");
-                }
+                await lst.WritePointMarker(GetVariableName(layerNumber), vsr, sw);
             }
         }
 

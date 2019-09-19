@@ -192,7 +192,8 @@
                         <text>
         var @(extLayer.Type)_@(counter) = L.geoJSON(@(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar), {
             style: @(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_style || defaultStyle,
-            pointToLayer: @(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_style_point
+            pointToLayer: @(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_style_point,
+            onEachFeature: @(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_popup_template
         });
         overlayList.push({ name: "@(extLayer.Name)", visible: @(extLayer.InitiallyVisible ? "true" : "false"), layer: @(extLayer.Type)_@(counter) });
                         </text>

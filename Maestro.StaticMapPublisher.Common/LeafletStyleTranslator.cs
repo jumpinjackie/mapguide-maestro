@@ -42,6 +42,38 @@ namespace Maestro.StaticMapPublisher.Common
 
         public string FeatureVariableName => _featureVarName;
 
+        public async Task WritePointMarker(string varName, IVectorScaleRange vsr, StreamWriter sw)
+        {
+            //TODO: This should be offloaded to LeafletStyleTranslator
+            await sw.WriteLineAsync("//Point feature function");
+            if (vsr.PointStyle != null && vsr.PointStyle.RuleCount > 0)
+            {
+                var pr = vsr.PointStyle.Rules.First();
+                if (pr.PointSymbolization2D != null && pr.PointSymbolization2D.Symbol is IMarkSymbol msm)
+                {
+                    await sw.WriteLineAsync($"var {varName}_style_point = function(point, latlng) {{;");
+                    switch (msm.Shape)
+                    {
+                        case ShapeType.Circle:
+                            await sw.WriteLineAsync("    return L.circleMarker(latlng);");
+                            break;
+                        default:
+                            await sw.WriteLineAsync("    return L.marker(latlng);");
+                            break;
+                    }
+                    await sw.WriteLineAsync("};");
+                }
+                else
+                {
+                    await sw.WriteLineAsync($"var {varName}_style_point = null;");
+                }
+            }
+            else
+            {
+                await sw.WriteLineAsync($"var {varName}_style_point = null;");
+            }
+        }
+
         public async Task WritePointStyleFunctionAsync(StreamWriter sw, IVectorLayerDefinition vl, IPointVectorStyle pointStyle)
         {
             await sw.WriteLineAsync(INDENT + "var fillColor;");
