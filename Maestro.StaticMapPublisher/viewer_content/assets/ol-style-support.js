@@ -1,6 +1,6 @@
 ﻿//OL style support functions
 function OLPointCircle(style) {
-    return ol.style.Circle(style);
+    return new ol.style.Circle(style);
 }
 function OLPointSquare(style) {
     var combined = Object.assign(style, {

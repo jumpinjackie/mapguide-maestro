@@ -44,6 +44,49 @@
         }
         </text>
         }
+
+        .ol-popup {
+            position: absolute;
+            background-color: white;
+            -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #cccccc;
+            bottom: 12px;
+            left: -50px;
+            min-width: 280px;
+        }
+        .ol-popup:after, .ol-popup:before {
+            top: 100%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+        .ol-popup:after {
+            border-top-color: white;
+            border-width: 10px;
+            left: 48px;
+            margin-left: -10px;
+        }
+        .ol-popup:before {
+            border-top-color: #cccccc;
+            border-width: 11px;
+            left: 48px;
+            margin-left: -11px;
+        }
+        .ol-popup-closer {
+            text-decoration: none;
+            position: absolute;
+            top: 2px;
+            right: 8px;
+        }
+        .ol-popup-closer:after {
+            content: "✖";
+        }
     </style>
 </head>
 
@@ -60,6 +103,10 @@
             </div>
         </div>
     }
+    <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+    </div>
     <script type="text/javascript" src="assets/ol.js" charset="utf-8"></script>
     <script type="text/javascript" src="assets/ol-ext.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="assets/ol-style-support.js" charset="utf-8"></script>
@@ -69,7 +116,7 @@
         {
             if (extLayer.Type == Maestro.StaticMapPublisher.Common.OverlayLayerType.GeoJSON_FromMapGuide)
             {
-    <script type="text/javascript" src="@(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
+                <script type="text/javascript" src="@(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
             }
         }
     }
@@ -170,6 +217,7 @@
         </text>
         }
 
+        var popupTemplates = {};
         var overlayList = [];
         @if (Model.OverlayLayers != null)
         {
@@ -188,9 +236,15 @@
                 features: (new ol.format.GeoJSON({
                     dataProjection: "EPSG:4326",
                     featureProjection: "EPSG:3857"
-                })).readFeatures(@(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar))
+                }))
+                .readFeatures(@(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar))
+                .map(function (f) {
+                    f.set("OL_LAYER_NAME", "@extLayer.Name");
+                    return f;
+                })
             })
         });
+        popupTemplates["@extLayer.Name"] = @(((Maestro.StaticMapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_popup_template;
         overlayList.push(@(extLayer.Type)_@(counter));
                         </text>
                         break;
@@ -241,6 +295,36 @@
         for (var i = 0; i < overlayList.length; i++) {
             mapLayers.push(overlayList[i]);
         }
+
+        /**
+         * Elements that make up the popup.
+         */
+        var popupContainer = document.getElementById('popup');
+        var popupContent = document.getElementById('popup-content');
+        var popupCloser = document.getElementById('popup-closer');
+
+        /**
+         * Create an overlay to anchor the popup to the map.
+         */
+        var popupOverlay = new ol.Overlay({
+            element: popupContainer,
+            autoPan: true,
+            autoPanAnimation: {
+                duration: 250
+            }
+        });
+
+
+        /**
+         * Add a click handler to hide the popup.
+         * @@return {boolean} Don't follow the href.
+         */
+        popupCloser.onclick = function() {
+            popupOverlay.setPosition(undefined);
+            popupCloser.blur();
+            return false;
+        };
+
         var map = new ol.Map({
             target: mapElement,
             controls: ol.control.defaults({
@@ -277,6 +361,7 @@
             stopEvent: false
         });
         map.addOverlay(infoOverlay);
+        map.addOverlay(popupOverlay);
 
         var displayFeatureInfo = function (coordinate) {
             var viewResolution = /** @@type {number} */ (mapView.getResolution());
@@ -332,6 +417,28 @@
             extent: true
         });
         map.addControl(ctrl);
+
+        // Select interaction
+        var select = new ol.interaction.Select({
+            hitTolerance: 5,
+            multi: false,
+            condition: ol.events.condition.singleClick
+        });
+        select.on("select", function (e) {
+            if (e.selected.length == 0) {
+                popupOverlay.setPosition(undefined);
+                popupCloser.blur();
+            } else {
+                var sf = e.selected[0];
+                var layer = sf.get("OL_LAYER_NAME");
+                if (popupTemplates[layer]) {
+                    popupContent.innerHTML = popupTemplates[layer](sf);
+                    var coord = ol.extent.getCenter(sf.getGeometry().getExtent());
+                    popupOverlay.setPosition(coord);
+                }
+            }
+        });
+        map.addInteraction(select);
 
     </script>
 </body>

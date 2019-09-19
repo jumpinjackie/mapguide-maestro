@@ -20,7 +20,6 @@
 
 #endregion Disclaimer / License
 
-
 using OSGeo.FDO.Expressions;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
@@ -29,7 +28,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Maestro.StaticMapPublisher.Common
@@ -157,13 +155,38 @@ namespace Maestro.StaticMapPublisher.Common
                         break;
                     case ViewerType.OpenLayers:
                         {
-                            var lines = new List<string>();
-                            await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_popup_template = {{");
+                            await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_popup_template = function (feature) {{");
+                            await sw.WriteLineAsync("    var html = '<h3>" + name + "</h3><table>';");
+                            await sw.WriteLineAsync("    html += '<tbody>';");
                             foreach (var pm in vl.PropertyMapping)
                             {
-                                lines.Add($"'{pm.Name}': {{ title: '{pm.Value}' }}");
+                                await sw.WriteLineAsync("    html += '<tr>';");
+                                await sw.WriteLineAsync("    html += '<td>';");
+                                await sw.WriteLineAsync("    html += '" + pm.Value + "';");
+                                await sw.WriteLineAsync("    html += '</td>';");
+                                await sw.WriteLineAsync("    html += '<td>';");
+                                await sw.WriteLineAsync("    html += feature.get('" + pm.Name + "') || '';");
+                                await sw.WriteLineAsync("    html += '</td>';");
+                                await sw.WriteLineAsync("    html += '</tr>';");
                             }
-                            await sw.WriteLineAsync("    " + string.Join(",\n    ", lines));
+                            await sw.WriteLineAsync("    html += '</tbody>';");
+                            await sw.WriteLineAsync("    html += '</table>';");
+                            if (!string.IsNullOrEmpty(vl.Url))
+                            {
+                                try
+                                {
+                                    //Only supports property references in the URL
+                                    var expr = FdoExpression.Parse(vl.Url);
+                                    if (expr is FdoIdentifier ident)
+                                    {
+                                        await sw.WriteLineAsync($"    if (feature.get('{ident.Name}')) {{");
+                                        await sw.WriteLineAsync($"        html += \"<hr /><a href='\" + feature.get('{ident.Name}') + \"' target='_blank'>Open Link</a>\"");
+                                        await sw.WriteLineAsync ("    }");
+                                    }
+                                }
+                                catch { }
+                            }
+                            await sw.WriteLineAsync("    return html;");
                             await sw.WriteLineAsync("}");
                         }
                         break;
