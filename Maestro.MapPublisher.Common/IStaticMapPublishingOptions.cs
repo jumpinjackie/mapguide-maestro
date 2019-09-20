@@ -38,6 +38,8 @@ namespace Maestro.MapPublisher.Common
 
         string OutputDirectory { get; }
 
+        string OutputPageFileName { get; }
+
         IEnumerable<ExternalBaseLayer> ExternalBaseLayers { get; }
 
         IEnumerable<OverlayLayer> OverlayLayers { get; }

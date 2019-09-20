@@ -105,6 +105,12 @@ namespace Maestro.MapPublisher.Common
 
         public string Password { get; set; }
 
+        /// <summary>
+        /// The name of the web page to generate. If not specified, it will be
+        /// called "index.html"
+        /// </summary>
+        public string OutputPageFileName { get; set; }
+
         public bool RandomizeRequests { get; set; }
 
         public ViewerOptionsBase ViewerOptions { get; set; }

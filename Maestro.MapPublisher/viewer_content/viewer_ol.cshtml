@@ -34,7 +34,7 @@
             font-size: 8pt;
         }
 
-        @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
+        @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
         {<text>
         #feature-info {
             font-family: Verdana, sans-serif;
@@ -95,7 +95,7 @@
     <div id="map">
 
     </div>
-    @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
+    @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
     {
         <div style="display: none;">
             <!-- Overlay with the feature info -->
@@ -104,9 +104,11 @@
             </div>
         </div>
     }
-    <div id="popup" class="ol-popup">
-        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-        <div id="popup-content"></div>
+    <div style="display: none;">
+        <div id="popup" class="ol-popup">
+            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+            <div id="popup-content"></div>
+        </div>
     </div>
     <script type="text/javascript" src="assets/ol.js" charset="utf-8"></script>
     <script type="text/javascript" src="assets/ol-ext.min.js" charset="utf-8"></script>
@@ -126,13 +128,13 @@
         var mapBounds = [ @Model.LatLngBounds[0], @Model.LatLngBounds[1], @Model.LatLngBounds[2], @Model.LatLngBounds[3] ];
         var viewBounds = ol.proj.transformExtent(mapBounds, 'EPSG:4326', 'EPSG:3857');
 
-        @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
+        @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
         {<text>
         var utfGridSource = new ol.source.UTFGrid({
             tileJSON: {
             scheme: "xyz",
                 grids: [
-                    "@Model.UTFGridRelPath/{z}/{x}/{y}.json"
+                    "@Model.UTFGridUrl"
                 ]
             }
         });
@@ -200,19 +202,19 @@
             })
         });
         mapLayers.push(baseGroup);
-        @if (!string.IsNullOrEmpty(Model.XYZImageRelPath))
+        @if (!string.IsNullOrEmpty(Model.XYZImageUrl))
         {<text>
         mapLayers.push(new ol.layer.Tile({
             title: 'MapGuide XYZ Image',
             type: 'base',
             extent: viewBounds,
             source: new ol.source.XYZ({
-                url: "@Model.XYZImageRelPath/{z}/{x}/{y}.png"
+                url: "@Model.XYZImageUrl"
             })
         }));
         </text>
         }
-        @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
+        @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
         {<text>
         mapLayers.push(utfGridLayer);
         </text>
@@ -351,7 +353,7 @@
         mapView.fit(viewBounds, { size: map.getSize() });
         map.setView(mapView);
 
-        @if (!string.IsNullOrEmpty(Model.UTFGridRelPath))
+        @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
         {<text>
         var infoElement = document.getElementById('feature-info');
         var nameElement = document.getElementById('feature-name');

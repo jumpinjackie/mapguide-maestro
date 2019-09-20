@@ -30,9 +30,9 @@ namespace Maestro.MapPublisher.Common
     {
         public string Title { get; set; }
 
-        public string XYZImageRelPath { get; set; }
+        public string XYZImageUrl { get; set; }
 
-        public string UTFGridRelPath { get; set; }
+        public string UTFGridUrl { get; set; }
 
         public double[] LatLngBounds { get; set; }
 

@@ -105,12 +105,27 @@ namespace Maestro.MapPublisher
                             var vm = new MapViewerModel
                             {
                                 Title = pubOpts.Title,
-                                UTFGridRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.UTFGridTileSet?.ResourceID),
-                                XYZImageRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.ImageTileSet?.ResourceID),
                                 LatLngBounds = new [] { bounds.MinX, bounds.MinY, bounds.MaxX, bounds.MaxY },
                                 ExternalBaseLayers = pubOpts.ExternalBaseLayers,
                                 OverlayLayers = pubOpts.OverlayLayers
                             };
+
+                            var agent = pubOpts.Title;
+                            if (pubOpts.UTFGridTileSet != null && !string.IsNullOrEmpty(pubOpts.UTFGridTileSet.ResourceID))
+                            {
+                                if (pubOpts.UTFGridTileSet.Mode == TileSetRefMode.Local)
+                                    vm.UTFGridUrl = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.UTFGridTileSet?.ResourceID) + "/{z}/{x}/{y}.json";
+                                else if (pubOpts.UTFGridTileSet.Mode == TileSetRefMode.Remote)
+                                    vm.UTFGridUrl = $"{pubOpts.MapAgent}?OPERATION=GETTILEIMAGE&VERSION=1.2.0&CLIENTAGENT={agent}&MAPDEFINITION={pubOpts.UTFGridTileSet.ResourceID}";
+                            }
+                            if (pubOpts.ImageTileSet != null && !string.IsNullOrEmpty(pubOpts.ImageTileSet.ResourceID))
+                            {
+                                if (pubOpts.ImageTileSet.Mode == TileSetRefMode.Local)
+                                    vm.XYZImageUrl = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.ImageTileSet?.ResourceID) + "/{z}/{x}/{y}.png";
+                                else if (pubOpts.ImageTileSet.Mode == TileSetRefMode.Remote)
+                                    vm.XYZImageUrl = $"{pubOpts.MapAgent}?OPERATION=GETTILEIMAGE&VERSION=1.2.0&CLIENTAGENT={agent}&MAPDEFINITION={pubOpts.ImageTileSet.ResourceID}";
+                            }
+                            
 
                             string result;
                             switch (pubOpts.Viewer)
@@ -131,7 +146,7 @@ namespace Maestro.MapPublisher
                                     throw new ArgumentOutOfRangeException("Unknown or unsupported viewer type");
                             }
 
-                            var outputHtmlPath = Path.Combine(pubOpts.OutputDirectory, "index.html");
+                            var outputHtmlPath = Path.Combine(pubOpts.OutputDirectory, pubOpts.OutputPageFileName ?? "index.html");
                             File.WriteAllText(outputHtmlPath, result);
                             await stdout.WriteLineAsync($"Written: {outputHtmlPath}");
 
