@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@Model.Title</title>
+    <link rel="stylesheet" href="assets/css/fontello.css" />
     <link rel="stylesheet" href="assets/ol.css" />
     <link rel="stylesheet" href="assets/ol-ext.min.css" />
     <style type="text/css">
@@ -87,6 +88,13 @@
         }
         .ol-popup-closer:after {
             content: "✖";
+        }
+        .enable-tile-tooltips {
+            left: 8px;
+            top: 290px;
+        }
+        .enable-tile-tooltips.ol-active {
+            background-color: #ff9900;
         }
     </style>
 </head>
@@ -424,6 +432,19 @@
                 popupCloser.blur();
             }
         }
+
+        var utfGridTipToggleCtrl = new ol.control.Toggle({
+            html: '<i class="icon-comment"></i>',
+            className: "enable-tile-tooltips",
+            title: "Toggle tile tooltips",
+            active: true,
+            onToggle: function(active)
+            {
+                setUTFGridTipsEnabled(active);
+            }
+        });
+        map.addControl(utfGridTipToggleCtrl);
+
         </text>
         }
 
