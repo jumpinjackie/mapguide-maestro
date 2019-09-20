@@ -57,12 +57,18 @@
     }
     <script type="text/javascript" src="assets/leaflet-src.js" charset="utf-8"></script>
     <script type="text/javascript" src="assets/easy-button.js" charset="utf-8"></script>
+
+    @if (Model.HasExternalBaseLayer(ExternalBaseLayerType.BingMaps))
+    {
+    <script type="text/javascript" src="assets/leaflet-bing-layer.js" charset="utf-8"></script>
+    }
+
     @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
     {
-    <script type="text/javascript" src="assets/L.UTFGrid-min.js" charset="utf-8"></script>
-    @*
-        <script type="text/javascript" src="assets/L.UTFGridCanvas.js" charset="utf-8"></script>
-    *@
+        <script type="text/javascript" src="assets/L.UTFGrid-min.js" charset="utf-8"></script>
+        @*
+            <script type="text/javascript" src="assets/L.UTFGridCanvas.js" charset="utf-8"></script>
+        *@
     }
     @if (Model.OverlayLayers != null)
     {
@@ -127,7 +133,11 @@
                         break;
                     case ExternalBaseLayerType.BingMaps:
                         <text>
-        console.warn("Bing Maps not yet supported");
+        var @(extLayer.Type)_@(counter) = L.tileLayer.bing({
+            bingMapsKey: "@(((BingMapsBaseLayer)extLayer).ApiKey)",
+            imagerySet: "@(((BingMapsBaseLayer)extLayer).LayerType)"
+        });
+        baseLayerList.push({ name: "@extLayer.Name", layer: @(extLayer.Type)_@(counter) });
                         </text>
                         break;
                 }

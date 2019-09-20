@@ -40,6 +40,8 @@
     <None Remove="viewer_content\assets\L.UTFGrid-min.js" />
     <None Remove="viewer_content\assets\L.UTFGrid.js" />
     <None Remove="viewer_content\assets\L.UTFGridCanvas.js" />
+    <None Remove="viewer_content\assets\leaflet-bing-layer.js" />
+    <None Remove="viewer_content\assets\leaflet-bing-layer.min.js" />
     <None Remove="viewer_content\assets\leaflet-src.esm.js" />
     <None Remove="viewer_content\assets\leaflet-src.esm.js.map" />
     <None Remove="viewer_content\assets\leaflet-src.js" />
@@ -145,6 +147,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="viewer_content\assets\L.UTFGridCanvas.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\leaflet-bing-layer.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\leaflet-bing-layer.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="viewer_content\assets\leaflet-src.esm.js">
