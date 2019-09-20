@@ -240,6 +240,7 @@ The `Type` can be one of the following:
 
 # Limitations
 
+ * The publisher can only work with ***MapGuide Open Source 4.0 and newer*** as it takes advantage of APIs that have been introduced with MGOS 4.0. This requirement is ***non-negotiable***.
  * The map published will always be based on Web Mercator (`EPSG:3857`). All vector data will be reprojected to this projection if required. Any GeoJSON data downloaded from MapGuide will be re-projected as part of downloading.
  * The `Leaflet` template does not support the following:
    * WFS overlay layers
