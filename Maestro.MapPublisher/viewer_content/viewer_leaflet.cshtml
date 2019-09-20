@@ -269,7 +269,7 @@
         {<text>
         map.on("mousemove", function (e) {
             if (gTrackingUTFGridTip) {
-                var cntPt = map.latLngToContainerPoint(e.latlng);
+                var cntPt = e.containerPoint;
                 infoElement.style.left = (cntPt.x + 15) + "px";
                 infoElement.style.top = (cntPt.y + 15) + "px";
             }
