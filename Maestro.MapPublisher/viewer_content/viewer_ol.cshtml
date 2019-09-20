@@ -337,27 +337,33 @@
             return false;
         };
 
+        var defaultMapControls = [];
+        defaultMapControls.push(new ol.control.ScaleLine());
+        defaultMapControls.push(new ol.control.MousePosition({
+            projection: 'EPSG:4326',
+            coordinateFormat: function (coordinate) {
+                return ol.coordinate.format(coordinate, 'Lat: {y}, Lng: {x}', 4);
+            }
+        }));
+        defaultMapControls.push(new ol.control.ZoomSlider());
+        var zeIcon = document.createElement("i");
+        zeIcon.className = "icon-resize-full-alt";
+        defaultMapControls.push(new ol.control.ZoomToExtent({
+            label: zeIcon,
+            extent: viewBounds
+        }));
         var map = new ol.Map({
             target: mapElement,
             controls: ol.control.defaults({
                 attributionOptions: {
                     collapsible: true
                 }
-            }).extend([
-                new ol.control.ScaleLine(),
-                new ol.control.MousePosition({
-                    projection: 'EPSG:4326',
-                    coordinateFormat: function (coordinate) {
-                        return ol.coordinate.format(coordinate, 'Lat: {y}, Lng: {x}', 4);
-                    }
-                }),
-                new ol.control.ZoomSlider(),
-                new ol.control.ZoomToExtent()
-            ]),
+            }).extend(defaultMapControls),
             layers: mapLayers
         });
         var mapView = new ol.View({
-            projection: 'EPSG:3857'
+            projection: 'EPSG:3857',
+            extent: viewBounds
         });
         mapView.fit(viewBounds, { size: map.getSize() });
         map.setView(mapView);
