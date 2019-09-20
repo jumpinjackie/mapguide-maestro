@@ -44,16 +44,18 @@
     </div>
     @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
     {
-    <div id="feature-info" style="display: none; position: absolute">
-        <!-- Overlay with the feature info -->
-        <div id="feature-name">&nbsp;</div>
-    </div>
+        <div id="feature-info" style="display: none; position: absolute">
+            <!-- Overlay with the feature info -->
+            <div id="feature-name">&nbsp;</div>
+        </div>
     }
     <script type="text/javascript" src="assets/leaflet-src.js" charset="utf-8"></script>
     @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
     {
     <script type="text/javascript" src="assets/L.UTFGrid-min.js" charset="utf-8"></script>
+    @*
     <script type="text/javascript" src="assets/L.UTFGridCanvas.js" charset="utf-8"></script>
+    *@
     }
     @if (Model.OverlayLayers != null)
     {
@@ -61,7 +63,7 @@
         {
             if (extLayer.Type == OverlayLayerType.GeoJSON_FromMapGuide)
             {
-    <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
+                <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
             }
         }
     }
@@ -138,7 +140,9 @@
 
         @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
         {<text>
-        var mainUTFGrid = L.utfGridCanvas("@Raw(Model.UTFGridUrl)", {
+        var gUTFGridTipsEnabled = true;
+        var gTrackingUTFGridTip = false;
+        var mainUTFGrid = L.utfGrid("@Raw(Model.UTFGridUrl)", {
             fillColor: 'rgba(0, 0, 0, 0.5)',
             bounds: mapBounds
             //shadowBlur: 2,
@@ -147,10 +151,21 @@
         });
         var infoElement = document.getElementById('feature-info');
         var nameElement = document.getElementById('feature-name');
+        function setUTFGridTipsEnabled(bEnabled) {
+            gUTFGridTipsEnabled = bEnabled;
+            if (!gUTFGridTipsEnabled) {
+                nameElement.innerHTML = "";
+                infoElement.style.display = "none";
+            }
+        }
         mainUTFGrid.on('mouseover', function (e) {
+            if (!gUTFGridTipsEnabled) {
+                return;
+            }
             //console.log("utfgrid mouseover");
             //console.log(e);
             if (e.data) {
+                gTrackingUTFGridTip = true;
                 /*
                 var html = "<table>";
                 for (var key in data) {
@@ -167,13 +182,17 @@
                 }
                 nameElement.innerHTML = html
                 infoElement.style.display = null;
-                var cntPt = map.latLngToContainerPoint(e.latlng);
-                infoElement.style.left = (cntPt.x + 15) + "px";
-                infoElement.style.top = (cntPt.y + 15) + "px";
+                //var cntPt = map.latLngToContainerPoint(e.latlng);
+                //infoElement.style.left = (cntPt.x + 15) + "px";
+                //infoElement.style.top = (cntPt.y + 15) + "px";
             }
             //infoOverlay.setPosition(data ? coordinate : undefined);
         });
         mainUTFGrid.on('mouseout', function (e) {
+            if (!gUTFGridTipsEnabled) {
+                return;
+            }
+            gTrackingUTFGridTip = false;
             //console.log("utfgrid mouseout");
             //console.log(e);
             //info.update();
@@ -246,7 +265,18 @@
         }).fitBounds(mapBounds);
         L.control.layers(base, overlays).addTo(map);
 
-</script>
+        @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
+        {<text>
+        map.on("mousemove", function (e) {
+            if (gTrackingUTFGridTip) {
+                var cntPt = map.latLngToContainerPoint(e.latlng);
+                infoElement.style.left = (cntPt.x + 15) + "px";
+                infoElement.style.top = (cntPt.y + 15) + "px";
+            }
+        });
+        </text>
+        }
+    </script>
 </body>
 
 </html>

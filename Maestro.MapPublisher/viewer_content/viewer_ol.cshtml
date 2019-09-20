@@ -130,6 +130,7 @@
 
         @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
         {<text>
+        var gUTFGridTipsEnabled = true;
         var utfGridSource = new ol.source.UTFGrid({
             tileJSON: {
             scheme: "xyz",
@@ -395,13 +396,16 @@
                 });
         };
         map.on('pointermove', function (evt) {
-            if (evt.dragging) {
+            if (evt.dragging || !gUTFGridTipsEnabled) {
                 return;
             }
             var coordinate = map.getEventCoordinate(evt.originalEvent);
             displayFeatureInfo(coordinate);
         });
         map.on('click', function (evt) {
+            if (!gUTFGridTipsEnabled) {
+                return;
+            }
             if (evt.originalEvent.ctrlKey == true) {
                 var viewResolution = /** @@type {number} */ (view.getResolution());
                 gridSource.forDataAtCoordinateAndResolution(evt.coordinate, viewResolution,
@@ -412,6 +416,14 @@
                     });
             }
         });
+        function setUTFGridTipsEnabled(bEnabled) {
+            gUTFGridTipsEnabled = bEnabled;
+            if (!gUTFGridTipsEnabled) {
+                nameElement.innerHTML = "";
+                popupOverlay.setPosition(undefined);
+                popupCloser.blur();
+            }
+        }
         </text>
         }
 
