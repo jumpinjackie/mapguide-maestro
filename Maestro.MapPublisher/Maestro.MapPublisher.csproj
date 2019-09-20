@@ -11,6 +11,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="viewer_content\assets\css\animation.css" />
+    <None Remove="viewer_content\assets\css\fontello-codes.css" />
+    <None Remove="viewer_content\assets\css\fontello-embedded.css" />
+    <None Remove="viewer_content\assets\css\fontello-ie7-codes.css" />
+    <None Remove="viewer_content\assets\css\fontello-ie7.css" />
+    <None Remove="viewer_content\assets\css\fontello.css" />
+    <None Remove="viewer_content\assets\easy-button.css" />
+    <None Remove="viewer_content\assets\easy-button.js" />
     <None Remove="viewer_content\assets\extra\Cloud.js" />
     <None Remove="viewer_content\assets\extra\Exif2Geojson.js" />
     <None Remove="viewer_content\assets\extra\ExportMap.js" />
@@ -19,6 +27,11 @@
     <None Remove="viewer_content\assets\extra\FontMakiDef.js" />
     <None Remove="viewer_content\assets\extra\TextureImage.js" />
     <None Remove="viewer_content\assets\extra\WSynchro.js" />
+    <None Remove="viewer_content\assets\font\fontello.eot" />
+    <None Remove="viewer_content\assets\font\fontello.svg" />
+    <None Remove="viewer_content\assets\font\fontello.ttf" />
+    <None Remove="viewer_content\assets\font\fontello.woff" />
+    <None Remove="viewer_content\assets\font\fontello.woff2" />
     <None Remove="viewer_content\assets\images\layers-2x.png" />
     <None Remove="viewer_content\assets\images\layers.png" />
     <None Remove="viewer_content\assets\images\marker-icon-2x.png" />
@@ -47,6 +60,30 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="viewer_content\assets\css\animation.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\css\fontello-codes.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\css\fontello-embedded.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\css\fontello-ie7-codes.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\css\fontello-ie7.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\css\fontello.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\easy-button.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\easy-button.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="viewer_content\assets\extra\Cloud.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -69,6 +106,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="viewer_content\assets\extra\WSynchro.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\font\fontello.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\font\fontello.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\font\fontello.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\font\fontello.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\assets\font\fontello.woff2">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="viewer_content\assets\images\layers-2x.png">

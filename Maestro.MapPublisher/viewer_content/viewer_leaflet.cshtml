@@ -6,7 +6,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@Model.Title</title>
+    <link rel="stylesheet" href="assets/css/fontello.css" />
     <link rel="stylesheet" href="assets/leaflet.css" />
+    <link rel="stylesheet" href="assets/easy-button.css" />
     <style type="text/css">
         html,
         body {
@@ -35,6 +37,10 @@
         }
         </text>
         }
+
+        button.enable-tile-tooltips-active {
+            background-color: #ff9900;
+        }
     </style>
 </head>
 
@@ -50,11 +56,12 @@
         </div>
     }
     <script type="text/javascript" src="assets/leaflet-src.js" charset="utf-8"></script>
+    <script type="text/javascript" src="assets/easy-button.js" charset="utf-8"></script>
     @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
     {
     <script type="text/javascript" src="assets/L.UTFGrid-min.js" charset="utf-8"></script>
     @*
-    <script type="text/javascript" src="assets/L.UTFGridCanvas.js" charset="utf-8"></script>
+        <script type="text/javascript" src="assets/L.UTFGridCanvas.js" charset="utf-8"></script>
     *@
     }
     @if (Model.OverlayLayers != null)
@@ -267,6 +274,32 @@
 
         @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
         {<text>
+
+        var utfGridTipToggleBtn = L.easyButton({
+            states: [
+                {
+                    stateName: 'enable-tile-tooltips',      // name the state
+                    icon:      'icon-comment',              // and define its properties
+                    title:     'Enable tile tooltips',      // like its title
+                    onClick: function (btn, map) {          // and its callback
+                        setUTFGridTipsEnabled(false);
+                        btn.state('disable-tile-tooltips'); // change state on click!
+                    }
+                },
+                {
+                    stateName: 'disable-tile-tooltips',
+                    icon:      'icon-comment',
+                    title:     'Disable tile tooltips',
+                    onClick: function (btn, map) {
+                        setUTFGridTipsEnabled(true);
+                        btn.state('enable-tile-tooltips');
+                    }
+                }
+            ]
+        });
+
+        utfGridTipToggleBtn.addTo( map );
+
         map.on("mousemove", function (e) {
             if (gTrackingUTFGridTip) {
                 var cntPt = e.containerPoint;
