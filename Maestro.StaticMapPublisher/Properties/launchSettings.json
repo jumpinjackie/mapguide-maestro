@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Maestro.StaticMapPublisher": {
-      "commandName": "Project",
-      "commandLineArgs": "--mapagent \"http://localhost/mapguide/mapagent/mapagent.fcgi\" --output-directory \"D:\\temp\\StaticPublish\" --minx -87.764986990962839 --miny 43.691398128787782 --maxx -87.695521510899724 --maxy 43.797520000480347 --image-tileset \"Library://Samples/Sheboygan/TileSets/SheboyganXYZ.TileSetDefinition\" --utfgrid-tileset \"Library://Samples/Sheboygan/TileSets/SheboyganUTFGrid.TileSetDefinition\" --max-parallelism 8 --randomize-requests"
-    }
-  }
-}

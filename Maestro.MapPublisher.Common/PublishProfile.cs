@@ -44,11 +44,35 @@ namespace Maestro.StaticMapPublisher.Common
         public double MaxY { get; set; }
     }
 
+    public enum TileSetRefMode
+    {
+        /// <summary>
+        /// The publisher will set up remote XYZ tile source pointing to the given
+        /// mapagent and tile set
+        /// </summary>
+        Remote,
+        /// <summary>
+        /// The publisher will download tiles from the specified mapagent and tile
+        /// set to the publish output location and will then set up a XYZ tile source
+        /// pointing to the local location. Use this option if you wish to publish
+        /// a interactive map with a tile set completely independent of MapGuide
+        /// </summary>
+        Local
+    }
+
     public class TileSetRef
     {
         public string ResourceID { get; set; }
 
         public string GroupName { get; set; }
+
+        public TileSetRefMode Mode { get; set; }
+
+        /// <summary>
+        /// If <see cref="Mode"/> is <see cref="TileSetRefMode.Local"/>, skips downloading
+        /// tiles
+        /// </summary>
+        public bool SkipTileDownloading { get; set; }
     }
 
     [JsonConverter(typeof(ViewerOptionsBaseConverter))]
@@ -82,8 +106,6 @@ namespace Maestro.StaticMapPublisher.Common
         public string Password { get; set; }
 
         public bool RandomizeRequests { get; set; }
-
-        public bool SkipTileDownloading { get; set; }
 
         public ViewerOptionsBase ViewerOptions { get; set; }
 

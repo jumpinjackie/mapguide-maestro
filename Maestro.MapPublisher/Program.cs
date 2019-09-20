@@ -83,15 +83,7 @@ namespace Maestro.StaticMapPublisher
 
                             var pubOpts = po.PublishingOptions;
                             var pub = new Maestro.StaticMapPublisher.Common.StaticMapPublisher(stdout);
-                            var ret = 0;
-                            if (!pubOpts.SkipTileDownloading)
-                            {
-                                ret = await pub.PublishAsync(pubOpts);
-                            }
-                            else
-                            {
-                                await stdout.WriteLineAsync("Skipping tile downloading");
-                            }
+                            var ret = await pub.PublishAsync(pubOpts);
                             var bounds = pubOpts.Bounds;
 
                             int counter = 0;
@@ -113,8 +105,8 @@ namespace Maestro.StaticMapPublisher
                             var vm = new MapViewerModel
                             {
                                 Title = pubOpts.Title,
-                                UTFGridRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.UTFGridTileSetDefinition),
-                                XYZImageRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.ImageTileSetDefinition),
+                                UTFGridRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.UTFGridTileSet?.ResourceID),
+                                XYZImageRelPath = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.ImageTileSet?.ResourceID),
                                 LatLngBounds = new [] { bounds.MinX, bounds.MinY, bounds.MaxX, bounds.MaxY },
                                 ExternalBaseLayers = pubOpts.ExternalBaseLayers,
                                 OverlayLayers = pubOpts.OverlayLayers

@@ -44,13 +44,9 @@ namespace Maestro.StaticMapPublisher.Common
 
         ViewerType Viewer { get; }
 
-        string ImageTileSetDefinition { get; }
+        TileSetRef ImageTileSet { get; }
 
-        string ImageTileSetGroup { get; }
-
-        string UTFGridTileSetDefinition { get; }
-
-        string UTFGridTileSetGroup { get; }
+        TileSetRef UTFGridTileSet { get; }
 
         IEnvelope Bounds { get; }
 
@@ -61,8 +57,6 @@ namespace Maestro.StaticMapPublisher.Common
         IServerConnection Connection { get; }
 
         bool RandomizeRequests { get; }
-
-        bool SkipTileDownloading { get; }
     }
 
     public enum ExternalBaseLayerType

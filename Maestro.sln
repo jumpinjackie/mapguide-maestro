@@ -110,11 +110,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro", "Maestro\Maestro.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MgTileSeeder", "MgTileSeeder\MgTileSeeder.csproj", "{741C3200-4497-492B-8417-6D2F358B72E0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Static Map Publisher", "Static Map Publisher", "{8B2EDEFA-D34C-434E-832E-3D1C5B7D9E5D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Map Publisher", "Map Publisher", "{8B2EDEFA-D34C-434E-832E-3D1C5B7D9E5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.StaticMapPublisher", "Maestro.StaticMapPublisher\Maestro.StaticMapPublisher.csproj", "{1FF873C8-A5FA-475C-8DC9-7C3DE431A0A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.MapPublisher", "Maestro.MapPublisher\Maestro.MapPublisher.csproj", "{1FF873C8-A5FA-475C-8DC9-7C3DE431A0A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.StaticMapPublisher.Common", "Maestro.StaticMapPublisher.Common\Maestro.StaticMapPublisher.Common.csproj", "{0BD2F92F-278B-442B-9D3E-07077C9C362F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.MapPublisher.Common", "Maestro.MapPublisher.Common\Maestro.MapPublisher.Common.csproj", "{0BD2F92F-278B-442B-9D3E-07077C9C362F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

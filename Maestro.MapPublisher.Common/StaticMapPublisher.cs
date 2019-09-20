@@ -65,20 +65,20 @@ namespace Maestro.StaticMapPublisher.Common
             string imgDir = null;
             string utfDir = null;
 
-            if (!string.IsNullOrEmpty(options.ImageTileSetDefinition))
+            if (!string.IsNullOrEmpty(options.ImageTileSet?.ResourceID))
             {
-                imgDir = GetImageTileSaveDirectory(options, o => o.ImageTileSetDefinition);
+                imgDir = GetImageTileSaveDirectory(options, o => o.ImageTileSet.ResourceID);
                 Directory.CreateDirectory(imgDir);
             }
-            if (!string.IsNullOrEmpty(options.UTFGridTileSetDefinition))
+            if (!string.IsNullOrEmpty(options.UTFGridTileSet?.ResourceID))
             {
-                utfDir = GetImageTileSaveDirectory(options, o => o.UTFGridTileSetDefinition);
+                utfDir = GetImageTileSaveDirectory(options, o => o.UTFGridTileSet.ResourceID);
                 Directory.CreateDirectory(utfDir);
             }
 
-            if (!string.IsNullOrEmpty(options.ImageTileSetDefinition))
+            if (!string.IsNullOrEmpty(options.ImageTileSet?.ResourceID))
             {
-                var tileSvc = new XYZTileService(BuildUrlTemplate(options, o => o.ImageTileSetDefinition, o => o.ImageTileSetGroup));
+                var tileSvc = new XYZTileService(BuildUrlTemplate(options, o => o.ImageTileSet.ResourceID, o => o.ImageTileSet.GroupName));
                 var walker = new XYZTileWalker(options.Bounds.MinX, options.Bounds.MinY, options.Bounds.MaxX, options.Bounds.MaxY);
                 var seedOpts = new TileSeederOptions
                 {
@@ -114,9 +114,9 @@ namespace Maestro.StaticMapPublisher.Common
 
             var imageElapsed = DateTime.UtcNow - _tileStart;
             _tileStart = DateTime.UtcNow;
-            if (!string.IsNullOrEmpty(options.UTFGridTileSetDefinition))
+            if (!string.IsNullOrEmpty(options.UTFGridTileSet?.ResourceID))
             {
-                var tileSvc = new XYZTileService(BuildUrlTemplate(options, o => o.UTFGridTileSetDefinition, o => o.UTFGridTileSetGroup));
+                var tileSvc = new XYZTileService(BuildUrlTemplate(options, o => o.UTFGridTileSet.ResourceID, o => o.UTFGridTileSet.GroupName));
                 var walker = new XYZTileWalker(options.Bounds.MinX, options.Bounds.MinY, options.Bounds.MaxX, options.Bounds.MaxY);
                 var seedOpts = new TileSeederOptions
                 {
