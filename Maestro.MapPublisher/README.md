@@ -236,11 +236,14 @@ The `Type` can be one of the following:
    * You must provide a `Source` property that contains the following properties:
       * `Origin`: Right now, this must always be `LayerDefinition`
       * `LayerDefinition`: The Layer Definition to download GeoJSON data from. The publisher will also attempt basic conversion of the styles defined for use in `OpenLayers` or `Leaflet` subject to various limitations (see below). If property mappings are defined in this Layer Definition, they will make this layer selectable and allow for display of its attributes in a popup when any feature from this layer is selected in the interactive map.
+      * `LoadAsVectorTiles`: If `true`, extra setup code will be generated so that the GeoJSON data is loaded as on-the-fly vector tiles (using the [geojson-vt library](https://github.com/mapbox/geojson-vt)). This is an option you generally want to activate for big GeoJSON data sources (size or feature count). Not supported in the `Leaflet` template.
 
 # Limitations
 
  * The map published will always be based on Web Mercator (`EPSG:3857`). All vector data will be reprojected to this projection if required. Any GeoJSON data downloaded from MapGuide will be re-projected as part of downloading.
- * WFS overlay layers are not supported by the `Leaflet` template.
+ * The `Leaflet` template does not support the following:
+   * WFS overlay layers
+   * The `LoadAsVectorTiles` option
  * For GeoJSON sources downloaded from MapGuide, basic style conversion will be attempted to preserve as much of the defined style to the published map. For best results, the layers ***must not*** be based on [Advanced/Composite Stylization](https://trac.osgeo.org/mapguide/wiki/AdvancedStylization) and:
    * Should only have one vector scale range. If there are multiple, only the first one is chosen. The visible range itself is not preserved during conversion.
    * If the layer has a `Hyperlink` set, it must be a FDO expression which is a reference to an existing property and nothing more complex. If you must have computed hyperlinks that involves a complex FDO expression, you can workaround the limitation by using the `Extended Feature Class` capability and define a computed hyperlink property with your computed FDO expression. Then update the layer to point to this extended feature class and update the `Hyperlink` to point to this new computed property.
