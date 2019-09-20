@@ -49,7 +49,7 @@ namespace Maestro.MapPublisher.Common
                 ?.Replace(".TileSetDefinition", string.Empty)
                 ?.Replace("Library://", string.Empty)
                 ?.Replace(".", string.Empty)
-                ?.Replace("/", "_");
+                ?.Replace('/', '_');
         }
 
         static string GetImageTileSaveDirectory(IStaticMapPublishingOptions options, Func<IStaticMapPublishingOptions, string> getResource)
@@ -65,6 +65,9 @@ namespace Maestro.MapPublisher.Common
             string imgDir = null;
             string utfDir = null;
 
+            bool downloadedImageTiles = false;
+            bool downloadedUTFGridTiles = false;
+
             if (!string.IsNullOrEmpty(options.ImageTileSet?.ResourceID))
             {
                 imgDir = GetImageTileSaveDirectory(options, o => o.ImageTileSet.ResourceID);
@@ -78,80 +81,98 @@ namespace Maestro.MapPublisher.Common
 
             if (!string.IsNullOrEmpty(options.ImageTileSet?.ResourceID))
             {
-                var tileSvc = new XYZTileService(BuildUrlTemplate(options, o => o.ImageTileSet.ResourceID, o => o.ImageTileSet.GroupName));
-                var walker = new XYZTileWalker(options.Bounds.MinX, options.Bounds.MinY, options.Bounds.MaxX, options.Bounds.MaxY);
-                var seedOpts = new TileSeederOptions
+                if (options.ImageTileSet.Mode == TileSetRefMode.Local && !options.ImageTileSet.SkipTileDownloading)
                 {
-                    MaxDegreeOfParallelism = options.MaxDegreeOfParallelism
-                };
-                if (Directory.Exists(imgDir))
-                {
-                    seedOpts.SaveTile = (tr, stream) =>
+                    var tileSvc = new XYZTileService(BuildUrlTemplate(options, o => o.ImageTileSet.ResourceID, o => o.ImageTileSet.GroupName));
+                    var walker = new XYZTileWalker(options.Bounds.MinX, options.Bounds.MinY, options.Bounds.MaxX, options.Bounds.MaxY);
+                    var seedOpts = new TileSeederOptions
                     {
-                        var tilePath = Path.Combine(imgDir, tr.GroupName, $"{tr.Scale}" /* z */, $"{tr.Row}"  /* x */, $"{tr.Col}.png" /* y */);
-                        var parentDir = Path.GetDirectoryName(tilePath);
-                        if (!Directory.Exists(parentDir))
-                            Directory.CreateDirectory(parentDir);
-                        using (var fw = File.OpenWrite(tilePath))
-                        {
-                            Utility.CopyStream(stream, fw);
-                        }
+                        MaxDegreeOfParallelism = options.MaxDegreeOfParallelism
                     };
+                    if (Directory.Exists(imgDir))
+                    {
+                        seedOpts.SaveTile = (tr, stream) =>
+                        {
+                            var tilePath = Path.Combine(imgDir, tr.GroupName, $"{tr.Scale}" /* z */, $"{tr.Row}"  /* x */, $"{tr.Col}.png" /* y */);
+                            var parentDir = Path.GetDirectoryName(tilePath);
+                            if (!Directory.Exists(parentDir))
+                                Directory.CreateDirectory(parentDir);
+                            using (var fw = File.OpenWrite(tilePath))
+                            {
+                                Utility.CopyStream(stream, fw);
+                            }
+                        };
+                    }
+                    else
+                    {
+                        seedOpts.SaveTile = null;
+                    }
+                    seedOpts.ErrorLogger = (tr, ex) =>
+                    {
+
+                    };
+
+                    var seeder = new TileSeeder(tileSvc, walker, seedOpts);
+                    seeder.RandomizeRequests = options.RandomizeRequests;
+                    await seeder.RunAsync(this);
+                    downloadedImageTiles = true;
                 }
                 else
                 {
-                    seedOpts.SaveTile = null;
+                    await _stdout.WriteLineAsync($"Skipping downloading of tiles for: {options.ImageTileSet.ResourceID}");
                 }
-                seedOpts.ErrorLogger = (tr, ex) =>
-                {
-
-                };
-
-                var seeder = new TileSeeder(tileSvc, walker, seedOpts);
-                seeder.RandomizeRequests = options.RandomizeRequests;
-                await seeder.RunAsync(this);
             }
 
             var imageElapsed = DateTime.UtcNow - _tileStart;
             _tileStart = DateTime.UtcNow;
             if (!string.IsNullOrEmpty(options.UTFGridTileSet?.ResourceID))
             {
-                var tileSvc = new XYZTileService(BuildUrlTemplate(options, o => o.UTFGridTileSet.ResourceID, o => o.UTFGridTileSet.GroupName));
-                var walker = new XYZTileWalker(options.Bounds.MinX, options.Bounds.MinY, options.Bounds.MaxX, options.Bounds.MaxY);
-                var seedOpts = new TileSeederOptions
+                if (options.UTFGridTileSet.Mode == TileSetRefMode.Local && !options.UTFGridTileSet.SkipTileDownloading)
                 {
-                    MaxDegreeOfParallelism = options.MaxDegreeOfParallelism
-                };
-                if (Directory.Exists(utfDir))
-                {
-                    seedOpts.SaveTile = (tr, stream) =>
+                    var tileSvc = new XYZTileService(BuildUrlTemplate(options, o => o.UTFGridTileSet.ResourceID, o => o.UTFGridTileSet.GroupName));
+                    var walker = new XYZTileWalker(options.Bounds.MinX, options.Bounds.MinY, options.Bounds.MaxX, options.Bounds.MaxY);
+                    var seedOpts = new TileSeederOptions
                     {
-                        var tilePath = Path.Combine(utfDir, tr.GroupName, $"{tr.Scale}" /* z */, $"{tr.Row}"  /* x */, $"{tr.Col}.json" /* y */);
-                        var parentDir = Path.GetDirectoryName(tilePath);
-                        if (!Directory.Exists(parentDir))
-                            Directory.CreateDirectory(parentDir);
-                        using (var fw = File.OpenWrite(tilePath))
-                        {
-                            Utility.CopyStream(stream, fw);
-                        }
+                        MaxDegreeOfParallelism = options.MaxDegreeOfParallelism
                     };
+                    if (Directory.Exists(utfDir))
+                    {
+                        seedOpts.SaveTile = (tr, stream) =>
+                        {
+                            var tilePath = Path.Combine(utfDir, tr.GroupName, $"{tr.Scale}" /* z */, $"{tr.Row}"  /* x */, $"{tr.Col}.json" /* y */);
+                            var parentDir = Path.GetDirectoryName(tilePath);
+                            if (!Directory.Exists(parentDir))
+                                Directory.CreateDirectory(parentDir);
+                            using (var fw = File.OpenWrite(tilePath))
+                            {
+                                Utility.CopyStream(stream, fw);
+                            }
+                        };
+                    }
+                    else
+                    {
+                        seedOpts.SaveTile = null;
+                    }
+                    seedOpts.ErrorLogger = (tr, ex) =>
+                    {
+
+                    };
+                    var seeder = new TileSeeder(tileSvc, walker, seedOpts);
+                    seeder.RandomizeRequests = options.RandomizeRequests;
+                    await seeder.RunAsync(this);
+                    downloadedUTFGridTiles = true;
                 }
                 else
                 {
-                    seedOpts.SaveTile = null;
+                    await _stdout.WriteLineAsync($"Skipping downloading of tiles for: {options.UTFGridTileSet.ResourceID}");
                 }
-                seedOpts.ErrorLogger = (tr, ex) =>
-                {
-
-                };
-                var seeder = new TileSeeder(tileSvc, walker, seedOpts);
-                seeder.RandomizeRequests = options.RandomizeRequests;
-                await seeder.RunAsync(this);
             }
 
             var utfElapsed = DateTime.UtcNow - _tileStart;
-            _stdout.WriteLine($"Image tiles downloaded in {(int)imageElapsed.TotalSeconds}s");
-            _stdout.WriteLine($"UTFGrid tiles downloaded in {(int)utfElapsed.TotalSeconds}s");
+            if (downloadedImageTiles)
+                await _stdout.WriteLineAsync($"Image tiles downloaded in {(int)imageElapsed.TotalSeconds}s");
+            if (downloadedUTFGridTiles)
+                await _stdout.WriteLineAsync($"UTFGrid tiles downloaded in {(int)utfElapsed.TotalSeconds}s");
             return 0;
         }
 

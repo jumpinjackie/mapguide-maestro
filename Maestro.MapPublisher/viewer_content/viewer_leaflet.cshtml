@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Maestro.MapPublisher.Common
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -58,9 +59,9 @@
     {
         foreach (var extLayer in Model.OverlayLayers)
         {
-            if (extLayer.Type == Maestro.MapPublisher.Common.OverlayLayerType.GeoJSON_FromMapGuide)
+            if (extLayer.Type == OverlayLayerType.GeoJSON_FromMapGuide)
             {
-                <script type="text/javascript" src="@(((Maestro.MapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
+                <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
             }
         }
     }
@@ -91,7 +92,7 @@
             {
                 switch (extLayer.Type)
                 {
-                    case Maestro.MapPublisher.Common.ExternalBaseLayerType.OSM:
+                    case ExternalBaseLayerType.OSM:
                         <text>
         var @(extLayer.Type)_@(counter) = L.tileLayer( '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -100,7 +101,7 @@
         baseLayerList.push({ name: "@extLayer.Name", layer: @(extLayer.Type)_@(counter) });
                         </text>
                         break;
-                    case Maestro.MapPublisher.Common.ExternalBaseLayerType.Stamen:
+                    case ExternalBaseLayerType.Stamen:
                         <text>
         var @(extLayer.Type)_@(counter) = L.tileLayer( '//stamen-tiles-{s}.a.ssl.fastly.net/@(extLayer.LayerType.ToString().ToLower())/{z}/{x}/{y}.png', {
             attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
@@ -109,13 +110,13 @@
         baseLayerList.push({ name: "@extLayer.Name", layer: @(extLayer.Type)_@(counter) });
                         </text>
                         break;
-                    case Maestro.MapPublisher.Common.ExternalBaseLayerType.XYZ:
+                    case ExternalBaseLayerType.XYZ:
                         <text>
         var @(extLayer.Type)_@(counter) = L.tileLayer("@extLayer.UrlTemplate");
         baseLayerList.push({ name: "@extLayer.Name", layer: @(extLayer.Type)_@(counter) });
                         </text>
                         break;
-                    case Maestro.MapPublisher.Common.ExternalBaseLayerType.BingMaps:
+                    case ExternalBaseLayerType.BingMaps:
                         <text>
         console.warn("Bing Maps not yet supported");
                         </text>
@@ -188,20 +189,20 @@
             {
                 switch (extLayer.Type)
                 {
-                    case Maestro.MapPublisher.Common.OverlayLayerType.GeoJSON_FromMapGuide:
+                    case OverlayLayerType.GeoJSON_FromMapGuide:
                         <text>
-        var @(extLayer.Type)_@(counter) = L.geoJSON(@(((Maestro.MapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar), {
-            style: @(((Maestro.MapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_style || defaultStyle,
-            pointToLayer: @(((Maestro.MapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_style_point,
-            onEachFeature: @(((Maestro.MapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_popup_template
+        var @(extLayer.Type)_@(counter) = L.geoJSON(@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar), {
+            style: @(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_style || defaultStyle,
+            pointToLayer: @(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_style_point,
+            onEachFeature: @(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_popup_template
         });
         overlayList.push({ name: "@(extLayer.Name)", visible: @(extLayer.InitiallyVisible ? "true" : "false"), layer: @(extLayer.Type)_@(counter) });
                         </text>
                         break;
-                    case Maestro.MapPublisher.Common.OverlayLayerType.WMS:
+                    case OverlayLayerType.WMS:
                         <text>
-        var @(extLayer.Type)_@(counter) = L.tileLayer.wms("@(((Maestro.MapPublisher.Common.WMSOverlayLayer)extLayer).Service)", {
-            layers: "@(((Maestro.MapPublisher.Common.WMSOverlayLayer)extLayer).Layer)",
+        var @(extLayer.Type)_@(counter) = L.tileLayer.wms("@(((WMSOverlayLayer)extLayer).Service)", {
+            layers: "@(((WMSOverlayLayer)extLayer).Layer)",
             format: "image/png",
             transparent: true,
             uppercase: true

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Maestro.MapPublisher.Common
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -114,9 +115,9 @@
     {
         foreach (var extLayer in Model.OverlayLayers)
         {
-            if (extLayer.Type == Maestro.MapPublisher.Common.OverlayLayerType.GeoJSON_FromMapGuide)
+            if (extLayer.Type == OverlayLayerType.GeoJSON_FromMapGuide)
             {
-                <script type="text/javascript" src="@(((Maestro.MapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
+                <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
             }
         }
     }
@@ -152,13 +153,13 @@
             {
                 switch (extLayer.Type)
                 {
-                    case Maestro.MapPublisher.Common.ExternalBaseLayerType.OSM:
+                    case ExternalBaseLayerType.OSM:
                         <text>
         var @(extLayer.Type)_@(counter) = new ol.source.OSM();
         baseLayerList.push({ name: "@extLayer.Name", visible: @(counter == 0 ? "true" : "false"), source: @(extLayer.Type)_@(counter) });
                         </text>
                         break;
-                    case Maestro.MapPublisher.Common.ExternalBaseLayerType.Stamen:
+                    case ExternalBaseLayerType.Stamen:
                         <text>
         var @(extLayer.Type)_@(counter) = new ol.source.Stamen({
             layer: "@extLayer.LayerType.ToString().ToLower()"
@@ -166,7 +167,7 @@
         baseLayerList.push({ name: "@extLayer.Name", visible: @(counter == 0 ? "true" : "false"), source: @(extLayer.Type)_@(counter) });
                         </text>
                         break;
-                    case Maestro.MapPublisher.Common.ExternalBaseLayerType.XYZ:
+                    case ExternalBaseLayerType.XYZ:
                         <text>
         var @(extLayer.Type)_@(counter) = new ol.source.XYZ({
             url: "@extLayer.UrlTemplate"
@@ -174,7 +175,7 @@
         baseLayerList.push({ name: "@extLayer.Name", visible: @(counter == 0 ? "true" : "false"), source: @(extLayer.Type)_@(counter) });
                         </text>
                         break;
-                    case Maestro.MapPublisher.Common.ExternalBaseLayerType.BingMaps:
+                    case ExternalBaseLayerType.BingMaps:
                         <text>
         console.warn("Bing Maps not yet supported");
                         </text>
@@ -226,44 +227,44 @@
             {
                 switch (extLayer.Type)
                 {
-                    case Maestro.MapPublisher.Common.OverlayLayerType.GeoJSON_FromMapGuide:
+                    case OverlayLayerType.GeoJSON_FromMapGuide:
                         <text>
         var @(extLayer.Type)_@(counter) = new ol.layer.Vector({
             title: "@extLayer.Name",
             visible: @(extLayer.InitiallyVisible ? "true" : "false"),
-            style: @(((Maestro.MapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_style,
+            style: @(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_style,
             source: new ol.source.Vector({
                 features: (new ol.format.GeoJSON({
                     dataProjection: "EPSG:4326",
                     featureProjection: "EPSG:3857"
                 }))
-                .readFeatures(@(((Maestro.MapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar))
+                .readFeatures(@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar))
                 .map(function (f) {
                     f.set("OL_LAYER_NAME", "@extLayer.Name");
                     return f;
                 })
             })
         });
-        popupTemplates["@extLayer.Name"] = @(((Maestro.MapPublisher.Common.GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_popup_template;
+        popupTemplates["@extLayer.Name"] = @(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_popup_template;
         overlayList.push(@(extLayer.Type)_@(counter));
                         </text>
                         break;
-                    case Maestro.MapPublisher.Common.OverlayLayerType.WMS:
+                    case OverlayLayerType.WMS:
                         <text>
         var @(extLayer.Type)_@(counter) = new ol.layer.Tile({
             title: "@extLayer.Name",
             visible: @(extLayer.InitiallyVisible ? "true" : "false"),
             source: new ol.source.TileWMS({
-                url: "@(((Maestro.MapPublisher.Common.WMSOverlayLayer)extLayer).Service)",
+                url: "@(((WMSOverlayLayer)extLayer).Service)",
                 params: {
-                    "LAYERS": "@(((Maestro.MapPublisher.Common.WMSOverlayLayer)extLayer).Layer)"
+                    "LAYERS": "@(((WMSOverlayLayer)extLayer).Layer)"
                 }
             })
         });
         overlayList.push(@(extLayer.Type)_@(counter));
                         </text>
                         break;
-                    case Maestro.MapPublisher.Common.OverlayLayerType.WFS:
+                    case OverlayLayerType.WFS:
                         <text>
         var @(extLayer.Type)_@(counter) = new ol.layer.Vector({
             title: "@extLayer.Name",
@@ -271,9 +272,9 @@
             source: new ol.source.Vector({
                 format: new ol.format.GeoJSON(),
                 url: function (extent) {
-                    return "@(((Maestro.MapPublisher.Common.WFSOverlayLayer)extLayer).Service)?" +
+                    return "@(((WFSOverlayLayer)extLayer).Service)?" +
                         'version=1.1.0&request=GetFeature&typename=' +
-                        "@(((Maestro.MapPublisher.Common.WFSOverlayLayer)extLayer).FeatureName)" +
+                        "@(((WFSOverlayLayer)extLayer).FeatureName)" +
                         '&outputFormat=application/json&srsname=EPSG:3857&' +
                         'bbox=' + extent.join(',') + ',EPSG:3857';
                 },
