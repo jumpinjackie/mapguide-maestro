@@ -20,10 +20,10 @@
 
 #endregion Disclaimer / License
 
-using Maestro.StaticMapPublisher.Common.Serialization;
+using Maestro.MapPublisher.Common.Serialization;
 using Newtonsoft.Json;
 
-namespace Maestro.StaticMapPublisher.Common
+namespace Maestro.MapPublisher.Common
 {
     public enum OverlayLayerType
     {

@@ -27,7 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Maestro.StaticMapPublisher.Common.Serialization
+namespace Maestro.MapPublisher.Common.Serialization
 {
     public abstract class BaseJsonConverter<TClass> : JsonConverter
     {

@@ -21,7 +21,7 @@
 #endregion Disclaimer / License
 
 
-namespace Maestro.StaticMapPublisher.Common
+namespace Maestro.MapPublisher.Common
 {
     public interface INamedLayer
     {

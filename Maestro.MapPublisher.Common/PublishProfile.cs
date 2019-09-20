@@ -20,7 +20,7 @@
 
 #endregion Disclaimer / License
 
-using Maestro.StaticMapPublisher.Common.Serialization;
+using Maestro.MapPublisher.Common.Serialization;
 using Newtonsoft.Json;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
@@ -31,7 +31,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Maestro.StaticMapPublisher.Common
+namespace Maestro.MapPublisher.Common
 {
     public class BoundingBox
     {

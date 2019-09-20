@@ -28,7 +28,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maestro.StaticMapPublisher.Common
+namespace Maestro.MapPublisher.Common
 {
     public class OLStyleTranslator : StyleTranslatorBase
     {

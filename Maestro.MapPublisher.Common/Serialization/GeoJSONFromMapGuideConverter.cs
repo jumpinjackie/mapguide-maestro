@@ -23,7 +23,7 @@
 using Newtonsoft.Json;
 using System;
 
-namespace Maestro.StaticMapPublisher.Common.Serialization
+namespace Maestro.MapPublisher.Common.Serialization
 {
     public class GeoJSONFromMapGuideConverter : BaseJsonConverter<GeoJSONFromMapGuide>
     {

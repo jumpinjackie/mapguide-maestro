@@ -30,7 +30,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Maestro.StaticMapPublisher.Common
+namespace Maestro.MapPublisher.Common
 {
     public readonly struct DownloadedFeaturesRef
     {
@@ -271,7 +271,7 @@ namespace Maestro.StaticMapPublisher.Common
         private string BuildSelectFeaturesUrl(string featureSource, string className, string filter = null)
         {
             var reqUrl = $"{_options.MapAgent}?OPERATION=SELECTFEATURES&VERSION=4.0.0&FORMAT=application/json&CLEAN=1";
-            reqUrl += "&CLIENTAGENT=Maestro.StaticMapPublisher";
+            reqUrl += "&CLIENTAGENT=Maestro.MapPublisher";
             reqUrl += $"&RESOURCEID={featureSource}&CLASSNAME={className}";
             reqUrl += $"&TRANSFORMTO={_outputCsCode}";
             reqUrl += $"&USERNAME={_options.Username ?? "Anonymous"}";
@@ -286,7 +286,7 @@ namespace Maestro.StaticMapPublisher.Common
         private string GetResourceContentUrl(string resourceId)
         {
             var reqUrl = $"{_options.MapAgent}?OPERATION=GETRESOURCECONTENT&VERSION=1.0.0&FORMAT=text/xml";
-            reqUrl += "&CLIENTAGENT=Maestro.StaticMapPublisher";
+            reqUrl += "&CLIENTAGENT=Maestro.MapPublisher";
             reqUrl += $"&RESOURCEID={resourceId}";
             reqUrl += $"&USERNAME={_options.Username ?? "Anonymous"}";
             if (!string.IsNullOrEmpty(_options.Password))

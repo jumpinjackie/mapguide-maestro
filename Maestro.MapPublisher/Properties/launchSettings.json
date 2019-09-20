@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Maestro.StaticMapPublisher": {
+    "Maestro.MapPublisher": {
       "commandName": "Project",
       "commandLineArgs": "publish --publish-profile-path \"D:\\temp\\publish-profile-sheboygan.json\""
     }

@@ -25,7 +25,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System;
 
-namespace Maestro.StaticMapPublisher.Common.Serialization
+namespace Maestro.MapPublisher.Common.Serialization
 {
     public class ViewerOptionsBaseConverter : BaseJsonConverter<ViewerOptionsBase>
     {

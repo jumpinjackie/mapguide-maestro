@@ -21,7 +21,7 @@
 #endregion Disclaimer / License
 
 using CommandLine;
-using Maestro.StaticMapPublisher.Common;
+using Maestro.MapPublisher.Common;
 using Newtonsoft.Json;
 using RazorEngine;
 using RazorEngine.Templating;
@@ -29,7 +29,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Maestro.StaticMapPublisher
+namespace Maestro.MapPublisher
 {
     [Verb("publish")]
     public class PublishOptions
@@ -82,7 +82,7 @@ namespace Maestro.StaticMapPublisher
                             po.Validate(stdout);
 
                             var pubOpts = po.PublishingOptions;
-                            var pub = new Maestro.StaticMapPublisher.Common.StaticMapPublisher(stdout);
+                            var pub = new Maestro.MapPublisher.Common.StaticMapPublisher(stdout);
                             var ret = await pub.PublishAsync(pubOpts);
                             var bounds = pubOpts.Bounds;
 

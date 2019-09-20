@@ -22,7 +22,7 @@
 
 using OSGeo.FDO.Expressions;
 
-namespace Maestro.StaticMapPublisher.Common
+namespace Maestro.MapPublisher.Common
 {
     public abstract class StyleTranslatorBase
     {
