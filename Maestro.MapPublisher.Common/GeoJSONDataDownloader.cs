@@ -292,13 +292,15 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
             }
         }
 
-        private string BuildSelectFeaturesUrl(string featureSource, string className, string filter = null)
+        private string BuildSelectFeaturesUrl(string featureSource, string className, int? precision = null, string filter = null)
         {
             var reqUrl = $"{_options.MapAgent}?OPERATION=SELECTFEATURES&VERSION=4.0.0&FORMAT=application/json&CLEAN=1";
             reqUrl += "&CLIENTAGENT=Maestro.MapPublisher";
             reqUrl += $"&RESOURCEID={featureSource}&CLASSNAME={className}";
             reqUrl += $"&TRANSFORMTO={_outputCsCode}";
             reqUrl += $"&USERNAME={_options.Username ?? "Anonymous"}";
+            if (precision.HasValue)
+                reqUrl += $"&PRECISION={precision.Value}";
             if (!string.IsNullOrEmpty(_options.Password))
                 reqUrl += $"&PASSWORD={_options.Password}";
             if (!string.IsNullOrEmpty(filter))
@@ -341,7 +343,7 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
             if (vl == null)
                 throw new Exception("Not a vector layer definition");
 
-            var url = BuildSelectFeaturesUrl(vl.ResourceId, vl.FeatureName, vl.Filter);
+            var url = BuildSelectFeaturesUrl(vl.ResourceId, vl.FeatureName, source.Precision, vl.Filter);
             resp = await httpClient.GetAsync(url);
             if (!resp.IsSuccessStatusCode)
             {

@@ -81,6 +81,8 @@ namespace Maestro.MapPublisher.Common
     {
         public abstract GeoJSONFromMapGuideOrigin Origin { get; }
 
+        public int? Precision { get; set; }
+
         public bool LoadAsVectorTiles { get; set; }
     }
 

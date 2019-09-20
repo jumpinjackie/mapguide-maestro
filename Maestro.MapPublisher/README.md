@@ -89,6 +89,8 @@ A publish profile controls what the published interactive map will look like. Be
             "Type": "GeoJSON_FromMapGuide",
             "Source": {
                 "Origin": "LayerDefinition",
+                "Precision": 6,
+                "LoadAsVectorTiles": true,
                 "LayerDefinition": "Library://Samples/Sheboygan/Layers/Parcels.LayerDefinition"
             }
         },
@@ -97,6 +99,7 @@ A publish profile controls what the published interactive map will look like. Be
             "Type": "GeoJSON_FromMapGuide",
             "Source": {
                 "Origin": "LayerDefinition",
+                "Precision": 6,
                 "LayerDefinition": "Library://Samples/Sheboygan_OpenData/Layers/Parks.LayerDefinition"
             }
         },
@@ -105,6 +108,7 @@ A publish profile controls what the published interactive map will look like. Be
             "Type": "GeoJSON_FromMapGuide",
             "Source": {
                 "Origin": "LayerDefinition",
+                "Precision": 6,
                 "LayerDefinition": "Library://Samples/Sheboygan_OpenData/Layers/Corporate_Limits.LayerDefinition"
             }
         }
@@ -236,6 +240,7 @@ The `Type` can be one of the following:
    * You must provide a `Source` property that contains the following properties:
       * `Origin`: Right now, this must always be `LayerDefinition`
       * `LayerDefinition`: The Layer Definition to download GeoJSON data from. The publisher will also attempt basic conversion of the styles defined for use in `OpenLayers` or `Leaflet` subject to various limitations (see below). If property mappings are defined in this Layer Definition, they will make this layer selectable and allow for display of its attributes in a popup when any feature from this layer is selected in the interactive map.
+      * `Precision`: Optional. If specified, coordinates are capped at the specified number of decimal places, reducing overall file size of the GeoJSON file as a result (those extra decimals add up!). If not specified, coordinates are output as-is, which in some cases may be up to 15 decimal places, which is probably excessive.
       * `LoadAsVectorTiles`: If `true`, extra setup code will be generated so that the GeoJSON data is loaded as on-the-fly vector tiles (using the [geojson-vt library](https://github.com/mapbox/geojson-vt)). This is an option you generally want to activate for big GeoJSON data sources (size or feature count). Not supported in the `Leaflet` template.
 
 # Limitations
