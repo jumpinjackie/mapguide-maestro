@@ -116,14 +116,14 @@ namespace Maestro.MapPublisher
                                 if (pubOpts.UTFGridTileSet.Mode == TileSetRefMode.Local)
                                     vm.UTFGridUrl = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.UTFGridTileSet?.ResourceID) + "/{z}/{x}/{y}.json";
                                 else if (pubOpts.UTFGridTileSet.Mode == TileSetRefMode.Remote)
-                                    vm.UTFGridUrl = $"{pubOpts.MapAgent}?OPERATION=GETTILEIMAGE&VERSION=1.2.0&CLIENTAGENT={agent}&MAPDEFINITION={pubOpts.UTFGridTileSet.ResourceID}";
+                                    vm.UTFGridUrl = $"{pubOpts.MapAgent}?OPERATION=GETTILEIMAGE&VERSION=1.2.0&USERNAME=Anonymous&CLIENTAGENT={agent}&MAPDEFINITION={pubOpts.UTFGridTileSet.ResourceID}&BASEMAPLAYERGROUPNAME={pubOpts.UTFGridTileSet.GroupName}&TILECOL={{y}}&TILEROW={{x}}&SCALEINDEX={{z}}";
                             }
                             if (pubOpts.ImageTileSet != null && !string.IsNullOrEmpty(pubOpts.ImageTileSet.ResourceID))
                             {
                                 if (pubOpts.ImageTileSet.Mode == TileSetRefMode.Local)
                                     vm.XYZImageUrl = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.ImageTileSet?.ResourceID) + "/{z}/{x}/{y}.png";
                                 else if (pubOpts.ImageTileSet.Mode == TileSetRefMode.Remote)
-                                    vm.XYZImageUrl = $"{pubOpts.MapAgent}?OPERATION=GETTILEIMAGE&VERSION=1.2.0&CLIENTAGENT={agent}&MAPDEFINITION={pubOpts.ImageTileSet.ResourceID}";
+                                    vm.XYZImageUrl = $"{pubOpts.MapAgent}?OPERATION=GETTILEIMAGE&VERSION=1.2.0&USERNAME=Anonymous&CLIENTAGENT={agent}&MAPDEFINITION={pubOpts.ImageTileSet.ResourceID}&BASEMAPLAYERGROUPNAME={pubOpts.ImageTileSet.GroupName}&TILECOL={{y}}&TILEROW={{x}}&SCALEINDEX={{z}}";
                             }
                             
 

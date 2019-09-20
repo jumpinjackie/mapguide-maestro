@@ -134,7 +134,7 @@
             tileJSON: {
             scheme: "xyz",
                 grids: [
-                    "@Model.UTFGridUrl"
+                    "@Raw(Model.UTFGridUrl)"
                 ]
             }
         });
@@ -172,7 +172,7 @@
                     case ExternalBaseLayerType.XYZ:
                         <text>
         var @(extLayer.Type)_@(counter) = new ol.source.XYZ({
-            url: "@extLayer.UrlTemplate"
+            url: "@Raw(extLayer.UrlTemplate)"
         });
         baseLayerList.push({ name: "@extLayer.Name", visible: @(counter == 0 ? "true" : "false"), source: @(extLayer.Type)_@(counter) });
                         </text>
@@ -209,7 +209,7 @@
             type: 'base',
             extent: viewBounds,
             source: new ol.source.XYZ({
-                url: "@Model.XYZImageUrl"
+                url: "@Raw(Model.XYZImageUrl)"
             })
         }));
         </text>
@@ -257,7 +257,7 @@
             title: "@extLayer.Name",
             visible: @(extLayer.InitiallyVisible ? "true" : "false"),
             source: new ol.source.TileWMS({
-                url: "@(((WMSOverlayLayer)extLayer).Service)",
+                url: "@Raw(((WMSOverlayLayer)extLayer).Service)",
                 params: {
                     "LAYERS": "@(((WMSOverlayLayer)extLayer).Layer)"
                 }
