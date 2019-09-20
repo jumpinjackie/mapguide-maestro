@@ -188,7 +188,11 @@
                         break;
                     case ExternalBaseLayerType.BingMaps:
                         <text>
-        console.warn("Bing Maps not yet supported");
+        var @(extLayer.Type)_@(counter) = new ol.source.BingMaps({
+            key: "@(((BingMapsBaseLayer)extLayer).ApiKey)",
+            imagerySet: "@(((BingMapsBaseLayer)extLayer).LayerType)",
+        });
+        baseLayerList.push({ name: "@extLayer.Name", visible: @(counter == 0 ? "true" : "false"), source: @(extLayer.Type)_@(counter) });
                         </text>
                         break;
                 }
