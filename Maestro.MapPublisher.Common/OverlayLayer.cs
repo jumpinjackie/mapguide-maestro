@@ -80,6 +80,8 @@ namespace Maestro.MapPublisher.Common
     public abstract class GeoJSONFromMapGuide
     {
         public abstract GeoJSONFromMapGuideOrigin Origin { get; }
+
+        public bool LoadAsVectorTiles { get; set; }
     }
 
     public class GeoJSONFromLayerDefinition : GeoJSONFromMapGuide

@@ -34,16 +34,19 @@ namespace Maestro.MapPublisher.Common
 {
     public readonly struct DownloadedFeaturesRef
     {
-        public DownloadedFeaturesRef(string name, string relPath, string varName)
+        public DownloadedFeaturesRef(string name, string dataRelPath, string configRelPath, string varName)
         {
             this.Name = name;
-            this.ScriptRelPath = relPath;
+            this.DataScriptRelPath = dataRelPath;
+            this.ConfigScriptRelPath = configRelPath;
             this.GlobalVar = varName;
         }
 
         public string Name { get; }
 
-        public string ScriptRelPath { get; }
+        public string DataScriptRelPath { get; }
+
+        public string ConfigScriptRelPath { get; }
 
         public string GlobalVar { get; }
     }
@@ -83,28 +86,49 @@ namespace Maestro.MapPublisher.Common
             return $"vector_features_{layerNumber}";
         }
 
-        private async Task<DownloadedFeaturesRef> DownloadFeatureDataAsync(IVectorLayerDefinition vl, int layerNumber, string name, Stream stream)
+        private async Task<DownloadedFeaturesRef> DownloadFeatureDataAsync(IVectorLayerDefinition vl, int layerNumber, string name, Stream stream, bool generateVtIndex)
         {
-            var filePath = Path.GetFullPath(Path.Combine(_options.OutputDirectory, "vector_overlays", $"{GetFileName(layerNumber)}.js"));
-            var dir = Path.GetDirectoryName(filePath);
+            var dataFilePath = Path.GetFullPath(Path.Combine(_options.OutputDirectory, "vector_overlays", $"{GetFileName(layerNumber)}_data.js"));
+            var configFilePath = Path.GetFullPath(Path.Combine(_options.OutputDirectory, "vector_overlays", $"{GetFileName(layerNumber)}_config.js"));
+            var dir = Path.GetDirectoryName(dataFilePath);
             if (!Directory.Exists(dir))
                 Directory.CreateDirectory(dir);
 
-            using (var sw = new StreamWriter(filePath))
+            using (var sw = new StreamWriter(configFilePath))
             {
                 await sw.WriteLineAsync($"//Vector overlay configuration for: {name}");
                 await WritePopupConfigurationAsync(vl, layerNumber, name, sw);
                 await WriteStyleConfigurationAsync(vl, layerNumber, name, sw);
+
+                if (generateVtIndex)
+                {
+                    await sw.WriteLineAsync($"\n\n//GeoJSON Vector Tile index for: {name}");
+                    await sw.WriteLineAsync($@"
+var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNumber)}, {{
+    extent: 4096,
+    maxZoom: 19,
+    debug: 1
+}});");
+                }
+            }
+
+            using (var sw = new StreamWriter(dataFilePath))
+            {
+                await sw.WriteLineAsync($"//GeoJSON vector data for: {name}");
                 await sw.WriteLineAsync($"//Downloaded features for: {name}");
                 await sw.WriteAsync($"var {GetVariableName(layerNumber)} = ");
             }
 
-            using (var fw = new FileStream(filePath, FileMode.Append, FileAccess.Write))
+            //Download the GeoJSON and append to the JS
+            using (var fw = new FileStream(dataFilePath, FileMode.Append, FileAccess.Write))
             {
                 await stream.CopyToAsync(fw);
             }
 
-            return new DownloadedFeaturesRef(name, $"vector_overlays/{GetFileName(layerNumber)}.js", GetVariableName(layerNumber));
+            return new DownloadedFeaturesRef(name, 
+                $"vector_overlays/{GetFileName(layerNumber)}_data.js",
+                $"vector_overlays/{GetFileName(layerNumber)}_config.js",
+                GetVariableName(layerNumber));
         }
 
         
@@ -327,7 +351,7 @@ namespace Maestro.MapPublisher.Common
 
             using (var stream = await resp.Content.ReadAsStreamAsync())
             {
-                return await DownloadFeatureDataAsync(vl, layerNumber, name, stream);
+                return await DownloadFeatureDataAsync(vl, layerNumber, name, stream, source.LoadAsVectorTiles);
             }
         }
         /*

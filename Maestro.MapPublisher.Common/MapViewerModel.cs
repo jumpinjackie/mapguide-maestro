@@ -42,6 +42,9 @@ namespace Maestro.MapPublisher.Common
 
         public IEnumerable<ExternalBaseLayer> ExternalBaseLayers { get; set; }
 
+        public bool HasOverlayLayer(OverlayLayerType type)
+            => OverlayLayers.Any(ovl => ovl.Type == type);
+
         public IEnumerable<OverlayLayer> OverlayLayers { get; set; }
     }
 }

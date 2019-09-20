@@ -105,12 +105,12 @@
     </div>
     @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
     {
-    <div style="display: none;">
-        <!-- Overlay with the feature info -->
-        <div id="feature-info">
-            <div id="feature-name">&nbsp;</div>
+        <div style="display: none;">
+            <!-- Overlay with the feature info -->
+            <div id="feature-info">
+                <div id="feature-name">&nbsp;</div>
+            </div>
         </div>
-    </div>
     }
     <div style="display: none;">
         <div id="popup" class="ol-popup">
@@ -121,13 +121,18 @@
     <script type="text/javascript" src="assets/ol.js" charset="utf-8"></script>
     <script type="text/javascript" src="assets/ol-ext.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="assets/ol-style-support.js" charset="utf-8"></script>
+    @if (Model.HasOverlayLayer(OverlayLayerType.GeoJSON_FromMapGuide))
+    {
+    <script type="text/javascript" src="assets/geojson-vt.js" charset="utf-8"></script>
+    }
     @if (Model.OverlayLayers != null)
     {
         foreach (var extLayer in Model.OverlayLayers)
         {
             if (extLayer.Type == OverlayLayerType.GeoJSON_FromMapGuide)
             {
-    <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
+    <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.DataScriptRelPath)" charset="utf-8"></script>
+    <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ConfigScriptRelPath)" charset="utf-8"></script>
             }
         }
     }
@@ -233,6 +238,49 @@
         </text>
         }
 
+        var vtTilePixels = new ol.proj.Projection({
+            code: 'TILE_PIXELS',
+            units: 'tile-pixels'
+        });
+        var vt_replacer = function(key, value) {
+            if (value.geometry) {
+              var type;
+              var rawType = value.type;
+              var geometry = value.geometry;
+
+              if (rawType === 1) {
+                type = 'MultiPoint';
+                if (geometry.length == 1) {
+                  type = 'Point';
+                  geometry = geometry[0];
+                }
+              } else if (rawType === 2) {
+                type = 'MultiLineString';
+                if (geometry.length == 1) {
+                  type = 'LineString';
+                  geometry = geometry[0];
+                }
+              } else if (rawType === 3) {
+                type = 'Polygon';
+                if (geometry.length > 1) {
+                  type = 'MultiPolygon';
+                  geometry = [geometry];
+                }
+              }
+
+              return {
+                'type': 'Feature',
+                'geometry': {
+                  'type': type,
+                  'coordinates': geometry
+                },
+                'properties': value.tags
+              };
+            } else {
+              return value;
+            }
+        };
+
         var popupTemplates = {};
         var overlayList = [];
         @if (Model.OverlayLayers != null)
@@ -243,7 +291,41 @@
                 switch (extLayer.Type)
                 {
                     case OverlayLayerType.GeoJSON_FromMapGuide:
-                        <text>
+                        if (((GeoJSONFromMapGuideOverlayLayer)extLayer).Source.LoadAsVectorTiles)
+                        {<text>
+        var @(extLayer.Type)_@(counter) = new ol.layer.VectorTile({
+            title: "@extLayer.Name",
+            visible: @(extLayer.InitiallyVisible ? "true" : "false"),
+            style: @(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_style,
+            source: new ol.source.VectorTile({
+                format: new ol.format.GeoJSON(),
+                url: "data:", // arbitrary url, we don't use it in the tileLoadFunction
+                tileLoadFunction: function(tile) {
+                    var format = tile.getFormat();
+                    var tileCoord = tile.getTileCoord();
+                    var tileIndex = @(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_vtindex;
+                    var data = tileIndex.getTile(tileCoord[0], tileCoord[1], -tileCoord[2] - 1);
+                    var features = format.readFeatures(JSON.stringify({
+                        type: 'FeatureCollection',
+                        features: (data ? data.features : []).map(function (f) {
+                            //This isn't geojson, but the attributes are under "tags"
+                            f.tags.OL_LAYER_NAME = "@extLayer.Name";
+                            return f;
+                        })
+                    }, vt_replacer));
+                    tile.setLoader(function() {
+                        tile.setFeatures(features);
+                        tile.setProjection(vtTilePixels);
+                    });
+                }
+            })
+        });
+        popupTemplates["@extLayer.Name"] = @(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_popup_template;
+        overlayList.push(@(extLayer.Type)_@(counter));
+                        </text>
+                        }
+                        else
+                        {<text>
         var @(extLayer.Type)_@(counter) = new ol.layer.Vector({
             title: "@extLayer.Name",
             visible: @(extLayer.InitiallyVisible ? "true" : "false"),
@@ -263,6 +345,7 @@
         popupTemplates["@extLayer.Name"] = @(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.GlobalVar)_popup_template;
         overlayList.push(@(extLayer.Type)_@(counter));
                         </text>
+                        }
                         break;
                     case OverlayLayerType.WMS:
                         <text>

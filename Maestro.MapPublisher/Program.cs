@@ -96,7 +96,7 @@ namespace Maestro.MapPublisher
                                     await stdout.WriteLineAsync($"Start downloading GeoJSON data for: {source.Name}");
                                     var downloader = new GeoJSONDataDownloader(pubOpts);
                                     mgSource.Downloaded = await downloader.DownloadAsync(counter, mgSource);
-                                    await stdout.WriteLineAsync($"GeoJSON data for ({source.Name}) downloaded to: {mgSource.Downloaded.ScriptRelPath}");
+                                    await stdout.WriteLineAsync($"GeoJSON data for ({source.Name}) downloaded to: {mgSource.Downloaded.DataScriptRelPath}");
                                 }
                                 counter++;
                             }
