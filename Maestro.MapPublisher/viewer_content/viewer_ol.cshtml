@@ -97,12 +97,12 @@
     </div>
     @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
     {
-        <div style="display: none;">
-            <!-- Overlay with the feature info -->
-            <div id="feature-info">
-                <div id="feature-name">&nbsp;</div>
-            </div>
+    <div style="display: none;">
+        <!-- Overlay with the feature info -->
+        <div id="feature-info">
+            <div id="feature-name">&nbsp;</div>
         </div>
+    </div>
     }
     <div style="display: none;">
         <div id="popup" class="ol-popup">
@@ -119,7 +119,7 @@
         {
             if (extLayer.Type == OverlayLayerType.GeoJSON_FromMapGuide)
             {
-                <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
+    <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
             }
         }
     }
