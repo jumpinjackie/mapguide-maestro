@@ -178,6 +178,16 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// MapGuide Open Source 3.1.2
         /// </summary>
         MapGuideOS3_1_2,
+
+        /// <summary>
+        /// MapGuide Open Source 4.0 Preview 1
+        /// </summary>
+        MapGuideOS4_0_Preview1,
+
+        /// <summary>
+        /// MapGuide Open Source 4.0 Preview 1.1
+        /// </summary>
+        MapGuideOS4_0_Preview1_1
     }
 
     /// <summary>
@@ -219,6 +229,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             new Version(3,1,0,9064),    //MGOS 3.1
             new Version(3,1,1,9378),    //MGOS 3.1.1
             new Version(3,1,2,9484),    //MGOS 3.1.2
+            new Version(4,0,0,9592),    //MGOS 4.0 Preview 1
+            new Version(4,0,0,9598)     //MGOS 4.0 Preview 1.1
         };
 
         /// <summary>
