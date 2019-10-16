@@ -57,25 +57,7 @@ build:
 
 after_build:
   - set ARTIFACT_RELEASE_LABEL=%APPVEYOR_BUILD_VERSION%
-  - if "%APPVEYOR_REPO_TAG%" == "true" set ARTIFACT_RELEASE_LABEL=%APPVEYOR_REPO_TAG_NAME%
-  - if not exist %APPVEYOR_BUILD_FOLDER%\artifacts mkdir %APPVEYOR_BUILD_FOLDER%\artifacts
-  - set PATH=%PATH%;%APPVEYOR_BUILD_FOLDER%\Packages\nsis\2.51.0\tools
-  - cd /D %APPVEYOR_BUILD_FOLDER%\Docs
-  - docfx build
-  - cd /D %APPVEYOR_BUILD_FOLDER%\out\Release
-  - 7z a -mx9 %APPVEYOR_BUILD_FOLDER%\artifacts\MapGuideMaestro-%CONFIGURATION%-%ARTIFACT_RELEASE_LABEL%.zip * -x!LocalConfigure.* -x!Addins\Local -x!Addins\Scripting
-  - cd /D %APPVEYOR_BUILD_FOLDER%\MgTileSeeder
-  - dotnet publish -c release -f %NETCORE_MONIKER% -r win-x64 -o publish_win
-  - dotnet publish -c release -f %NETCORE_MONIKER% -r linux-x64 -o publish_linux
-  - cd /D %APPVEYOR_BUILD_FOLDER%\MgTileSeeder\publish_win
-  - 7z a -mx9 %APPVEYOR_BUILD_FOLDER%\artifacts\MgTileSeeder-win-x64-%ARTIFACT_RELEASE_LABEL%.zip *
-  - cd /D %APPVEYOR_BUILD_FOLDER%\MgTileSeeder\publish_linux
-  - 7z a -mx9 %APPVEYOR_BUILD_FOLDER%\artifacts\MgTileSeeder-linux-x64-%ARTIFACT_RELEASE_LABEL%.zip *
-  - cd /D %APPVEYOR_BUILD_FOLDER%\Install
-  - appveyor DownloadFile https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe
-  - makensis.exe /DSLN_CONFIG=%CONFIGURATION% /DCPU=x86 /DRELEASE_VERSION=%ARTIFACT_RELEASE_LABEL% Maestro.nsi
-  - cd %APPVEYOR_BUILD_FOLDER%
-  - dotnet pack Core.sln --configuration %CONFIGURATION% --output %APPVEYOR_BUILD_FOLDER%\artifacts --include-symbols /p:Version=6.0.0-pre%APPVEYOR_BUILD_NUMBER%"
+  - appveyor_postbuild.bat
 
 test_script:
 - ps: >-
@@ -96,6 +78,10 @@ artifacts:
     name: seeder_windows
   - path: .\artifacts\MgTileSeeder-linux-x64-$(ARTIFACT_RELEASE_LABEL).zip
     name: seeder_linux
+  - path: .\artifacts\Maestro-MapPublisher-win-x64-$(ARTIFACT_RELEASE_LABEL).zip
+    name: publisher_windows
+  - path: .\artifacts\Maestro-MapPublisher-linux-x64-$(ARTIFACT_RELEASE_LABEL).zip
+    name: publisher_linux
   - path: .\artifacts\*.nupkg
     name: nuget_packages
     type: NuGetPackage

@@ -190,6 +190,9 @@ Section
     File /r "${INST_OUTPUT_MAESTRO}\AddIns"
     File /r "${INST_OUTPUT_MAESTRO}\Data"
     File /r "${INST_OUTPUT_MAESTRO}\Schemas"
+
+    # Auxillary tools
+    File /r "${INST_OUTPUT_MAESTRO}\Tools"
     
     # docs
     File "${INST_OUTPUT_MAESTRO}\*.txt"
