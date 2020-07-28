@@ -64,18 +64,6 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal string Locale => m_locale;
 
-        internal string CreateSession()
-        {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "CREATESESSION");
-            param.Add("VERSION", "1.0.0");
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
-            if (m_locale != null)
-                param.Add("LOCALE", m_locale);
-            return m_hosturi + "?" + EncodeParameters(param);
-        }
-
         internal string GetSiteVersion()
         {
             NameValueCollection param = new NameValueCollection();
@@ -160,6 +148,27 @@ namespace OSGeo.MapGuide.MaestroAPI
                 param.Add("LOCALE", m_locale);
 
             return m_hosturi + "?" + EncodeParameters(param);
+        }
+
+        internal System.Net.WebRequest CreateSession(string username, string password, System.IO.Stream outStream)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "CREATESESSION");
+            param.Add("VERSION", "1.0.0");
+            param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", m_userAgent);
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+            if (username != null)
+                param.Add("USERNAME", username);
+            if (password != null)
+                param.Add("PASSWORD", password);
+
+            string boundary;
+            System.Net.WebRequest req = PrepareFormContent(outStream, out boundary);
+            EncodeFormParameters(boundary, param, outStream);
+            req.ContentLength = outStream.Length;
+            return req;
         }
 
         internal System.Net.WebRequest TestConnectionPost(string providername, NameValueCollection parameters, System.IO.Stream outStream)

@@ -221,7 +221,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             mAnonymousUser = (username == "Anonymous");
 
             _cred = new NetworkCredential(username, password);
-            string req = m_reqBuilder.CreateSession();
+
+            m_reqBuilder.SessionID = CreateSessionInternal(m_reqBuilder);
 
             m_username = username;
             m_password = password;
@@ -1245,6 +1246,49 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         private readonly object SyncRoot = new object();
 
+        private string CreateSessionInternal(RequestBuilder reqb)
+        {
+            using (var outStream = MemoryStreamPool.GetStream())
+            {
+                var req = reqb.CreateSession(m_username, m_password, outStream);
+                req.Credentials = new NetworkCredential(m_username, m_password);
+                outStream.Position = 0;
+                try
+                {
+                    using (var rs = req.GetRequestStream())
+                    {
+                        Utility.CopyStream(outStream, rs);
+                        rs.Flush();
+                    }
+                    var wresp = req.GetResponse();
+                    var hresp = wresp as HttpWebResponse;
+                    if (hresp != null)
+                    {
+                        LogResponse(hresp);
+                    }
+
+                    using (var resp = wresp.GetResponseStream())
+                    {
+                        using (var sr = new StreamReader(resp))
+                        {
+                            return sr.ReadToEnd();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (typeof(WebException).IsAssignableFrom(ex.GetType()))
+                        LogFailedRequest((WebException)ex);
+
+                    Exception ex2 = Utility.ThrowAsWebException(ex);
+                    if (ex2 != ex)
+                        throw ex2;
+                    else
+                        throw;
+                }
+            }
+        }
+
         /// <summary>
         /// Restarts the server session, and creates a new session ID
         /// </summary>
@@ -1265,13 +1309,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             try
             {
                 RequestBuilder reqb = new RequestBuilder(hosturl, locale);
-                WebClient wc = new WebClient();
-                wc.Credentials = new NetworkCredential(m_username, m_password);
-                string req = reqb.CreateSession();
-
                 try
                 {
-                    reqb.SessionID = System.Text.Encoding.Default.GetString(wc.DownloadData(req));
+                    reqb.SessionID = CreateSessionInternal(reqb);
                     if (reqb.SessionID.IndexOf("<") >= 0)
                         throw new Exception($"Invalid server token recieved: {reqb.SessionID}"); //LOCALIZEME
                     else
@@ -1291,8 +1331,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                                 tmp += "/"; //NOXLATE
                             hosturl = new Uri($"{tmp}mapagent/mapagent.fcgi"); //NOXLATE
                             reqb = new RequestBuilder(hosturl, locale);
-                            req = reqb.CreateSession();
-                            reqb.SessionID = System.Text.Encoding.Default.GetString(wc.DownloadData(req));
+                            reqb.SessionID = CreateSessionInternal(reqb);
                             if (reqb.SessionID.IndexOf("<") >= 0) //NOXLATE
                                 throw new Exception($"Invalid server token recieved: {reqb.SessionID}");
                             ok = true;
@@ -1318,10 +1357,12 @@ namespace OSGeo.MapGuide.MaestroAPI
                     }
                 }
 
+                var si = GetSiteInfo();
+
                 //Reset cached items
                 lock (SyncRoot)
                 {
-                    m_siteVersion = new Version(((SiteVersion)DeserializeObject(typeof(SiteVersion), wc.OpenRead(reqb.GetSiteVersion()))).Version);
+                    m_siteVersion = new Version(si.SiteServer.Version);
 
                     m_featureProviders = null;
                     m_reqBuilder = reqb;
