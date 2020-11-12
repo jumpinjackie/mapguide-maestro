@@ -1,186 +1,37 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F1EDEB83-D09F-46E0-B655-B43D4D9682DD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Maestro.LiveMapEditor</RootNamespace>
-    <AssemblyName>Maestro.LiveMapEditor</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <FileAlignment>512</FileAlignment>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\out\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\out\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>MapGuide Maestro.ico</ApplicationIcon>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <Compile Include="..\Properties\CodeAnalysisRules.cs" Link="CodeAnalysisRules.cs" />
+    <Compile Include="..\Properties\GlobalAssemblyInfo.cs" Link="GlobalAssemblyInfo.cs" />
+    <Compile Include="..\Properties\SignedAssemblyInfo2.cs" Link="SignedAssemblyInfo2.cs" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="..\Properties\CodeAnalysisRules.cs">
-      <Link>CodeAnalysisRules.cs</Link>
-    </Compile>
-    <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
-      <Link>GlobalAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\Properties\SignedAssemblyInfo2.cs">
-      <Link>SignedAssemblyInfo2.cs</Link>
-    </Compile>
-    <Compile Include="AboutDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AboutDialog.Designer.cs">
-      <DependentUpon>AboutDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MapSettingsDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MapSettingsDialog.Designer.cs">
-      <DependentUpon>MapSettingsDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResourceEditorService.cs" />
-    <Compile Include="Strings.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj" />
+    <ProjectReference Include="..\Maestro.Login\Maestro.Login.csproj" />
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Strings.Designer.cs">
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AboutDialog.resx">
-      <DependentUpon>AboutDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MapSettingsDialog.resx">
-      <DependentUpon>MapSettingsDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="Strings.resx">
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj">
-      <Project>{5AD2CDBA-952E-4148-98A1-31D2E0D540D5}</Project>
-      <Name>Maestro.Editors</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Maestro.Login\Maestro.Login.csproj">
-      <Project>{07588440-5F9F-4C30-AA06-9CF30BA6DDE6}</Project>
-      <Name>Maestro.Login</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Maestro.MapViewer\Maestro.MapViewer.csproj">
-      <Project>{4F9658DE-D16F-4B40-B830-BB1E0136DBD7}</Project>
-      <Name>Maestro.MapViewer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj">
-      <Project>{CFD19053-2172-41D3-8460-0FD2123A1E88}</Project>
-      <Name>Maestro.Shared.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
-      <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
-      <Name>OSGeo.MapGuide.MaestroAPI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj">
-      <Project>{48c5eb23-45ae-4c4c-8fab-635428ae8ca1}</Project>
-      <Name>OSGeo.MapGuide.ObjectModels</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\folder-horizontal-open.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\disk.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\disk--arrow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\map--plus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\application-task.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\arrow-circle-double.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\property.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="MapGuide Maestro.ico" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
