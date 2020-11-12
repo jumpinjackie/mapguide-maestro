@@ -13,6 +13,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj" />
+    <ProjectReference Include="..\Maestro.Login\Maestro.Login.csproj" />
+    <ProjectReference Include="..\Maestro.MapViewer\Maestro.MapViewer.csproj" />
+    <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj" />
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.FxBridge\OSGeo.MapGuide.MaestroAPI.FxBridge.csproj" />
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj" />
+    <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj" />
+    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.TextEditor\ICSharpCode.TextEditor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
