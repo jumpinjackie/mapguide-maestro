@@ -113,6 +113,12 @@ namespace MgTileSeeder
         [Option("maxy", SetName = "bbox", Required = true)]
         public override double MaxY { get; set; }
 
+        [Option("specific-zoom-levels", Required = false)]
+        public int[] SpecificZoomLevels { get; set; }
+
+        [Option("max-zoom-level", HelpText = "The custom maximum zoom level. The default is 19")]
+        public int? MaxZoomLevel { get; set; }
+
         public override void Validate()
         {
             if (!Utility.InRange(this.MinX, -180, 180))
@@ -325,7 +331,10 @@ namespace MgTileSeeder
                 options.Validate();
 
                 var xyz = new XYZTileService(options.UrlTemplate);
-                var walker = new XYZTileWalker(options.MinX, options.MinY, options.MaxX, options.MaxY);
+                var walker = new XYZTileWalker(options.MinX, options.MinY, options.MaxX, options.MaxY, options.MaxZoomLevel ?? XYZTileWalker.DEFAULT_MAX_ZOOM_LEVEL);
+
+                if (options.SpecificZoomLevels != null)
+                    walker.SetSpecificZoomLevels(options.SpecificZoomLevels);
 
                 var seederOptions = new TileSeederOptions();
                 seederOptions.MaxDegreeOfParallelism = options.MaxDegreeOfParallelism;
