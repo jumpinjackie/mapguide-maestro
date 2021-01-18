@@ -30,7 +30,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests.Tiling
         public void XYZTileWalker_ZoomLevel20()
         {
             var walker = new XYZTileWalker(145.030539, -37.818251, 145.031800, -37.817484, 20);
-            walker.SetSpecificZoomLevels(20);
+            walker.SetSpecificZoomLevels(new[] { 20 });
             var list = walker.GetTileList();
             Assert.Equal(16, list.Length);
         }

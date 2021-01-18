@@ -114,7 +114,7 @@ namespace MgTileSeeder
         public override double MaxY { get; set; }
 
         [Option("specific-zoom-levels", Required = false)]
-        public int[] SpecificZoomLevels { get; set; }
+        public IEnumerable<int> SpecificZoomLevels { get; set; }
 
         [Option("max-zoom-level", HelpText = "The custom maximum zoom level. The default is 19")]
         public int? MaxZoomLevel { get; set; }

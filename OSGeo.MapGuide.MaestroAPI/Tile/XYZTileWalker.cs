@@ -76,7 +76,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// Sets the specific zoom levels to walk. If not called, it will walk from 0 to 19 (or whatever the custom max zoom level is)
         /// </summary>
         /// <param name="levels"></param>
-        public void SetSpecificZoomLevels(params int[] levels) => _specificZoomLevels.UnionWith(levels);
+        public void SetSpecificZoomLevels(IEnumerable<int> levels) => _specificZoomLevels.UnionWith(levels);
 
         static Point<int> WorldToTilePos(double lon, double lat, int zoom)
         {
