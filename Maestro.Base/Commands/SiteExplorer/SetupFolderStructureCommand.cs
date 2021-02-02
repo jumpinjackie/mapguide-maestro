@@ -52,6 +52,10 @@ namespace Maestro.Base.Commands.SiteExplorer
                 {
                     names.Add(Strings.Folder_Watermarks);
                 }
+                if (conn.SiteVersion >= new Version(3, 0))
+                {
+                    names.Add(Strings.Folder_TileSets);
+                }
                 foreach (var n in names)
                 {
                     string fid = $"{current + n}/"; //NOXLATE

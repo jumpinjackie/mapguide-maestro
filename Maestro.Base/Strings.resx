@@ -1013,4 +1013,7 @@ Error message: {0}</value>
   <data name="ProviderTemplate" xml:space="preserve">
     <value>Maestro API Provider Template Tool</value>
   </data>
+  <data name="Folder_TileSets" xml:space="preserve">
+    <value>TileSets</value>
+  </data>
 </root>

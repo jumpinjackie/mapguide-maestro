@@ -659,6 +659,15 @@ namespace Maestro.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TileSets.
+        /// </summary>
+        internal static string Folder_TileSets {
+            get {
+                return ResourceManager.GetString("Folder_TileSets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Watermarks.
         /// </summary>
         internal static string Folder_Watermarks {
