@@ -57,6 +57,8 @@ namespace Maestro.Base.Commands
                 var themeToApply = Themes.Get(Themes.CurrentTheme);
                 if (themeToApply != null)
                     wb.ApplyTheme(themeToApply);
+                else
+                    wb.ApplyTheme(Themes.Get(ConfigProperties.DefaultSelectedTheme));
 
                 wb.FormClosing += new System.Windows.Forms.FormClosingEventHandler(OnWorkbenchClosing);
                 wb.Text = "MapGuide Maestro"; //NOXLATE

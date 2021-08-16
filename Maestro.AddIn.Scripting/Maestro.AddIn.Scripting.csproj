@@ -4,7 +4,20 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\out\Debug\AddIns\Scripting</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\out\Release\AddIns\Scripting</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Manifest.addin" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Include="..\Properties\CodeAnalysisRules.cs" Link="CodeAnalysisRules.cs" />
@@ -13,7 +26,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="IronPython" Version="2.7.11" />
+    <Content Include="Manifest.addin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IronPython" Version="2.7.11">
+      <IncludeAssets>all</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="IronPython.StdLib" Version="2.7.11" />
   </ItemGroup>
 

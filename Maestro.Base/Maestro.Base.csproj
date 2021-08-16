@@ -4,20 +4,21 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Maestro.Base.addin" />
-  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\out\Debug</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\out\Release</OutputPath>
+  </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="..\Properties\CodeAnalysisRules.cs" Link="CodeAnalysisRules.cs" />
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs" Link="GlobalAssemblyInfo.cs" />
     <Compile Include="..\Properties\SignedAssemblyInfo2.cs" Link="SignedAssemblyInfo2.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Maestro.Base.addin" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +44,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Maestro.Base.addin">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
