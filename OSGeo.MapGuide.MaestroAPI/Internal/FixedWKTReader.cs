@@ -20,7 +20,6 @@
 
 #endregion Disclaimer / License
 
-using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Utilities;
 using OSGeo.MapGuide.MaestroAPI.Geometry;
@@ -32,13 +31,25 @@ using System.IO;
 
 namespace OSGeo.MapGuide.MaestroAPI.Internal
 {
+
+    [Serializable]
+    public class WktParseException : Exception
+    {
+        public WktParseException() { }
+        public WktParseException(string message) : base(message) { }
+        public WktParseException(string message, Exception inner) : base(message, inner) { }
+        protected WktParseException(
+          System.Runtime.Serialization.SerializationInfo info,
+          System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+    }
+
     /// <summary>
     /// A fixed version of WKTReader that can parse 3D geometry WKT
     /// </summary>
     public class FixedWKTReader : IGeometryTextReader
     {
-        private readonly IGeometryFactory geometryFactory;
-        private IPrecisionModel precisionModel;
+        private readonly GeometryFactory geometryFactory;
+        private PrecisionModel precisionModel;
         private int index;
 
         /// <summary>
@@ -54,7 +65,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// <c>GeometryFactory</c>.
         /// </summary>
         /// <param name="geometryFactory">The factory used to create <c>Geometry</c>s.</param>
-        private FixedWKTReader(IGeometryFactory geometryFactory)
+        private FixedWKTReader(GeometryFactory geometryFactory)
         {
             this.geometryFactory = geometryFactory;
             precisionModel = geometryFactory.PrecisionModel;
@@ -97,11 +108,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             try
             {
                 var geom = ReadGeometryTaggedText(tokens);
-                return new GeoAPIGeometryRef(geom);
+                return new NTSGeometryRef(geom);
             }
             catch (IOException e)
             {
-                throw new GeoAPI.IO.ParseException(e.ToString());
+                throw new WktParseException(e.ToString());
             }
         }
 
@@ -145,7 +156,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// <returns></returns>
         private Coordinate GetPreciseCoordinate(IList tokens, Boolean skipExtraParenthesis)
         {
-            Coordinate coord = new Coordinate();
+            var coord = new CoordinateZM();
             Boolean extraParenthesisFound = false;
             if (skipExtraParenthesis)
             {
@@ -160,7 +171,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             if (IsNumberNext(tokens))
                 coord.Z = GetNextNumber(tokens);
             if (IsNumberNext(tokens))
-                ((ICoordinate)coord).M = GetNextNumber(tokens);
+                coord.M = GetNextNumber(tokens);
 
             if (skipExtraParenthesis &&
                 extraParenthesisFound &&
@@ -205,19 +216,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             if (token == null)
                 throw new ArgumentNullException(nameof(tokens), Strings.ErrorTokenListContainsNullValue); //NOXLATE
             else if (token is EofToken)
-                throw new GeoAPI.IO.ParseException(Strings.ErrorParseExpectedNumberEos);
+                throw new WktParseException(Strings.ErrorParseExpectedNumberEos);
             else if (token is EolToken)
-                throw new GeoAPI.IO.ParseException(Strings.ErrorParseExpectedNumberEol);
+                throw new WktParseException(Strings.ErrorParseExpectedNumberEol);
             else if (token is FloatToken || token is IntToken)
                 return (double)token.ConvertToType(typeof(double));
             else if (token is WordToken)
-                throw new GeoAPI.IO.ParseException(string.Format(Strings.ErrorParseExpectedNumberGotWord, token.StringValue));
+                throw new WktParseException(string.Format(Strings.ErrorParseExpectedNumberGotWord, token.StringValue));
             else if (token.StringValue == "(") //NOXLATE
-                throw new GeoAPI.IO.ParseException(string.Format(Strings.ErrorParseExpectedNumber, '(')); //NOXLATE
+                throw new WktParseException(string.Format(Strings.ErrorParseExpectedNumber, '(')); //NOXLATE
             else if (token.StringValue == ")") //NOXLATE
-                throw new GeoAPI.IO.ParseException(string.Format(Strings.ErrorParseExpectedNumber, ')')); //NOXLATE
+                throw new WktParseException(string.Format(Strings.ErrorParseExpectedNumber, ')')); //NOXLATE
             else if (token.StringValue == ",") //NOXLATE
-                throw new GeoAPI.IO.ParseException(string.Format(Strings.ErrorParseExpectedNumber, ',')); //NOXLATE
+                throw new WktParseException(string.Format(Strings.ErrorParseExpectedNumber, ',')); //NOXLATE
             else
             {
                 Assert.ShouldNeverReachHere();
@@ -257,7 +268,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             }
             if (nextWord.Equals("EMPTY") || nextWord.Equals("(")) //NOXLATE
                 return nextWord;
-            throw new GeoAPI.IO.ParseException(string.Format(Strings.ErrorParseExpectedEmpty, nextWord));
+            throw new WktParseException(string.Format(Strings.ErrorParseExpectedEmpty, nextWord));
         }
 
         /// <summary>
@@ -275,7 +286,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             if (nextWord.Equals(",") || nextWord.Equals(")")) //NOXLATE
                 return nextWord;
 
-            throw new GeoAPI.IO.ParseException(string.Format(Strings.ErrorParseExpectedCloserOrComma, nextWord));
+            throw new WktParseException(string.Format(Strings.ErrorParseExpectedCloserOrComma, nextWord));
         }
 
         /// <summary>
@@ -292,7 +303,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             string nextWord = GetNextWord(tokens);
             if (nextWord.Equals(")")) //NOXLATE
                 return nextWord;
-            throw new GeoAPI.IO.ParseException(string.Format(Strings.ErrorParseExpectedCloser, nextWord));
+            throw new WktParseException(string.Format(Strings.ErrorParseExpectedCloser, nextWord));
         }
 
         /// <summary>
@@ -308,11 +319,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             Token token = tokens[index++] as Token;
 
             if (token is EofToken)
-                throw new GeoAPI.IO.ParseException(Strings.ErrorParseExpectedNumberEos);
+                throw new WktParseException(Strings.ErrorParseExpectedNumberEos);
             else if (token is EolToken)
-                throw new GeoAPI.IO.ParseException(Strings.ErrorParseExpectedNumberEol);
+                throw new WktParseException(Strings.ErrorParseExpectedNumberEol);
             else if (token is FloatToken || token is IntToken)
-                throw new GeoAPI.IO.ParseException(string.Format(Strings.ErrorParseExpectedWord, token.StringValue));
+                throw new WktParseException(string.Format(Strings.ErrorParseExpectedWord, token.StringValue));
             else if (token is WordToken)
                 return token.StringValue.ToUpper();
             else if (token.StringValue == "(") //NOXLATE
@@ -337,13 +348,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// </param>
         /// <returns>A <c>Geometry</c> specified by the next token
         /// in the stream.</returns>
-        private IGeometry ReadGeometryTaggedText(IList tokens)
+        private NetTopologySuite.Geometries.Geometry ReadGeometryTaggedText(IList tokens)
         {
             /*
              * A new different implementation by Marc Jacquin:
              * this code manages also SRID values.
              */
-            IGeometry returned = null;
+            NetTopologySuite.Geometries.Geometry returned = null;
             string sridValue = null;
             string type = tokens[0].ToString();
 
@@ -373,7 +384,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
                 returned = ReadMultiPolygonText(tokens);
             else if (type.Equals("GEOMETRYCOLLECTION")) //NOXLATE
                 returned = ReadGeometryCollectionText(tokens);
-            else throw new GeoAPI.IO.ParseException(string.Format(Strings.ErrorParseUnknownType, type));
+            else throw new WktParseException(string.Format(Strings.ErrorParseUnknownType, type));
 
             if (returned == null)
                 throw new NullReferenceException(Strings.ErrorParseGeometryRead);
@@ -393,12 +404,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// </param>
         /// <returns>A <c>Point</c> specified by the next token in
         /// the stream.</returns>
-        private IPoint ReadPointText(IList tokens)
+        private Point ReadPointText(IList tokens)
         {
             string nextToken = GetNextEmptyOrOpener(tokens);
             if (nextToken.Equals("EMPTY")) //NOXLATE
                 return geometryFactory.CreatePoint((Coordinate)null);
-            IPoint point = geometryFactory.CreatePoint((Coordinate)GetPreciseCoordinate(tokens, false));
+            var point = geometryFactory.CreatePoint(GetPreciseCoordinate(tokens, false));
             GetNextCloser(tokens);
             return point;
         }
@@ -413,7 +424,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// <returns>
         /// A <c>LineString</c> specified by the next
         /// token in the stream.</returns>
-        private ILineString ReadLineStringText(IList tokens)
+        private LineString ReadLineStringText(IList tokens)
         {
             return geometryFactory.CreateLineString(GetCoordinates(tokens, false));
         }
@@ -427,7 +438,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// </param>
         /// <returns>A <c>LinearRing</c> specified by the next
         /// token in the stream.</returns>
-        private ILinearRing ReadLinearRingText(IList tokens)
+        private LinearRing ReadLinearRingText(IList tokens)
         {
             return geometryFactory.CreateLinearRing(GetCoordinates(tokens, false));
         }
@@ -442,7 +453,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// <returns>
         /// A <c>MultiPoint</c> specified by the next
         /// token in the stream.</returns>
-        private IMultiPoint ReadMultiPointText(IList tokens)
+        private MultiPoint ReadMultiPointText(IList tokens)
         {
             return geometryFactory.CreateMultiPoint(ToPoints(GetCoordinates(tokens, true)));
         }
@@ -457,9 +468,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// <c>Point</c>s created using this <c>WKTReader</c>
         /// s <c>GeometryFactory</c>.
         /// </returns>
-        private IPoint[] ToPoints(Coordinate[] coordinates)
+        private Point[] ToPoints(Coordinate[] coordinates)
         {
-            List<IPoint> points = new List<IPoint>();
+            var points = new List<Point>();
             for (int i = 0; i < coordinates.Length; i++)
                 points.Add(geometryFactory.CreatePoint(coordinates[i]));
             return points.ToArray();
@@ -476,19 +487,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// A <c>Polygon</c> specified by the next token
         /// in the stream.
         /// </returns>
-        private IPolygon ReadPolygonText(IList tokens)
+        private Polygon ReadPolygonText(IList tokens)
         {
             string nextToken = GetNextEmptyOrOpener(tokens);
             if (nextToken.Equals("EMPTY")) //NOXLATE
-                return geometryFactory.CreatePolygon(
-                    geometryFactory.CreateLinearRing(new Coordinate[] { }), new ILinearRing[] { });
+                return geometryFactory.CreatePolygon(geometryFactory.CreateLinearRing(Array.Empty<Coordinate>()));
 
-            List<ILinearRing> holes = new List<ILinearRing>();
-            ILinearRing shell = ReadLinearRingText(tokens);
+            var holes = new List<LinearRing>();
+            var shell = ReadLinearRingText(tokens);
             nextToken = GetNextCloserOrComma(tokens);
             while (nextToken.Equals(",")) //NOXLATE
             {
-                ILinearRing hole = ReadLinearRingText(tokens);
+                var hole = ReadLinearRingText(tokens);
                 holes.Add(hole);
                 nextToken = GetNextCloserOrComma(tokens);
             }
@@ -505,14 +515,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// <returns>
         /// A <c>MultiLineString</c> specified by the
         /// next token in the stream.</returns>
-        private IMultiLineString ReadMultiLineStringText(IList tokens)
+        private MultiLineString ReadMultiLineStringText(IList tokens)
         {
             string nextToken = GetNextEmptyOrOpener(tokens);
             if (nextToken.Equals("EMPTY")) //NOXLATE
-                return geometryFactory.CreateMultiLineString(new ILineString[] { });
+                return geometryFactory.CreateMultiLineString(Array.Empty<LineString>());
 
-            List<ILineString> lineStrings = new List<ILineString>();
-            ILineString lineString = ReadLineStringText(tokens);
+            var lineStrings = new List<LineString>();
+            var lineString = ReadLineStringText(tokens);
             lineStrings.Add(lineString);
             nextToken = GetNextCloserOrComma(tokens);
             while (nextToken.Equals(",")) //NOXLATE
@@ -534,14 +544,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// A <c>MultiPolygon</c> specified by the next
         /// token in the stream, or if if the coordinates used to create the
         /// <c>Polygon</c> shells and holes do not form closed linestrings.</returns>
-        private IMultiPolygon ReadMultiPolygonText(IList tokens)
+        private MultiPolygon ReadMultiPolygonText(IList tokens)
         {
             string nextToken = GetNextEmptyOrOpener(tokens);
             if (nextToken.Equals("EMPTY")) //NOXLATE
-                return geometryFactory.CreateMultiPolygon(new IPolygon[] { });
+                return geometryFactory.CreateMultiPolygon(Array.Empty<Polygon>());
 
-            List<IPolygon> polygons = new List<IPolygon>();
-            IPolygon polygon = ReadPolygonText(tokens);
+            var polygons = new List<Polygon>();
+            var polygon = ReadPolygonText(tokens);
             polygons.Add(polygon);
             nextToken = GetNextCloserOrComma(tokens);
             while (nextToken.Equals(",")) //NOXLATE
@@ -564,14 +574,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// <returns>
         /// A <c>GeometryCollection</c> specified by the
         /// next token in the stream.</returns>
-        private IGeometryCollection ReadGeometryCollectionText(IList tokens)
+        private GeometryCollection ReadGeometryCollectionText(IList tokens)
         {
             string nextToken = GetNextEmptyOrOpener(tokens);
             if (nextToken.Equals("EMPTY")) //NOXLATE
-                return geometryFactory.CreateGeometryCollection(new IGeometry[] { });
+                return geometryFactory.CreateGeometryCollection(Array.Empty<NetTopologySuite.Geometries.Geometry>());
 
-            List<IGeometry> geometries = new List<IGeometry>();
-            IGeometry geometry = ReadGeometryTaggedText(tokens);
+            var geometries = new List<NetTopologySuite.Geometries.Geometry>();
+            var geometry = ReadGeometryTaggedText(tokens);
             geometries.Add(geometry);
             nextToken = GetNextCloserOrComma(tokens);
             while (nextToken.Equals(",")) //NOXLATE

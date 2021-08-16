@@ -946,7 +946,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         //static bool IsRasterType(Type type) => type.Name == "Bitmap";
 
-        static bool IsGeometryType(Type type) => typeof(GeoAPI.Geometries.IGeometry).IsAssignableFrom(type);
+        static bool IsGeometryType(Type type) => typeof(NetTopologySuite.Geometries.Geometry).IsAssignableFrom(type);
 
         private static Type ConvertMgTypeToNetType(short idType)
         {
@@ -974,7 +974,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     return typeof(bool);
 
                 case Geometry:
-                    return typeof(GeoAPI.Geometries.IGeometry);
+                    return typeof(NetTopologySuite.Geometries.Geometry);
 
                 case String:
                     return typeof(string);
