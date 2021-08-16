@@ -659,6 +659,15 @@ namespace Maestro.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TileSets.
+        /// </summary>
+        internal static string Folder_TileSets {
+            get {
+                return ResourceManager.GetString("Folder_TileSets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Watermarks.
         /// </summary>
         internal static string Folder_Watermarks {
@@ -1979,6 +1988,15 @@ namespace Maestro.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get XYZ tileset URLs.
+        /// </summary>
+        internal static string SiteExplorer_GetXYZTileSetUrl {
+            get {
+                return ResourceManager.GetString("SiteExplorer_GetXYZTileSetUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Migrate.
         /// </summary>
         internal static string SiteExplorer_Migrate {
@@ -2686,6 +2704,15 @@ namespace Maestro.Base {
         internal static string XmlResHandlerAction {
             get {
                 return ResourceManager.GetString("XmlResHandlerAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot generate the XYZ tileset URL for this connection provider.
+        /// </summary>
+        internal static string XYZUrlGen_UnsupportedConnection {
+            get {
+                return ResourceManager.GetString("XYZUrlGen_UnsupportedConnection", resourceCulture);
             }
         }
     }

@@ -2,7 +2,7 @@ platform: Any CPU
 configuration: Release
 shallow_clone: true
 version: 6.0.0.{build}
-image: Visual Studio 2017
+image: Visual Studio 2019
 
 matrix:
   fast_finish: true
@@ -43,7 +43,7 @@ before_build:
   - cinst -y docfx
 
 environment:
-  NETCORE_MONIKER: 'netcoreapp2.2'
+  NETCORE_MONIKER: 'netcoreapp3.1'
   FULLFX_MONIKER: 'net471'
   XUNIT_VERSION: '2.4.1'
   OPENCOVER_VERSION: '4.7.922'

@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI.Tile;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tile
@@ -48,18 +49,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         readonly Point<double> _ll;
         readonly Point<double> _ur;
 
+        readonly HashSet<int> _specificZoomLevels;
+
+        //Z goes from 0 to 19. Some providers may go beyond zoom level 19
+        readonly int _maxZoomLevel;
+
         /// <summary>
         /// Constructs a new instance for the given extent
         /// </summary>
-        /// <param name="minX"></param>
-        /// <param name="minY"></param>
-        /// <param name="maxX"></param>
-        /// <param name="maxY"></param>
-        public XYZTileWalker(double minX, double minY, double maxX, double maxY)
+        /// <param name="minLon">The min longitude</param>
+        /// <param name="minLat">The min latitude</param>
+        /// <param name="maxLon">The max longitude</param>
+        /// <param name="maxLat">The max latitude</param>
+        /// <param name="maxZoomLevel">The max zoom level</param>
+        public XYZTileWalker(double minLon, double minLat, double maxLon, double maxLat, int maxZoomLevel = DEFAULT_MAX_ZOOM_LEVEL)
         {
-            _ll = new Point<double>(minX, minY);
-            _ur = new Point<double>(maxX, maxY);
+            _ll = new Point<double>(minLon, minLat);
+            _ur = new Point<double>(maxLon, maxLat);
+            _specificZoomLevels = new HashSet<int>();
+            _maxZoomLevel = maxZoomLevel;
         }
+
+        public const int DEFAULT_MAX_ZOOM_LEVEL = 19;
+
+        /// <summary>
+        /// Sets the specific zoom levels to walk. If not called, it will walk from 0 to 19 (or whatever the custom max zoom level is)
+        /// </summary>
+        /// <param name="levels"></param>
+        public void SetSpecificZoomLevels(IEnumerable<int> levels) => _specificZoomLevels.UnionWith(levels);
 
         static Point<int> WorldToTilePos(double lon, double lat, int zoom)
         {
@@ -76,6 +93,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
         struct TileSetRange
         {
+            /// <summary>
+            /// Constructor for an empty range
+            /// </summary>
+            /// <param name="zoom"></param>
+            public TileSetRange(int zoom)
+            {
+                this.X = 0;
+                this.Y = 0;
+                this.Z = zoom;
+                this.Rows = 0;
+                this.Cols = 0;
+            }
+
             public TileSetRange(int x, int y, int zoom, int rows, int cols)
             {
                 this.X = x;
@@ -104,18 +134,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <returns></returns>
         public TileRef[] GetTileList()
         {
-            //Z goes from 0 to 19
-            var ranges = new TileSetRange[20];
+            var ranges = new TileSetRange[_maxZoomLevel + 1];
             for (int z = 0; z < ranges.Length; z++)
             {
                 //Allow floating point drift
                 var ll = WorldToTilePos(_ll.X, _ll.Y, z);
                 var ur = WorldToTilePos(_ur.X, _ur.Y, z);
+                if (_specificZoomLevels.Count == 0 || _specificZoomLevels.Contains(z))
+                {
+                    var rows = Math.Abs(ur.X - ll.X) + 1;
+                    var cols = Math.Abs(ur.Y - ll.Y) + 1;
 
-                var rows = Math.Abs(ur.X - ll.X) + 1;
-                var cols = Math.Abs(ur.Y - ll.Y) + 1;
-
-                ranges[z] = new TileSetRange(Math.Min(ll.X, ur.X), Math.Min(ll.Y, ur.Y), z, rows, cols);
+                    ranges[z] = new TileSetRange(Math.Min(ll.X, ur.X), Math.Min(ll.Y, ur.Y), z, rows, cols);
+                }
+                else //This zoom level has been omitted
+                {
+                    ranges[z] = new TileSetRange(z);
+                }
             }
 
             var capacity = ranges.Sum(g => g.Total);

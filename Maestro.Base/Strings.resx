@@ -1013,4 +1013,13 @@ Error message: {0}</value>
   <data name="ProviderTemplate" xml:space="preserve">
     <value>Maestro API Provider Template Tool</value>
   </data>
+  <data name="Folder_TileSets" xml:space="preserve">
+    <value>TileSets</value>
+  </data>
+  <data name="XYZUrlGen_UnsupportedConnection" xml:space="preserve">
+    <value>Cannot generate the XYZ tileset URL for this connection provider</value>
+  </data>
+  <data name="SiteExplorer_GetXYZTileSetUrl" xml:space="preserve">
+    <value>Get XYZ tileset URLs</value>
+  </data>
 </root>

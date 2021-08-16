@@ -630,6 +630,11 @@
                           label="${res:SiteExplorer_SelectedItem_ExtractImageSymbols}"
                           class="Maestro.Base.Commands.SiteExplorer.ExtractSymbolsCommand" />
             </Condition>
+            <Condition action="Disable" name="ResourceType" types="TileSetDefinition">
+                <MenuItem id="GetXYZTileSetUrl"
+                          label="${res:SiteExplorer_GetXYZTileSetUrl}"
+                          class="Maestro.Base.Commands.SiteExplorer.GetXYZTileSetUrlCommand" />
+            </Condition>
             <MenuItem type="Separator" />
             <MenuItem id="Properties"
                       label="${res:SiteExplorer_SelectedItem_Properties}"

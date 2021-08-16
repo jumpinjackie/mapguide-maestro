@@ -164,6 +164,21 @@ namespace Maestro.Editors.MapDefinition
                 var e1 = layer.GetSpatialExtent(_conn, true, out wkt);
                 if (e1 != null)
                 {
+                    var epsg = _conn.CoordinateSystemCatalog.ConvertWktToEpsgCode(wkt);
+                    if (epsg == "4326")
+                    {
+                        // Ensure that EPSG:4326 bounds are coerced down to [-180, -90, 180, 90]
+                        // if they exceed it.
+                        //
+                        // We expect EPSG:4326 data sources are common enough that we should give
+                        // this case special treatment
+                        e1 = ObjectFactory.CreateEnvelope(
+                            Math.Max(e1.MinX, -180),
+                            Math.Max(e1.MinY, -90),
+                            Math.Min(e1.MaxX, 180),
+                            Math.Min(e1.MaxY, 90));
+                    }
+
                     res.Extents = ExtentsToString(e1);
                 }
                 res.LayerDefinition = layer.ResourceID;

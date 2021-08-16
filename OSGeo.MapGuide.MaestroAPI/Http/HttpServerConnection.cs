@@ -222,10 +222,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             _cred = new NetworkCredential(username, password);
 
-            m_reqBuilder.SessionID = CreateSessionInternal(m_reqBuilder);
-
             m_username = username;
             m_password = password;
+
+            m_reqBuilder.SessionID = CreateSessionInternal(m_reqBuilder);
 
             try
             {
