@@ -20,8 +20,6 @@
 
 #endregion Disclaimer / License
 
-using GeoAPI.CoordinateSystems;
-using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
 using OSGeo.MapGuide.ObjectModels;
 using ProjNet.CoordinateSystems;
@@ -34,7 +32,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
     /// </summary>
     internal abstract class CoordinateSystemBase
     {
-        private static ICoordinateSystemFactory _csFact;
+        private static CoordinateSystemFactory _csFact;
 
         static CoordinateSystemBase()
         {
@@ -53,7 +51,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             return Create(_csFact.CreateFromWkt(csWkt));
         }
 
-        internal static CoordinateSystemBase Create(ICoordinateSystem coordSys)
+        internal static CoordinateSystemBase Create(ProjNet.CoordinateSystems.CoordinateSystem coordSys)
         {
             CoordinateSystemBase csb = null;
             try
@@ -66,8 +64,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             if (csb == null && coordSys != null)
             {
                 IUnit unit = coordSys.GetUnits(0);
-                var au = unit as IAngularUnit;
-                var lu = unit as ILinearUnit;
+                var au = unit as AngularUnit;
+                var lu = unit as LinearUnit;
                 if (au != null)
                 {
                     double radians = au.RadiansPerUnit;
@@ -148,6 +146,6 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="p1">One point</param>
         /// <param name="p2">Another point</param>
         /// <returns>The distance in meters</returns>
-        protected abstract double DistanceInMeters(IPoint p1, IPoint p2);
+        protected abstract double DistanceInMeters(Point p1, Point p2);
     }
 }

@@ -19,18 +19,19 @@
 //
 
 #endregion Disclaimer / License
-using GeoAPI.Geometries;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 
+using NTSGeom = NetTopologySuite.Geometries.Geometry;
+
 namespace OSGeo.MapGuide.MaestroAPI.Geometry
 {
-    internal class GeoAPIGeometryRef : IGeometryRef
+    internal class NTSGeometryRef : IGeometryRef
     {
-        readonly IGeometry _geom;
+        readonly NTSGeom _geom;
 
-        internal GeoAPIGeometryRef(IGeometry geom)
+        internal NTSGeometryRef(NTSGeom geom)
         {
             _geom = geom;
         }
@@ -60,7 +61,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Geometry
 
         public string AsText() => _geom.AsText();
 
-        public IGeometryRef GetBoundary() => new GeoAPIGeometryRef(_geom.Boundary);
+        public IGeometryRef GetBoundary() => new NTSGeometryRef(_geom.Boundary);
 
         public ObjectModels.Common.IEnvelope GetEnvelope()
         {
@@ -68,20 +69,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Geometry
             return ObjectFactory.CreateEnvelope(env.MinX, env.MinY, env.MaxX, env.MaxY);
         }
 
-        static IGeometryRef BinaryOperator(GeoAPIGeometryRef thisRef, IGeometryRef otherRef, Func<IGeometry, IGeometry, IGeometry> operation)
+        static IGeometryRef BinaryOperator(NTSGeometryRef thisRef, IGeometryRef otherRef, Func<NTSGeom, NTSGeom, NTSGeom> operation)
         {
-            var impl = otherRef as GeoAPIGeometryRef;
+            var impl = otherRef as NTSGeometryRef;
             if (impl != null)
             {
                 var result = operation(thisRef._geom, impl._geom);
-                return new GeoAPIGeometryRef(result);
+                return new NTSGeometryRef(result);
             }
             throw new ArgumentException("Incorrect IGeometryRef implementation");
         }
 
-        static bool BinaryPredicate(GeoAPIGeometryRef thisRef, IGeometryRef otherRef, Func<IGeometry, IGeometry, bool> operation)
+        static bool BinaryPredicate(NTSGeometryRef thisRef, IGeometryRef otherRef, Func<NTSGeom, NTSGeom, bool> operation)
         {
-            var impl = otherRef as GeoAPIGeometryRef;
+            var impl = otherRef as NTSGeometryRef;
             if (impl != null)
             {
                 return operation(thisRef._geom, impl._geom);
@@ -89,7 +90,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Geometry
             throw new ArgumentException("Incorrect IGeometryRef implementation");
         }
 
-        public IGeometryRef ConvexHull() => new GeoAPIGeometryRef(_geom.ConvexHull());
+        public IGeometryRef ConvexHull() => new NTSGeometryRef(_geom.ConvexHull());
 
         public bool Contains(IGeometryRef other) => BinaryPredicate(this, other, (a, b) => a.Contains(b));
 

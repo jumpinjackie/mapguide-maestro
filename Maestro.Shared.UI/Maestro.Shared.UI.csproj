@@ -215,7 +215,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DockPanelSuite">
-      <Version>3.0.6</Version>
+      <Version>3.1.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

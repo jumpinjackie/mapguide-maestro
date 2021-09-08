@@ -20,8 +20,6 @@
 
 #endregion Disclaimer / License
 
-using GeoAPI.CoordinateSystems;
-using GeoAPI.CoordinateSystems.Transformations;
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
 using System;
@@ -48,8 +46,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
     /// </summary>
     public class DefaultSimpleTransform : ISimpleTransform
     {
-        private ICoordinateSystem _source;
-        private ICoordinateSystem _target;
+        private ProjNet.CoordinateSystems.CoordinateSystem _source;
+        private ProjNet.CoordinateSystems.CoordinateSystem _target;
         private ICoordinateTransformation _trans;
 
         private const string CSMAP_WGS84_PSEUDO_MERCATOR = @"PROJCS[""WGS84.PseudoMercator"",GEOGCS[""LL84"",DATUM[""WGS84"",SPHEROID[""WGS84"",6378137.000,298.25722293]],PRIMEM[""Greenwich"",0],UNIT[""Degree"",0.017453292519943295]],PROJECTION[""Popular Visualisation Pseudo Mercator""],PARAMETER[""false_easting"",0.000],PARAMETER[""false_northing"",0.000],PARAMETER[""central_meridian"",0.00000000000000],UNIT[""Meter"",1.00000000000000]]"; //NOXLATE
