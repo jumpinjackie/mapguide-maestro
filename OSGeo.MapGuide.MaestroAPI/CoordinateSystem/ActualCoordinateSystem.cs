@@ -20,11 +20,7 @@
 
 #endregion Disclaimer / License
 
-using GeoAPI.CoordinateSystems;
-using GeoAPI.CoordinateSystems.Transformations;
-using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
-using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
 using System;
 
@@ -35,13 +31,13 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         private readonly ICoordinateTransformation m_transform;
         private const string XY_M = "LOCAL_CS[\"Non-Earth (Meter)\",LOCAL_DATUM[\"Local Datum\",0],UNIT[\"Meter\", 1],AXIS[\"X\",EAST],AXIS[\"Y\",NORTH]]"; //NOXLATE
 
-        internal ActualCoordinateSystem(ICoordinateSystem coordinateSystem)
+        internal ActualCoordinateSystem(ProjNet.CoordinateSystems.CoordinateSystem coordinateSystem)
         {
             if (coordinateSystem == null)
                 throw new ArgumentNullException(nameof(coordinateSystem)); //NOXLATE
 
-            CoordinateTransformationFactory f = new CoordinateTransformationFactory();
-            CoordinateSystemFactory cf = new CoordinateSystemFactory();
+            var f = new CoordinateTransformationFactory();
+            var cf = new ProjNet.CoordinateSystems.CoordinateSystemFactory();
 
             m_transform = f.CreateFromCoordinateSystems(coordinateSystem, cf.CreateFromWkt(XY_M));
         }
@@ -62,7 +58,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             return new Envelope(points[0], points[2], points[1], points[3]);
         }
 
-        protected override double DistanceInMeters(IPoint p1, IPoint p2)
+        protected override double DistanceInMeters(Point p1, Point p2)
         {
             double[] points = m_transform.MathTransform.Transform(new double[] { p1.X, p1.Y, p2.X, p2.Y });
             return base.DistanceInMeters(new Point(points[0], points[1]), new Point(points[2], points[3]));

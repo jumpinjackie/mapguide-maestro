@@ -20,9 +20,8 @@
 
 #endregion Disclaimer / License
 
-using GeoAPI.Geometries;
+using NetTopologySuite.Geometries;
 using System;
-using System.Drawing;
 
 namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 {
@@ -54,7 +53,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 
         public override double MetersPerUnitY => UDM_Y;
 
-        protected override double CalculateScale(Envelope bbox, Size size)
+        protected override double CalculateScale(Envelope bbox, System.Drawing.Size size)
         {
             double picture_width_in_meters = (size.Width / DPI) / IPM;
             double picture_height_in_meters = (size.Height / DPI) / IPM;
@@ -68,7 +67,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             return Math.Max(width_scale, height_scale);
         }
 
-        protected override Envelope AdjustBoundingBox(Envelope bbox, double scale, Size size)
+        protected override Envelope AdjustBoundingBox(Envelope bbox, double scale, System.Drawing.Size size)
         {
             double picture_width_in_meters = ((size.Width / DPI) / IPM) * scale;
             double picture_height_in_meters = ((size.Height / DPI) / IPM) * scale;
@@ -79,7 +78,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             return new Envelope(bbox.Centre.X - (width_extent / 2), bbox.Centre.X + (width_extent / 2), bbox.Centre.Y - (height_extent / 2), bbox.Centre.Y + (height_extent / 2));
         }
 
-        protected override double DistanceInMeters(IPoint p1, IPoint p2)
+        protected override double DistanceInMeters(Point p1, Point p2)
         {
             double xdist = Math.Abs(p1.X - p2.X);
             double ydist = Math.Abs(p1.Y - p2.Y);
