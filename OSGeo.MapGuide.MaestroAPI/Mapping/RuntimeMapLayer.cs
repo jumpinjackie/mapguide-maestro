@@ -655,6 +655,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
         }
 
+        public bool IncludeBoundsForSelectedFeatures { get; set; }
+
         private double[] _scaleRanges;
 
         /// <summary>
@@ -715,6 +717,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 flags |= this.ExpandInLegend ? 8 : 0;
                 flags |= this.NeedsRefresh ? 16 : 0;
                 flags |= this.HasTooltips ? 32 : 0;
+                if (s.SiteVersion >= new Version(4, 0))
+                    flags |= this.IncludeBoundsForSelectedFeatures ? 64 : 0;
                 s.WriteRaw(new byte[] { (byte)flags });
 
                 s.WriteStringInternal(this.LegendLabel);
@@ -861,6 +865,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 _expandInLegend = (flags & 8) > 0;
                 _needsRefresh = (flags & 16) > 0;
                 _hasTooltips = (flags & 32) > 0;
+
+                if (d.SiteVersion >= new Version(4, 0))
+                {
+                    this.IncludeBoundsForSelectedFeatures = (flags & 64) > 0;
+                }
 
                 _legendLabel = d.ReadInternalString();
                 _displayOrder = BitConverter.ToDouble(d.ReadStreamRepeat(8), 0);

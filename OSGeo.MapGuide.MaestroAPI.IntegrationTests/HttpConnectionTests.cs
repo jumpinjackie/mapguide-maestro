@@ -75,6 +75,18 @@ namespace MaestroAPITests
         }
 
         [SkippableFact]
+        public override void TestLayerDefUpgrade()
+        {
+            base.TestLayerDefUpgrade();
+        }
+
+        [SkippableFact]
+        public override void TestLayerDefUpgrade2()
+        {
+            base.TestLayerDefUpgrade2();
+        }
+
+        [SkippableFact]
         public void TestFeatureSourceCachingImpl()
         {
             base.TestFeatureSourceCaching("HttpCaching");
@@ -198,18 +210,26 @@ namespace MaestroAPITests
 
             var trans = conn.CoordinateSystemCatalog.CreateTransform(srcWkt, dstWkt);
 
+            bool isNativeImpl = (trans.GetType().Name == "HttpCoordinateSystemTransform");
+
             double tx1;
             double ty1;
             trans.Transform(-87.7649869909628, 43.6913981287878, out tx1, out ty1);
             Assert.Equal(-9769953.66131227, tx1, 7); // 0.0000001);
-            Assert.Equal(5417808.88017179, ty1, 7); // 0.0000001);
+            if (isNativeImpl)
+                Assert.Equal(5417808.8738085, ty1, 7);
+            else
+                Assert.Equal(5417808.88017179, ty1, 7); // 0.0000001);
 
             double tx2;
             double ty2;
 
             trans.Transform(-87.6955215108997, 43.7975200004803, out tx2, out ty2);
             Assert.Equal(-9762220.79944393, tx2, 7); // 0.0000001);
-            Assert.Equal(5434161.22418638, ty2, 7); // 0.0000001);
+            if (isNativeImpl)
+                Assert.Equal(5434161.2178085, ty2, 7);
+            else
+                Assert.Equal(5434161.22418638, ty2, 7); // 0.0000001);
         }
 
         [SkippableFact]

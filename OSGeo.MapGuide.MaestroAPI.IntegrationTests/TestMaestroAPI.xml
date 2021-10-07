@@ -27,7 +27,7 @@ Configured for exercising everything in the Maestro API except for LocalNative c
     <!--
     The mapagent URL required for running the HTTP provider tests
     -->
-    <HttpUrl>http://localhost/mapguide/mapagent/mapagent.fcgi</HttpUrl>
+    <HttpUrl>http://localhost:8018/mapguide/mapagent/mapagent.fcgi</HttpUrl>
     <!--
     The MapGuide user account for running the HTTP provider tests under
     -->

@@ -443,7 +443,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
             var cts = new CompositeTypeStyle()
             {
                 CompositeRule = new System.ComponentModel.BindingList<CompositeRule>(),
-#if LDF_110 || LDF_120
+#if LDF_110 || LDF_120 || LDF_240 || LDF_400
 #else
                 ShowInLegend = true,
 #endif

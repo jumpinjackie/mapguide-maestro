@@ -43,6 +43,7 @@ using Ldf120 = OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_2_0;
 using Ldf130 = OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_3_0;
 using Ldf230 = OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_3_0;
 using Ldf240 = OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_4_0;
+using Ldf400 = OSGeo.MapGuide.ObjectModels.LayerDefinition.v4_0_0;
 using Lp110 = OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_1_0;
 using Lp220 = OSGeo.MapGuide.ObjectModels.LoadProcedure.v2_2_0;
 using Mdf230 = OSGeo.MapGuide.ObjectModels.MapDefinition.v2_3_0;
@@ -181,6 +182,13 @@ namespace OSGeo.MapGuide.ObjectModels
                 Ldf240.LdfEntryPoint.Serialize,
                 Ldf240.LdfEntryPoint.Deserialize);
             ObjectFactory.RegisterLayerFactoryMethod(new Version(2, 4, 0), Ldf240.LdfEntryPoint.CreateDefault);
+
+            //Layer Definition 4.0.0
+            ResourceTypeRegistry.RegisterResource(
+                new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "4.0.0"),
+                Ldf400.LdfEntryPoint.Serialize,
+                Ldf400.LdfEntryPoint.Deserialize);
+            ObjectFactory.RegisterLayerFactoryMethod(new Version(4, 0, 0), Ldf400.LdfEntryPoint.CreateDefault);
 
             //Load Procedure 1.1.0
             ResourceTypeRegistry.RegisterResource(
