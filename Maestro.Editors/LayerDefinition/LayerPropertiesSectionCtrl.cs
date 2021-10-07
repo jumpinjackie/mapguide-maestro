@@ -38,6 +38,16 @@ namespace Maestro.Editors.LayerDefinition
             _vl = _parent.SubLayer as IVectorLayerDefinition;
             Debug.Assert(_vl != null);
 
+            if (_vl is IVectorLayerDefinition3 vl3)
+            {
+                tsbIncludeBoundingBox.Checked = vl3.IncludeBoundsForSelectedFeatures;
+                tsbIncludeBoundingBox.Visible = true;
+            }
+            else
+            {
+                tsbIncludeBoundingBox.Visible = false;
+            }
+
             if (service.IsNew)
             {
                 //Let's try to auto-assign a feature class
@@ -314,6 +324,16 @@ namespace Maestro.Editors.LayerDefinition
 
                 if (grdProperties.SelectedRows[0].Index < grdProperties.Rows.Count - 1)
                     btnMoveDown.Enabled = true;
+            }
+        }
+
+        private void tsbIncludeBoundingBox_Click(object sender, EventArgs e)
+        {
+            if (_vl is IVectorLayerDefinition3 vl3)
+            {
+                tsbIncludeBoundingBox.Checked = !tsbIncludeBoundingBox.Checked;
+                vl3.IncludeBoundsForSelectedFeatures = tsbIncludeBoundingBox.Checked;
+                OnResourceChanged();
             }
         }
     }
