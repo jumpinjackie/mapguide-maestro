@@ -31,7 +31,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v4_0_0
         private static System.Xml.Serialization.XmlSerializer serializer;
         
         public LayerDefinition() {
-            this.versionField = "2.4.0";
+            this.versionField = "4.0.0";
         }
         
         [System.Xml.Serialization.XmlAttributeAttribute()]
