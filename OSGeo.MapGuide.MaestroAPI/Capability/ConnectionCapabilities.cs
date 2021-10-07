@@ -198,6 +198,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// <returns></returns>
         protected virtual Version GetMaxLayerDefinitionVersion()
         {
+            if (_parent.SiteVersion >= new Version(4, 0))
+                return new Version(4, 0, 0);
             if (_parent.SiteVersion >= new Version(2, 4))
                 return new Version(2, 4, 0);
             if (_parent.SiteVersion >= new Version(2, 3))
