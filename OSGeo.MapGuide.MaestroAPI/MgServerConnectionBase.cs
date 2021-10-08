@@ -200,8 +200,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="persist">If true will update the selection set for the given map</param>
         /// <param name="selectionVariant">The type of spatial operator to use for the spatial query</param>
         /// <param name="extraOptions">Extra querying options</param>
+        /// <param name="requestData">1=Include attributes,2=Include Inline Selection,4=Tooltip Data,8=Include Hyperlink data</param>
         /// <returns></returns>
-        public abstract string QueryMapFeatures(RuntimeMap rtMap, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions);
+        public abstract string QueryMapFeatures(RuntimeMap rtMap, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions, int? requestData);
 
         /// <summary>
         /// Renders a minature bitmap of the layers style

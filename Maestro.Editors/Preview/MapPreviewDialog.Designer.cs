@@ -45,6 +45,8 @@
             this.numZoomToScale = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCoordinateSystem = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtMaxY = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtMaxX = new System.Windows.Forms.TextBox();
@@ -53,12 +55,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtMinX = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtCoordinateSystem = new System.Windows.Forms.TextBox();
+            this.selectionPanel = new Maestro.MapViewer.SelectionPanel();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
@@ -66,6 +69,10 @@
             this.grpOtherTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numZoomToScale)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
             this.SuspendLayout();
             // 
             // defaultToolbar
@@ -94,6 +101,7 @@
             this.mapViewer.ZoomOutFactor = 2D;
             this.mapViewer.MapScaleChanged += new System.EventHandler(this.mapViewer_MapScaleChanged);
             this.mapViewer.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.mapViewer_PropertyChanged);
+            this.mapViewer.MapSelectionAttributesChanged += new MapViewer.SelectionChangeHandler(OnMapSelectionAttributesChanged);
             // 
             // statusStrip1
             // 
@@ -133,7 +141,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.legend);
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainer3);
             // 
             // splitContainer1.Panel2
             // 
@@ -152,7 +160,7 @@
             this.legend.SelectOnRightClick = false;
             this.legend.ShowAllLayersAndGroups = false;
             this.legend.ShowTooltips = true;
-            this.legend.Size = new System.Drawing.Size(199, 515);
+            this.legend.Size = new System.Drawing.Size(199, 293);
             this.legend.TabIndex = 0;
             this.legend.ThemeCompressionLimit = 25;
             this.legend.Viewer = this.mapViewer;
@@ -264,6 +272,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Current Extents";
             // 
+            // txtCoordinateSystem
+            // 
+            this.txtCoordinateSystem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCoordinateSystem.Location = new System.Drawing.Point(10, 207);
+            this.txtCoordinateSystem.Multiline = true;
+            this.txtCoordinateSystem.Name = "txtCoordinateSystem";
+            this.txtCoordinateSystem.ReadOnly = true;
+            this.txtCoordinateSystem.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtCoordinateSystem.Size = new System.Drawing.Size(135, 123);
+            this.txtCoordinateSystem.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 190);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(95, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Coordinate System";
+            // 
             // txtMaxY
             // 
             this.txtMaxY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -340,26 +369,31 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Min X";
             // 
-            // label6
+            // selectionPanel1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 190);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Coordinate System";
+            this.selectionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.selectionPanel.Location = new System.Drawing.Point(0, 0);
+            this.selectionPanel.Name = "selectionPanel1";
+            this.selectionPanel.Size = new System.Drawing.Size(199, 218);
+            this.selectionPanel.TabIndex = 1;
             // 
-            // txtCoordinateSystem
+            // splitContainer3
             // 
-            this.txtCoordinateSystem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCoordinateSystem.Location = new System.Drawing.Point(10, 207);
-            this.txtCoordinateSystem.Multiline = true;
-            this.txtCoordinateSystem.Name = "txtCoordinateSystem";
-            this.txtCoordinateSystem.ReadOnly = true;
-            this.txtCoordinateSystem.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtCoordinateSystem.Size = new System.Drawing.Size(135, 123);
-            this.txtCoordinateSystem.TabIndex = 9;
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.legend);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.selectionPanel);
+            this.splitContainer3.Size = new System.Drawing.Size(199, 515);
+            this.splitContainer3.SplitterDistance = 293;
+            this.splitContainer3.TabIndex = 0;
             // 
             // MapPreviewDialog
             // 
@@ -374,10 +408,11 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.grpOtherTools.ResumeLayout(false);
@@ -385,6 +420,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numZoomToScale)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,5 +458,7 @@
         private System.Windows.Forms.Button btnGetMapKml;
         private System.Windows.Forms.TextBox txtCoordinateSystem;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private MapViewer.SelectionPanel selectionPanel;
     }
 }

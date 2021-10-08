@@ -1221,8 +1221,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new MgReadOnlyStream(fetch);
         }
 
-        public string QueryMapFeatures(RuntimeMap rtMap, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
+        public string QueryMapFeatures(RuntimeMap rtMap, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions, int? requestData)
         {
+            //TODO: Support requestData
+
             var impl = rtMap as LocalRuntimeMap;
             if (impl == null)
                 throw new ArgumentException("Instance is not a LocalRuntimeMap", nameof(rtMap)); //LOCALIZEME
@@ -1268,7 +1270,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
 
             MgdFeatureInformation info = rs.QueryFeatures(map, layerNames, r.Read(wkt), op, featureFilter, maxFeatures, layerAttributeFilter);
-
             string xml = "";
             GetByteReaderMethod fetch = info.ToXml;
             using (var sr = new StreamReader(new MgReadOnlyStream(fetch)))

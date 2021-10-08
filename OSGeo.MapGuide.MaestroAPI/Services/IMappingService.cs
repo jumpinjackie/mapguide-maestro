@@ -652,7 +652,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="persist">Indicates whether the selection should be persisted as part of the map</param>
         /// <param name="selectionVariant">The spatial operator to use against the selection geometry</param>
         /// <param name="extraOptions">Extra options for controlling selection criteria</param>
+        /// <param name="requestData">1=Include attributes,2=Include Inline Selection,4=Tooltip Data,8=Include Hyperlink data</param>
         /// <returns></returns>
-        string QueryMapFeatures(RuntimeMap map, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions);
+        string QueryMapFeatures(RuntimeMap map, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions, int? requestData);
     }
 }

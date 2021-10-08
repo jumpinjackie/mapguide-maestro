@@ -1993,13 +1993,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public override string QueryMapFeatures(RuntimeMap rtMap, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
+        public override string QueryMapFeatures(RuntimeMap rtMap, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions, int? requestData)
         {
             string runtimeMapName = rtMap.Name;
             //The request may execeed the url limit of the server, when large geometries
             using (var ms = MemoryStreamPool.GetStream())
             {
-                var req = m_reqBuilder.QueryMapFeatures(runtimeMapName, maxFeatures, wkt, persist, selectionVariant, extraOptions, ms);
+                var req = m_reqBuilder.QueryMapFeatures(runtimeMapName, maxFeatures, wkt, persist, selectionVariant, requestData, extraOptions, ms);
                 req.Timeout = 200 * 1000;
                 ms.Position = 0;
 

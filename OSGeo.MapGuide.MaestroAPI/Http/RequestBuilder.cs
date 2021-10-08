@@ -1040,11 +1040,19 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
-        public System.Net.WebRequest QueryMapFeatures(string mapname, bool persist, string geometry, System.IO.Stream outStream, QueryMapFeaturesLayerAttributes attributes)
+        public System.Net.WebRequest QueryMapFeatures(string mapname, bool persist, string geometry, int? requestData, System.IO.Stream outStream, QueryMapFeaturesLayerAttributes attributes)
         {
             NameValueCollection param = new NameValueCollection();
             param.Add("OPERATION", "QUERYMAPFEATURES");
-            param.Add("VERSION", "1.0.0");
+            if (requestData.HasValue)
+            {
+                param.Add("VERSION", "2.6.0");
+                param.Add("REQUESTDATA", requestData.Value.ToString());
+            }
+            else
+            {
+                param.Add("VERSION", "1.0.0");
+            }
             param.Add("PERSIST", persist ? "1" : "0");
             param.Add("MAPNAME", mapname);
             param.Add("SESSION", m_sessionID);
@@ -1066,11 +1074,19 @@ namespace OSGeo.MapGuide.MaestroAPI
             return req;
         }
 
-        internal System.Net.WebRequest QueryMapFeatures(string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, Services.QueryMapOptions extraOptions, System.IO.Stream outStream)
+        internal System.Net.WebRequest QueryMapFeatures(string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, int? requestData, Services.QueryMapOptions extraOptions, System.IO.Stream outStream)
         {
             NameValueCollection param = new NameValueCollection();
             param.Add("OPERATION", "QUERYMAPFEATURES");
-            param.Add("VERSION", "1.0.0");
+            if (requestData.HasValue)
+            {
+                param.Add("VERSION", "2.6.0");
+                param.Add("REQUESTDATA", requestData.Value.ToString());
+            }
+            else
+            {
+                param.Add("VERSION", "1.0.0");
+            }
             param.Add("PERSIST", persist ? "1" : "0");
             param.Add("MAPNAME", runtimeMapName);
             param.Add("SESSION", m_sessionID);

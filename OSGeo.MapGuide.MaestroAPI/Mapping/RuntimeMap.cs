@@ -1638,13 +1638,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="persist"></param>
         /// <param name="selectionVariant"></param>
         /// <param name="extraOptions"></param>
+        /// <param name="requestData"></param>
         /// <returns></returns>
-        public virtual string QueryMapFeatures(string wkt, int maxFeatures, bool persist, string selectionVariant, QueryMapOptions extraOptions)
+        public virtual string QueryMapFeatures(string wkt, int maxFeatures, bool persist, string selectionVariant, QueryMapOptions extraOptions, int? requestData = null)
         {
             if (_mapSvc == null)
                 throw new NotSupportedException();
 
-            var ret = _mapSvc.QueryMapFeatures(this, maxFeatures, wkt, persist, selectionVariant, extraOptions);
+            var ret = _mapSvc.QueryMapFeatures(this, maxFeatures, wkt, persist, selectionVariant, extraOptions, requestData);
 
             //Need to re-sync the selection as this will probably have been changed
             ReloadSelection();
