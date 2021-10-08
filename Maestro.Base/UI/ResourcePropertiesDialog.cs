@@ -375,6 +375,16 @@ namespace Maestro.Base.UI
                 if (m_resourceHeader.Metadata == null)
                     m_resourceHeader.Metadata = ObjectFactory.CreateMetadata();
 
+                // Prune all empty metadata values, otherwise this trips up metadata enumeration on the mapagent
+                var props = m_resourceHeader.Metadata.GetProperties();
+                foreach (var key in props.AllKeys)
+                {
+                    if (string.IsNullOrEmpty(props[key]))
+                    {
+                        m_resourceHeader.Metadata.SetProperty(key, null);
+                    }
+                }
+
                 /*
                 if (m_resourceHeader.Metadata.Simple == null)
                     m_resourceHeader.Metadata.Simple = new ResourceDocumentHeaderTypeMetadataSimple();
@@ -384,9 +394,8 @@ namespace Maestro.Base.UI
 
                 if (m_resourceId.Extension == ResourceTypes.LayerDefinition.ToString())
                 {
-                    var props = m_resourceHeader.Metadata.GetProperties();
                     bool apply = false;
-
+                    /*
                     if (props["_Title"] == null) //NOXLATE
                     {
                         props["_Title"] = string.Empty; //NOXLATE
@@ -410,7 +419,7 @@ namespace Maestro.Base.UI
                         props["_ExtendedMetadata"] = string.Empty; //NOXLATE
                         apply = true;
                     }
-
+                    */
                     if (props["_Queryable"] == null) //NOXLATE
                     {
                         props["_Queryable"] = "0"; //NOXLATE
@@ -428,13 +437,13 @@ namespace Maestro.Base.UI
                         props["_IsPublished"] = "0"; //NOXLATE
                         apply = true;
                     }
-
+                    /*
                     if (props["_Bounds"] == null) //NOXLATE
                     {
                         props["_Bounds"] = string.Empty; //NOXLATE
                         apply = true;
                     }
-
+                    */
                     if (apply)
                         m_resourceHeader.Metadata.ApplyProperties(props);
                 }
