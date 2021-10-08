@@ -75,14 +75,6 @@
             this.splitContainer3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // defaultToolbar
-            // 
-            this.defaultToolbar.Location = new System.Drawing.Point(0, 0);
-            this.defaultToolbar.Name = "defaultToolbar";
-            this.defaultToolbar.Size = new System.Drawing.Size(784, 25);
-            this.defaultToolbar.TabIndex = 0;
-            this.defaultToolbar.Viewer = this.mapViewer;
-            // 
             // mapViewer
             // 
             this.mapViewer.Cursor = System.Windows.Forms.Cursors.Default;
@@ -102,6 +94,14 @@
             this.mapViewer.MapScaleChanged += new System.EventHandler(this.mapViewer_MapScaleChanged);
             this.mapViewer.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.mapViewer_PropertyChanged);
             this.mapViewer.MapSelectionAttributesChanged += new MapViewer.SelectionChangeHandler(OnMapSelectionAttributesChanged);
+            // 
+            // defaultToolbar
+            // 
+            this.defaultToolbar.Location = new System.Drawing.Point(0, 0);
+            this.defaultToolbar.Name = "defaultToolbar";
+            this.defaultToolbar.Size = new System.Drawing.Size(784, 25);
+            this.defaultToolbar.TabIndex = 0;
+            this.defaultToolbar.Viewer = this.mapViewer;
             // 
             // statusStrip1
             // 

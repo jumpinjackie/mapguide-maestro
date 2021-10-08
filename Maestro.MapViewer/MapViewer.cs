@@ -1320,7 +1320,7 @@ namespace Maestro.MapViewer
             }
 
             this.SelectionChanged?.Invoke(this, EventArgs.Empty);
-
+            this.MapSelectionAttributesChanged?.Invoke(this, null);
             this.Refresh();
         }
 
