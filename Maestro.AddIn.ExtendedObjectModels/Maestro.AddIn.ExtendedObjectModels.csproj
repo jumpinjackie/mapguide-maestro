@@ -87,6 +87,7 @@
     <Compile Include="Templates\MapDefinition300ItemTemplate.cs" />
     <Compile Include="Templates\TileSetDefinition300ItemTemplate.cs" />
     <Compile Include="Templates\RasterLayer240ItemTemplate.cs" />
+    <Compile Include="Templates\VectorLayer400ItemTemplate.cs" />
     <Compile Include="Templates\WebLayout260ItemTemplate.cs" />
     <Compile Include="Templates\SymbolDefinition240ItemTemplate.cs" />
     <Compile Include="Templates\WatermarkDefinition240ItemTemplate.cs" />

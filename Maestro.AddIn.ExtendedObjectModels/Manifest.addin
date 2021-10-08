@@ -25,6 +25,7 @@
         <Class id="WebLayoutEditor260" class="Maestro.AddIn.ExtendedObjectModels.Editor.WebLayout260EditorFactory" />
         <Class id="LayerDefinitionEditor230" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition230EditorFactory" />
         <Class id="LayerDefinitionEditor240" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition240EditorFactory" />
+        <Class id="LayerDefinitionEditor400" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition400EditorFactory" />
         <Class id="MapDefinition230" class="Maestro.AddIn.ExtendedObjectModels.Editor.MapDefinition230EditorFactory" />
         <Class id="MapDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Editor.MapDefinition240EditorFactory" />
         <Class id="MapDefinition300" class="Maestro.AddIn.ExtendedObjectModels.Editor.MapDefinition300EditorFactory" />
@@ -42,6 +43,7 @@
         <Class id="VectorLayerDefinition130" class="Maestro.AddIn.ExtendedObjectModels.Templates.VectorLayer130ItemTemplate" />
         <Class id="VectorLayerDefinition230" class="Maestro.AddIn.ExtendedObjectModels.Templates.VectorLayer230ItemTemplate" />
         <Class id="VectorLayerDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Templates.VectorLayer240ItemTemplate" />
+        <Class id="VectorLayerDefinition400" class="Maestro.AddIn.ExtendedObjectModels.Templates.VectorLayer400ItemTemplate" />
         <Class id="RasterLayerDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Templates.RasterLayer240ItemTemplate" />
         <Class id="MapDefinition230" class="Maestro.AddIn.ExtendedObjectModels.Templates.MapDefinition230ItemTemplate" />
         <Class id="MapDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Templates.MapDefinition240ItemTemplate" />

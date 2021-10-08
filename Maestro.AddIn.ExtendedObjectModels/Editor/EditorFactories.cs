@@ -126,6 +126,19 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
         public IEditorViewContent Create() => new LayerDefinitionEditor();
     }
 
+    internal class LayerDefinition400EditorFactory : IEditorFactory
+    {
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; }
+
+        public LayerDefinition400EditorFactory()
+        {
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "4.0.0"); //NOXLATE
+        }
+
+        //Use the same 1.0.0 editor for now
+        public IEditorViewContent Create() => new LayerDefinitionEditor();
+    }
+
     internal class MapDefinition230EditorFactory : IEditorFactory
     {
         public ResourceTypeDescriptor ResourceTypeAndVersion { get; }
