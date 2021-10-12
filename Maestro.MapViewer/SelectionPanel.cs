@@ -162,7 +162,7 @@ namespace Maestro.MapViewer
 
             public override Type PropertyType
             {
-                get { return _expando[_name].GetType(); }
+                get { return _expando[_name]?.GetType(); }
             }
 
             public override void SetValue(object component, object value)

@@ -132,7 +132,7 @@
     <value>112, 144</value>
   </data>
   <data name="sizeCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>253, 21</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="sizeCombo.TabIndex" type="System.Int32, mscorlib">
@@ -157,7 +157,7 @@
     <value>112, 112</value>
   </data>
   <data name="unitsCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>253, 21</value>
   </data>
   <data name="unitsCombo.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -181,7 +181,7 @@
     <value>112, 80</value>
   </data>
   <data name="sizeContextCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>253, 21</value>
   </data>
   <data name="sizeContextCombo.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -205,7 +205,7 @@
     <value>112, 48</value>
   </data>
   <data name="fontCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>253, 21</value>
   </data>
   <data name="fontCombo.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -229,7 +229,7 @@
     <value>112, 16</value>
   </data>
   <data name="propertyCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>253, 21</value>
   </data>
   <data name="propertyCombo.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -411,6 +411,87 @@
   <data name="panel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="&gt;&gt;underlineCheck.Name" xml:space="preserve">
+    <value>underlineCheck</value>
+  </data>
+  <data name="&gt;&gt;underlineCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;underlineCheck.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;underlineCheck.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;italicCheck.Name" xml:space="preserve">
+    <value>italicCheck</value>
+  </data>
+  <data name="&gt;&gt;italicCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;italicCheck.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;italicCheck.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;boldCheck.Name" xml:space="preserve">
+    <value>boldCheck</value>
+  </data>
+  <data name="&gt;&gt;boldCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;boldCheck.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;boldCheck.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 176</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 24</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>fontGroup</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="fontGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="fontGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>362, 208</value>
+  </data>
+  <data name="fontGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="fontGroup.Text" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="&gt;&gt;fontGroup.Name" xml:space="preserve">
+    <value>fontGroup</value>
+  </data>
+  <data name="&gt;&gt;fontGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fontGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;fontGroup.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="underlineCheck.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
   </data>
@@ -519,53 +600,104 @@
   <data name="&gt;&gt;boldCheck.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 176</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 24</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>fontGroup</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="fontGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
-  </data>
-  <data name="fontGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 208</value>
-  </data>
-  <data name="fontGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="fontGroup.Text" xml:space="preserve">
-    <value>Font</value>
-  </data>
-  <data name="&gt;&gt;fontGroup.Name" xml:space="preserve">
-    <value>fontGroup</value>
-  </data>
-  <data name="&gt;&gt;fontGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fontGroup.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;fontGroup.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="colorGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;backgroundColor.Name" xml:space="preserve">
+    <value>backgroundColor</value>
+  </data>
+  <data name="&gt;&gt;backgroundColor.Type" xml:space="preserve">
+    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;backgroundColor.Parent" xml:space="preserve">
+    <value>colorGroup</value>
+  </data>
+  <data name="&gt;&gt;backgroundColor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textColor.Name" xml:space="preserve">
+    <value>textColor</value>
+  </data>
+  <data name="&gt;&gt;textColor.Type" xml:space="preserve">
+    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;textColor.Parent" xml:space="preserve">
+    <value>colorGroup</value>
+  </data>
+  <data name="&gt;&gt;textColor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;backgroundTypeCombo.Name" xml:space="preserve">
+    <value>backgroundTypeCombo</value>
+  </data>
+  <data name="&gt;&gt;backgroundTypeCombo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;backgroundTypeCombo.Parent" xml:space="preserve">
+    <value>colorGroup</value>
+  </data>
+  <data name="&gt;&gt;backgroundTypeCombo.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>colorGroup</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>colorGroup</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>colorGroup</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="colorGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 240</value>
+  </data>
+  <data name="colorGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>362, 160</value>
+  </data>
+  <data name="colorGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="colorGroup.Text" xml:space="preserve">
+    <value>Colors</value>
+  </data>
+  <data name="&gt;&gt;colorGroup.Name" xml:space="preserve">
+    <value>colorGroup</value>
+  </data>
+  <data name="&gt;&gt;colorGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;colorGroup.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="backgroundColor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -574,7 +706,7 @@
     <value>112, 72</value>
   </data>
   <data name="backgroundColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 49</value>
+    <value>253, 49</value>
   </data>
   <data name="backgroundColor.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -583,7 +715,7 @@
     <value>backgroundColor</value>
   </data>
   <data name="&gt;&gt;backgroundColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField, Maestro.Editors, Version=5.0.0.6640, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;backgroundColor.Parent" xml:space="preserve">
     <value>colorGroup</value>
@@ -598,7 +730,7 @@
     <value>112, 16</value>
   </data>
   <data name="textColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 49</value>
+    <value>253, 49</value>
   </data>
   <data name="textColor.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -607,7 +739,7 @@
     <value>textColor</value>
   </data>
   <data name="&gt;&gt;textColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField, Maestro.Editors, Version=5.0.0.6640, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;textColor.Parent" xml:space="preserve">
     <value>colorGroup</value>
@@ -622,7 +754,7 @@
     <value>112, 128</value>
   </data>
   <data name="backgroundTypeCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>253, 21</value>
   </data>
   <data name="backgroundTypeCombo.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -720,32 +852,104 @@
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="colorGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 240</value>
-  </data>
-  <data name="colorGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 160</value>
-  </data>
-  <data name="colorGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="colorGroup.Text" xml:space="preserve">
-    <value>Colors</value>
-  </data>
-  <data name="&gt;&gt;colorGroup.Name" xml:space="preserve">
-    <value>colorGroup</value>
-  </data>
-  <data name="&gt;&gt;colorGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colorGroup.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;colorGroup.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="alignmentGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;rotationCombo.Name" xml:space="preserve">
+    <value>rotationCombo</value>
+  </data>
+  <data name="&gt;&gt;rotationCombo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rotationCombo.Parent" xml:space="preserve">
+    <value>alignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;rotationCombo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;verticalCombo.Name" xml:space="preserve">
+    <value>verticalCombo</value>
+  </data>
+  <data name="&gt;&gt;verticalCombo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;verticalCombo.Parent" xml:space="preserve">
+    <value>alignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;verticalCombo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;horizontalCombo.Name" xml:space="preserve">
+    <value>horizontalCombo</value>
+  </data>
+  <data name="&gt;&gt;horizontalCombo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;horizontalCombo.Parent" xml:space="preserve">
+    <value>alignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;horizontalCombo.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>alignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;verticalLabel.Name" xml:space="preserve">
+    <value>verticalLabel</value>
+  </data>
+  <data name="&gt;&gt;verticalLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;verticalLabel.Parent" xml:space="preserve">
+    <value>alignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;verticalLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;horizontalLabel.Name" xml:space="preserve">
+    <value>horizontalLabel</value>
+  </data>
+  <data name="&gt;&gt;horizontalLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;horizontalLabel.Parent" xml:space="preserve">
+    <value>alignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;horizontalLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="alignmentGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 408</value>
+  </data>
+  <data name="alignmentGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>362, 112</value>
+  </data>
+  <data name="alignmentGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="alignmentGroup.Text" xml:space="preserve">
+    <value>Alignment</value>
+  </data>
+  <data name="&gt;&gt;alignmentGroup.Name" xml:space="preserve">
+    <value>alignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;alignmentGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;alignmentGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;alignmentGroup.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="rotationCombo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -754,7 +958,7 @@
     <value>112, 78</value>
   </data>
   <data name="rotationCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>253, 21</value>
   </data>
   <data name="rotationCombo.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -778,7 +982,7 @@
     <value>112, 46</value>
   </data>
   <data name="verticalCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>253, 21</value>
   </data>
   <data name="verticalCombo.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -802,7 +1006,7 @@
     <value>112, 14</value>
   </data>
   <data name="horizontalCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>253, 21</value>
   </data>
   <data name="horizontalCombo.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -900,44 +1104,8 @@
   <data name="&gt;&gt;horizontalLabel.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="alignmentGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 408</value>
-  </data>
-  <data name="alignmentGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 112</value>
-  </data>
-  <data name="alignmentGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="alignmentGroup.Text" xml:space="preserve">
-    <value>Alignment</value>
-  </data>
-  <data name="&gt;&gt;alignmentGroup.Name" xml:space="preserve">
-    <value>alignmentGroup</value>
-  </data>
-  <data name="&gt;&gt;alignmentGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;alignmentGroup.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;alignmentGroup.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="previewGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
-  </data>
-  <data name="previewPicture.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="previewPicture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 16</value>
-  </data>
-  <data name="previewPicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 24</value>
-  </data>
-  <data name="previewPicture.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;previewPicture.Name" xml:space="preserve">
     <value>previewPicture</value>
@@ -952,10 +1120,10 @@
     <value>0</value>
   </data>
   <data name="previewGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 528</value>
+    <value>0, 605</value>
   </data>
   <data name="previewGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 48</value>
+    <value>362, 48</value>
   </data>
   <data name="previewGroup.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -973,7 +1141,31 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;previewGroup.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="previewPicture.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="previewPicture.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 16</value>
+  </data>
+  <data name="previewPicture.Size" type="System.Drawing.Size, System.Drawing">
+    <value>348, 24</value>
+  </data>
+  <data name="previewPicture.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;previewPicture.Name" xml:space="preserve">
+    <value>previewPicture</value>
+  </data>
+  <data name="&gt;&gt;previewPicture.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;previewPicture.Parent" xml:space="preserve">
+    <value>previewGroup</value>
+  </data>
+  <data name="&gt;&gt;previewPicture.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="ComboBoxDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -1003,19 +1195,160 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DisplayLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grpAdvancedPlacement.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>grpAdvancedPlacement</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;numScaleLimit.Name" xml:space="preserve">
+    <value>numScaleLimit</value>
+  </data>
+  <data name="&gt;&gt;numScaleLimit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numScaleLimit.Parent" xml:space="preserve">
+    <value>grpAdvancedPlacement</value>
+  </data>
+  <data name="&gt;&gt;numScaleLimit.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chkAdvancedPlacement.Name" xml:space="preserve">
+    <value>chkAdvancedPlacement</value>
+  </data>
+  <data name="&gt;&gt;chkAdvancedPlacement.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkAdvancedPlacement.Parent" xml:space="preserve">
+    <value>grpAdvancedPlacement</value>
+  </data>
+  <data name="&gt;&gt;chkAdvancedPlacement.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grpAdvancedPlacement.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 526</value>
+  </data>
+  <data name="grpAdvancedPlacement.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 73</value>
+  </data>
+  <data name="grpAdvancedPlacement.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="grpAdvancedPlacement.Text" xml:space="preserve">
+    <value>Advanced Placement</value>
+  </data>
+  <data name="&gt;&gt;grpAdvancedPlacement.Name" xml:space="preserve">
+    <value>grpAdvancedPlacement</value>
+  </data>
+  <data name="&gt;&gt;grpAdvancedPlacement.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpAdvancedPlacement.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpAdvancedPlacement.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 44</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 13</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Scale Limit</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>grpAdvancedPlacement</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numScaleLimit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>109, 42</value>
+  </data>
+  <data name="numScaleLimit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 20</value>
+  </data>
+  <data name="numScaleLimit.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numScaleLimit.Name" xml:space="preserve">
+    <value>numScaleLimit</value>
+  </data>
+  <data name="&gt;&gt;numScaleLimit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numScaleLimit.Parent" xml:space="preserve">
+    <value>grpAdvancedPlacement</value>
+  </data>
+  <data name="&gt;&gt;numScaleLimit.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkAdvancedPlacement.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkAdvancedPlacement.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 19</value>
+  </data>
+  <data name="chkAdvancedPlacement.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 17</value>
+  </data>
+  <data name="chkAdvancedPlacement.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="chkAdvancedPlacement.Text" xml:space="preserve">
+    <value>Enable Advanced Placement</value>
+  </data>
+  <data name="&gt;&gt;chkAdvancedPlacement.Name" xml:space="preserve">
+    <value>chkAdvancedPlacement</value>
+  </data>
+  <data name="&gt;&gt;chkAdvancedPlacement.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkAdvancedPlacement.Parent" xml:space="preserve">
+    <value>grpAdvancedPlacement</value>
+  </data>
+  <data name="&gt;&gt;chkAdvancedPlacement.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>29</value>
   </metadata>
   <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="$this.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
-    <value>296, 576</value>
+    <value>362, 655</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 576</value>
+    <value>362, 655</value>
   </data>
   <data name="&gt;&gt;UnitsTable.Name" xml:space="preserve">
     <value>UnitsTable</value>
