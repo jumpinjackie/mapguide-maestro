@@ -36,6 +36,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [InlineData("1.3.0")]
         [InlineData("2.3.0")]
         [InlineData("2.4.0")]
+        [InlineData("4.0.0")]
         public void TestTextSymbolClone(string version)
         {
             var ldf = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(version));
