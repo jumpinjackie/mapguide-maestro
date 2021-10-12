@@ -51,6 +51,12 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
 
             Assert.NotNull(clonedLabel.AdvancedPlacement);
             Assert.Equal(0.7, clonedLabel.AdvancedPlacement.ScaleLimit);
+
+            clonedLabel.AdvancedPlacement.ScaleLimit = 0.8;
+            var clonedLabel2 = clonedLabel.Clone();
+
+            Assert.NotNull(clonedLabel2.AdvancedPlacement);
+            Assert.Equal(0.8, clonedLabel2.AdvancedPlacement.ScaleLimit);
         }
     }
 }

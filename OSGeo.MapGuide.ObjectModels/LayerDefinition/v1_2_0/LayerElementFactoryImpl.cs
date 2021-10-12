@@ -380,7 +380,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
 
         public IAdvancedPlacement CreateDefaultAdvancedPlacement(double scaleLimit)
         {
-            return new TextSymbolTypeAdvancedPlacement() { ScaleLimit = scaleLimit };
+            return new TextSymbolTypeAdvancedPlacement() { ScaleLimit = scaleLimit, ScaleLimitSpecified = true };
         }
 
         public ITextSymbol CreateDefaultTextSymbol()
