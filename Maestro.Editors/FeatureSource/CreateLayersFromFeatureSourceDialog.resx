@@ -154,7 +154,7 @@
     <value>114, 10</value>
   </data>
   <data name="txtFeatureSource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 20</value>
+    <value>296, 20</value>
   </data>
   <data name="txtFeatureSource.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -205,7 +205,7 @@
     <value>114, 39</value>
   </data>
   <data name="txtCreateTargetFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 20</value>
+    <value>296, 20</value>
   </data>
   <data name="txtCreateTargetFolder.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -289,7 +289,7 @@
     <value>22, 52</value>
   </data>
   <data name="lstFeatureClasses.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 173</value>
+    <value>387, 199</value>
   </data>
   <data name="lstFeatureClasses.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -337,7 +337,7 @@
     <value>16, 70</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>426, 243</value>
+    <value>428, 273</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -361,7 +361,7 @@
     <value>Top, Right</value>
   </data>
   <data name="btnFeatureSource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>414, 8</value>
+    <value>416, 8</value>
   </data>
   <data name="btnFeatureSource.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 23</value>
@@ -391,7 +391,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnCreateTarget.Location" type="System.Drawing.Point, System.Drawing">
-    <value>414, 37</value>
+    <value>416, 37</value>
   </data>
   <data name="btnCreateTarget.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 23</value>
@@ -414,8 +414,11 @@
   <data name="&gt;&gt;btnCreateTarget.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="btnCreate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
   <data name="btnCreate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>286, 328</value>
+    <value>288, 358</value>
   </data>
   <data name="btnCreate.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -438,8 +441,11 @@
   <data name="&gt;&gt;btnCreate.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>367, 328</value>
+    <value>369, 358</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -466,7 +472,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>454, 363</value>
+    <value>456, 393</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Create Layers From Feature Source</value>
