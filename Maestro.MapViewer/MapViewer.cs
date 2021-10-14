@@ -1304,6 +1304,17 @@ namespace Maestro.MapViewer
             Trace.TraceInformation("Delayed resize re-scheduled");
         }
 
+        private void ClearSelectionImage()
+        {
+            if (_selectionImage != null)
+            {
+                _selectionImage.Dispose();
+                _selectionImage = null;
+            }
+
+            this.Refresh();
+        }
+
         /// <summary>
         /// Clears the current selection
         /// </summary>
@@ -1313,15 +1324,10 @@ namespace Maestro.MapViewer
             _selection.LoadXml(string.Empty);
             _map.Save();
 
-            if (_selectionImage != null)
-            {
-                _selectionImage.Dispose();
-                _selectionImage = null;
-            }
-
             this.SelectionChanged?.Invoke(this, EventArgs.Empty);
             this.MapSelectionAttributesChanged?.Invoke(this, null);
-            this.Refresh();
+
+            this.ClearSelectionImage();
         }
 
         /// <summary>
@@ -1465,6 +1471,7 @@ namespace Maestro.MapViewer
                 }
                 else
                 {
+                    _selectionImage = null;
                     if (invalidateRegardless)
                         this.Invalidate();
                 }
@@ -2192,11 +2199,13 @@ namespace Maestro.MapViewer
                 var respXml = _map.QueryMapFeatures(wkt, maxFeatures, true, "INTERSECTS", CreateQueryOptionsForSelection(), 1 /* attributes */); //NOXLATE
                 var fi = ParseFeatureInformation(respXml);
 
+                _selection.UpdateFrom(fi.FeatureSet);
                 MapSelectionAttributesChanged?.Invoke(this, fi);
             }
             else
             {
-                _map.QueryMapFeatures(wkt, maxFeatures, true, "INTERSECTS", CreateQueryOptionsForSelection()); //NOXLATE
+                string xml = _map.QueryMapFeatures(wkt, maxFeatures, true, "INTERSECTS", CreateQueryOptionsForSelection()); //NOXLATE
+                _selection.LoadXml(xml);
             }
 #if TRACE
             sw.Stop();
