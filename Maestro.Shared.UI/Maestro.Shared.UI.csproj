@@ -13,12 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DockPanelSuite" Version="3.1.0-beta7" />
-    <PackageReference Include="DockPanelSuite.ThemeVS2003" Version="3.1.0-beta7" />
-    <PackageReference Include="DockPanelSuite.ThemeVS2005Multithreading" Version="3.1.0-beta7" />
-    <PackageReference Include="DockPanelSuite.ThemeVS2012" Version="3.1.0-beta7" />
-    <PackageReference Include="DockPanelSuite.ThemeVS2013" Version="3.1.0-beta7" />
-    <PackageReference Include="DockPanelSuite.ThemeVS2015" Version="3.1.0-beta7" />
+    <PackageReference Include="DockPanelSuite" Version="3.1.0" />
+    <PackageReference Include="DockPanelSuite.ThemeVS2003" Version="3.1.0" />
+    <PackageReference Include="DockPanelSuite.ThemeVS2005Multithreading" Version="3.1.0" />
+    <PackageReference Include="DockPanelSuite.ThemeVS2012" Version="3.1.0" />
+    <PackageReference Include="DockPanelSuite.ThemeVS2013" Version="3.1.0" />
+    <PackageReference Include="DockPanelSuite.ThemeVS2015" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
