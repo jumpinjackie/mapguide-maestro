@@ -81,6 +81,11 @@ namespace Maestro.MapPublisher.Common
         public abstract ViewerType Type { get; }
     }
 
+    public class MapGuideReactLayoutViewerOptions : ViewerOptionsBase
+    {
+        public override ViewerType Type => ViewerType.MapGuideReactLayout;
+    }
+
     public class OpenLayersViewerOptions : ViewerOptionsBase
     {
         public override ViewerType Type => ViewerType.OpenLayers;
@@ -125,7 +130,7 @@ namespace Maestro.MapPublisher.Common
 
         public IEnumerable<OverlayLayer> OverlayLayers { get; set; }
 
-        public ViewerType Viewer => ViewerOptions.Type;
+        public ViewerType? Viewer => ViewerOptions?.Type;
 
         public string ImageTileSetDefinition => ImageTileSet?.ResourceID;
 

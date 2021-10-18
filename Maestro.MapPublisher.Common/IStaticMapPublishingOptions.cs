@@ -44,7 +44,7 @@ namespace Maestro.MapPublisher.Common
 
         IEnumerable<OverlayLayer> OverlayLayers { get; }
 
-        ViewerType Viewer { get; }
+        ViewerType? Viewer { get; }
 
         TileSetRef ImageTileSet { get; }
 
@@ -72,6 +72,7 @@ namespace Maestro.MapPublisher.Common
     public enum ViewerType
     {
         OpenLayers,
-        Leaflet
+        Leaflet,
+        MapGuideReactLayout
     }
 }

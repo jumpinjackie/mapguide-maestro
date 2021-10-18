@@ -22,17 +22,50 @@
 
 using Maestro.MapPublisher.Common.Serialization;
 using Newtonsoft.Json;
+using System.ComponentModel;
 
 namespace Maestro.MapPublisher.Common
 {
     [JsonConverter(typeof(ExternalBaseLayerConverter))]
-    public abstract class ExternalBaseLayer : INamedLayer
+    public abstract class ExternalBaseLayer : INamedLayer, INotifyPropertyChanged
     {
         public abstract ExternalBaseLayerType Type { get; }
 
-        public string Name { get; set; }
+        private string _name;
 
-        public bool Visible { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (_name != value)
+                {
+                    _name = value;
+                    OnPropertyChanged(nameof(Name));
+                }
+            }
+        }
+
+        private bool _visible;
+
+        public bool Visible
+        {
+            get { return _visible; }
+            set
+            {
+                if (_visible != value)
+                {
+                    _visible = value;
+                    OnPropertyChanged(nameof(Visible));
+                }
+            }
+        }
+
+        public override string ToString() => $"{Name} ({Type})";
     }
 
     public class OSMBaseLayer : ExternalBaseLayer
@@ -51,22 +84,74 @@ namespace Maestro.MapPublisher.Common
     {
         public override ExternalBaseLayerType Type => ExternalBaseLayerType.Stamen;
 
-        public StamenLayerType LayerType { get; set; }
+        private StamenLayerType _layerType;
+
+        public StamenLayerType LayerType
+        {
+            get { return _layerType; }
+            set
+            {
+                if (_layerType != value)
+                {
+                    _layerType = value;
+                    OnPropertyChanged(nameof(LayerType));
+                }
+            }
+        }
     }
 
     public class BingMapsBaseLayer : ExternalBaseLayer
     {
         public override ExternalBaseLayerType Type => ExternalBaseLayerType.BingMaps;
 
-        public string LayerType { get; set; }
+        private string _layerType;
 
-        public string ApiKey { get; set; }
+        public string LayerType
+        {
+            get { return _layerType; }
+            set
+            {
+                if (_layerType != value)
+                {
+                    _layerType = value;
+                    OnPropertyChanged(nameof(LayerType));
+                }
+            }
+        }
+
+        private string _apiKey;
+
+        public string ApiKey
+        {
+            get { return _apiKey; }
+            set
+            {
+                if (_apiKey != value)
+                {
+                    _apiKey = value;
+                    OnPropertyChanged(nameof(ApiKey));
+                }
+            }
+        }
     }
 
     public class XYZBaseLayer : ExternalBaseLayer
     {
         public override ExternalBaseLayerType Type => ExternalBaseLayerType.XYZ;
 
-        public string UrlTemplate { get; set; }
+        private string _urlTemplate;
+
+        public string UrlTemplate
+        {
+            get { return _urlTemplate; }
+            set
+            {
+                if (_urlTemplate != value)
+                {
+                    _urlTemplate = value;
+                    OnPropertyChanged(nameof(UrlTemplate));
+                }
+            }
+        }
     }
 }

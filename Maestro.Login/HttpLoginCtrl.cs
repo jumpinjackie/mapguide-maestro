@@ -28,7 +28,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Login
 {
-    internal partial class HttpLoginCtrl : UserControl, ILoginCtrl
+    public partial class HttpLoginCtrl : UserControl, ILoginCtrl
     {
         private bool _loading = true;
 

@@ -116,6 +116,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.MapPublisher", "Mae
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.MapPublisher.Common", "Maestro.MapPublisher.Common\Maestro.MapPublisher.Common.csproj", "{0BD2F92F-278B-442B-9D3E-07077C9C362F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.MapPublisherUI", "Maestro.MapPublisherUI\Maestro.MapPublisherUI.csproj", "{DBE951DC-68FA-4723-A0F6-C4E60301BC0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -270,6 +272,10 @@ Global
 		{0BD2F92F-278B-442B-9D3E-07077C9C362F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BD2F92F-278B-442B-9D3E-07077C9C362F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BD2F92F-278B-442B-9D3E-07077C9C362F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBE951DC-68FA-4723-A0F6-C4E60301BC0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBE951DC-68FA-4723-A0F6-C4E60301BC0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBE951DC-68FA-4723-A0F6-C4E60301BC0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBE951DC-68FA-4723-A0F6-C4E60301BC0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -312,6 +318,7 @@ Global
 		{8B2EDEFA-D34C-434E-832E-3D1C5B7D9E5D} = {8AEDB361-4C62-4FD6-8D45-14FAD3A53AB7}
 		{1FF873C8-A5FA-475C-8DC9-7C3DE431A0A7} = {8B2EDEFA-D34C-434E-832E-3D1C5B7D9E5D}
 		{0BD2F92F-278B-442B-9D3E-07077C9C362F} = {8B2EDEFA-D34C-434E-832E-3D1C5B7D9E5D}
+		{DBE951DC-68FA-4723-A0F6-C4E60301BC0C} = {8B2EDEFA-D34C-434E-832E-3D1C5B7D9E5D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {07AF1A6E-A15C-4ADB-966A-9B6689E73F5F}
