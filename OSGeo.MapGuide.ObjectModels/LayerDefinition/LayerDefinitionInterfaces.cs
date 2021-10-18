@@ -557,6 +557,17 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     }
 
     /// <summary>
+    /// Based on Layer Definition schema 4.0.0
+    /// </summary>
+    public interface IVectorLayerDefinition3 : IVectorLayerDefinition2
+    {
+        /// <summary>
+        /// Controls whether bounding box data is included with selected features when selecting from this layer
+        /// </summary>
+        bool IncludeBoundsForSelectedFeatures { get; set; }
+    }
+
+    /// <summary>
     /// URL information for features
     /// </summary>
     public interface IUrlData

@@ -120,14 +120,13 @@ namespace Maestro.Base.UI
                     return new VS2013DarkTheme();
                 case VS2013Light:
                     return new VS2013LightTheme();
-                case VS2015Blue:
-                    return new VS2015BlueTheme();
                 case VS2015Dark:
                     return new VS2015DarkTheme();
                 case VS2015Light:
                     return new VS2015LightTheme();
+                case VS2015Blue:
                 default:
-                    return null;
+                    return new VS2015BlueTheme();
             }
         }
 

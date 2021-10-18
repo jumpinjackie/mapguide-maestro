@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using System.Collections.Specialized;
+using System.Linq;
 using System.Xml.Serialization;
 #pragma warning disable 1591, 0114, 0108, 0114, 0108
 namespace OSGeo.MapGuide.ObjectModels.Common
@@ -130,20 +131,31 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         /// <param name="value"></param>
         public void SetProperty(string name, string value)
         {
-            foreach (var val in this.Simple.Property)
+            if (value == null)
             {
-                if (val.Name == name)
+                var remove = this.Simple.Property.FirstOrDefault(p => p.Name == name);
+                if (remove != null)
                 {
-                    val.Value = value;
-                    return;
+                    this.Simple.Property.Remove(remove);
                 }
             }
-
-            this.Simple.Property.Add(new ResourceDocumentHeaderTypeMetadataSimpleProperty()
+            else
             {
-                Name = name,
-                Value = value
-            });
+                foreach (var val in this.Simple.Property)
+                {
+                    if (val.Name == name)
+                    {
+                        val.Value = value;
+                        return;
+                    }
+                }
+
+                this.Simple.Property.Add(new ResourceDocumentHeaderTypeMetadataSimpleProperty()
+                {
+                    Name = name,
+                    Value = value
+                });
+            }
         }
 
         /// <summary>

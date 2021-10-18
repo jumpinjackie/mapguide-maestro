@@ -160,6 +160,15 @@ namespace Maestro.AddIn.ExtendedObjectModels {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MapGuide Open Source 4.0.
+        /// </summary>
+        internal static string TPL_CATEGORY_MGOS40 {
+            get {
+                return ResourceManager.GetString("TPL_CATEGORY_MGOS40", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new Compound Symbol Definition using the v2.4.0 schema.
         /// </summary>
         internal static string TPL_CSD_240_DESC {
@@ -426,6 +435,24 @@ namespace Maestro.AddIn.ExtendedObjectModels {
         internal static string TPL_VLDF_240_NAME {
             get {
                 return ResourceManager.GetString("TPL_VLDF_240_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new Vector Layer Definition using the v4.0.0 schema.
+        /// </summary>
+        internal static string TPL_VLDF_400_DESC {
+            get {
+                return ResourceManager.GetString("TPL_VLDF_400_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vector Layer Definition (v4.0.0).
+        /// </summary>
+        internal static string TPL_VLDF_400_NAME {
+            get {
+                return ResourceManager.GetString("TPL_VLDF_400_NAME", resourceCulture);
             }
         }
         

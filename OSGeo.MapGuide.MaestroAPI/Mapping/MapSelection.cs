@@ -1,6 +1,7 @@
 ﻿using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Serialization;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.SelectionModel;
 using System;
 using System.Collections.Generic;
 using System.Xml;
@@ -134,6 +135,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
         }
 
+        public void UpdateFrom(FeatureSet featureSet)
+        {
+            _layers.Clear();
+
+            if (featureSet != null)
+            {
+                foreach (var layer in featureSet.Layer)
+                {
+                    var l = _map.Layers.GetByObjectId(layer.Id);
+                    if (l != null)
+                    {
+                        var lsel = new LayerSelection(l, layer);
+                        _layers.Add(lsel);
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Returns an xml document that represents the current map selection
         /// </summary>
@@ -181,6 +200,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             {
                 foreach (XmlNode n in ids)
                     Add(ParseIDString(n.InnerXml));
+            }
+
+            internal LayerSelection(RuntimeMapLayer layer, Layer selLayer)
+                : this(layer)
+            {
+                foreach (var id in selLayer.Class.ID)
+                    Add(ParseIDString(id));
             }
 
             /// <summary>

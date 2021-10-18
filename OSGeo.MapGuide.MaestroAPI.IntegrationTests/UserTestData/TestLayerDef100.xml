@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LayerDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1.0.0" xsi:noNamespaceSchemaLocation="LayerDefinition-1.0.0.xsd">
+    <VectorLayerDefinition>
+        <ResourceId>Library://Test/Rendering/Data/World_Countries.FeatureSource</ResourceId>
+        <FeatureName>SHP_Schema:World_Countries</FeatureName>
+        <FeatureNameType>FeatureClass</FeatureNameType>
+        <Geometry>SHPGEOM</Geometry>
+        <VectorScaleRange>
+            <AreaTypeStyle>
+                <AreaRule>
+                    <LegendLabel />
+                    <AreaSymbolization2D>
+                        <Fill>
+                            <FillPattern>Solid</FillPattern>
+                            <ForegroundColor>ffffffff</ForegroundColor>
+                            <BackgroundColor>ffffffff</BackgroundColor>
+                        </Fill>
+                        <Stroke>
+                            <LineStyle>Solid</LineStyle>
+                            <Thickness>1</Thickness>
+                            <Color>ff000000</Color>
+                            <Unit>Points</Unit>
+                        </Stroke>
+                    </AreaSymbolization2D>
+                </AreaRule>
+            </AreaTypeStyle>
+        </VectorScaleRange>
+    </VectorLayerDefinition>
+</LayerDefinition>

@@ -100,6 +100,11 @@ namespace Maestro.Editors.Preview
             }
         }
 
+        private void OnMapSelectionAttributesChanged(object sender, OSGeo.MapGuide.ObjectModels.SelectionModel.FeatureInformation model)
+        {
+            selectionPanel.SelectedFeatureAttributes = model;
+        }
+
         private void btnGetMapKml_Click(object sender, EventArgs e)
         {
             var mapagent = _conn.GetCustomProperty("BaseUrl").ToString(); //NOXLATE

@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             this.defaultToolbar = new Maestro.MapViewer.DefaultToolbar();
+            this.mapViewer = new Maestro.MapViewer.MapViewer();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.lblCoordinates = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblSelected = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblScale = new System.Windows.Forms.ToolStripStatusLabel();
             this.legend = new Maestro.MapViewer.Legend();
             this.rightPanel = new System.Windows.Forms.Panel();
-            this.mapViewer = new Maestro.MapViewer.MapViewer();
-            this.mapStatusTracker = new Maestro.MapViewer.MapStatusTracker();
             this.grpOtherTools = new System.Windows.Forms.GroupBox();
             this.btnGetMapKml = new System.Windows.Forms.Button();
             this.lnkZoomToScale = new System.Windows.Forms.LinkLabel();
@@ -53,11 +52,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtMinX = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.mapStatusTracker = new Maestro.MapViewer.MapStatusTracker();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.selectionPanel1 = new Maestro.MapViewer.SelectionPanel();
             this.statusStrip.SuspendLayout();
             this.rightPanel.SuspendLayout();
             this.grpOtherTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numZoomToScale)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // defaultToolbar
@@ -68,6 +79,27 @@
             this.defaultToolbar.TabIndex = 0;
             this.defaultToolbar.Text = "defaultToolbar1";
             this.defaultToolbar.Viewer = this.mapViewer;
+            // 
+            // mapViewer
+            // 
+            this.mapViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.mapViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapViewer.Location = new System.Drawing.Point(0, 0);
+            this.mapViewer.MaxScale = 1000000000;
+            this.mapViewer.MinScale = 10;
+            this.mapViewer.MouseWheelDelayRenderInterval = 800;
+            this.mapViewer.Name = "mapViewer";
+            this.mapViewer.PointPixelBuffer = 2;
+            this.mapViewer.SelectionColor = System.Drawing.Color.Blue;
+            this.mapViewer.Size = new System.Drawing.Size(392, 500);
+            this.mapViewer.TabIndex = 7;
+            this.mapViewer.Text = "mapViewer1";
+            this.mapViewer.TooltipDelayInterval = 1000;
+            this.mapViewer.ZoomInFactor = 0.5D;
+            this.mapViewer.ZoomOutFactor = 2D;
+            this.mapViewer.MapSelectionAttributesChanged += new Maestro.MapViewer.SelectionChangeHandler(this.mapViewer_MapSelectionAttributesChanged);
+            this.mapViewer.MapScaleChanged += new System.EventHandler(this.mapViewer_MapScaleChanged);
+            this.mapViewer.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.mapViewer_PropertyChanged);
             // 
             // statusStrip
             // 
@@ -89,7 +121,7 @@
             // lblSelected
             // 
             this.lblSelected.Name = "lblSelected";
-            this.lblSelected.Size = new System.Drawing.Size(775, 17);
+            this.lblSelected.Size = new System.Drawing.Size(806, 17);
             this.lblSelected.Spring = true;
             // 
             // lblScale
@@ -99,15 +131,15 @@
             // 
             // legend
             // 
-            this.legend.Dock = System.Windows.Forms.DockStyle.Left;
+            this.legend.Dock = System.Windows.Forms.DockStyle.Fill;
             this.legend.GroupContextMenu = null;
             this.legend.LayerContextMenu = null;
-            this.legend.Location = new System.Drawing.Point(0, 25);
+            this.legend.Location = new System.Drawing.Point(0, 0);
             this.legend.Name = "legend";
             this.legend.SelectOnRightClick = false;
             this.legend.ShowAllLayersAndGroups = false;
             this.legend.ShowTooltips = true;
-            this.legend.Size = new System.Drawing.Size(210, 500);
+            this.legend.Size = new System.Drawing.Size(197, 262);
             this.legend.TabIndex = 5;
             this.legend.ThemeCompressionLimit = 25;
             this.legend.Viewer = this.mapViewer;
@@ -121,33 +153,6 @@
             this.rightPanel.Name = "rightPanel";
             this.rightPanel.Size = new System.Drawing.Size(228, 500);
             this.rightPanel.TabIndex = 6;
-            // 
-            // mapViewer
-            // 
-            this.mapViewer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.mapViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mapViewer.Location = new System.Drawing.Point(210, 25);
-            this.mapViewer.MaxScale = 1000000000;
-            this.mapViewer.MinScale = 10;
-            this.mapViewer.MouseWheelDelayRenderInterval = 800;
-            this.mapViewer.Name = "mapViewer";
-            this.mapViewer.PointPixelBuffer = 2;
-            this.mapViewer.SelectionColor = System.Drawing.Color.Blue;
-            this.mapViewer.Size = new System.Drawing.Size(383, 500);
-            this.mapViewer.TabIndex = 7;
-            this.mapViewer.Text = "mapViewer1";
-            this.mapViewer.TooltipDelayInterval = 1000;
-            this.mapViewer.ZoomInFactor = 0.5D;
-            this.mapViewer.ZoomOutFactor = 2D;
-            this.mapViewer.MapScaleChanged += new System.EventHandler(this.mapViewer_MapScaleChanged);
-            this.mapViewer.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.mapViewer_PropertyChanged);
-            // 
-            // mapStatusTracker
-            // 
-            this.mapStatusTracker.CoordinatesLabel = this.lblCoordinates;
-            this.mapStatusTracker.ScaleLabel = this.lblScale;
-            this.mapStatusTracker.SelectedLabel = this.lblSelected;
-            this.mapStatusTracker.Viewer = this.mapViewer;
             // 
             // grpOtherTools
             // 
@@ -317,13 +322,64 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Min X";
             // 
+            // mapStatusTracker
+            // 
+            this.mapStatusTracker.CoordinatesLabel = this.lblCoordinates;
+            this.mapStatusTracker.ScaleLabel = this.lblScale;
+            this.mapStatusTracker.SelectedLabel = this.lblSelected;
+            this.mapStatusTracker.Viewer = this.mapViewer;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.mapViewer);
+            this.splitContainer1.Size = new System.Drawing.Size(593, 500);
+            this.splitContainer1.SplitterDistance = 197;
+            this.splitContainer1.TabIndex = 8;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.legend);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.selectionPanel1);
+            this.splitContainer2.Size = new System.Drawing.Size(197, 500);
+            this.splitContainer2.SplitterDistance = 262;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // selectionPanel1
+            // 
+            this.selectionPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.selectionPanel1.Location = new System.Drawing.Point(0, 0);
+            this.selectionPanel1.Name = "selectionPanel1";
+            this.selectionPanel1.SelectedFeatureAttributes = null;
+            this.selectionPanel1.Size = new System.Drawing.Size(197, 234);
+            this.selectionPanel1.TabIndex = 0;
+            // 
             // MapPreviewViewContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.mapViewer);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.rightPanel);
-            this.Controls.Add(this.legend);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.defaultToolbar);
             this.Name = "MapPreviewViewContent";
@@ -336,6 +392,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.numZoomToScale)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -368,5 +432,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMinX;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private MapViewer.SelectionPanel selectionPanel1;
     }
 }

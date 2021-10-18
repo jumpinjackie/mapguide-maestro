@@ -931,7 +931,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
 
         ITextSymbol ICloneableLayerElement<ITextSymbol>.Clone()
         {
-            return TextSymbolType.Deserialize(this.Serialize());
+            var xml = this.Serialize();
+            return TextSymbolType.Deserialize(xml);
         }
     }
 

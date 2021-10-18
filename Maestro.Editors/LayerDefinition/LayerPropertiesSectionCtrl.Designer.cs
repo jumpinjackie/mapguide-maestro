@@ -36,6 +36,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnMoveUp = new System.Windows.Forms.ToolStripButton();
             this.btnMoveDown = new System.Windows.Forms.ToolStripButton();
+            this.tsbIncludeBoundingBox = new System.Windows.Forms.ToolStripButton();
             this.grdProperties = new System.Windows.Forms.DataGridView();
             this.COL_VISIBLE = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.COL_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,7 +59,8 @@
             this.btnInvert,
             this.toolStripSeparator1,
             this.btnMoveUp,
-            this.btnMoveDown});
+            this.btnMoveDown,
+            this.tsbIncludeBoundingBox});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -103,6 +105,13 @@
             this.btnMoveDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
+            // 
+            // tsbIncludeBoundingBox
+            // 
+            this.tsbIncludeBoundingBox.Image = global::Maestro.Editors.Properties.Resources.layer_shape_polygon;
+            resources.ApplyResources(this.tsbIncludeBoundingBox, "tsbIncludeBoundingBox");
+            this.tsbIncludeBoundingBox.Name = "tsbIncludeBoundingBox";
+            this.tsbIncludeBoundingBox.Click += new System.EventHandler(this.tsbIncludeBoundingBox_Click);
             // 
             // grdProperties
             // 
@@ -162,5 +171,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn COL_VISIBLE;
         private System.Windows.Forms.DataGridViewTextBoxColumn COL_NAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn COL_DISPLAY;
+        private System.Windows.Forms.ToolStripButton tsbIncludeBoundingBox;
     }
 }

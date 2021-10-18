@@ -1312,8 +1312,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return new MgReadOnlyStream(fetch);
         }
 
-        public override string QueryMapFeatures(RuntimeMap rtMap, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
+        public override string QueryMapFeatures(RuntimeMap rtMap, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions, int? requestData)
         {
+            //TODO: Support requestData
+
             string runtimeMapName = rtMap.Name;
             MgRenderingService rs = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;

@@ -621,6 +621,152 @@ namespace MaestroAPITests
             }
         }
 
+        public virtual void TestLayerDefUpgrade()
+        {
+            var resId = "Library://UnitTests/Layers/UpgradeTest.LayerDefinition";
+            var layer = CreateLayerDef(resId);
+
+            var upgrader = new OSGeo.MapGuide.MaestroAPI.Resource.Conversion.ResourceObjectConverter();
+            var conn = _fixture.CreateTestConnection();
+            conn.ResourceService.SaveResource(layer);
+
+            if (conn.SiteVersion >= new Version(1, 1))
+            {
+                layer = upgrader.Convert(layer, new Version(1, 1, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer);
+                conn.ResourceService.SaveResource(layer);
+            }
+            if (conn.SiteVersion >= new Version(1, 2))
+            {
+                layer = upgrader.Convert(layer, new Version(1, 2, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer);
+                conn.ResourceService.SaveResource(layer);
+
+                // Test direct upgrade
+                var layer2 = CreateLayerDef("Library://UnitTests/Layers/UpgradeTest100to120.LayerDefinition");
+                conn.ResourceService.SaveResource(layer2);
+
+                layer2 = upgrader.Convert(layer2, new Version(1, 2, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer2);
+                conn.ResourceService.SaveResource(layer2);
+            }
+            if (conn.SiteVersion >= new Version(2, 0))
+            {
+                layer = upgrader.Convert(layer, new Version(1, 3, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer);
+                conn.ResourceService.SaveResource(layer);
+
+                // Test direct upgrade
+                var layer2 = CreateLayerDef("Library://UnitTests/Layers/UpgradeTest100to130.LayerDefinition");
+                conn.ResourceService.SaveResource(layer2);
+
+                layer2 = upgrader.Convert(layer2, new Version(1, 3, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer2);
+
+            }
+            if (conn.SiteVersion >= new Version(2, 3))
+            {
+                layer = upgrader.Convert(layer, new Version(2, 3, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer);
+                conn.ResourceService.SaveResource(layer);
+
+                // Test direct upgrade
+                var layer2 = CreateLayerDef("Library://UnitTests/Layers/UpgradeTest100to230.LayerDefinition");
+                conn.ResourceService.SaveResource(layer2);
+
+                layer2 = upgrader.Convert(layer2, new Version(2, 3, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer2);
+            }
+            if (conn.SiteVersion >= new Version(2, 4))
+            {
+                layer = upgrader.Convert(layer, new Version(2, 4, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer);
+                conn.ResourceService.SaveResource(layer);
+
+                // Test direct upgrade
+                var layer2 = CreateLayerDef("Library://UnitTests/Layers/UpgradeTest100to240.LayerDefinition");
+                conn.ResourceService.SaveResource(layer2);
+
+                layer2 = upgrader.Convert(layer2, new Version(2, 4, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer2);
+            }
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                layer = upgrader.Convert(layer, new Version(4, 0, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer);
+                conn.ResourceService.SaveResource(layer);
+
+                // Test direct upgrade
+                var layer2 = CreateLayerDef("Library://UnitTests/Layers/UpgradeTest100to400.LayerDefinition");
+                conn.ResourceService.SaveResource(layer2);
+
+                layer2 = upgrader.Convert(layer2, new Version(4, 0, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer2);
+            }
+
+            OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition CreateLayerDef(string rid)
+            {
+                var layer = ObjectFactory.CreateDefaultLayer(OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Vector, new Version(1, 0, 0));
+                layer.ResourceID = rid;
+
+                Assert.Equal(OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Vector, layer.SubLayer.LayerType);
+                var vl = layer.SubLayer as OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition;
+                vl.ResourceId = "Library://UnitTests/Data/Parcels.FeatureSource";
+                vl.FeatureName = "Parcels";
+                vl.Geometry = "Geometry";
+                return layer;
+            }
+        }
+
+        public virtual void TestLayerDefUpgrade2()
+        {
+            var upgrader = new OSGeo.MapGuide.MaestroAPI.Resource.Conversion.ResourceObjectConverter();
+            var resId = "Library://UnitTests/Layers/UpgradeTest2.LayerDefinition";
+            var conn = _fixture.CreateTestConnection();
+            var resSvc = conn.ResourceService;
+            resSvc.SetResourceXmlData(resId, File.OpenRead("UserTestData/TestLayerDef100.xml"));
+
+            var layer = resSvc.GetResource(resId) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+            Assert.NotNull(layer);
+
+            if (conn.SiteVersion >= new Version(4, 0))
+            {
+                layer = upgrader.Convert(layer, new Version(4, 0, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer);
+                resSvc.SaveResource(layer);
+            }
+            else if (conn.SiteVersion >= new Version(2, 4))
+            {
+                layer = upgrader.Convert(layer, new Version(2, 4, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer);
+                resSvc.SaveResource(layer);
+            }
+            else if (conn.SiteVersion >= new Version(2, 3))
+            {
+                layer = upgrader.Convert(layer, new Version(2, 3, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer);
+                resSvc.SaveResource(layer);
+            }
+            else if (conn.SiteVersion >= new Version(2, 0))
+            {
+                layer = upgrader.Convert(layer, new Version(1, 3, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer);
+                resSvc.SaveResource(layer);
+            }
+            else if (conn.SiteVersion >= new Version(1, 2))
+            {
+                layer = upgrader.Convert(layer, new Version(1, 2, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer);
+                resSvc.SaveResource(layer);
+            }
+            else if (conn.SiteVersion >= new Version(1, 1))
+            {
+                layer = upgrader.Convert(layer, new Version(1, 1, 0)) as OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition;
+                Assert.NotNull(layer);
+                resSvc.SaveResource(layer);
+            }
+        }
+
         public virtual void TestResourceExists()
         {
             Skip.If(_fixture.Skip, _fixture.SkipReason);

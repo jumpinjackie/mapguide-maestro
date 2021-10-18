@@ -34,9 +34,12 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace Maestro.MapViewer
 {
+    public delegate void SelectionChangeHandler(object sender, OSGeo.MapGuide.ObjectModels.SelectionModel.FeatureInformation model);
+
     /// <summary>
     /// An interactive map viewer control
     /// </summary>
@@ -1301,6 +1304,17 @@ namespace Maestro.MapViewer
             Trace.TraceInformation("Delayed resize re-scheduled");
         }
 
+        private void ClearSelectionImage()
+        {
+            if (_selectionImage != null)
+            {
+                _selectionImage.Dispose();
+                _selectionImage = null;
+            }
+
+            this.Refresh();
+        }
+
         /// <summary>
         /// Clears the current selection
         /// </summary>
@@ -1310,15 +1324,10 @@ namespace Maestro.MapViewer
             _selection.LoadXml(string.Empty);
             _map.Save();
 
-            if (_selectionImage != null)
-            {
-                _selectionImage.Dispose();
-                _selectionImage = null;
-            }
-
             this.SelectionChanged?.Invoke(this, EventArgs.Empty);
+            this.MapSelectionAttributesChanged?.Invoke(this, null);
 
-            this.Refresh();
+            this.ClearSelectionImage();
         }
 
         /// <summary>
@@ -1462,6 +1471,7 @@ namespace Maestro.MapViewer
                 }
                 else
                 {
+                    _selectionImage = null;
                     if (invalidateRegardless)
                         this.Invalidate();
                 }
@@ -1831,6 +1841,10 @@ namespace Maestro.MapViewer
             return index;
         }
 
+        [Category("MapGuide Viewer")]
+        [Description("Raised when the map selection attributes has changed")]
+        public event SelectionChangeHandler MapSelectionAttributesChanged;
+
         /// <summary>
         /// Raised when the scale of the current runtime map has changed
         /// </summary>
@@ -2177,8 +2191,22 @@ namespace Maestro.MapViewer
 #if TRACE
             var sw = new Stopwatch();
             sw.Start();
+
 #endif
-            _map.QueryMapFeatures(wkt, maxFeatures, true, "INTERSECTS", CreateQueryOptionsForSelection()); //NOXLATE
+
+            if (_map.CurrentConnection.SiteVersion >= new Version(2, 6))
+            {
+                var respXml = _map.QueryMapFeatures(wkt, maxFeatures, true, "INTERSECTS", CreateQueryOptionsForSelection(), 1 /* attributes */); //NOXLATE
+                var fi = ParseFeatureInformation(respXml);
+
+                _selection.UpdateFrom(fi.FeatureSet);
+                MapSelectionAttributesChanged?.Invoke(this, fi);
+            }
+            else
+            {
+                string xml = _map.QueryMapFeatures(wkt, maxFeatures, true, "INTERSECTS", CreateQueryOptionsForSelection()); //NOXLATE
+                _selection.LoadXml(xml);
+            }
 #if TRACE
             sw.Stop();
             Trace.TraceInformation($"Selection processing completed in {sw.ElapsedMilliseconds}ms"); //NOXLATE
@@ -2186,6 +2214,21 @@ namespace Maestro.MapViewer
 
             RenderSelection(true); //This is either async or queued up. Either way do this before firing off selection changed
             this.SelectionChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        static Lazy<XmlSerializer> smFeatInfoSer = new Lazy<XmlSerializer>(() => new XmlSerializer(typeof(OSGeo.MapGuide.ObjectModels.SelectionModel.FeatureInformation)));
+
+        static OSGeo.MapGuide.ObjectModels.SelectionModel.FeatureInformation ParseFeatureInformation(string xml)
+        {
+            try
+            {
+                using (var sr = new StringReader(xml))
+                    return smFeatInfoSer.Value.Deserialize(sr) as OSGeo.MapGuide.ObjectModels.SelectionModel.FeatureInformation;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private QueryMapOptions CreateQueryOptionsForSelection()

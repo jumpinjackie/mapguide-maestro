@@ -141,6 +141,17 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                         verticalCombo.Text = m_item.VerticalAlignment;
                     }
                 }
+                if (m_item.AdvancedPlacement != null)
+                {
+                    chkAdvancedPlacement.Checked = true;
+                    numScaleLimit.Enabled = true;
+                    numScaleLimit.Value = (decimal)m_item.AdvancedPlacement.ScaleLimit;
+                }
+                else
+                {
+                    chkAdvancedPlacement.Checked = false;
+                    numScaleLimit.Enabled = false;
+                }
             }
             finally
             {
@@ -333,21 +344,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             }
         }
 
-        private static double? StringToDouble(string value)
-        {
-            double d;
-            if (double.TryParse(value, out d))
-                return d;
-            return null;
-        }
-
         private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
         {
             FeaturePreviewRender.RenderPreviewFont(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), m_item);
-        }
-
-        private void fontGroup_Enter(object sender, System.EventArgs e)
-        {
         }
 
         private void propertyCombo_TextChanged(object sender, System.EventArgs e)
@@ -479,6 +478,49 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             string expr = m_editor.EditExpression(backgroundColor.ColorExpression, m_schema, m_providername, m_featureSource, ExpressionEditorMode.Expression, true);
             if (expr != null)
                 backgroundColor.ColorExpression = expr;
+        }
+
+        private void chkAdvancedPlacement_CheckedChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
+
+            if (chkAdvancedPlacement.Checked)
+            {
+                numScaleLimit.Enabled = true;
+                var advp = chkAdvancedPlacement.Tag as IAdvancedPlacement;
+                if (advp != null)
+                {
+                    this.Item.AdvancedPlacement = advp;
+                    numScaleLimit.Value = (decimal)this.Item.AdvancedPlacement.ScaleLimit;
+                }
+                if (this.Item.AdvancedPlacement == null)
+                {
+                    this.Item.AdvancedPlacement = _factory.CreateDefaultAdvancedPlacement(1.0);
+                    numScaleLimit.Value = (decimal)this.Item.AdvancedPlacement.ScaleLimit;
+                }
+            }
+            else
+            {
+                numScaleLimit.Enabled = false;
+                chkAdvancedPlacement.Tag = m_item.AdvancedPlacement;
+                this.Item.AdvancedPlacement = null;
+            }
+
+            previewPicture.Refresh();
+
+            Changed?.Invoke(this, new EventArgs());
+        }
+
+        private void numScaleLimit_ValueChanged(object sender, EventArgs e)
+        {
+            if (this.Item.AdvancedPlacement != null)
+            {
+                this.Item.AdvancedPlacement.ScaleLimit = (double)numScaleLimit.Value;
+                previewPicture.Refresh();
+
+                Changed?.Invoke(this, new EventArgs());
+            }
         }
     }
 }

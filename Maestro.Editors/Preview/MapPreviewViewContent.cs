@@ -111,5 +111,10 @@ namespace Maestro.Editors.Preview
         }
 
         public override ViewRegion DefaultRegion => ViewRegion.Document;
+
+        private void mapViewer_MapSelectionAttributesChanged(object sender, OSGeo.MapGuide.ObjectModels.SelectionModel.FeatureInformation model)
+        {
+            selectionPanel1.SelectedFeatureAttributes = model;
+        }
     }
 }

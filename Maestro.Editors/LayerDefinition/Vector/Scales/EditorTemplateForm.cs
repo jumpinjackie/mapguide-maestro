@@ -35,13 +35,26 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         public bool ManualSizeManagement { get; set; }
 
-        public void RefreshSize()
+        private bool GetItemPanelSize(out int height, out int width)
         {
+            height = -1;
+            width = -1;
+
             if (ItemPanel.Controls.Count > 0 && ItemPanel.Controls[0] as UserControl != null)
             {
-                this.Height = ButtonPanel.Height + ItemPanel.Top + (ItemPanel.Controls[0] as UserControl).AutoScrollMinSize.Height + (8 * 6);
+                height = ButtonPanel.Height + ItemPanel.Top + (ItemPanel.Controls[0] as UserControl).AutoScrollMinSize.Height + (8 * 6);
+                width = Math.Max(this.Width, (ItemPanel.Controls[0] as UserControl).AutoScrollMinSize.Width + 2 * ItemPanel.Left + (8 * 4));
+                return true;
+            }
+            return false;
+        }
 
-                this.Width = Math.Max(this.Width, (ItemPanel.Controls[0] as UserControl).AutoScrollMinSize.Width + 2 * ItemPanel.Left + (8 * 4));
+        public void RefreshSize()
+        {
+            if (this.GetItemPanelSize(out var h, out var w))
+            {
+                this.Height = h;
+                this.Width = w;
             }
         }
 

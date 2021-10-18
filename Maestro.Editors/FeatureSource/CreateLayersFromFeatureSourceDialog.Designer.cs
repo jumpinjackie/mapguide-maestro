@@ -34,14 +34,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtCreateTargetFolder = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lnkClear = new System.Windows.Forms.LinkLabel();
+            this.lnkSelectAll = new System.Windows.Forms.LinkLabel();
             this.lstFeatureClasses = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnFeatureSource = new System.Windows.Forms.Button();
             this.btnCreateTarget = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.lnkSelectAll = new System.Windows.Forms.LinkLabel();
-            this.lnkClear = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +76,20 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // lnkClear
+            // 
+            resources.ApplyResources(this.lnkClear, "lnkClear");
+            this.lnkClear.Name = "lnkClear";
+            this.lnkClear.TabStop = true;
+            this.lnkClear.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkClear_LinkClicked);
+            // 
+            // lnkSelectAll
+            // 
+            resources.ApplyResources(this.lnkSelectAll, "lnkSelectAll");
+            this.lnkSelectAll.Name = "lnkSelectAll";
+            this.lnkSelectAll.TabStop = true;
+            this.lnkSelectAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSelectAll_LinkClicked);
             // 
             // lstFeatureClasses
             // 
@@ -113,25 +127,11 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.btnCancel, "btnCancel");
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // lnkSelectAll
-            // 
-            resources.ApplyResources(this.lnkSelectAll, "lnkSelectAll");
-            this.lnkSelectAll.Name = "lnkSelectAll";
-            this.lnkSelectAll.TabStop = true;
-            this.lnkSelectAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSelectAll_LinkClicked);
-            // 
-            // lnkClear
-            // 
-            resources.ApplyResources(this.lnkClear, "lnkClear");
-            this.lnkClear.Name = "lnkClear";
-            this.lnkClear.TabStop = true;
-            this.lnkClear.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkClear_LinkClicked);
             // 
             // CreateLayersFromFeatureSourceDialog
             // 

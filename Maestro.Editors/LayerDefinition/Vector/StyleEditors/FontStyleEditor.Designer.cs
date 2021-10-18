@@ -85,6 +85,10 @@
             this.previewPicture = new System.Windows.Forms.PictureBox();
             this.ComboBoxDataSet = new System.Data.DataSet();
             this.DisplayLabel = new System.Windows.Forms.CheckBox();
+            this.grpAdvancedPlacement = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.numScaleLimit = new System.Windows.Forms.NumericUpDown();
+            this.chkAdvancedPlacement = new System.Windows.Forms.CheckBox();
             this.fontGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).BeginInit();
@@ -99,6 +103,8 @@
             this.previewGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).BeginInit();
+            this.grpAdvancedPlacement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numScaleLimit)).BeginInit();
             this.SuspendLayout();
             // 
             // fontGroup
@@ -118,13 +124,12 @@
             this.fontGroup.Controls.Add(this.panel1);
             this.fontGroup.Name = "fontGroup";
             this.fontGroup.TabStop = false;
-            this.fontGroup.Enter += new System.EventHandler(this.fontGroup_Enter);
             // 
             // sizeCombo
             // 
             resources.ApplyResources(this.sizeCombo, "sizeCombo");
             this.sizeCombo.Items.AddRange(new object[] {
-                                    resources.GetString("sizeCombo.Items")});
+            resources.GetString("sizeCombo.Items")});
             this.sizeCombo.Name = "sizeCombo";
             this.sizeCombo.SelectedIndexChanged += new System.EventHandler(this.sizeCombo_SelectedIndexChanged);
             this.sizeCombo.TextChanged += new System.EventHandler(this.sizeCombo_TextChanged);
@@ -142,8 +147,8 @@
             // UnitsTable
             // 
             this.UnitsTable.Columns.AddRange(new System.Data.DataColumn[] {
-                                    this.dataColumn5,
-                                    this.dataColumn6});
+            this.dataColumn5,
+            this.dataColumn6});
             this.UnitsTable.TableName = "Units";
             // 
             // dataColumn5
@@ -169,8 +174,8 @@
             // SizeContextTable
             // 
             this.SizeContextTable.Columns.AddRange(new System.Data.DataColumn[] {
-                                    this.dataColumn3,
-                                    this.dataColumn4});
+            this.dataColumn3,
+            this.dataColumn4});
             this.SizeContextTable.TableName = "SizeContext";
             // 
             // dataColumn3
@@ -256,8 +261,8 @@
             // FontTable
             // 
             this.FontTable.Columns.AddRange(new System.Data.DataColumn[] {
-                                    this.dataColumn1,
-                                    this.dataColumn2});
+            this.dataColumn1,
+            this.dataColumn2});
             this.FontTable.TableName = "Font";
             // 
             // dataColumn1
@@ -311,8 +316,8 @@
             // BackgroundTypeTable
             // 
             this.BackgroundTypeTable.Columns.AddRange(new System.Data.DataColumn[] {
-                                    this.dataColumn9,
-                                    this.dataColumn10});
+            this.dataColumn9,
+            this.dataColumn10});
             this.BackgroundTypeTable.TableName = "BackgroundType";
             // 
             // dataColumn9
@@ -363,8 +368,8 @@
             // RotationTable
             // 
             this.RotationTable.Columns.AddRange(new System.Data.DataColumn[] {
-                                    this.dataColumn7,
-                                    this.dataColumn8});
+            this.dataColumn7,
+            this.dataColumn8});
             this.RotationTable.TableName = "Rotation";
             // 
             // dataColumn7
@@ -390,8 +395,8 @@
             // VerticalTable
             // 
             this.VerticalTable.Columns.AddRange(new System.Data.DataColumn[] {
-                                    this.dataColumn13,
-                                    this.dataColumn14});
+            this.dataColumn13,
+            this.dataColumn14});
             this.VerticalTable.TableName = "Vertical";
             // 
             // dataColumn13
@@ -415,8 +420,8 @@
             // HorizontalTable
             // 
             this.HorizontalTable.Columns.AddRange(new System.Data.DataColumn[] {
-                                    this.dataColumn11,
-                                    this.dataColumn12});
+            this.dataColumn11,
+            this.dataColumn12});
             this.HorizontalTable.TableName = "Horizontal";
             // 
             // dataColumn11
@@ -463,13 +468,13 @@
             this.ComboBoxDataSet.DataSetName = "ComboBoxDataSet";
             this.ComboBoxDataSet.Locale = new System.Globalization.CultureInfo("da-DK");
             this.ComboBoxDataSet.Tables.AddRange(new System.Data.DataTable[] {
-                                    this.FontTable,
-                                    this.SizeContextTable,
-                                    this.UnitsTable,
-                                    this.RotationTable,
-                                    this.BackgroundTypeTable,
-                                    this.HorizontalTable,
-                                    this.VerticalTable});
+            this.FontTable,
+            this.SizeContextTable,
+            this.UnitsTable,
+            this.RotationTable,
+            this.BackgroundTypeTable,
+            this.HorizontalTable,
+            this.VerticalTable});
             // 
             // DisplayLabel
             // 
@@ -480,9 +485,43 @@
             this.DisplayLabel.UseVisualStyleBackColor = true;
             this.DisplayLabel.CheckedChanged += new System.EventHandler(this.DisplayLabel_CheckedChanged);
             // 
+            // grpAdvancedPlacement
+            // 
+            resources.ApplyResources(this.grpAdvancedPlacement, "grpAdvancedPlacement");
+            this.grpAdvancedPlacement.Controls.Add(this.label11);
+            this.grpAdvancedPlacement.Controls.Add(this.numScaleLimit);
+            this.grpAdvancedPlacement.Controls.Add(this.chkAdvancedPlacement);
+            this.grpAdvancedPlacement.Name = "grpAdvancedPlacement";
+            this.grpAdvancedPlacement.TabStop = false;
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // numScaleLimit
+            // 
+            this.numScaleLimit.DecimalPlaces = 2;
+            resources.ApplyResources(this.numScaleLimit, "numScaleLimit");
+            this.numScaleLimit.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            this.numScaleLimit.Name = "numScaleLimit";
+            this.numScaleLimit.ValueChanged += new System.EventHandler(this.numScaleLimit_ValueChanged);
+            // 
+            // chkAdvancedPlacement
+            // 
+            resources.ApplyResources(this.chkAdvancedPlacement, "chkAdvancedPlacement");
+            this.chkAdvancedPlacement.Name = "chkAdvancedPlacement";
+            this.chkAdvancedPlacement.UseVisualStyleBackColor = true;
+            this.chkAdvancedPlacement.CheckedChanged += new System.EventHandler(this.chkAdvancedPlacement_CheckedChanged);
+            // 
             // FontStyleEditor
             // 
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.grpAdvancedPlacement);
             this.Controls.Add(this.DisplayLabel);
             this.Controls.Add(this.previewGroup);
             this.Controls.Add(this.colorGroup);
@@ -506,8 +545,12 @@
             this.previewGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).EndInit();
+            this.grpAdvancedPlacement.ResumeLayout(false);
+            this.grpAdvancedPlacement.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numScaleLimit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
         #endregion
 
@@ -567,6 +610,9 @@
         private System.Windows.Forms.CheckBox DisplayLabel;
         private ColorExpressionField textColor;
         private ColorExpressionField backgroundColor;
-        
+        private System.Windows.Forms.GroupBox grpAdvancedPlacement;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown numScaleLimit;
+        private System.Windows.Forms.CheckBox chkAdvancedPlacement;
     }
 }

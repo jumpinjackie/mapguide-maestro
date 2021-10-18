@@ -210,6 +210,9 @@
     <None Update="UserTestData\TestDuplicateLayerIds.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="UserTestData\TestLayerDef100.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="UserTestData\TestMapWithInvalidLayers.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

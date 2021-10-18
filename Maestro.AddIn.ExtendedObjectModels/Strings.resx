@@ -282,4 +282,13 @@
   <data name="TPL_RLDF_240_NAME" xml:space="preserve">
     <value>Raster Layer Definition (v2.4.0)</value>
   </data>
+  <data name="TPL_CATEGORY_MGOS40" xml:space="preserve">
+    <value>MapGuide Open Source 4.0</value>
+  </data>
+  <data name="TPL_VLDF_400_DESC" xml:space="preserve">
+    <value>Create a new Vector Layer Definition using the v4.0.0 schema</value>
+  </data>
+  <data name="TPL_VLDF_400_NAME" xml:space="preserve">
+    <value>Vector Layer Definition (v4.0.0)</value>
+  </data>
 </root>

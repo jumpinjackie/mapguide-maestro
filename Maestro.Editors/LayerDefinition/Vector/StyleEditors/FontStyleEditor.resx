@@ -132,7 +132,7 @@
     <value>112, 144</value>
   </data>
   <data name="sizeCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>244, 21</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="sizeCombo.TabIndex" type="System.Int32, mscorlib">
@@ -157,7 +157,7 @@
     <value>112, 112</value>
   </data>
   <data name="unitsCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>244, 21</value>
   </data>
   <data name="unitsCombo.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -181,7 +181,7 @@
     <value>112, 80</value>
   </data>
   <data name="sizeContextCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>244, 21</value>
   </data>
   <data name="sizeContextCombo.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -205,7 +205,7 @@
     <value>112, 48</value>
   </data>
   <data name="fontCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>244, 21</value>
   </data>
   <data name="fontCombo.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -229,7 +229,7 @@
     <value>112, 16</value>
   </data>
   <data name="propertyCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>244, 21</value>
   </data>
   <data name="propertyCombo.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -523,7 +523,7 @@
     <value>112, 176</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 24</value>
+    <value>244, 24</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -544,7 +544,7 @@
     <value>0, 24</value>
   </data>
   <data name="fontGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 208</value>
+    <value>362, 208</value>
   </data>
   <data name="fontGroup.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -562,7 +562,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;fontGroup.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="colorGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -574,7 +574,7 @@
     <value>112, 72</value>
   </data>
   <data name="backgroundColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 49</value>
+    <value>253, 49</value>
   </data>
   <data name="backgroundColor.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -583,7 +583,7 @@
     <value>backgroundColor</value>
   </data>
   <data name="&gt;&gt;backgroundColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField, Maestro.Editors, Version=5.0.0.6640, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;backgroundColor.Parent" xml:space="preserve">
     <value>colorGroup</value>
@@ -598,7 +598,7 @@
     <value>112, 16</value>
   </data>
   <data name="textColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 49</value>
+    <value>253, 49</value>
   </data>
   <data name="textColor.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -607,7 +607,7 @@
     <value>textColor</value>
   </data>
   <data name="&gt;&gt;textColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField, Maestro.Editors, Version=5.0.0.6640, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.StyleEditors.ColorExpressionField, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;textColor.Parent" xml:space="preserve">
     <value>colorGroup</value>
@@ -622,7 +622,7 @@
     <value>112, 128</value>
   </data>
   <data name="backgroundTypeCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>244, 21</value>
   </data>
   <data name="backgroundTypeCombo.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -724,7 +724,7 @@
     <value>0, 240</value>
   </data>
   <data name="colorGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 160</value>
+    <value>362, 160</value>
   </data>
   <data name="colorGroup.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -742,7 +742,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorGroup.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="alignmentGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -754,7 +754,7 @@
     <value>112, 78</value>
   </data>
   <data name="rotationCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>244, 21</value>
   </data>
   <data name="rotationCombo.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -778,7 +778,7 @@
     <value>112, 46</value>
   </data>
   <data name="verticalCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>244, 21</value>
   </data>
   <data name="verticalCombo.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -802,7 +802,7 @@
     <value>112, 14</value>
   </data>
   <data name="horizontalCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 21</value>
+    <value>244, 21</value>
   </data>
   <data name="horizontalCombo.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -904,7 +904,7 @@
     <value>0, 408</value>
   </data>
   <data name="alignmentGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 112</value>
+    <value>362, 112</value>
   </data>
   <data name="alignmentGroup.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -922,7 +922,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;alignmentGroup.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="previewGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -934,7 +934,7 @@
     <value>8, 16</value>
   </data>
   <data name="previewPicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 24</value>
+    <value>348, 24</value>
   </data>
   <data name="previewPicture.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -952,10 +952,10 @@
     <value>0</value>
   </data>
   <data name="previewGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 528</value>
+    <value>0, 605</value>
   </data>
   <data name="previewGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 48</value>
+    <value>362, 48</value>
   </data>
   <data name="previewGroup.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -973,7 +973,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;previewGroup.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="ComboBoxDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -1003,19 +1003,124 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DisplayLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grpAdvancedPlacement.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 44</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 13</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Scale Limit</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>grpAdvancedPlacement</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numScaleLimit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>109, 42</value>
+  </data>
+  <data name="numScaleLimit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 20</value>
+  </data>
+  <data name="numScaleLimit.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numScaleLimit.Name" xml:space="preserve">
+    <value>numScaleLimit</value>
+  </data>
+  <data name="&gt;&gt;numScaleLimit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numScaleLimit.Parent" xml:space="preserve">
+    <value>grpAdvancedPlacement</value>
+  </data>
+  <data name="&gt;&gt;numScaleLimit.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkAdvancedPlacement.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkAdvancedPlacement.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 19</value>
+  </data>
+  <data name="chkAdvancedPlacement.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 17</value>
+  </data>
+  <data name="chkAdvancedPlacement.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="chkAdvancedPlacement.Text" xml:space="preserve">
+    <value>Enable Advanced Placement</value>
+  </data>
+  <data name="&gt;&gt;chkAdvancedPlacement.Name" xml:space="preserve">
+    <value>chkAdvancedPlacement</value>
+  </data>
+  <data name="&gt;&gt;chkAdvancedPlacement.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkAdvancedPlacement.Parent" xml:space="preserve">
+    <value>grpAdvancedPlacement</value>
+  </data>
+  <data name="&gt;&gt;chkAdvancedPlacement.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grpAdvancedPlacement.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 526</value>
+  </data>
+  <data name="grpAdvancedPlacement.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 73</value>
+  </data>
+  <data name="grpAdvancedPlacement.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="grpAdvancedPlacement.Text" xml:space="preserve">
+    <value>Advanced Placement</value>
+  </data>
+  <data name="&gt;&gt;grpAdvancedPlacement.Name" xml:space="preserve">
+    <value>grpAdvancedPlacement</value>
+  </data>
+  <data name="&gt;&gt;grpAdvancedPlacement.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpAdvancedPlacement.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpAdvancedPlacement.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>29</value>
+  </metadata>
   <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="$this.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
-    <value>296, 576</value>
+    <value>362, 655</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 576</value>
+    <value>362, 655</value>
   </data>
   <data name="&gt;&gt;UnitsTable.Name" xml:space="preserve">
     <value>UnitsTable</value>
