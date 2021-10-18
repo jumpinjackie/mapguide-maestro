@@ -42,7 +42,6 @@ namespace Maestro.MapPublisherUI
             this.label1 = new System.Windows.Forms.Label();
             this.wizardPage3 = new AeroWizard.WizardPage();
             this.externalBaseLayerSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.lstExternalLayers = new System.Windows.Forms.ListBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAddExternalBaseLayer = new System.Windows.Forms.ToolStripDropDownButton();
             this.openStreetMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +54,7 @@ namespace Maestro.MapPublisherUI
             this.wizardPage5 = new AeroWizard.WizardPage();
             this.wizardPage6 = new AeroWizard.WizardPage();
             this.wizardPage7 = new AeroWizard.WizardPage();
+            this.lstExternalLayers = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.wizardControl)).BeginInit();
             this.wizardPage1.SuspendLayout();
             this.wizardPage2.SuspendLayout();
@@ -212,18 +212,6 @@ namespace Maestro.MapPublisherUI
             this.externalBaseLayerSplitContainer.SplitterDistance = 158;
             this.externalBaseLayerSplitContainer.TabIndex = 1;
             // 
-            // lstExternalLayers
-            // 
-            this.lstExternalLayers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstExternalLayers.FormattingEnabled = true;
-            this.lstExternalLayers.ItemHeight = 15;
-            this.lstExternalLayers.Location = new System.Drawing.Point(0, 25);
-            this.lstExternalLayers.Name = "lstExternalLayers";
-            this.lstExternalLayers.Size = new System.Drawing.Size(158, 160);
-            this.lstExternalLayers.TabIndex = 1;
-            this.lstExternalLayers.SelectedIndexChanged += new System.EventHandler(this.lstExternalLayers_SelectedIndexChanged);
-            this.lstExternalLayers.SelectedValueChanged += new System.EventHandler(this.lstExternalLayers_SelectedIndexChanged);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -328,6 +316,17 @@ namespace Maestro.MapPublisherUI
             this.wizardPage7.TabIndex = 6;
             this.wizardPage7.Text = "Review and Publish";
             // 
+            // lstExternalLayers
+            // 
+            this.lstExternalLayers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstExternalLayers.FormattingEnabled = true;
+            this.lstExternalLayers.ItemHeight = 15;
+            this.lstExternalLayers.Location = new System.Drawing.Point(0, 25);
+            this.lstExternalLayers.Name = "lstExternalLayers";
+            this.lstExternalLayers.Size = new System.Drawing.Size(158, 160);
+            this.lstExternalLayers.TabIndex = 1;
+            this.lstExternalLayers.SelectedIndexChanged += new System.EventHandler(this.lstExternalLayers_SelectedIndexChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,7 +371,6 @@ namespace Maestro.MapPublisherUI
         private AeroWizard.WizardPage wizardPage7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.SplitContainer externalBaseLayerSplitContainer;
-        private System.Windows.Forms.ListBox lstExternalLayers;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton btnAddExternalBaseLayer;
         private System.Windows.Forms.ToolStripMenuItem openStreetMapToolStripMenuItem;
@@ -380,5 +378,6 @@ namespace Maestro.MapPublisherUI
         private System.Windows.Forms.ToolStripMenuItem bingMapsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customXYZTileSetToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btnDeleteExternalBaseLayer;
+        private System.Windows.Forms.ListBox lstExternalLayers;
     }
 }

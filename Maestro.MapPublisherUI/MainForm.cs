@@ -55,10 +55,24 @@ namespace Maestro.MapPublisherUI
             CheckWizard2NextStatus();
         }
 
+        private void HACKUpdateExternalLayersList()
+        {
+            // HACK: Why are we not using a data-bound BindingList<T>? Because of this:
+            // https://stackoverflow.com/questions/41450370/why-does-the-selectedindexchanged-event-fire-in-a-listbox-when-the-selected-item
+            // Completely wrecks our contextual UI that depends on BindingList<T> item changes *not* triggering
+            // a SelectedIndexChanged event on the ListBox!!!
+            lstExternalLayers.Items.Clear();
+            foreach (var item in _externalBaseLayers)
+            {
+                lstExternalLayers.Items.Add(item);
+            }
+        }
+
         private void wizardPage3_Initialize(object sender, AeroWizard.WizardPageInitEventArgs e)
         {
-            lstExternalLayers.DataSource = _externalBaseLayers;
-            btnDeleteExternalBaseLayer.Enabled = lstExternalLayers.SelectedItem != null;
+            HACKUpdateExternalLayersList();
+            btnDeleteExternalBaseLayer.Enabled = false;
+            externalBaseLayerSplitContainer.Panel2.Controls.Clear();
         }
 
         private void wizardPage4_Initialize(object sender, AeroWizard.WizardPageInitEventArgs e)
@@ -116,24 +130,46 @@ namespace Maestro.MapPublisherUI
 
         private object _lastSelectedExternalLayer;
 
+        private bool _updatingLstExternalLayers = false;
+
         private void lstExternalLayers_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_updatingLstExternalLayers)
+                return;
+
             btnDeleteExternalBaseLayer.Enabled = lstExternalLayers.SelectedItem != null;
             if (_lastSelectedExternalLayer != lstExternalLayers.SelectedItem)
             {
                 externalBaseLayerSplitContainer.Panel2.Controls.Clear();
-                var ctrl = new ExternalBaseLayerEditorCtrl();
-                ctrl.Layer = (ExternalBaseLayer)lstExternalLayers.SelectedItem;
-                ctrl.Dock = DockStyle.Fill;
-                externalBaseLayerSplitContainer.Panel2.Controls.Add(ctrl);
+                if (lstExternalLayers.SelectedItem != null)
+                {
+                    var ctrl = new ExternalBaseLayerEditorCtrl();
+                    ctrl.Layer = (ExternalBaseLayer)lstExternalLayers.SelectedItem;
+                    ctrl.Dock = DockStyle.Fill;
+                    externalBaseLayerSplitContainer.Panel2.Controls.Add(ctrl);
+                }
             }
             _lastSelectedExternalLayer = lstExternalLayers.SelectedItem;
+
+            HACKUpdateExternalLayersList();
+            try
+            {
+                _updatingLstExternalLayers = true;
+                lstExternalLayers.SelectedItem = _lastSelectedExternalLayer;
+            }
+            finally
+            {
+                _updatingLstExternalLayers = false;
+            }
         }
 
         private void AddItem(ExternalBaseLayer item)
         {
             _externalBaseLayers.Add(item);
-            lstExternalLayers.DataSource = _externalBaseLayers;
+
+            HACKUpdateExternalLayersList();
+
+            lstExternalLayers.SelectedItem = item;
         }
 
         private void openStreetMapToolStripMenuItem_Click(object sender, EventArgs e) => AddItem(new OSMBaseLayer { Name = $"ExternalBaseLayer{_baseLayerCounter++}" });
@@ -149,6 +185,7 @@ namespace Maestro.MapPublisherUI
             if (lstExternalLayers.SelectedItem != null)
             {
                 _externalBaseLayers.Remove((ExternalBaseLayer)lstExternalLayers.SelectedItem);
+                lstExternalLayers.Items.Remove(lstExternalLayers.SelectedItem);
                 if (_externalBaseLayers.Count == 0)
                     externalBaseLayerSplitContainer.Panel2.Controls.Clear();
             }
