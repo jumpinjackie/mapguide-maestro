@@ -33,6 +33,9 @@ using System.Linq;
 
 namespace Maestro.MapPublisher.Common
 {
+    /// <summary>
+    /// Defines a bounding box
+    /// </summary>
     public class BoundingBox
     {
         public double MinX { get; set; }
@@ -44,6 +47,9 @@ namespace Maestro.MapPublisher.Common
         public double MaxY { get; set; }
     }
 
+    /// <summary>
+    /// Defines how a tileset is referenced
+    /// </summary>
     public enum TileSetRefMode
     {
         /// <summary>
@@ -60,12 +66,24 @@ namespace Maestro.MapPublisher.Common
         Local
     }
 
+    /// <summary>
+    /// A tileset reference
+    /// </summary>
     public class TileSetRef
     {
+        /// <summary>
+        /// The MapGuide Resource Identifier
+        /// </summary>
         public string ResourceID { get; set; }
 
+        /// <summary>
+        /// The base layer group name
+        /// </summary>
         public string GroupName { get; set; }
 
+        /// <summary>
+        /// The mode by which this tileset should be reference
+        /// </summary>
         public TileSetRefMode Mode { get; set; }
 
         /// <summary>
@@ -81,16 +99,25 @@ namespace Maestro.MapPublisher.Common
         public abstract ViewerType Type { get; }
     }
 
+    /// <summary>
+    /// Viewer options specific to vanilla OpenLayers
+    /// </summary>
     public class OpenLayersViewerOptions : ViewerOptionsBase
     {
         public override ViewerType Type => ViewerType.OpenLayers;
     }
 
+    /// <summary>
+    /// Viewer options specific to Leaflet
+    /// </summary>
     public class LeafletViewerOptions : ViewerOptionsBase
     {
         public override ViewerType Type => ViewerType.Leaflet;
     }
 
+    /// <summary>
+    /// Viewer options specific to mapguide-react-layout
+    /// </summary>
     public class MapGuideReactLayoutViewerOptions : ViewerOptionsBase
     {
         public override ViewerType Type => ViewerType.MapGuideReactLayout;
@@ -98,19 +125,51 @@ namespace Maestro.MapPublisher.Common
         public string TemplateName { get; set; }
     }
 
-    public class PublishProfile : IStaticMapPublishingOptions
+    /// <summary>
+    /// Mapagent endpoint settings
+    /// </summary>
+    public class MapAgentSettings
     {
-        public string Title { get; set; }
+        /// <summary>
+        /// The mapagent endpoint
+        /// </summary>
+        public string Endpoint { get; set; }
 
-        public int? MaxDegreeOfParallelism { get; set; }
-
-        public string MapAgent { get; set; }
-
-        public string OutputDirectory { get; set; }
-
+        /// <summary>
+        /// The username for the mapagent
+        /// </summary>
         public string Username { get; set; }
 
+        /// <summary>
+        /// The password for the mapagent
+        /// </summary>
         public string Password { get; set; }
+    }
+
+    /// <summary>
+    /// A map publishing profile
+    /// </summary>
+    public class PublishProfile : IStaticMapPublishingOptions
+    {
+        /// <summary>
+        /// The title of the map
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
+        /// Max degree of parallelism when/if generating tiles
+        /// </summary>
+        public int? MaxDegreeOfParallelism { get; set; }
+
+        /// <summary>
+        /// Mapagent settings
+        /// </summary>
+        public MapAgentSettings MapAgent { get; set; }
+
+        /// <summary>
+        /// The output directory where published map files are output to
+        /// </summary>
+        public string OutputDirectory { get; set; }
 
         /// <summary>
         /// The name of the web page to generate. If not specified, it will be
@@ -118,34 +177,63 @@ namespace Maestro.MapPublisher.Common
         /// </summary>
         public string OutputPageFileName { get; set; }
 
+        /// <summary>
+        /// Randomize requests when/if generating tiles
+        /// </summary>
         public bool RandomizeRequests { get; set; }
 
+        /// <summary>
+        /// Viewer-library specific options
+        /// </summary>
         public ViewerOptionsBase ViewerOptions { get; set; }
 
+        /// <summary>
+        /// The WGS84 bounds of this map
+        /// </summary>
         public BoundingBox Bounds { get; set; }
 
+        /// <summary>
+        /// The image tile set definition
+        /// </summary>
         public TileSetRef ImageTileSet { get; set; }
 
+        /// <summary>
+        /// The UTFGrid tile set definition
+        /// </summary>
         public TileSetRef UTFGridTileSet { get; set; }
 
+        /// <summary>
+        /// The external base layers to include into the map
+        /// </summary>
         public IEnumerable<ExternalBaseLayer> ExternalBaseLayers { get; set; }
 
+        /// <summary>
+        /// The overlay layers to include into the map
+        /// </summary>
         public IEnumerable<OverlayLayer> OverlayLayers { get; set; }
 
-        public ViewerType Viewer => ViewerOptions.Type;
-
+        [JsonIgnore]
         public string ImageTileSetDefinition => ImageTileSet?.ResourceID;
 
+        [JsonIgnore]
         public string ImageTileSetGroup => ImageTileSet?.GroupName;
 
+        [JsonIgnore]
         public string UTFGridTileSetDefinition => UTFGridTileSet?.ResourceID;
 
+        [JsonIgnore]
         public string UTFGridTileSetGroup => UTFGridTileSet?.GroupName;
 
+        [JsonIgnore]
         IEnvelope IStaticMapPublishingOptions.Bounds => ObjectFactory.CreateEnvelope(this.Bounds.MinX, this.Bounds.MinY, this.Bounds.MaxX, this.Bounds.MaxY);
 
+        [JsonIgnore]
         public IServerConnection Connection { get; private set; }
 
+        /// <summary>
+        /// Validates this publishing profile
+        /// </summary>
+        /// <param name="stdout"></param>
         public void Validate(TextWriter stdout)
         {
             var bounds = this.Bounds;
@@ -164,9 +252,9 @@ namespace Maestro.MapPublisher.Common
                 throw new Exception("Invalid BBOX: miny > maxy");
 
             var builder = new System.Data.Common.DbConnectionStringBuilder();
-            builder["Url"] = this.MapAgent; //NOXLATE
-            builder["Username"] = this.Username; //NOXLATE
-            builder["Password"] = this.Password; //NOXLATE
+            builder["Url"] = this.MapAgent.Endpoint; //NOXLATE
+            builder["Username"] = this.MapAgent.Username; //NOXLATE
+            builder["Password"] = this.MapAgent.Password; //NOXLATE
             builder["Locale"] = "en"; //NOXLATE
             builder["AllowUntestedVersion"] = true; //NOXLATE
 
@@ -237,10 +325,7 @@ namespace Maestro.MapPublisher.Common
                         throw new Exception($"The specified group ({this.UTFGridTileSetGroup}) does not exist in the specified utfgrid tile set definition");
                 }
             }
-
             Connection = conn;
         }
     }
-
-
 }

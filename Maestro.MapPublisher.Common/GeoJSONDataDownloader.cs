@@ -294,15 +294,15 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
 
         private string BuildSelectFeaturesUrl(string featureSource, string className, int? precision = null, string filter = null)
         {
-            var reqUrl = $"{_options.MapAgent}?OPERATION=SELECTFEATURES&VERSION=4.0.0&FORMAT=application/json&CLEAN=1";
+            var reqUrl = $"{_options.MapAgent.Endpoint}?OPERATION=SELECTFEATURES&VERSION=4.0.0&FORMAT=application/json&CLEAN=1";
             reqUrl += "&CLIENTAGENT=Maestro.MapPublisher";
             reqUrl += $"&RESOURCEID={featureSource}&CLASSNAME={className}";
             reqUrl += $"&TRANSFORMTO={_outputCsCode}";
-            reqUrl += $"&USERNAME={_options.Username ?? "Anonymous"}";
+            reqUrl += $"&USERNAME={_options.MapAgent.Username ?? "Anonymous"}";
             if (precision.HasValue)
                 reqUrl += $"&PRECISION={precision.Value}";
-            if (!string.IsNullOrEmpty(_options.Password))
-                reqUrl += $"&PASSWORD={_options.Password}";
+            if (!string.IsNullOrEmpty(_options.MapAgent.Password))
+                reqUrl += $"&PASSWORD={_options.MapAgent.Password}";
             if (!string.IsNullOrEmpty(filter))
                 reqUrl += $"&FILTER={filter}";
 
@@ -311,12 +311,12 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
 
         private string GetResourceContentUrl(string resourceId)
         {
-            var reqUrl = $"{_options.MapAgent}?OPERATION=GETRESOURCECONTENT&VERSION=1.0.0&FORMAT=text/xml";
+            var reqUrl = $"{_options.MapAgent.Endpoint}?OPERATION=GETRESOURCECONTENT&VERSION=1.0.0&FORMAT=text/xml";
             reqUrl += "&CLIENTAGENT=Maestro.MapPublisher";
             reqUrl += $"&RESOURCEID={resourceId}";
-            reqUrl += $"&USERNAME={_options.Username ?? "Anonymous"}";
-            if (!string.IsNullOrEmpty(_options.Password))
-                reqUrl += $"&PASSWORD={_options.Password}";
+            reqUrl += $"&USERNAME={_options.MapAgent.Username ?? "Anonymous"}";
+            if (!string.IsNullOrEmpty(_options.MapAgent.Password))
+                reqUrl += $"&PASSWORD={_options.MapAgent.Password}";
 
             return reqUrl;
         }

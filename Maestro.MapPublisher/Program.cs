@@ -23,6 +23,7 @@
 using CommandLine;
 using Maestro.MapPublisher.Common;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Schema.Generation;
 using RazorEngine;
 using RazorEngine.Templating;
 using System;
@@ -31,6 +32,13 @@ using System.Threading.Tasks;
 
 namespace Maestro.MapPublisher
 {
+    [Verb("generate-schema")]
+    public class GenerateSchemaOptions
+    {
+        [Option("output-dir")]
+        public string OutputDir { get; set; }
+    }
+
     [Verb("publish")]
     public class PublishOptions
     {
@@ -64,7 +72,7 @@ namespace Maestro.MapPublisher
         {
             var result = Parser
                 .Default
-                .ParseArguments<PublishOptions>(args)
+                .ParseArguments<PublishOptions, GenerateSchemaOptions>(args)
                 .MapResult(opts => Run(opts), _ => Task.FromResult(1));
             var retCode = await result;
             return retCode;
@@ -77,6 +85,13 @@ namespace Maestro.MapPublisher
             {
                 switch (arg)
                 {
+                    case GenerateSchemaOptions go:
+                        {
+                            var schemaGen = new JSchemaGenerator();
+                            var schema = schemaGen.Generate(typeof(PublishProfile));
+                            await File.WriteAllTextAsync(Path.Combine(go.OutputDir, "PublishProfile.schema.json"), schema.ToString());
+                            return 0;
+                        }
                     case PublishOptions po:
                         {
                             po.Validate(stdout);
@@ -105,6 +120,7 @@ namespace Maestro.MapPublisher
                             var vm = new MapViewerModel
                             {
                                 Title = pubOpts.Title,
+                                ViewerOptions = pubOpts.ViewerOptions,
                                 LatLngBounds = new [] { bounds.MinX, bounds.MinY, bounds.MaxX, bounds.MaxY },
                                 ExternalBaseLayers = pubOpts.ExternalBaseLayers,
                                 OverlayLayers = pubOpts.OverlayLayers
@@ -116,19 +132,19 @@ namespace Maestro.MapPublisher
                                 if (pubOpts.UTFGridTileSet.Mode == TileSetRefMode.Local)
                                     vm.UTFGridUrl = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.UTFGridTileSet?.ResourceID) + "/{z}/{x}/{y}.json";
                                 else if (pubOpts.UTFGridTileSet.Mode == TileSetRefMode.Remote)
-                                    vm.UTFGridUrl = $"{pubOpts.MapAgent}?OPERATION=GETTILEIMAGE&VERSION=1.2.0&USERNAME=Anonymous&CLIENTAGENT={agent}&MAPDEFINITION={pubOpts.UTFGridTileSet.ResourceID}&BASEMAPLAYERGROUPNAME={pubOpts.UTFGridTileSet.GroupName}&TILECOL={{y}}&TILEROW={{x}}&SCALEINDEX={{z}}";
+                                    vm.UTFGridUrl = $"{pubOpts.MapAgent.Endpoint}?OPERATION=GETTILEIMAGE&VERSION=1.2.0&USERNAME=Anonymous&CLIENTAGENT={agent}&MAPDEFINITION={pubOpts.UTFGridTileSet.ResourceID}&BASEMAPLAYERGROUPNAME={pubOpts.UTFGridTileSet.GroupName}&TILECOL={{y}}&TILEROW={{x}}&SCALEINDEX={{z}}";
                             }
                             if (pubOpts.ImageTileSet != null && !string.IsNullOrEmpty(pubOpts.ImageTileSet.ResourceID))
                             {
                                 if (pubOpts.ImageTileSet.Mode == TileSetRefMode.Local)
                                     vm.XYZImageUrl = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.ImageTileSet?.ResourceID) + "/{z}/{x}/{y}.png";
                                 else if (pubOpts.ImageTileSet.Mode == TileSetRefMode.Remote)
-                                    vm.XYZImageUrl = $"{pubOpts.MapAgent}?OPERATION=GETTILEIMAGE&VERSION=1.2.0&USERNAME=Anonymous&CLIENTAGENT={agent}&MAPDEFINITION={pubOpts.ImageTileSet.ResourceID}&BASEMAPLAYERGROUPNAME={pubOpts.ImageTileSet.GroupName}&TILECOL={{y}}&TILEROW={{x}}&SCALEINDEX={{z}}";
+                                    vm.XYZImageUrl = $"{pubOpts.MapAgent.Endpoint}?OPERATION=GETTILEIMAGE&VERSION=1.2.0&USERNAME=Anonymous&CLIENTAGENT={agent}&MAPDEFINITION={pubOpts.ImageTileSet.ResourceID}&BASEMAPLAYERGROUPNAME={pubOpts.ImageTileSet.GroupName}&TILECOL={{y}}&TILEROW={{x}}&SCALEINDEX={{z}}";
                             }
                             
 
                             string result;
-                            switch (pubOpts.Viewer)
+                            switch (pubOpts.ViewerOptions.Type)
                             {
                                 case ViewerType.OpenLayers:
                                     {
@@ -142,6 +158,12 @@ namespace Maestro.MapPublisher
                                         result = Engine.Razor.RunCompile(template, "templateKey", null, vm);
                                     }
                                     break;
+                                case ViewerType.MapGuideReactLayout:
+                                    {
+                                        string template = File.ReadAllText("viewer_content/viewer_mrl.cshtml");
+                                        result = Engine.Razor.RunCompile(template, "templateKey", null, vm);
+                                    }
+                                    break;
                                 default:
                                     throw new ArgumentOutOfRangeException("Unknown or unsupported viewer type");
                             }
@@ -151,21 +173,43 @@ namespace Maestro.MapPublisher
                             await stdout.WriteLineAsync($"Written: {outputHtmlPath}");
 
                             // Copy assets
-                            var assetsDir = Path.Combine(pubOpts.OutputDirectory, "assets");
-                            if (!Directory.Exists(assetsDir))
+                            if (pubOpts.ViewerOptions.Type == ViewerType.MapGuideReactLayout)
                             {
-                                Directory.CreateDirectory(assetsDir);
+                                var assetsDir = Path.Combine(pubOpts.OutputDirectory, "mrl_assets");
+                                if (!Directory.Exists(assetsDir))
+                                {
+                                    Directory.CreateDirectory(assetsDir);
+                                }
+                                var files = Directory.GetFiles("viewer_content/mrl_assets", "*", SearchOption.AllDirectories);
+                                foreach (var f in files)
+                                {
+                                    var fileName = f.Substring("viewer_content/mrl_assets".Length).Trim('\\', '/'); //Path.GetFileName(f);
+                                    var targetFileName = Path.GetFullPath(Path.Combine(assetsDir, fileName));
+                                    var targetParentDir = Path.GetDirectoryName(targetFileName);
+                                    if (!Directory.Exists(targetParentDir))
+                                        Directory.CreateDirectory(targetParentDir);
+                                    File.Copy(f, targetFileName, true);
+                                    await stdout.WriteLineAsync($"Copied to assets: {targetFileName}");
+                                }
                             }
-                            var files = Directory.GetFiles("viewer_content/assets", "*", SearchOption.AllDirectories);
-                            foreach (var f in files)
+                            else
                             {
-                                var fileName = f.Substring("viewer_content/assets".Length).Trim('\\', '/'); //Path.GetFileName(f);
-                                var targetFileName = Path.GetFullPath(Path.Combine(assetsDir, fileName));
-                                var targetParentDir = Path.GetDirectoryName(targetFileName);
-                                if (!Directory.Exists(targetParentDir))
-                                    Directory.CreateDirectory(targetParentDir);
-                                File.Copy(f, targetFileName, true);
-                                await stdout.WriteLineAsync($"Copied to assets: {targetFileName}");
+                                var assetsDir = Path.Combine(pubOpts.OutputDirectory, "assets");
+                                if (!Directory.Exists(assetsDir))
+                                {
+                                    Directory.CreateDirectory(assetsDir);
+                                }
+                                var files = Directory.GetFiles("viewer_content/assets", "*", SearchOption.AllDirectories);
+                                foreach (var f in files)
+                                {
+                                    var fileName = f.Substring("viewer_content/assets".Length).Trim('\\', '/'); //Path.GetFileName(f);
+                                    var targetFileName = Path.GetFullPath(Path.Combine(assetsDir, fileName));
+                                    var targetParentDir = Path.GetDirectoryName(targetFileName);
+                                    if (!Directory.Exists(targetParentDir))
+                                        Directory.CreateDirectory(targetParentDir);
+                                    File.Copy(f, targetFileName, true);
+                                    await stdout.WriteLineAsync($"Copied to assets: {targetFileName}");
+                                }
                             }
 
                             if (po.Wait)

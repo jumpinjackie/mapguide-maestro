@@ -22,9 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.Common;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Maestro.MapPublisher.Common
 {
@@ -34,7 +32,7 @@ namespace Maestro.MapPublisher.Common
 
         int? MaxDegreeOfParallelism { get; }
 
-        string MapAgent { get; }
+        MapAgentSettings MapAgent { get; }
 
         string OutputDirectory { get; }
 
@@ -51,10 +49,6 @@ namespace Maestro.MapPublisher.Common
         TileSetRef UTFGridTileSet { get; }
 
         IEnvelope Bounds { get; }
-
-        string Username { get; }
-
-        string Password { get; }
 
         IServerConnection Connection { get; }
 

@@ -60,7 +60,7 @@
 
     @if (Model.HasExternalBaseLayer(ExternalBaseLayerType.BingMaps))
     {
-    <script type="text/javascript" src="assets/leaflet-bing-layer.js" charset="utf-8"></script>
+        <script type="text/javascript" src="assets/leaflet-bing-layer.js" charset="utf-8"></script>
     }
 
     @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
@@ -76,7 +76,8 @@
         {
             if (extLayer.Type == OverlayLayerType.GeoJSON_FromMapGuide)
             {
-                <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
+                <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.DataScriptRelPath)" charset="utf-8"></script>
+                <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ConfigScriptRelPath)" charset="utf-8"></script>
             }
         }
     }
