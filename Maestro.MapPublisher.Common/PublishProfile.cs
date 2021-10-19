@@ -123,6 +123,8 @@ namespace Maestro.MapPublisher.Common
         public override ViewerType Type => ViewerType.MapGuideReactLayout;
 
         public string TemplateName { get; set; }
+
+        public bool AddPolyfills { get; set; }
     }
 
     /// <summary>

@@ -794,6 +794,18 @@ namespace OSGeo.MapGuide.ObjectModels
                 return (IApplicationDefinition)ResourceTypeRegistry.Deserialize(Strings.BaseTemplate_ApplicationDefinition);
         }
 
+        private static readonly string[] statefulWidgets =
+        {
+            KnownWidgetNames.Buffer,
+            KnownWidgetNames.BufferPanel,
+            KnownWidgetNames.QuickPlot,
+            KnownWidgetNames.Redline,
+            KnownWidgetNames.SelectPolygon,
+            KnownWidgetNames.SelectRadius,
+            KnownWidgetNames.SelectWithin,
+            KnownWidgetNames.Theme,
+        };
+
         private static readonly string[] parameterizedWidgets =
         {
             KnownWidgetNames.CTRLClick,
@@ -839,12 +851,14 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="widgets">The set of available widgets</param>
         /// <param name="containers">The set of available containers</param>
         /// <param name="templateName">The name of the template. See <see cref="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.FusionTemplateNames"/> for the common pre-defined names</param>
+        /// <param name="statelessMode">If true, the widget set will only be populated with widgets that can work without a running MapGuide Server</param>
         /// <returns></returns>
         public static IApplicationDefinition CreateFlexibleLayout(Version siteVersion,
                                                                   IApplicationDefinitionTemplateInfoSet templates,
                                                                   IApplicationDefinitionWidgetInfoSet widgets,
                                                                   IApplicationDefinitionContainerInfoSet containers,
-                                                                  string templateName)
+                                                                  string templateName,
+                                                                  bool statelessMode = false)
         {
             Check.ArgumentNotNull(templates, nameof(templates));
             Check.ArgumentNotNull(widgets, nameof(widgets));
@@ -903,10 +917,21 @@ namespace OSGeo.MapGuide.ObjectModels
                 if (Array.IndexOf(reactLayoutIncompatibleWidgets, wgt.Type) >= 0)
                     continue;
 
-                if (Array.IndexOf(parameterizedWidgets, wgt.Type) < 0)
+                if (statelessMode)
                 {
-                    var widget = appDef.CreateWidget(wgt.Type, wgt);
-                    widgetSet.AddWidget(widget);
+                    if (Array.IndexOf(statefulWidgets, wgt.Type) < 0)
+                    {
+                        var widget = appDef.CreateWidget(wgt.Type, wgt);
+                        widgetSet.AddWidget(widget);
+                    }
+                }
+                else
+                {
+                    if (Array.IndexOf(parameterizedWidgets, wgt.Type) < 0)
+                    {
+                        var widget = appDef.CreateWidget(wgt.Type, wgt);
+                        widgetSet.AddWidget(widget);
+                    }
                 }
             }
 
@@ -1007,7 +1032,8 @@ namespace OSGeo.MapGuide.ObjectModels
             widgetSet.AddWidget(zoomOut);
             widgetSet.AddWidget(prevView);
             widgetSet.AddWidget(nextView);
-            widgetSet.AddWidget(buffer);
+            if (!statelessMode)
+                widgetSet.AddWidget(buffer);
             widgetSet.AddWidget(measure);
             widgetSet.AddWidget(showOverview);
             widgetSet.AddWidget(showTaskPane);
@@ -1026,7 +1052,7 @@ namespace OSGeo.MapGuide.ObjectModels
             //So let's try for something that is somewhat consistent
 
             //2.2 specific stuff
-            if (siteVersion >= new Version(2, 2))
+            if (siteVersion >= new Version(2, 2) && !statelessMode)
             {
                 toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.QuickPlot));
             }
@@ -1034,19 +1060,23 @@ namespace OSGeo.MapGuide.ObjectModels
             toolbar.AddItem(appDef.CreateSeparator());
             toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.RefreshMap));
             //2.4 requires maptips to be a toggle widget
-            if (siteVersion >= VER_240)
+            if (siteVersion >= VER_240 && !statelessMode)
             {
                 toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Maptip));
             }
-            toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.SelectRadius));
-            toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.SelectPolygon));
+            if (!statelessMode)
+            {
+                toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.SelectRadius));
+                toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.SelectPolygon));
+            }
             toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.ClearSelection));
 
-            toolbar.AddItem(appDef.CreateWidgetReference(buffer.Name));
+            if (!statelessMode)
+                toolbar.AddItem(appDef.CreateWidgetReference(buffer.Name));
             toolbar.AddItem(appDef.CreateWidgetReference(measure.Name));
 
             //2.2 specific stuff
-            if (siteVersion >= new Version(2, 2))
+            if (siteVersion >= new Version(2, 2) && !statelessMode)
             {
                 toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.FeatureInfo));
                 toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Query));
@@ -1129,7 +1159,7 @@ namespace OSGeo.MapGuide.ObjectModels
             mapContextMenu.AddItem(appDef.CreateWidgetReference(buffer.Name));
             mapContextMenu.AddItem(appDef.CreateWidgetReference(measure.Name));
 
-            if (siteVersion >= new Version(2, 2))
+            if (siteVersion >= new Version(2, 2) && !statelessMode)
             {
                 mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.FeatureInfo));
                 mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Query));
@@ -1144,9 +1174,10 @@ namespace OSGeo.MapGuide.ObjectModels
 
             //Tasks Context Menu
             taskPaneMenu.AddItem(appDef.CreateWidgetReference(measure.Name));
-            taskPaneMenu.AddItem(appDef.CreateWidgetReference(buffer.Name));
+            if (!statelessMode)
+                taskPaneMenu.AddItem(appDef.CreateWidgetReference(buffer.Name));
 
-            if (siteVersion >= new Version(2, 2))
+            if (siteVersion >= new Version(2, 2) && !statelessMode)
             {
                 taskPaneMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.FeatureInfo));
                 taskPaneMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Query));

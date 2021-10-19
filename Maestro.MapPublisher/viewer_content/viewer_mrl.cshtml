@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="dist/vendor.css" type="text/css" />
     <link rel="stylesheet" href="dist/viewer.css" type="text/css" />
     <!-- Template specific css -->
-    <link rel="stylesheet" href="css/<?= $template ?>.css" type="text/css" />
+    <link rel="stylesheet" href="css/@(((MapGuideReactLayoutViewerOptions)Model.ViewerOptions).TemplateName).css" type="text/css" />
+    @if (((MapGuideReactLayoutViewerOptions)Model.ViewerOptions).AddPolyfills)
+    {
     <!-- NOTE: If you don't care about IE, you can remove/comment the script reference below -->
-    <script type="text/javascript" src="//polyfill.io/v3/polyfill.min.js?features=Promise%2CPromise.prototype.finally%2CArray.isArray%2CArray.prototype.find%2CArray.prototype.includes%2CObject.assign%2CMath.log2%2Cfetch%2CNumber.isFinite"></script>
+    <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CPromise.prototype.finally%2CArray.isArray%2CArray.prototype.find%2CArray.prototype.includes%2CObject.assign%2CMath.log2%2Cfetch%2CNumber.isFinite"></script>
+    }
     <script type="text/javascript" src="dist/vendor.js" charset="utf-8"></script>
     <script type="text/javascript" src="dist/viewer.js" charset="utf-8"></script>
     <style type="text/css">
@@ -35,9 +38,9 @@
         var el = document.getElementById("map");
         var viewer = new MapGuide.Application();
         viewer.mount(el, {
-            layout: "<?= $template ?>",
+            layout: "@(((MapGuideReactLayoutViewerOptions)Model.ViewerOptions).TemplateName)",
             mapguide: {
-                agentUri: "../mapagent/mapagent.fcgi"
+                agentUri: "@(Model.MapAgent)"
             }
         });
     </script>

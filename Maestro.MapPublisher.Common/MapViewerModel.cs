@@ -35,6 +35,8 @@ namespace Maestro.MapPublisher.Common
 
         public double[] LatLngBounds { get; set; }
 
+        public string MapAgent { get; set; }
+
         public ViewerOptionsBase ViewerOptions { get; set; }
 
         public bool HasExternalBaseLayer(ExternalBaseLayerType type)

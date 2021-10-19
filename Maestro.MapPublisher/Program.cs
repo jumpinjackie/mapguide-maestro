@@ -24,6 +24,7 @@ using CommandLine;
 using Maestro.MapPublisher.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Schema.Generation;
+using OSGeo.MapGuide.MaestroAPI;
 using RazorEngine;
 using RazorEngine.Templating;
 using System;
@@ -120,6 +121,7 @@ namespace Maestro.MapPublisher
                             var vm = new MapViewerModel
                             {
                                 Title = pubOpts.Title,
+                                MapAgent = pubOpts.MapAgent.Endpoint,
                                 ViewerOptions = pubOpts.ViewerOptions,
                                 LatLngBounds = new [] { bounds.MinX, bounds.MinY, bounds.MaxX, bounds.MaxY },
                                 ExternalBaseLayers = pubOpts.ExternalBaseLayers,
@@ -160,6 +162,8 @@ namespace Maestro.MapPublisher
                                     break;
                                 case ViewerType.MapGuideReactLayout:
                                     {
+                                        var appDef = Utility.CreateFlexibleLayout(pubOpts.Connection, ((MapGuideReactLayoutViewerOptions)pubOpts.ViewerOptions).TemplateName);
+                                        var json = JsonConvert.SerializeObject(appDef);
                                         string template = File.ReadAllText("viewer_content/viewer_mrl.cshtml");
                                         result = Engine.Razor.RunCompile(template, "templateKey", null, vm);
                                     }
@@ -175,7 +179,7 @@ namespace Maestro.MapPublisher
                             // Copy assets
                             if (pubOpts.ViewerOptions.Type == ViewerType.MapGuideReactLayout)
                             {
-                                var assetsDir = Path.Combine(pubOpts.OutputDirectory, "mrl_assets");
+                                var assetsDir = pubOpts.OutputDirectory; // Path.Combine(pubOpts.OutputDirectory, "mrl_assets");
                                 if (!Directory.Exists(assetsDir))
                                 {
                                     Directory.CreateDirectory(assetsDir);
