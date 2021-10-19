@@ -58,7 +58,128 @@
     <None Remove="viewer_content\assets\ol.css" />
     <None Remove="viewer_content\assets\ol.js" />
     <None Remove="viewer_content\assets\ol.js.map" />
+    <None Remove="viewer_content\mrl_assets\css\ajax-viewer.css" />
+    <None Remove="viewer_content\mrl_assets\css\aqua.css" />
+    <None Remove="viewer_content\mrl_assets\css\generic.css" />
+    <None Remove="viewer_content\mrl_assets\css\limegold.css" />
+    <None Remove="viewer_content\mrl_assets\css\maroon.css" />
+    <None Remove="viewer_content\mrl_assets\css\sidebar.css" />
+    <None Remove="viewer_content\mrl_assets\css\slate.css" />
+    <None Remove="viewer_content\mrl_assets\css\turquoise-yellow.css" />
+    <None Remove="viewer_content\mrl_assets\dist\1bda79aa7813b7083202.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\cursors\digitizeCircle.cur" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\cursors\digitizeLine.cur" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\cursors\digitizeLineString.cur" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\cursors\digitizePoint.cur" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\cursors\digitizePolygon.cur" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\cursors\digitizeRectangle.cur" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\cursors\grab.cur" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\cursors\grabbing.cur" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\cursors\zoomin.cur" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\about.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\application-browser.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\back.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\buffer.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\control-180.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\control-stop-180.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\control-stop.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\control.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\coordinate-tracker.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\edit-copy.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\edit-cut.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\edit-duplicate.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\edit-paste.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\edit-xml.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\feature-info.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\file-print.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\file-save.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\folder-horizontal-open.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\folder-horizontal.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\forward.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\geolocation.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\globe-share.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\globe_add.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\help.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\iconNavigator.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_home.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_menuarrow.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_menuarrowup.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_menuarrowup_disabled.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_menuarrow_disabled.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_refreshmap.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_warning.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_zoomselect.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\info.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\initial-center.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\invoke-script.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\invoke-url.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\layer_add.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\lc_unselect.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\legend-DWF.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\legend-layer.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\legend-map.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\legend-raster.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\legend-theme.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\maptip.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\measure.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\options.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\out-of-range.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\overview-map.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\pan-east.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\pan-north.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\pan-south.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\pan-west.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\pan.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\PoweredBy_en.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\preview.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\print.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\property.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\query.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\redline.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\search.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\select-centre.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\select-clear.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\select-features.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\select-polygon.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\select-radius.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\select-zoom.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\select.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\theme.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\toggle-expand.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\toggle.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\ui-menu.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\view-back.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\view-forward.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\view-refresh.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\zoom-dynamic.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\zoom-full.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\zoom-in-fixed.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\zoom-in.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\icons\zoom-out-fixed.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\res\slider.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\res\sliderscale.png" />
+    <None Remove="viewer_content\mrl_assets\dist\stdassets\images\res\spinner.gif" />
+    <None Remove="viewer_content\mrl_assets\dist\vendor-debug.css" />
+    <None Remove="viewer_content\mrl_assets\dist\vendor-debug.css.map" />
+    <None Remove="viewer_content\mrl_assets\dist\vendor-debug.js" />
+    <None Remove="viewer_content\mrl_assets\dist\vendor-debug.js.map" />
+    <None Remove="viewer_content\mrl_assets\dist\vendor.css" />
+    <None Remove="viewer_content\mrl_assets\dist\vendor.css.map" />
+    <None Remove="viewer_content\mrl_assets\dist\vendor.js" />
+    <None Remove="viewer_content\mrl_assets\dist\vendor.js.LICENSE.txt" />
+    <None Remove="viewer_content\mrl_assets\dist\vendor.js.map" />
+    <None Remove="viewer_content\mrl_assets\dist\viewer-debug.css" />
+    <None Remove="viewer_content\mrl_assets\dist\viewer-debug.css.map" />
+    <None Remove="viewer_content\mrl_assets\dist\viewer-debug.js" />
+    <None Remove="viewer_content\mrl_assets\dist\viewer-debug.js.map" />
+    <None Remove="viewer_content\mrl_assets\dist\viewer.css" />
+    <None Remove="viewer_content\mrl_assets\dist\viewer.css.map" />
+    <None Remove="viewer_content\mrl_assets\dist\viewer.js" />
+    <None Remove="viewer_content\mrl_assets\dist\viewer.js.map" />
+    <None Remove="viewer_content\mrl_assets\help\index.html" />
+    <None Remove="viewer_content\mrl_assets\server\TaskPane.html" />
     <None Remove="viewer_content\viewer_leaflet.cshtml" />
+    <None Remove="viewer_content\viewer_mrl.cshtml" />
     <None Remove="viewer_content\viewer_ol.cshtml" />
   </ItemGroup>
 
@@ -204,7 +325,370 @@
     <Content Include="viewer_content\assets\ol.js.map">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="viewer_content\mrl_assets\css\ajax-viewer.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\css\aqua.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\css\generic.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\css\limegold.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\css\maroon.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\css\sidebar.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\css\slate.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\css\turquoise-yellow.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\1bda79aa7813b7083202.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\cursors\digitizeCircle.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\cursors\digitizeLine.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\cursors\digitizeLineString.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\cursors\digitizePoint.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\cursors\digitizePolygon.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\cursors\digitizeRectangle.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\cursors\grab.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\cursors\grabbing.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\cursors\zoomin.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\about.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\application-browser.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\buffer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\control-180.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\control-stop-180.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\control-stop.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\control.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\coordinate-tracker.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\edit-copy.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\edit-cut.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\edit-duplicate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\edit-paste.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\edit-xml.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\feature-info.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\file-print.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\file-save.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\folder-horizontal-open.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\folder-horizontal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\forward.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\geolocation.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\globe-share.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\globe_add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\help.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\iconNavigator.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_home.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_menuarrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_menuarrowup.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_menuarrowup_disabled.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_menuarrow_disabled.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_refreshmap.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_warning.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\icon_zoomselect.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\info.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\initial-center.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\invoke-script.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\invoke-url.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\layer_add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\lc_unselect.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\legend-DWF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\legend-layer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\legend-map.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\legend-raster.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\legend-theme.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\maptip.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\measure.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\options.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\out-of-range.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\overview-map.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\pan-east.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\pan-north.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\pan-south.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\pan-west.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\pan.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\PoweredBy_en.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\preview.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\print.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\property.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\query.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\redline.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\search.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\select-centre.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\select-clear.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\select-features.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\select-polygon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\select-radius.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\select-zoom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\select.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\theme.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\toggle-expand.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\toggle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\ui-menu.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\view-back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\view-forward.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\view-refresh.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\zoom-dynamic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\zoom-full.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\zoom-in-fixed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\zoom-in.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\icons\zoom-out-fixed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\res\slider.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\res\sliderscale.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\stdassets\images\res\spinner.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\vendor-debug.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\vendor-debug.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\vendor-debug.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\vendor-debug.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\vendor.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\vendor.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\vendor.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\vendor.js.LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\vendor.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\viewer-debug.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\viewer-debug.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\viewer-debug.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\viewer-debug.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\viewer.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\viewer.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\viewer.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\dist\viewer.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\help\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\mrl_assets\server\TaskPane.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="viewer_content\viewer_leaflet.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viewer_content\viewer_mrl.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="viewer_content\viewer_ol.cshtml">
