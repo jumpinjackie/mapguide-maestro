@@ -135,10 +135,10 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
 
         private async Task WritePopupConfigurationAsync(IVectorLayerDefinition vl, int layerNumber, string name, StreamWriter sw)
         {
-            await sw.WriteLineAsync($"//{_options.Viewer} popup template configuration for: {name}");
+            await sw.WriteLineAsync($"//{_options.ViewerOptions.Type} popup template configuration for: {name}");
             if (vl.PropertyMapping.Any())
             {
-                switch (_options.Viewer)
+                switch (_options.ViewerOptions.Type)
                 {
                     case ViewerType.Leaflet:
                         {
@@ -218,7 +218,7 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
             }
             else
             {
-                switch (_options.Viewer)
+                switch (_options.ViewerOptions.Type)
                 {
                     case ViewerType.Leaflet:
                         {
@@ -253,7 +253,7 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
                 return;
             }
 
-            if (_options.Viewer == ViewerType.OpenLayers)
+            if (_options.ViewerOptions.Type == ViewerType.OpenLayers)
             {
                 var olx = new OLStyleTranslator("feature");
                 await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_style = function ({olx.FeatureVariableName}, resolution) {{");
@@ -271,7 +271,7 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
                 }
                 await sw.WriteLineAsync("}");
             }  
-            else if (_options.Viewer == ViewerType.Leaflet)
+            else if (_options.ViewerOptions.Type == ViewerType.Leaflet)
             {
                 var lst = new LeafletStyleTranslator("feature");
                 await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_style = function ({lst.FeatureVariableName}) {{");

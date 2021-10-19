@@ -91,6 +91,13 @@ namespace Maestro.MapPublisher.Common
         public override ViewerType Type => ViewerType.Leaflet;
     }
 
+    public class MapGuideReactLayoutViewerOptions : ViewerOptionsBase
+    {
+        public override ViewerType Type => ViewerType.MapGuideReactLayout;
+
+        public string TemplateName { get; set; }
+    }
+
     public class PublishProfile : IStaticMapPublishingOptions
     {
         public string Title { get; set; }

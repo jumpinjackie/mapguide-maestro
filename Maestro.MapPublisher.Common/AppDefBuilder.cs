@@ -1,6 +1,6 @@
 ﻿#region Disclaimer / License
 
-// Copyright (C) 2019, Jackie Ng
+// Copyright (C) 2021, Jackie Ng
 // https://github.com/jumpinjackie/mapguide-maestro
 //
 // This library is free software; you can redistribute it and/or
@@ -20,31 +20,13 @@
 
 #endregion Disclaimer / License
 
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Maestro.MapPublisher.Common
 {
-    public class MapViewerModel
+    public static class AppDefBuilder
     {
-        public string Title { get; set; }
-
-        public string XYZImageUrl { get; set; }
-
-        public string UTFGridUrl { get; set; }
-
-        public double[] LatLngBounds { get; set; }
-
-        public ViewerOptionsBase ViewerOptions { get; set; }
-
-        public bool HasExternalBaseLayer(ExternalBaseLayerType type)
-            => ExternalBaseLayers.Any(ebl => ebl.Type == type);
-
-        public IEnumerable<ExternalBaseLayer> ExternalBaseLayers { get; set; }
-
-        public bool HasOverlayLayer(OverlayLayerType type)
-            => OverlayLayers.Any(ovl => ovl.Type == type);
-
-        public IEnumerable<OverlayLayer> OverlayLayers { get; set; }
+        public static string BuildAppDef(MapViewerModel model)
+        {
+            return "{}";
+        }
     }
 }
