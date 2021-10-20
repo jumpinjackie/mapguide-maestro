@@ -23,6 +23,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using System.Xml;
 
 namespace OSGeo.MapGuide.ObjectModels.Json
 {
@@ -34,8 +35,38 @@ namespace OSGeo.MapGuide.ObjectModels.Json
             var doc = new System.Xml.XmlDocument();
             doc.LoadXml(xml);
 
-            var el = doc.GetElementsByTagName("ApplicationDefinition");
-            var json = JsonConvert.SerializeXmlNode(el[0], Newtonsoft.Json.Formatting.Indented);
+            const string JSON_NS = "http://james.newtonking.com/projects/json";
+            doc.DocumentElement.SetAttribute("xmlns:json", JSON_NS);
+
+            //Force arrays on key elements
+            var widgetSetEls = doc.GetElementsByTagName("WidgetSet");
+            foreach (XmlElement el in widgetSetEls)
+            {
+                el.SetAttribute("Array", JSON_NS, "true");
+            }
+            var mapGroupEls = doc.GetElementsByTagName("MapGroup");
+            foreach (XmlElement el in mapGroupEls)
+            {
+                el.SetAttribute("Array", JSON_NS, "true");
+                el["Map"].SetAttribute("Array", JSON_NS, "true");
+            }
+            var containerEls = doc.GetElementsByTagName("Container");
+            foreach (XmlElement el in containerEls)
+            {
+                el.SetAttribute("Array", JSON_NS, "true");
+                foreach (XmlElement cel in el.ChildNodes)
+                {
+                    if (cel.Name == "Item")
+                    {
+                        cel.SetAttribute("Array", JSON_NS, "true");
+                    }
+                }
+            }
+
+            var debugXml = doc.OuterXml;
+
+            var rootEl = doc.GetElementsByTagName("ApplicationDefinition");
+            var json = JsonConvert.SerializeXmlNode(rootEl[0], Newtonsoft.Json.Formatting.Indented);
             var o = JObject.Parse(json);
             return o["ApplicationDefinition"].ToString();
         }
