@@ -20,8 +20,10 @@
 
 #endregion Disclaimer / License
 
+using Newtonsoft.Json.Linq;
 using OSGeo.MapGuide.MaestroAPI.Tests;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using OSGeo.MapGuide.ObjectModels.Json;
 using System;
 using Xunit;
 
@@ -38,6 +40,16 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Equal(res.ResourceVersion, new Version(1, 0, 0));
             IApplicationDefinition appDef = res as IApplicationDefinition;
             Assert.NotNull(appDef);
+        }
+
+        [Fact]
+        public void ApplicationDefinition_JsonConversion()
+        {
+            var res = ObjectFactory.DeserializeEmbeddedFlexLayout(new Version(2, 4, 0));
+
+            Assert.NotNull(res);
+            string json = AppDefJsonSerializer.Serialize(res);
+            dynamic appDef = JObject.Parse(json);
         }
     }
 }

@@ -22,6 +22,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Maestro.MapPublisher.Common\Maestro.MapPublisher.Common.csproj" />
     <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj" />
   </ItemGroup>
   <ItemGroup>

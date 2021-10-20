@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using Newtonsoft.Json;
 using System;
 
 namespace OSGeo.MapGuide.ObjectModels
@@ -33,6 +34,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Gets the resource version.
         /// </summary>
         /// <value>The resource version.</value>
+        [JsonIgnore]
         Version ResourceVersion { get; }
     }
 }
