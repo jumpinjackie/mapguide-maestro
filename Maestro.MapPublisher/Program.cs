@@ -25,10 +25,13 @@ using Maestro.MapPublisher.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Schema.Generation;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using OSGeo.MapGuide.ObjectModels.Json;
 using RazorEngine;
 using RazorEngine.Templating;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Maestro.MapPublisher
@@ -163,7 +166,8 @@ namespace Maestro.MapPublisher
                                 case ViewerType.MapGuideReactLayout:
                                     {
                                         var appDef = Utility.CreateFlexibleLayout(pubOpts.Connection, ((MapGuideReactLayoutViewerOptions)pubOpts.ViewerOptions).TemplateName);
-                                        var json = JsonConvert.SerializeObject(appDef);
+                                        InitAppDef(appDef, pubOpts);
+                                        var json = AppDefJsonSerializer.Serialize(appDef);
                                         string template = File.ReadAllText("viewer_content/viewer_mrl.cshtml");
                                         result = Engine.Razor.RunCompile(template, "templateKey", null, vm);
                                     }
@@ -232,6 +236,45 @@ namespace Maestro.MapPublisher
             {
                 await stdout.WriteLineAsync($"ERROR: {ex}");
                 return 1;
+            }
+        }
+
+        static void InitAppDef(IApplicationDefinition appDef, IStaticMapPublishingOptions pubOpts)
+        {
+            appDef.Title = pubOpts.Title;
+            //Clear groups
+            var toRemove = appDef.MapSet.MapGroups.ToList();
+            foreach (var rem in toRemove)
+            {
+                appDef.MapSet.RemoveGroup(rem);
+            }
+            //Make our MapGroup
+            var mg = appDef.AddMapGroup("MainMap");
+
+            //Add base layers
+            foreach (var bl in pubOpts.ExternalBaseLayers)
+            {
+                var ble = mg.CreateCmsMapEntry(bl.Type.ToString(), false, bl.Name, bl.Type.ToString());
+                if (bl.Type == ExternalBaseLayerType.XYZ)
+                {
+                    ble.SetValue("Foo", "Bar");
+                }
+                else if (bl.Type == ExternalBaseLayerType.BingMaps)
+                {
+
+                }
+            }
+
+            //Add UTFGrid layer (if set)
+            if (pubOpts.UTFGridTileSet != null)
+            {
+                
+            }
+
+            //Add XYZ layer (if set)
+            if (pubOpts.ImageTileSet != null)
+            {
+
             }
         }
     }

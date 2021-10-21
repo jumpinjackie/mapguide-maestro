@@ -20,10 +20,12 @@
 
 #endregion Disclaimer / License
 
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Xml;
 
 namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
@@ -643,6 +645,13 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         IFlyoutItem CreateFlyout(string label);
 
         /// <summary>
+        /// Adds the new map group to the current map set 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        IMapGroup AddMapGroup(string id);
+
+        /// <summary>
         /// Adds the new map group to the current map set with a default MapGuide child map
         /// </summary>
         /// <param name="id"></param>
@@ -985,6 +994,49 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
                 elements.Add(rid);
             }
             ext.Extension.Content = elements.ToArray();
+        }
+
+        public static IEnumerable<string> GetXYZUrls(this IMap map)
+        {
+            Check.ArgumentNotNull(map, nameof(map));
+            var optEl = map.Extension.Content.FirstOrDefault(el => el.Name == "Options");
+            if (optEl != null)
+            {
+                var urls = optEl.ChildNodes.Cast<XmlNode>().Where(n => n.Name == "urls").Select(n => n.InnerText);
+                foreach (var url in urls)
+                {
+                    yield return url;
+                }
+            }
+        }
+
+        public static void SetXYZUrls(this IMap map, params string [] urls)
+        {
+            Check.ArgumentNotNull(map, nameof(map));
+            var optEl = map.Extension.Content.FirstOrDefault(el => el.Name == "Options");
+            if (optEl == null)
+            {
+                optEl = AppDefDocument.Instance.CreateElement("Options");
+                map.Extension.Content = map.Extension.Content.Concat(new[] { optEl }).ToArray();
+            }
+
+            // Remove old entries
+            var urlNodes = optEl.ChildNodes.Cast<XmlNode>().Where(n => n.Name == "urls").ToList();
+            foreach (var remove in urlNodes)
+            {
+                optEl.RemoveChild(remove);
+            }
+
+            // Add new entries
+            if (urls?.Length > 0)
+            {
+                foreach (var url in urls)
+                {
+                    var urlNode = AppDefDocument.Instance.CreateElement("urls");
+                    urlNode.InnerText = url;
+                    optEl.AppendChild(urlNode);
+                }
+            }
         }
 
         /// <summary>

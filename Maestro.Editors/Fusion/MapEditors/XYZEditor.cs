@@ -61,14 +61,9 @@ namespace Maestro.Editors.Fusion.MapEditors
             try
             {
                 _init = true;
-                var optEl = _map.Extension.Content.FirstOrDefault(el => el.Name == "Options");
-                if (optEl != null)
+                foreach (var url in _map.GetXYZUrls())
                 {
-                    var urls = optEl.ChildNodes.Cast<XmlNode>().Where(n => n.Name == "urls").Select(n => n.InnerText);
-                    foreach (var url in urls)
-                    {
-                        _urls.Add(new ExternalUrl { URL = url });
-                    }
+                    _urls.Add(new ExternalUrl { URL = url });
                 }
                 grdUrls.DataSource = _urls;
                 txtName.Text = GetName();
@@ -117,24 +112,7 @@ namespace Maestro.Editors.Fusion.MapEditors
 
         private void SyncCurrentUrls()
         {
-            var optEl = _map.Extension.Content.FirstOrDefault(el => el.Name == "Options") as XmlNode;
-            if (optEl != null)
-            {
-                //Replace all <urls> with current binding list
-                var list = new List<XmlNode>(optEl.ChildNodes.Cast<XmlNode>().Where(n => n.Name != "urls"));
-                list.AddRange(_urls.Select(u =>
-                {
-                    var el = _map.CreateExtensionElement("urls");
-                    el.InnerText = u.URL;
-                    return el;
-                }));
-
-                optEl.RemoveAll();
-                foreach (var el in list)
-                {
-                    optEl.AppendChild(el);
-                }
-            }
+            _map.SetXYZUrls(_urls.Select(u => u.URL).ToArray());
         }
 
         private void btnAddTileSet_Click(object sender, EventArgs e)

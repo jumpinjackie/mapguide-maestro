@@ -87,6 +87,19 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             };
         }
 
+        public IMapGroup AddMapGroup(string id)
+        {
+            var map = new MapGroupType()
+            {
+                id = id,
+                Map = new System.ComponentModel.BindingList<MapType>()
+            };
+
+            this.MapSet.Add(map);
+
+            return map;
+        }
+
         public IMapGroup AddMapGroup(string id, bool singleTile, string mapDefinitionId)
         {
             var map = new MapGroupType()
