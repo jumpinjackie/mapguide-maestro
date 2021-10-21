@@ -1413,6 +1413,13 @@ public class ArbitraryWidgetValue : WidgetValue
         IMap CreateCmsMapEntry(string type, bool singleTile, string name, string olType);
 
         /// <summary>
+        /// Creates a UTFGrid tileset entry
+        /// </summary>
+        /// <param name="tileSet"></param>
+        /// <returns></returns>
+        IMap CreateUTFGridEntry(string tileSet);
+
+        /// <summary>
         /// Creates a generic map entry
         /// </summary>
         /// <returns></returns>

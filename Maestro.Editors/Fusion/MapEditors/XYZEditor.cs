@@ -20,19 +20,14 @@
 
 #endregion Disclaimer / License
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
+using System;
+using System.ComponentModel;
+using System.Linq;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace Maestro.Editors.Fusion.MapEditors

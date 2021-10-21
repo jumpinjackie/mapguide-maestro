@@ -28,8 +28,11 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using OSGeo.MapGuide.ObjectModels.Json;
 using RazorEngine;
+using RazorEngine.Configuration;
 using RazorEngine.Templating;
+using RazorEngine.Text;
 using System;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -128,7 +131,8 @@ namespace Maestro.MapPublisher
                                 ViewerOptions = pubOpts.ViewerOptions,
                                 LatLngBounds = new [] { bounds.MinX, bounds.MinY, bounds.MaxX, bounds.MaxY },
                                 ExternalBaseLayers = pubOpts.ExternalBaseLayers,
-                                OverlayLayers = pubOpts.OverlayLayers
+                                OverlayLayers = pubOpts.OverlayLayers,
+                                Meta = new ExpandoObject()
                             };
 
                             var agent = pubOpts.Title;
@@ -166,10 +170,13 @@ namespace Maestro.MapPublisher
                                 case ViewerType.MapGuideReactLayout:
                                     {
                                         var appDef = Utility.CreateFlexibleLayout(pubOpts.Connection, ((MapGuideReactLayoutViewerOptions)pubOpts.ViewerOptions).TemplateName);
-                                        InitAppDef(appDef, pubOpts);
-                                        var json = AppDefJsonSerializer.Serialize(appDef);
+                                        InitAppDef(appDef, pubOpts, vm);
+                                        vm.Meta.AppDefJson = AppDefJsonSerializer.Serialize(appDef);
                                         string template = File.ReadAllText("viewer_content/viewer_mrl.cshtml");
-                                        result = Engine.Razor.RunCompile(template, "templateKey", null, vm);
+                                        var config = new TemplateServiceConfiguration();
+                                        config.EncodedStringFactory = new RawStringFactory();
+                                        var service = RazorEngineService.Create(config);
+                                        result = service.RunCompile(template, "templateKey", null, vm);
                                     }
                                     break;
                                 default:
@@ -239,7 +246,7 @@ namespace Maestro.MapPublisher
             }
         }
 
-        static void InitAppDef(IApplicationDefinition appDef, IStaticMapPublishingOptions pubOpts)
+        static void InitAppDef(IApplicationDefinition appDef, IStaticMapPublishingOptions pubOpts, MapViewerModel vm)
         {
             appDef.Title = pubOpts.Title;
             //Clear groups
@@ -257,24 +264,28 @@ namespace Maestro.MapPublisher
                 var ble = mg.CreateCmsMapEntry(bl.Type.ToString(), false, bl.Name, bl.Type.ToString());
                 if (bl.Type == ExternalBaseLayerType.XYZ)
                 {
-                    ble.SetValue("Foo", "Bar");
+                    ble.SetXYZUrls(((XYZBaseLayer)bl).UrlTemplate);
                 }
                 else if (bl.Type == ExternalBaseLayerType.BingMaps)
                 {
-
+                    var bs = (BingMapsBaseLayer)bl;
+                    appDef.SetValue("BingMapsKey", bs.ApiKey);
                 }
+                mg.AddMap(ble);
             }
 
             //Add UTFGrid layer (if set)
-            if (pubOpts.UTFGridTileSet != null)
+            if (!string.IsNullOrEmpty(vm.UTFGridUrl))
             {
-                
+                var ug = mg.CreateUTFGridEntry(vm.UTFGridUrl);
+                mg.AddMap(ug);
             }
 
             //Add XYZ layer (if set)
-            if (pubOpts.ImageTileSet != null)
+            if (!string.IsNullOrEmpty(vm.XYZImageUrl))
             {
-
+                var xyz = mg.CreateCmsMapEntry("XYZ", false, "XYZ tile set" /* TODO: Configurable layer name */, "XYZ");
+                xyz.SetXYZUrls(vm.XYZImageUrl);
             }
         }
     }

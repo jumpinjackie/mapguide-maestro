@@ -781,6 +781,20 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             return map;
         }
 
+        IMap IMapGroup.CreateUTFGridEntry(string tileSet)
+        {
+            var el = AppDefDocument.Instance.CreateElement("UrlTemplate"); //NOXLATE
+            el.InnerText = tileSet;
+            return new MapType()
+            {
+                Extension = new CustomContentType()
+                {
+                    Any = new XmlElement[] { el }
+                },
+                Type = "UTFGrid" //NOXLATE
+            };
+        }
+
         IMap IMapGroup.CreateCmsMapEntry(string type, bool singleTile, string name, string olType)
         {
             var el = AppDefDocument.Instance.CreateElement("Options"); //NOXLATE

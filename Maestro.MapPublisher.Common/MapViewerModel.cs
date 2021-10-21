@@ -39,6 +39,8 @@ namespace Maestro.MapPublisher.Common
 
         public ViewerOptionsBase ViewerOptions { get; set; }
 
+        public dynamic Meta { get; set; }
+
         public bool HasExternalBaseLayer(ExternalBaseLayerType type)
             => ExternalBaseLayers.Any(ebl => ebl.Type == type);
 

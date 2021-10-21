@@ -37,11 +37,15 @@
     <script type="text/javascript">
         var el = document.getElementById("map");
         var viewer = new MapGuide.Application();
+
+        var appDef = @(Model.Meta.AppDefJson);
+
         viewer.mount(el, {
             layout: "@(((MapGuideReactLayoutViewerOptions)Model.ViewerOptions).TemplateName)",
             mapguide: {
                 agentUri: "@(Model.MapAgent)"
-            }
+            },
+            resourceId: () => Promise.resolve(appDef)
         });
     </script>
 </body>
