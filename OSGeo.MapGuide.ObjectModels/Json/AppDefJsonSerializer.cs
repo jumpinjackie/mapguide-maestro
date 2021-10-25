@@ -23,6 +23,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using System.Collections.Generic;
 using System.Xml;
 
 namespace OSGeo.MapGuide.ObjectModels.Json
@@ -35,6 +36,7 @@ namespace OSGeo.MapGuide.ObjectModels.Json
             var doc = new System.Xml.XmlDocument();
             doc.LoadXml(xml);
 
+            const string XSI_NS = "http://www.w3.org/2001/XMLSchema-instance";
             const string JSON_NS = "http://james.newtonking.com/projects/json";
             doc.DocumentElement.SetAttribute("xmlns:json", JSON_NS);
 
@@ -60,6 +62,32 @@ namespace OSGeo.MapGuide.ObjectModels.Json
                     {
                         cel.SetAttribute("Array", JSON_NS, "true");
                     }
+                }
+            }
+
+            //Clean out XML schema related crap that has no business being serialized out to JSON
+            var removeRootAttrs = new List<XmlAttribute>();
+            foreach (XmlAttribute a in doc.DocumentElement.Attributes)
+            {
+                if (a.Name == "xmlns:xsi" ||
+                    a.Name == "xmlns:xsd" ||
+                    a.Name == "xsi:noNamespaceSchemaLocation")
+                {
+                    removeRootAttrs.Add(a);
+                }
+            }
+            foreach (var remove in removeRootAttrs)
+            {
+                doc.DocumentElement.Attributes.Remove(remove);
+            }
+
+            var allNodes = doc.SelectNodes("//*");
+            foreach (XmlNode n in allNodes)
+            {
+                var attr = n.Attributes["type", XSI_NS];
+                if (attr != null)
+                {
+                    n.Attributes.Remove(attr);
                 }
             }
 
