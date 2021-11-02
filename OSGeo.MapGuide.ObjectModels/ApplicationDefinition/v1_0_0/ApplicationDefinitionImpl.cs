@@ -795,6 +795,27 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             };
         }
 
+        IMap IMapGroup.CreateSubjectLayerEntry(string name, string sourceType)
+        {
+            var elName = AppDefDocument.Instance.CreateElement("layer_name");
+            elName.InnerText = name;
+            var elType = AppDefDocument.Instance.CreateElement("source_type", sourceType);
+            elType.InnerText = sourceType;
+
+            return new MapType()
+            {
+                Extension = new CustomContentType()
+                {
+                    Any = new XmlElement[]
+                    {
+                        elName,
+                        elType
+                    }
+                },
+                Type = "SubjectLayer" //NOXLATE
+            };
+        }
+
         IMap IMapGroup.CreateCmsMapEntry(string type, bool singleTile, string name, string olType)
         {
             var el = AppDefDocument.Instance.CreateElement("Options"); //NOXLATE

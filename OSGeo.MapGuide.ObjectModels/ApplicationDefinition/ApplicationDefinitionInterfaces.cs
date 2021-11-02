@@ -21,10 +21,12 @@
 #endregion Disclaimer / License
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Xml;
 
@@ -975,6 +977,47 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
             return values;
         }
 
+        static IEnumerable<XmlElement> SetElementContent(string name, object value)
+        {
+            if (value is IConvertible i)
+            {
+                var el = AppDefDocument.Instance.CreateElement(name);
+                el.InnerText = i.ToString(CultureInfo.InvariantCulture);
+                yield return el;
+            }
+            else if (value is IEnumerable e)
+            {
+                foreach (var item in e)
+                {
+                    foreach (var el in SetElementContent(name, item))
+                    {
+                        yield return el;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ext"></param>
+        /// <param name="props"></param>
+        public static void SetSubjectOrExternalLayerProperties(this IExtensibleElement ext, IDictionary<string, object> props)
+        {
+            Check.ArgumentNotNull(ext, nameof(ext));
+            Check.ArgumentNotNull(props, nameof(props));
+
+            var elements = new List<XmlElement>();
+            foreach (string name in props.Keys)
+            {
+                var value = props[name];
+                //var rid = AppDefDocument.Instance.CreateElement(name);
+                //rid.InnerText = value;
+                elements.AddRange(SetElementContent(name, value));
+            }
+            ext.Extension.Content = elements.ToArray();
+        }
+
         /// <summary>
         /// Replace the values of all properties in this extensible element with the values provided
         /// </summary>
@@ -1411,6 +1454,14 @@ public class ArbitraryWidgetValue : WidgetValue
         /// <param name="olType"></param>
         /// <returns></returns>
         IMap CreateCmsMapEntry(string type, bool singleTile, string name, string olType);
+
+        /// <summary>
+        /// Creates a subject layer entry
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="sourceType"></param>
+        /// <returns></returns>
+        IMap CreateSubjectLayerEntry(string name, string sourceType);
 
         /// <summary>
         /// Creates a UTFGrid tileset entry

@@ -25,6 +25,8 @@ using OSGeo.MapGuide.MaestroAPI.Tests;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using OSGeo.MapGuide.ObjectModels.Json;
 using System;
+using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using Xunit;
 
@@ -44,16 +46,47 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         }
 
         [Fact]
-        public void ApplicationDefinition_JsonConversion()
+        public void ApplicationDefinition_SubjectLayers()
+        {
+            var res = CreateFlexLayout();
+            //Make our MapGroup
+            var mg = res.AddMapGroup("MainMap");
+            //Make subject layer
+            var sub = mg.CreateSubjectLayerEntry("MG Tileset", "XYZ");
+            dynamic props = new ExpandoObject();
+            props.layer_name = "Sheboygan XYZ";
+            props.source_type = "XYZ";
+            props.source_params_urls = new[]
+            {
+                "http://localhost:8018/mapguide/mapagent/mapagent.fcgi?OPERATION=GETTILEIMAGE&VERSION=1.2.0&CLIENTAGENT=&USERNAME=Anonymous&MAPDEFINITION=Library://Samples/Sheboygan/TileSets/SheboyganXYZ.TileSetDefinition&BASEMAPLAYERGROUPNAME=Base Layer Group&TILECOL={y}&TILEROW={x}&SCALEINDEX={z}"
+            };
+            props.meta_extents = new[] { -9769953.66131227, 5417808.88017179, -9762220.79944393, 5434161.22418638 };
+            props.meta_projection = "EPSG:3857";
+
+            sub.SetSubjectOrExternalLayerProperties((IDictionary<string, object>)props);
+
+            mg.AddMap(sub);
+
+            string json = AppDefJsonSerializer.Serialize(res);
+            dynamic appDef = JObject.Parse(json);
+        }
+
+        static IApplicationDefinition CreateFlexLayout()
         {
             var res = ObjectFactory.DeserializeEmbeddedFlexLayout(new Version(2, 4, 0));
-
             //Clear groups
             var toRemove = res.MapSet.MapGroups.ToList();
             foreach (var rem in toRemove)
             {
                 res.MapSet.RemoveGroup(rem);
             }
+            return res;
+        }
+
+        [Fact]
+        public void ApplicationDefinition_JsonConversion()
+        {
+            var res = CreateFlexLayout();
             //Make our MapGroup
             var mg = res.AddMapGroup("MainMap");
 
