@@ -1318,7 +1318,7 @@ namespace Newtonsoft.Json.Converters
                 {
                     if (!_node.HasChildNodes)
                     {
-                        _childNodes = XmlNodeConverter.EmptyChildNodes;
+                        _childNodes = MyXmlNodeConverter.EmptyChildNodes;
                     }
                     else
                     {
@@ -1363,7 +1363,7 @@ namespace Newtonsoft.Json.Converters
                 {
                     if (!HasAttributes)
                     {
-                        _attributes = XmlNodeConverter.EmptyChildNodes;
+                        _attributes = MyXmlNodeConverter.EmptyChildNodes;
                     }
                     else
                     {
@@ -2021,7 +2021,7 @@ namespace Newtonsoft.Json.Converters
     /// <summary>
     /// Converts XML to and from JSON.
     /// </summary>
-    public class XmlNodeConverter : JsonConverter
+    internal class MyXmlNodeConverter : JsonConverter
     {
         internal static readonly List<IXmlNode> EmptyChildNodes = new List<IXmlNode>();
 

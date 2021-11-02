@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using System.Collections.Generic;
@@ -94,9 +95,22 @@ namespace OSGeo.MapGuide.ObjectModels.Json
             var debugXml = doc.OuterXml;
 
             var rootEl = doc.GetElementsByTagName("ApplicationDefinition");
-            var json = JsonConvert.SerializeXmlNode(rootEl[0], Newtonsoft.Json.Formatting.Indented);
+            var json = SerializeXmlNode(rootEl[0], Newtonsoft.Json.Formatting.Indented);
             var o = JObject.Parse(json);
             return o["ApplicationDefinition"].ToString();
+        }
+
+        /// <summary>
+        /// Serializes the <see cref="XmlNode"/> to a JSON string using formatting.
+        /// </summary>
+        /// <param name="node">The node to serialize.</param>
+        /// <param name="formatting">Indicates how the output should be formatted.</param>
+        /// <returns>A JSON string of the <see cref="XmlNode"/>.</returns>
+        static string SerializeXmlNode(XmlNode node, Newtonsoft.Json.Formatting formatting)
+        {
+            var converter = new MyXmlNodeConverter();
+
+            return JsonConvert.SerializeObject(node, formatting, converter);
         }
     }
 }
