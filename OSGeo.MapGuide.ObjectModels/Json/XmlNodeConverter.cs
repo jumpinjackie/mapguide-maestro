@@ -2374,6 +2374,14 @@ namespace Newtonsoft.Json.Converters
             }
         }
 
+        private string GetDataType(IXmlNode node)
+        {
+            IXmlNode jsonDataTypeAttribute = (node.Attributes != null)
+                                            ? node.Attributes.SingleOrDefault(a => a.LocalName == "Type" && a.NamespaceUri == JsonNamespaceUri)
+                                            : null;
+            return (jsonDataTypeAttribute != null) ? jsonDataTypeAttribute.Value : null;
+        }
+
         private void SerializeNode(JsonWriter writer, IXmlNode node, XmlNamespaceManager manager, bool writePropertyName)
         {
             switch (node.NodeType)
@@ -2417,7 +2425,34 @@ namespace Newtonsoft.Json.Converters
                             && node.ChildNodes[0].NodeType == XmlNodeType.Text)
                         {
                             // write elements with a single text child as a name value pair
-                            writer.WriteValue(node.ChildNodes[0].Value);
+                            string xmlNodeValue = node.ChildNodes[0].Value;
+                            string dataType = GetDataType(node);
+                            if (dataType != null)
+                            {
+                                switch (dataType)
+                                {
+                                    case "Integer":
+                                        writer.WriteValue(Convert.ToInt64(xmlNodeValue, CultureInfo.InvariantCulture));
+                                        break;
+                                    case "Float":
+                                        writer.WriteValue(Convert.ToDouble(xmlNodeValue, CultureInfo.InvariantCulture));
+                                        break;
+                                    case "Boolean":
+                                        writer.WriteValue(Convert.ToBoolean(xmlNodeValue, CultureInfo.InvariantCulture));
+                                        break;
+                                    case "Date":
+                                        DateTime d = Convert.ToDateTime(xmlNodeValue, CultureInfo.InvariantCulture);
+                                        writer.WriteValue(d);
+                                        break;
+                                    default:
+                                        writer.WriteValue(xmlNodeValue);
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                writer.WriteValue(xmlNodeValue);
+                            }
                         }
                         else if (node.ChildNodes.Count == 0 && node.Attributes.Count == 0)
                         {
