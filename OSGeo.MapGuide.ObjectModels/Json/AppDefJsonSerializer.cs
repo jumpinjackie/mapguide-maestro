@@ -24,6 +24,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using System;
 using System.Collections.Generic;
 using System.Xml;
 
@@ -31,32 +32,49 @@ namespace OSGeo.MapGuide.ObjectModels.Json
 {
     public static class AppDefJsonSerializer
     {
+        const string XSI_NS = "http://www.w3.org/2001/XMLSchema-instance";
+        const string JSON_NS = "http://james.newtonking.com/projects/json";
+
+        static void ForceArray(XmlDocument doc, string tagName, Action<XmlElement> elProcessor = null)
+        {
+            var els = doc.GetElementsByTagName(tagName);
+            foreach (XmlElement el in els)
+            {
+                el.SetAttribute("Array", JSON_NS, "true");
+                elProcessor?.Invoke(el);
+            }
+        }
+
+        enum JsonDataType
+        {
+            Integer,
+            Boolean,
+            Float,
+            Date
+        }
+
+        static void ForceDataTypeByTagName(XmlDocument doc, string tagName, JsonDataType type)
+        {
+            var els = doc.GetElementsByTagName(tagName);
+            foreach (XmlElement el in els)
+            {
+                el.SetAttribute("Type", JSON_NS, type.ToString());
+            }
+        }
+
         public static string Serialize(IApplicationDefinition appDef)
         {
             var xml = appDef.Serialize();
             var doc = new System.Xml.XmlDocument();
             doc.LoadXml(xml);
 
-            const string XSI_NS = "http://www.w3.org/2001/XMLSchema-instance";
-            const string JSON_NS = "http://james.newtonking.com/projects/json";
             doc.DocumentElement.SetAttribute("xmlns:json", JSON_NS);
 
             //Force arrays on key elements
-            var widgetSetEls = doc.GetElementsByTagName("WidgetSet");
-            foreach (XmlElement el in widgetSetEls)
+            ForceArray(doc, "WidgetSet");
+            ForceArray(doc, "MapGroup", el => el["Map"].SetAttribute("Array", JSON_NS, "true"));
+            ForceArray(doc, "Container", el =>
             {
-                el.SetAttribute("Array", JSON_NS, "true");
-            }
-            var mapGroupEls = doc.GetElementsByTagName("MapGroup");
-            foreach (XmlElement el in mapGroupEls)
-            {
-                el.SetAttribute("Array", JSON_NS, "true");
-                el["Map"].SetAttribute("Array", JSON_NS, "true");
-            }
-            var containerEls = doc.GetElementsByTagName("Container");
-            foreach (XmlElement el in containerEls)
-            {
-                el.SetAttribute("Array", JSON_NS, "true");
                 foreach (XmlElement cel in el.ChildNodes)
                 {
                     if (cel.Name == "Item")
@@ -64,7 +82,11 @@ namespace OSGeo.MapGuide.ObjectModels.Json
                         cel.SetAttribute("Array", JSON_NS, "true");
                     }
                 }
-            }
+            });
+            ForceArray(doc, "source_params_urls");
+
+            //Force data types on known map extension elements
+            ForceDataTypeByTagName(doc, "meta_extents", JsonDataType.Float);
 
             //Clean out XML schema related crap that has no business being serialized out to JSON
             var removeRootAttrs = new List<XmlAttribute>();
