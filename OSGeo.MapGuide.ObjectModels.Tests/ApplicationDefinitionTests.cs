@@ -117,6 +117,12 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.NotNull(res);
             string json = AppDefJsonSerializer.Serialize(res);
             dynamic appDef = JObject.Parse(json);
+
+            // Verify types of converted elements
+            var mapEl = appDef.SelectToken("MapSet.MapGroup[0].Map[0]");
+            Assert.NotNull(mapEl);
+            var urlsEl = mapEl.SelectToken("Extension.Options.urls");
+            Assert.Equal(JTokenType.Array, urlsEl.Type);
         }
     }
 }
