@@ -1146,8 +1146,7 @@ namespace OSGeo.MapGuide.ObjectModels
             mapContextMenu.AddItem(appDef.CreateWidgetReference(zoomIn.Name));
             mapContextMenu.AddItem(appDef.CreateWidgetReference(zoomOut.Name));
             mapContextMenu.AddItem(appDef.CreateSeparator());
-            
-            mapContextMenu.AddItem(appDef.CreateSeparator());
+
             mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Select));
             mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.ClearSelection));
             
