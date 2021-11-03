@@ -1146,15 +1146,11 @@ namespace OSGeo.MapGuide.ObjectModels
             mapContextMenu.AddItem(appDef.CreateWidgetReference(zoomIn.Name));
             mapContextMenu.AddItem(appDef.CreateWidgetReference(zoomOut.Name));
             mapContextMenu.AddItem(appDef.CreateSeparator());
-            var zoomMenu = appDef.CreateFlyout(Strings.ADF_Flyout_Zoom);
-
-            mapContextMenu.AddItem(zoomMenu);
+            
             mapContextMenu.AddItem(appDef.CreateSeparator());
             mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Select));
             mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.ClearSelection));
-            var selectMoreMenu = appDef.CreateFlyout(Strings.ADF_Flyout_SelectMore);
-
-            mapContextMenu.AddItem(selectMoreMenu);
+            
             mapContextMenu.AddItem(appDef.CreateSeparator());
             mapContextMenu.AddItem(appDef.CreateWidgetReference(buffer.Name));
             mapContextMenu.AddItem(appDef.CreateWidgetReference(measure.Name));

@@ -727,10 +727,6 @@
       &lt;Item xsi:type="SeparatorItemType"&gt;
         &lt;Function&gt;Separator&lt;/Function&gt;
       &lt;/Item&gt;
-      &lt;Item xsi:type="FlyoutItemType"&gt;
-        &lt;Function&gt;Flyout&lt;/Function&gt;
-        &lt;Label&gt;Zoom&lt;/Label&gt;
-      &lt;/Item&gt;
       &lt;Item xsi:type="SeparatorItemType"&gt;
         &lt;Function&gt;Separator&lt;/Function&gt;
       &lt;/Item&gt;
@@ -741,10 +737,6 @@
       &lt;Item xsi:type="WidgetItemType"&gt;
         &lt;Function&gt;Widget&lt;/Function&gt;
         &lt;Widget&gt;ClearSelection&lt;/Widget&gt;
-      &lt;/Item&gt;
-      &lt;Item xsi:type="FlyoutItemType"&gt;
-        &lt;Function&gt;Flyout&lt;/Function&gt;
-        &lt;Label&gt;Select More&lt;/Label&gt;
       &lt;/Item&gt;
       &lt;Item xsi:type="SeparatorItemType"&gt;
         &lt;Function&gt;Separator&lt;/Function&gt;
