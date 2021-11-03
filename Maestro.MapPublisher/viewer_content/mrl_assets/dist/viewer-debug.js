@@ -11451,7 +11451,7 @@ var About = function (props) {
         React.createElement("hr", null),
         React.createElement("p", null,
             "Hash: ",
-            "9ba843ebe95dcf3ac9771d7556189003a442ca9b"),
+            "0948c7ad6d248aad7933f853e08bc4323a72d1d9"),
         React.createElement("hr", null),
         React.createElement("p", null,
             React.createElement("a", { target: "_blank", href: "https://github.com/jumpinjackie/mapguide-react-layout" }, "GitHub")),
@@ -11871,7 +11871,7 @@ function createOLLayerFromSubjectDefn(defn, mapProjection, isExternal, appSettin
     switch (defn.type) {
         case defs_1.GenericSubjectLayerType.StaticImage:
             {
-                var sourceArgs = (0, tslib_1.__assign)({ crossOrigin: "anonymous" }, defn.sourceParams);
+                var sourceArgs = (0, tslib_1.__assign)({}, defn.sourceParams);
                 if (!sourceArgs.imageExtent)
                     sourceArgs.imageExtent = (_a = defn.meta) === null || _a === void 0 ? void 0 : _a.extents;
                 var layer = new Image_1.default({
@@ -11889,7 +11889,7 @@ function createOLLayerFromSubjectDefn(defn, mapProjection, isExternal, appSettin
             }
         case defs_1.GenericSubjectLayerType.XYZ:
             {
-                var sourceArgs = (0, tslib_1.__assign)({ crossOrigin: "anonymous" }, defn.sourceParams);
+                var sourceArgs = (0, tslib_1.__assign)({}, defn.sourceParams);
                 var layer = new Tile_1.default({
                     source: new XYZ_1.default(sourceArgs)
                 });
@@ -12081,7 +12081,7 @@ function createOLLayerFromSubjectDefn(defn, mapProjection, isExternal, appSettin
             }
         case defs_1.GenericSubjectLayerType.TileWMS:
             {
-                var sourceArgs = (0, tslib_1.__assign)({ crossOrigin: "anonymous" }, defn.sourceParams);
+                var sourceArgs = (0, tslib_1.__assign)({}, defn.sourceParams);
                 var layer = new Tile_1.default({
                     source: new TileWMS_1.default(sourceArgs)
                 });
