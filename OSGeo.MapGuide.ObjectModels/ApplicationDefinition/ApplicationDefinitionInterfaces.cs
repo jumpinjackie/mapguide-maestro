@@ -919,7 +919,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
 
             foreach (var tpl in set.TemplateInfo)
             {
-                if (name.Equals(tpl.Name))
+                if (name.Equals(tpl.Name, StringComparison.OrdinalIgnoreCase))
                     return tpl;
             }
             return null;
