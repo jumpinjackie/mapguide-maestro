@@ -111,11 +111,19 @@ namespace OSGeo.MapGuide.ObjectModels.Json
                 var attr = n.Attributes["type", XSI_NS];
                 if (attr != null)
                 {
+                    if (n.Name == "Widget")
+                    {
+                        //Transfer xsi:type attribute value to a <WidgetType> element before
+                        //removing the attribute
+                        var wtNode = doc.CreateElement("WidgetType");
+                        wtNode.InnerText = attr.Value;
+                        n.PrependChild(wtNode);
+                    }
                     n.Attributes.Remove(attr);
                 }
             }
 
-            var debugXml = doc.OuterXml;
+            //var debugXml = doc.OuterXml;
 
             var rootEl = doc.GetElementsByTagName("ApplicationDefinition");
             var json = SerializeXmlNode(rootEl[0], Newtonsoft.Json.Formatting.Indented);
