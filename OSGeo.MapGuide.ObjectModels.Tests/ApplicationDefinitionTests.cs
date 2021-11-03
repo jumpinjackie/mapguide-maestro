@@ -68,7 +68,19 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             mg.AddMap(sub);
 
             string json = AppDefJsonSerializer.Serialize(res);
-            dynamic appDef = JObject.Parse(json);
+            var appDef = JObject.Parse(json);
+
+            // Verify types of converted elements
+            var mapEl = appDef.SelectToken("MapSet.MapGroup[0].Map[0]");
+            Assert.Equal("SubjectLayer", mapEl["Type"].Value<string>());
+            var urls = mapEl.SelectToken("Extension.source_params_urls");
+            Assert.Equal(JTokenType.Array, urls.Type);
+            var extents = mapEl.SelectToken("Extension.meta_extents");
+            Assert.Equal(JTokenType.Array, extents.Type);
+            foreach (var ev in (JArray)extents)
+            {
+                Assert.Equal(JTokenType.Float, ev.Type);
+            }
         }
 
         static IApplicationDefinition CreateFlexLayout()
