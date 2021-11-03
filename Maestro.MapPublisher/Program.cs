@@ -32,6 +32,7 @@ using RazorEngine.Configuration;
 using RazorEngine.Templating;
 using RazorEngine.Text;
 using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
@@ -169,8 +170,8 @@ namespace Maestro.MapPublisher
                                     break;
                                 case ViewerType.MapGuideReactLayout:
                                     {
-                                        var appDef = Utility.CreateFlexibleLayout(pubOpts.Connection, ((MapGuideReactLayoutViewerOptions)pubOpts.ViewerOptions).TemplateName);
-                                        InitAppDef(appDef, pubOpts, vm);
+                                        var appDef = Utility.CreateFlexibleLayout(pubOpts.Connection, ((MapGuideReactLayoutViewerOptions)pubOpts.ViewerOptions).TemplateName, true);
+                                        InitAppDef(pubOpts.Connection, appDef, pubOpts, vm);
                                         vm.Meta.AppDefJson = AppDefJsonSerializer.Serialize(appDef);
                                         string template = File.ReadAllText("viewer_content/viewer_mrl.cshtml");
                                         var config = new TemplateServiceConfiguration();
@@ -246,7 +247,7 @@ namespace Maestro.MapPublisher
             }
         }
 
-        static void InitAppDef(IApplicationDefinition appDef, IStaticMapPublishingOptions pubOpts, MapViewerModel vm)
+        static void InitAppDef(IServerConnection conn, IApplicationDefinition appDef, IStaticMapPublishingOptions pubOpts, MapViewerModel vm)
         {
             appDef.Title = pubOpts.Title;
             //Clear groups
@@ -261,7 +262,15 @@ namespace Maestro.MapPublisher
             //Add base layers
             foreach (var bl in pubOpts.ExternalBaseLayers)
             {
-                var ble = mg.CreateCmsMapEntry(bl.Type.ToString(), false, bl.Name, bl.Type.ToString());
+                IMap ble;
+                if (bl is StamenBaseLayer sbl)
+                {
+                    ble = mg.CreateCmsMapEntry(sbl.Type.ToString(), false, sbl.Name, sbl.LayerType.ToString().ToLower());
+                }
+                else
+                {
+                    ble = mg.CreateCmsMapEntry(bl.Type.ToString(), false, bl.Name, bl.Type.ToString());
+                }
                 if (bl.Type == ExternalBaseLayerType.XYZ)
                 {
                     ble.SetXYZUrls(((XYZBaseLayer)bl).UrlTemplate);
@@ -284,8 +293,28 @@ namespace Maestro.MapPublisher
             //Add XYZ layer (if set)
             if (!string.IsNullOrEmpty(vm.XYZImageUrl))
             {
-                var xyz = mg.CreateCmsMapEntry("XYZ", false, "XYZ tile set" /* TODO: Configurable layer name */, "XYZ");
-                xyz.SetXYZUrls(vm.XYZImageUrl);
+                var sub = mg.CreateSubjectLayerEntry("XYZ Tile Set" /* TODO: Configurable layer name */, "XYZ");
+                dynamic props = new ExpandoObject();
+                props.layer_name = "Sheboygan XYZ";
+                props.source_type = "XYZ";
+                props.source_param_urls = new[]
+                {
+                    vm.XYZImageUrl
+                };
+
+                var llCs = conn.CoordinateSystemCatalog.FindCoordSys("LL84");
+                var wmCs = conn.CoordinateSystemCatalog.FindCoordSys("WGS84.PseudoMercator");
+
+                var xform = conn.CoordinateSystemCatalog.CreateTransform(llCs.WKT, wmCs.WKT);
+                double llx, lly, urx, ury;
+                xform.Transform(pubOpts.Bounds.MinX, pubOpts.Bounds.MinY, out llx, out lly);
+                xform.Transform(pubOpts.Bounds.MaxX, pubOpts.Bounds.MaxY, out urx, out ury);
+
+                props.meta_extents = new[] { llx, lly, urx, ury };
+                props.meta_projection = "EPSG:3857";
+
+                sub.SetSubjectOrExternalLayerProperties((IDictionary<string, object>)props);
+                mg.AddMap(sub);
             }
         }
     }
