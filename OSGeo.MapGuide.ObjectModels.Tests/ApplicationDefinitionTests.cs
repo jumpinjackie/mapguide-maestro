@@ -56,7 +56,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             dynamic props = new ExpandoObject();
             props.layer_name = "Sheboygan XYZ";
             props.source_type = "XYZ";
-            props.source_params_urls = new[]
+            props.source_param_urls = new[]
             {
                 "http://localhost:8018/mapguide/mapagent/mapagent.fcgi?OPERATION=GETTILEIMAGE&VERSION=1.2.0&CLIENTAGENT=&USERNAME=Anonymous&MAPDEFINITION=Library://Samples/Sheboygan/TileSets/SheboyganXYZ.TileSetDefinition&BASEMAPLAYERGROUPNAME=Base Layer Group&TILECOL={y}&TILEROW={x}&SCALEINDEX={z}"
             };
@@ -73,7 +73,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             // Verify types of converted elements
             var mapEl = appDef.SelectToken("MapSet.MapGroup[0].Map[0]");
             Assert.Equal("SubjectLayer", mapEl["Type"].Value<string>());
-            var urls = mapEl.SelectToken("Extension.source_params_urls");
+            var urls = mapEl.SelectToken("Extension.source_param_urls");
             Assert.Equal(JTokenType.Array, urls.Type);
             var extents = mapEl.SelectToken("Extension.meta_extents");
             Assert.Equal(JTokenType.Array, extents.Type);

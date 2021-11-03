@@ -83,7 +83,7 @@ namespace OSGeo.MapGuide.ObjectModels.Json
                     }
                 }
             });
-            ForceArray(doc, "source_params_urls");
+            ForceArray(doc, "source_param_urls");
             ForceArray(doc, "urls"); //MapGroup/Map/Extension/Options/urls
 
             //Force data types on known map extension elements
