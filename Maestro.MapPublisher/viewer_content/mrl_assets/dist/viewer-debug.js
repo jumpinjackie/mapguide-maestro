@@ -1182,6 +1182,11 @@ var GenericSubjectLayerType;
      * @since 0.14.3
      */
     GenericSubjectLayerType["StaticImage"] = "StaticImage";
+    /**
+     * A WFS layer
+     * @since 0.14.4
+     */
+    GenericSubjectLayerType["WFS"] = "WFS";
 })(GenericSubjectLayerType = exports.GenericSubjectLayerType || (exports.GenericSubjectLayerType = {}));
 function isGenericSubjectMapLayer(map) {
     var _a;
@@ -1803,19 +1808,21 @@ var DefaultViewerInitCommand = /** @class */ (function (_super) {
         });
     };
     DefaultViewerInitCommand.prototype.createRuntimeMapsAsync = function (session, res, isStateless, mapDefSelector, projectionSelector, sessionWasReused) {
+        var _a;
         return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
-            var mapDefs, mapPromises, warnings, locale, subjectLayers, siteVersion, _i, mapDefs_1, m, siteVer, _a, mapDefs_2, m, _b, _c, _d, _e, maps, fetchEpsgs, _f, maps_1, m, epsg, mapDef, arbCs, extraEpsgs, _g, extraEpsgs_1, e, epsgs, mapsByName, _h, maps_2, map, _j, mapDefs_3, gs;
-            var _k;
+            var mapDefs, mapPromises, warnings, locale, subjectLayers, fetchEpsgs, siteVersion, _i, mapDefs_1, m, siteVer, proj, _b, _1, epsg, _c, mapDefs_2, m, _d, _e, _f, _g, maps, _h, maps_1, m, epsg, mapDef, arbCs, extraEpsgs, _j, extraEpsgs_1, e, epsgs, mapsByName, _k, maps_2, map, _l, mapDefs_3, gs;
+            var _m;
             var _this = this;
-            return (0, tslib_1.__generator)(this, function (_l) {
-                switch (_l.label) {
+            return (0, tslib_1.__generator)(this, function (_o) {
+                switch (_o.label) {
                     case 0:
                         mapDefs = mapDefSelector(res);
                         mapPromises = [];
                         warnings = [];
                         locale = this.options.locale;
                         subjectLayers = {};
-                        if (!isStateless) return [3 /*break*/, 5];
+                        fetchEpsgs = [];
+                        if (!isStateless) return [3 /*break*/, 6];
                         siteVersion = new lazy_1.AsyncLazy(function () { return (0, tslib_1.__awaiter)(_this, void 0, void 0, function () {
                             var sv;
                             return (0, tslib_1.__generator)(this, function (_a) {
@@ -1830,58 +1837,66 @@ var DefaultViewerInitCommand = /** @class */ (function (_super) {
                             });
                         }); });
                         _i = 0, mapDefs_1 = mapDefs;
-                        _l.label = 1;
+                        _o.label = 1;
                     case 1:
-                        if (!(_i < mapDefs_1.length)) return [3 /*break*/, 4];
+                        if (!(_i < mapDefs_1.length)) return [3 /*break*/, 5];
                         m = mapDefs_1[_i];
                         if (!(0, init_command_1.isMapDefinition)(m)) return [3 /*break*/, 3];
                         return [4 /*yield*/, siteVersion.getValueAsync()];
                     case 2:
-                        siteVer = _l.sent();
+                        siteVer = _o.sent();
                         (0, assert_1.assertIsDefined)(this.client);
                         mapPromises.push(this.describeRuntimeMapStateless(this.client, siteVer.Version, m));
-                        _l.label = 3;
+                        return [3 /*break*/, 4];
                     case 3:
+                        proj = (_a = m.meta) === null || _a === void 0 ? void 0 : _a.projection;
+                        if (!(0, string_1.strIsNullOrEmpty)(proj)) {
+                            _b = proj.split(':'), _1 = _b[0], epsg = _b[1];
+                            if (!proj4_2.default.defs["EPSG:" + epsg]) {
+                                fetchEpsgs.push({ epsg: epsg, mapDef: m.name });
+                            }
+                        }
+                        _o.label = 4;
+                    case 4:
                         _i++;
                         return [3 /*break*/, 1];
-                    case 4: return [3 /*break*/, 10];
-                    case 5:
-                        _a = 0, mapDefs_2 = mapDefs;
-                        _l.label = 6;
+                    case 5: return [3 /*break*/, 11];
                     case 6:
-                        if (!(_a < mapDefs_2.length)) return [3 /*break*/, 10];
-                        m = mapDefs_2[_a];
-                        if (!(0, init_command_1.isMapDefinition)(m)) return [3 /*break*/, 9];
-                        if (!sessionWasReused) return [3 /*break*/, 7];
+                        _c = 0, mapDefs_2 = mapDefs;
+                        _o.label = 7;
+                    case 7:
+                        if (!(_c < mapDefs_2.length)) return [3 /*break*/, 11];
+                        m = mapDefs_2[_c];
+                        if (!(0, init_command_1.isMapDefinition)(m)) return [3 /*break*/, 10];
+                        if (!sessionWasReused) return [3 /*break*/, 8];
                         //FIXME: If the map state we're recovering has a selection, we need to re-init the selection client-side
                         (0, logger_1.info)("Session ID re-used. Attempting recovery of map state of: " + m.name);
                         mapPromises.push(this.tryDescribeRuntimeMapAsync(m.name, session, m.mapDef));
-                        return [3 /*break*/, 9];
-                    case 7:
+                        return [3 /*break*/, 10];
+                    case 8:
                         (0, logger_1.info)("Creating runtime map state (" + m.name + ") for: " + m.mapDef);
                         (0, assert_1.assertIsDefined)(this.client);
-                        _c = (_b = mapPromises).push;
-                        _e = (_d = this.client).createRuntimeMap;
-                        _k = {
+                        _e = (_d = mapPromises).push;
+                        _g = (_f = this.client).createRuntimeMap;
+                        _m = {
                             mapDefinition: m.mapDef,
                             requestedFeatures: request_builder_1.RuntimeMapFeatureFlags.LayerFeatureSources | request_builder_1.RuntimeMapFeatureFlags.LayerIcons | request_builder_1.RuntimeMapFeatureFlags.LayersAndGroups
                         };
                         return [4 /*yield*/, session.getValueAsync()];
-                    case 8:
-                        _c.apply(_b, [_e.apply(_d, [(_k.session = _l.sent(),
-                                    _k.targetMapName = m.name,
-                                    _k)])]);
-                        _l.label = 9;
                     case 9:
-                        _a++;
-                        return [3 /*break*/, 6];
-                    case 10: return [4 /*yield*/, Promise.all(mapPromises)];
-                    case 11:
-                        maps = _l.sent();
-                        fetchEpsgs = [];
+                        _e.apply(_d, [_g.apply(_f, [(_m.session = _o.sent(),
+                                    _m.targetMapName = m.name,
+                                    _m)])]);
+                        _o.label = 10;
+                    case 10:
+                        _c++;
+                        return [3 /*break*/, 7];
+                    case 11: return [4 /*yield*/, Promise.all(mapPromises)];
+                    case 12:
+                        maps = _o.sent();
                         //All must be non-zero
-                        for (_f = 0, maps_1 = maps; _f < maps_1.length; _f++) {
-                            m = maps_1[_f];
+                        for (_h = 0, maps_1 = maps; _h < maps_1.length; _h++) {
+                            m = maps_1[_h];
                             epsg = m.CoordinateSystem.EpsgCode;
                             mapDef = m.MapDefinition;
                             arbCs = (0, units_1.tryParseArbitraryCs)(m.CoordinateSystem.MentorCode);
@@ -1896,13 +1911,13 @@ var DefaultViewerInitCommand = /** @class */ (function (_super) {
                             }
                         }
                         extraEpsgs = projectionSelector(res);
-                        for (_g = 0, extraEpsgs_1 = extraEpsgs; _g < extraEpsgs_1.length; _g++) {
-                            e = extraEpsgs_1[_g];
+                        for (_j = 0, extraEpsgs_1 = extraEpsgs; _j < extraEpsgs_1.length; _j++) {
+                            e = extraEpsgs_1[_j];
                             fetchEpsgs.push({ epsg: e, mapDef: "" });
                         }
                         return [4 /*yield*/, Promise.all(fetchEpsgs.map(function (f) { return (0, projections_1.resolveProjectionFromEpsgIoAsync)(f.epsg, locale, f.mapDef); }))];
-                    case 12:
-                        epsgs = _l.sent();
+                    case 13:
+                        epsgs = _o.sent();
                         //Previously, we register proj4 with OpenLayers on the bootstrap phase way before this init
                         //process is started. This no longer works for OL6 where it doesn't seem to pick up the extra
                         //projections we've registered with proj4 after linking proj4 to OpenLayers. So that registration
@@ -1911,12 +1926,12 @@ var DefaultViewerInitCommand = /** @class */ (function (_super) {
                         (0, logger_1.debug)("Register proj4 with OpenLayers");
                         (0, proj4_1.register)(proj4_2.default);
                         mapsByName = {};
-                        for (_h = 0, maps_2 = maps; _h < maps_2.length; _h++) {
-                            map = maps_2[_h];
+                        for (_k = 0, maps_2 = maps; _k < maps_2.length; _k++) {
+                            map = maps_2[_k];
                             mapsByName[map.Name] = map;
                         }
-                        for (_j = 0, mapDefs_3 = mapDefs; _j < mapDefs_3.length; _j++) {
-                            gs = mapDefs_3[_j];
+                        for (_l = 0, mapDefs_3 = mapDefs; _l < mapDefs_3.length; _l++) {
+                            gs = mapDefs_3[_l];
                             if (!(0, init_command_1.isMapDefinition)(gs)) {
                                 mapsByName[gs.name] = gs;
                             }
@@ -8527,8 +8542,8 @@ var MgInnerLayerSetFactory = /** @class */ (function () {
                 externalBaseLayersGroup.set(common_1.LayerProperty.LAYER_NAME, common_1.MG_BASE_LAYER_GROUP_NAME);
                 externalBaseLayersGroup.set(common_1.LayerProperty.IS_EXTERNAL, false);
                 externalBaseLayersGroup.set(common_1.LayerProperty.IS_GROUP, true);
-                projection = "EPSG:3857";
-                bounds = DEFAULT_BOUNDS_3857;
+                //projection = "EPSG:3857";
+                //bounds = DEFAULT_BOUNDS_3857;
             }
             var subjectLayer = void 0;
             if (map) {
@@ -11451,7 +11466,7 @@ var About = function (props) {
         React.createElement("hr", null),
         React.createElement("p", null,
             "Hash: ",
-            "0948c7ad6d248aad7933f853e08bc4323a72d1d9"),
+            "21c74c1b30ef36d65ecda029295fc55c8c22e093"),
         React.createElement("hr", null),
         React.createElement("p", null,
             React.createElement("a", { target: "_blank", href: "https://github.com/jumpinjackie/mapguide-react-layout" }, "GitHub")),
@@ -11833,6 +11848,70 @@ var geoJsonVt2GeoJSON = function (key, value) {
         return value;
     }
 };
+function getRawGeoJson(defn) {
+    return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
+        var url, resp, json;
+        return (0, tslib_1.__generator)(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    url = defn.sourceParams.url;
+                    if (!(typeof (url) == 'string')) return [3 /*break*/, 3];
+                    (0, logger_1.debug)("Fetching url: " + url);
+                    return [4 /*yield*/, fetch(url)];
+                case 1:
+                    resp = _a.sent();
+                    return [4 /*yield*/, resp.json()];
+                case 2:
+                    json = _a.sent();
+                    return [2 /*return*/, json];
+                case 3:
+                    if (typeof (url) == 'object' && !(0, string_1.strIsNullOrEmpty)(url.var_source)) {
+                        if (!window[url.var_source]) {
+                            throw new Error("No such global var (" + url.var_source + ")");
+                        }
+                        return [2 /*return*/, window[url.var_source]];
+                    }
+                    else {
+                        throw new Error("Don't know how to process URL source");
+                    }
+                    _a.label = 4;
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+function createGeoJsonVectorSource(defn, mapProjection) {
+    var _a = defn.sourceParams, url = _a.url, attributions = _a.attributions;
+    if (typeof (url) == 'string') {
+        var source = new Vector_2.default({
+            url: url,
+            format: new GeoJSON_1.default(),
+            attributions: attributions
+        });
+        return source;
+    }
+    else if (typeof (url) == 'object' && !(0, string_1.strIsNullOrEmpty)(url.var_source)) {
+        if (!window[url.var_source]) {
+            throw new Error("No such global var (" + url.var_source + ")");
+        }
+        var vectorSource_1 = new Vector_2.default({
+            loader: function (_extent, _resolution, projection) {
+                var _a;
+                var format = new GeoJSON_1.default({
+                    dataProjection: (_a = defn.meta) === null || _a === void 0 ? void 0 : _a.projection,
+                    featureProjection: mapProjection
+                });
+                var features = format.readFeatures(window[url.var_source]);
+                vectorSource_1.addFeatures(features);
+            },
+            attributions: attributions
+        });
+        return vectorSource_1;
+    }
+    else {
+        throw new Error("Don't know how to process URL source");
+    }
+}
 function applyVectorLayerProperties(defn, layer, isExternal) {
     layer.set(common_1.LayerProperty.LAYER_NAME, defn.name);
     layer.set(common_1.LayerProperty.LAYER_DESCRIPTION, defn.description);
@@ -11867,7 +11946,7 @@ function clusterSourceIfRequired(source, def) {
 exports.clusterSourceIfRequired = clusterSourceIfRequired;
 function createOLLayerFromSubjectDefn(defn, mapProjection, isExternal, appSettings) {
     var _this = this;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
     switch (defn.type) {
         case defs_1.GenericSubjectLayerType.StaticImage:
             {
@@ -11921,17 +12000,12 @@ function createOLLayerFromSubjectDefn(defn, mapProjection, isExternal, appSettin
                 var asVT = ((_d = defn.meta) === null || _d === void 0 ? void 0 : _d.geojson_as_vt) == true;
                 if (asVT && isWebM) {
                     var lazyTileIndex_1 = new lazy_1.AsyncLazy(function () { return (0, tslib_1.__awaiter)(_this, void 0, void 0, function () {
-                        var resp, json, gj, features, tileIndex;
+                        var json, gj, features, tileIndex;
                         var _a, _b;
                         return (0, tslib_1.__generator)(this, function (_c) {
                             switch (_c.label) {
-                                case 0:
-                                    (0, logger_1.debug)("Fetching url: " + defn.sourceParams.url);
-                                    return [4 /*yield*/, fetch(defn.sourceParams.url)];
+                                case 0: return [4 /*yield*/, getRawGeoJson(defn)];
                                 case 1:
-                                    resp = _c.sent();
-                                    return [4 /*yield*/, resp.json()];
-                                case 2:
                                     json = _c.sent();
                                     if (((_a = defn.meta) === null || _a === void 0 ? void 0 : _a.projection) != "EPSG:4326") {
                                         gj = new GeoJSON_1.default({
@@ -11958,7 +12032,7 @@ function createOLLayerFromSubjectDefn(defn, mapProjection, isExternal, appSettin
                             extent: [0, 0, 4096, 4096],
                         }),
                     });
-                    var vectorSource_1 = new VectorTile_1.default({
+                    var vectorSource_2 = new VectorTile_1.default({
                         projection: mapProjection,
                         tileUrlFunction: function (tileCoord) {
                             // Use the tile coordinate as a pseudo URL for caching purposes
@@ -11974,7 +12048,7 @@ function createOLLayerFromSubjectDefn(defn, mapProjection, isExternal, appSettin
                                     features: data ? data.features : [],
                                 }, geoJsonVt2GeoJSON);
                                 var features = format_1.readFeatures(geojson, {
-                                    extent: vectorSource_1.getTileGrid().getTileCoordExtent(tileCoord),
+                                    extent: vectorSource_2.getTileGrid().getTileCoordExtent(tileCoord),
                                     featureProjection: mapProjection,
                                 });
                                 tile.setFeatures(features);
@@ -11982,7 +12056,7 @@ function createOLLayerFromSubjectDefn(defn, mapProjection, isExternal, appSettin
                         }
                     });
                     var vectorLayer = new VectorTile_2.default({
-                        source: vectorSource_1,
+                        source: vectorSource_2,
                     });
                     (0, ol_style_helpers_1.setOLVectorLayerStyle)(vectorLayer, (_e = defn.vectorStyle) !== null && _e !== void 0 ? _e : ol_style_contracts_1.DEFAULT_VECTOR_LAYER_STYLE, defn.cluster);
                     applyVectorLayerProperties(defn, vectorLayer, isExternal);
@@ -11992,11 +12066,7 @@ function createOLLayerFromSubjectDefn(defn, mapProjection, isExternal, appSettin
                     if (asVT) {
                         console.warn("The geojson_as_vt meta option only applies if the MapGuide map or Primary Subject Layer is in EPSG:3857. This layer will be loaded as a regular GeoJSON layer");
                     }
-                    var source = new Vector_2.default({
-                        url: defn.sourceParams.url,
-                        format: new GeoJSON_1.default(),
-                        attributions: defn.sourceParams.attributions
-                    });
+                    var source = createGeoJsonVectorSource(defn, mapProjection);
                     var layer = new Vector_1.default((0, tslib_1.__assign)((0, tslib_1.__assign)({}, defn.layerOptions), { source: clusterSourceIfRequired(source, defn) }));
                     (0, ol_style_helpers_1.setOLVectorLayerStyle)(layer, (_f = defn.vectorStyle) !== null && _f !== void 0 ? _f : ol_style_contracts_1.DEFAULT_VECTOR_LAYER_STYLE, defn.cluster);
                     applyVectorLayerProperties(defn, layer, isExternal);
@@ -12041,18 +12111,18 @@ function createOLLayerFromSubjectDefn(defn, mapProjection, isExternal, appSettin
             }
         case defs_1.GenericSubjectLayerType.CSV:
             {
-                var vectorSource_2 = new Vector_2.default({
+                var vectorSource_3 = new Vector_2.default({
                     loader: function (_extent, _resolution, projection) {
                         var xhr = new XMLHttpRequest();
                         xhr.open("GET", defn.sourceParams.url);
-                        var onError = function () { return vectorSource_2.clear(); };
+                        var onError = function () { return vectorSource_3.clear(); };
                         xhr.onerror = onError;
                         xhr.onload = function () {
                             if (xhr.status == 200) {
                                 var driver = new csv_driver_1.CsvFormatDriver(csv_driver_1.CSV_COLUMN_ALIASES);
                                 driver.tryParse(xhr.responseText.length, xhr.responseText).then(function (pf) {
                                     var _a;
-                                    pf.addTo(vectorSource_2, projection, (_a = defn.meta) === null || _a === void 0 ? void 0 : _a.projection);
+                                    pf.addTo(vectorSource_3, projection, (_a = defn.meta) === null || _a === void 0 ? void 0 : _a.projection);
                                 }).catch(function (e) { return onError(); });
                             }
                             else {
@@ -12063,7 +12133,7 @@ function createOLLayerFromSubjectDefn(defn, mapProjection, isExternal, appSettin
                     },
                     attributions: defn.sourceParams.attributions
                 });
-                var layer = new Vector_1.default((0, tslib_1.__assign)((0, tslib_1.__assign)({}, defn.layerOptions), { source: clusterSourceIfRequired(vectorSource_2, defn) }));
+                var layer = new Vector_1.default((0, tslib_1.__assign)((0, tslib_1.__assign)({}, defn.layerOptions), { source: clusterSourceIfRequired(vectorSource_3, defn) }));
                 (0, ol_style_helpers_1.setOLVectorLayerStyle)(layer, (_h = defn.vectorStyle) !== null && _h !== void 0 ? _h : ol_style_contracts_1.DEFAULT_VECTOR_LAYER_STYLE, defn.cluster);
                 applyVectorLayerProperties(defn, layer, isExternal);
                 return layer;
@@ -12096,6 +12166,17 @@ function createOLLayerFromSubjectDefn(defn, mapProjection, isExternal, appSettin
                 layer.setVisible(defn.initiallyVisible);
                 return layer;
             }
+        case defs_1.GenericSubjectLayerType.WFS:
+            {
+                var sourceArgs = (0, tslib_1.__assign)({}, defn.sourceParams);
+                var layer = new Vector_1.default((0, tslib_1.__assign)((0, tslib_1.__assign)({}, defn.layerOptions), { source: new Vector_2.default((0, tslib_1.__assign)((0, tslib_1.__assign)({}, sourceArgs), { format: new GeoJSON_1.default({
+                            dataProjection: (_j = defn.meta) === null || _j === void 0 ? void 0 : _j.projection,
+                            featureProjection: mapProjection
+                        }) })) }));
+                (0, ol_style_helpers_1.setOLVectorLayerStyle)(layer, (_k = defn.vectorStyle) !== null && _k !== void 0 ? _k : ol_style_contracts_1.DEFAULT_VECTOR_LAYER_STYLE, defn.cluster);
+                applyVectorLayerProperties(defn, layer, isExternal);
+                return layer;
+            }
         case defs_1.GenericSubjectLayerType.CustomVector:
             {
                 if ((0, string_1.strIsNullOrEmpty)(defn.driverName)) {
@@ -12109,7 +12190,7 @@ function createOLLayerFromSubjectDefn(defn, mapProjection, isExternal, appSettin
                 var layer = factory(defn.sourceParams, defn.meta, defn.layerOptions, appSettings);
                 var source = clusterSourceIfRequired(layer.getSource(), defn);
                 layer.setSource(source);
-                (0, ol_style_helpers_1.setOLVectorLayerStyle)(layer, (_j = defn.vectorStyle) !== null && _j !== void 0 ? _j : ol_style_contracts_1.DEFAULT_VECTOR_LAYER_STYLE, defn.cluster);
+                (0, ol_style_helpers_1.setOLVectorLayerStyle)(layer, (_l = defn.vectorStyle) !== null && _l !== void 0 ? _l : ol_style_contracts_1.DEFAULT_VECTOR_LAYER_STYLE, defn.cluster);
                 applyVectorLayerProperties(defn, layer, isExternal);
                 return layer;
             }
@@ -13637,7 +13718,8 @@ function isGeoJsonMimeType(mimeType) {
     var _a;
     var lmt = (_a = mimeType === null || mimeType === void 0 ? void 0 : mimeType.toLowerCase()) !== null && _a !== void 0 ? _a : "";
     if (lmt.indexOf("application/vnd.geo+json") >= 0 ||
-        lmt.indexOf("application/json") >= 0) {
+        lmt.indexOf("application/json") >= 0 ||
+        lmt.indexOf("geojson") >= 0) {
         return true;
     }
     return false;
