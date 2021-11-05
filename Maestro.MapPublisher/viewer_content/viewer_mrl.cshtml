@@ -11,11 +11,26 @@
     <link rel="stylesheet" href="css/@(((MapGuideReactLayoutViewerOptions)Model.ViewerOptions).TemplateName).css" type="text/css" />
     @if (((MapGuideReactLayoutViewerOptions)Model.ViewerOptions).AddPolyfills)
     {
-    <!-- NOTE: If you don't care about IE, you can remove/comment the script reference below -->
-    <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CPromise.prototype.finally%2CArray.isArray%2CArray.prototype.find%2CArray.prototype.includes%2CObject.assign%2CMath.log2%2Cfetch%2CNumber.isFinite"></script>
+        <!-- NOTE: If you don't care about IE, you can remove/comment the script reference below -->
+        <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CPromise.prototype.finally%2CArray.isArray%2CArray.prototype.find%2CArray.prototype.includes%2CObject.assign%2CMath.log2%2Cfetch%2CNumber.isFinite"></script>
     }
-    <script type="text/javascript" src="dist/vendor.js" charset="utf-8"></script>
-    <script type="text/javascript" src="dist/viewer.js" charset="utf-8"></script>
+    <script type="text/javascript" src="dist/vendor-debug.js" charset="utf-8"></script>
+    <script type="text/javascript" src="dist/viewer-debug.js" charset="utf-8"></script>
+    @if (Model.HasOverlayLayer(OverlayLayerType.GeoJSON_FromMapGuide))
+    {
+        <script type="text/javascript" src="assets/geojson-vt.js" charset="utf-8"></script>
+    }
+    @if (Model.OverlayLayers != null)
+    {
+        foreach (var extLayer in Model.OverlayLayers)
+        {
+            if (extLayer.Type == OverlayLayerType.GeoJSON_FromMapGuide)
+            {
+                @* No need to emit config script as mapguide-react-layout includes geojson-vt and knows when to use it *@
+                <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.DataScriptRelPath)" charset="utf-8"></script>
+            }
+        }
+    }
     <style type="text/css">
         html, body, #map {
             padding: 0;
@@ -36,17 +51,17 @@
     <div id="map"></div>
     <script type="text/javascript">
         var el = document.getElementById("map");
-        var viewer = new MapGuide.Application();
-
+        var app = new MapGuide.Application();
         var appDef = @(Model.Meta.AppDefJson);
 
-        viewer.mount(el, {
+        app.mount(el, {
             layout: "@(((MapGuideReactLayoutViewerOptions)Model.ViewerOptions).TemplateName)",
             mapguide: {
                 agentUri: "@(Model.MapAgent)"
             },
             resourceId: () => Promise.resolve(appDef)
         });
+
     </script>
 </body>
 </html>

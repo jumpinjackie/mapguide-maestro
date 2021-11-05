@@ -316,6 +316,75 @@ namespace Maestro.MapPublisher
                 sub.SetSubjectOrExternalLayerProperties((IDictionary<string, object>)props);
                 mg.AddMap(sub);
             }
+
+            foreach (var ov in vm.OverlayLayers)
+            {
+                string sType = null;
+                switch (ov.Type)
+                {
+                    case OverlayLayerType.GeoJSON_External:
+                    case OverlayLayerType.GeoJSON_FromMapGuide:
+                        sType = "GeoJSON";
+                        break;
+                    case OverlayLayerType.WFS:
+                        sType = "WFS";
+                        break;
+                    case OverlayLayerType.WMS:
+                        sType = "TileWMS";
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                var ext = mg.CreateExternalLayerEntry(ov.Name, sType);
+                dynamic props = new ExpandoObject();
+                props.layer_name = ov.Name;
+                props.source_type = sType;
+                props.initially_visible = ov.InitiallyVisible;
+
+                switch (ov.Type)
+                {
+                    case OverlayLayerType.GeoJSON_External:
+                        {
+                            var gov = ((GeoJSONExternalOverlayLayer)ov);
+                            props.source_param_url = gov.Url;
+                        }
+                        break;
+                    case OverlayLayerType.GeoJSON_FromMapGuide:
+                        {
+                            var gov = ((GeoJSONFromMapGuideOverlayLayer)ov);
+                            if (!string.IsNullOrEmpty(gov.Downloaded.GlobalVar))
+                            {
+                                props.source_param_url = new ExpandoObject();
+                                props.source_param_url.var_source = gov.Downloaded.GlobalVar;
+                            }
+                            else
+                            {
+                                props.source_param_url = $"";
+                            }
+                        }
+                        break;
+                    case OverlayLayerType.WFS:
+                        {
+                            var wov = ((WFSOverlayLayer)ov);
+                            props.source_param_url = $"{wov.Service}?service=WFS&version={wov.WfsVersion ?? "2.0.0"}&request=GetFeatures&typenames={wov.FeatureName}&outputFormat=application/json&srsName=EPSG:3857";
+                        }
+                        break;
+                    case OverlayLayerType.WMS:
+                        {
+                            var wov = ((WMSOverlayLayer)ov);
+                            props.source_param_url = wov.Service;
+                            props.source_param_params = new ExpandoObject();
+                            props.source_param_params.LAYERS = wov.Layer;
+                            props.source_param_params.TILED = wov.Tiled ? "1" : "0";
+                        }
+                        break;
+                }
+
+                ext.SetSubjectOrExternalLayerProperties((IDictionary<string, object>)props);
+
+                mg.AddMap(ext);
+            }
         }
     }
 }

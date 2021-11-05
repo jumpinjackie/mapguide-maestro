@@ -88,6 +88,7 @@ namespace OSGeo.MapGuide.ObjectModels.Json
 
             //Force data types on known map extension elements
             ForceDataTypeByTagName(doc, "meta_extents", JsonDataType.Float);
+            ForceDataTypeByTagName(doc, "initially_visible", JsonDataType.Boolean);
 
             //Clean out XML schema related crap that has no business being serialized out to JSON
             var removeRootAttrs = new List<XmlAttribute>();

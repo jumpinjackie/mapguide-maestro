@@ -46,6 +46,43 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         }
 
         [Fact]
+        public void ApplicationDefinition_SubjectLayer_NestedParams()
+        {
+            var res = CreateFlexLayout();
+            //Make our MapGroup
+            var mg = res.AddMapGroup("MainMap");
+            //Make subject layer
+            var sub = mg.CreateSubjectLayerEntry("Parcels", "GeoJSON");
+            dynamic props = new ExpandoObject();
+            props.layer_name = "Sheboygan";
+            props.source_type = "GeoJSON";
+            props.source_param_url = new ExpandoObject();
+            props.source_param_url.var_source = "myParcelFeatures";
+            props.meta_extents = new[] { -9769953.66131227, 5417808.88017179, -9762220.79944393, 5434161.22418638 };
+            props.meta_projection = "EPSG:3857";
+
+            sub.SetSubjectOrExternalLayerProperties((IDictionary<string, object>)props);
+
+            mg.AddMap(sub);
+
+            string json = AppDefJsonSerializer.Serialize(res);
+            var appDef = JObject.Parse(json);
+
+            // Verify types of converted elements
+            var mapEl = appDef.SelectToken("MapSet.MapGroup[0].Map[0]");
+            Assert.Equal("SubjectLayer", mapEl["Type"].Value<string>());
+            var urls = mapEl.SelectToken("Extension.source_param_url.var_source");
+            Assert.NotNull(urls);
+            Assert.Equal(JTokenType.String, urls.Type);
+            var extents = mapEl.SelectToken("Extension.meta_extents");
+            Assert.Equal(JTokenType.Array, extents.Type);
+            foreach (var ev in (JArray)extents)
+            {
+                Assert.Equal(JTokenType.Float, ev.Type);
+            }
+        }
+
+        [Fact]
         public void ApplicationDefinition_SubjectLayers()
         {
             var res = CreateFlexLayout();

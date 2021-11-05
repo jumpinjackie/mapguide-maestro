@@ -982,7 +982,28 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
             if (value is IConvertible i)
             {
                 var el = AppDefDocument.Instance.CreateElement(name);
-                el.InnerText = i.ToString(CultureInfo.InvariantCulture);
+                if (value is bool b)
+                {
+                    el.InnerText = b ? "true" : "false";
+                }
+                else
+                {
+                    el.InnerText = i.ToString(CultureInfo.InvariantCulture);
+                }
+                yield return el;
+            }
+            else if (value is IDictionary<string, object> dict)
+            {
+                var el = AppDefDocument.Instance.CreateElement(name);
+
+                foreach (var kvp in dict)
+                {
+                    foreach (var ch in SetElementContent(kvp.Key, kvp.Value))
+                    {
+                        el.AppendChild(ch);
+                    }
+                }
+
                 yield return el;
             }
             else if (value is IEnumerable e)
@@ -1462,6 +1483,14 @@ public class ArbitraryWidgetValue : WidgetValue
         /// <param name="sourceType"></param>
         /// <returns></returns>
         IMap CreateSubjectLayerEntry(string name, string sourceType);
+
+        /// <summary>
+        /// Creates an external layer entry
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="sourceType"></param>
+        /// <returns></returns>
+        IMap CreateExternalLayerEntry(string name, string sourceType);
 
         /// <summary>
         /// Creates a UTFGrid tileset entry
