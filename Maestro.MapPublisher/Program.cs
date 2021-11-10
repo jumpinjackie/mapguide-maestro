@@ -367,7 +367,7 @@ namespace Maestro.MapPublisher
                     case OverlayLayerType.WFS:
                         {
                             var wov = ((WFSOverlayLayer)ov);
-                            props.source_param_url = $"{wov.Service}?service=WFS&version={wov.WfsVersion ?? "2.0.0"}&request=GetFeatures&typenames={wov.FeatureName}&outputFormat=application/json&srsName=EPSG:3857";
+                            props.source_param_url = $"{wov.Service}?service=WFS&version={wov.WfsVersion ?? "2.0.0"}&request=GetFeature&typenames={wov.FeatureName}&outputFormat=application/json&srsName=EPSG:3857";
                         }
                         break;
                     case OverlayLayerType.WMS:
