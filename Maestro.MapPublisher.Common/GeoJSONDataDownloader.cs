@@ -24,7 +24,6 @@ using OSGeo.FDO.Expressions;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -71,7 +70,7 @@ namespace Maestro.MapPublisher.Common
                 //case GeoJSONFromMapGuideOrigin.FeatureSource:
                 //    return DownloadFromFeatureSourceAsync(layerNumber, layer.Name, (GeoJSONFromFeatureSource)layer.Source);
                 case GeoJSONFromMapGuideOrigin.LayerDefinition:
-                    return DownloadFromLayerDefinitionAsync(layerNumber, layer.Name, (GeoJSONFromLayerDefinition)layer.Source);
+                    return DownloadFromLayerDefinitionAsync(layerNumber, layer.Name, _options.ViewerOptions.Type, (GeoJSONFromLayerDefinition)layer.Source);
             }
             throw new ArgumentOutOfRangeException("Unknown origin");
         }
@@ -290,6 +289,11 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
                 await sw.WriteLineAsync("}");
                 await lst.WritePointMarker(GetVariableName(layerNumber), vsr, sw);
             }
+            else if (_options.ViewerOptions.Type == ViewerType.MapGuideReactLayout)
+            {
+                var mst = new MrlStyleTranslator(vl);
+                await mst.WriteVectorStyleDefnAsync($"{GetVariableName(layerNumber)}_style", sw);
+            }
         }
 
         private string BuildSelectFeaturesUrl(string featureSource, string className, int? precision = null, string filter = null)
@@ -321,7 +325,7 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
             return reqUrl;
         }
 
-        private async Task<DownloadedFeaturesRef> DownloadFromLayerDefinitionAsync(int layerNumber, string name, GeoJSONFromLayerDefinition source)
+        private async Task<DownloadedFeaturesRef> DownloadFromLayerDefinitionAsync(int layerNumber, string name, ViewerType vtype, GeoJSONFromLayerDefinition source)
         {
             var grcUrl = GetResourceContentUrl(source.LayerDefinition);
             var resp = await httpClient.GetAsync(grcUrl);
@@ -353,7 +357,14 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
 
             using (var stream = await resp.Content.ReadAsStreamAsync())
             {
-                return await DownloadFeatureDataAsync(vl, layerNumber, name, stream, source.LoadAsVectorTiles);
+                var loadAsVt = source.LoadAsVectorTiles;
+                if (vtype == ViewerType.MapGuideReactLayout)
+                {
+                    // mapguide-react-layout has built in support for this, so emitting geojson-vt setup
+                    // code is not necessary
+                    loadAsVt = false;
+                }
+                return await DownloadFeatureDataAsync(vl, layerNumber, name, stream, loadAsVt);
             }
         }
         /*

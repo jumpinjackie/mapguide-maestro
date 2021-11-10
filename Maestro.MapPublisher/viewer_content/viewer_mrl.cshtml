@@ -16,18 +16,14 @@
     }
     <script type="text/javascript" src="dist/vendor-debug.js" charset="utf-8"></script>
     <script type="text/javascript" src="dist/viewer-debug.js" charset="utf-8"></script>
-    @if (Model.HasOverlayLayer(OverlayLayerType.GeoJSON_FromMapGuide))
-    {
-        <script type="text/javascript" src="assets/geojson-vt.js" charset="utf-8"></script>
-    }
     @if (Model.OverlayLayers != null)
     {
         foreach (var extLayer in Model.OverlayLayers)
         {
             if (extLayer.Type == OverlayLayerType.GeoJSON_FromMapGuide)
             {
-                @* No need to emit config script as mapguide-react-layout includes geojson-vt and knows when to use it *@
-                <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.DataScriptRelPath)" charset="utf-8"></script>
+    <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.DataScriptRelPath)" charset="utf-8"></script>
+    <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ConfigScriptRelPath)" charset="utf-8"></script>
             }
         }
     }
@@ -53,6 +49,29 @@
         var el = document.getElementById("map");
         var app = new MapGuide.Application();
         var appDef = @(Model.Meta.AppDefJson);
+
+        @if (Model.OverlayLayers != null)
+        {
+        <text>
+        //Attach any vector styles
+        var mGroup = appDef.MapSet.MapGroup[0];
+        </text>
+            var counter = 0;
+            foreach (var extLayer in Model.OverlayLayers)
+            {
+                if (extLayer.Type == OverlayLayerType.GeoJSON_FromMapGuide)
+                {
+        <text>
+        //Attach vector style for layer (@extLayer.Name)
+        var layer@(counter) = mGroup.Map.find(m => m.Extension.layer_name == "@extLayer.Name");
+        if (layer@(counter)) {
+            layer@(counter).Extension.vector_layer_style = @(GeoJSONDataDownloader.GetVariableName(counter))_style;
+        }
+        </text>
+                }
+                counter++;
+            }
+        }
 
         app.mount(el, {
             layout: "@(((MapGuideReactLayoutViewerOptions)Model.ViewerOptions).TemplateName)",
