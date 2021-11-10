@@ -34,6 +34,12 @@ namespace Maestro.MapPublisher.Common
 {
     public class MrlStyleTranslator
     {
+        enum TextPlacementKind
+        {
+            line,
+            point
+        }
+
         class StyleSet
         {
             public IAreaRule Area { get; set; }
@@ -217,7 +223,7 @@ namespace Maestro.MapPublisher.Common
                     if (defaultStyle.Line.Label != null)
                     {
                         st.line.label = new ExpandoObject();
-                        ApplyLabel(st.line.label, defaultStyle.Line.Label);
+                        ApplyLabel(st.line.label, defaultStyle.Line.Label, TextPlacementKind.line);
                     }
                 }
             }
@@ -269,9 +275,20 @@ namespace Maestro.MapPublisher.Common
             ds.width = Math.Max(TryGetDoubleExprValue(ew) ?? 0, 0.1);
         }
 
-        void ApplyLabel(dynamic lbl, ITextSymbol label)
+        void ApplyLabel(dynamic lbl, ITextSymbol label, TextPlacementKind kind)
         {
-            lbl.text = label.Text;
+            lbl.placement = kind.ToString();
+
+            var eText = FdoExpression.Parse(label.Text);
+            if (eText.ExpressionType == ExpressionType.Identifier)
+            {
+                lbl.text = new ExpandoObject();
+                lbl.text.expr = label.Text;
+            }
+            else
+            {
+                lbl.text = label.Text;
+            }
             lbl.font = label.FontName;
             var eRot = FdoExpression.Parse(label.Rotation);
             lbl.rotation = TryGetDoubleExprValue(eRot);
