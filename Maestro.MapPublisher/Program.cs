@@ -25,6 +25,7 @@ using Maestro.MapPublisher.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Schema.Generation;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using OSGeo.MapGuide.ObjectModels.Json;
 using RazorEngine;
@@ -385,6 +386,31 @@ namespace Maestro.MapPublisher
 
                 mg.AddMap(ext);
             }
+
+            //mapguide-react-layout extras
+            var fusionSvc = conn.GetService((int)ServiceType.Fusion) as IFusionService;
+            var invokeUrlTemplate = fusionSvc.GetApplicationWidgets().FindWidget("InvokeURL");
+
+            var wLayerMgr = appDef.CreateWidget("layerManager", invokeUrlTemplate) as IUIWidget;
+            wLayerMgr.Label = "Manage External Layers";
+            wLayerMgr.Tooltip = "Add new layers to this map or manage existing ones";
+            wLayerMgr.ImageClass = "invoke-url";
+            wLayerMgr.SetValue("Url", "component://AddManageLayers");
+            wLayerMgr.SetValue("Target", "TaskPane");
+            var wShareLink = appDef.CreateWidget("shareLinkToView", invokeUrlTemplate) as IUIWidget;
+            wShareLink.Label = "Link To View";
+            wShareLink.Tooltip = "Generates a shareable link to this map view";
+            wShareLink.ImageClass = "invoke-url";
+            wShareLink.SetValue("Url", "component://ShareLinkToView");
+            wShareLink.SetValue("Target", "TaskPane");
+
+            var widgetSet = appDef.WidgetSets.First();
+            widgetSet.AddWidget(wLayerMgr);
+            widgetSet.AddWidget(wShareLink);
+
+            var tb = widgetSet.Containers.FirstOrDefault(t => t.Name == "Toolbar") as IUIItemContainer;
+            tb.AddItem(appDef.CreateWidgetReference("layerManager"));
+            tb.AddItem(appDef.CreateWidgetReference("shareLinkToView"));
         }
     }
 }

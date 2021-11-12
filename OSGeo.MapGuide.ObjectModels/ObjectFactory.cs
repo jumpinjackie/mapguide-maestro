@@ -825,7 +825,6 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             KnownWidgetNames.ColorPicker,
             KnownWidgetNames.ActivityIndicator,
-            KnownWidgetNames.Print,
             KnownWidgetNames.SaveMap,
             KnownWidgetNames.LinkToView,
             KnownWidgetNames.SelectRadiusValue,
@@ -1055,6 +1054,10 @@ namespace OSGeo.MapGuide.ObjectModels
             if (siteVersion >= new Version(2, 2) && !statelessMode)
             {
                 toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.QuickPlot));
+            }
+            else if (statelessMode)
+            {
+                toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Print));
             }
 
             toolbar.AddItem(appDef.CreateSeparator());

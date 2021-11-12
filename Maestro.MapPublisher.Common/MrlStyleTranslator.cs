@@ -193,6 +193,7 @@ namespace Maestro.MapPublisher.Common
             if (defaultStyle.Point != null)
             {
                 var psym = defaultStyle.Point.PointSymbolization2D.Symbol;
+                var radius = TryParseRadius(psym) ?? 1;
                 if (psym.Type == PointSymbolType.Mark)
                 {
                     st.point = new ExpandoObject();
@@ -210,13 +211,14 @@ namespace Maestro.MapPublisher.Common
                         ApplyStroke(st.point.stroke, msym.Edge);
                     }
 
-                    st.point.radius = TryParseRadius(psym) ?? 1;
+                    st.point.radius = radius;
                 }
 
                 if (defaultStyle.Point.Label != null)
                 {
                     st.point.label = new ExpandoObject();
                     ApplyLabel(st.point.label, defaultStyle.Point.Label, TextPlacementKind.point);
+                    st.point.label.offsetX = radius + 3; //Offset a bit so there is enough breathing space between the symbol and level
                 }
                 
             }
@@ -296,6 +298,8 @@ namespace Maestro.MapPublisher.Common
             {
                 lbl.text = label.Text;
             }
+
+            lbl.textAlign = "left";
 
             var (size, units) = GetUnits(label);
             if (!size.HasValue || units == null)
