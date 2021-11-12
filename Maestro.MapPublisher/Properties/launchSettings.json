@@ -2,7 +2,7 @@
   "profiles": {
     "Maestro.MapPublisher": {
       "commandName": "Project",
-      "commandLineArgs": "publish --publish-profile-path \"E:\\temp\\sheboygan-mrl.json\""
+      "commandLineArgs": "publish --publish-profile-path \"E:\\temp\\sheboygan-ol.json\""
     }
   }
 }
