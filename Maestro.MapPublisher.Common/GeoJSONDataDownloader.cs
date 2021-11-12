@@ -24,7 +24,6 @@ using OSGeo.FDO.Expressions;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -71,7 +70,7 @@ namespace Maestro.MapPublisher.Common
                 //case GeoJSONFromMapGuideOrigin.FeatureSource:
                 //    return DownloadFromFeatureSourceAsync(layerNumber, layer.Name, (GeoJSONFromFeatureSource)layer.Source);
                 case GeoJSONFromMapGuideOrigin.LayerDefinition:
-                    return DownloadFromLayerDefinitionAsync(layerNumber, layer.Name, (GeoJSONFromLayerDefinition)layer.Source);
+                    return DownloadFromLayerDefinitionAsync(layerNumber, layer.Name, _options.ViewerOptions.Type, (GeoJSONFromLayerDefinition)layer.Source);
             }
             throw new ArgumentOutOfRangeException("Unknown origin");
         }
@@ -135,10 +134,10 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
 
         private async Task WritePopupConfigurationAsync(IVectorLayerDefinition vl, int layerNumber, string name, StreamWriter sw)
         {
-            await sw.WriteLineAsync($"//{_options.Viewer} popup template configuration for: {name}");
+            await sw.WriteLineAsync($"//{_options.ViewerOptions.Type} popup template configuration for: {name}");
             if (vl.PropertyMapping.Any())
             {
-                switch (_options.Viewer)
+                switch (_options.ViewerOptions.Type)
                 {
                     case ViewerType.Leaflet:
                         {
@@ -218,7 +217,7 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
             }
             else
             {
-                switch (_options.Viewer)
+                switch (_options.ViewerOptions.Type)
                 {
                     case ViewerType.Leaflet:
                         {
@@ -253,7 +252,7 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
                 return;
             }
 
-            if (_options.Viewer == ViewerType.OpenLayers)
+            if (_options.ViewerOptions.Type == ViewerType.OpenLayers)
             {
                 var olx = new OLStyleTranslator("feature");
                 await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_style = function ({olx.FeatureVariableName}, resolution) {{");
@@ -271,7 +270,7 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
                 }
                 await sw.WriteLineAsync("}");
             }  
-            else if (_options.Viewer == ViewerType.Leaflet)
+            else if (_options.ViewerOptions.Type == ViewerType.Leaflet)
             {
                 var lst = new LeafletStyleTranslator("feature");
                 await sw.WriteLineAsync($"var {GetVariableName(layerNumber)}_style = function ({lst.FeatureVariableName}) {{");
@@ -290,19 +289,24 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
                 await sw.WriteLineAsync("}");
                 await lst.WritePointMarker(GetVariableName(layerNumber), vsr, sw);
             }
+            else if (_options.ViewerOptions.Type == ViewerType.MapGuideReactLayout)
+            {
+                var mst = new MrlStyleTranslator(vl);
+                await mst.WriteVectorStyleDefnAsync($"{GetVariableName(layerNumber)}_style", sw);
+            }
         }
 
         private string BuildSelectFeaturesUrl(string featureSource, string className, int? precision = null, string filter = null)
         {
-            var reqUrl = $"{_options.MapAgent}?OPERATION=SELECTFEATURES&VERSION=4.0.0&FORMAT=application/json&CLEAN=1";
+            var reqUrl = $"{_options.MapAgent.Endpoint}?OPERATION=SELECTFEATURES&VERSION=4.0.0&FORMAT=application/json&CLEAN=1";
             reqUrl += "&CLIENTAGENT=Maestro.MapPublisher";
             reqUrl += $"&RESOURCEID={featureSource}&CLASSNAME={className}";
             reqUrl += $"&TRANSFORMTO={_outputCsCode}";
-            reqUrl += $"&USERNAME={_options.Username ?? "Anonymous"}";
+            reqUrl += $"&USERNAME={_options.MapAgent.Username ?? "Anonymous"}";
             if (precision.HasValue)
                 reqUrl += $"&PRECISION={precision.Value}";
-            if (!string.IsNullOrEmpty(_options.Password))
-                reqUrl += $"&PASSWORD={_options.Password}";
+            if (!string.IsNullOrEmpty(_options.MapAgent.Password))
+                reqUrl += $"&PASSWORD={_options.MapAgent.Password}";
             if (!string.IsNullOrEmpty(filter))
                 reqUrl += $"&FILTER={filter}";
 
@@ -311,17 +315,17 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
 
         private string GetResourceContentUrl(string resourceId)
         {
-            var reqUrl = $"{_options.MapAgent}?OPERATION=GETRESOURCECONTENT&VERSION=1.0.0&FORMAT=text/xml";
+            var reqUrl = $"{_options.MapAgent.Endpoint}?OPERATION=GETRESOURCECONTENT&VERSION=1.0.0&FORMAT=text/xml";
             reqUrl += "&CLIENTAGENT=Maestro.MapPublisher";
             reqUrl += $"&RESOURCEID={resourceId}";
-            reqUrl += $"&USERNAME={_options.Username ?? "Anonymous"}";
-            if (!string.IsNullOrEmpty(_options.Password))
-                reqUrl += $"&PASSWORD={_options.Password}";
+            reqUrl += $"&USERNAME={_options.MapAgent.Username ?? "Anonymous"}";
+            if (!string.IsNullOrEmpty(_options.MapAgent.Password))
+                reqUrl += $"&PASSWORD={_options.MapAgent.Password}";
 
             return reqUrl;
         }
 
-        private async Task<DownloadedFeaturesRef> DownloadFromLayerDefinitionAsync(int layerNumber, string name, GeoJSONFromLayerDefinition source)
+        private async Task<DownloadedFeaturesRef> DownloadFromLayerDefinitionAsync(int layerNumber, string name, ViewerType vtype, GeoJSONFromLayerDefinition source)
         {
             var grcUrl = GetResourceContentUrl(source.LayerDefinition);
             var resp = await httpClient.GetAsync(grcUrl);
@@ -353,7 +357,19 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
 
             using (var stream = await resp.Content.ReadAsStreamAsync())
             {
-                return await DownloadFeatureDataAsync(vl, layerNumber, name, stream, source.LoadAsVectorTiles);
+                var loadAsVt = source.LoadAsVectorTiles;
+                if (vtype == ViewerType.MapGuideReactLayout)
+                {
+                    // mapguide-react-layout has built in support for this, so emitting geojson-vt setup
+                    // code is not necessary
+                    loadAsVt = false;
+                }
+                else if (vtype == ViewerType.Leaflet)
+                {
+                    // We can't support this option for leaflet so disable
+                    loadAsVt = false;
+                }
+                return await DownloadFeatureDataAsync(vl, layerNumber, name, stream, loadAsVt);
             }
         }
         /*

@@ -34,10 +34,12 @@ A publish profile controls what the published interactive map will look like. Be
 {
     "Title": "MapGuide Published Map",
     "MaxDegreeOfParallelism": 16,
-    "MapAgent": "http://localhost/mapguide/mapagent/mapagent.fcgi",
+    "MapAgent": {
+        "Endpoint": "http://localhost/mapguide/mapagent/mapagent.fcgi",
+        "Username": "Anonymous",
+        "Password": ""
+    },
     "OutputDirectory": "D:/temp/StaticPublish",
-    "Username": "Anonymous",
-    "Password": "",
     "RandomizeRequests": true,
     "OutputPageFileName": "index_ol.html",
     "ViewerOptions": {
@@ -138,13 +140,13 @@ This is a ***Tile Download*** control value and defines how many concurrent tile
 
 If you are not downloading tiles, this value has no effect.
 
-## MapAgent
+## MapAgent > Endpoint
 
 The web tier endpoint of the MapGuide Server.
 
 If seeding tiles or downloading GeoJSON data, this is the endpoint it will contact.
 
-## Username/Password
+## MapAgent > Username/Password
 
 Credentials required for the web tier endpoint. If not seeding tiles (but consuming them directly), these credentials are baked into the tile source URLs.
 

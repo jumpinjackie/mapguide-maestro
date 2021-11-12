@@ -39,6 +39,8 @@ namespace Maestro.MapPublisher.Common.Serialization
                     return JsonConvert.DeserializeObject<LeafletViewerOptions>(json, SpecifiedSubclassConversion);
                 case nameof(ViewerType.OpenLayers):
                     return JsonConvert.DeserializeObject<OpenLayersViewerOptions>(json, SpecifiedSubclassConversion);
+                case nameof(ViewerType.MapGuideReactLayout):
+                    return JsonConvert.DeserializeObject<MapGuideReactLayoutViewerOptions>(json, SpecifiedSubclassConversion);
                 default:
                     throw new ArgumentOutOfRangeException();
             }

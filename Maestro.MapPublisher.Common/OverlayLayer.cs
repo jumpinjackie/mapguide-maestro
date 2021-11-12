@@ -61,6 +61,8 @@ namespace Maestro.MapPublisher.Common
         public string Service { get; set; }
 
         public string FeatureName { get; set; }
+
+        public string WfsVersion { get; set; }
     }
 
     public class GeoJSONExternalOverlayLayer : OverlayLayer

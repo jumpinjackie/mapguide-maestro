@@ -60,7 +60,7 @@
 
     @if (Model.HasExternalBaseLayer(ExternalBaseLayerType.BingMaps))
     {
-    <script type="text/javascript" src="assets/leaflet-bing-layer.js" charset="utf-8"></script>
+        <script type="text/javascript" src="assets/leaflet-bing-layer.js" charset="utf-8"></script>
     }
 
     @if (!string.IsNullOrEmpty(Model.UTFGridUrl))
@@ -76,7 +76,8 @@
         {
             if (extLayer.Type == OverlayLayerType.GeoJSON_FromMapGuide)
             {
-                <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ScriptRelPath)" charset="utf-8"></script>
+    <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.DataScriptRelPath)" charset="utf-8"></script>
+    <script type="text/javascript" src="@(((GeoJSONFromMapGuideOverlayLayer)extLayer).Downloaded.ConfigScriptRelPath)" charset="utf-8"></script>
             }
         }
     }
@@ -109,7 +110,7 @@
                 {
                     case ExternalBaseLayerType.OSM:
                         <text>
-        var @(extLayer.Type)_@(counter) = L.tileLayer( '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        var @(extLayer.Type)_@(counter) = L.tileLayer( 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
             subdomains: ['a','b','c']
         });
@@ -118,7 +119,7 @@
                         break;
                     case ExternalBaseLayerType.Stamen:
                         <text>
-        var @(extLayer.Type)_@(counter) = L.tileLayer( '//stamen-tiles-{s}.a.ssl.fastly.net/@(extLayer.LayerType.ToString().ToLower())/{z}/{x}/{y}.png', {
+        var @(extLayer.Type)_@(counter) = L.tileLayer( 'https://stamen-tiles-{s}.a.ssl.fastly.net/@(extLayer.LayerType.ToString().ToLower())/{z}/{x}/{y}.png', {
             attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
             subdomains: ['a','b','c']
         });
@@ -256,7 +257,14 @@
             }
         }
 
-        var mainLayers = L.layerGroup([mainXYZImage, mainUTFGrid]);
+        var mainLayerList = [];
+        if (typeof(mainXYZImage) != 'undefined') {
+            mainLayerList.push(mainXYZImage);
+        }
+        if (typeof(mainUTFGrid) != 'undefined') {
+            mainLayerList.push(mainUTFGrid);
+        }
+        var mainLayers = L.layerGroup(mainLayerList);
         var base = {};
         var overlays = {};
 

@@ -40,7 +40,7 @@ namespace Maestro.MapPublisher.Common
 
         static string BuildUrlTemplate(IStaticMapPublishingOptions options, Func<IStaticMapPublishingOptions, string> getResource, Func<IStaticMapPublishingOptions, string> getGroupName)
         {
-            return $"{options.MapAgent}?USERNAME={options.Username}&PASSWORD={options.Password}&LOCALE=en&CLIENTAGENT=Maestro.MapPublisher&OPERATION=GETTILEIMAGE&VERSION=1.2.0&MAPDEFINITION={getResource(options)}&BASEMAPLAYERGROUPNAME={getGroupName(options)}&SCALEINDEX={{z}}&TILEROW={{x}}&TILECOL={{y}}";
+            return $"{options.MapAgent.Endpoint}?USERNAME={options.MapAgent.Username}&PASSWORD={options.MapAgent.Password}&LOCALE=en&CLIENTAGENT=Maestro.MapPublisher&OPERATION=GETTILEIMAGE&VERSION=1.2.0&MAPDEFINITION={getResource(options)}&BASEMAPLAYERGROUPNAME={getGroupName(options)}&SCALEINDEX={{z}}&TILEROW={{x}}&TILECOL={{y}}";
         }
 
         public static string GetResourceRelPath(IStaticMapPublishingOptions options, Func<IStaticMapPublishingOptions, string> getResource)
