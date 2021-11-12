@@ -364,6 +364,11 @@ var {GetVariableName(layerNumber)}_vtindex = geojsonvt({GetVariableName(layerNum
                     // code is not necessary
                     loadAsVt = false;
                 }
+                else if (vtype == ViewerType.Leaflet)
+                {
+                    // We can't support this option for leaflet so disable
+                    loadAsVt = false;
+                }
                 return await DownloadFeatureDataAsync(vl, layerNumber, name, stream, loadAsVt);
             }
         }
