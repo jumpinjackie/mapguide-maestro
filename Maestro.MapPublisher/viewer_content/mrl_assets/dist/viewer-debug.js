@@ -1915,7 +1915,7 @@ var DefaultViewerInitCommand = /** @class */ (function (_super) {
                             e = extraEpsgs_1[_j];
                             fetchEpsgs.push({ epsg: e, mapDef: "" });
                         }
-                        return [4 /*yield*/, Promise.all(fetchEpsgs.map(function (f) { return (0, projections_1.resolveProjectionFromEpsgIoAsync)(f.epsg, locale, f.mapDef); }))];
+                        return [4 /*yield*/, Promise.all(fetchEpsgs.filter(function (fe) { return !(0, string_1.strIsNullOrEmpty)(fe.epsg); }).map(function (f) { return (0, projections_1.resolveProjectionFromEpsgIoAsync)(f.epsg, locale, f.mapDef); }))];
                     case 13:
                         epsgs = _o.sent();
                         //Previously, we register proj4 with OpenLayers on the bootstrap phase way before this init
@@ -8042,6 +8042,45 @@ function getMetersPerUnit(projection) {
     var proj = (0, proj_1.get)(projection);
     return proj.getMetersPerUnit();
 }
+function toMetersPerUnit(unit) {
+    var u = toProjUnit(unit);
+    // Use OL-provided mpu if available
+    var mpu = proj_1.METERS_PER_UNIT[u];
+    if (mpu) {
+        return mpu;
+    }
+    else {
+        // Otherwise, compute ourselves
+        switch (unit) {
+            case common_1.UnitOfMeasure.Centimeters:
+                return 0.01;
+            case common_1.UnitOfMeasure.DMS:
+            case common_1.UnitOfMeasure.DecimalDegrees:
+            case common_1.UnitOfMeasure.Degrees:
+                return (2 * Math.PI * 6370997) / 360;
+            case common_1.UnitOfMeasure.Feet:
+                return 0.3048;
+            case common_1.UnitOfMeasure.Inches:
+                return 0.0254;
+            case common_1.UnitOfMeasure.Kilometers:
+                return 1000;
+            case common_1.UnitOfMeasure.Meters:
+                return 1;
+            case common_1.UnitOfMeasure.Miles:
+                return 1609.344;
+            case common_1.UnitOfMeasure.Millimeters:
+                return 0.001;
+            case common_1.UnitOfMeasure.NauticalMiles:
+                return 1852;
+            case common_1.UnitOfMeasure.Pixels:
+                return 1;
+            case common_1.UnitOfMeasure.Unknown:
+                return 1;
+            case common_1.UnitOfMeasure.Yards:
+                return 0.9144;
+        }
+    }
+}
 function toProjUnit(unit) {
     switch (unit) {
         case common_1.UnitOfMeasure.Meters:
@@ -8401,7 +8440,8 @@ var MgInnerLayerSetFactory = /** @class */ (function () {
             if (parsedArb) {
                 projection = new proj_1.Projection({
                     code: parsedArb.code,
-                    units: toProjUnit(parsedArb.units)
+                    units: toProjUnit(parsedArb.units),
+                    metersPerUnit: toMetersPerUnit(parsedArb.units)
                 });
             }
             else {
@@ -8563,6 +8603,7 @@ var MgInnerLayerSetFactory = /** @class */ (function () {
                 projection = new proj_1.Projection({
                     code: parsedArb.code,
                     units: toProjUnit(parsedArb.units),
+                    metersPerUnit: toMetersPerUnit(parsedArb.units),
                     extent: bounds
                 });
             }
@@ -10707,13 +10748,10 @@ function openModalUrl(name, dispatch, url, modalTitle) {
 }
 function isSupportedCommandInStatelessMode(name) {
     switch (name) {
-        case DefaultCommands.Select:
         case DefaultCommands.MapTip:
         case DefaultCommands.QuickPlot:
         case DefaultCommands.SelectRadius:
         case DefaultCommands.SelectPolygon:
-        case DefaultCommands.ClearSelection:
-        case DefaultCommands.ZoomToSelection:
         case DefaultCommands.Buffer:
         case DefaultCommands.SelectWithin:
         case DefaultCommands.Redline:
@@ -11466,7 +11504,7 @@ var About = function (props) {
         React.createElement("hr", null),
         React.createElement("p", null,
             "Hash: ",
-            "21c74c1b30ef36d65ecda029295fc55c8c22e093"),
+            "df6aa93b57cd59669eb330bf105049fe06c7f6cf"),
         React.createElement("hr", null),
         React.createElement("p", null,
             React.createElement("a", { target: "_blank", href: "https://github.com/jumpinjackie/mapguide-react-layout" }, "GitHub")),
@@ -16462,7 +16500,9 @@ var MapGuideMapProviderContext = /** @class */ (function (_super) {
         var _a, _b;
         if (this._comp) {
             this.handleMouseTooltipMouseMove(e);
-            this.handleHighlightHover(e);
+            if (this._state.activeTool == common_1.ActiveMapTool.Select) {
+                this.handleHighlightHover(e);
+            }
             if (this._comp.isContextMenuOpen()) {
                 return;
             }
