@@ -212,6 +212,13 @@ namespace Maestro.MapPublisher.Common
 
                     st.point.radius = TryParseRadius(psym) ?? 1;
                 }
+
+                if (defaultStyle.Point.Label != null)
+                {
+                    st.point.label = new ExpandoObject();
+                    ApplyLabel(st.point.label, defaultStyle.Point.Label, TextPlacementKind.point);
+                }
+                
             }
             if (defaultStyle.Line != null)
             {
@@ -289,10 +296,33 @@ namespace Maestro.MapPublisher.Common
             {
                 lbl.text = label.Text;
             }
-            lbl.font = label.FontName;
+
+            var (size, units) = GetUnits(label);
+            if (!size.HasValue || units == null)
+            {
+                size = 12;
+                units = "px";
+            }
+
+            lbl.font = $"{size}{units} \"{label.FontName}\"";
             var eRot = FdoExpression.Parse(label.Rotation);
             lbl.rotation = TryGetDoubleExprValue(eRot);
             // TODO: More properties
+        }
+
+        private (double? size, string units) GetUnits(ITextSymbol label)
+        {
+            var eSize = FdoExpression.Parse(label.SizeY);
+            var size = TryGetDoubleExprValue(eSize);
+            if (label.SizeContext == SizeContextType.DeviceUnits)
+            {
+                switch (label.Unit)
+                {
+                    case LengthUnitType.Points:
+                        return (size, "pt");
+                }
+            }
+            return (null, null);
         }
 
         (string rgb, int alpha) ArgbToRgba(string argb)
