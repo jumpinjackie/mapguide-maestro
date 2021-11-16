@@ -10,6 +10,7 @@
 
     <Runtime>
         <Import assembly=":Maestro.Base" />
+		<Import assembly=":Maestro.Scripting.Core" />
         <Import assembly="Maestro.AddIn.Scripting.dll" />
     </Runtime>
 

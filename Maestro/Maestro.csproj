@@ -25,6 +25,7 @@
     <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj" />
     <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj" />
     <ProjectReference Include="..\Maestro.Login\Maestro.Login.csproj" />
+    <ProjectReference Include="..\Maestro.Scripting.Core\Maestro.Scripting.Core.csproj" />
     <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj" />
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj" />
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj" />
@@ -63,6 +64,12 @@
     <Content Include="..\OSGeo.MapGuide.MaestroAPI\ConnectionProviders.xml" Link="ConnectionProviders.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\TipOfTheDay\en.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

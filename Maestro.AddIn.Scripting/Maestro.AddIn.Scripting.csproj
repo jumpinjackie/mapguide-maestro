@@ -32,18 +32,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="IronPython" Version="2.7.11">
-      <IncludeAssets>all</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="IronPython.StdLib" Version="2.7.11" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj" />
-    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj" />
-    <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj" />
-    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj" />
-    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.TextEditor\ICSharpCode.TextEditor.csproj" />
+    <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj">
+      <CopyLocal>False</CopyLocal>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj">
+      <CopyLocal>False</CopyLocal>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.Scripting.Core\Maestro.Scripting.Core.csproj">
+      <CopyLocal>False</CopyLocal>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj">
+      <CopyLocal>False</CopyLocal>
+    </ProjectReference>
+    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj">
+      <CopyLocal>False</CopyLocal>
+    </ProjectReference>
+    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.TextEditor\ICSharpCode.TextEditor.csproj">
+      <CopyLocal>False</CopyLocal>
+    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -59,6 +65,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

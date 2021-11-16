@@ -1,84 +1,84 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29215.179
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.Core", "Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj", "{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICSharpCode.Core", "Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj", "{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.Core.WinForms", "Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj", "{857CA1A3-FC88-4BE0-AB6A-D1EE772AB288}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICSharpCode.Core.WinForms", "Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj", "{857CA1A3-FC88-4BE0-AB6A-D1EE772AB288}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.Base", "Maestro.Base\Maestro.Base.csproj", "{F1E2F468-5030-4DBA-968C-9620284AFAA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.Base", "Maestro.Base\Maestro.Base.csproj", "{F1E2F468-5030-4DBA-968C-9620284AFAA1}"
 	ProjectSection(ProjectDependencies) = postProject
 		{CFD19053-2172-41D3-8460-0FD2123A1E88} = {CFD19053-2172-41D3-8460-0FD2123A1E88}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestroFsPreview", "MaestroFsPreview\MaestroFsPreview.csproj", "{59BE5E18-17B6-431D-836E-C0AABA6D69E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaestroFsPreview", "MaestroFsPreview\MaestroFsPreview.csproj", "{59BE5E18-17B6-431D-836E-C0AABA6D69E8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{07588440-5F9F-4C30-AA06-9CF30BA6DDE6} = {07588440-5F9F-4C30-AA06-9CF30BA6DDE6}
 		{5AD2CDBA-952E-4148-98A1-31D2E0D540D5} = {5AD2CDBA-952E-4148-98A1-31D2E0D540D5}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.ExtendedObjectModels", "Maestro.AddIn.ExtendedObjectModels\Maestro.AddIn.ExtendedObjectModels.csproj", "{32BA7DF6-1AFA-441D-9231-5624C5920706}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.AddIn.ExtendedObjectModels", "Maestro.AddIn.ExtendedObjectModels\Maestro.AddIn.ExtendedObjectModels.csproj", "{32BA7DF6-1AFA-441D-9231-5624C5920706}"
 	ProjectSection(ProjectDependencies) = postProject
 		{CFD19053-2172-41D3-8460-0FD2123A1E88} = {CFD19053-2172-41D3-8460-0FD2123A1E88}
 		{80FA3158-8B5F-48D1-A393-0378AFE48A7E} = {80FA3158-8B5F-48D1-A393-0378AFE48A7E}
 		{5AD2CDBA-952E-4148-98A1-31D2E0D540D5} = {5AD2CDBA-952E-4148-98A1-31D2E0D540D5}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MgCooker", "MgCooker\MgCooker.csproj", "{C7DCF771-5982-4859-A17F-01126E6F9BA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MgCooker", "MgCooker\MgCooker.csproj", "{C7DCF771-5982-4859-A17F-01126E6F9BA6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{07588440-5F9F-4C30-AA06-9CF30BA6DDE6} = {07588440-5F9F-4C30-AA06-9CF30BA6DDE6}
 		{80FA3158-8B5F-48D1-A393-0378AFE48A7E} = {80FA3158-8B5F-48D1-A393-0378AFE48A7E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MgCooker.Cmd", "MgCooker.Cmd\MgCooker.Cmd.csproj", "{0FD82B7B-1264-410F-86D1-47E9CCACD68E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MgCooker.Cmd", "MgCooker.Cmd\MgCooker.Cmd.csproj", "{0FD82B7B-1264-410F-86D1-47E9CCACD68E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.Editors", "Maestro.Editors\Maestro.Editors.csproj", "{5AD2CDBA-952E-4148-98A1-31D2E0D540D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.Editors", "Maestro.Editors\Maestro.Editors.csproj", "{5AD2CDBA-952E-4148-98A1-31D2E0D540D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.Login", "Maestro.Login\Maestro.Login.csproj", "{07588440-5F9F-4C30-AA06-9CF30BA6DDE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.Login", "Maestro.Login\Maestro.Login.csproj", "{07588440-5F9F-4C30-AA06-9CF30BA6DDE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.Packaging", "Maestro.Packaging\Maestro.Packaging.csproj", "{0EA33E36-9C33-4D60-B378-B87FADAA0F40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.Packaging", "Maestro.Packaging\Maestro.Packaging.csproj", "{0EA33E36-9C33-4D60-B378-B87FADAA0F40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.Shared.UI", "Maestro.Shared.UI\Maestro.Shared.UI.csproj", "{CFD19053-2172-41D3-8460-0FD2123A1E88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.Shared.UI", "Maestro.Shared.UI\Maestro.Shared.UI.csproj", "{CFD19053-2172-41D3-8460-0FD2123A1E88}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.MaestroAPI", "OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj", "{80FA3158-8B5F-48D1-A393-0378AFE48A7E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.MaestroAPI.Local", "OSGeo.MapGuide.MaestroAPI.Local\OSGeo.MapGuide.MaestroAPI.Local.csproj", "{3DDF6501-0148-474C-8674-7C7DA49C7F02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.Local", "Maestro.AddIn.Local\Maestro.AddIn.Local.csproj", "{2419F940-BFB7-4F3F-B5DA-1052EB4706E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.AddIn.Local", "Maestro.AddIn.Local\Maestro.AddIn.Local.csproj", "{2419F940-BFB7-4F3F-B5DA-1052EB4706E5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{3DDF6501-0148-474C-8674-7C7DA49C7F02} = {3DDF6501-0148-474C-8674-7C7DA49C7F02}
 		{80FA3158-8B5F-48D1-A393-0378AFE48A7E} = {80FA3158-8B5F-48D1-A393-0378AFE48A7E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalConfigure", "LocalConfigure\LocalConfigure.csproj", "{6EE16FFD-296E-42FF-B994-8902C27AA0F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalConfigure", "LocalConfigure\LocalConfigure.csproj", "{6EE16FFD-296E-42FF-B994-8902C27AA0F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignMapGuideApi", "SignMapGuideApi\SignMapGuideApi.csproj", "{D24F724A-1CBF-4EB6-A48B-92C08353C4CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignMapGuideApi", "SignMapGuideApi\SignMapGuideApi.csproj", "{D24F724A-1CBF-4EB6-A48B-92C08353C4CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.Native32-2.2.0", "OSGeo.MapGuide.MaestroAPI.Native\OSGeo.MapGuide.MaestroAPI.Native32-2.2.0.csproj", "{F4420153-9DF3-4407-AD65-E8ABED2B6E25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.FdoToolbox", "Maestro.AddIn.FdoToolbox\Maestro.AddIn.FdoToolbox.csproj", "{8787FF3F-552F-46BE-B9D7-548B6162B079}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.AddIn.FdoToolbox", "Maestro.AddIn.FdoToolbox\Maestro.AddIn.FdoToolbox.csproj", "{8787FF3F-552F-46BE-B9D7-548B6162B079}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RtMapInspector", "RtMapInspector\RtMapInspector.csproj", "{E204559D-EE92-4792-96E2-06F45654FAFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RtMapInspector", "RtMapInspector\RtMapInspector.csproj", "{E204559D-EE92-4792-96E2-06F45654FAFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.Scripting", "Maestro.AddIn.Scripting\Maestro.AddIn.Scripting.csproj", "{3591C5BB-2B87-4FB4-AD87-9C8176DF9835}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.AddIn.Scripting", "Maestro.AddIn.Scripting\Maestro.AddIn.Scripting.csproj", "{3591C5BB-2B87-4FB4-AD87-9C8176DF9835}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.TextEditor", "Thirdparty\SharpDevelop\ICSharpCode.TextEditor\ICSharpCode.TextEditor.csproj", "{2D18BE89-D210-49EB-A9DD-2246FBB3DF6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICSharpCode.TextEditor", "Thirdparty\SharpDevelop\ICSharpCode.TextEditor\ICSharpCode.TextEditor.csproj", "{2D18BE89-D210-49EB-A9DD-2246FBB3DF6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddInManager", "Maestro.AddInManager\Maestro.AddInManager.csproj", "{9CC51643-37D6-4B8F-A0EA-E7606AA561EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.AddInManager", "Maestro.AddInManager\Maestro.AddInManager.csproj", "{9CC51643-37D6-4B8F-A0EA-E7606AA561EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.MapViewer", "Maestro.MapViewer\Maestro.MapViewer.csproj", "{4F9658DE-D16F-4B40-B830-BB1E0136DBD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.MapViewer", "Maestro.MapViewer\Maestro.MapViewer.csproj", "{4F9658DE-D16F-4B40-B830-BB1E0136DBD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.LiveMapEditor", "Maestro.LiveMapEditor\Maestro.LiveMapEditor.csproj", "{F1EDEB83-D09F-46E0-B655-B43D4D9682DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.LiveMapEditor", "Maestro.LiveMapEditor\Maestro.LiveMapEditor.csproj", "{F1EDEB83-D09F-46E0-B655-B43D4D9682DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderTemplate", "ProviderTemplate\ProviderTemplate.csproj", "{EDDBBE17-E9A9-43FB-99FE-38DD8E10607A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProviderTemplate", "ProviderTemplate\ProviderTemplate.csproj", "{EDDBBE17-E9A9-43FB-99FE-38DD8E10607A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D24F724A-1CBF-4EB6-A48B-92C08353C4CC} = {D24F724A-1CBF-4EB6-A48B-92C08353C4CC}
 		{F4420153-9DF3-4407-AD65-E8ABED2B6E25} = {F4420153-9DF3-4407-AD65-E8ABED2B6E25}
 		{80FA3158-8B5F-48D1-A393-0378AFE48A7E} = {80FA3158-8B5F-48D1-A393-0378AFE48A7E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpuCalc", "MpuCalc\MpuCalc.csproj", "{43B01C27-E0D2-439B-83ED-8C814ED1526A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MpuCalc", "MpuCalc\MpuCalc.csproj", "{43B01C27-E0D2-439B-83ED-8C814ED1526A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.ObjectModels", "OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj", "{48C5EB23-45AE-4C4C-8FAB-635428AE8CA1}"
 EndProject
@@ -100,13 +100,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.ObjectModels
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.FDO.Expressions", "OSGeo.FDO.Expressions\OSGeo.FDO.Expressions.csproj", "{DA2CC031-200B-4F99-A0A9-2E95374BE78F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.Rest", "Maestro.AddIn.Rest\Maestro.AddIn.Rest.csproj", "{2BFC5B13-3179-4FF9-9877-0D6CE9911A74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.AddIn.Rest", "Maestro.AddIn.Rest\Maestro.AddIn.Rest.csproj", "{2BFC5B13-3179-4FF9-9877-0D6CE9911A74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.FxBridge", "OSGeo.MapGuide.MaestroAPI.FxBridge\OSGeo.MapGuide.MaestroAPI.FxBridge.csproj", "{F7FAB7B1-5A96-496E-A74B-428B3EC8E98B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.MaestroAPI.FxBridge", "OSGeo.MapGuide.MaestroAPI.FxBridge\OSGeo.MapGuide.MaestroAPI.FxBridge.csproj", "{F7FAB7B1-5A96-496E-A74B-428B3EC8E98B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.MaestroAPI.IntegrationTests", "OSGeo.MapGuide.MaestroAPI.IntegrationTests\OSGeo.MapGuide.MaestroAPI.IntegrationTests.csproj", "{5EED4428-40AA-40B6-9508-632581A99868}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro", "Maestro\Maestro.csproj", "{E0C36475-2B70-4F6D-ACE0-8943167806DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro", "Maestro\Maestro.csproj", "{E0C36475-2B70-4F6D-ACE0-8943167806DC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MgTileSeeder", "MgTileSeeder\MgTileSeeder.csproj", "{741C3200-4497-492B-8417-6D2F358B72E0}"
 EndProject
@@ -115,6 +115,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.MapPublisher", "Maestro.MapPublisher\Maestro.MapPublisher.csproj", "{1FF873C8-A5FA-475C-8DC9-7C3DE431A0A7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.MapPublisher.Common", "Maestro.MapPublisher.Common\Maestro.MapPublisher.Common.csproj", "{0BD2F92F-278B-442B-9D3E-07077C9C362F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.Scripting.Core", "Maestro.Scripting.Core\Maestro.Scripting.Core.csproj", "{653B8F0F-78AE-4463-8D60-69D0DBC10A12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -270,6 +272,10 @@ Global
 		{0BD2F92F-278B-442B-9D3E-07077C9C362F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BD2F92F-278B-442B-9D3E-07077C9C362F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BD2F92F-278B-442B-9D3E-07077C9C362F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{653B8F0F-78AE-4463-8D60-69D0DBC10A12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{653B8F0F-78AE-4463-8D60-69D0DBC10A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{653B8F0F-78AE-4463-8D60-69D0DBC10A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{653B8F0F-78AE-4463-8D60-69D0DBC10A12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -312,6 +318,7 @@ Global
 		{8B2EDEFA-D34C-434E-832E-3D1C5B7D9E5D} = {8AEDB361-4C62-4FD6-8D45-14FAD3A53AB7}
 		{1FF873C8-A5FA-475C-8DC9-7C3DE431A0A7} = {8B2EDEFA-D34C-434E-832E-3D1C5B7D9E5D}
 		{0BD2F92F-278B-442B-9D3E-07077C9C362F} = {8B2EDEFA-D34C-434E-832E-3D1C5B7D9E5D}
+		{653B8F0F-78AE-4463-8D60-69D0DBC10A12} = {345BD020-7A7B-4E8B-9CC6-4EC111D51779}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {07AF1A6E-A15C-4ADB-966A-9B6689E73F5F}
