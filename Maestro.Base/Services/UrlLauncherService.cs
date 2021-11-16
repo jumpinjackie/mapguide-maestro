@@ -47,7 +47,12 @@ namespace Maestro.Base.Services
         /// <param name="url">The url to open</param>
         public void OpenUrl(string url)
         {
-            Process.Start(url);
+            var ps = new ProcessStartInfo(url)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
         }
     }
 }
