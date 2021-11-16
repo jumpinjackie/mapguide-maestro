@@ -87,6 +87,19 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             };
         }
 
+        public IMapGroup AddMapGroup(string id)
+        {
+            var map = new MapGroupType()
+            {
+                id = id,
+                Map = new System.ComponentModel.BindingList<MapType>()
+            };
+
+            this.MapSet.Add(map);
+
+            return map;
+        }
+
         public IMapGroup AddMapGroup(string id, bool singleTile, string mapDefinitionId)
         {
             var map = new MapGroupType()
@@ -766,6 +779,62 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
                 }
             };
             return map;
+        }
+
+        IMap IMapGroup.CreateUTFGridEntry(string tileSet)
+        {
+            var el = AppDefDocument.Instance.CreateElement("UrlTemplate"); //NOXLATE
+            el.InnerText = tileSet;
+            return new MapType()
+            {
+                Extension = new CustomContentType()
+                {
+                    Any = new XmlElement[] { el }
+                },
+                Type = "UTFGrid" //NOXLATE
+            };
+        }
+
+        IMap IMapGroup.CreateSubjectLayerEntry(string name, string sourceType)
+        {
+            var elName = AppDefDocument.Instance.CreateElement("layer_name");
+            elName.InnerText = name;
+            var elType = AppDefDocument.Instance.CreateElement("source_type", sourceType);
+            elType.InnerText = sourceType;
+
+            return new MapType()
+            {
+                Extension = new CustomContentType()
+                {
+                    Any = new XmlElement[]
+                    {
+                        elName,
+                        elType
+                    }
+                },
+                Type = "SubjectLayer" //NOXLATE
+            };
+        }
+
+        IMap IMapGroup.CreateExternalLayerEntry(string name, string sourceType)
+        {
+            var elName = AppDefDocument.Instance.CreateElement("layer_name");
+            elName.InnerText = name;
+            var elType = AppDefDocument.Instance.CreateElement("source_type", sourceType);
+            elType.InnerText = sourceType;
+
+            return new MapType()
+            {
+                Extension = new CustomContentType()
+                {
+                    Any = new XmlElement[]
+                    {
+                        elName,
+                        elType
+                    }
+                },
+                Type = "External" //NOXLATE
+            };
         }
 
         IMap IMapGroup.CreateCmsMapEntry(string type, bool singleTile, string name, string olType)

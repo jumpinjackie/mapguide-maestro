@@ -1658,8 +1658,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="conn"></param>
         /// <param name="templateName"></param>
+        /// <param name="statelessMode">If true, the widget set will only be populated with widgets that can work without a running MapGuide Server</param>
         /// <returns></returns>
-        public static IApplicationDefinition CreateFlexibleLayout(IServerConnection conn, string templateName)
+        public static IApplicationDefinition CreateFlexibleLayout(IServerConnection conn, string templateName, bool statelessMode = false)
         {
             Check.ThatPreconditionIsMet(Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Fusion) >= 0, "Required Fusion service not supported on this connection");
 
@@ -1668,7 +1669,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             var widgets = service.GetApplicationWidgets();
             var containers = service.GetApplicationContainers();
 
-            return ObjectFactory.CreateFlexibleLayout(conn.SiteVersion, templates, widgets, containers, templateName);
+            return ObjectFactory.CreateFlexibleLayout(conn.SiteVersion, templates, widgets, containers, templateName, statelessMode);
         }
     }
 

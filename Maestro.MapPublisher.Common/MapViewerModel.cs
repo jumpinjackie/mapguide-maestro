@@ -20,10 +20,8 @@
 
 #endregion Disclaimer / License
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Maestro.MapPublisher.Common
 {
@@ -36,6 +34,12 @@ namespace Maestro.MapPublisher.Common
         public string UTFGridUrl { get; set; }
 
         public double[] LatLngBounds { get; set; }
+
+        public string MapAgent { get; set; }
+
+        public ViewerOptionsBase ViewerOptions { get; set; }
+
+        public dynamic Meta { get; set; }
 
         public bool HasExternalBaseLayer(ExternalBaseLayerType type)
             => ExternalBaseLayers.Any(ebl => ebl.Type == type);

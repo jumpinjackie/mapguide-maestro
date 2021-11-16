@@ -20,10 +20,14 @@
 
 #endregion Disclaimer / License
 
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
+using System.Linq;
 using System.Xml;
 
 namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
@@ -643,6 +647,13 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         IFlyoutItem CreateFlyout(string label);
 
         /// <summary>
+        /// Adds the new map group to the current map set 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        IMapGroup AddMapGroup(string id);
+
+        /// <summary>
         /// Adds the new map group to the current map set with a default MapGuide child map
         /// </summary>
         /// <param name="id"></param>
@@ -908,7 +919,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
 
             foreach (var tpl in set.TemplateInfo)
             {
-                if (name.Equals(tpl.Name))
+                if (name.Equals(tpl.Name, StringComparison.OrdinalIgnoreCase))
                     return tpl;
             }
             return null;
@@ -966,6 +977,68 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
             return values;
         }
 
+        static IEnumerable<XmlElement> SetElementContent(string name, object value)
+        {
+            if (value is IConvertible i)
+            {
+                var el = AppDefDocument.Instance.CreateElement(name);
+                if (value is bool b)
+                {
+                    el.InnerText = b ? "true" : "false";
+                }
+                else
+                {
+                    el.InnerText = i.ToString(CultureInfo.InvariantCulture);
+                }
+                yield return el;
+            }
+            else if (value is IDictionary<string, object> dict)
+            {
+                var el = AppDefDocument.Instance.CreateElement(name);
+
+                foreach (var kvp in dict)
+                {
+                    foreach (var ch in SetElementContent(kvp.Key, kvp.Value))
+                    {
+                        el.AppendChild(ch);
+                    }
+                }
+
+                yield return el;
+            }
+            else if (value is IEnumerable e)
+            {
+                foreach (var item in e)
+                {
+                    foreach (var el in SetElementContent(name, item))
+                    {
+                        yield return el;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ext"></param>
+        /// <param name="props"></param>
+        public static void SetSubjectOrExternalLayerProperties(this IExtensibleElement ext, IDictionary<string, object> props)
+        {
+            Check.ArgumentNotNull(ext, nameof(ext));
+            Check.ArgumentNotNull(props, nameof(props));
+
+            var elements = new List<XmlElement>();
+            foreach (string name in props.Keys)
+            {
+                var value = props[name];
+                //var rid = AppDefDocument.Instance.CreateElement(name);
+                //rid.InnerText = value;
+                elements.AddRange(SetElementContent(name, value));
+            }
+            ext.Extension.Content = elements.ToArray();
+        }
+
         /// <summary>
         /// Replace the values of all properties in this extensible element with the values provided
         /// </summary>
@@ -985,6 +1058,49 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
                 elements.Add(rid);
             }
             ext.Extension.Content = elements.ToArray();
+        }
+
+        public static IEnumerable<string> GetXYZUrls(this IMap map)
+        {
+            Check.ArgumentNotNull(map, nameof(map));
+            var optEl = map.Extension.Content.FirstOrDefault(el => el.Name == "Options");
+            if (optEl != null)
+            {
+                var urls = optEl.ChildNodes.Cast<XmlNode>().Where(n => n.Name == "urls").Select(n => n.InnerText);
+                foreach (var url in urls)
+                {
+                    yield return url;
+                }
+            }
+        }
+
+        public static void SetXYZUrls(this IMap map, params string [] urls)
+        {
+            Check.ArgumentNotNull(map, nameof(map));
+            var optEl = map.Extension.Content.FirstOrDefault(el => el.Name == "Options");
+            if (optEl == null)
+            {
+                optEl = AppDefDocument.Instance.CreateElement("Options");
+                map.Extension.Content = map.Extension.Content.Concat(new[] { optEl }).ToArray();
+            }
+
+            // Remove old entries
+            var urlNodes = optEl.ChildNodes.Cast<XmlNode>().Where(n => n.Name == "urls").ToList();
+            foreach (var remove in urlNodes)
+            {
+                optEl.RemoveChild(remove);
+            }
+
+            // Add new entries
+            if (urls?.Length > 0)
+            {
+                foreach (var url in urls)
+                {
+                    var urlNode = AppDefDocument.Instance.CreateElement("urls");
+                    urlNode.InnerText = url;
+                    optEl.AppendChild(urlNode);
+                }
+            }
         }
 
         /// <summary>
@@ -1359,6 +1475,29 @@ public class ArbitraryWidgetValue : WidgetValue
         /// <param name="olType"></param>
         /// <returns></returns>
         IMap CreateCmsMapEntry(string type, bool singleTile, string name, string olType);
+
+        /// <summary>
+        /// Creates a subject layer entry
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="sourceType"></param>
+        /// <returns></returns>
+        IMap CreateSubjectLayerEntry(string name, string sourceType);
+
+        /// <summary>
+        /// Creates an external layer entry
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="sourceType"></param>
+        /// <returns></returns>
+        IMap CreateExternalLayerEntry(string name, string sourceType);
+
+        /// <summary>
+        /// Creates a UTFGrid tileset entry
+        /// </summary>
+        /// <param name="tileSet"></param>
+        /// <returns></returns>
+        IMap CreateUTFGridEntry(string tileSet);
 
         /// <summary>
         /// Creates a generic map entry

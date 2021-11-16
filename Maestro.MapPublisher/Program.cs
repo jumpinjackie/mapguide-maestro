@@ -23,14 +23,31 @@
 using CommandLine;
 using Maestro.MapPublisher.Common;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Schema.Generation;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using OSGeo.MapGuide.ObjectModels.Json;
 using RazorEngine;
+using RazorEngine.Configuration;
 using RazorEngine.Templating;
+using RazorEngine.Text;
 using System;
+using System.Collections.Generic;
+using System.Dynamic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Maestro.MapPublisher
 {
+    [Verb("generate-schema")]
+    public class GenerateSchemaOptions
+    {
+        [Option("output-dir")]
+        public string OutputDir { get; set; }
+    }
+
     [Verb("publish")]
     public class PublishOptions
     {
@@ -64,7 +81,7 @@ namespace Maestro.MapPublisher
         {
             var result = Parser
                 .Default
-                .ParseArguments<PublishOptions>(args)
+                .ParseArguments<PublishOptions, GenerateSchemaOptions>(args)
                 .MapResult(opts => Run(opts), _ => Task.FromResult(1));
             var retCode = await result;
             return retCode;
@@ -77,6 +94,13 @@ namespace Maestro.MapPublisher
             {
                 switch (arg)
                 {
+                    case GenerateSchemaOptions go:
+                        {
+                            var schemaGen = new JSchemaGenerator();
+                            var schema = schemaGen.Generate(typeof(PublishProfile));
+                            await File.WriteAllTextAsync(Path.Combine(go.OutputDir, "PublishProfile.schema.json"), schema.ToString());
+                            return 0;
+                        }
                     case PublishOptions po:
                         {
                             po.Validate(stdout);
@@ -105,9 +129,12 @@ namespace Maestro.MapPublisher
                             var vm = new MapViewerModel
                             {
                                 Title = pubOpts.Title,
+                                MapAgent = pubOpts.MapAgent.Endpoint,
+                                ViewerOptions = pubOpts.ViewerOptions,
                                 LatLngBounds = new [] { bounds.MinX, bounds.MinY, bounds.MaxX, bounds.MaxY },
                                 ExternalBaseLayers = pubOpts.ExternalBaseLayers,
-                                OverlayLayers = pubOpts.OverlayLayers
+                                OverlayLayers = pubOpts.OverlayLayers,
+                                Meta = new ExpandoObject()
                             };
 
                             var agent = pubOpts.Title;
@@ -116,19 +143,19 @@ namespace Maestro.MapPublisher
                                 if (pubOpts.UTFGridTileSet.Mode == TileSetRefMode.Local)
                                     vm.UTFGridUrl = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.UTFGridTileSet?.ResourceID) + "/{z}/{x}/{y}.json";
                                 else if (pubOpts.UTFGridTileSet.Mode == TileSetRefMode.Remote)
-                                    vm.UTFGridUrl = $"{pubOpts.MapAgent}?OPERATION=GETTILEIMAGE&VERSION=1.2.0&USERNAME=Anonymous&CLIENTAGENT={agent}&MAPDEFINITION={pubOpts.UTFGridTileSet.ResourceID}&BASEMAPLAYERGROUPNAME={pubOpts.UTFGridTileSet.GroupName}&TILECOL={{y}}&TILEROW={{x}}&SCALEINDEX={{z}}";
+                                    vm.UTFGridUrl = $"{pubOpts.MapAgent.Endpoint}?OPERATION=GETTILEIMAGE&VERSION=1.2.0&USERNAME=Anonymous&CLIENTAGENT={agent}&MAPDEFINITION={pubOpts.UTFGridTileSet.ResourceID}&BASEMAPLAYERGROUPNAME={pubOpts.UTFGridTileSet.GroupName}&TILECOL={{y}}&TILEROW={{x}}&SCALEINDEX={{z}}";
                             }
                             if (pubOpts.ImageTileSet != null && !string.IsNullOrEmpty(pubOpts.ImageTileSet.ResourceID))
                             {
                                 if (pubOpts.ImageTileSet.Mode == TileSetRefMode.Local)
                                     vm.XYZImageUrl = Common.StaticMapPublisher.GetResourceRelPath(pubOpts, o => o.ImageTileSet?.ResourceID) + "/{z}/{x}/{y}.png";
                                 else if (pubOpts.ImageTileSet.Mode == TileSetRefMode.Remote)
-                                    vm.XYZImageUrl = $"{pubOpts.MapAgent}?OPERATION=GETTILEIMAGE&VERSION=1.2.0&USERNAME=Anonymous&CLIENTAGENT={agent}&MAPDEFINITION={pubOpts.ImageTileSet.ResourceID}&BASEMAPLAYERGROUPNAME={pubOpts.ImageTileSet.GroupName}&TILECOL={{y}}&TILEROW={{x}}&SCALEINDEX={{z}}";
+                                    vm.XYZImageUrl = $"{pubOpts.MapAgent.Endpoint}?OPERATION=GETTILEIMAGE&VERSION=1.2.0&USERNAME=Anonymous&CLIENTAGENT={agent}&MAPDEFINITION={pubOpts.ImageTileSet.ResourceID}&BASEMAPLAYERGROUPNAME={pubOpts.ImageTileSet.GroupName}&TILECOL={{y}}&TILEROW={{x}}&SCALEINDEX={{z}}";
                             }
                             
 
                             string result;
-                            switch (pubOpts.Viewer)
+                            switch (pubOpts.ViewerOptions.Type)
                             {
                                 case ViewerType.OpenLayers:
                                     {
@@ -142,6 +169,18 @@ namespace Maestro.MapPublisher
                                         result = Engine.Razor.RunCompile(template, "templateKey", null, vm);
                                     }
                                     break;
+                                case ViewerType.MapGuideReactLayout:
+                                    {
+                                        var appDef = Utility.CreateFlexibleLayout(pubOpts.Connection, ((MapGuideReactLayoutViewerOptions)pubOpts.ViewerOptions).TemplateName, true);
+                                        InitAppDef(pubOpts.Connection, appDef, pubOpts, vm);
+                                        vm.Meta.AppDefJson = AppDefJsonSerializer.Serialize(appDef);
+                                        string template = File.ReadAllText("viewer_content/viewer_mrl.cshtml");
+                                        var config = new TemplateServiceConfiguration();
+                                        config.EncodedStringFactory = new RawStringFactory();
+                                        var service = RazorEngineService.Create(config);
+                                        result = service.RunCompile(template, "templateKey", null, vm);
+                                    }
+                                    break;
                                 default:
                                     throw new ArgumentOutOfRangeException("Unknown or unsupported viewer type");
                             }
@@ -151,21 +190,43 @@ namespace Maestro.MapPublisher
                             await stdout.WriteLineAsync($"Written: {outputHtmlPath}");
 
                             // Copy assets
-                            var assetsDir = Path.Combine(pubOpts.OutputDirectory, "assets");
-                            if (!Directory.Exists(assetsDir))
+                            if (pubOpts.ViewerOptions.Type == ViewerType.MapGuideReactLayout)
                             {
-                                Directory.CreateDirectory(assetsDir);
+                                var assetsDir = pubOpts.OutputDirectory; // Path.Combine(pubOpts.OutputDirectory, "mrl_assets");
+                                if (!Directory.Exists(assetsDir))
+                                {
+                                    Directory.CreateDirectory(assetsDir);
+                                }
+                                var files = Directory.GetFiles("viewer_content/mrl_assets", "*", SearchOption.AllDirectories);
+                                foreach (var f in files)
+                                {
+                                    var fileName = f.Substring("viewer_content/mrl_assets".Length).Trim('\\', '/'); //Path.GetFileName(f);
+                                    var targetFileName = Path.GetFullPath(Path.Combine(assetsDir, fileName));
+                                    var targetParentDir = Path.GetDirectoryName(targetFileName);
+                                    if (!Directory.Exists(targetParentDir))
+                                        Directory.CreateDirectory(targetParentDir);
+                                    File.Copy(f, targetFileName, true);
+                                    await stdout.WriteLineAsync($"Copied to assets: {targetFileName}");
+                                }
                             }
-                            var files = Directory.GetFiles("viewer_content/assets", "*", SearchOption.AllDirectories);
-                            foreach (var f in files)
+                            else
                             {
-                                var fileName = f.Substring("viewer_content/assets".Length).Trim('\\', '/'); //Path.GetFileName(f);
-                                var targetFileName = Path.GetFullPath(Path.Combine(assetsDir, fileName));
-                                var targetParentDir = Path.GetDirectoryName(targetFileName);
-                                if (!Directory.Exists(targetParentDir))
-                                    Directory.CreateDirectory(targetParentDir);
-                                File.Copy(f, targetFileName, true);
-                                await stdout.WriteLineAsync($"Copied to assets: {targetFileName}");
+                                var assetsDir = Path.Combine(pubOpts.OutputDirectory, "assets");
+                                if (!Directory.Exists(assetsDir))
+                                {
+                                    Directory.CreateDirectory(assetsDir);
+                                }
+                                var files = Directory.GetFiles("viewer_content/assets", "*", SearchOption.AllDirectories);
+                                foreach (var f in files)
+                                {
+                                    var fileName = f.Substring("viewer_content/assets".Length).Trim('\\', '/'); //Path.GetFileName(f);
+                                    var targetFileName = Path.GetFullPath(Path.Combine(assetsDir, fileName));
+                                    var targetParentDir = Path.GetDirectoryName(targetFileName);
+                                    if (!Directory.Exists(targetParentDir))
+                                        Directory.CreateDirectory(targetParentDir);
+                                    File.Copy(f, targetFileName, true);
+                                    await stdout.WriteLineAsync($"Copied to assets: {targetFileName}");
+                                }
                             }
 
                             if (po.Wait)
@@ -185,6 +246,171 @@ namespace Maestro.MapPublisher
                 await stdout.WriteLineAsync($"ERROR: {ex}");
                 return 1;
             }
+        }
+
+        static void InitAppDef(IServerConnection conn, IApplicationDefinition appDef, IStaticMapPublishingOptions pubOpts, MapViewerModel vm)
+        {
+            appDef.Title = pubOpts.Title;
+            //Clear groups
+            var toRemove = appDef.MapSet.MapGroups.ToList();
+            foreach (var rem in toRemove)
+            {
+                appDef.MapSet.RemoveGroup(rem);
+            }
+            //Make our MapGroup
+            var mg = appDef.AddMapGroup("MainMap");
+
+            //Add base layers
+            foreach (var bl in pubOpts.ExternalBaseLayers)
+            {
+                IMap ble;
+                if (bl is StamenBaseLayer sbl)
+                {
+                    ble = mg.CreateCmsMapEntry(sbl.Type.ToString(), false, sbl.Name, sbl.LayerType.ToString().ToLower());
+                }
+                else
+                {
+                    ble = mg.CreateCmsMapEntry(bl.Type.ToString(), false, bl.Name, bl.Type.ToString());
+                }
+                if (bl.Type == ExternalBaseLayerType.XYZ)
+                {
+                    ble.SetXYZUrls(((XYZBaseLayer)bl).UrlTemplate);
+                }
+                else if (bl.Type == ExternalBaseLayerType.BingMaps)
+                {
+                    var bs = (BingMapsBaseLayer)bl;
+                    appDef.SetValue("BingMapsKey", bs.ApiKey);
+                }
+                mg.AddMap(ble);
+            }
+
+            //Add UTFGrid layer (if set)
+            if (!string.IsNullOrEmpty(vm.UTFGridUrl))
+            {
+                var ug = mg.CreateUTFGridEntry(vm.UTFGridUrl);
+                mg.AddMap(ug);
+            }
+
+            //Add XYZ layer (if set)
+            if (!string.IsNullOrEmpty(vm.XYZImageUrl))
+            {
+                var sub = mg.CreateSubjectLayerEntry("XYZ Tile Set" /* TODO: Configurable layer name */, "XYZ");
+                dynamic props = new ExpandoObject();
+                props.layer_name = "Sheboygan XYZ";
+                props.source_type = "XYZ";
+                props.source_param_urls = new[]
+                {
+                    vm.XYZImageUrl
+                };
+
+                var llCs = conn.CoordinateSystemCatalog.FindCoordSys("LL84");
+                var wmCs = conn.CoordinateSystemCatalog.FindCoordSys("WGS84.PseudoMercator");
+
+                var xform = conn.CoordinateSystemCatalog.CreateTransform(llCs.WKT, wmCs.WKT);
+                double llx, lly, urx, ury;
+                xform.Transform(pubOpts.Bounds.MinX, pubOpts.Bounds.MinY, out llx, out lly);
+                xform.Transform(pubOpts.Bounds.MaxX, pubOpts.Bounds.MaxY, out urx, out ury);
+
+                props.meta_extents = new[] { llx, lly, urx, ury };
+                props.meta_projection = "EPSG:3857";
+
+                sub.SetSubjectOrExternalLayerProperties((IDictionary<string, object>)props);
+                mg.AddMap(sub);
+            }
+
+            foreach (var ov in vm.OverlayLayers)
+            {
+                string sType = null;
+                switch (ov.Type)
+                {
+                    case OverlayLayerType.GeoJSON_External:
+                    case OverlayLayerType.GeoJSON_FromMapGuide:
+                        sType = "GeoJSON";
+                        break;
+                    case OverlayLayerType.WFS:
+                        sType = "WFS";
+                        break;
+                    case OverlayLayerType.WMS:
+                        sType = "TileWMS";
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                var ext = mg.CreateExternalLayerEntry(ov.Name, sType);
+                dynamic props = new ExpandoObject();
+                props.layer_name = ov.Name;
+                props.source_type = sType;
+                props.initially_visible = ov.InitiallyVisible;
+
+                switch (ov.Type)
+                {
+                    case OverlayLayerType.GeoJSON_External:
+                        {
+                            var gov = ((GeoJSONExternalOverlayLayer)ov);
+                            props.source_param_url = gov.Url;
+                        }
+                        break;
+                    case OverlayLayerType.GeoJSON_FromMapGuide:
+                        {
+                            var gov = ((GeoJSONFromMapGuideOverlayLayer)ov);
+                            if (!string.IsNullOrEmpty(gov.Downloaded.GlobalVar))
+                            {
+                                props.source_param_url = new ExpandoObject();
+                                props.source_param_url.var_source = gov.Downloaded.GlobalVar;
+                            }
+                            else
+                            {
+                                props.source_param_url = $"";
+                            }
+                        }
+                        break;
+                    case OverlayLayerType.WFS:
+                        {
+                            var wov = ((WFSOverlayLayer)ov);
+                            props.source_param_url = $"{wov.Service}?service=WFS&version={wov.WfsVersion ?? "2.0.0"}&request=GetFeature&typenames={wov.FeatureName}&outputFormat=application/json&srsName=EPSG:3857";
+                        }
+                        break;
+                    case OverlayLayerType.WMS:
+                        {
+                            var wov = ((WMSOverlayLayer)ov);
+                            props.source_param_url = wov.Service;
+                            props.source_param_params = new ExpandoObject();
+                            props.source_param_params.LAYERS = wov.Layer;
+                            props.source_param_params.TILED = wov.Tiled ? "1" : "0";
+                        }
+                        break;
+                }
+
+                ext.SetSubjectOrExternalLayerProperties((IDictionary<string, object>)props);
+
+                mg.AddMap(ext);
+            }
+
+            //mapguide-react-layout extras
+            var fusionSvc = conn.GetService((int)ServiceType.Fusion) as IFusionService;
+            var invokeUrlTemplate = fusionSvc.GetApplicationWidgets().FindWidget("InvokeURL");
+
+            var wLayerMgr = appDef.CreateWidget("layerManager", invokeUrlTemplate) as IUIWidget;
+            wLayerMgr.Label = "Manage External Layers";
+            wLayerMgr.Tooltip = "Add new layers to this map or manage existing ones";
+            wLayerMgr.ImageClass = "invoke-url";
+            wLayerMgr.SetValue("Url", "component://AddManageLayers");
+            wLayerMgr.SetValue("Target", "TaskPane");
+            var wShareLink = appDef.CreateWidget("shareLinkToView", invokeUrlTemplate) as IUIWidget;
+            wShareLink.Label = "Link To View";
+            wShareLink.Tooltip = "Generates a shareable link to this map view";
+            wShareLink.ImageClass = "invoke-url";
+            wShareLink.SetValue("Url", "component://ShareLinkToView");
+            wShareLink.SetValue("Target", "TaskPane");
+
+            var widgetSet = appDef.WidgetSets.First();
+            widgetSet.AddWidget(wLayerMgr);
+            widgetSet.AddWidget(wShareLink);
+
+            var tb = widgetSet.Containers.FirstOrDefault(t => t.Name == "Toolbar") as IUIItemContainer;
+            tb.AddItem(appDef.CreateWidgetReference("layerManager"));
+            tb.AddItem(appDef.CreateWidgetReference("shareLinkToView"));
         }
     }
 }

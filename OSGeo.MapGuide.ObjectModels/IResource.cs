@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using Newtonsoft.Json;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -36,18 +37,21 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Gets the validating schema.
         /// </summary>
         /// <value>The validating schema.</value>
+        [JsonIgnore]
         string ValidatingSchema { get; }
 
         /// <summary>
         /// Gets or sets the resource ID.
         /// </summary>
         /// <value>The resource ID.</value>
+        [JsonIgnore]
         string ResourceID { get; set; }
 
         /// <summary>
         /// Gets the type of the resource.
         /// </summary>
         /// <value>The type of the resource.</value>
+        [JsonIgnore]
         string ResourceType { get; }
 
         /// <summary>
@@ -63,6 +67,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// is a <see cref="T:OSGeo.MapGuide.ObjectModels.UntypedResource"/> object. This usually means that the matching serializer
         /// could not be found because the resource version is unrecognised.
         /// </summary>
+        [JsonIgnore]
         bool IsStronglyTyped { get; }
     }
 

@@ -290,6 +290,19 @@
             {
                 switch (extLayer.Type)
                 {
+                    case OverlayLayerType.GeoJSON_External:
+                        <text>
+        var @(extLayer.Type)_@(counter) = new ol.layer.Vector({
+            title: "@extLayer.Name",
+            visible: @(extLayer.InitiallyVisible ? "true" : "false"),
+            source: new ol.source.Vector({
+                url: '@(((GeoJSONExternalOverlayLayer)extLayer).Url)',
+                format: new ol.format.GeoJSON(),
+            })
+        });
+        overlayList.push(@(extLayer.Type)_@(counter));
+                        </text>
+                        break;
                     case OverlayLayerType.GeoJSON_FromMapGuide:
                         if (((GeoJSONFromMapGuideOverlayLayer)extLayer).Source.LoadAsVectorTiles)
                         {<text>
