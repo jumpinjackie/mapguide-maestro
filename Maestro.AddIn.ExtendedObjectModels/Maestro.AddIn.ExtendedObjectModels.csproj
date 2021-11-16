@@ -6,14 +6,6 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-    
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\out\Debug\AddIns\ExtendedObjectModels</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\out\Release\AddIns\ExtendedObjectModels</OutputPath>
-  </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Manifest.addin" />
@@ -31,12 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj" />
-    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj" />
-    <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj" />
-    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj" />
-    <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj" />
-    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj" />
+	  <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj" />
+	  <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj" />
+	  <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj" />
+	  <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj" />
+	  <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj" />
+	  <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,5 +45,9 @@
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if not exist &quot;$(SolutionDir)out\$(Configuration)\AddIns\ExtendedObjectModels&quot; mkdir &quot;$(SolutionDir)out\$(Configuration)\AddIns\ExtendedObjectModels&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\ExtendedObjectModels&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)Manifest.addin&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\ExtendedObjectModels&quot;&#xD;&#xA;if exist &quot;$(TargetDir)$(TargetName).pdb&quot; copy /Y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\ExtendedObjectModels&quot;" />
+  </Target>
 
 </Project>

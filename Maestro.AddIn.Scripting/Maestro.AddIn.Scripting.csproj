@@ -7,14 +7,6 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\out\Debug\AddIns\Scripting</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\out\Release\AddIns\Scripting</OutputPath>
-  </PropertyGroup>
-
   <ItemGroup>
     <None Remove="Manifest.addin" />
   </ItemGroup>
@@ -70,5 +62,9 @@
   <ItemGroup>
     <Folder Include="Services\" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if not exist &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot; mkdir &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)Manifest.addin&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot;&#xD;&#xA;if exist &quot;$(TargetDir)$(TargetName).pdb&quot; copy /Y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot;" />
+  </Target>
 
 </Project>
