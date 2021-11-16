@@ -10,6 +10,7 @@ cd /D %APPVEYOR_BUILD_FOLDER%\Docs
 docfx build
 cd /D %APPVEYOR_BUILD_FOLDER%\out\Release
 7z a -mx9 %APPVEYOR_BUILD_FOLDER%\artifacts\MapGuideMaestro-%CONFIGURATION%-%ARTIFACT_RELEASE_LABEL%.zip * -x!LocalConfigure.* -x!Addins\Local -x!Addins\Scripting
+REM TODO: Activate single-file/trimmed/compressed flags once we have verified this combo works without adverse side-effects
 cd /D %APPVEYOR_BUILD_FOLDER%\MgTileSeeder
 dotnet publish -c %CONFIGURATION% -f %NETCORE_MONIKER% -r win-x64 -o %APPVEYOR_BUILD_FOLDER%\out\Release\tools\MgTileSeeder
 dotnet publish -c %CONFIGURATION% -f %NETCORE_MONIKER% -r linux-x64 -o publish_linux

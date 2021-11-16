@@ -2,7 +2,7 @@ platform: Any CPU
 configuration: Release
 shallow_clone: true
 version: 6.0.0.{build}
-image: Visual Studio 2019
+image: Visual Studio 2022
 
 matrix:
   fast_finish: true
@@ -57,6 +57,7 @@ build:
   project: Maestro.sln
 
 after_build:
+  - publish.bat %CONFIGURATION%
   - set ARTIFACT_RELEASE_LABEL=%APPVEYOR_BUILD_VERSION%
   - appveyor_postbuild.bat
 

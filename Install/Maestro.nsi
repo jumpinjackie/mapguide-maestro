@@ -88,7 +88,7 @@ LicenseData "LGPL21.rtf"
 #!if "${RELEASE_VERSION}" != "Trunk"
 #	VIProductVersion "${RELEASE_VERSION}"
 #	VIAddVersionKey "ProductName" "${INST_PRODUCT_NAME}"
-#	VIAddVersionKey "LegalCopyright" "� 2011 Jackie Ng"
+#	VIAddVersionKey "LegalCopyright" "� 2011-2021 Jackie Ng"
 #	VIAddVersionKey "FileDescription" "Installer package for MapGuide Maestro"
 #	VIAddVersionKey "FileVersion" "${RELEASE_VERSION}"
 #!endif
@@ -96,8 +96,7 @@ LicenseData "LGPL21.rtf"
 !define REG_KEY_UNINSTALL "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INST_PRODUCT_QUALIFIED}"
 
 # Project Output
-#!define INST_OUTPUT_MAESTRO "${SLN_DIR}\out\${CPU}\${SLN_CONFIG}"
-!define INST_OUTPUT_MAESTRO "${SLN_DIR}\out\${SLN_CONFIG}"
+!define INST_OUTPUT_MAESTRO "${SLN_DIR}\out\publish\${SLN_CONFIG}"
 !define INST_OUTDIR "${SLN_DIR}\artifacts"
 
 # Executables
