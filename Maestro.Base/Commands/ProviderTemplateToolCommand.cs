@@ -42,7 +42,7 @@ namespace Maestro.Base.Commands
 
         internal static void RunTool()
         {
-            string exe = PropertyService.Get(ConfigProperties.ProviderToolPath, string.Empty); //NOXLATE
+            string exe = PropertyService.Get(ConfigProperties.ProviderToolPath, ConfigProperties.DefaultProviderToolPath); //NOXLATE
 
             if (!File.Exists(exe))
             {
