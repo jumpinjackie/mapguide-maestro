@@ -71,7 +71,7 @@ namespace Maestro.Shared.UI
             contentPanel.ShowDocumentIcon = true;
             contentPanel.Dock = DockStyle.Fill;
             contentPanel.DockLeftPortion = 250;
-            contentPanel.DockBottomPortion = 150;
+            contentPanel.DockBottomPortion = 200;
             contentPanel.DockRightPortion = 250;
 
             menu = _workbenchInitializer.GetMainMenu(this);
