@@ -44,7 +44,7 @@ before_build:
 
 environment:
   NETCORE_MONIKER: 'netcoreapp3.1'
-  FULLFX_MONIKER: 'net48'
+  FULLFX_MONIKER: 'net6.0'
   XUNIT_MONIKER: 'net472'
   XUNIT_VERSION: '2.4.1'
   OPENCOVER_VERSION: '4.7.1221'
