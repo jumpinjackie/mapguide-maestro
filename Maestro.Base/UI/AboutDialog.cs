@@ -49,25 +49,18 @@ namespace Maestro.Base.UI
             m_connection = connection;
         }
 
-        /// <summary>
-        /// Dummy function used to create a thread to read the default locale from
-        /// </summary>
-        private void dummy_function()
-        {
-        }
-
         private UrlLauncherService _launcher;
 
         private void FormAbout_Load(object sender, System.EventArgs e)
         {
-            System.Threading.Thread tmp = new System.Threading.Thread(new System.Threading.ThreadStart(dummy_function));
+            var osCulture = System.Globalization.CultureInfo.InstalledUICulture;
 
             _launcher = ServiceRegistry.GetService<UrlLauncherService>();
             Debug.Assert(_launcher != null);
 
             Credits.Text = Strings.Contributors;
             Version.Text = string.Format(Strings.About_VersionLabel, Application.ProductVersion);
-            Localization.Text = string.Format(Strings.About_LanguageLabel, System.Threading.Thread.CurrentThread.CurrentUICulture, tmp.CurrentUICulture);
+            Localization.Text = string.Format(Strings.About_LanguageLabel, System.Threading.Thread.CurrentThread.CurrentUICulture, osCulture);
 
             string version = Strings.VersionUnknownOrNotConnected;
             string match = Strings.VersionUnknown;
