@@ -35,7 +35,12 @@ namespace Maestro.LiveMapEditor
 
         public override void OpenUrl(string url)
         {
-            Process.Start(url);
+            var ps = new ProcessStartInfo(url)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
         }
 
         public override string SelectUnmanagedData(string startPath, System.Collections.Specialized.NameValueCollection fileTypes)

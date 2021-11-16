@@ -4,6 +4,7 @@
 using ICSharpCode.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -115,7 +116,12 @@ namespace ICSharpCode.AddInManager
                 {
                     try
                     {
-                        System.Diagnostics.Process.Start(link);
+                        var ps = new ProcessStartInfo(link)
+                        {
+                            UseShellExecute = true,
+                            Verb = "open"
+                        };
+                        Process.Start(ps);
                     }
                     catch (Exception ex)
                     {
