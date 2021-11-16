@@ -8,6 +8,7 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<ProduceReferenceAssemblies>false</ProduceReferenceAssemblies>
 	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	<ApplicationIcon>MapGuide Maestro.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -22,6 +23,10 @@
     <Compile Include="..\Properties\CodeAnalysisRules.cs" Link="CodeAnalysisRules.cs" />
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs" Link="GlobalAssemblyInfo.cs" />
     <Compile Include="..\Properties\SignedAssemblyInfo2.cs" Link="SignedAssemblyInfo2.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="MapGuide Maestro.ico" />
   </ItemGroup>
 
   <ItemGroup>

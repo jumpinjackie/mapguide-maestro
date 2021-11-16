@@ -8,6 +8,7 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
 	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	<ApplicationIcon>MapGuide Maestro.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -74,6 +75,7 @@
     <Content Include="..\OSGeo.MapGuide.MaestroAPI\ConnectionProviders.xml" Link="ConnectionProviders.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="MapGuide Maestro.ico" />
   </ItemGroup>
 
   <ItemGroup>
