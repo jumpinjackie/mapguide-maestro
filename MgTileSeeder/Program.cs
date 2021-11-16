@@ -21,6 +21,8 @@
 #endregion Disclaimer / License
 
 using CommandLine;
+using Dapper;
+using Microsoft.Data.Sqlite;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Services;
@@ -95,6 +97,12 @@ namespace MgTileSeeder
         public string Password { get; set; }
     }
 
+    enum XYZOutputType
+    {
+        Directory,
+        MBTiles
+    }
+
     [Verb("xyz", HelpText = "XYZ tiling options")]
     class XYZSeederOptions : CommonSeederOptions
     {
@@ -118,6 +126,12 @@ namespace MgTileSeeder
 
         [Option("max-zoom-level", HelpText = "The custom maximum zoom level. The default is 19")]
         public int? MaxZoomLevel { get; set; }
+
+        [Option("output-path", HelpText = "The path to output generated tiles to. Can be either a directory or a path to a MBTiles database to be created")]
+        public string OutputPath { get; set; }
+
+        [Option("output-type", HelpText = "The type of the output path")]
+        public XYZOutputType OutputType { get; set; }
 
         public override void Validate()
         {
@@ -339,6 +353,43 @@ namespace MgTileSeeder
                 var seederOptions = new TileSeederOptions();
                 seederOptions.MaxDegreeOfParallelism = options.MaxDegreeOfParallelism;
                 seederOptions.ErrorLogger = ErrorLogger;
+
+                if (!string.IsNullOrEmpty(options.OutputPath))
+                {
+                    switch (options.OutputType)
+                    {
+                        case XYZOutputType.Directory:
+                            {
+                                var imgDir = options.OutputPath;
+                                if (!Directory.Exists(imgDir))
+                                {
+                                    Directory.CreateDirectory(imgDir);
+                                }
+                                seederOptions.SaveTile = (tr, stream) =>
+                                {
+                                    var tilePath = Path.Combine(imgDir, tr.GroupName, $"{tr.Scale}" /* z */, $"{tr.Row}"  /* x */, $"{tr.Col}.png" /* y */);
+                                    var parentDir = Path.GetDirectoryName(tilePath);
+                                    if (!Directory.Exists(parentDir))
+                                        Directory.CreateDirectory(parentDir);
+                                    using (var fw = File.OpenWrite(tilePath))
+                                    {
+                                        Utility.CopyStream(stream, fw);
+                                    }
+                                };
+                            }
+                            break;
+                        case XYZOutputType.MBTiles:
+                            {
+                                await SetupMBTilesAsync(options);
+                                seederOptions.SaveTile = (tr, stream) =>
+                                {
+                                    WriteMBTile(options, tr, stream);
+                                };
+                            }
+                            break;
+                    }
+                }
+
                 var seeder = new TileSeeder(xyz, walker, seederOptions);
 
                 var progress = new ConsoleProgress();
@@ -360,6 +411,72 @@ namespace MgTileSeeder
                 }
             }
             return ret;
+        }
+
+        static void WriteMBTile(XYZSeederOptions options, TileRef tr, Stream stream)
+        {
+            using var conn = new SqliteConnection($"Data Source={options.OutputPath}");
+            conn.Open();
+
+            using var ms = MemoryStreamPool.GetStream();
+            stream.CopyTo(ms);
+            ms.Position = 0L;
+            conn.Execute($"INSERT INTO tiles (zoom_level, tile_column, tile_row, tile_data) VALUES (@z, @y, @x, @img)", param: new
+            {
+                z = tr.Scale,
+                x = tr.Row,
+                y = tr.Col,
+                img = ms.GetBuffer()
+            });
+        }
+
+        static async Task SetupMBTilesAsync(XYZSeederOptions options)
+        {
+            var tsName = "MBTileSet";
+            var imgFormat = "png";
+            using (var conn = new SqliteConnection())
+            {
+                conn.ConnectionString = $"Data Source={options.OutputPath}";
+                conn.Open();
+                /*
+                https://github.com/mapbox/mbtiles-spec/blob/master/1.3/spec.md#schema
+
+                The database MUST contain a table or view named metadata.
+
+                This table or view MUST yield exactly two columns of type text, named name and value. A typical create statement for the metadata table:
+                 */
+                await conn.ExecuteAsync("CREATE TABLE metadata (name text, value text);");
+                /*
+                https://github.com/mapbox/mbtiles-spec/blob/master/1.3/spec.md#content
+
+                The metadata table is used as a key/value store for settings. It MUST contain these two rows:
+
+                name (string): The human-readable name of the tileset.
+                format (string): The file format of the tile data: pbf, jpg, png, webp, or an IETF media type for other formats.
+                 */
+                await conn.ExecuteAsync($"INSERT INTO metadata (name, value) VALUES ('name', '{tsName}');");
+                await conn.ExecuteAsync($"INSERT INTO metadata (name, value) VALUES ('format', '{imgFormat}');");
+                /*
+                The metadata table SHOULD contain these four rows:
+
+                bounds (string of comma-separated numbers): The maximum extent of the rendered map area. Bounds must define an area covered by all zoom levels. The bounds are represented as WGS 84 latitude and longitude values, in the OpenLayers Bounds format (left, bottom, right, top). For example, the bounds of the full Earth, minus the poles, would be: -180.0,-85,180,85.
+                center (string of comma-separated numbers): The longitude, latitude, and zoom level of the default view of the map. Example: -122.1906,37.7599,11
+                minzoom (number): The lowest zoom level for which the tileset provides data
+                maxzoom (number): The highest zoom level for which the tileset provides data
+                 */
+                await conn.ExecuteAsync($"INSERT INTO metadata (name, value) VALUES ('bounds', '{options.MinX},{options.MinY},{options.MaxX},{options.MaxY}');");
+
+                /*
+                https://github.com/mapbox/mbtiles-spec/blob/master/1.3/spec.md#schema-1
+
+                The database MUST contain a table named tiles.
+
+                The table MUST contain three columns of type integer, named zoom_level, tile_column, tile_row, and one of type blob, named tile_data. A typical create statement for the tiles table:
+                 */
+                await conn.ExecuteAsync($"CREATE TABLE tiles (zoom_level integer, tile_column integer, tile_row integer, tile_data blob);");
+                //The database MAY contain an index for efficient access to this table:
+                await conn.ExecuteAsync($"CREATE UNIQUE INDEX tile_index on tiles (zoom_level, tile_column, tile_row);");
+            }
         }
 
         static async Task<int> ReplayMapGuideAsync(MgReplayOptions options)
