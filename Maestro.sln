@@ -107,6 +107,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.MaestroAPI.IntegrationTests", "OSGeo.MapGuide.MaestroAPI.IntegrationTests\OSGeo.MapGuide.MaestroAPI.IntegrationTests.csproj", "{5EED4428-40AA-40B6-9508-632581A99868}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro", "Maestro\Maestro.csproj", "{E0C36475-2B70-4F6D-ACE0-8943167806DC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2BFC5B13-3179-4FF9-9877-0D6CE9911A74} = {2BFC5B13-3179-4FF9-9877-0D6CE9911A74}
+		{8787FF3F-552F-46BE-B9D7-548B6162B079} = {8787FF3F-552F-46BE-B9D7-548B6162B079}
+		{2419F940-BFB7-4F3F-B5DA-1052EB4706E5} = {2419F940-BFB7-4F3F-B5DA-1052EB4706E5}
+		{3591C5BB-2B87-4FB4-AD87-9C8176DF9835} = {3591C5BB-2B87-4FB4-AD87-9C8176DF9835}
+		{32BA7DF6-1AFA-441D-9231-5624C5920706} = {32BA7DF6-1AFA-441D-9231-5624C5920706}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MgTileSeeder", "MgTileSeeder\MgTileSeeder.csproj", "{741C3200-4497-492B-8417-6D2F358B72E0}"
 EndProject
@@ -116,7 +123,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.MapPublisher", "Mae
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.MapPublisher.Common", "Maestro.MapPublisher.Common\Maestro.MapPublisher.Common.csproj", "{0BD2F92F-278B-442B-9D3E-07077C9C362F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.Scripting.Core", "Maestro.Scripting.Core\Maestro.Scripting.Core.csproj", "{653B8F0F-78AE-4463-8D60-69D0DBC10A12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.Scripting.Core", "Maestro.Scripting.Core\Maestro.Scripting.Core.csproj", "{653B8F0F-78AE-4463-8D60-69D0DBC10A12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

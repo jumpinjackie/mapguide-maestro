@@ -6,6 +6,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!-- Needs to be false as addins built into an expected dir that doesn't exist with this being true -->
+	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
 	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	<ApplicationIcon>MapGuide Maestro.ico</ApplicationIcon>
