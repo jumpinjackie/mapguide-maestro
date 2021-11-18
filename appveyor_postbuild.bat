@@ -1,6 +1,5 @@
 if "%APPVEYOR_BUILD_FOLDER%" == "" SET APPVEYOR_BUILD_FOLDER=%CD%
 if "%CONFIGURATION%" == "" SET CONFIGURATION=Release
-if "%NETCORE_MONIKER%" == "" SET NETCORE_MONIKER=netcoreapp2.2
 if "%APPVEYOR_BUILD_NUMBER%" == "" SET APPVEYOR_BUILD_NUMBER=0
 if "%APPVEYOR_REPO_TAG%" == "true" set ARTIFACT_RELEASE_LABEL=%APPVEYOR_REPO_TAG_NAME%
 if "%ARTIFACT_RELEASE_LABEL%" == "" SET ARTIFACT_RELEASE_LABEL=master
@@ -12,11 +11,11 @@ cd /D %APPVEYOR_BUILD_FOLDER%\out\Release
 7z a -mx9 %APPVEYOR_BUILD_FOLDER%\artifacts\MapGuideMaestro-%CONFIGURATION%-%ARTIFACT_RELEASE_LABEL%.zip * -x!LocalConfigure.* -x!Addins\Local -x!Addins\Scripting
 REM TODO: Activate single-file/trimmed/compressed flags once we have verified this combo works without adverse side-effects
 cd /D %APPVEYOR_BUILD_FOLDER%\MgTileSeeder
-dotnet publish -c %CONFIGURATION% -f %NETCORE_MONIKER% -r win-x64 -o %APPVEYOR_BUILD_FOLDER%\out\Release\tools\MgTileSeeder
-dotnet publish -c %CONFIGURATION% -f %NETCORE_MONIKER% -r linux-x64 -o publish_linux
+dotnet publish -c %CONFIGURATION% -r win-x64 -o %APPVEYOR_BUILD_FOLDER%\out\Release\tools\MgTileSeeder
+dotnet publish -c %CONFIGURATION% -r linux-x64 -o publish_linux
 cd /D %APPVEYOR_BUILD_FOLDER%\Maestro.MapPublisher
-dotnet publish -c %CONFIGURATION% -f %NETCORE_MONIKER% -r win-x64 -o %APPVEYOR_BUILD_FOLDER%\out\Release\tools\Maestro.MapPublisher
-dotnet publish -c %CONFIGURATION% -f %NETCORE_MONIKER% -r linux-x64 -o publish_linux
+dotnet publish -c %CONFIGURATION% -r win-x64 -o %APPVEYOR_BUILD_FOLDER%\out\Release\tools\Maestro.MapPublisher
+dotnet publish -c %CONFIGURATION% -r linux-x64 -o publish_linux
 cd /D %APPVEYOR_BUILD_FOLDER%\out\%CONFIGURATION%\Tools\MgTileSeeder
 7z a -mx9 %APPVEYOR_BUILD_FOLDER%\artifacts\MgTileSeeder-win-x64-%ARTIFACT_RELEASE_LABEL%.zip *
 cd /D %APPVEYOR_BUILD_FOLDER%\MgTileSeeder\publish_linux

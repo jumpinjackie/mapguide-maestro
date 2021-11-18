@@ -1,0 +1,21 @@
+Esta rejilla NTv2 se ha obtenido a partir de 65136 nodos
+calculados para el territorio de Venezuela mediante la
+transformación Molodensky-Badekas usando los 10 parámetros
+oficiales de Venezuela. Es decir, esta rejilla imita el
+método M-B. La divergencia (d) entre los resultados obtenidos
+aplicando esta rejilla con respecto al uso de las fórmulas
+de M-B es aproximadamente:
+
+d = 0.00093 m = 0.93 mm
+desviación estándar = 0.00023 m = 0.23 mm
+
+Los parámetros oficiales pueden encontrarse en:
+
+http://www.sirgas.org/fileadmin/docs/regvenPDVSA.pdf
+
+Agradecimientos:
+Hermógenes Suárez (PDVSA, Venzuela)
+José Nicolás Pérez Duin (PDVSA, Venzuela)
+
+Autor de esta rejilla:
+Juan Lucas Domínguez Rubio juan_lucas_dr@yahoo.com

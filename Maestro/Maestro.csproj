@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LocalConfigure\LocalConfigure.csproj" />
     <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj" />
     <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj" />
     <ProjectReference Include="..\Maestro.LiveMapEditor\Maestro.LiveMapEditor.csproj" />

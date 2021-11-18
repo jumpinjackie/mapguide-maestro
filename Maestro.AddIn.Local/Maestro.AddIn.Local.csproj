@@ -4,6 +4,21 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<!-- 
+	HACK: This goes against usual class library principles in a .net Core / 5+ world
+	but this is a plugin and we *need* our nuget package dependencies out there!
+	
+	ref: https://stackoverflow.com/questions/43837638/how-do-i-get-net-core-projects-to-copy-nuget-references-to-the-build-output
+	-->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>NU1701;NU1702</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>NU1701;NU1702</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -45,12 +60,9 @@
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+	
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if not exist &quot;$(SolutionDir)out\$(Configuration)\AddIns\Local&quot; mkdir &quot;$(SolutionDir)out\$(Configuration)\AddIns\Local&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Local&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)OSGeo.MapGuide.Desktop.*&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Local&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)OSGeo.MapGuide.Foundation.*&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Local&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)OSGeo.MapGuide.PlatformBase.*&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Local&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)OSGeo.MapGuide.Geometry.*&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Local&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)OSGeo.MapGuide.Viewer.*&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Local&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)OSGeo.MapGuide.MaestroAPI.Local.*&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Local&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)Manifest.addin&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Local&quot;&#xD;&#xA;if exist &quot;$(TargetDir)$(TargetName).pdb&quot; copy /Y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Local&quot;&#xD;&#xA;xcopy /s /y /i &quot;$(ProjectDir)Dictionaries&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Local\Dictionaries&quot;&#xD;&#xA;xcopy /s /y &quot;$(MSBuildProjectDirectory)\..\Packages\mapguide-api-base-x64\3.1.2.9484\mapguide-api-base\*.*&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Local&quot;&#xD;&#xA;xcopy /s /y &quot;$(MSBuildProjectDirectory)\..\Packages\mg-desktop-x64\3.1.2.9484\mg-desktop\*.*&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Local&quot;" />
+  </Target>
 
 </Project>
