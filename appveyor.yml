@@ -63,9 +63,8 @@ after_build:
 
 test_script:
 - ps: >-
-    & ".\Packages\opencover\$($env:OPENCOVER_VERSION)\tools\OpenCover.Console.exe" -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:".\Packages\xunit.runner.console\$($env:XUNIT_VERSION)\tools\$($env:XUNIT_MONIKER)\xunit.console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\Release\$($env:FULLFX_MONIKER)\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModels.Tests\bin\Release\$($env:FULLFX_MONIKER)\OSGeo.MapGuide.ObjectModels.Tests.dll -noshadow -xml .\TestResult.xml" -output:OpenCoverCoverage.xml -coverbytest:*.Tests.dll
-
-    & csmacnz.coveralls --opencover -i OpenCoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
+    & dotnet test --logger:"trx;LogFileName=$(Get-Location)\TestResult.xml" /p:CollectCoverage=true /p:CoverletOutput="$(Get-Location)\OpenCoverCoverage.xml" /p:CoverletOutputFormat=lcov /p:CoverletOutputFormat=opencover .\Core.sln
+    & csmacnz.coveralls --opencover -i OpenCoverCoverage.net6.0.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
 
     $wc = New-Object 'System.Net.WebClient'
 
