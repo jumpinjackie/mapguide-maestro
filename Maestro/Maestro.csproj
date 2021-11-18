@@ -31,6 +31,7 @@
     <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj" />
     <ProjectReference Include="..\Maestro.LiveMapEditor\Maestro.LiveMapEditor.csproj" />
     <ProjectReference Include="..\Maestro.Login\Maestro.Login.csproj" />
+    <ProjectReference Include="..\Maestro.MapPublisher\Maestro.MapPublisher.csproj" />
     <ProjectReference Include="..\Maestro.Scripting.Core\Maestro.Scripting.Core.csproj" />
     <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj" />
     <ProjectReference Include="..\MaestroFsPreview\MaestroFsPreview.csproj" />
