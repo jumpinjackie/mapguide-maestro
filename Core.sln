@@ -8,8 +8,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.ObjectModels
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.FDO.Expressions", "OSGeo.FDO.Expressions\OSGeo.FDO.Expressions.csproj", "{34482EB3-3CE2-44E5-9DEC-76ED6E377B35}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.ObjectModels.Tests", "OSGeo.MapGuide.ObjectModels.Tests\OSGeo.MapGuide.ObjectModels.Tests.csproj", "{BBC08760-FE40-45EE-A9DB-E78174D246E1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGeo.MapGuide.MaestroAPI.Tests", "OSGeo.MapGuide.MaestroAPI.Tests\OSGeo.MapGuide.MaestroAPI.Tests.csproj", "{F6F9362D-D7F0-4062-8290-DA84AF4C5EAA}"
 EndProject
 Global
@@ -58,18 +56,6 @@ Global
 		{34482EB3-3CE2-44E5-9DEC-76ED6E377B35}.Release|x64.Build.0 = Release|Any CPU
 		{34482EB3-3CE2-44E5-9DEC-76ED6E377B35}.Release|x86.ActiveCfg = Release|Any CPU
 		{34482EB3-3CE2-44E5-9DEC-76ED6E377B35}.Release|x86.Build.0 = Release|Any CPU
-		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Debug|x64.Build.0 = Debug|Any CPU
-		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Debug|x86.Build.0 = Debug|Any CPU
-		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Release|x64.ActiveCfg = Release|Any CPU
-		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Release|x64.Build.0 = Release|Any CPU
-		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Release|x86.ActiveCfg = Release|Any CPU
-		{BBC08760-FE40-45EE-A9DB-E78174D246E1}.Release|x86.Build.0 = Release|Any CPU
 		{F6F9362D-D7F0-4062-8290-DA84AF4C5EAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F6F9362D-D7F0-4062-8290-DA84AF4C5EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6F9362D-D7F0-4062-8290-DA84AF4C5EAA}.Debug|x64.ActiveCfg = Debug|Any CPU

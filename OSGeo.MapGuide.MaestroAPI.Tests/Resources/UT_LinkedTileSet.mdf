@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MapDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MapDefinition-3.0.0.xsd" version="3.0.0">
+  <Name>Base Map linked to Tile Set</Name>
+  <CoordinateSystem>PROJCS["WGS84.PseudoMercator",GEOGCS["LL84",DATUM["WGS84",SPHEROID["WGS84",6378137.000,298.25722293]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]],PROJECTION["Popular Visualisation Pseudo Mercator"],PARAMETER["false_easting",0.000],PARAMETER["false_northing",0.000],PARAMETER["central_meridian",0.00000000000000],UNIT["Meter",1.00000000000000]]</CoordinateSystem>
+  <Extents>
+    <MinX>-9773613.7373958</MinX>
+    <MaxX>-9758770.5921973</MaxX>
+    <MinY>5417109.9090669</MinY>
+    <MaxY>5435129.2308673</MaxY>
+  </Extents>
+  <BackgroundColor>FFF7E1D2</BackgroundColor>
+  <MapLayer>
+    <Name>RoadCenterLines</Name>
+    <ResourceId>Library://UnitTests/Layers/RoadCenterLines.LayerDefinition</ResourceId>
+    <Selectable>false</Selectable>
+    <ShowInLegend>true</ShowInLegend>
+    <LegendLabel>Road CenterLines</LegendLabel>
+    <ExpandInLegend>false</ExpandInLegend>
+    <Visible>true</Visible>
+    <Group></Group>
+  </MapLayer>
+  <TileSetSource>
+    <ResourceId>Library://UnitTests/TileSets/Sheboygan.TileSetDefinition</ResourceId>
+  </TileSetSource>
+</MapDefinition>
