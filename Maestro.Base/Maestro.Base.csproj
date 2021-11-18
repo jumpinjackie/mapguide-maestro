@@ -20,6 +20,7 @@
     <Compile Include="..\Properties\CodeAnalysisRules.cs" Link="CodeAnalysisRules.cs" />
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs" Link="GlobalAssemblyInfo.cs" />
     <Compile Include="..\Properties\SignedAssemblyInfo2.cs" Link="SignedAssemblyInfo2.cs" />
+    <Compile Include="..\Properties\WindowsOnlyAssemblyInfo.cs" Link="WindowsOnlyAssemblyInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>

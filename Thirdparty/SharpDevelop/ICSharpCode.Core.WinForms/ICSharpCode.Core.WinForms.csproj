@@ -8,6 +8,7 @@
     
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs" Link="GlobalAssemblyInfo.cs" />
+    <Compile Include="..\WindowsOnlyAssemblyInfo.cs" Link="WindowsOnlyAssemblyInfo.cs" />
   </ItemGroup>
     
   <ItemGroup>

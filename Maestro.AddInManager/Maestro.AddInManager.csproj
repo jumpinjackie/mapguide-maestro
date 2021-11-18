@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\Properties\WindowsOnlyAssemblyInfo.cs" Link="WindowsOnlyAssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="SharpZipLib" Version="1.3.3" />
   </ItemGroup>
 
