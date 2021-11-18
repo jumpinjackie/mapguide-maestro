@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,698 +118,305 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="SelectByList.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="SelectByList.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="SelectByList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 10</value>
-  </data>
-  <data name="SelectByList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 16</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="SelectByList.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>CoordinateSystemPicker</value>
   </data>
-  <data name="SelectByList.Text" xml:space="preserve">
-    <value>Select by list</value>
-  </data>
-  <data name="&gt;&gt;SelectByList.Name" xml:space="preserve">
-    <value>SelectByList</value>
-  </data>
-  <data name="&gt;&gt;SelectByList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SelectByList.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;SelectByList.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="CancelBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="CancelBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="CancelBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CancelBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>440, 290</value>
-  </data>
-  <data name="CancelBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 32</value>
-  </data>
-  <data name="CancelBtn.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="CancelBtn.Text" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CancelBtn.Name" xml:space="preserve">
     <value>CancelBtn</value>
   </data>
-  <data name="&gt;&gt;CancelBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;CancelBtn.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CancelBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CancelBtn.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="OKBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="OKBtn.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="OKBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="OKBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="OKBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 290</value>
-  </data>
-  <data name="OKBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 32</value>
-  </data>
-  <data name="OKBtn.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="OKBtn.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="&gt;&gt;OKBtn.Name" xml:space="preserve">
-    <value>OKBtn</value>
-  </data>
-  <data name="&gt;&gt;OKBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;OKBtn.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;OKBtn.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="SelectByEPSGCode.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="SelectByEPSGCode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="SelectByEPSGCode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 226</value>
-  </data>
-  <data name="SelectByEPSGCode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 16</value>
-  </data>
-  <data name="SelectByEPSGCode.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="SelectByEPSGCode.Text" xml:space="preserve">
-    <value>Type EPSG code</value>
-  </data>
-  <data name="&gt;&gt;SelectByEPSGCode.Name" xml:space="preserve">
-    <value>SelectByEPSGCode</value>
-  </data>
-  <data name="&gt;&gt;SelectByEPSGCode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SelectByEPSGCode.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;SelectByEPSGCode.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="SelectByEPSGCodeGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="EPSGCodeText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="EPSGCodeText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 24</value>
-  </data>
-  <data name="EPSGCodeText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>272, 21</value>
-  </data>
-  <data name="EPSGCodeText.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;EPSGCodeText.Name" xml:space="preserve">
-    <value>EPSGCodeText</value>
-  </data>
-  <data name="&gt;&gt;EPSGCodeText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;EPSGCodeText.Parent" xml:space="preserve">
-    <value>SelectByEPSGCodeGroup</value>
-  </data>
-  <data name="&gt;&gt;EPSGCodeText.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ValidateEPSG.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="ValidateEPSG.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="ValidateEPSG.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ValidateEPSG.Location" type="System.Drawing.Point, System.Drawing">
-    <value>448, 24</value>
-  </data>
-  <data name="ValidateEPSG.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 24</value>
-  </data>
-  <data name="ValidateEPSG.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="ValidateEPSG.Text" xml:space="preserve">
-    <value>Validate</value>
-  </data>
-  <data name="&gt;&gt;ValidateEPSG.Name" xml:space="preserve">
-    <value>ValidateEPSG</value>
-  </data>
-  <data name="&gt;&gt;ValidateEPSG.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ValidateEPSG.Parent" xml:space="preserve">
-    <value>SelectByEPSGCodeGroup</value>
-  </data>
-  <data name="&gt;&gt;ValidateEPSG.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 24</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 16</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Coordinate system code</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>SelectByEPSGCodeGroup</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="SelectByEPSGCodeGroup.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="SelectByEPSGCodeGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 226</value>
-  </data>
-  <data name="SelectByEPSGCodeGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>512, 56</value>
-  </data>
-  <data name="SelectByEPSGCodeGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;SelectByEPSGCodeGroup.Name" xml:space="preserve">
-    <value>SelectByEPSGCodeGroup</value>
-  </data>
-  <data name="&gt;&gt;SelectByEPSGCodeGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SelectByEPSGCodeGroup.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;SelectByEPSGCodeGroup.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="SelectByCoordSysCode.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="SelectByCoordSysCode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="SelectByCoordSysCode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 162</value>
-  </data>
-  <data name="SelectByCoordSysCode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 16</value>
-  </data>
-  <data name="SelectByCoordSysCode.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="SelectByCoordSysCode.Text" xml:space="preserve">
-    <value>Type coordinate system code</value>
-  </data>
-  <data name="&gt;&gt;SelectByCoordSysCode.Name" xml:space="preserve">
-    <value>SelectByCoordSysCode</value>
-  </data>
-  <data name="&gt;&gt;SelectByCoordSysCode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SelectByCoordSysCode.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;SelectByCoordSysCode.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="SelectByCoordSysCodeGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="CoordSysCodeText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="CoordSysCodeText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 24</value>
-  </data>
-  <data name="CoordSysCodeText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>272, 21</value>
-  </data>
-  <data name="CoordSysCodeText.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;CoordSysCodeText.Name" xml:space="preserve">
-    <value>CoordSysCodeText</value>
-  </data>
-  <data name="&gt;&gt;CoordSysCodeText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CoordSysCodeText.Parent" xml:space="preserve">
-    <value>SelectByCoordSysCodeGroup</value>
-  </data>
-  <data name="&gt;&gt;CoordSysCodeText.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ValidateCoordSysCode.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="ValidateCoordSysCode.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="ValidateCoordSysCode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ValidateCoordSysCode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>448, 24</value>
-  </data>
-  <data name="ValidateCoordSysCode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 24</value>
-  </data>
-  <data name="ValidateCoordSysCode.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="ValidateCoordSysCode.Text" xml:space="preserve">
-    <value>Validate</value>
-  </data>
-  <data name="&gt;&gt;ValidateCoordSysCode.Name" xml:space="preserve">
-    <value>ValidateCoordSysCode</value>
-  </data>
-  <data name="&gt;&gt;ValidateCoordSysCode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ValidateCoordSysCode.Parent" xml:space="preserve">
-    <value>SelectByCoordSysCodeGroup</value>
-  </data>
-  <data name="&gt;&gt;ValidateCoordSysCode.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 24</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 16</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Coordinate system code</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>SelectByCoordSysCodeGroup</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="SelectByCoordSysCodeGroup.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="SelectByCoordSysCodeGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 162</value>
-  </data>
-  <data name="SelectByCoordSysCodeGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>512, 56</value>
-  </data>
-  <data name="SelectByCoordSysCodeGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;SelectByCoordSysCodeGroup.Name" xml:space="preserve">
-    <value>SelectByCoordSysCodeGroup</value>
-  </data>
-  <data name="&gt;&gt;SelectByCoordSysCodeGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SelectByCoordSysCodeGroup.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;SelectByCoordSysCodeGroup.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="SelectByWKT.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="SelectByWKT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="SelectByWKT.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 98</value>
-  </data>
-  <data name="SelectByWKT.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 16</value>
-  </data>
-  <data name="SelectByWKT.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="SelectByWKT.Text" xml:space="preserve">
-    <value>Type WKT code</value>
-  </data>
-  <data name="&gt;&gt;SelectByWKT.Name" xml:space="preserve">
-    <value>SelectByWKT</value>
-  </data>
-  <data name="&gt;&gt;SelectByWKT.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SelectByWKT.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;SelectByWKT.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="SelectByWKTGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="ValidateWKT.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="ValidateWKT.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="ValidateWKT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ValidateWKT.Location" type="System.Drawing.Point, System.Drawing">
-    <value>448, 24</value>
-  </data>
-  <data name="ValidateWKT.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 24</value>
-  </data>
-  <data name="ValidateWKT.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="ValidateWKT.Text" xml:space="preserve">
-    <value>Validate</value>
-  </data>
-  <data name="&gt;&gt;ValidateWKT.Name" xml:space="preserve">
-    <value>ValidateWKT</value>
-  </data>
-  <data name="&gt;&gt;ValidateWKT.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ValidateWKT.Parent" xml:space="preserve">
-    <value>SelectByWKTGroup</value>
-  </data>
-  <data name="&gt;&gt;ValidateWKT.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="WKTText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="WKTText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 24</value>
-  </data>
-  <data name="WKTText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 20</value>
-  </data>
-  <data name="WKTText.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;WKTText.Name" xml:space="preserve">
-    <value>WKTText</value>
-  </data>
-  <data name="&gt;&gt;WKTText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;WKTText.Parent" xml:space="preserve">
-    <value>SelectByWKTGroup</value>
-  </data>
-  <data name="&gt;&gt;WKTText.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 24</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 16</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Well-Known-Text (WKT)</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>SelectByWKTGroup</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="SelectByWKTGroup.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="SelectByWKTGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 98</value>
-  </data>
-  <data name="SelectByWKTGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>512, 56</value>
-  </data>
-  <data name="SelectByWKTGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;SelectByWKTGroup.Name" xml:space="preserve">
-    <value>SelectByWKTGroup</value>
-  </data>
-  <data name="&gt;&gt;SelectByWKTGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SelectByWKTGroup.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;SelectByWKTGroup.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="SelectByListGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="CoordinateSystem.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="CoordinateSystem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="CoordinateSystem.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 48</value>
-  </data>
-  <data name="CoordinateSystem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 21</value>
-  </data>
-  <data name="CoordinateSystem.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;CoordinateSystem.Name" xml:space="preserve">
-    <value>CoordinateSystem</value>
-  </data>
-  <data name="&gt;&gt;CoordinateSystem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CoordinateSystem.Parent" xml:space="preserve">
-    <value>SelectByListGroup</value>
-  </data>
-  <data name="&gt;&gt;CoordinateSystem.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="CoordinateCategory.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="CoordinateCategory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 24</value>
-  </data>
-  <data name="CoordinateCategory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 21</value>
-  </data>
-  <data name="CoordinateCategory.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
   <data name="&gt;&gt;CoordinateCategory.Name" xml:space="preserve">
     <value>CoordinateCategory</value>
-  </data>
-  <data name="&gt;&gt;CoordinateCategory.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CoordinateCategory.Parent" xml:space="preserve">
     <value>SelectByListGroup</value>
   </data>
+  <data name="&gt;&gt;CoordinateCategory.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;CoordinateCategory.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="CoordinateSystemLabel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;CoordinateSystem.Name" xml:space="preserve">
+    <value>CoordinateSystem</value>
   </data>
-  <data name="CoordinateSystemLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;CoordinateSystem.Parent" xml:space="preserve">
+    <value>SelectByListGroup</value>
   </data>
-  <data name="CoordinateSystemLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 48</value>
+  <data name="&gt;&gt;CoordinateSystem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CoordinateSystemLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 16</value>
-  </data>
-  <data name="CoordinateSystemLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="CoordinateSystemLabel.Text" xml:space="preserve">
-    <value>Coordinate System</value>
+  <data name="&gt;&gt;CoordinateSystem.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;CoordinateSystemLabel.Name" xml:space="preserve">
     <value>CoordinateSystemLabel</value>
   </data>
-  <data name="&gt;&gt;CoordinateSystemLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;CoordinateSystemLabel.Parent" xml:space="preserve">
     <value>SelectByListGroup</value>
+  </data>
+  <data name="&gt;&gt;CoordinateSystemLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CoordinateSystemLabel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 24</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 16</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Coordinate Category</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>SelectByListGroup</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="SelectByListGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 10</value>
-  </data>
-  <data name="SelectByListGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>512, 80</value>
-  </data>
-  <data name="SelectByListGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;SelectByListGroup.Name" xml:space="preserve">
-    <value>SelectByListGroup</value>
-  </data>
-  <data name="&gt;&gt;SelectByListGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SelectByListGroup.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;SelectByListGroup.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="CoordinateWait.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="CoordinateWait.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CoordinateWait.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 10</value>
-  </data>
-  <data name="CoordinateWait.Size" type="System.Drawing.Size, System.Drawing">
-    <value>512, 272</value>
-  </data>
-  <data name="CoordinateWait.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="CoordinateWait.Text" xml:space="preserve">
-    <value>Loading Coordinate Systems. Please wait</value>
-  </data>
-  <data name="CoordinateWait.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
   <data name="&gt;&gt;CoordinateWait.Name" xml:space="preserve">
     <value>CoordinateWait</value>
-  </data>
-  <data name="&gt;&gt;CoordinateWait.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CoordinateWait.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;CoordinateWait.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;CoordinateWait.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="&gt;&gt;CoordSysCodeText.Name" xml:space="preserve">
+    <value>CoordSysCodeText</value>
+  </data>
+  <data name="&gt;&gt;CoordSysCodeText.Parent" xml:space="preserve">
+    <value>SelectByCoordSysCodeGroup</value>
+  </data>
+  <data name="&gt;&gt;CoordSysCodeText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CoordSysCodeText.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;EPSGCodeText.Name" xml:space="preserve">
+    <value>EPSGCodeText</value>
+  </data>
+  <data name="&gt;&gt;EPSGCodeText.Parent" xml:space="preserve">
+    <value>SelectByEPSGCodeGroup</value>
+  </data>
+  <data name="&gt;&gt;EPSGCodeText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EPSGCodeText.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>SelectByListGroup</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>SelectByWKTGroup</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>SelectByEPSGCodeGroup</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>SelectByCoordSysCodeGroup</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.Name" xml:space="preserve">
+    <value>OKBtn</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;SelectByCoordSysCode.Name" xml:space="preserve">
+    <value>SelectByCoordSysCode</value>
+  </data>
+  <data name="&gt;&gt;SelectByCoordSysCode.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SelectByCoordSysCode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectByCoordSysCode.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;SelectByCoordSysCodeGroup.Name" xml:space="preserve">
+    <value>SelectByCoordSysCodeGroup</value>
+  </data>
+  <data name="&gt;&gt;SelectByCoordSysCodeGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SelectByCoordSysCodeGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectByCoordSysCodeGroup.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;SelectByEPSGCode.Name" xml:space="preserve">
+    <value>SelectByEPSGCode</value>
+  </data>
+  <data name="&gt;&gt;SelectByEPSGCode.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SelectByEPSGCode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectByEPSGCode.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;SelectByEPSGCodeGroup.Name" xml:space="preserve">
+    <value>SelectByEPSGCodeGroup</value>
+  </data>
+  <data name="&gt;&gt;SelectByEPSGCodeGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SelectByEPSGCodeGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectByEPSGCodeGroup.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;SelectByList.Name" xml:space="preserve">
+    <value>SelectByList</value>
+  </data>
+  <data name="&gt;&gt;SelectByList.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SelectByList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectByList.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;SelectByListGroup.Name" xml:space="preserve">
+    <value>SelectByListGroup</value>
+  </data>
+  <data name="&gt;&gt;SelectByListGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SelectByListGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectByListGroup.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;SelectByWKT.Name" xml:space="preserve">
+    <value>SelectByWKT</value>
+  </data>
+  <data name="&gt;&gt;SelectByWKT.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SelectByWKT.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectByWKT.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;SelectByWKTGroup.Name" xml:space="preserve">
+    <value>SelectByWKTGroup</value>
+  </data>
+  <data name="&gt;&gt;SelectByWKTGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SelectByWKTGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectByWKTGroup.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;ValidateCoordSysCode.Name" xml:space="preserve">
+    <value>ValidateCoordSysCode</value>
+  </data>
+  <data name="&gt;&gt;ValidateCoordSysCode.Parent" xml:space="preserve">
+    <value>SelectByCoordSysCodeGroup</value>
+  </data>
+  <data name="&gt;&gt;ValidateCoordSysCode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ValidateCoordSysCode.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ValidateEPSG.Name" xml:space="preserve">
+    <value>ValidateEPSG</value>
+  </data>
+  <data name="&gt;&gt;ValidateEPSG.Parent" xml:space="preserve">
+    <value>SelectByEPSGCodeGroup</value>
+  </data>
+  <data name="&gt;&gt;ValidateEPSG.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ValidateEPSG.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ValidateWKT.Name" xml:space="preserve">
+    <value>ValidateWKT</value>
+  </data>
+  <data name="&gt;&gt;ValidateWKT.Parent" xml:space="preserve">
+    <value>SelectByWKTGroup</value>
+  </data>
+  <data name="&gt;&gt;ValidateWKT.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ValidateWKT.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;WKTText.Name" xml:space="preserve">
+    <value>WKTText</value>
+  </data>
+  <data name="&gt;&gt;WKTText.Parent" xml:space="preserve">
+    <value>SelectByWKTGroup</value>
+  </data>
+  <data name="&gt;&gt;WKTText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WKTText.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>528, 333</value>
   </data>
@@ -1322,10 +929,403 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Select Coordinate System</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>CoordinateSystemPicker</value>
+  <data name="CancelBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="CancelBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="CancelBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CancelBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>440, 290</value>
+  </data>
+  <data name="CancelBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 32</value>
+  </data>
+  <data name="CancelBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="CancelBtn.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CoordinateCategory.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="CoordinateCategory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 24</value>
+  </data>
+  <data name="CoordinateCategory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 21</value>
+  </data>
+  <data name="CoordinateCategory.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="CoordinateSystem.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="CoordinateSystem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="CoordinateSystem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 48</value>
+  </data>
+  <data name="CoordinateSystem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 21</value>
+  </data>
+  <data name="CoordinateSystem.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="CoordinateSystemLabel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="CoordinateSystemLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CoordinateSystemLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 48</value>
+  </data>
+  <data name="CoordinateSystemLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 16</value>
+  </data>
+  <data name="CoordinateSystemLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="CoordinateSystemLabel.Text" xml:space="preserve">
+    <value>Coordinate System</value>
+  </data>
+  <data name="CoordinateWait.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="CoordinateWait.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CoordinateWait.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 10</value>
+  </data>
+  <data name="CoordinateWait.Size" type="System.Drawing.Size, System.Drawing">
+    <value>512, 272</value>
+  </data>
+  <data name="CoordinateWait.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="CoordinateWait.Text" xml:space="preserve">
+    <value>Loading Coordinate Systems. Please wait</value>
+  </data>
+  <data name="CoordinateWait.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="CoordSysCodeText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="CoordSysCodeText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 24</value>
+  </data>
+  <data name="CoordSysCodeText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>272, 21</value>
+  </data>
+  <data name="CoordSysCodeText.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="EPSGCodeText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="EPSGCodeText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 24</value>
+  </data>
+  <data name="EPSGCodeText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>272, 21</value>
+  </data>
+  <data name="EPSGCodeText.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 24</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 16</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Coordinate Category</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 24</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 16</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Well-Known-Text (WKT)</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 24</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 16</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Coordinate system code</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 24</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 16</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Coordinate system code</value>
+  </data>
+  <data name="OKBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="OKBtn.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="OKBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="OKBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="OKBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>354, 290</value>
+  </data>
+  <data name="OKBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 32</value>
+  </data>
+  <data name="OKBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="OKBtn.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="SelectByCoordSysCode.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="SelectByCoordSysCode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SelectByCoordSysCode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 162</value>
+  </data>
+  <data name="SelectByCoordSysCode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 16</value>
+  </data>
+  <data name="SelectByCoordSysCode.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="SelectByCoordSysCode.Text" xml:space="preserve">
+    <value>Type coordinate system code</value>
+  </data>
+  <data name="SelectByCoordSysCodeGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="SelectByCoordSysCodeGroup.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SelectByCoordSysCodeGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 162</value>
+  </data>
+  <data name="SelectByCoordSysCodeGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>512, 56</value>
+  </data>
+  <data name="SelectByCoordSysCodeGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="SelectByEPSGCode.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="SelectByEPSGCode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SelectByEPSGCode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 226</value>
+  </data>
+  <data name="SelectByEPSGCode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 16</value>
+  </data>
+  <data name="SelectByEPSGCode.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="SelectByEPSGCode.Text" xml:space="preserve">
+    <value>Type EPSG code</value>
+  </data>
+  <data name="SelectByEPSGCodeGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="SelectByEPSGCodeGroup.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SelectByEPSGCodeGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 226</value>
+  </data>
+  <data name="SelectByEPSGCodeGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>512, 56</value>
+  </data>
+  <data name="SelectByEPSGCodeGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="SelectByList.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="SelectByList.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SelectByList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 10</value>
+  </data>
+  <data name="SelectByList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 16</value>
+  </data>
+  <data name="SelectByList.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="SelectByList.Text" xml:space="preserve">
+    <value>Select by list</value>
+  </data>
+  <data name="SelectByListGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="SelectByListGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 10</value>
+  </data>
+  <data name="SelectByListGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>512, 80</value>
+  </data>
+  <data name="SelectByListGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="SelectByWKT.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="SelectByWKT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SelectByWKT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 98</value>
+  </data>
+  <data name="SelectByWKT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 16</value>
+  </data>
+  <data name="SelectByWKT.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="SelectByWKT.Text" xml:space="preserve">
+    <value>Type WKT code</value>
+  </data>
+  <data name="SelectByWKTGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="SelectByWKTGroup.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SelectByWKTGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 98</value>
+  </data>
+  <data name="SelectByWKTGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>512, 56</value>
+  </data>
+  <data name="SelectByWKTGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="ValidateCoordSysCode.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="ValidateCoordSysCode.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="ValidateCoordSysCode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ValidateCoordSysCode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>448, 24</value>
+  </data>
+  <data name="ValidateCoordSysCode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 24</value>
+  </data>
+  <data name="ValidateCoordSysCode.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="ValidateCoordSysCode.Text" xml:space="preserve">
+    <value>Validate</value>
+  </data>
+  <data name="ValidateEPSG.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="ValidateEPSG.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="ValidateEPSG.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ValidateEPSG.Location" type="System.Drawing.Point, System.Drawing">
+    <value>448, 24</value>
+  </data>
+  <data name="ValidateEPSG.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 24</value>
+  </data>
+  <data name="ValidateEPSG.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="ValidateEPSG.Text" xml:space="preserve">
+    <value>Validate</value>
+  </data>
+  <data name="ValidateWKT.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="ValidateWKT.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="ValidateWKT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ValidateWKT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>448, 24</value>
+  </data>
+  <data name="ValidateWKT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 24</value>
+  </data>
+  <data name="ValidateWKT.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="ValidateWKT.Text" xml:space="preserve">
+    <value>Validate</value>
+  </data>
+  <data name="WKTText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="WKTText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 24</value>
+  </data>
+  <data name="WKTText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>280, 20</value>
+  </data>
+  <data name="WKTText.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
 </root>

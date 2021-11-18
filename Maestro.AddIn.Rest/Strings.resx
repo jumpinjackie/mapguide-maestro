@@ -117,20 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RestExplorer" xml:space="preserve">
-    <value>REST Explorer</value>
+  <data name="ConfigurationSaved" xml:space="preserve">
+    <value>Configuration saved</value>
   </data>
-  <data name="FdoClass" xml:space="preserve">
-    <value>FDO Class</value>
+  <data name="DeleteConfiguration" xml:space="preserve">
+    <value>Delete configuration</value>
   </data>
-  <data name="SelectClassName" xml:space="preserve">
-    <value>Select class name</value>
+  <data name="DeleteFile" xml:space="preserve">
+    <value>Delete file</value>
+  </data>
+  <data name="DeleteFilePrompt" xml:space="preserve">
+    <value>Delete this file?</value>
   </data>
   <data name="ErrorSavingConfiguration" xml:space="preserve">
     <value>Error saving configuration: {0}</value>
   </data>
-  <data name="ConfigurationSaved" xml:space="preserve">
-    <value>Configuration saved</value>
+  <data name="FdoClass" xml:space="preserve">
+    <value>FDO Class</value>
+  </data>
+  <data name="InvalidSourceConfiguration" xml:space="preserve">
+    <value>Configuration has a missing or invalid source configuration</value>
   </data>
   <data name="NoSourceInConfiguration" xml:space="preserve">
     <value>No source specified. Please specify a source from a Feature Source or Layer Definition first</value>
@@ -138,22 +144,16 @@
   <data name="NotAVectorLayer" xml:space="preserve">
     <value>Not a vector layer: {0}</value>
   </data>
-  <data name="InvalidSourceConfiguration" xml:space="preserve">
-    <value>Configuration has a missing or invalid source configuration</value>
-  </data>
   <data name="PromptDeleteConfiguration" xml:space="preserve">
     <value>Delete this configuration?</value>
   </data>
-  <data name="DeleteConfiguration" xml:space="preserve">
-    <value>Delete configuration</value>
+  <data name="RestExplorer" xml:space="preserve">
+    <value>REST Explorer</value>
+  </data>
+  <data name="SelectClassName" xml:space="preserve">
+    <value>Select class name</value>
   </data>
   <data name="UriPartRequrired" xml:space="preserve">
     <value>Please enter the URI part for this configuration. If the URI part already exists, saving will overwrite the existing configuration</value>
-  </data>
-  <data name="DeleteFilePrompt" xml:space="preserve">
-    <value>Delete this file?</value>
-  </data>
-  <data name="DeleteFile" xml:space="preserve">
-    <value>Delete file</value>
   </data>
 </root>
