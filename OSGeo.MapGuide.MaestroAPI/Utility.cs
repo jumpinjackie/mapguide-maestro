@@ -646,25 +646,27 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>A potentially better exeception</returns>
         public static Exception ThrowAsWebException(Exception ex)
         {
-            if (ex as System.Net.WebException != null)
+            if (ex is System.Net.WebException wex)
             {
                 try
                 {
-                    System.Net.WebException wex = ex as System.Net.WebException;
-                    using (System.IO.StreamReader sr = new System.IO.StreamReader(wex.Response.GetResponseStream()))
+                    if (wex.Response != null)
                     {
-                        string html = sr.ReadToEnd();
-                        System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex("(\\<body\\>)(.+)\\<\\/body\\>", System.Text.RegularExpressions.RegexOptions.Singleline);
-                        System.Text.RegularExpressions.Match m = r.Match(html);
-                        if (m.Success && m.Groups.Count == 3)
+                        using (System.IO.StreamReader sr = new System.IO.StreamReader(wex.Response.GetResponseStream()))
                         {
-                            html = m.Groups[2].Value;
-                            int n = html.IndexOf("</h2>"); //NOXLATE
-                            if (n > 0)
-                                html = html.Substring(n + "</h2>".Length); //NOXLATE
-                        }
+                            string html = sr.ReadToEnd();
+                            System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex("(\\<body\\>)(.+)\\<\\/body\\>", System.Text.RegularExpressions.RegexOptions.Singleline);
+                            System.Text.RegularExpressions.Match m = r.Match(html);
+                            if (m.Success && m.Groups.Count == 3)
+                            {
+                                html = m.Groups[2].Value;
+                                int n = html.IndexOf("</h2>"); //NOXLATE
+                                if (n > 0)
+                                    html = html.Substring(n + "</h2>".Length); //NOXLATE
+                            }
 
-                        return new Exception(wex.Message + ": " + html, wex); //NOXLATE
+                            return new Exception(wex.Message + ": " + html, wex); //NOXLATE
+                        }
                     }
                 }
                 catch
