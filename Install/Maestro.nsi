@@ -13,9 +13,6 @@
 ; Include NSIS headers
 ;----------------------
 
-# .net Checker
-!include "DotNetChecker.nsh"
-
 # Modern UI 2
 !include "MUI2.nsh"
 
@@ -26,8 +23,7 @@
 !include "LogicLib.nsh"
 
 # VCRedist detection
-!include "VCRedist11.nsh"
-
+!include "VCRedist.nsh"
 ;-------------------------------
 ; Installer compilation settings
 ;-------------------------------
@@ -176,12 +172,6 @@ Section
     SetRegView 32
     !endif
 
-    # Check for .net Framework
-    !insertmacro CheckNetFramework 48
-
-    # Check for vcredist
-    !insertmacro InstallVCRedist11_32bit "$TEMP\MaestroSetup"
-
     # set installation dir
     SetOutPath $INSTDIR
     
@@ -190,8 +180,11 @@ Section
     File /r "${INST_OUTPUT_MAESTRO}\Data"
     File /r "${INST_OUTPUT_MAESTRO}\Schemas"
 
-    # Auxillary tools
-    File /r "${INST_OUTPUT_MAESTRO}\Tools"
+    # Stdlib for IronPython
+    File /r "${INST_OUTPUT_MAESTRO}\Lib"
+
+    # Support files for Maestro.MapPublisher
+    File /r "${INST_OUTPUT_MAESTRO}\viewer_content"
     
     # docs
     File "${INST_OUTPUT_MAESTRO}\*.txt"

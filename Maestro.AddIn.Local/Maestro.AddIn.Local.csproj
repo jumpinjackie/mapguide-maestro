@@ -4,6 +4,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<!-- 
 	HACK: This goes against usual class library principles in a .net Core / 5+ world
 	but this is a plugin and we *need* our nuget package dependencies out there!
@@ -22,6 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="CSMapExclusions.txt" />
     <None Remove="Manifest.addin" />
   </ItemGroup>
 
@@ -33,6 +35,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="CSMapExclusions.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Manifest.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

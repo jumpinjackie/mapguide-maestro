@@ -22,6 +22,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="changelog.txt" />
+    <None Remove="license.txt" />
+    <None Remove="resource-readme.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="..\Properties\CodeAnalysisRules.cs" Link="CodeAnalysisRules.cs" />
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs" Link="GlobalAssemblyInfo.cs" />
     <Compile Include="..\Properties\WindowsOnlyAssemblyInfo.cs" Link="WindowsOnlyAssemblyInfo.cs" />
@@ -80,7 +86,16 @@
     <Content Include="..\OSGeo.MapGuide.MaestroAPI\ConnectionProviders.xml" Link="ConnectionProviders.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="changelog.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="license.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="MapGuide Maestro.ico" />
+    <Content Include="resource-readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -297,6 +312,10 @@
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-2.6.0.xsd" Link="Schemas\WebLayout-2.6.0.xsd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NSIS" Version="2.51.0" />
   </ItemGroup>
 
   <ItemGroup>
