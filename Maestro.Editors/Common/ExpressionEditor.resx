@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,118 +118,214 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="OKBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="OKBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>505, 6</value>
-  </data>
-  <data name="OKBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="OKBtn.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="_autoCompleteTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>116, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;_autoCompleteTooltip.Name" xml:space="preserve">
+    <value>_autoCompleteTooltip</value>
   </data>
-  <data name="OKBtn.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="&gt;&gt;_autoCompleteTooltip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;OKBtn.Name" xml:space="preserve">
-    <value>OKBtn</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>ExpressionEditor</value>
   </data>
-  <data name="&gt;&gt;OKBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;OKBtn.Parent" xml:space="preserve">
-    <value>panel1</value>
+  <data name="&gt;&gt;btnCondition.Name" xml:space="preserve">
+    <value>btnCondition</value>
   </data>
-  <data name="&gt;&gt;OKBtn.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;btnCondition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CancelBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+  <data name="&gt;&gt;btnDistance.Name" xml:space="preserve">
+    <value>btnDistance</value>
   </data>
-  <data name="CancelBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>586, 6</value>
+  <data name="&gt;&gt;btnDistance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CancelBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="&gt;&gt;btnFilter.Name" xml:space="preserve">
+    <value>btnFilter</value>
   </data>
-  <data name="CancelBtn.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;btnFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CancelBtn.Text" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="&gt;&gt;btnFunctions.Name" xml:space="preserve">
+    <value>btnFunctions</value>
+  </data>
+  <data name="&gt;&gt;btnFunctions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnProperties.Name" xml:space="preserve">
+    <value>btnProperties</value>
+  </data>
+  <data name="&gt;&gt;btnProperties.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSpatial.Name" xml:space="preserve">
+    <value>btnSpatial</value>
+  </data>
+  <data name="&gt;&gt;btnSpatial.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnTools.Name" xml:space="preserve">
+    <value>btnTools</value>
+  </data>
+  <data name="&gt;&gt;btnTools.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnValidate.Name" xml:space="preserve">
+    <value>btnValidate</value>
+  </data>
+  <data name="&gt;&gt;btnValidate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buildAndInsertLOOKUPExpressionToolStripMenuItem.Name" xml:space="preserve">
+    <value>buildAndInsertLOOKUPExpressionToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;buildAndInsertLOOKUPExpressionToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buildAndInsertRANGEExpressionToolStripMenuItem.Name" xml:space="preserve">
+    <value>buildAndInsertRANGEExpressionToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;buildAndInsertRANGEExpressionToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CancelBtn.Name" xml:space="preserve">
     <value>CancelBtn</value>
   </data>
-  <data name="&gt;&gt;CancelBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;CancelBtn.Parent" xml:space="preserve">
     <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;CancelBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CancelBtn.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
+  <data name="&gt;&gt;ColumnName.Name" xml:space="preserve">
+    <value>ColumnName</value>
   </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 279</value>
+  <data name="&gt;&gt;ColumnName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>673, 40</value>
+  <data name="&gt;&gt;ColumnValue.Name" xml:space="preserve">
+    <value>ColumnValue</value>
   </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="&gt;&gt;ColumnValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ExpressionText.Name" xml:space="preserve">
+    <value>ExpressionText</value>
+  </data>
+  <data name="&gt;&gt;ExpressionText.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ExpressionText.Type" xml:space="preserve">
+    <value>ICSharpCode.TextEditor.TextEditorControl, ICSharpCode.TextEditor, Version=4.2.0.8783, Culture=neutral, PublicKeyToken=4d61825e8dd49f1a</value>
+  </data>
+  <data name="&gt;&gt;ExpressionText.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;insertARGBColorExpressionToolStripMenuItem.Name" xml:space="preserve">
+    <value>insertARGBColorExpressionToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;insertARGBColorExpressionToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;insertHTMLCOLORExpressionToolStripMenuItem.Name" xml:space="preserve">
+    <value>insertHTMLCOLORExpressionToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;insertHTMLCOLORExpressionToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;insertThemeExpressionToolStripMenuItem.Name" xml:space="preserve">
+    <value>insertThemeExpressionToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;insertThemeExpressionToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LookupValues.Name" xml:space="preserve">
+    <value>LookupValues</value>
+  </data>
+  <data name="&gt;&gt;LookupValues.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.Name" xml:space="preserve">
+    <value>OKBtn</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;panel1.Name" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="btnProperties.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
+    <value>toolStrip1</value>
   </data>
-  <data name="btnProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 22</value>
+  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="btnProperties.Text" xml:space="preserve">
-    <value>Properties</value>
+  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btnFunctions.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="btnFunctions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 22</value>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
   </data>
-  <data name="btnFunctions.Text" xml:space="preserve">
-    <value>Functions</value>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;viewParsedExpressionFilterToolStripMenuItem.Name" xml:space="preserve">
+    <value>viewParsedExpressionFilterToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;viewParsedExpressionFilterToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>673, 319</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>500, 300</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Expression Editor</value>
   </data>
   <data name="btnCondition.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 22</value>
   </data>
   <data name="btnCondition.Text" xml:space="preserve">
     <value>Condition</value>
-  </data>
-  <data name="btnSpatial.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 22</value>
-  </data>
-  <data name="btnSpatial.Text" xml:space="preserve">
-    <value>Spatial</value>
   </data>
   <data name="btnDistance.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 22</value>
@@ -246,68 +342,29 @@
   <data name="btnFilter.Text" xml:space="preserve">
     <value>Filter</value>
   </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="ColumnValue.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ColumnValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 25</value>
-  </data>
-  <data name="LookupValues.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="LookupValues.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="btnFunctions.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="LookupValues.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+  <data name="btnFunctions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 22</value>
   </data>
-  <data name="LookupValues.ToolTipText" xml:space="preserve">
-    <value>Click to lookup values from the selected column</value>
+  <data name="btnFunctions.Text" xml:space="preserve">
+    <value>Functions</value>
   </data>
-  <data name="ColumnName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 25</value>
+  <data name="btnProperties.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
   </data>
-  <data name="ColumnName.ToolTipText" xml:space="preserve">
-    <value>Select the column to read values from</value>
+  <data name="btnProperties.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 22</value>
   </data>
-  <data name="insertThemeExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 22</value>
+  <data name="btnProperties.Text" xml:space="preserve">
+    <value>Properties</value>
   </data>
-  <data name="insertThemeExpressionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Insert Theme Expression (via Theme Builder)</value>
+  <data name="btnSpatial.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 22</value>
   </data>
-  <data name="insertARGBColorExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 22</value>
-  </data>
-  <data name="insertARGBColorExpressionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Insert ARGB color expression</value>
-  </data>
-  <data name="insertHTMLCOLORExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 22</value>
-  </data>
-  <data name="insertHTMLCOLORExpressionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Insert HTMLCOLOR expression</value>
-  </data>
-  <data name="buildAndInsertLOOKUPExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 22</value>
-  </data>
-  <data name="buildAndInsertLOOKUPExpressionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Build and Insert LOOKUP expression</value>
-  </data>
-  <data name="buildAndInsertRANGEExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 22</value>
-  </data>
-  <data name="buildAndInsertRANGEExpressionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Build and Insert RANGE expression</value>
-  </data>
-  <data name="viewParsedExpressionFilterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 22</value>
-  </data>
-  <data name="viewParsedExpressionFilterToolStripMenuItem.Text" xml:space="preserve">
-    <value>View Parsed Expression/Filter</value>
+  <data name="btnSpatial.Text" xml:space="preserve">
+    <value>Spatial</value>
   </data>
   <data name="btnTools.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -327,33 +384,45 @@
   <data name="btnValidate.Text" xml:space="preserve">
     <value>Validate</value>
   </data>
-  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="buildAndInsertLOOKUPExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 22</value>
   </data>
-  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>673, 25</value>
+  <data name="buildAndInsertLOOKUPExpressionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Build and Insert LOOKUP expression</value>
   </data>
-  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="buildAndInsertRANGEExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 22</value>
   </data>
-  <data name="toolStrip1.Text" xml:space="preserve">
-    <value>toolStrip1</value>
+  <data name="buildAndInsertRANGEExpressionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Build and Insert RANGE expression</value>
   </data>
-  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
-    <value>toolStrip1</value>
+  <data name="CancelBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
-  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="CancelBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>586, 6</value>
   </data>
-  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="CancelBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
   </data>
-  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="CancelBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <metadata name="_autoCompleteTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>116, 17</value>
-  </metadata>
+  <data name="CancelBtn.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ColumnName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 25</value>
+  </data>
+  <data name="ColumnName.ToolTipText" xml:space="preserve">
+    <value>Select the column to read values from</value>
+  </data>
+  <data name="ColumnValue.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ColumnValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 25</value>
+  </data>
   <data name="ExpressionText.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -366,151 +435,82 @@
   <data name="ExpressionText.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;ExpressionText.Name" xml:space="preserve">
-    <value>ExpressionText</value>
+  <data name="insertARGBColorExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 22</value>
   </data>
-  <data name="&gt;&gt;ExpressionText.Type" xml:space="preserve">
-    <value>ICSharpCode.TextEditor.TextEditorControl, ICSharpCode.TextEditor, Version=4.2.0.8783, Culture=neutral, PublicKeyToken=4d61825e8dd49f1a</value>
+  <data name="insertARGBColorExpressionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insert ARGB color expression</value>
   </data>
-  <data name="&gt;&gt;ExpressionText.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="insertHTMLCOLORExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 22</value>
   </data>
-  <data name="&gt;&gt;ExpressionText.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="insertHTMLCOLORExpressionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insert HTMLCOLOR expression</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>673, 319</value>
+  <data name="insertThemeExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 22</value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>500, 300</value>
+  <data name="insertThemeExpressionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insert Theme Expression (via Theme Builder)</value>
   </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
+  <data name="LookupValues.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Expression Editor</value>
+  <data name="LookupValues.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
   </data>
-  <data name="&gt;&gt;btnProperties.Name" xml:space="preserve">
-    <value>btnProperties</value>
+  <data name="LookupValues.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
   </data>
-  <data name="&gt;&gt;btnProperties.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="LookupValues.ToolTipText" xml:space="preserve">
+    <value>Click to lookup values from the selected column</value>
   </data>
-  <data name="&gt;&gt;btnFunctions.Name" xml:space="preserve">
-    <value>btnFunctions</value>
+  <data name="OKBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
-  <data name="&gt;&gt;btnFunctions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="OKBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>505, 6</value>
   </data>
-  <data name="&gt;&gt;btnFilter.Name" xml:space="preserve">
-    <value>btnFilter</value>
+  <data name="OKBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
   </data>
-  <data name="&gt;&gt;btnFilter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="OKBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;btnCondition.Name" xml:space="preserve">
-    <value>btnCondition</value>
+  <data name="OKBtn.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="&gt;&gt;btnCondition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
-  <data name="&gt;&gt;btnSpatial.Name" xml:space="preserve">
-    <value>btnSpatial</value>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 279</value>
   </data>
-  <data name="&gt;&gt;btnSpatial.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>673, 40</value>
   </data>
-  <data name="&gt;&gt;btnDistance.Name" xml:space="preserve">
-    <value>btnDistance</value>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;btnDistance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
-    <value>toolStripSeparator1</value>
+  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>673, 25</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;ColumnValue.Name" xml:space="preserve">
-    <value>ColumnValue</value>
+  <data name="toolStrip1.Text" xml:space="preserve">
+    <value>toolStrip1</value>
   </data>
-  <data name="&gt;&gt;ColumnValue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
   </data>
-  <data name="&gt;&gt;LookupValues.Name" xml:space="preserve">
-    <value>LookupValues</value>
+  <data name="viewParsedExpressionFilterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 22</value>
   </data>
-  <data name="&gt;&gt;LookupValues.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnName.Name" xml:space="preserve">
-    <value>ColumnName</value>
-  </data>
-  <data name="&gt;&gt;ColumnName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnTools.Name" xml:space="preserve">
-    <value>btnTools</value>
-  </data>
-  <data name="&gt;&gt;btnTools.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;insertThemeExpressionToolStripMenuItem.Name" xml:space="preserve">
-    <value>insertThemeExpressionToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;insertThemeExpressionToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;insertARGBColorExpressionToolStripMenuItem.Name" xml:space="preserve">
-    <value>insertARGBColorExpressionToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;insertARGBColorExpressionToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;insertHTMLCOLORExpressionToolStripMenuItem.Name" xml:space="preserve">
-    <value>insertHTMLCOLORExpressionToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;insertHTMLCOLORExpressionToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buildAndInsertLOOKUPExpressionToolStripMenuItem.Name" xml:space="preserve">
-    <value>buildAndInsertLOOKUPExpressionToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;buildAndInsertLOOKUPExpressionToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buildAndInsertRANGEExpressionToolStripMenuItem.Name" xml:space="preserve">
-    <value>buildAndInsertRANGEExpressionToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;buildAndInsertRANGEExpressionToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnValidate.Name" xml:space="preserve">
-    <value>btnValidate</value>
-  </data>
-  <data name="&gt;&gt;btnValidate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;_autoCompleteTooltip.Name" xml:space="preserve">
-    <value>_autoCompleteTooltip</value>
-  </data>
-  <data name="&gt;&gt;_autoCompleteTooltip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;viewParsedExpressionFilterToolStripMenuItem.Name" xml:space="preserve">
-    <value>viewParsedExpressionFilterToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;viewParsedExpressionFilterToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>ExpressionEditor</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="viewParsedExpressionFilterToolStripMenuItem.Text" xml:space="preserve">
+    <value>View Parsed Expression/Filter</value>
   </data>
 </root>

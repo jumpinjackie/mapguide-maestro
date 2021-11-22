@@ -1,7 +1,8 @@
 ﻿using ICSharpCode.Core;
-using Maestro.AddIn.Scripting.Lang.Python;
+using Maestro.AddIn.Scripting.Services;
 using Maestro.Base;
 using Maestro.Editors.Common;
+using Maestro.Scripting.Core.Lang.Python;
 using Maestro.Shared.UI;
 using Microsoft.Scripting.Hosting.Shell;
 using System;
@@ -35,7 +36,7 @@ namespace Maestro.AddIn.Scripting.UI
             if (PropertyService.Get(ScriptingConfigProperties.ShowIronPythonConsole, ScriptingConfigProperties.DefaultShowIronPythonConsole))
             {
                 Console.WriteLine("Run python host");
-                host = new PythonConsoleHost(textEditor);
+                host = new PythonConsoleHost(textEditor, new HostApplication());
                 host.Run();
             }
         }

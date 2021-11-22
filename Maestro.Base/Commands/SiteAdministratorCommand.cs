@@ -40,7 +40,12 @@ namespace Maestro.Base.Commands
                 if (!baseUrl.EndsWith("/")) //NOXLATE
                     baseUrl += "/"; //NOXLATE
 
-                Process.Start(baseUrl + "mapadmin/login.php"); //NOXLATE
+                var ps = new ProcessStartInfo(baseUrl + "mapadmin/login.php") //NOXLATE
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                };
+                Process.Start(ps);
             }
         }
     }

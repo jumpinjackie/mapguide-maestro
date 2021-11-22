@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,103 +118,82 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="generalSettingsCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="generalSettingsCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="generalSettingsCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>635, 110</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="generalSettingsCtrl.TabIndex" type="System.Int32, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>SimpleSymbolDefinitionEditorCtrl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>Maestro.Editors.EditorBase, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;advancedSettingsCtrl.Name" xml:space="preserve">
+    <value>advancedSettingsCtrl</value>
+  </data>
+  <data name="&gt;&gt;advancedSettingsCtrl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;advancedSettingsCtrl.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.AdvancedSettingsCtrl, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;advancedSettingsCtrl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;generalSettingsCtrl.Name" xml:space="preserve">
     <value>generalSettingsCtrl</value>
   </data>
-  <data name="&gt;&gt;generalSettingsCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.GeneralSettingsCtrl, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;generalSettingsCtrl.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="&gt;&gt;generalSettingsCtrl.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.GeneralSettingsCtrl, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;generalSettingsCtrl.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="symbolGraphicsCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="symbolGraphicsCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 110</value>
-  </data>
-  <data name="symbolGraphicsCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>635, 186</value>
-  </data>
-  <data name="symbolGraphicsCtrl.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;symbolGraphicsCtrl.Name" xml:space="preserve">
-    <value>symbolGraphicsCtrl</value>
-  </data>
-  <data name="&gt;&gt;symbolGraphicsCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolGraphicsCtrl, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;symbolGraphicsCtrl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;symbolGraphicsCtrl.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="parametersCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="parametersCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 296</value>
-  </data>
-  <data name="parametersCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>635, 230</value>
-  </data>
-  <data name="parametersCtrl.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
   <data name="&gt;&gt;parametersCtrl.Name" xml:space="preserve">
     <value>parametersCtrl</value>
-  </data>
-  <data name="&gt;&gt;parametersCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.ParametersCtrl, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;parametersCtrl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;parametersCtrl.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.ParametersCtrl, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;parametersCtrl.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="usageContextsCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="&gt;&gt;symbolGraphicsCtrl.Name" xml:space="preserve">
+    <value>symbolGraphicsCtrl</value>
   </data>
-  <data name="usageContextsCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 526</value>
+  <data name="&gt;&gt;symbolGraphicsCtrl.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="usageContextsCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>635, 562</value>
+  <data name="&gt;&gt;symbolGraphicsCtrl.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolGraphicsCtrl, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="usageContextsCtrl.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;symbolGraphicsCtrl.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="&gt;&gt;usageContextsCtrl.Name" xml:space="preserve">
     <value>usageContextsCtrl</value>
   </data>
-  <data name="&gt;&gt;usageContextsCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.UsageContextsCtrl, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;usageContextsCtrl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;usageContextsCtrl.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.UsageContextsCtrl, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;usageContextsCtrl.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>635, 506</value>
   </data>
   <data name="advancedSettingsCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -228,31 +207,52 @@
   <data name="advancedSettingsCtrl.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;advancedSettingsCtrl.Name" xml:space="preserve">
-    <value>advancedSettingsCtrl</value>
+  <data name="generalSettingsCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="&gt;&gt;advancedSettingsCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.AdvancedSettingsCtrl, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  <data name="generalSettingsCtrl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;advancedSettingsCtrl.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="generalSettingsCtrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>635, 110</value>
   </data>
-  <data name="&gt;&gt;advancedSettingsCtrl.ZOrder" xml:space="preserve">
+  <data name="generalSettingsCtrl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="parametersCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>635, 506</value>
+  <data name="parametersCtrl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 296</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>SimpleSymbolDefinitionEditorCtrl</value>
+  <data name="parametersCtrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>635, 230</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.EditorBase, Maestro.Editors, Version=3.1.0.5859, Culture=neutral, PublicKeyToken=null</value>
+  <data name="parametersCtrl.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="symbolGraphicsCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="symbolGraphicsCtrl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 110</value>
+  </data>
+  <data name="symbolGraphicsCtrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>635, 186</value>
+  </data>
+  <data name="symbolGraphicsCtrl.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="usageContextsCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="usageContextsCtrl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 526</value>
+  </data>
+  <data name="usageContextsCtrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>635, 562</value>
+  </data>
+  <data name="usageContextsCtrl.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
 </root>

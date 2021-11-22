@@ -22,7 +22,6 @@
 
 using ICSharpCode.Core;
 using System.Diagnostics;
-using System.IO;
 
 namespace Maestro.Base.Commands
 {
@@ -30,7 +29,12 @@ namespace Maestro.Base.Commands
     {
         public override void Run()
         {
-            Process.Start("https://jumpinjackie.github.io/mapguide-maestro/userguide/introduction.html"); //NOXLATE
+            var ps = new ProcessStartInfo("https://jumpinjackie.github.io/mapguide-maestro/userguide/introduction.html") //NOXLATE
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
         }
     }
 }

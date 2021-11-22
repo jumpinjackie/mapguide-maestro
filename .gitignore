@@ -20,3 +20,6 @@ Packages/
 MgTileSeeder/publish_win
 MgTileSeeder/publish_linux
 Install/vcredist_x86.exe
+/OpenCoverCoverage.net6.0.xml
+publish_linux
+publish_win

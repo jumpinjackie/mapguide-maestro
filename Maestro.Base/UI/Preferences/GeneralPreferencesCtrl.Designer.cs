@@ -40,6 +40,9 @@
             this.chkOutbound = new System.Windows.Forms.CheckBox();
             this.chkMessages = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnProviderTemplate = new System.Windows.Forms.Button();
+            this.txtProviderTemplateTool = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnBrowseLiveMapEditor = new System.Windows.Forms.Button();
             this.txtLiveMapEditor = new System.Windows.Forms.TextBox();
@@ -59,9 +62,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbTheme = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnProviderTemplate = new System.Windows.Forms.Button();
-            this.txtProviderTemplateTool = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -151,6 +151,24 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // btnProviderTemplate
+            // 
+            resources.ApplyResources(this.btnProviderTemplate, "btnProviderTemplate");
+            this.btnProviderTemplate.Name = "btnProviderTemplate";
+            this.btnProviderTemplate.UseVisualStyleBackColor = true;
+            this.btnProviderTemplate.Click += new System.EventHandler(this.btnProviderTemplate_Click);
+            // 
+            // txtProviderTemplateTool
+            // 
+            resources.ApplyResources(this.txtProviderTemplateTool, "txtProviderTemplateTool");
+            this.txtProviderTemplateTool.Name = "txtProviderTemplateTool";
+            this.txtProviderTemplateTool.ReadOnly = true;
             // 
             // label8
             // 
@@ -267,24 +285,6 @@
             this.cmbTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTheme.FormattingEnabled = true;
             this.cmbTheme.Name = "cmbTheme";
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            // 
-            // btnProviderTemplate
-            // 
-            resources.ApplyResources(this.btnProviderTemplate, "btnProviderTemplate");
-            this.btnProviderTemplate.Name = "btnProviderTemplate";
-            this.btnProviderTemplate.UseVisualStyleBackColor = true;
-            this.btnProviderTemplate.Click += new System.EventHandler(this.btnProviderTemplate_Click);
-            // 
-            // txtProviderTemplateTool
-            // 
-            resources.ApplyResources(this.txtProviderTemplateTool, "txtProviderTemplateTool");
-            this.txtProviderTemplateTool.Name = "txtProviderTemplateTool";
-            this.txtProviderTemplateTool.ReadOnly = true;
             // 
             // GeneralPreferencesCtrl
             // 

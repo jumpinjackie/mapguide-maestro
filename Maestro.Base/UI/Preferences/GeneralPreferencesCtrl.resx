@@ -1,64 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -126,7 +66,7 @@
     <value>13, 40</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 13</value>
+    <value>203, 15</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -138,7 +78,7 @@
     <value>label1</value>
   </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -153,7 +93,7 @@
     <value>226, 38</value>
   </data>
   <data name="rdAjax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 17</value>
+    <value>91, 19</value>
   </data>
   <data name="rdAjax.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -165,7 +105,7 @@
     <value>rdAjax</value>
   </data>
   <data name="&gt;&gt;rdAjax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rdAjax.Parent" xml:space="preserve">
     <value>$this</value>
@@ -183,7 +123,7 @@
     <value>318, 38</value>
   </data>
   <data name="rdFusion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 17</value>
+    <value>60, 19</value>
   </data>
   <data name="rdFusion.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -195,7 +135,7 @@
     <value>rdFusion</value>
   </data>
   <data name="&gt;&gt;rdFusion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rdFusion.Parent" xml:space="preserve">
     <value>$this</value>
@@ -210,7 +150,7 @@
     <value>13, 68</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 13</value>
+    <value>108, 15</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -222,7 +162,7 @@
     <value>label2</value>
   </data>
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>$this</value>
@@ -230,7 +170,7 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtTemplatePath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -238,7 +178,7 @@
     <value>120, 65</value>
   </data>
   <data name="txtTemplatePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>529, 20</value>
+    <value>529, 23</value>
   </data>
   <data name="txtTemplatePath.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -247,7 +187,7 @@
     <value>txtTemplatePath</value>
   </data>
   <data name="&gt;&gt;txtTemplatePath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtTemplatePath.Parent" xml:space="preserve">
     <value>$this</value>
@@ -274,7 +214,7 @@
     <value>btnBrowseTemplatePath</value>
   </data>
   <data name="&gt;&gt;btnBrowseTemplatePath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnBrowseTemplatePath.Parent" xml:space="preserve">
     <value>$this</value>
@@ -292,7 +232,7 @@
     <value>242, 19</value>
   </data>
   <data name="chkShowTipOfTheDay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 17</value>
+    <value>98, 19</value>
   </data>
   <data name="chkShowTipOfTheDay.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -304,7 +244,7 @@
     <value>chkShowTipOfTheDay</value>
   </data>
   <data name="&gt;&gt;chkShowTipOfTheDay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkShowTipOfTheDay.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -319,7 +259,7 @@
     <value>115, 19</value>
   </data>
   <data name="chkOutbound.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 17</value>
+    <value>131, 19</value>
   </data>
   <data name="chkOutbound.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -331,7 +271,7 @@
     <value>chkOutbound</value>
   </data>
   <data name="&gt;&gt;chkOutbound.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkOutbound.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -346,7 +286,7 @@
     <value>19, 19</value>
   </data>
   <data name="chkMessages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 17</value>
+    <value>77, 19</value>
   </data>
   <data name="chkMessages.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -358,7 +298,7 @@
     <value>chkMessages</value>
   </data>
   <data name="&gt;&gt;chkMessages.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkMessages.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -382,7 +322,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -403,7 +343,7 @@
     <value>17, 126</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 13</value>
+    <value>120, 15</value>
   </data>
   <data name="label10.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -415,7 +355,7 @@
     <value>label10</value>
   </data>
   <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label10.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -445,7 +385,7 @@
     <value>btnProviderTemplate</value>
   </data>
   <data name="&gt;&gt;btnProviderTemplate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnProviderTemplate.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -457,10 +397,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="txtProviderTemplateTool.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 123</value>
+    <value>181, 123</value>
   </data>
   <data name="txtProviderTemplateTool.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 20</value>
+    <value>437, 23</value>
   </data>
   <data name="txtProviderTemplateTool.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -469,7 +409,7 @@
     <value>txtProviderTemplateTool</value>
   </data>
   <data name="&gt;&gt;txtProviderTemplateTool.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtProviderTemplateTool.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -487,7 +427,7 @@
     <value>17, 100</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 13</value>
+    <value>150, 15</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -499,7 +439,7 @@
     <value>label8</value>
   </data>
   <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label8.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -529,7 +469,7 @@
     <value>btnBrowseLiveMapEditor</value>
   </data>
   <data name="&gt;&gt;btnBrowseLiveMapEditor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnBrowseLiveMapEditor.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -541,10 +481,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="txtLiveMapEditor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 97</value>
+    <value>181, 97</value>
   </data>
   <data name="txtLiveMapEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 20</value>
+    <value>437, 23</value>
   </data>
   <data name="txtLiveMapEditor.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -553,7 +493,7 @@
     <value>txtLiveMapEditor</value>
   </data>
   <data name="&gt;&gt;txtLiveMapEditor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtLiveMapEditor.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -568,7 +508,7 @@
     <value>17, 74</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 13</value>
+    <value>112, 15</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -580,7 +520,7 @@
     <value>label7</value>
   </data>
   <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label7.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -610,7 +550,7 @@
     <value>btnBrowseRtMapInspector</value>
   </data>
   <data name="&gt;&gt;btnBrowseRtMapInspector.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnBrowseRtMapInspector.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -622,10 +562,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="txtRtMapInspector.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 71</value>
+    <value>181, 71</value>
   </data>
   <data name="txtRtMapInspector.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 20</value>
+    <value>437, 23</value>
   </data>
   <data name="txtRtMapInspector.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -634,7 +574,7 @@
     <value>txtRtMapInspector</value>
   </data>
   <data name="&gt;&gt;txtRtMapInspector.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtRtMapInspector.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -661,7 +601,7 @@
     <value>btnBrowseFsPreview</value>
   </data>
   <data name="&gt;&gt;btnBrowseFsPreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnBrowseFsPreview.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -673,10 +613,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="txtFsPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 45</value>
+    <value>181, 45</value>
   </data>
   <data name="txtFsPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 20</value>
+    <value>437, 23</value>
   </data>
   <data name="txtFsPreview.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -685,7 +625,7 @@
     <value>txtFsPreview</value>
   </data>
   <data name="&gt;&gt;txtFsPreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtFsPreview.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -712,7 +652,7 @@
     <value>btnBrowseMgCooker</value>
   </data>
   <data name="&gt;&gt;btnBrowseMgCooker.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnBrowseMgCooker.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -727,7 +667,7 @@
     <value>17, 48</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 13</value>
+    <value>123, 15</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -739,7 +679,7 @@
     <value>label4</value>
   </data>
   <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -751,10 +691,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="txtMgCooker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 19</value>
+    <value>181, 19</value>
   </data>
   <data name="txtMgCooker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 20</value>
+    <value>437, 23</value>
   </data>
   <data name="txtMgCooker.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -763,7 +703,7 @@
     <value>txtMgCooker</value>
   </data>
   <data name="&gt;&gt;txtMgCooker.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtMgCooker.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -778,7 +718,7 @@
     <value>17, 22</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 13</value>
+    <value>84, 15</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -790,7 +730,7 @@
     <value>label3</value>
   </data>
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -814,7 +754,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
     <value>$this</value>
@@ -829,7 +769,7 @@
     <value>187, 49</value>
   </data>
   <data name="cmbModifiedColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
+    <value>121, 24</value>
   </data>
   <data name="cmbModifiedColor.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -838,7 +778,7 @@
     <value>cmbModifiedColor</value>
   </data>
   <data name="&gt;&gt;cmbModifiedColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cmbModifiedColor.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -850,7 +790,7 @@
     <value>187, 22</value>
   </data>
   <data name="cmbOpenedColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
+    <value>121, 24</value>
   </data>
   <data name="cmbOpenedColor.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -859,7 +799,7 @@
     <value>cmbOpenedColor</value>
   </data>
   <data name="&gt;&gt;cmbOpenedColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cmbOpenedColor.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -874,7 +814,7 @@
     <value>17, 52</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 13</value>
+    <value>138, 15</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -886,7 +826,7 @@
     <value>label6</value>
   </data>
   <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label6.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -901,7 +841,7 @@
     <value>17, 25</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 13</value>
+    <value>132, 15</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -913,7 +853,7 @@
     <value>label5</value>
   </data>
   <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label5.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -937,7 +877,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
     <value>$this</value>
@@ -955,7 +895,7 @@
     <value>13, 11</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 13</value>
+    <value>180, 15</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -967,7 +907,7 @@
     <value>label9</value>
   </data>
   <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label9.Parent" xml:space="preserve">
     <value>$this</value>
@@ -982,7 +922,7 @@
     <value>226, 8</value>
   </data>
   <data name="cmbTheme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>454, 21</value>
+    <value>454, 23</value>
   </data>
   <data name="cmbTheme.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -991,7 +931,7 @@
     <value>cmbTheme</value>
   </data>
   <data name="&gt;&gt;cmbTheme.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cmbTheme.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1009,6 +949,6 @@
     <value>GeneralPreferencesCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

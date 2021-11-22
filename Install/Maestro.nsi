@@ -13,9 +13,6 @@
 ; Include NSIS headers
 ;----------------------
 
-# .net Checker
-!include "DotNetChecker.nsh"
-
 # Modern UI 2
 !include "MUI2.nsh"
 
@@ -26,8 +23,7 @@
 !include "LogicLib.nsh"
 
 # VCRedist detection
-!include "VCRedist11.nsh"
-
+!include "VCRedist.nsh"
 ;-------------------------------
 ; Installer compilation settings
 ;-------------------------------
@@ -88,7 +84,7 @@ LicenseData "LGPL21.rtf"
 #!if "${RELEASE_VERSION}" != "Trunk"
 #	VIProductVersion "${RELEASE_VERSION}"
 #	VIAddVersionKey "ProductName" "${INST_PRODUCT_NAME}"
-#	VIAddVersionKey "LegalCopyright" "� 2011 Jackie Ng"
+#	VIAddVersionKey "LegalCopyright" "� 2011-2021 Jackie Ng"
 #	VIAddVersionKey "FileDescription" "Installer package for MapGuide Maestro"
 #	VIAddVersionKey "FileVersion" "${RELEASE_VERSION}"
 #!endif
@@ -96,8 +92,7 @@ LicenseData "LGPL21.rtf"
 !define REG_KEY_UNINSTALL "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INST_PRODUCT_QUALIFIED}"
 
 # Project Output
-#!define INST_OUTPUT_MAESTRO "${SLN_DIR}\out\${CPU}\${SLN_CONFIG}"
-!define INST_OUTPUT_MAESTRO "${SLN_DIR}\out\${SLN_CONFIG}"
+!define INST_OUTPUT_MAESTRO "${SLN_DIR}\out\publish\${SLN_CONFIG}"
 !define INST_OUTDIR "${SLN_DIR}\artifacts"
 
 # Executables
@@ -177,12 +172,6 @@ Section
     SetRegView 32
     !endif
 
-    # Check for .net Framework
-    !insertmacro CheckNetFramework 48
-
-    # Check for vcredist
-    !insertmacro InstallVCRedist11_32bit "$TEMP\MaestroSetup"
-
     # set installation dir
     SetOutPath $INSTDIR
     
@@ -191,8 +180,11 @@ Section
     File /r "${INST_OUTPUT_MAESTRO}\Data"
     File /r "${INST_OUTPUT_MAESTRO}\Schemas"
 
-    # Auxillary tools
-    File /r "${INST_OUTPUT_MAESTRO}\Tools"
+    # Stdlib for IronPython
+    File /r "${INST_OUTPUT_MAESTRO}\Lib"
+
+    # Support files for Maestro.MapPublisher
+    File /r "${INST_OUTPUT_MAESTRO}\viewer_content"
     
     # docs
     File "${INST_OUTPUT_MAESTRO}\*.txt"

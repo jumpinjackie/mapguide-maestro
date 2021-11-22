@@ -161,6 +161,7 @@ namespace Maestro.Base.UI.Preferences
             Props.Set(ConfigProperties.LocalFsPreviewPath, DefaultLocalFsPreviewPath);
             Props.Set(ConfigProperties.ShowTipOfTheDay, DefaultShowTipOfTheDay);
             Props.Set(ConfigProperties.LiveMapEditorPath, DefaultLiveMapEditorPath);
+            Props.Set(ConfigProperties.ProviderToolPath, DefaultProviderToolPath);
         }
 
         /// <summary>
@@ -197,6 +198,11 @@ namespace Maestro.Base.UI.Preferences
         /// Default path to Maestro.LiveMapEditor.exe
         /// </summary>
         public static string DefaultLiveMapEditorPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "Maestro.LiveMapEditor.exe"); } } //NOXLATE
+
+        /// <summary>
+        /// Default path to ProviderTemplate.exe
+        /// </summary>
+        public static string DefaultProviderToolPath => Path.Combine(FileUtility.ApplicationRootPath, "ProviderTemplate.exe"); //NOXLATE
 
         /// <summary>
         /// Default setting for using local previews

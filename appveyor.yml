@@ -2,7 +2,7 @@ platform: Any CPU
 configuration: Release
 shallow_clone: true
 version: 6.0.0.{build}
-image: Visual Studio 2019
+image: Visual Studio 2022
 
 matrix:
   fast_finish: true
@@ -33,8 +33,6 @@ before_build:
   - echo APPVEYOR_REPO_TAG_NAME         %APPVEYOR_REPO_TAG_NAME%
   - echo APPVEYOR_REPO_COMMIT           %APPVEYOR_REPO_COMMIT%
   - echo APPVEYOR_REPO_COMMIT_TIMESTAMP %APPVEYOR_REPO_COMMIT_TIMESTAMP%
-  - echo NETCORE_MONIKER                %NETCORE_MONIKER%
-  - echo FULLFX_MONIKER                 %FULLFX_MONIKER%
   - echo XUNIT_VERSION                  %XUNIT_VERSION%
   - echo OPENCOVER_VERSION              %OPENCOVER_VERSION%
   - dotnet tool install --global coveralls.net --version 1.0.0
@@ -43,8 +41,6 @@ before_build:
   - cinst -y docfx
 
 environment:
-  NETCORE_MONIKER: 'netcoreapp3.1'
-  FULLFX_MONIKER: 'net48'
   XUNIT_MONIKER: 'net472'
   XUNIT_VERSION: '2.4.1'
   OPENCOVER_VERSION: '4.7.1221'
@@ -57,14 +53,15 @@ build:
   project: Maestro.sln
 
 after_build:
+  - publish.bat %CONFIGURATION%
   - set ARTIFACT_RELEASE_LABEL=%APPVEYOR_BUILD_VERSION%
   - appveyor_postbuild.bat
 
 test_script:
 - ps: >-
-    & ".\Packages\opencover\$($env:OPENCOVER_VERSION)\tools\OpenCover.Console.exe" -filter:"+[OSGeo.*]* -[*.tests]* -[*.Tests]* -[Irony]*" -register:user -target:".\Packages\xunit.runner.console\$($env:XUNIT_VERSION)\tools\$($env:XUNIT_MONIKER)\xunit.console.exe" -targetargs:"OSGeo.MapGuide.MaestroAPI.Tests\bin\Release\$($env:FULLFX_MONIKER)\OSGeo.MapGuide.MaestroAPI.Tests.dll OSGeo.MapGuide.ObjectModels.Tests\bin\Release\$($env:FULLFX_MONIKER)\OSGeo.MapGuide.ObjectModels.Tests.dll -noshadow -xml .\TestResult.xml" -output:OpenCoverCoverage.xml -coverbytest:*.Tests.dll
+    dotnet test --logger:"trx;LogFileName=$(Get-Location)\TestResult.xml" /p:CollectCoverage=true /p:CoverletOutput="$(Get-Location)\OpenCoverCoverage.xml" /p:CoverletOutputFormat=lcov /p:CoverletOutputFormat=opencover .\Core.sln
 
-    & csmacnz.coveralls --opencover -i OpenCoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
+    & csmacnz.coveralls --opencover -i OpenCoverCoverage.net6.0.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
 
     $wc = New-Object 'System.Net.WebClient'
 

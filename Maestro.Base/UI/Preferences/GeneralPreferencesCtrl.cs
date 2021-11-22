@@ -66,6 +66,7 @@ namespace Maestro.Base.UI.Preferences
             txtMgCooker.Text = Props.Get(ConfigProperties.MgCookerPath, ConfigProperties.DefaultMgCookerPath);
             txtRtMapInspector.Text = Props.Get(ConfigProperties.RtMapInspectorPath, ConfigProperties.DefaultRtMapInspectorPath);
             txtLiveMapEditor.Text = Props.Get(ConfigProperties.LiveMapEditorPath, ConfigProperties.DefaultLiveMapEditorPath);
+            txtProviderTemplateTool.Text = Props.Get(ConfigProperties.ProviderToolPath, ConfigProperties.DefaultProviderToolPath);
 
             cmbOpenedColor.CurrentColor = Props.Get(ConfigProperties.OpenColor, Color.LightGreen);
             cmbModifiedColor.CurrentColor = Props.Get(ConfigProperties.DirtyColor, Color.Pink);
@@ -110,6 +111,7 @@ namespace Maestro.Base.UI.Preferences
             Apply(ConfigProperties.OpenColor, (Color)cmbOpenedColor.CurrentColor);
             Apply(ConfigProperties.DirtyColor, (Color)cmbModifiedColor.CurrentColor);
             Apply(ConfigProperties.ShowTipOfTheDay, chkShowTipOfTheDay.Checked);
+            Apply(ConfigProperties.ProviderToolPath, txtProviderTemplateTool.Text);
 
             //These changes require restart
             if (themeName != Themes.CurrentTheme)

@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using ICSharpCode.Core;
+using System.Diagnostics;
 
 namespace Maestro.AddInManager
 {
@@ -109,7 +110,12 @@ namespace Maestro.AddInManager
         {
             try
             {
-                System.Diagnostics.Process.Start(((AddInControl)Owner).AddIn.Properties["url"]); //NOXLATE
+                var ps = new ProcessStartInfo(((AddInControl)Owner).AddIn.Properties["url"]) //NOXLATE
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                };
+                Process.Start(ps);
             }
             catch { }
             ManagerForm.Instance.Close();
