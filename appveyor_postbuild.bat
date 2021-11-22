@@ -35,7 +35,7 @@ cd /D %APPVEYOR_BUILD_FOLDER%\Maestro.MapPublisher\publish_linux
 7z a -mx9 %APPVEYOR_BUILD_FOLDER%\artifacts\Maestro-MapPublisher-linux-x64-%ARTIFACT_RELEASE_LABEL%.zip *
 IF %ERRORLEVEL% NEQ 0 exit /B %ERRORLEVEL%
 cd /D %APPVEYOR_BUILD_FOLDER%\Install
-REM appveyor DownloadFile https://aka.ms/vs/17/release/vc_redist.x64.exe
+appveyor DownloadFile https://aka.ms/vs/17/release/vc_redist.x64.exe
 %APPVEYOR_BUILD_FOLDER%\Packages\nsis\2.51.0\tools\makensis.exe /DSLN_CONFIG=%CONFIGURATION% /DCPU=x64 /DRELEASE_VERSION=%ARTIFACT_RELEASE_LABEL% Maestro.nsi
 IF %ERRORLEVEL% NEQ 0 exit /B %ERRORLEVEL%
 cd %APPVEYOR_BUILD_FOLDER%
