@@ -47,7 +47,6 @@
     <ProjectReference Include="..\MgCooker\MgCooker.csproj" />
     <ProjectReference Include="..\MgTileSeeder\MgTileSeeder.csproj" />
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj" />
-    <ProjectReference Include="..\ProviderTemplate\ProviderTemplate.csproj" />
     <ProjectReference Include="..\RtMapInspector\RtMapInspector.csproj" />
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj" />
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj" />

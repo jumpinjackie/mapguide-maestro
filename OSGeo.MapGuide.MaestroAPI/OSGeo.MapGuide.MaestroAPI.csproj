@@ -18,7 +18,7 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
-  <!-- Use full pdb generation for net471 -->
+  <!-- Use full pdb generation for net48 -->
   <PropertyGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
     <DebugType>full</DebugType>
     <DebugSymbols>True</DebugSymbols>
