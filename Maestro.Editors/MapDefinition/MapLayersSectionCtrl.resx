@@ -1,64 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -117,471 +57,84 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="propertiesPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="propertiesPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>329, 0</value>
+  </data>
+  <data name="propertiesPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 292</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>3, 3</value>
-  </metadata>
-  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>3, 3</value>
-  </metadata>
-  <metadata name="toolStrip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>3, 3</value>
-  </metadata>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>3, 3</value>
-  </metadata>
-  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>3, 3</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>MapLayersSectionCtrl</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
-  </data>
-  <data name="&gt;&gt;btnAddBaseLayer.Name" xml:space="preserve">
-    <value>btnAddBaseLayer</value>
-  </data>
-  <data name="&gt;&gt;btnAddBaseLayer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnAddGroup.Name" xml:space="preserve">
-    <value>btnAddGroup</value>
-  </data>
-  <data name="&gt;&gt;btnAddGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnBaseLayerGroupToRegular.Name" xml:space="preserve">
-    <value>btnBaseLayerGroupToRegular</value>
-  </data>
-  <data name="&gt;&gt;btnBaseLayerGroupToRegular.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnBrowse.Name" xml:space="preserve">
-    <value>btnBrowse</value>
-  </data>
-  <data name="&gt;&gt;btnBrowse.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;btnBrowse.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnBrowse.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnConvertLayerGroupToBaseGroup.Name" xml:space="preserve">
-    <value>btnConvertLayerGroupToBaseGroup</value>
-  </data>
-  <data name="&gt;&gt;btnConvertLayerGroupToBaseGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnConvertToTileSet.Name" xml:space="preserve">
-    <value>btnConvertToTileSet</value>
-  </data>
-  <data name="&gt;&gt;btnConvertToTileSet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnDLAddLayer.Name" xml:space="preserve">
-    <value>btnDLAddLayer</value>
-  </data>
-  <data name="&gt;&gt;btnDLAddLayer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnDLMoveLayerBottom.Name" xml:space="preserve">
-    <value>btnDLMoveLayerBottom</value>
-  </data>
-  <data name="&gt;&gt;btnDLMoveLayerBottom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnDLMoveLayerDown.Name" xml:space="preserve">
-    <value>btnDLMoveLayerDown</value>
-  </data>
-  <data name="&gt;&gt;btnDLMoveLayerDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnDLMoveLayerTop.Name" xml:space="preserve">
-    <value>btnDLMoveLayerTop</value>
-  </data>
-  <data name="&gt;&gt;btnDLMoveLayerTop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnDLMoveLayerUp.Name" xml:space="preserve">
-    <value>btnDLMoveLayerUp</value>
-  </data>
-  <data name="&gt;&gt;btnDLMoveLayerUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnDLRemoveLayer.Name" xml:space="preserve">
-    <value>btnDLRemoveLayer</value>
-  </data>
-  <data name="&gt;&gt;btnDLRemoveLayer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnGRPAddLayer.Name" xml:space="preserve">
-    <value>btnGRPAddLayer</value>
-  </data>
-  <data name="&gt;&gt;btnGRPAddLayer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnGRPRemoveLayer.Name" xml:space="preserve">
-    <value>btnGRPRemoveLayer</value>
-  </data>
-  <data name="&gt;&gt;btnGRPRemoveLayer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnInvokeMgCooker.Name" xml:space="preserve">
-    <value>btnInvokeMgCooker</value>
-  </data>
-  <data name="&gt;&gt;btnInvokeMgCooker.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnMoveBaseLayerDown.Name" xml:space="preserve">
-    <value>btnMoveBaseLayerDown</value>
-  </data>
-  <data name="&gt;&gt;btnMoveBaseLayerDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnMoveBaseLayerUp.Name" xml:space="preserve">
-    <value>btnMoveBaseLayerUp</value>
-  </data>
-  <data name="&gt;&gt;btnMoveBaseLayerUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnMoveLayerOrGroupDown.Name" xml:space="preserve">
-    <value>btnMoveLayerOrGroupDown</value>
-  </data>
-  <data name="&gt;&gt;btnMoveLayerOrGroupDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnMoveLayerOrGroupUp.Name" xml:space="preserve">
-    <value>btnMoveLayerOrGroupUp</value>
-  </data>
-  <data name="&gt;&gt;btnMoveLayerOrGroupUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnNewBaseLayerGroup.Name" xml:space="preserve">
-    <value>btnNewBaseLayerGroup</value>
-  </data>
-  <data name="&gt;&gt;btnNewBaseLayerGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRemoveBaseLayer.Name" xml:space="preserve">
-    <value>btnRemoveBaseLayer</value>
-  </data>
-  <data name="&gt;&gt;btnRemoveBaseLayer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRemoveBaseLayerGroup.Name" xml:space="preserve">
-    <value>btnRemoveBaseLayerGroup</value>
-  </data>
-  <data name="&gt;&gt;btnRemoveBaseLayerGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRemoveGroup.Name" xml:space="preserve">
-    <value>btnRemoveGroup</value>
-  </data>
-  <data name="&gt;&gt;btnRemoveGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;contentPanel.Name" xml:space="preserve">
-    <value>contentPanel</value>
-  </data>
-  <data name="&gt;&gt;contentPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;contentPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;contentPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>TAB_TILE_SET</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;NODE_DRAW_ICON.Name" xml:space="preserve">
-    <value>NODE_DRAW_ICON</value>
-  </data>
-  <data name="&gt;&gt;NODE_DRAW_ICON.Type" xml:space="preserve">
-    <value>Aga.Controls.Tree.NodeControls.NodeIcon, Aga.Controls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
-  </data>
-  <data name="&gt;&gt;NODE_DRAW_TEXT.Name" xml:space="preserve">
-    <value>NODE_DRAW_TEXT</value>
-  </data>
-  <data name="&gt;&gt;NODE_DRAW_TEXT.Type" xml:space="preserve">
-    <value>Aga.Controls.Tree.NodeControls.NodeTextBox, Aga.Controls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
-  </data>
-  <data name="&gt;&gt;NODE_GROUP_ICON.Name" xml:space="preserve">
-    <value>NODE_GROUP_ICON</value>
-  </data>
-  <data name="&gt;&gt;NODE_GROUP_ICON.Type" xml:space="preserve">
-    <value>Aga.Controls.Tree.NodeControls.NodeIcon, Aga.Controls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
-  </data>
-  <data name="&gt;&gt;NODE_GROUP_TEXT.Name" xml:space="preserve">
-    <value>NODE_GROUP_TEXT</value>
-  </data>
-  <data name="&gt;&gt;NODE_GROUP_TEXT.Type" xml:space="preserve">
-    <value>Aga.Controls.Tree.NodeControls.NodeTextBox, Aga.Controls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
-  </data>
-  <data name="&gt;&gt;nodeIcon1.Name" xml:space="preserve">
-    <value>nodeIcon1</value>
-  </data>
-  <data name="&gt;&gt;nodeIcon1.Type" xml:space="preserve">
-    <value>Aga.Controls.Tree.NodeControls.NodeIcon, Aga.Controls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
-  </data>
-  <data name="&gt;&gt;nodeTextBox1.Name" xml:space="preserve">
-    <value>nodeTextBox1</value>
-  </data>
-  <data name="&gt;&gt;nodeTextBox1.Type" xml:space="preserve">
-    <value>Aga.Controls.Tree.NodeControls.NodeTextBox, Aga.Controls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
+  <data name="propertiesPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;propertiesPanel.Name" xml:space="preserve">
     <value>propertiesPanel</value>
   </data>
+  <data name="&gt;&gt;propertiesPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;propertiesPanel.Parent" xml:space="preserve">
     <value>contentPanel</value>
-  </data>
-  <data name="&gt;&gt;propertiesPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;propertiesPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="splitter1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>326, 0</value>
+  </data>
+  <data name="splitter1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>3, 292</value>
+  </data>
+  <data name="splitter1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
   <data name="&gt;&gt;splitter1.Name" xml:space="preserve">
     <value>splitter1</value>
+  </data>
+  <data name="&gt;&gt;splitter1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Splitter, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;splitter1.Parent" xml:space="preserve">
     <value>contentPanel</value>
   </data>
-  <data name="&gt;&gt;splitter1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Splitter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;splitter1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;TAB_BASE_LAYERS.Name" xml:space="preserve">
-    <value>TAB_BASE_LAYERS</value>
+  <data name="trvLayersGroup.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;TAB_BASE_LAYERS.Parent" xml:space="preserve">
-    <value>tabs</value>
+  <data name="trvLayersGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 28</value>
   </data>
-  <data name="&gt;&gt;TAB_BASE_LAYERS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="trvLayersGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>312, 233</value>
   </data>
-  <data name="&gt;&gt;TAB_BASE_LAYERS.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;TAB_DRAWING_ORDER.Name" xml:space="preserve">
-    <value>TAB_DRAWING_ORDER</value>
-  </data>
-  <data name="&gt;&gt;TAB_DRAWING_ORDER.Parent" xml:space="preserve">
-    <value>tabs</value>
-  </data>
-  <data name="&gt;&gt;TAB_DRAWING_ORDER.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TAB_DRAWING_ORDER.ZOrder" xml:space="preserve">
+  <data name="trvLayersGroup.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;TAB_GROUP.Name" xml:space="preserve">
-    <value>TAB_GROUP</value>
-  </data>
-  <data name="&gt;&gt;TAB_GROUP.Parent" xml:space="preserve">
-    <value>tabs</value>
-  </data>
-  <data name="&gt;&gt;TAB_GROUP.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TAB_GROUP.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;TAB_TILE_SET.Name" xml:space="preserve">
-    <value>TAB_TILE_SET</value>
-  </data>
-  <data name="&gt;&gt;TAB_TILE_SET.Parent" xml:space="preserve">
-    <value>tabs</value>
-  </data>
-  <data name="&gt;&gt;TAB_TILE_SET.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TAB_TILE_SET.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tabs.Name" xml:space="preserve">
-    <value>tabs</value>
-  </data>
-  <data name="&gt;&gt;tabs.Parent" xml:space="preserve">
-    <value>contentPanel</value>
-  </data>
-  <data name="&gt;&gt;tabs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabs.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
-    <value>toolStrip1</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
-    <value>TAB_GROUP</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Name" xml:space="preserve">
-    <value>toolStrip2</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Parent" xml:space="preserve">
-    <value>TAB_DRAWING_ORDER</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;toolStrip3.Name" xml:space="preserve">
-    <value>toolStrip3</value>
-  </data>
-  <data name="&gt;&gt;toolStrip3.Parent" xml:space="preserve">
-    <value>TAB_BASE_LAYERS</value>
-  </data>
-  <data name="&gt;&gt;toolStrip3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
-    <value>toolStripSeparator1</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
-    <value>toolStripSeparator2</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
-    <value>toolStripSeparator3</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
-    <value>toolStripSeparator4</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
-    <value>toolStripSeparator5</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
-    <value>toolStripSeparator6</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
-    <value>toolStripSeparator7</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator8.Name" xml:space="preserve">
-    <value>toolStripSeparator8</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trvBaseLayers.Name" xml:space="preserve">
-    <value>trvBaseLayers</value>
-  </data>
-  <data name="&gt;&gt;trvBaseLayers.Parent" xml:space="preserve">
-    <value>TAB_BASE_LAYERS</value>
-  </data>
-  <data name="&gt;&gt;trvBaseLayers.Type" xml:space="preserve">
-    <value>Aga.Controls.Tree.TreeViewAdv, Aga.Controls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
-  </data>
-  <data name="&gt;&gt;trvBaseLayers.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;trvLayerDrawingOrder.Name" xml:space="preserve">
-    <value>trvLayerDrawingOrder</value>
-  </data>
-  <data name="&gt;&gt;trvLayerDrawingOrder.Parent" xml:space="preserve">
-    <value>TAB_DRAWING_ORDER</value>
-  </data>
-  <data name="&gt;&gt;trvLayerDrawingOrder.Type" xml:space="preserve">
-    <value>Aga.Controls.Tree.TreeViewAdv, Aga.Controls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
-  </data>
-  <data name="&gt;&gt;trvLayerDrawingOrder.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="trvLayersGroup.Text" xml:space="preserve">
+    <value>treeViewAdv1</value>
   </data>
   <data name="&gt;&gt;trvLayersGroup.Name" xml:space="preserve">
     <value>trvLayersGroup</value>
   </data>
+  <data name="&gt;&gt;trvLayersGroup.Type" xml:space="preserve">
+    <value>Aga.Controls.Tree.TreeViewAdv, Aga.Controls, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
+  </data>
   <data name="&gt;&gt;trvLayersGroup.Parent" xml:space="preserve">
     <value>TAB_GROUP</value>
-  </data>
-  <data name="&gt;&gt;trvLayersGroup.Type" xml:space="preserve">
-    <value>Aga.Controls.Tree.TreeViewAdv, Aga.Controls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
   </data>
   <data name="&gt;&gt;trvLayersGroup.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;txtTileSet.Name" xml:space="preserve">
-    <value>txtTileSet</value>
-  </data>
-  <data name="&gt;&gt;txtTileSet.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;txtTileSet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtTileSet.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="$this.HeaderText" xml:space="preserve">
-    <value>Layers</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>610, 319</value>
-  </data>
-  <data name="btnAddBaseLayer.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnAddBaseLayer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnAddBaseLayer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnAddBaseLayer.ToolTipText" xml:space="preserve">
-    <value>Add a new layer</value>
-  </data>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>3, 3</value>
+  </metadata>
   <data name="btnAddGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -591,125 +144,20 @@
   <data name="btnAddGroup.ToolTipText" xml:space="preserve">
     <value>Add a new group</value>
   </data>
-  <data name="btnBaseLayerGroupToRegular.Enabled" type="System.Boolean, mscorlib">
+  <data name="btnRemoveGroup.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="btnBaseLayerGroupToRegular.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="btnRemoveGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="btnBaseLayerGroupToRegular.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnRemoveGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="btnBaseLayerGroupToRegular.Text" xml:space="preserve">
-    <value>Convert Tiled Group to Regular Group</value>
+  <data name="btnRemoveGroup.ToolTipText" xml:space="preserve">
+    <value>Remove selected group</value>
   </data>
-  <data name="btnBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="btnBrowse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>253, 29</value>
-  </data>
-  <data name="btnBrowse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 23</value>
-  </data>
-  <data name="btnBrowse.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="btnBrowse.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="btnConvertLayerGroupToBaseGroup.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnConvertLayerGroupToBaseGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnConvertLayerGroupToBaseGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnConvertLayerGroupToBaseGroup.ToolTipText" xml:space="preserve">
-    <value>Convert selected group to a base layer group</value>
-  </data>
-  <data name="btnConvertToTileSet.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnConvertToTileSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnConvertToTileSet.Text" xml:space="preserve">
-    <value>Convert to Tile Set</value>
-  </data>
-  <data name="btnConvertToTileSet.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnDLAddLayer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnDLAddLayer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnDLAddLayer.ToolTipText" xml:space="preserve">
-    <value>Add new layer</value>
-  </data>
-  <data name="btnDLMoveLayerBottom.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnDLMoveLayerBottom.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnDLMoveLayerBottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnDLMoveLayerBottom.ToolTipText" xml:space="preserve">
-    <value>Move selected layer to bottom</value>
-  </data>
-  <data name="btnDLMoveLayerDown.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnDLMoveLayerDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnDLMoveLayerDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnDLMoveLayerDown.ToolTipText" xml:space="preserve">
-    <value>Move selected layer down</value>
-  </data>
-  <data name="btnDLMoveLayerTop.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnDLMoveLayerTop.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnDLMoveLayerTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnDLMoveLayerTop.ToolTipText" xml:space="preserve">
-    <value>Move selected layer to top</value>
-  </data>
-  <data name="btnDLMoveLayerUp.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnDLMoveLayerUp.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnDLMoveLayerUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnDLMoveLayerUp.ToolTipText" xml:space="preserve">
-    <value>Move selected layer up</value>
-  </data>
-  <data name="btnDLRemoveLayer.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnDLRemoveLayer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnDLRemoveLayer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnDLRemoveLayer.ToolTipText" xml:space="preserve">
-    <value>Remove selected layer</value>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
   </data>
   <data name="btnGRPAddLayer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -732,68 +180,8 @@
   <data name="btnGRPRemoveLayer.ToolTipText" xml:space="preserve">
     <value>Remove selected layer</value>
   </data>
-  <data name="btnInvokeMgCooker.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKmSURBVDhPfZDbT5JxGMe9qr+g27xoa8ta5ShQUNEsFA8N
-        bbNJ6tJpriYX5Rq2nO80FbdKrTRPnDyfgEaUoPIqCLzwIomp5aHDyq2L1oUFN3Xhl97qVeZwfbbvze95
-        Ps/v2RO1H+JCw9GMG9aHCbeUc8JKpUtc/vxppvQZhy3/n6yKmXIuQfwsNvYhZaAWab18xHZcROHo6nZG
-        wUQd27Y/meVkBr+1aDtrWIHoBxLk6NQQaGRIMi7iuCmI4vFNiHKN19n2SIRVPUupGj5S1OcQ152I3LHH
-        kFFBZJNBcIYNOK1tguSO5lt6uuwgq4SJTbkbzSUqkarlQ9ATD5mpHS2LW6imA5DagzjVXY2THVLw6q8h
-        LuGRkNXCHEuu5dWM0eB1laHM0ArdegDtSwEQ3gAKre+YjTIR1yOGRF2PM7yWy6wWhiOQH67pWwXhCyBn
-        uBHi3nzIySnIPQHkvrCD383HBWa7FMVVcPnNiay2l2u1Xr+c2oLUqIWIub5QlYBsnQpp00HwTJs425WH
-        xIq6rzExxAFW2YukyCC6qXuzXUp+RjxzRIHqEkQTG+C8DOKIYQtJjQTyr2iq2PZI2tqUSU3NEyi+N4Rk
-        bWHovHkjxDX/CInJ76GS+zQIYhyjo/pZtj2SyUmrjiQdGBicBFFvZmJFNWHB7ap+KBQaWCyzIEk7Ghoa
-        TrBKGObxkN3u+uX1LsDrfQWXi4bD4f4rTE/Pwun0wOOZh8/nh1rd28xqYVQqbR5NL4CifLtxuXxwuubh
-        cHox56AxM+OEzeaG0WhZZ7UwKlV/wfLKBrOmLSIU5Wd+foveklKYNUOw292fWC3MnwFrax+h15siQntf
-        4/2HL5h70oFljx9uNx05oLNTGc8UliiKWrHZdmJbmZrayexuRkb0g/+sqKjfHiDHnNSUQu0AAAAASUVO
-        RK5CYII=
-</value>
-  </data>
-  <data name="btnInvokeMgCooker.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnInvokeMgCooker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnInvokeMgCooker.Text" xml:space="preserve">
-    <value>Start MgCooker</value>
-  </data>
-  <data name="btnMoveBaseLayerDown.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnMoveBaseLayerDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnMoveBaseLayerDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnMoveBaseLayerDown.ToolTipText" xml:space="preserve">
-    <value>Move selected layer down</value>
-  </data>
-  <data name="btnMoveBaseLayerUp.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnMoveBaseLayerUp.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnMoveBaseLayerUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnMoveBaseLayerUp.ToolTipText" xml:space="preserve">
-    <value>Move selected layer up</value>
-  </data>
-  <data name="btnMoveLayerOrGroupDown.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnMoveLayerOrGroupDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnMoveLayerOrGroupDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnMoveLayerOrGroupDown.Text" xml:space="preserve">
-    <value>Move the selected group down the logical order</value>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
   </data>
   <data name="btnMoveLayerOrGroupUp.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -807,158 +195,32 @@
   <data name="btnMoveLayerOrGroupUp.Text" xml:space="preserve">
     <value>Move the selected group up the logical order</value>
   </data>
-  <data name="btnNewBaseLayerGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnNewBaseLayerGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnNewBaseLayerGroup.ToolTipText" xml:space="preserve">
-    <value>Add a new group</value>
-  </data>
-  <data name="btnRemoveBaseLayer.Enabled" type="System.Boolean, mscorlib">
+  <data name="btnMoveLayerOrGroupDown.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="btnRemoveBaseLayer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="btnMoveLayerOrGroupDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="btnRemoveBaseLayer.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnMoveLayerOrGroupDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="btnRemoveBaseLayer.ToolTipText" xml:space="preserve">
-    <value>Remove selected layer</value>
+  <data name="btnMoveLayerOrGroupDown.Text" xml:space="preserve">
+    <value>Move the selected group down the logical order</value>
   </data>
-  <data name="btnRemoveBaseLayerGroup.Enabled" type="System.Boolean, mscorlib">
+  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnConvertLayerGroupToBaseGroup.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="btnRemoveBaseLayerGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="btnConvertLayerGroupToBaseGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="btnRemoveBaseLayerGroup.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnConvertLayerGroupToBaseGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="btnRemoveBaseLayerGroup.ToolTipText" xml:space="preserve">
-    <value>Remove selected group</value>
-  </data>
-  <data name="btnRemoveGroup.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnRemoveGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnRemoveGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="btnRemoveGroup.ToolTipText" xml:space="preserve">
-    <value>Remove selected group</value>
-  </data>
-  <data name="contentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>610, 292</value>
-  </data>
-  <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 13</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 72</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Tile Set</value>
-  </data>
-  <data name="propertiesPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="propertiesPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>329, 0</value>
-  </data>
-  <data name="propertiesPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 292</value>
-  </data>
-  <data name="propertiesPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="splitter1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>326, 0</value>
-  </data>
-  <data name="splitter1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>3, 292</value>
-  </data>
-  <data name="splitter1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="TAB_BASE_LAYERS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TAB_BASE_LAYERS.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TAB_BASE_LAYERS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 266</value>
-  </data>
-  <data name="TAB_BASE_LAYERS.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="TAB_BASE_LAYERS.Text" xml:space="preserve">
-    <value>Base Layer Groups</value>
-  </data>
-  <data name="TAB_DRAWING_ORDER.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TAB_DRAWING_ORDER.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TAB_DRAWING_ORDER.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 266</value>
-  </data>
-  <data name="TAB_DRAWING_ORDER.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="TAB_DRAWING_ORDER.Text" xml:space="preserve">
-    <value>Layers by Drawing Order</value>
-  </data>
-  <data name="TAB_GROUP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TAB_GROUP.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TAB_GROUP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 266</value>
-  </data>
-  <data name="TAB_GROUP.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="TAB_GROUP.Text" xml:space="preserve">
-    <value>Layers by Group</value>
-  </data>
-  <data name="TAB_TILE_SET.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TAB_TILE_SET.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 266</value>
-  </data>
-  <data name="TAB_TILE_SET.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="TAB_TILE_SET.Text" xml:space="preserve">
-    <value>Linked Tile Set</value>
-  </data>
-  <data name="tabs.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="tabs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tabs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>326, 292</value>
-  </data>
-  <data name="tabs.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="btnConvertLayerGroupToBaseGroup.ToolTipText" xml:space="preserve">
+    <value>Convert selected group to a base layer group</value>
   </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -972,6 +234,151 @@
   <data name="toolStrip1.Text" xml:space="preserve">
     <value>toolStrip1</value>
   </data>
+  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
+    <value>TAB_GROUP</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TAB_GROUP.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TAB_GROUP.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TAB_GROUP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>318, 264</value>
+  </data>
+  <data name="TAB_GROUP.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="TAB_GROUP.Text" xml:space="preserve">
+    <value>Layers by Group</value>
+  </data>
+  <data name="&gt;&gt;TAB_GROUP.Name" xml:space="preserve">
+    <value>TAB_GROUP</value>
+  </data>
+  <data name="&gt;&gt;TAB_GROUP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_GROUP.Parent" xml:space="preserve">
+    <value>tabs</value>
+  </data>
+  <data name="&gt;&gt;TAB_GROUP.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="trvLayerDrawingOrder.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="trvLayerDrawingOrder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 28</value>
+  </data>
+  <data name="trvLayerDrawingOrder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>312, 233</value>
+  </data>
+  <data name="trvLayerDrawingOrder.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="trvLayerDrawingOrder.Text" xml:space="preserve">
+    <value>treeViewAdv1</value>
+  </data>
+  <data name="&gt;&gt;trvLayerDrawingOrder.Name" xml:space="preserve">
+    <value>trvLayerDrawingOrder</value>
+  </data>
+  <data name="&gt;&gt;trvLayerDrawingOrder.Type" xml:space="preserve">
+    <value>Aga.Controls.Tree.TreeViewAdv, Aga.Controls, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
+  </data>
+  <data name="&gt;&gt;trvLayerDrawingOrder.Parent" xml:space="preserve">
+    <value>TAB_DRAWING_ORDER</value>
+  </data>
+  <data name="&gt;&gt;trvLayerDrawingOrder.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>3, 3</value>
+  </metadata>
+  <data name="btnDLAddLayer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnDLAddLayer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnDLAddLayer.ToolTipText" xml:space="preserve">
+    <value>Add new layer</value>
+  </data>
+  <data name="btnDLRemoveLayer.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnDLRemoveLayer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnDLRemoveLayer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnDLRemoveLayer.ToolTipText" xml:space="preserve">
+    <value>Remove selected layer</value>
+  </data>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnDLMoveLayerUp.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnDLMoveLayerUp.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnDLMoveLayerUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnDLMoveLayerUp.ToolTipText" xml:space="preserve">
+    <value>Move selected layer up</value>
+  </data>
+  <data name="btnDLMoveLayerDown.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnDLMoveLayerDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnDLMoveLayerDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnDLMoveLayerDown.ToolTipText" xml:space="preserve">
+    <value>Move selected layer down</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnDLMoveLayerTop.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnDLMoveLayerTop.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnDLMoveLayerTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnDLMoveLayerTop.ToolTipText" xml:space="preserve">
+    <value>Move selected layer to top</value>
+  </data>
+  <data name="btnDLMoveLayerBottom.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnDLMoveLayerBottom.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnDLMoveLayerBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnDLMoveLayerBottom.ToolTipText" xml:space="preserve">
+    <value>Move selected layer to bottom</value>
+  </data>
   <data name="toolStrip2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
@@ -983,6 +390,177 @@
   </data>
   <data name="toolStrip2.Text" xml:space="preserve">
     <value>toolStrip2</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Name" xml:space="preserve">
+    <value>toolStrip2</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Parent" xml:space="preserve">
+    <value>TAB_DRAWING_ORDER</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TAB_DRAWING_ORDER.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="TAB_DRAWING_ORDER.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TAB_DRAWING_ORDER.Size" type="System.Drawing.Size, System.Drawing">
+    <value>318, 264</value>
+  </data>
+  <data name="TAB_DRAWING_ORDER.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="TAB_DRAWING_ORDER.Text" xml:space="preserve">
+    <value>Layers by Drawing Order</value>
+  </data>
+  <data name="&gt;&gt;TAB_DRAWING_ORDER.Name" xml:space="preserve">
+    <value>TAB_DRAWING_ORDER</value>
+  </data>
+  <data name="&gt;&gt;TAB_DRAWING_ORDER.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_DRAWING_ORDER.Parent" xml:space="preserve">
+    <value>tabs</value>
+  </data>
+  <data name="&gt;&gt;TAB_DRAWING_ORDER.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="trvBaseLayers.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="trvBaseLayers.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 28</value>
+  </data>
+  <data name="trvBaseLayers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>312, 233</value>
+  </data>
+  <data name="trvBaseLayers.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="trvBaseLayers.Text" xml:space="preserve">
+    <value>treeViewAdv1</value>
+  </data>
+  <data name="&gt;&gt;trvBaseLayers.Name" xml:space="preserve">
+    <value>trvBaseLayers</value>
+  </data>
+  <data name="&gt;&gt;trvBaseLayers.Type" xml:space="preserve">
+    <value>Aga.Controls.Tree.TreeViewAdv, Aga.Controls, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
+  </data>
+  <data name="&gt;&gt;trvBaseLayers.Parent" xml:space="preserve">
+    <value>TAB_BASE_LAYERS</value>
+  </data>
+  <data name="&gt;&gt;trvBaseLayers.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="toolStrip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>3, 3</value>
+  </metadata>
+  <data name="btnNewBaseLayerGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnNewBaseLayerGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnNewBaseLayerGroup.ToolTipText" xml:space="preserve">
+    <value>Add a new group</value>
+  </data>
+  <data name="btnRemoveBaseLayerGroup.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnRemoveBaseLayerGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnRemoveBaseLayerGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnRemoveBaseLayerGroup.ToolTipText" xml:space="preserve">
+    <value>Remove selected group</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnAddBaseLayer.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnAddBaseLayer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnAddBaseLayer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnAddBaseLayer.ToolTipText" xml:space="preserve">
+    <value>Add a new layer</value>
+  </data>
+  <data name="btnRemoveBaseLayer.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnRemoveBaseLayer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnRemoveBaseLayer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnRemoveBaseLayer.ToolTipText" xml:space="preserve">
+    <value>Remove selected layer</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnMoveBaseLayerUp.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnMoveBaseLayerUp.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnMoveBaseLayerUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnMoveBaseLayerUp.ToolTipText" xml:space="preserve">
+    <value>Move selected layer up</value>
+  </data>
+  <data name="btnMoveBaseLayerDown.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnMoveBaseLayerDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnMoveBaseLayerDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnMoveBaseLayerDown.ToolTipText" xml:space="preserve">
+    <value>Move selected layer down</value>
+  </data>
+  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnBaseLayerGroupToRegular.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnBaseLayerGroupToRegular.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnBaseLayerGroupToRegular.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnBaseLayerGroupToRegular.Text" xml:space="preserve">
+    <value>Convert Tiled Group to Regular Group</value>
+  </data>
+  <data name="btnConvertToTileSet.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnConvertToTileSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnConvertToTileSet.Text" xml:space="preserve">
+    <value>Convert to Tile Set</value>
+  </data>
+  <data name="btnConvertToTileSet.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="toolStrip3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -996,74 +574,74 @@
   <data name="toolStrip3.Text" xml:space="preserve">
     <value>toolStrip3</value>
   </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
+  <data name="&gt;&gt;toolStrip3.Name" xml:space="preserve">
+    <value>toolStrip3</value>
   </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
+  <data name="&gt;&gt;toolStrip3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
+  <data name="&gt;&gt;toolStrip3.Parent" xml:space="preserve">
+    <value>TAB_BASE_LAYERS</value>
   </data>
-  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="trvBaseLayers.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="trvBaseLayers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 28</value>
-  </data>
-  <data name="trvBaseLayers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 235</value>
-  </data>
-  <data name="trvBaseLayers.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;toolStrip3.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="trvBaseLayers.Text" xml:space="preserve">
-    <value>treeViewAdv1</value>
+  <data name="TAB_BASE_LAYERS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
   </data>
-  <data name="trvLayerDrawingOrder.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="TAB_BASE_LAYERS.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
-  <data name="trvLayerDrawingOrder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 28</value>
+  <data name="TAB_BASE_LAYERS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>318, 264</value>
   </data>
-  <data name="trvLayerDrawingOrder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 235</value>
+  <data name="TAB_BASE_LAYERS.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="trvLayerDrawingOrder.TabIndex" type="System.Int32, mscorlib">
+  <data name="TAB_BASE_LAYERS.Text" xml:space="preserve">
+    <value>Base Layer Groups</value>
+  </data>
+  <data name="&gt;&gt;TAB_BASE_LAYERS.Name" xml:space="preserve">
+    <value>TAB_BASE_LAYERS</value>
+  </data>
+  <data name="&gt;&gt;TAB_BASE_LAYERS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_BASE_LAYERS.Parent" xml:space="preserve">
+    <value>tabs</value>
+  </data>
+  <data name="&gt;&gt;TAB_BASE_LAYERS.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="btnBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnBrowse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 29</value>
+  </data>
+  <data name="btnBrowse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 23</value>
+  </data>
+  <data name="btnBrowse.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="trvLayerDrawingOrder.Text" xml:space="preserve">
-    <value>treeViewAdv1</value>
+  <data name="btnBrowse.Text" xml:space="preserve">
+    <value>...</value>
   </data>
-  <data name="trvLayersGroup.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;btnBrowse.Name" xml:space="preserve">
+    <value>btnBrowse</value>
   </data>
-  <data name="trvLayersGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 28</value>
+  <data name="&gt;&gt;btnBrowse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="trvLayersGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 235</value>
+  <data name="&gt;&gt;btnBrowse.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
-  <data name="trvLayersGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="trvLayersGroup.Text" xml:space="preserve">
-    <value>treeViewAdv1</value>
+  <data name="&gt;&gt;btnBrowse.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="txtTileSet.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1072,9 +650,333 @@
     <value>16, 31</value>
   </data>
   <data name="txtTileSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 20</value>
+    <value>231, 23</value>
   </data>
   <data name="txtTileSet.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtTileSet.Name" xml:space="preserve">
+    <value>txtTileSet</value>
+  </data>
+  <data name="&gt;&gt;txtTileSet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtTileSet.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;txtTileSet.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 13</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 72</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Tile Set</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>TAB_TILE_SET</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TAB_TILE_SET.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="TAB_TILE_SET.Size" type="System.Drawing.Size, System.Drawing">
+    <value>318, 264</value>
+  </data>
+  <data name="TAB_TILE_SET.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="TAB_TILE_SET.Text" xml:space="preserve">
+    <value>Linked Tile Set</value>
+  </data>
+  <data name="&gt;&gt;TAB_TILE_SET.Name" xml:space="preserve">
+    <value>TAB_TILE_SET</value>
+  </data>
+  <data name="&gt;&gt;TAB_TILE_SET.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_TILE_SET.Parent" xml:space="preserve">
+    <value>tabs</value>
+  </data>
+  <data name="&gt;&gt;TAB_TILE_SET.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabs.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="tabs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 292</value>
+  </data>
+  <data name="tabs.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabs.Name" xml:space="preserve">
+    <value>tabs</value>
+  </data>
+  <data name="&gt;&gt;tabs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabs.Parent" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;tabs.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="contentPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 292</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.Name" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.HeaderText" xml:space="preserve">
+    <value>Layers</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 319</value>
+  </data>
+  <data name="&gt;&gt;NODE_GROUP_ICON.Name" xml:space="preserve">
+    <value>NODE_GROUP_ICON</value>
+  </data>
+  <data name="&gt;&gt;NODE_GROUP_ICON.Type" xml:space="preserve">
+    <value>Aga.Controls.Tree.NodeControls.NodeIcon, Aga.Controls, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
+  </data>
+  <data name="&gt;&gt;NODE_GROUP_TEXT.Name" xml:space="preserve">
+    <value>NODE_GROUP_TEXT</value>
+  </data>
+  <data name="&gt;&gt;NODE_GROUP_TEXT.Type" xml:space="preserve">
+    <value>Aga.Controls.Tree.NodeControls.NodeTextBox, Aga.Controls, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
+  </data>
+  <data name="&gt;&gt;btnAddGroup.Name" xml:space="preserve">
+    <value>btnAddGroup</value>
+  </data>
+  <data name="&gt;&gt;btnAddGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveGroup.Name" xml:space="preserve">
+    <value>btnRemoveGroup</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnGRPAddLayer.Name" xml:space="preserve">
+    <value>btnGRPAddLayer</value>
+  </data>
+  <data name="&gt;&gt;btnGRPAddLayer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnGRPRemoveLayer.Name" xml:space="preserve">
+    <value>btnGRPRemoveLayer</value>
+  </data>
+  <data name="&gt;&gt;btnGRPRemoveLayer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
+    <value>toolStripSeparator3</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnMoveLayerOrGroupUp.Name" xml:space="preserve">
+    <value>btnMoveLayerOrGroupUp</value>
+  </data>
+  <data name="&gt;&gt;btnMoveLayerOrGroupUp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnMoveLayerOrGroupDown.Name" xml:space="preserve">
+    <value>btnMoveLayerOrGroupDown</value>
+  </data>
+  <data name="&gt;&gt;btnMoveLayerOrGroupDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
+    <value>toolStripSeparator7</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnConvertLayerGroupToBaseGroup.Name" xml:space="preserve">
+    <value>btnConvertLayerGroupToBaseGroup</value>
+  </data>
+  <data name="&gt;&gt;btnConvertLayerGroupToBaseGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NODE_DRAW_ICON.Name" xml:space="preserve">
+    <value>NODE_DRAW_ICON</value>
+  </data>
+  <data name="&gt;&gt;NODE_DRAW_ICON.Type" xml:space="preserve">
+    <value>Aga.Controls.Tree.NodeControls.NodeIcon, Aga.Controls, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
+  </data>
+  <data name="&gt;&gt;NODE_DRAW_TEXT.Name" xml:space="preserve">
+    <value>NODE_DRAW_TEXT</value>
+  </data>
+  <data name="&gt;&gt;NODE_DRAW_TEXT.Type" xml:space="preserve">
+    <value>Aga.Controls.Tree.NodeControls.NodeTextBox, Aga.Controls, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
+  </data>
+  <data name="&gt;&gt;btnDLAddLayer.Name" xml:space="preserve">
+    <value>btnDLAddLayer</value>
+  </data>
+  <data name="&gt;&gt;btnDLAddLayer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnDLRemoveLayer.Name" xml:space="preserve">
+    <value>btnDLRemoveLayer</value>
+  </data>
+  <data name="&gt;&gt;btnDLRemoveLayer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
+    <value>toolStripSeparator5</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnDLMoveLayerUp.Name" xml:space="preserve">
+    <value>btnDLMoveLayerUp</value>
+  </data>
+  <data name="&gt;&gt;btnDLMoveLayerUp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnDLMoveLayerDown.Name" xml:space="preserve">
+    <value>btnDLMoveLayerDown</value>
+  </data>
+  <data name="&gt;&gt;btnDLMoveLayerDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
+    <value>toolStripSeparator6</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnDLMoveLayerTop.Name" xml:space="preserve">
+    <value>btnDLMoveLayerTop</value>
+  </data>
+  <data name="&gt;&gt;btnDLMoveLayerTop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnDLMoveLayerBottom.Name" xml:space="preserve">
+    <value>btnDLMoveLayerBottom</value>
+  </data>
+  <data name="&gt;&gt;btnDLMoveLayerBottom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nodeIcon1.Name" xml:space="preserve">
+    <value>nodeIcon1</value>
+  </data>
+  <data name="&gt;&gt;nodeIcon1.Type" xml:space="preserve">
+    <value>Aga.Controls.Tree.NodeControls.NodeIcon, Aga.Controls, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
+  </data>
+  <data name="&gt;&gt;nodeTextBox1.Name" xml:space="preserve">
+    <value>nodeTextBox1</value>
+  </data>
+  <data name="&gt;&gt;nodeTextBox1.Type" xml:space="preserve">
+    <value>Aga.Controls.Tree.NodeControls.NodeTextBox, Aga.Controls, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
+  </data>
+  <data name="&gt;&gt;btnNewBaseLayerGroup.Name" xml:space="preserve">
+    <value>btnNewBaseLayerGroup</value>
+  </data>
+  <data name="&gt;&gt;btnNewBaseLayerGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveBaseLayerGroup.Name" xml:space="preserve">
+    <value>btnRemoveBaseLayerGroup</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveBaseLayerGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAddBaseLayer.Name" xml:space="preserve">
+    <value>btnAddBaseLayer</value>
+  </data>
+  <data name="&gt;&gt;btnAddBaseLayer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveBaseLayer.Name" xml:space="preserve">
+    <value>btnRemoveBaseLayer</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveBaseLayer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
+    <value>toolStripSeparator4</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnMoveBaseLayerUp.Name" xml:space="preserve">
+    <value>btnMoveBaseLayerUp</value>
+  </data>
+  <data name="&gt;&gt;btnMoveBaseLayerUp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnMoveBaseLayerDown.Name" xml:space="preserve">
+    <value>btnMoveBaseLayerDown</value>
+  </data>
+  <data name="&gt;&gt;btnMoveBaseLayerDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator8.Name" xml:space="preserve">
+    <value>toolStripSeparator8</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBaseLayerGroupToRegular.Name" xml:space="preserve">
+    <value>btnBaseLayerGroupToRegular</value>
+  </data>
+  <data name="&gt;&gt;btnBaseLayerGroupToRegular.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnConvertToTileSet.Name" xml:space="preserve">
+    <value>btnConvertToTileSet</value>
+  </data>
+  <data name="&gt;&gt;btnConvertToTileSet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MapLayersSectionCtrl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

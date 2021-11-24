@@ -86,15 +86,7 @@ namespace Maestro.Base.Editor
 
         public override void RunProcess(string processName, params string[] args)
         {
-            //HACK: Yeah yeah
-            if (processName.ToLower() == "mgcooker") //NOXLATE
-            {
-                Maestro.Base.Commands.MgCookerCommand.RunCooker(args);
-            }
-            else
-            {
-                throw new ApplicationException(string.Format(Strings.ErrorUnknownExecutable, processName));
-            }
+            throw new ApplicationException(string.Format(Strings.ErrorUnknownExecutable, processName));
         }
 
         public override IPreviewUrl[] GetAlternateWebLayoutPreviewUrls(string resourceID, string locale)

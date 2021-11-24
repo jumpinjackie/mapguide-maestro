@@ -73,25 +73,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         }
 
         [Fact]
-        public void TestArgParser()
-        {
-            string[] args = { "-foo", "-bar:snafu", "-whatever:" };
-
-            var parser = new ArgumentParser(args);
-            Assert.False(parser.IsDefined("snafu"));
-            Assert.True(parser.IsDefined("foo"));
-            Assert.True(parser.IsDefined("bar"));
-            Assert.True(parser.IsDefined("whatever"));
-            Assert.Equal(string.Empty, parser.GetValue("whatever"));
-            Assert.Equal("snafu", parser.GetValue("bar"));
-
-            var nvc = parser.GetAllArgumentsWithValues();
-            Assert.Null(nvc["foo"]);
-            Assert.Equal("snafu", nvc["bar"]);
-            Assert.Null(nvc["whatever"]);
-        }
-
-        [Fact]
         public void TestSiteVersions()
         {
             foreach (KnownSiteVersions ver in Enum.GetValues(typeof(KnownSiteVersions)))

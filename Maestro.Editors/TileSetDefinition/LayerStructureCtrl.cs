@@ -184,40 +184,6 @@ namespace Maestro.Editors.TileSetDefinition
             }
         }
 
-        private void btnInvokeMgCooker_Click(object sender, EventArgs e)
-        {
-            if (_edSvc.IsNew || _edSvc.IsDirty)
-            {
-                MessageBox.Show(Strings.SaveMapBeforeTiling);
-                return;
-            }
-
-            if (_tsd.TileStoreParameters.TileProvider != "Default") //NOXLATE
-            {
-                MessageBox.Show(Maestro.Editors.Strings.MgCookerIncompatibleTileSet);
-                return;
-            }
-
-            var conn = _edSvc.CurrentConnection;
-            //HACK: Can't support other connection types beyond HTTP atm
-            if (!conn.ProviderName.ToLower().Contains("maestro.http"))
-            {
-                MessageBox.Show(string.Format(Strings.UnsupportedConnectionType, conn.ProviderName));
-                return;
-            }
-
-            if (_tsd.GroupCount == 0)
-            {
-                MessageBox.Show(Strings.NotATiledMap);
-                return;
-            }
-
-            _edSvc.RunProcess("MgCooker",
-                              "--" + TileRunParameters.PROVIDER + "=Maestro.Http",
-                              "--" + TileRunParameters.CONNECTIONPARAMS + "=\"Url=" + conn.GetCustomProperty("BaseUrl").ToString() + ";SessionId=" + conn.SessionID + "\"",
-                              "--" + TileRunParameters.MAPDEFINITIONS + "=" + _edSvc.ResourceID);
-        }
-
         private void trvBaseLayers_ItemDrag(object sender, ItemDragEventArgs e)
         {
             trvBaseLayers.DoDragDrop(e.Item, DragDropEffects.All);
