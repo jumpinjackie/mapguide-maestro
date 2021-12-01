@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Xml.Serialization;
 
@@ -213,6 +214,26 @@ namespace OSGeo.MapGuide.ObjectModels.SelectionModel
         /// </summary>
         [XmlElement(ElementName = "SelectedFeatures")]
         public SelectedFeatures SelectedFeatures { get; set; }
+
+        static Lazy<XmlSerializer> smFeatInfoSer = new Lazy<XmlSerializer>(() => new XmlSerializer(typeof(OSGeo.MapGuide.ObjectModels.SelectionModel.FeatureInformation)));
+
+        /// <summary>
+        /// Parses the given XML to a <see cref="FeatureInformation"/>
+        /// </summary>
+        /// <param name="xml"></param>
+        /// <returns></returns>
+        public static FeatureInformation ParseFromXml(string xml)
+        {
+            try
+            {
+                using (var sr = new StringReader(xml))
+                    return smFeatInfoSer.Value.Deserialize(sr) as FeatureInformation;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
 

@@ -47,6 +47,9 @@
     <None Update="Resources\OldTiledMap.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\QueryMapFeatures.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\SelectAggregatesSample.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
