@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <None Remove="changelog.txt" />
+    <None Remove="Data\TipOfTheDay\en.xml" />
     <None Remove="license.txt" />
     <None Remove="resource-readme.txt" />
   </ItemGroup>
@@ -84,6 +85,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="changelog.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TipOfTheDay\en.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="license.txt">
@@ -313,12 +317,6 @@
 
   <ItemGroup>
     <PackageReference Include="NSIS" Version="2.51.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Data\TipOfTheDay\en.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
