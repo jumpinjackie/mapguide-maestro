@@ -660,6 +660,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         int GridScaleRangeCount { get; }
     }
 
+    /// <summary>
+    /// Represents a layer definition based on a raster-based feature source
+    /// </summary>
     public interface IRasterLayerDefinition2 : ISubLayerDefinition2
     {
 

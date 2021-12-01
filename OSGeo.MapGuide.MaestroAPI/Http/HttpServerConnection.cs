@@ -132,6 +132,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         internal HttpServerConnection()
             : base()
         {
+            _http = new HttpClient();
         }
 
         internal HttpServerConnection(RequestBuilder builder)

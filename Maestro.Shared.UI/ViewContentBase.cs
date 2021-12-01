@@ -246,10 +246,5 @@ namespace Maestro.Shared.UI
         /// Fired when the view has been closed internally
         /// </summary>
         public event EventHandler ViewContentClosed;
-
-        /// <summary>
-        /// Fired when the view, which was hidden is now being shown
-        /// </summary>
-        public event EventHandler ViewContentShowing;
     }
 }
