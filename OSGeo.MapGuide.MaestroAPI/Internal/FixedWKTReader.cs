@@ -31,13 +31,35 @@ using System.IO;
 
 namespace OSGeo.MapGuide.MaestroAPI.Internal
 {
-
+    /// <summary>
+    /// An exception that is thrown when parsing geometry WKT fails
+    /// </summary>
     [Serializable]
     public class WktParseException : Exception
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public WktParseException() { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message"></param>
         public WktParseException(string message) : base(message) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="inner"></param>
         public WktParseException(string message, Exception inner) : base(message, inner) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
         protected WktParseException(
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context) : base(info, context) { }

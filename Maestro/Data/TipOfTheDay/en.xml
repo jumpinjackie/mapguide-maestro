@@ -61,12 +61,6 @@
         editor.
     </TipOfTheDay>
     <TipOfTheDay>
-        MgCooker is a utility to pre-generate tiles, resulting in faster tiled maps.
-
-        This tool is accessible from the Tools menu and also the Map Definition
-        editor.
-    </TipOfTheDay>
-    <TipOfTheDay>
         If you want to use Google/Bing/Yahoo maps with Fusion, your Map Definition
         needs to be in the Popular Visualisation Mercator coordinate system.
 

@@ -132,6 +132,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         internal HttpServerConnection()
             : base()
         {
+            _http = new HttpClient();
         }
 
         internal HttpServerConnection(RequestBuilder builder)
@@ -146,8 +147,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 var nvc = new NameValueCollection();
                 nvc[HttpServerConnectionParams.PARAM_URL] = this.BaseURL;
-                nvc[CommandLineArguments.Provider] = this.ProviderName;
-                nvc[CommandLineArguments.Session] = this.SessionID;
+                nvc["Provider"] = this.ProviderName;
+                nvc["SessionId"] = this.SessionID;
                 return nvc;
             }
         }

@@ -135,6 +135,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
         }
 
+        /// <summary>
+        /// Updates this selection from the given input selection set payload
+        /// </summary>
+        /// <param name="featureSet"></param>
         public void UpdateFrom(FeatureSet featureSet)
         {
             _layers.Clear();

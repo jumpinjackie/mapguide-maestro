@@ -25,6 +25,7 @@ using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.SelectionModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -2197,7 +2198,7 @@ namespace Maestro.MapViewer
             if (_map.CurrentConnection.SiteVersion >= new Version(2, 6))
             {
                 var respXml = _map.QueryMapFeatures(wkt, maxFeatures, true, "INTERSECTS", CreateQueryOptionsForSelection(), 1 /* attributes */); //NOXLATE
-                var fi = ParseFeatureInformation(respXml);
+                var fi = FeatureInformation.ParseFromXml(respXml);
 
                 _selection.UpdateFrom(fi.FeatureSet);
                 MapSelectionAttributesChanged?.Invoke(this, fi);
@@ -2214,21 +2215,6 @@ namespace Maestro.MapViewer
 
             RenderSelection(true); //This is either async or queued up. Either way do this before firing off selection changed
             this.SelectionChanged?.Invoke(this, EventArgs.Empty);
-        }
-
-        static Lazy<XmlSerializer> smFeatInfoSer = new Lazy<XmlSerializer>(() => new XmlSerializer(typeof(OSGeo.MapGuide.ObjectModels.SelectionModel.FeatureInformation)));
-
-        static OSGeo.MapGuide.ObjectModels.SelectionModel.FeatureInformation ParseFeatureInformation(string xml)
-        {
-            try
-            {
-                using (var sr = new StringReader(xml))
-                    return smFeatInfoSer.Value.Deserialize(sr) as OSGeo.MapGuide.ObjectModels.SelectionModel.FeatureInformation;
-            }
-            catch
-            {
-                return null;
-            }
         }
 
         private QueryMapOptions CreateQueryOptionsForSelection()

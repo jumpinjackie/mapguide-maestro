@@ -5,35 +5,68 @@ using System.Xml.Serialization;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
+    /// <summary>
+    /// Coordinate system information
+    /// </summary>
     public class CoordinateSystemInfo
     {
+        /// <summary>
+        /// The mentor (CS-Map) code for this coordinate system
+        /// </summary>
         [XmlElement]
         public string MentorCode { get; set; }
 
+        /// <summary>
+        /// The EPSG code for this coordinate system
+        /// </summary>
         [XmlElement]
         public int EpsgCode { get; set; }
 
+        /// <summary>
+        /// The Well-Known Text (WKT) for this coordinate system
+        /// </summary>
         [XmlElement]
         public string Wkt { get; set; }
     }
 
+    /// <summary>
+    /// Defines the result of a coordinate transformation
+    /// </summary>
     public class TransformedCoordinate
     {
+        /// <summary>
+        /// The X coordinate
+        /// </summary>
         [XmlElement]
         public double? X { get; set; }
 
+        /// <summary>
+        /// The Y coordinate
+        /// </summary>
         [XmlElement]
         public double? Y { get; set; }
 
+        /// <summary>
+        /// The transformation error (if an error occurred)
+        /// </summary>
         [XmlElement]
         public string Error { get; set; }
     }
 
+    /// <summary>
+    /// The result of a transformation operation on a set of coordinates
+    /// </summary>
     public class TransformedCoordinateCollection
     {
+        /// <summary>
+        /// The coordinate system
+        /// </summary>
         [XmlElement]
         public CoordinateSystemInfo CoordinateSystem { get; set; }
 
+        /// <summary>
+        /// The transformed coordinates
+        /// </summary>
         [XmlElement]
         public TransformedCoordinate[] TransformedCoordinate { get; set; }
     }

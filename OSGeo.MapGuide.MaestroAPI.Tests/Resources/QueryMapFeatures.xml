@@ -1,0 +1,1530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FeatureInformation>
+    <FeatureSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FeatureSet-1.0.0.xsd">
+        <Layer id="754dee2b-c060-4d61-a9e7-bf5dd33640ed">
+            <Class id="SHP_Schema:Parcels">
+                <ID>Tx8AAA==</ID>
+                <ID>UB8AAA==</ID>
+                <ID>Wh8AAA==</ID>
+                <ID>XB8AAA==</ID>
+                <ID>XR8AAA==</ID>
+                <ID>Xx8AAA==</ID>
+                <ID>YB8AAA==</ID>
+                <ID>pR8AAA==</ID>
+                <ID>0R8AAA==</ID>
+                <ID>0h8AAA==</ID>
+                <ID>0x8AAA==</ID>
+                <ID>1B8AAA==</ID>
+                <ID>1R8AAA==</ID>
+                <ID>1h8AAA==</ID>
+                <ID>1x8AAA==</ID>
+                <ID>EiAAAA==</ID>
+                <ID>EyAAAA==</ID>
+                <ID>NyAAAA==</ID>
+                <ID>OyAAAA==</ID>
+                <ID>ciAAAA==</ID>
+                <ID>wCAAAA==</ID>
+                <ID>xyAAAA==</ID>
+                <ID>ziAAAA==</ID>
+                <ID>5SAAAA==</ID>
+                <ID>6SAAAA==</ID>
+                <ID>8CAAAA==</ID>
+                <ID>gCEAAA==</ID>
+                <ID>hCEAAA==</ID>
+                <ID>mSEAAA==</ID>
+                <ID>uSEAAA==</ID>
+                <ID>rS8AAA==</ID>
+                <ID>FUEAAA==</ID>
+                <ID>FkEAAA==</ID>
+                <ID>GEEAAA==</ID>
+            </Class>
+        </Layer>
+    </FeatureSet>
+    <Tooltip />
+    <Hyperlink />
+    <InlineSelectionImage />
+    <SelectedFeatures>
+        <SelectedLayer id="754dee2b-c060-4d61-a9e7-bf5dd33640ed" name="Parcels">
+            <LayerMetadata>
+                <Property>
+                    <Name>RLDESCR1</Name>
+                    <Type>9</Type>
+                    <DisplayName>Description1</DisplayName>
+                </Property>
+                <Property>
+                    <Name>RTYPE</Name>
+                    <Type>9</Type>
+                    <DisplayName>Zone</DisplayName>
+                </Property>
+                <Property>
+                    <Name>RACRE</Name>
+                    <Type>9</Type>
+                    <DisplayName>Acreage</DisplayName>
+                </Property>
+                <Property>
+                    <Name>RLOT</Name>
+                    <Type>9</Type>
+                    <DisplayName>Lot Dimensions</DisplayName>
+                </Property>
+                <Property>
+                    <Name>RNAME</Name>
+                    <Type>9</Type>
+                    <DisplayName>Owner</DisplayName>
+                </Property>
+                <Property>
+                    <Name>RLDESCR2</Name>
+                    <Type>9</Type>
+                    <DisplayName>Description2</DisplayName>
+                </Property>
+                <Property>
+                    <Name>RLDESCR3</Name>
+                    <Type>9</Type>
+                    <DisplayName>Description3</DisplayName>
+                </Property>
+                <Property>
+                    <Name>RBILAD</Name>
+                    <Type>9</Type>
+                    <DisplayName>Billing Address</DisplayName>
+                </Property>
+                <Property>
+                    <Name>RSQFT</Name>
+                    <Type>7</Type>
+                    <DisplayName>Lot Size (SqFt)</DisplayName>
+                </Property>
+                <Property>
+                    <Name>RLDESCR4</Name>
+                    <Type>9</Type>
+                    <DisplayName>Description4</DisplayName>
+                </Property>
+            </LayerMetadata>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MER</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.31</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>LONG, ROBT/PIZZA HUT</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOT 7 &amp; THE S 65&apos; OF LOT 8 &amp;</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>THE S 1/2 OF THE VACATED</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>10930 W. POTTER RD.</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>13290</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>ALLEY N OF &amp; ADJ TO LOT 7 &amp;</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MER</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.77</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>210X159</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>SNITOVSKY, NORMAN</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOTS 9,10 &amp; 11 &amp; W1/2 OF LOT</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>12 BLK 81 &amp; THE S1/2 OF THE</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>2215 ENTERPRISE DR.</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>33390</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>VAC E-W ALLEY ADJ THE AFORE</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>RES</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.1</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>30X150</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>BREHER, THOMAS F</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>W 1/2 OF LOT 9 BLK 82</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value></Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>1424 ERIE AVE</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>4500</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>RES</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.14</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>NYTSCH, STEVEN &amp;</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>THE W 40&apos; OF LOT 10, EXCEPT</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>THE N 28&apos; OF THE W 4.4&apos;</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>3619 STATE HIGHWAY 4</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>5921</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>THEREOF BLK 82</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MER</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.4</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>MIDAS PROPERTIES, IN</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>THE E 20&apos; OF LOT 10, ALL OF</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>LOT 11 &amp; S 102&apos; OF LOT 12</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>1300 ARLINGTON HGHTS</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>17339</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>BLK 82, EXC THAT PRT OF THE</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>WTC</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>30X150</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>UNION PACIFIC RR COM</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>E 1/2 OF LOT 12 BLK 81</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>EXCEPT VAC ALLEY ADJ.</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>P O BOX 2500</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>0</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>RES</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.21</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>60X150</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>PRIEBE, TODD W &amp; LIS</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOT 7 BLK 80</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value></Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>2522 S. 7TH ST.</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>9000</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>RES</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.05</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>30X75</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>HERRERA, CESAR A.</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>S 1/2 OF E 1/2 OF LOT 9 BLK</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>82</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>522 S. 14TH ST.</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>2250</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>RES</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.02</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>20X45</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>BUTCHER, ROBERT G</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>E 20&apos; OF W 30&apos; OF N 45&apos; OF</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>LOT 4 BLK 89</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>327 GEELE AVE</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>900</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>RES</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.05</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>52X45</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>SCHAAL, GARRY M.</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>E 30&apos; OF N 45&apos; OF LOT 4 &amp; W</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>22&apos; OF N 45&apos; OF LOT 3 BLK 89</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>5417 LONG ACRE RD</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>2340</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>RES</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.04</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>38X45</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>SCHAAL, GARRY M.</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>N 45&apos; OF E 38&apos; OF LOT 3 BLK</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>89</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>5417 LONG ACRE RD</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>1710</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MER</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.25</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>GURPAL WISCONSIN</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOTS 1 &amp; 2 BLK 89, EXCEPT</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>THAT PART DESC AS: COM AT</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>9653 N GRANDVILLE RO</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>10774</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>THE NE COR OF LOT 1, TH N-</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MER</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>1.61</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>MRED (14TH/ERIE) ASS</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>CSM REC IN VOL 17 P 242-4 AS</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>DOC #1593757 ROD BEING PRT</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>W228 N745 WESTMOUND</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>70140</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>OF LOTS 2 &amp; 6 AND ALL OF</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MFG</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.31</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>95X140</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>MILLENNIUM PROPERTIE</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOT 1 &amp; E 35&apos; OF LOT 2 BLK</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>90, ALSO N 1/2 OF VAC N</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>PO BOX 1005</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>13300</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>WATER ST ADJ THE AFORE DESC</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MER</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>1.22</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>TOBOTIPE, INC</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOTS 1,2,3,4,5 &amp; 6 BLK 91</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value></Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>4902 N. 18TH ST.</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>53300</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>EXM</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.19</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>REDEVELOPMENT AUTHOR</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>THE PRT OF LOT 1 BLK 90 1/2</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>AND THE S1/2 OF VAC N WATER</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>807 CENTER AVE</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>8280</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>ST ADJ TO LOT 1 THAT IS</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIG. PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>WTC</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>UNION PACIFIC RR COM</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOT 1 BLK 90 1/2 &amp; S 1/2 OF</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>VACATED N. WATER ST. ADJ TO</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>1700 FARNAM ST.</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>0</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>LOT 1. EXCEPT THAT PART</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>EXM</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.32</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>CITY OF SHEBOYGAN</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOTS 2,3,4 &amp; E 30&apos; OF LOT 5</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>BLK 89 1/2</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>828 CENTER AVE</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>14070</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>EXM</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.06</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>47X60</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>CITY OF SHEBOYGAN</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOT 1 BLK 89 1/2</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value></Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>828 CENTER AVE</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>2820</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>EXM</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.37</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>REDEVELOPMENT AUTHOR</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOTS 12 &amp; 13 BLK 110 AND</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>THAT PRT OF VAC N WATER ST</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>807 CENTER AVE</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>15944</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>ADJ THERETO</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MER</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.36</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>MERTZ, REUBEN R</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOTS 17 &amp; 18 BLK 111</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value></Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>1336 NIAGARA AVE</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>15600</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MER</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.53</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>KEMPF, INC</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOTS 1 &amp; 2 BLK 112</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value></Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>2815 WINDEPOINT CT</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>23100</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MER</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.69</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>QUASIUS, WILLARD &amp; C</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>THE W 40&apos; OF LOT 14 &amp; ALL OF</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>LOTS 15 &amp; 16 BLOCK 111</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>514 N. 26TH ST.</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>30030</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MER</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.51</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>SHEB RIVERSIDE BOAT</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>ALL THAT PART OF LOTS 5, 6 &amp;</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>7 BLOCK 111 LYING ELY OF A</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>1228A WISCONSIN AVE</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>22383</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>LINE DRAWN PARALLEL WITH &amp;</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MER</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.85</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>RABIT PROPERTIES, LL</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>COM AT NW COR BLK 122, TH S</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>ALNG W LINE SD BLK 212.5&apos;,TH</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>1102 FROST RD</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>36976</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>S 89 DEG 58&apos; E 195.12&apos;N</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIG PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MER</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.44</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>RABIT PROPERTIES, LL</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>COM AT NW COR OF BLK 122, TH</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>S 81 DEG 53&apos; E 155.34 FT,</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>1102 FROST RD</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>19100</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>WHICH IS PNT OF BEG, TH S</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>RES</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.22</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>VOPAL, JOSEPH &amp; JUDI</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOT 3 BLK 112</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value></Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>1518 KNOLL CREST DR</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>9510</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>EXM</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.59</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>CITY OF SHEBOYGAN</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOTS 12 &amp; 13 &amp; PRT OF LOTS</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>11 &amp; 14 BLK 111 DESC AS: COM</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>828 CENTER AVE</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>25847</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>IN THE S LINE OF LOT 14,40&apos;</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>WTC</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>UNION PACIFIC RR COM</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>RIGHT OF WAY 100&apos; WIDE OVER</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>LOTS 5-6-7-8-9-10 &amp; 11 &amp;</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>P O BOX 2500</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>0</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>OVER W 30&apos; OF LOTS 1-2-3 &amp; 4</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MER</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.48</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>SHEB RIVERSIDE BOAT</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOTS 8-9 &amp; 10 LYING BETW.</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>SHEB. RIVER &amp; R.R. RIGHT OF</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>1228A WISCONSIN AVE</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>20800</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value>WAY BLK 111</Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>MER</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.98</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>IRREG</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>RICHARDSON INDUSTRIE</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>LOTS 1,2,3,4,5 &amp; 6 BLK 120</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value></Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>P O BOX 904</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>42660</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>RES</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.05</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>40X55</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>BACON, JAY P</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>S 55&apos; OF W 40&apos; OF LOT 4 BLK</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>89</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>1424 ONTARIO AVE</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>2200</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>RES</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.05</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>40X55</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>MOHR, DAVID</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>E 20&apos; OF S 55&apos; OF LOT 4 &amp; W</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>20&apos; OF S 55&apos; OF LOT 3 BLK 89</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>1418 ONTARIO AVE</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>2200</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+            <Feature>
+                <Property>
+                    <Name>Description1</Name>
+                    <Value>ORIGINAL PLAT</Value>
+                </Property>
+                <Property>
+                    <Name>Zone</Name>
+                    <Value>RES</Value>
+                </Property>
+                <Property>
+                    <Name>Acreage</Name>
+                    <Value>0.05</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Dimensions</Name>
+                    <Value>40X55</Value>
+                </Property>
+                <Property>
+                    <Name>Owner</Name>
+                    <Value>LOOSE, PETER A</Value>
+                </Property>
+                <Property>
+                    <Name>Description2</Name>
+                    <Value>E 40&apos; OF S 55&apos; OF LOT 3 BLK</Value>
+                </Property>
+                <Property>
+                    <Name>Description3</Name>
+                    <Value>89</Value>
+                </Property>
+                <Property>
+                    <Name>Billing Address</Name>
+                    <Value>1416 ONTARIO AVE</Value>
+                </Property>
+                <Property>
+                    <Name>Lot Size (SqFt)</Name>
+                    <Value>2200</Value>
+                </Property>
+                <Property>
+                    <Name>Description4</Name>
+                    <Value></Value>
+                </Property>
+            </Feature>
+        </SelectedLayer>
+    </SelectedFeatures>
+</FeatureInformation>

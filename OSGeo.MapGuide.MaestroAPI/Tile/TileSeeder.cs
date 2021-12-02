@@ -35,10 +35,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// </summary>
     public class TileSeederOptions
     {
+        /// <summary>
+        /// The maximum degree of parallelism
+        /// </summary>
         public int? MaxDegreeOfParallelism { get; set; }
 
+        /// <summary>
+        /// A custom tile fetcher that is invoked when a tile is about to be fetch for the given <see cref="TileRef"/>
+        /// </summary>
         public Action<Action<TileRef>, TileRef> Executor { get; set; }
 
+        /// <summary>
+        /// An error handler that is invoked if an exception is thrown fetching the given <see cref="TileRef"/>
+        /// </summary>
         public Action<TileRef, Exception> ErrorLogger { get; set; }
 
         /// <summary>
@@ -86,8 +95,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
     /// <summary>
     /// Populates a tile cache by requesting all possible tiles for a given in map in a multi-threaded manner
-    /// 
-    /// This is the successor to the <see cref="TilingRunCollection"/> with a simpler API design and implementation
     /// </summary>
     /// <example>
     /// This example shows how to seed a tile cache

@@ -66,7 +66,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Gets the total number of features in the feature class
         /// </summary>
-        /// <param name="featSvc"></param>
+        /// <param name="conn"></param>
         /// <param name="featureSourceId"></param>
         /// <param name="featureClass"></param>
         /// <param name="filter"></param>
@@ -109,7 +109,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                             }
                         }
                     }
-                    catch (Exception ex) //Some providers like OGR can lie
+                    catch (Exception) //Some providers like OGR can lie
                     {
                         gotCount = false;
                     }
@@ -138,7 +138,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                         fr.Close();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     total = -1; //Can't count or raw spin???
                 }

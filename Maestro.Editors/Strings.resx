@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddWidgetReference" xml:space="preserve">
     <value>Add Widget Reference</value>
@@ -1470,9 +1470,6 @@ Are you absolutely sure that is what you want?</value>
   <data name="ResourceDoesntExist" xml:space="preserve">
     <value>Resource doesn't exist</value>
   </data>
-  <data name="SaveMapBeforeTiling" xml:space="preserve">
-    <value>You must save this map first before you can run MgCooker</value>
-  </data>
   <data name="SaveResource" xml:space="preserve">
     <value>Save Resource</value>
   </data>
@@ -1676,9 +1673,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="UnmanagedBrowserMultiSelectionNotAllowed" xml:space="preserve">
     <value>Multiple selection is not allowed when SelectFoldersOnly is set to true</value>
   </data>
-  <data name="UnsupportedConnectionType" xml:space="preserve">
-    <value>Invoking MgCooker is not supported for this connection type: {0}</value>
-  </data>
   <data name="UpdatingConfiguration" xml:space="preserve">
     <value>Updating Configuration Document</value>
   </data>
@@ -1717,9 +1711,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   </data>
   <data name="SavedTileSet" xml:space="preserve">
     <value>Saved tile set to: {0}</value>
-  </data>
-  <data name="MgCookerIncompatibleTileSet" xml:space="preserve">
-    <value>MgCooker only works with Tile Sets using the 'Default' tile provider</value>
   </data>
   <data name="ResourcePreviewTitle" xml:space="preserve">
     <value>Resource Preview</value>
