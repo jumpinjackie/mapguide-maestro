@@ -16,10 +16,7 @@
 	<!-- Embed source files that are not tracked by the source control manager in the PDB -->
 	<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-	<!-- Generate symbol packages (.snupkg) -->
-	<!-- You must publish both packages, the package that contains the DLL (.nupkg) and the one that contains the symbols (.snupkg) -->
-	<IncludeSymbols>true</IncludeSymbols>
-	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	<DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <!-- Activate determinstic build for AppVeyor CI -->
