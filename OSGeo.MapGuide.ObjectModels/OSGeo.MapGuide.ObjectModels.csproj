@@ -11,6 +11,20 @@
     <RepositoryUrl>https://github.com/jumpinjackie/mapguide-maestro</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageTags>MapGuide</PackageTags>
+
+	<!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+	<PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+	<!-- Embed source files that are not tracked by the source control manager in the PDB -->
+	<EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+	<!-- Recommended: Embed symbols containing Source Link in the main file (exe/dll) -->
+	<DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <!-- Activate determinstic build for AppVeyor CI -->
+  <PropertyGroup Condition="'$(APPVEYOR)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
   <!-- Use full pdb generation for net471 -->
@@ -38,6 +52,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
   </ItemGroup>
 
   <ItemGroup>
