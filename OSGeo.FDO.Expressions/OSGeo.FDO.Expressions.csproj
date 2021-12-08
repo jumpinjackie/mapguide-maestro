@@ -16,7 +16,9 @@
 	<!-- Embed source files that are not tracked by the source control manager in the PDB -->
 	<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-	<DebugType>embedded</DebugType>
+	<!-- Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <!-- Activate determinstic build for AppVeyor CI -->
