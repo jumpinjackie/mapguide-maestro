@@ -1931,34 +1931,6 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        private void btnInvokeMgCooker_Click(object sender, EventArgs e)
-        {
-            if (_edSvc.IsNew || _edSvc.IsDirty)
-            {
-                MessageBox.Show(Strings.SaveMapBeforeTiling);
-                return;
-            }
-
-            var conn = _edSvc.CurrentConnection;
-            //HACK: Can't support other connection types beyond HTTP atm
-            if (!conn.ProviderName.ToLower().Contains("maestro.http"))
-            {
-                MessageBox.Show(string.Format(Strings.UnsupportedConnectionType, conn.ProviderName));
-                return;
-            }
-
-            if (_map.BaseMap == null || _map.BaseMap.GroupCount == 0)
-            {
-                MessageBox.Show(Strings.NotATiledMap);
-                return;
-            }
-
-            _edSvc.RunProcess("MgCooker",
-                              "--" + TileRunParameters.PROVIDER + "=Maestro.Http",
-                              "--" + TileRunParameters.CONNECTIONPARAMS + "=\"Url=" + conn.GetCustomProperty("BaseUrl").ToString() + ";SessionId=" + conn.SessionID + "\"",
-                              "\"--" + TileRunParameters.MAPDEFINITIONS + "=" + _edSvc.ResourceID + "\"");
-        }
-
         private void tabs_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_activeLayer != null)

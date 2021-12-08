@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LayerStructureCtrl));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.trvBaseLayers = new Aga.Controls.Tree.TreeViewAdv();
             this.nodeIcon1 = new Aga.Controls.Tree.NodeControls.NodeIcon();
@@ -42,8 +41,6 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnMoveBaseLayerUp = new System.Windows.Forms.ToolStripButton();
             this.btnMoveBaseLayerDown = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnInvokeMgCooker = new System.Windows.Forms.ToolStripButton();
             this.propertiesPanel = new System.Windows.Forms.Panel();
             this.contentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -128,9 +125,7 @@
             this.btnRemoveBaseLayer,
             this.toolStripSeparator4,
             this.btnMoveBaseLayerUp,
-            this.btnMoveBaseLayerDown,
-            this.toolStripSeparator8,
-            this.btnInvokeMgCooker});
+            this.btnMoveBaseLayerDown});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(291, 25);
@@ -212,21 +207,6 @@
             this.btnMoveBaseLayerDown.ToolTipText = "Move selected layer down";
             this.btnMoveBaseLayerDown.Click += new System.EventHandler(this.btnMoveBaseLayerDown_Click);
             // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnInvokeMgCooker
-            // 
-            this.btnInvokeMgCooker.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnInvokeMgCooker.Image = ((System.Drawing.Image)(resources.GetObject("btnInvokeMgCooker.Image")));
-            this.btnInvokeMgCooker.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnInvokeMgCooker.Name = "btnInvokeMgCooker";
-            this.btnInvokeMgCooker.Size = new System.Drawing.Size(23, 22);
-            this.btnInvokeMgCooker.Text = "Start MgCooker";
-            this.btnInvokeMgCooker.Click += new System.EventHandler(this.btnInvokeMgCooker_Click);
-            // 
             // propertiesPanel
             // 
             this.propertiesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -237,7 +217,7 @@
             // 
             // LayerStructureCtrl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.HeaderText = "Layer Structure";
             this.Name = "LayerStructureCtrl";
@@ -267,8 +247,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton btnMoveBaseLayerUp;
         private System.Windows.Forms.ToolStripButton btnMoveBaseLayerDown;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-        private System.Windows.Forms.ToolStripButton btnInvokeMgCooker;
         private Aga.Controls.Tree.NodeControls.NodeIcon nodeIcon1;
         private Aga.Controls.Tree.NodeControls.NodeTextBox nodeTextBox1;
         private System.Windows.Forms.Panel propertiesPanel;

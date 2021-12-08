@@ -1199,15 +1199,6 @@ namespace Maestro.Base {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MgCooker.
-        /// </summary>
-        internal static string MgCooker {
-            get {
-                return ResourceManager.GetString("MgCooker", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Load this package file.
         /// </summary>
         internal static string MgpHandlerAction {

@@ -14,6 +14,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Converters
         readonly IResourceService _resSvc;
         readonly IFeatureService _featSvc;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="fs"></param>
+        /// <param name="resSvc"></param>
+        /// <param name="featSvc"></param>
         public OgrFeatureSourceConverter(IFeatureSource fs, IResourceService resSvc, IFeatureService featSvc)
         {
             _fs = fs;
@@ -21,6 +27,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Converters
             _featSvc = featSvc;
         }
 
+        /// <summary>
+        /// Attempts to convert the given Feature Source to an equivalent OGR Feature Source
+        /// </summary>
+        /// <param name="newFeatureSourceId"></param>
+        /// <exception cref="Exception"></exception>
         public void Convert(string newFeatureSourceId)
         {
             //Source cannot be OGR

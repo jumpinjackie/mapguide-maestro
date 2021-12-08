@@ -112,8 +112,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             {
                 var nvc = new NameValueCollection();
                 nvc[PARAM_CONFIG] = m_webconfig;
-                nvc[CommandLineArguments.Provider] = this.ProviderName;
-                nvc[CommandLineArguments.Session] = this.SessionID;
+                nvc["Provider"] = this.ProviderName;
+                nvc["SessionId"] = this.SessionID;
                 return nvc;
             }
         }

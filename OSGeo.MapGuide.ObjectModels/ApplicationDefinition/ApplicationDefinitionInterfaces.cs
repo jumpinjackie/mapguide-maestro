@@ -1060,6 +1060,11 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
             ext.Extension.Content = elements.ToArray();
         }
 
+        /// <summary>
+        /// Gets the configured XYZ urls for the given <see cref="IMap"/> extension element
+        /// </summary>
+        /// <param name="map"></param>
+        /// <returns></returns>
         public static IEnumerable<string> GetXYZUrls(this IMap map)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -1074,6 +1079,11 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
             }
         }
 
+        /// <summary>
+        /// Sets the XYZ urls for the given <see cref="IMap"/> extension element
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="urls"></param>
         public static void SetXYZUrls(this IMap map, params string [] urls)
         {
             Check.ArgumentNotNull(map, nameof(map));
@@ -1140,6 +1150,12 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
             Trace.TraceInformation("Extensible element property {0} set to: {1}", name, value); //NOXLATE
         }
 
+        /// <summary>
+        /// Creates an extension element for the given extensible element
+        /// </summary>
+        /// <param name="ext"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static XmlElement CreateExtensionElement(this IExtensibleElement ext, string name) => AppDefDocument.Instance.CreateElement(name);
 
         /// <summary>

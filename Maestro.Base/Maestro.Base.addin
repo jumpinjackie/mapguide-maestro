@@ -728,9 +728,6 @@
         <MenuItem id="SiteAdmin"
                       label="${res:SiteAdministrator}"
                       class="Maestro.Base.Commands.SiteAdministratorCommand" />
-        <MenuItem id="MgCooker"
-                  label="${res:MgCooker}"
-                  class="Maestro.Base.Commands.MgCookerCommand" />
         <MenuItem id="ProviderTemplate"
                   label="${res:ProviderTemplate}"
                   class="Maestro.Base.Commands.ProviderTemplateToolCommand" />
