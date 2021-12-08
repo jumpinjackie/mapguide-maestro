@@ -16,12 +16,15 @@
 	<!-- Embed source files that are not tracked by the source control manager in the PDB -->
 	<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-	<!-- Recommended: Embed symbols containing Source Link in the main file (exe/dll) -->
-	<DebugType>embedded</DebugType>
+	<!-- Generate symbol packages (.snupkg) -->
+	<!-- You must publish both packages, the package that contains the DLL (.nupkg) and the one that contains the symbols (.snupkg) -->
+	<IncludeSymbols>true</IncludeSymbols>
+	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <!-- Activate determinstic build for AppVeyor CI -->
   <PropertyGroup Condition="'$(APPVEYOR)' == 'true'">
+	<Deterministic>true</Deterministic>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
