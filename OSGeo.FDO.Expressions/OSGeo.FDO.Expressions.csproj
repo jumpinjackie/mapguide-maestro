@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <DebugType>full</DebugType>
+	<DebugType>embedded</DebugType>
     <PackageLicenseUrl>http://www.gnu.org/licenses/lgpl-2.1.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jumpinjackie/mapguide-maestro</PackageProjectUrl>
     <RepositoryUrl>https://github.com/jumpinjackie/mapguide-maestro</RepositoryUrl>
