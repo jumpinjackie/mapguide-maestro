@@ -80,7 +80,7 @@ artifacts:
     name: publisher_windows
   - path: .\artifacts\Maestro-MapPublisher-linux-x64-$(ARTIFACT_RELEASE_LABEL).zip
     name: publisher_linux
-  - path: .\artifacts\*.nupkg
+  - path: .\artifacts\*nupkg
     name: nuget_packages
     type: NuGetPackage
 
