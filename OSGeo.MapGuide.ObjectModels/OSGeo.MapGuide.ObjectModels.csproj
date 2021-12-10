@@ -6,7 +6,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>$(MSBuildProjectDirectory)\..\Properties\maestroapi.key</AssemblyOriginatorKeyFile>
-    <PackageLicenseUrl>http://www.gnu.org/licenses/lgpl-2.1.txt</PackageLicenseUrl>
+    <PackageLicenseExpression>LGPL-2.1-only</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/jumpinjackie/mapguide-maestro</PackageProjectUrl>
     <RepositoryUrl>https://github.com/jumpinjackie/mapguide-maestro</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
