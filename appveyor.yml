@@ -1,6 +1,6 @@
 platform: Any CPU
 configuration: Release
-shallow_clone: true
+clone_depth: 1
 version: 6.0.0.{build}
 image: Visual Studio 2022
 
