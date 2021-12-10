@@ -1,6 +1,6 @@
 platform: Any CPU
 configuration: Release
-shallow_clone: true
+clone_depth: 1
 version: 6.0.0.{build}
 image: Visual Studio 2022
 
@@ -18,6 +18,7 @@ assembly_info:
 # restore NuGet packages before running MSBuild
 before_build:
   - echo CD                             %CD%
+  - echo APPVEYOR                       %APPVEYOR%
   - echo APPVEYOR_PROJECT_NAME          %APPVEYOR_PROJECT_NAME%
   - echo APPVEYOR_PROJECT_SLUG          %APPVEYOR_PROJECT_SLUG%
   - echo APPVEYOR_BUILD_FOLDER          %APPVEYOR_BUILD_FOLDER%
@@ -39,6 +40,8 @@ before_build:
   - nuget update -self
   - nuget restore Maestro.sln
   - cinst -y docfx
+  - echo Does (%APPVEYOR_BUILD_FOLDER%) a .git subdir (ie. Is a clone)?
+  - dir /a:hd %APPVEYOR_BUILD_FOLDER%
 
 environment:
   XUNIT_MONIKER: 'net472'
@@ -61,7 +64,7 @@ test_script:
 - ps: >-
     dotnet test --logger:"trx;LogFileName=$(Get-Location)\TestResult.xml" /p:CollectCoverage=true /p:CoverletOutput="$(Get-Location)\OpenCoverCoverage.xml" /p:CoverletOutputFormat=lcov /p:CoverletOutputFormat=opencover .\Core.sln
 
-    & csmacnz.coveralls --opencover -i OpenCoverCoverage.net6.0.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
+    & csmacnz.coveralls --opencover -i .\OpenCoverCoverage.net6.0.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
 
     $wc = New-Object 'System.Net.WebClient'
 
@@ -80,7 +83,7 @@ artifacts:
     name: publisher_windows
   - path: .\artifacts\Maestro-MapPublisher-linux-x64-$(ARTIFACT_RELEASE_LABEL).zip
     name: publisher_linux
-  - path: .\artifacts\*.nupkg
+  - path: .\artifacts\*nupkg
     name: nuget_packages
     type: NuGetPackage
 
@@ -95,7 +98,7 @@ deploy:
       secure: aDkxhJigoWY0q6+cKKHG3lo4bSC432WvLC3vZ/dCD4JhAuKbCZ+YgFPDdN2qNpO5
     skip_symbols: false
     symbol_server:           # remove to push symbols to SymbolSource.org
-    artifact: /.*\.nupkg/
+    artifact: /.*(\.|\.s)nupkg/
     on:
       branch: master                 # release from master branch only
       appveyor_repo_tag: true        # deploy on tag push only

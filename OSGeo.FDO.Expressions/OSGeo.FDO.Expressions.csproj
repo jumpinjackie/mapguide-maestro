@@ -3,28 +3,22 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <DebugType>full</DebugType>
+    <DebugType>embedded</DebugType>
     <PackageLicenseUrl>http://www.gnu.org/licenses/lgpl-2.1.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jumpinjackie/mapguide-maestro</PackageProjectUrl>
     <RepositoryUrl>https://github.com/jumpinjackie/mapguide-maestro</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageTags>FDO</PackageTags>
 
-	<!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
-	<PublishRepositoryUrl>true</PublishRepositoryUrl>
-
-	<!-- Embed source files that are not tracked by the source control manager in the PDB -->
-	<EmbedUntrackedSources>true</EmbedUntrackedSources>
-
-	<!-- Generate symbol packages (.snupkg) -->
-	<!-- You must publish both packages, the package that contains the DLL (.nupkg) and the one that contains the symbols (.snupkg) -->
-	<IncludeSymbols>true</IncludeSymbols>
-	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <!-- SourceLink settings -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
 
   <!-- Activate determinstic build for AppVeyor CI -->
   <PropertyGroup Condition="'$(APPVEYOR)' == 'true'">
-	<Deterministic>true</Deterministic>
+    <Deterministic>true</Deterministic>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
@@ -40,7 +34,7 @@
 
   <ItemGroup>
     <PackageReference Include="Irony.Core" Version="1.0.7" />
-	<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
   </ItemGroup>
 
   <ItemGroup>
