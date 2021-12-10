@@ -12,7 +12,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageTags>MapGuide</PackageTags>
 
-	<!-- SourceLink settings -->
+    <!-- SourceLink settings -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
@@ -20,7 +20,7 @@
 
   <!-- Activate determinstic build for AppVeyor CI -->
   <PropertyGroup Condition="'$(APPVEYOR)' == 'true'">
-	<Deterministic>true</Deterministic>
+    <Deterministic>true</Deterministic>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
@@ -53,7 +53,7 @@
     <PackageReference Include="NetTopologySuite" Version="2.4.0" />
     <PackageReference Include="Polly" Version="7.2.2" />
     <PackageReference Include="ProjNet" Version="2.0.0" />
-	<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
   </ItemGroup>
 
   <ItemGroup>
