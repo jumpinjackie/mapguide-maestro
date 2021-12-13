@@ -22,6 +22,7 @@
 
 using ICSharpCode.Core;
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 using Maestro.Editors;
 using Maestro.Editors.SymbolDefinition;
 using Maestro.Shared.UI;
@@ -30,6 +31,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
 using OSGeo.MapGuide.ObjectModels;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -42,7 +44,7 @@ namespace Maestro.Base.Commands.SiteExplorer
             {
                 if (wb.ActiveSiteExplorer != null)
                 {
-                    var items = wb.ActiveSiteExplorer.SelectedItems;
+                    var items = wb.ActiveSiteExplorer.GetSelectedResources().ToArray();
                     if (items.Length == 1)
                     {
                         var it = items[0];

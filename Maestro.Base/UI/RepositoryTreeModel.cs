@@ -23,19 +23,31 @@
 using Aga.Controls.Tree;
 using Maestro.Base.Services;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 
 namespace Maestro.Base.UI
 {
+    public interface ISiteExplorerNode
+    { 
+        public string ConnectionName { get; }
+
+        public string Name { get; }
+
+        public Image Icon { get; }
+    }
+
+
     /// <summary>
     /// Models an object in the repository
     /// </summary>
-    public class RepositoryItem
+    public class RepositoryItem : ISiteExplorerNode
     {
         private Dictionary<string, RepositoryItem> _children;
 
@@ -461,10 +473,17 @@ namespace Maestro.Base.UI
         /// <returns></returns>
         public string GetToolTip(TreeNodeAdv node, Aga.Controls.Tree.NodeControls.NodeControl nodeControl)
         {
-            RepositoryItem item = node.Tag as RepositoryItem;
-            if (item != null && !item.IsRoot)
+            if (node.Tag is RepositoryItem item && !item.IsRoot)
             {
                 return string.Format(Strings.SITE_EXPLORER_TOOLTIP_TEMPLATE, Environment.NewLine, item.Name, item.ResourceType, item.CreatedDate, item.ModifiedDate, item.Owner);
+            }
+            else if (node.Tag is WfsLayerRepositoryItem wfsl)
+            {
+                return String.Format(Strings.WfsLayerTooltip, Environment.NewLine, wfsl.LayerName, wfsl.Name, wfsl.Abstract, wfsl.Crs);
+            }
+            else if (node.Tag is WmsLayerRepositoryItem wmsl)
+            {
+                return String.Format(Strings.WmsLayerTooltip, Environment.NewLine, wmsl.LayerName, wmsl.Name, wmsl.Abstract, wmsl.Crs);
             }
             return string.Empty;
         }
@@ -575,8 +594,7 @@ namespace Maestro.Base.UI
             }
             else
             {
-                var node = treePath.LastNode as RepositoryItem;
-                if (node != null && node.IsFolder) //Can't enumerate children of documents
+                if (treePath.LastNode is RepositoryItem node && node.IsFolder) //Can't enumerate children of documents
                 {
                     string connName = GetParentConnectionName(node);
                     var conn = _connManager.GetConnection(connName);
@@ -589,6 +607,41 @@ namespace Maestro.Base.UI
                         Debug.Assert(item.Parent != null);
                         Debug.Assert(!item.IsRoot);
                         yield return item;
+                    }
+
+                    // If we're looping the root, tack on some extra special nodes if capable
+                    if (node.ResourceId == StringConstants.RootIdentifier)
+                    {
+                        if (conn.Capabilities.SupportedCommands.Contains((int)CommandType.GetWfsCapabilities))
+                            yield return new WfsRootRepositoryItem(connName);
+                        if (conn.Capabilities.SupportedCommands.Contains((int)CommandType.GetWmsCapabilities))
+                            yield return new WmsRootRepositoryItem(connName);
+                    }
+                }
+                else if (treePath.LastNode is WfsRootRepositoryItem wfsr)
+                {
+                    if (!wfsr.IsLoaded)
+                    {
+                        var conn = _connManager.GetConnection(wfsr.ConnectionName);
+                        var cmd = conn.CreateCommand((int)CommandType.GetWfsCapabilities) as IGetWfsCapabilities;
+                        wfsr.Load(cmd);
+                    }
+                    foreach (var layer in wfsr.Layers)
+                    {
+                        yield return layer;
+                    }
+                }
+                else if (treePath.LastNode is WmsRootRepositoryItem wmsr)
+                {
+                    if (!wmsr.IsLoaded)
+                    {
+                        var conn = _connManager.GetConnection(wmsr.ConnectionName);
+                        var cmd = conn.CreateCommand((int)CommandType.GetWmsCapabilities) as IGetWmsCapabilities;
+                        wmsr.Load(cmd);
+                    }
+                    foreach (var layer in wmsr.Layers)
+                    {
+                        yield return layer;
                     }
                 }
                 else
@@ -648,7 +701,16 @@ namespace Maestro.Base.UI
         /// <returns></returns>
         public override bool IsLeaf(TreePath treePath)
         {
-            return !((RepositoryItem)treePath.LastNode).IsFolder;
+            if (treePath.LastNode is RepositoryItem item)
+                return !item.IsFolder;
+
+            if (treePath.LastNode is WfsLayerRepositoryItem _)
+                return true;
+
+            if (treePath.LastNode is WmsLayerRepositoryItem _)
+                return true;
+
+            return false;
         }
 
         internal void RaiseNodesChanged(TreeModelEventArgs args)

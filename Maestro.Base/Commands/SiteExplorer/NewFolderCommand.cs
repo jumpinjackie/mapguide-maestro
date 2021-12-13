@@ -24,6 +24,7 @@ using ICSharpCode.Core;
 using Maestro.Base.Services;
 using Maestro.Base.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -35,9 +36,10 @@ namespace Maestro.Base.Commands.SiteExplorer
             var exp = wb.ActiveSiteExplorer;
             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = connMgr.GetConnection(exp.ConnectionName);
-            if (exp.SelectedItems.Length == 1)
+            var sel = exp.GetSelectedResources().ToArray();
+            if (sel.Length == 1)
             {
-                var item = exp.SelectedItems[0];
+                var item = sel[0];
                 if (item.IsFolder)
                 {
                     string defaultName = "New Folder"; //NOXLATE

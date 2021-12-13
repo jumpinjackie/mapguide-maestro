@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using ICSharpCode.Core;
+using Maestro.Base.UI;
 
 namespace Maestro.Base.Commands.Conditions
 {
@@ -32,9 +33,9 @@ namespace Maestro.Base.Commands.Conditions
             if (wb != null)
             {
                 var exp = wb.ActiveSiteExplorer;
-                if (exp != null && exp.SelectedItems.Length == 1)
+                if (exp != null && exp.SelectedItems.Length == 1 && exp.SelectedItems[0] is RepositoryItem ri)
                 {
-                    return !exp.SelectedItems[0].IsRoot;
+                    return !ri.IsRoot;
                 }
             }
             return true;

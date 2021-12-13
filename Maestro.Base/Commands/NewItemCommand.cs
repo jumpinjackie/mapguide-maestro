@@ -43,8 +43,8 @@ namespace Maestro.Base.Commands
             if (exp.SelectedItems.Length == 1)
             {
                 var item = exp.SelectedItems[0];
-                if (item.IsFolder)
-                    startPoint = item.ResourceId;
+                if (item is RepositoryItem ri && ri.IsFolder)
+                    startPoint = ri.ResourceId;
             }
 
             if (dlg == null)

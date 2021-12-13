@@ -25,6 +25,7 @@ using Maestro.Base.Services;
 using Maestro.Base.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Maestro.Base.Commands
 {
@@ -43,7 +44,7 @@ namespace Maestro.Base.Commands
             if (exp.SelectedItems.Length > 0)
             {
                 var items = new List<RepositoryItem>();
-                foreach (var item in exp.SelectedItems)
+                foreach (var item in exp.GetSelectedResources())
                 {
                     item.ClipboardState = RepositoryItem.ClipboardAction.Copy;
                     items.Add(item);

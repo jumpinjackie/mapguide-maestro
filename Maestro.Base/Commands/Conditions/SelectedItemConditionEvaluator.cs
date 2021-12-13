@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using ICSharpCode.Core;
+using Maestro.Base.UI;
 
 namespace Maestro.Base.Commands.Conditions
 {
@@ -33,9 +34,9 @@ namespace Maestro.Base.Commands.Conditions
             {
                 if (wb.ActiveSiteExplorer != null && wb.ActiveSiteExplorer.SelectedItems.Length == 1)
                 {
-                    var ri = wb.ActiveSiteExplorer.SelectedItems[0];
+                    var node = wb.ActiveSiteExplorer.SelectedItems[0];
                     string prop = condition.Properties["type"]; //NOXLATE
-                    if (!string.IsNullOrEmpty(prop))
+                    if (!string.IsNullOrEmpty(prop) && node is RepositoryItem ri)
                     {
                         return prop.ToUpper() == ri.ResourceType.ToUpper();
                     }

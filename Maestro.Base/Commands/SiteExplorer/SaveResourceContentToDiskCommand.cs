@@ -22,7 +22,9 @@
 
 using ICSharpCode.Core;
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 using Maestro.Shared.UI;
+using System.Linq;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -34,14 +36,14 @@ namespace Maestro.Base.Commands.SiteExplorer
             var exp = wb.ActiveSiteExplorer;
             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = connMgr.GetConnection(exp.ConnectionName);
-
-            if (exp.SelectedItems.Length == 1)
+            var sel = exp.GetSelectedResources().ToArray();
+            if (sel.Length == 1)
             {
                 using (var diag = DialogFactory.SaveFile())
                 {
                     if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        var res = conn.ResourceService.GetResource(exp.SelectedItems[0].ResourceId);
+                        var res = conn.ResourceService.GetResource(sel[0].ResourceId);
                         System.IO.File.WriteAllText(diag.FileName, res.Serialize());
                         MessageService.ShowMessage(string.Format(Strings.SavedResource, diag.FileName));
                     }

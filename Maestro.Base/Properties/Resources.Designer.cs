@@ -723,6 +723,16 @@ namespace Maestro.Base.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap server_cloud {
+            get {
+                object obj = ResourceManager.GetObject("server-cloud", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap system_monitor {
             get {
                 object obj = ResourceManager.GetObject("system_monitor", resourceCulture);

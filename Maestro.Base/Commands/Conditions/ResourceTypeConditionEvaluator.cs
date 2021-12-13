@@ -21,7 +21,9 @@
 #endregion Disclaimer / License
 
 using ICSharpCode.Core;
+using Maestro.Base.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Maestro.Base.Commands.Conditions
 {
@@ -40,8 +42,7 @@ namespace Maestro.Base.Commands.Conditions
                         var resTypes = new List<string>(types.Split(',')); //NOXLATE
                         if (resTypes.Count > 0)
                         {
-                            var items = wb.ActiveSiteExplorer.SelectedItems;
-                            foreach (var it in items)
+                            foreach (var it in wb.ActiveSiteExplorer.GetSelectedResources())
                             {
                                 if (resTypes.Contains(it.ResourceType))
                                     return true;

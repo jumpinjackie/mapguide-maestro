@@ -22,6 +22,7 @@
 
 using ICSharpCode.Core;
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using System;
 using System.Windows.Forms;
@@ -38,17 +39,19 @@ namespace Maestro.Base.Commands.SiteExplorer
             {
                 var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
                 var conn = connMgr.GetConnection(wb.ActiveSiteExplorer.ConnectionName);
-                var item = exp.SelectedItems[0];
-                try
+                if (exp.SelectedItems[0] is RepositoryItem item)
                 {
-                    if (Utility.IsSuccessfulConnectionTestResult(conn.FeatureService.TestConnection(item.ResourceId)))
-                        MessageBox.Show(Strings.ConnectionTestOk);
-                    else
-                        MessageBox.Show(string.Format(Strings.ConnectionTestFailed, false));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(string.Format(Strings.ConnectionTestFailed, ex.Message));
+                    try
+                    {
+                        if (Utility.IsSuccessfulConnectionTestResult(conn.FeatureService.TestConnection(item.ResourceId)))
+                            MessageBox.Show(Strings.ConnectionTestOk);
+                        else
+                            MessageBox.Show(string.Format(Strings.ConnectionTestFailed, false));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(string.Format(Strings.ConnectionTestFailed, ex.Message));
+                    }
                 }
             }
         }
