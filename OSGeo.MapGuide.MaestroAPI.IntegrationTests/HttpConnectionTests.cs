@@ -21,12 +21,15 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI.Tests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Xml;
 using Xunit;
 
 namespace MaestroAPITests
@@ -60,6 +63,78 @@ namespace MaestroAPITests
         protected override string GetTestPrefix()
         {
             return "Http";
+        }
+
+        [Theory]
+        [InlineData(WfsVersion.v1_0_0)]
+        [InlineData(WfsVersion.v1_1_0)]
+        public void TestWfsCapabilities(WfsVersion version)
+        {
+            var conn = ConnectionUtil.CreateTestHttpConnection();
+            Assert.Contains((int)CommandType.GetWfsCapabilities, conn.Capabilities.SupportedCommands);
+            var cmd = conn.CreateCommand((int)CommandType.GetWfsCapabilities) as IGetWfsCapabilities;
+            Assert.NotNull(cmd);
+
+            using (var s = cmd.Execute(version))
+            {
+                var doc = new XmlDocument();
+                doc.Load(s);
+            }
+        }
+
+        [Theory]
+        [InlineData(WfsVersion.v1_0_0)]
+        [InlineData(WfsVersion.v1_1_0)]
+        public async Task TestWfsCapabilitiesAsync(WfsVersion version)
+        {
+            var conn = ConnectionUtil.CreateTestHttpConnection();
+            Assert.Contains((int)CommandType.GetWfsCapabilities, conn.Capabilities.SupportedCommands);
+            var cmd = conn.CreateCommand((int)CommandType.GetWfsCapabilities) as IGetWfsCapabilities;
+            Assert.NotNull(cmd);
+
+            using (var s = await cmd.ExecuteAsync(version))
+            {
+                var doc = new XmlDocument();
+                doc.Load(s);
+            }
+        }
+
+        [Theory]
+        [InlineData(WmsVersion.v1_0_0)]
+        [InlineData(WmsVersion.v1_1_0)]
+        [InlineData(WmsVersion.v1_1_1)]
+        [InlineData(WmsVersion.v1_3_0)]
+        public void TestWmsCapabilities(WmsVersion version)
+        {
+            var conn = ConnectionUtil.CreateTestHttpConnection();
+            Assert.Contains((int)CommandType.GetWmsCapabilities, conn.Capabilities.SupportedCommands);
+            var cmd = conn.CreateCommand((int)CommandType.GetWmsCapabilities) as IGetWmsCapabilities;
+            Assert.NotNull(cmd);
+
+            using (var s = cmd.Execute(version))
+            {
+                var doc = new XmlDocument();
+                doc.Load(s);
+            }
+        }
+
+        [Theory]
+        [InlineData(WmsVersion.v1_0_0)]
+        [InlineData(WmsVersion.v1_1_0)]
+        [InlineData(WmsVersion.v1_1_1)]
+        [InlineData(WmsVersion.v1_3_0)]
+        public async Task TestWmsCapabilitiesAsync(WmsVersion version)
+        {
+            var conn = ConnectionUtil.CreateTestHttpConnection();
+            Assert.Contains((int)CommandType.GetWmsCapabilities, conn.Capabilities.SupportedCommands);
+            var cmd = conn.CreateCommand((int)CommandType.GetWmsCapabilities) as IGetWmsCapabilities;
+            Assert.NotNull(cmd);
+
+            using (var s = await cmd.ExecuteAsync(version))
+            {
+                var doc = new XmlDocument();
+                doc.Load(s);
+            }
         }
 
         //[SkippableFact]
