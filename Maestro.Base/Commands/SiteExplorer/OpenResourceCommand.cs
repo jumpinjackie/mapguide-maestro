@@ -22,7 +22,9 @@
 
 using ICSharpCode.Core;
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using System.Linq;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -34,7 +36,7 @@ namespace Maestro.Base.Commands.SiteExplorer
         {
             var wb = Workbench.Instance;
             var exp = wb.ActiveSiteExplorer;
-            var items = wb.ActiveSiteExplorer.SelectedItems;
+            var items = wb.ActiveSiteExplorer.GetSelectedResources().ToArray();
             var openMgr = ServiceRegistry.GetService<OpenResourceManager>();
             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
             _conn = connMgr.GetConnection(wb.ActiveSiteExplorer.ConnectionName);

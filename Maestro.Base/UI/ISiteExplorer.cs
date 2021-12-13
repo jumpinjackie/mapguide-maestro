@@ -23,6 +23,8 @@
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Maestro.Base.UI
 {
@@ -90,12 +92,20 @@ namespace Maestro.Base.UI
         /// <summary>
         /// Gets the items currently selected
         /// </summary>
-        RepositoryItem[] SelectedItems { get; }
+        ISiteExplorerNode[] SelectedItems { get; }
 
         /// <summary>
         /// Raised when the selected item(s) changes
         /// </summary>
         event RepositoryItemEventHandler ItemsSelected;
+    }
+
+    public static class ExtensionMethods
+    {
+        public static IEnumerable<RepositoryItem> GetSelectedResources(this ISiteExplorer exp)
+        {
+            return exp.SelectedItems.OfType<RepositoryItem>();
+        }
     }
 
     /// <summary>
@@ -107,7 +117,7 @@ namespace Maestro.Base.UI
         /// Creates a new instance of RepositoryItemEventArgs
         /// </summary>
         /// <param name="items"></param>
-        public RepositoryItemEventArgs(RepositoryItem[] items)
+        public RepositoryItemEventArgs(ISiteExplorerNode[] items)
         {
             this.Items = items;
         }
@@ -115,7 +125,7 @@ namespace Maestro.Base.UI
         /// <summary>
         /// Gets the affected site explorer items
         /// </summary>
-        public RepositoryItem[] Items { get; }
+        public ISiteExplorerNode[] Items { get; }
     }
 
     /// <summary>

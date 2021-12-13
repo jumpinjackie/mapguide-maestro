@@ -22,11 +22,13 @@
 
 using ICSharpCode.Core;
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 using Maestro.Editors.Common;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
 using System.IO;
+using System.Linq;
 using System.Xml;
 
 namespace Maestro.Base.Commands.SiteExplorer
@@ -44,10 +46,10 @@ namespace Maestro.Base.Commands.SiteExplorer
                 MessageService.ShowError(Strings.ConnectionDoesNotSupportRequiredInterfaces);
                 return;
             }
-
-            if (exp.SelectedItems.Length == 1)
+            var sel = exp.GetSelectedResources().ToArray();
+            if (sel.Length == 1)
             {
-                var selected = exp.SelectedItems[0];
+                var selected = sel[0];
                 var resId = new ResourceIdentifier(selected.ResourceId);
                 if (resId.ResourceType != ResourceTypes.WebLayout.ToString() &&
                     resId.ResourceType != ResourceTypes.ApplicationDefinition.ToString() &&

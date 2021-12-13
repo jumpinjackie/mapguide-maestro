@@ -22,8 +22,10 @@
 
 using ICSharpCode.Core;
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -36,9 +38,10 @@ namespace Maestro.Base.Commands.SiteExplorer
             var omgr = ServiceRegistry.GetService<OpenResourceManager>();
             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = connMgr.GetConnection(exp.ConnectionName);
-            if (exp.SelectedItems.Length == 1)
+            var sel = exp.GetSelectedResources().ToArray();
+            if (sel.Length == 1)
             {
-                var current = exp.SelectedItems[0].ResourceId;
+                var current = sel[0].ResourceId;
 
                 List<string> names = new List<string>()
                 {

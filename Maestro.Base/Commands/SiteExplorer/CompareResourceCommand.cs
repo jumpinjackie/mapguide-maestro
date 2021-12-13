@@ -22,7 +22,9 @@
 
 using ICSharpCode.Core;
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 using Maestro.Editors.Diff;
+using System.Linq;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -35,7 +37,7 @@ namespace Maestro.Base.Commands.SiteExplorer
             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = connMgr.GetConnection(wb.ActiveSiteExplorer.ConnectionName);
 
-            var items = siteExp.SelectedItems;
+            var items = siteExp.GetSelectedResources().ToArray();
             if (items.Length == 1)
             {
                 using (var diag = new CompareResourceDialog(conn))

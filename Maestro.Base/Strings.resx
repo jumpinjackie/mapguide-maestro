@@ -1019,4 +1019,22 @@ Error message: {0}</value>
   <data name="SiteExplorer_GetXYZTileSetUrl" xml:space="preserve">
     <value>Get XYZ tileset URLs</value>
   </data>
+  <data name="WfsLayers" xml:space="preserve">
+    <value>Your Published WFS Layers</value>
+  </data>
+  <data name="WfsLayerTooltip" xml:space="preserve">
+    <value>Name: {1}{0}Title: {2}{0}Abstract: {3}{0}CRS: {4}</value>
+  </data>
+  <data name="WmsLayers" xml:space="preserve">
+    <value>Your Published WMS Layers</value>
+  </data>
+  <data name="WmsLayerTooltip" xml:space="preserve">
+    <value>Name: {1}{0}Title: {2}{0}Abstract: {3}{0}CRS: {4}</value>
+  </data>
+  <data name="UntitledWfsLayer" xml:space="preserve">
+    <value>(Untitled WFS Layer)</value>
+  </data>
+  <data name="UntitledWmsLayer" xml:space="preserve">
+    <value>(Untitled WMS Layer)</value>
+  </data>
 </root>

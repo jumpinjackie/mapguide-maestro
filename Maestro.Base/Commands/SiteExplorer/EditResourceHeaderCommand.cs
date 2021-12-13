@@ -23,6 +23,7 @@
 using ICSharpCode.Core;
 using Maestro.Base.Services;
 using Maestro.Base.UI;
+using System.Linq;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -32,7 +33,8 @@ namespace Maestro.Base.Commands.SiteExplorer
         {
             var wb = Workbench.Instance;
             var exp = wb.ActiveSiteExplorer;
-            if (exp.SelectedItems.Length == 1)
+            var sel = exp.GetSelectedResources().ToArray();
+            if (sel.Length == 1)
             {
                 var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
                 var conn = connMgr.GetConnection(exp.ConnectionName);
@@ -42,7 +44,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                     return;
                 }
 
-                var item = exp.SelectedItems[0];
+                var item = sel[0];
                 var diag = new ResourceHeaderXmlDialog(item.ResourceId, conn.ResourceService);
                 if (item.IsFolder)
                 {

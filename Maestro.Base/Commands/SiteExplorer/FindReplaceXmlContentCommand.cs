@@ -23,6 +23,7 @@
 using ICSharpCode.Core;
 using Maestro.Base.Editor;
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 using Maestro.Editors.Common;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System;
@@ -69,7 +70,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                 };
                 if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    foreach (var item in exp.SelectedItems)
+                    foreach (var item in exp.GetSelectedResources())
                     {
                         if (item.IsFolder)
                         {

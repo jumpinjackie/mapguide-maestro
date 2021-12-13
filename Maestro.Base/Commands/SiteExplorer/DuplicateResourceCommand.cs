@@ -25,6 +25,7 @@ using Maestro.Base.Services;
 using Maestro.Base.UI;
 using OSGeo.MapGuide.ObjectModels;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -40,14 +41,15 @@ namespace Maestro.Base.Commands.SiteExplorer
             if (exp.SelectedItems.Length > 0)
             {
                 List<RepositoryItem> toDuplicate = new List<RepositoryItem>();
-                foreach (var item in exp.SelectedItems)
+                var sel = exp.GetSelectedResources().ToArray();
+                foreach (var item in sel)
                 {
                     if (!item.IsFolder)
                         toDuplicate.Add(item);
                 }
 
                 //They all have the same parent
-                var folder = exp.SelectedItems[0].Parent;
+                var folder = sel[0].Parent;
 
                 foreach (var item in toDuplicate)
                 {

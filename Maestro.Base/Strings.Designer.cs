@@ -2573,6 +2573,24 @@ namespace Maestro.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (Untitled WFS Layer).
+        /// </summary>
+        internal static string UntitledWfsLayer {
+            get {
+                return ResourceManager.GetString("UntitledWfsLayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Untitled WMS Layer).
+        /// </summary>
+        internal static string UntitledWmsLayer {
+            get {
+                return ResourceManager.GetString("UntitledWmsLayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open editor updated to {0}.
         /// </summary>
         internal static string UpdatedOpenEditor {
@@ -2668,6 +2686,42 @@ namespace Maestro.Base {
         internal static string VersionUnknownOrNotConnected {
             get {
                 return ResourceManager.GetString("VersionUnknownOrNotConnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Published WFS Layers.
+        /// </summary>
+        internal static string WfsLayers {
+            get {
+                return ResourceManager.GetString("WfsLayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: {1}{0}Title: {2}{0}Abstract: {3}{0}CRS: {4}.
+        /// </summary>
+        internal static string WfsLayerTooltip {
+            get {
+                return ResourceManager.GetString("WfsLayerTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Published WMS Layers.
+        /// </summary>
+        internal static string WmsLayers {
+            get {
+                return ResourceManager.GetString("WmsLayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: {1}{0}Title: {2}{0}Abstract: {3}{0}CRS: {4}.
+        /// </summary>
+        internal static string WmsLayerTooltip {
+            get {
+                return ResourceManager.GetString("WmsLayerTooltip", resourceCulture);
             }
         }
         

@@ -22,6 +22,7 @@
 
 using ICSharpCode.Core;
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 using Maestro.Editors.FeatureSource;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
@@ -41,12 +42,13 @@ namespace Maestro.Base.Commands.SiteExplorer
             {
                 var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
                 var conn = connMgr.GetConnection(wb.ActiveSiteExplorer.ConnectionName);
-                var item = exp.SelectedItems[0];
-
-                var diag = new CreateLayersFromFeatureSourceDialog(conn, item.ResourceId);
-                if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (exp.SelectedItems[0] is RepositoryItem ri)
                 {
-                    CreateLayers(conn, diag.FeatureSource, diag.TargetFolder, diag.FeatureClasses);
+                    var diag = new CreateLayersFromFeatureSourceDialog(conn, ri.ResourceId);
+                    if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        CreateLayers(conn, diag.FeatureSource, diag.TargetFolder, diag.FeatureClasses);
+                    }
                 }
             }
         }

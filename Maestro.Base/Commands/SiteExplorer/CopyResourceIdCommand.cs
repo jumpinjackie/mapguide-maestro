@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using ICSharpCode.Core;
+using Maestro.Base.UI;
 using System;
 using System.Collections.Generic;
 
@@ -34,7 +35,7 @@ namespace Maestro.Base.Commands.SiteExplorer
             var exp = wb.ActiveSiteExplorer;
 
             List<string> buffer = new List<string>();
-            foreach (var item in exp.SelectedItems)
+            foreach (var item in exp.GetSelectedResources())
             {
                 buffer.Add(item.ResourceId);
             }

@@ -2106,6 +2106,10 @@ namespace OSGeo.MapGuide.MaestroAPI
                     return new HttpDescribeRuntimeMap(this);
                 case CommandType.GetTileProviders:
                     return new HttpGetTileProviders(this);
+                case CommandType.GetWfsCapabilities:
+                    return new HttpGetWfsCapabilities(this);
+                case CommandType.GetWmsCapabilities:
+                    return new HttpGetWmsCapabilities(this);
             }
 
             return base.CreateCommand(cmdType);
@@ -2198,5 +2202,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             resp.EnsureSuccessStatusCode();
             return await resp.Content.ReadAsStreamAsync();
         }
+
+        internal Task<HttpResponseMessage> GetAsync(string req) => _http.GetAsync(req);
     }
 }

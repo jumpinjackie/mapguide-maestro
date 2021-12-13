@@ -49,14 +49,19 @@ namespace Maestro.Base.Commands
             if (exp.SelectedItems.Length != 1)
                 return;
 
-            if (!exp.SelectedItems[0].IsFolder)
-                return;
+            RepositoryItem folder = null;
+            if (exp.SelectedItems[0] is RepositoryItem ri)
+            {
+                if (!ri.IsFolder) // Can only paste into a folder node
+                    return;
+                else
+                    folder = ri;
+            }
 
             var itemsToPaste = GetItems(clip);
             if (itemsToPaste.Length == 0)
                 return;
 
-            var folder = exp.SelectedItems[0];
             var sourceItemsNotMoved = new List<string>();
 
             //.net FX 2.0 hack to compensate for lack of set collection

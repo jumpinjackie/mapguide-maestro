@@ -22,8 +22,10 @@
 
 using ICSharpCode.Core;
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 using Maestro.Base.UI.Packaging;
 using Maestro.Packaging;
+using System.Linq;
 
 namespace Maestro.Base.Commands
 {
@@ -35,7 +37,9 @@ namespace Maestro.Base.Commands
             var exp = wb.ActiveSiteExplorer;
             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
 
-            if (exp.SelectedItems.Length <= 1)
+            var sel = exp.GetSelectedResources().ToArray();
+
+            if (sel.Length <= 1)
             {
                 //TODO: Will need to look at this again, when we decide to support
                 //multiple connections to different sites from the same session. Right
@@ -43,8 +47,8 @@ namespace Maestro.Base.Commands
                 var conn = connMgr.GetConnection(exp.ConnectionName);
                 var dlg = new CreatePackageDialog(conn);
 
-                if (exp.SelectedItems.Length == 1)
-                    dlg.FolderToPackage = exp.SelectedItems[0].ResourceId;
+                if (sel.Length == 1)
+                    dlg.FolderToPackage = sel[0].ResourceId;
 
                 if (dlg.ShowDialog(wb) == System.Windows.Forms.DialogResult.OK)
                 {

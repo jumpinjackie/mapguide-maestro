@@ -21,8 +21,10 @@
 #endregion Disclaimer / License
 
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using System.Linq;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -31,7 +33,7 @@ namespace Maestro.Base.Commands.SiteExplorer
         public override void Run()
         {
             var wb = Workbench.Instance;
-            var items = wb.ActiveSiteExplorer.SelectedItems;
+            var items = wb.ActiveSiteExplorer.GetSelectedResources().ToArray();
             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
             _conn = connMgr.GetConnection(wb.ActiveSiteExplorer.ConnectionName);
 

@@ -24,6 +24,7 @@ using ICSharpCode.Core;
 using Maestro.Base.Services;
 using Maestro.Base.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Maestro.Base.Commands
 {
@@ -39,10 +40,11 @@ namespace Maestro.Base.Commands
 
             ResetClipboardedItems(clip, omgr, connMgr);
 
-            if (exp.SelectedItems.Length > 0)
+            var sel = exp.GetSelectedResources().ToArray();
+            if (sel.Length > 0)
             {
                 var items = new List<RepositoryItem>();
-                foreach (var item in exp.SelectedItems)
+                foreach (var item in sel)
                 {
                     item.ClipboardState = RepositoryItem.ClipboardAction.Cut;
                     items.Add(item);

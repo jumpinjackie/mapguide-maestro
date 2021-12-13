@@ -26,6 +26,7 @@ using Maestro.Base.UI;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Maestro.Base.Commands.SiteExplorer
@@ -39,7 +40,7 @@ namespace Maestro.Base.Commands.SiteExplorer
             {
                 if (wb.ActiveSiteExplorer != null)
                 {
-                    var items = wb.ActiveSiteExplorer.SelectedItems;
+                    var items = wb.ActiveSiteExplorer.GetSelectedResources().ToArray();
                     if (items.Length == 1)
                     {
                         var it = items[0];
