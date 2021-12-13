@@ -99,7 +99,7 @@ namespace MaestroAPITests
             }
         }
 
-        [Theory]
+        [SkippableTheory]
         [InlineData(WmsVersion.v1_0_0)]
         [InlineData(WmsVersion.v1_1_0)]
         [InlineData(WmsVersion.v1_1_1)]
@@ -118,7 +118,7 @@ namespace MaestroAPITests
             }
         }
 
-        [Theory]
+        [SkippableTheory]
         [InlineData(WmsVersion.v1_0_0)]
         [InlineData(WmsVersion.v1_1_0)]
         [InlineData(WmsVersion.v1_1_1)]
@@ -213,6 +213,12 @@ namespace MaestroAPITests
         public override void TestQueryLimits()
         {
             base.TestQueryLimits();
+        }
+
+        [SkippableFact]
+        public override void TestQuery_Issue101()
+        {
+            base.TestQuery_Issue101();
         }
 
         [SkippableFact]
