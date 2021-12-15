@@ -1309,6 +1309,87 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             return Task.FromResult(GetTile(mapDefinition, baseLayerGroup, column, row, scaleIndex));
         }
+
+        public Stream RenderMap(string mapDefinitionId,
+                                double x,
+                                double y,
+                                double scale,
+                                int width,
+                                int height,
+                                int dpi = 96,
+                                string format = "PNG",
+                                bool clip = false,
+                                IEnumerable<string> showLayers = null,
+                                IEnumerable<string> hideLayers = null,
+                                IEnumerable<string> showGroups = null,
+                                IEnumerable<string> hideGroups = null)
+        {
+            GetByteReaderMethod fetch = () =>
+            {
+                var mdfId = new MgResourceIdentifier(mapDefinitionId);
+                var map = new MgdMap(mdfId);
+
+                map.SetViewCenterXY(x, y);
+                map.SetViewScale(scale);
+                map.SetDisplaySize(width, height);
+                map.SetDisplayDpi(dpi);
+
+                var layers = map.GetLayers();
+                var groups = map.GetLayerGroups();
+                if (showLayers?.Any() == true)
+                {
+                    foreach (var layer in showLayers)
+                    {
+                        var idx = layers.IndexOf(layer);
+                        if (idx >= 0)
+                        {
+                            var lyr = layers.GetItem(idx);
+                            lyr.SetVisible(true);
+                        }
+                    }
+                }
+                if (hideLayers?.Any() == true)
+                {
+                    foreach (var layer in hideLayers)
+                    {
+                        var idx = layers.IndexOf(layer);
+                        if (idx >= 0)
+                        {
+                            var lyr = layers.GetItem(idx);
+                            lyr.SetVisible(false);
+                        }
+                    }
+                }
+                if (showGroups?.Any() == true)
+                {
+                    foreach (var group in showGroups)
+                    {
+                        var idx = groups.IndexOf(group);
+                        if (idx >= 0)
+                        {
+                            var grp = groups.GetItem(idx);
+                            grp.SetVisible(true);
+                        }
+                    }
+                }
+                if (hideGroups?.Any() == true)
+                {
+                    foreach (var group in hideGroups)
+                    {
+                        var idx = groups.IndexOf(group);
+                        if (idx >= 0)
+                        {
+                            var grp = groups.GetItem(idx);
+                            grp.SetVisible(false);
+                        }
+                    }
+                }
+
+                var service = GetRenderingService();
+                return service.RenderMap(map, null, format, false, clip);
+            };
+            return new MgReadOnlyStream(fetch);
+        }
     }
 
     internal class LocalLongTransaction : ILongTransaction

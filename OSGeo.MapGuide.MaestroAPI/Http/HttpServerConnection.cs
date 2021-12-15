@@ -1101,6 +1101,36 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        public System.IO.Stream RenderMap(string mapDefinitionId,
+                                          double x,
+                                          double y,
+                                          double scale,
+                                          int width,
+                                          int height,
+                                          int dpi,
+                                          string format,
+                                          bool clip,
+                                          IEnumerable<string> showLayers,
+                                          IEnumerable<string> hideLayers,
+                                          IEnumerable<string> showGroups,
+                                          IEnumerable<string> hideGroups)
+        {
+            string req = m_reqBuilder.RenderMap(mapDefinitionId,
+                x,
+                y,
+                scale,
+                width,
+                height,
+                dpi,
+                format,
+                clip,
+                showLayers,
+                hideLayers,
+                showGroups,
+                hideGroups);
+            return this.OpenRead(req);
+        }
+
         public Stream RenderMapLegend(RuntimeMap map, int width, int height, Color backgroundColor, string format)
         {
             string req = m_reqBuilder.RenderMapLegend(map.Name, width, height, Utility.SerializeHTMLColorARGB(backgroundColor, true), format);

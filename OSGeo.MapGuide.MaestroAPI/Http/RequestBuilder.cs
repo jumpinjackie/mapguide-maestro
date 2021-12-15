@@ -24,6 +24,7 @@ using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Drawing;
 using System.Globalization;
@@ -1153,6 +1154,47 @@ namespace OSGeo.MapGuide.MaestroAPI
             req.ContentLength = outStream.Length;
 
             return req;
+        }
+
+        internal string RenderMap(string mapDefinitionId,
+                                  double x,
+                                  double y,
+                                  double scale,
+                                  int width,
+                                  int height,
+                                  int dpi,
+                                  string format,
+                                  bool clip,
+                                  IEnumerable<string> showLayers,
+                                  IEnumerable<string> hideLayers,
+                                  IEnumerable<string> showGroups,
+                                  IEnumerable<string> hideGroups)
+        {
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETMAPIMAGE" },
+                { "VERSION", "1.0.0" },
+                { "MAPDEFINITION", mapDefinitionId },
+                { "SETDISPLAYWIDTH", width.ToString(CultureInfo.InvariantCulture) },
+                { "SETDISPLAYHEIGHT", height.ToString(CultureInfo.InvariantCulture) },
+                { "SETDISPLAYDPI", dpi.ToString(CultureInfo.InvariantCulture) },
+                { "SETVIEWCENTERX", x.ToString(CultureInfo.InvariantCulture) },
+                { "SETVIEWCENTERY", y.ToString(CultureInfo.InvariantCulture) },
+                { "SETVIEWSCALE", scale.ToString(CultureInfo.InvariantCulture) },
+                { "FORMAT", format },
+                { "CLIP", clip ? "1" : "0" }
+            };
+
+            if (showLayers?.Any() == true)
+                param.Add("SHOWLAYERS", string.Join(",", showLayers));
+            if (showGroups?.Any() == true)
+                param.Add("SHOWGROUPS", string.Join(",", showGroups));
+            if (hideLayers?.Any() == true)
+                param.Add("HIDELAYERS", string.Join(",", hideLayers));
+            if (hideGroups?.Any() == true)
+                param.Add("HIDEGROUPS", string.Join(",", hideGroups));
+
+            return m_hosturi + "?" + EncodeParameters(param);
         }
 
         internal System.Net.WebRequest QueryMapFeatures(string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, int? requestData, Services.QueryMapOptions extraOptions, System.IO.Stream outStream)

@@ -97,6 +97,12 @@ namespace MaestroAPITests
         }
 
         [SkippableFact]
+        public override void TestRenderMap()
+        {
+            base.TestRenderMap();
+        }
+
+        [SkippableFact]
         public override void TestLegendIconRendering()
         {
             base.TestLegendIconRendering();
