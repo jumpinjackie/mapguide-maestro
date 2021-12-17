@@ -23,6 +23,7 @@
 
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Commands;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Xml;
@@ -170,12 +171,32 @@ namespace Maestro.Base.UI
                         var @abstract = layer["Abstract"]?.InnerText; //NOXLATE
                         var crs = layer["CRS"]?.InnerText; //NOXLATE
 
+                        WmsBounds bbox = null;
+                        var bboxEl = layer["BoundingBox"];
+                        if (bboxEl != null)
+                        {
+                            var sMinX = bboxEl.Attributes["minx"]?.Value;
+                            var sMinY = bboxEl.Attributes["miny"]?.Value;
+                            var sMaxX = bboxEl.Attributes["maxx"]?.Value;
+                            var sMaxY = bboxEl.Attributes["maxy"]?.Value;
+                            if (double.TryParse(sMinX, out var minx) &&
+                                double.TryParse(sMinY, out var miny) &&
+                                double.TryParse(sMaxX, out var maxx) &&
+                                double.TryParse(sMaxY, out var maxy))
+                            {
+                                //TODO: The bounds of this layer will clearly show nothing in the OL preview
+                                //if the Layer Definition in question
+                                bbox = new WmsBounds(minx, miny, maxx, maxy);
+                            }
+                        }
+
                         _layers.Add(new WmsLayerRepositoryItem(this.ConnectionName, title)
                         {
                             LayerName = name,
                             Abstract = @abstract,
                             Crs = crs,
-                            Queryable = queryable
+                            Queryable = queryable,
+                            BBOX = bbox
                         });
                     }
                 }
@@ -185,7 +206,42 @@ namespace Maestro.Base.UI
         }
     }
 
-    public class WmsLayerRepositoryItem
+    public record WmsBounds(double MinX, double MinY, double MaxX, double MaxY)
+    { 
+        public string ConvertToString(string crs, WmsVersion version)
+        {
+            switch (version)
+            {
+                case WmsVersion.v1_0_0:
+                case WmsVersion.v1_1_0:
+                case WmsVersion.v1_1_1:
+                    return $"{MinX},{MinY},{MaxX},{MaxY}";
+                case WmsVersion.v1_3_0:
+                    if (ShoudlFlipCoordAxes(crs))
+                        return $"{MinY},{MinX},{MaxY},{MaxX}";
+                    else
+                        return $"{MinX},{MinY},{MaxX},{MaxY}";
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(version));
+            }
+        }
+
+        static bool ShoudlFlipCoordAxes(string crs)
+        {
+            //TODO: We are handling the most common scenarios. True solution is to compile an EPSG lookup table
+            //of CRSes with flipped axes
+            switch (crs)
+            {
+                case "EPSG:4326":
+                case "CRS:84":
+                    return true;
+            }
+            return false;
+        }
+    }
+
+
+    public class WmsLayerRepositoryItem : ISiteExplorerNode
     {
         public WmsLayerRepositoryItem(string connName, string name)
         {
@@ -209,6 +265,7 @@ namespace Maestro.Base.UI
         public string LayerName { get; internal set; }
         public string Abstract { get; internal set; }
         public string Crs { get; internal set; }
+        public WmsBounds BBOX { get; internal set; }
         public bool Queryable { get; internal set; }
     }
 }

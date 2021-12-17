@@ -483,7 +483,7 @@ namespace Maestro.Base.UI
             }
             else if (node.Tag is WmsLayerRepositoryItem wmsl)
             {
-                return String.Format(Strings.WmsLayerTooltip, Environment.NewLine, wmsl.LayerName, wmsl.Name, wmsl.Abstract, wmsl.Crs);
+                return String.Format(Strings.WmsLayerTooltip, Environment.NewLine, wmsl.LayerName, wmsl.Name, wmsl.Abstract, wmsl.Crs, wmsl.BBOX);
             }
             return string.Empty;
         }

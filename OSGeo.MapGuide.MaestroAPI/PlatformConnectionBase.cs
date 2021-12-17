@@ -1393,7 +1393,15 @@ namespace OSGeo.MapGuide.MaestroAPI
                 UpdateRepository(resourceID, header as ResourceFolderHeaderType);
             }
             else
+            {
+                /*
+                using (var sr = new StreamReader(this.SerializeObject(header)))
+                {
+                    var xml = sr.ReadToEnd();
+                }
+                */
                 this.SetResourceXmlData(resourceID, null, this.SerializeObject(header));
+            }
         }
 
         /// <summary>

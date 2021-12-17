@@ -264,6 +264,10 @@ namespace Maestro.Base.UI
                             else
                                 ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedDocument", trvResources, e.X, e.Y); //NOXLATE
                         }
+                        else if (item is WmsLayerRepositoryItem wmsLayer)
+                        {
+                            ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedWmsLayer", trvResources, e.X, e.Y); //NOXLATE
+                        }
                     }
                     else //Multi select
                     {

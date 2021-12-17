@@ -724,6 +724,24 @@
         </Condition>
     </Path>
 
+	<!-- Site Explorer Context Menu -->
+	<Path name="/Maestro/Shell/SiteExplorer/SelectedWmsLayer">
+		<Condition action="Disable" name="SelectedItem">
+			<MenuItem id="PreviewWmsLayer"
+                      label="${res:SiteExplorer_SelectedItem_PreviewWmsLayer}"
+                      class="Maestro.Base.Commands.SiteExplorer.WmsPreviewCommand" />
+			<MenuItem id="OpenWmsLayerDefn"
+                      label="${res:SiteExplorer_SelectedItem_OpenWmsLayerDefn}"
+                      class="Maestro.Base.Commands.SiteExplorer.WmsOpenLayerDefinitionCommand" />
+			<!-- TODO: Disabling un-publish until we have a *reliable* way to refresh the published WMS layers node
+			<MenuItem type="Separator" />
+			<MenuItem id="UnPublishWmsLayer"
+                      label="${res:SiteExplorer_SelectedItem_UnPublishWmsLayer}"
+                      class="Maestro.Base.Commands.SiteExplorer.WmsUnPublishCommand" />
+            -->
+		</Condition>
+	</Path>
+
     <Path id="/Workspace/Tools">
         <MenuItem id="SiteAdmin"
                       label="${res:SiteAdministrator}"

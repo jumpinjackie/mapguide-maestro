@@ -1673,6 +1673,25 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             return ObjectFactory.CreateFlexibleLayout(conn.SiteVersion, templates, widgets, containers, templateName, statelessMode);
         }
+
+        public static void StripWmsMetadata(ObjectModels.Common.ResourceDocumentHeaderType header)
+        {
+            //Rather than a wholsale nukage of the Metadata, we will only remove known WMS metadata
+            //properties (so any custom metadata is preserved)
+            header.Metadata.SetProperty("_Title", null); //NOXLATE
+            header.Metadata.SetProperty("_Keywords", null); //NOXLATE
+            header.Metadata.SetProperty("_Abstract", null); //NOXLATE
+            header.Metadata.SetProperty("_ExtendedMetadata", null); //NOXLATE
+
+            header.Metadata.SetProperty("_Queryable", null); //NOXLATE
+            header.Metadata.SetProperty("_Opaque", null); //NOXLATE
+            header.Metadata.SetProperty("_IsPublished", null); //NOXLATE
+            header.Metadata.SetProperty("_EnableGeometry", null); //NOXLATE
+            header.Metadata.SetProperty("_Bounds", null); //NOXLATE
+
+            if (header.Metadata.Simple.Property.Count == 0)
+                header.Metadata = null;
+        }
     }
 
     /// <summary>
