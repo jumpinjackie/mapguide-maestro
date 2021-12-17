@@ -32,13 +32,14 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     internal class WebLayout110ItemTemplate : ItemTemplate
     {
         public WebLayout110ItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_MGOS22;
-            Icon = Res.application_browser;
-            Description = Strings.TPL_WL_110_DESC;
-            Name = Strings.TPL_WL_110_NAME;
-            ResourceType = ResourceTypes.WebLayout.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_MGOS22,
+                   Res.application_browser,
+                   Strings.TPL_WL_110_DESC,
+                   Strings.TPL_WL_110_NAME,
+                   ResourceTypes.WebLayout.ToString(),
+                   null,
+                   new Version(1, 1, 0))
+        { }
 
         public override Version MinimumSiteVersion
         {

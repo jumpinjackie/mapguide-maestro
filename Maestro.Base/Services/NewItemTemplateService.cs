@@ -29,6 +29,7 @@ namespace Maestro.Base.Services
     using Maestro.Base.Templates;
     using Maestro.Shared.UI;
     using System.IO;
+    using System.Linq;
 
     /// <summary>
     /// An application-level service for creating new resources from a set of pre-defined templates
@@ -143,6 +144,41 @@ namespace Maestro.Base.Services
             {
                 return _templates[category];
             }
+        }
+
+        public TemplateSet GetLatestVersionItemTemplates(Version siteVersion)
+        {
+            var templates = new List<ItemTemplate>();
+            foreach (var cat in _templates.Keys)
+            {
+                // We'll deal with user-defined later
+                if (cat == Strings.TPL_CATEGORY_USERDEF)
+                    continue;
+
+                var matches = new List<ItemTemplate>();
+                foreach (var tpl in _templates[cat])
+                {
+                    if (siteVersion >= tpl.MinimumSiteVersion)
+                        matches.Add(tpl);
+                }
+                templates.AddRange(matches);
+            }
+
+            var finalTemplates = new List<ItemTemplate>();
+
+            // Break this down to latest version
+            finalTemplates.AddRange(templates
+                .GroupBy(tpl => tpl.LatestVersionGroupingKey)
+                .Select(grp => grp.OrderByDescending(tpl => tpl.ResourceVersion).First()));
+
+            // Now add user-defined
+            foreach (var tpl in _templates[Strings.TPL_CATEGORY_USERDEF])
+            {
+                if (siteVersion >= tpl.MinimumSiteVersion)
+                    finalTemplates.Add(tpl);
+            }
+
+            return new TemplateSet(finalTemplates.ToArray());
         }
 
         /// <summary>

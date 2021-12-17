@@ -250,5 +250,18 @@ namespace Maestro.Base.UI
                 this.DialogResult = DialogResult.OK;
             }
         }
+
+        private void chkLatestVersion_CheckedChanged(object sender, EventArgs e)
+        {
+            this.splitContainer.Panel1Collapsed = chkLatestVersion.Checked;
+            if (chkLatestVersion.Checked)
+            {
+                LoadTemplates(_nits.GetLatestVersionItemTemplates(_conn.SiteVersion));
+            }
+            else
+            {
+                LoadTemplates(_nits.GetItemTemplates(GetSelectedCategories(), _conn.SiteVersion));
+            }
+        }
     }
 }

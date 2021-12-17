@@ -31,13 +31,14 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     internal class WatermarkDefinitionSimple240ItemTemplate : ItemTemplate
     {
         public WatermarkDefinitionSimple240ItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_MGOS24;
-            Icon = Res.water;
-            Description = Strings.TPL_WDFS_240_DESC;
-            Name = Strings.TPL_WDFS_240_NAME;
-            ResourceType = ResourceTypes.LayerDefinition.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_MGOS24,
+                   Res.water,
+                   Strings.TPL_WDFS_240_DESC,
+                   Strings.TPL_WDFS_240_NAME,
+                   ResourceTypes.LayerDefinition.ToString(),
+                   "Simple", //NOXLATE
+                   new Version(2, 4, 0))
+        { }
 
         public override Version MinimumSiteVersion
         {
@@ -56,13 +57,14 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     internal class WatermarkDefinitionCompound240ItemTemplate : ItemTemplate
     {
         public WatermarkDefinitionCompound240ItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_MGOS24;
-            Icon = Res.water;
-            Description = Strings.TPL_WDFC_240_DESC;
-            Name = Strings.TPL_WDFC_240_NAME;
-            ResourceType = ResourceTypes.LayerDefinition.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_MGOS24,
+                   Res.water,
+                   Strings.TPL_WDFC_240_DESC,
+                   Strings.TPL_WDFC_240_NAME,
+                   ResourceTypes.LayerDefinition.ToString(),
+                   "Compound", //NOXLATE
+                   new Version(2, 4, 0))
+        { }
 
         public override Version MinimumSiteVersion
         {

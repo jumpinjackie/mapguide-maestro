@@ -31,13 +31,14 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     public class SimpleSymbolDefinitionItem110Template : ItemTemplate
     {
         public SimpleSymbolDefinitionItem110Template()
-        {
-            Category = Strings.TPL_CATEGORY_MGOS20;
-            Icon = Res.marker;
-            Description = Strings.TPL_SSD_DESC;
-            Name = Strings.TPL_SSD_NAME;
-            ResourceType = ResourceTypes.SymbolDefinition.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_MGOS20,
+                   Res.marker,
+                   Strings.TPL_SSD_DESC,
+                   Strings.TPL_SSD_NAME,
+                   ResourceTypes.SymbolDefinition.ToString(),
+                   "Simple", //NOXLATE
+                   new Version(1, 1, 0))
+        { }
 
         public override Version MinimumSiteVersion
         {
@@ -56,13 +57,14 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     public class CompoundSymbolDefinition110ItemTemplate : ItemTemplate
     {
         public CompoundSymbolDefinition110ItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_MGOS20;
-            Icon = Res.marker;
-            Description = Strings.TPL_CSD_DESC;
-            Name = Strings.TPL_CSD_NAME;
-            ResourceType = ResourceTypes.SymbolDefinition.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_MGOS20,
+                   Res.marker,
+                   Strings.TPL_CSD_DESC,
+                   Strings.TPL_CSD_NAME,
+                   ResourceTypes.SymbolDefinition.ToString(),
+                   "Compound", //NOXLATE
+                   new Version(1, 1, 0))
+        { }
 
         public override Version MinimumSiteVersion
         {

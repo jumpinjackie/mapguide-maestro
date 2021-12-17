@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
+using System;
 using Res = Maestro.Base.Properties.Resources;
 
 namespace Maestro.Base.Templates
@@ -29,13 +30,14 @@ namespace Maestro.Base.Templates
     internal class PrintLayoutItemTemplate : ItemTemplate
     {
         public PrintLayoutItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_DEFAULT;
-            Icon = Res.printer;
-            Description = Strings.TPL_PL_DESC;
-            Name = Strings.TPL_PL_NAME;
-            ResourceType = ResourceTypes.PrintLayout.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_DEFAULT,
+                   Res.printer,
+                   Strings.TPL_PL_DESC,
+                   Strings.TPL_PL_NAME,
+                   ResourceTypes.PrintLayout.ToString(),
+                   null,
+                   new Version(1, 0, 0))
+        { }
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {

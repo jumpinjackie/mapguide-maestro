@@ -23,6 +23,7 @@
 using Maestro.Editors.Common;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
+using System;
 using Res = Maestro.Base.Properties.Resources;
 
 namespace Maestro.Base.Templates
@@ -30,13 +31,14 @@ namespace Maestro.Base.Templates
     internal class FeatureSourceItemTemplate : ItemTemplate
     {
         public FeatureSourceItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_DEFAULT;
-            Icon = Res.database_share;
-            Description = Strings.TPL_FS_DESC;
-            Name = Strings.TPL_FS_NAME;
-            ResourceType = ResourceTypes.FeatureSource.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_DEFAULT,
+                   Res.database_share,
+                   Strings.TPL_FS_DESC,
+                   Strings.TPL_FS_NAME,
+                   ResourceTypes.FeatureSource.ToString(),
+                   null,
+                   new Version(1, 0, 0))
+        { }
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {

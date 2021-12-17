@@ -32,13 +32,14 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     internal class SQLiteLoadProcedureItemTemplate : ItemTemplate
     {
         public SQLiteLoadProcedureItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_MGOS22;
-            //Icon = Res.document;
-            Description = Strings.TPL_LP_SQLITE_DESC;
-            Name = Strings.TPL_LP_SQLITE_NAME;
-            ResourceType = ResourceTypes.LoadProcedure.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_MGOS22,
+                   null,
+                   Strings.TPL_LP_SQLITE_DESC,
+                   Strings.TPL_LP_SQLITE_NAME,
+                   ResourceTypes.LoadProcedure.ToString(),
+                   "Sqlite", //NOXLATE
+                   new Version(1, 0, 0))
+        { }
 
         public override Version MinimumSiteVersion
         {

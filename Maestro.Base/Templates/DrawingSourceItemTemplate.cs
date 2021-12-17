@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
+using System;
 using Res = Maestro.Base.Properties.Resources;
 
 namespace Maestro.Base.Templates
@@ -29,13 +30,14 @@ namespace Maestro.Base.Templates
     internal class DrawingSourceItemTemplate : ItemTemplate
     {
         public DrawingSourceItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_DEFAULT;
-            Icon = Res.blueprints;
-            Description = Strings.TPL_DS_DESC;
-            Name = Strings.TPL_DS_NAME;
-            ResourceType = ResourceTypes.DrawingSource.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_DEFAULT,
+                   Res.blueprints,
+                   Strings.TPL_DS_DESC,
+                   Strings.TPL_DS_NAME,
+                   ResourceTypes.DrawingSource.ToString(),
+                   null,
+                   new Version(1, 0, 0))
+        { }
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {

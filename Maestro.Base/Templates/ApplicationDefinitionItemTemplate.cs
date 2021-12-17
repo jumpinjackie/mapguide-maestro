@@ -32,13 +32,14 @@ namespace Maestro.Base.Templates
     internal class ApplicationDefinitionItemTemplate : ItemTemplate
     {
         public ApplicationDefinitionItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_DEFAULT;
-            Icon = Res.applications_stack;
-            Description = Strings.TPL_ADF_DESC;
-            Name = Strings.TPL_ADF_NAME;
-            ResourceType = ResourceTypes.ApplicationDefinition.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_DEFAULT,
+                   Res.applications_stack,
+                   Strings.TPL_ADF_DESC,
+                   Strings.TPL_ADF_NAME,
+                   ResourceTypes.ApplicationDefinition.ToString(),
+                   null,
+                   new Version(1, 0, 0))
+        { }
 
         public override Version MinimumSiteVersion
         {

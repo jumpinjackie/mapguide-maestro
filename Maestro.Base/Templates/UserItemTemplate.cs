@@ -46,16 +46,19 @@ namespace Maestro.Base.Templates
         }
 
         public UserItemTemplate(string name, string description, string templatePath)
+            : base(Strings.TPL_CATEGORY_USERDEF,
+                   Res.document,
+                   description,
+                   name,
+                   null,
+                   null, //To be set down below
+                   null) //To be set down below
         {
-            this.Description = description;
-
-            this.Category = Strings.TPL_CATEGORY_USERDEF;
-            this.Icon = Res.document;
-            this.Name = name;
             this.TemplatePath = templatePath;
 
             _res = ObjectFactory.DeserializeXml(File.ReadAllText(templatePath));
             this.ResourceType = _res.ResourceType.ToString();
+            this.ResourceVersion = _res.ResourceVersion;
         }
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)

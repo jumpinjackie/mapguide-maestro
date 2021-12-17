@@ -30,13 +30,14 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     internal class MapDefinition300ItemTemplate : ItemTemplate
     {
         public MapDefinition300ItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_MGOS30;
-            Icon = Res.map;
-            Description = Strings.TPL_MDF_300_DESC;
-            Name = Strings.TPL_MDF_300_NAME;
-            ResourceType = ResourceTypes.MapDefinition.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_MGOS30,
+                   Res.map,
+                   Strings.TPL_MDF_300_DESC,
+                   Strings.TPL_MDF_300_NAME,
+                   ResourceTypes.MapDefinition.ToString(),
+                   null,
+                   new Version(3, 0, 0))
+        { }
 
         public override Version MinimumSiteVersion
         {
