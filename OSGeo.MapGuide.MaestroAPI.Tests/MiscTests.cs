@@ -122,5 +122,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.Equal("Library://Foo/", opts.SourceFolder);
             Assert.Equal("Library://Bar/", opts.TargetFolder);
         }
+
+        [Fact]
+        public void TestFdoCacheInfoDeserialization()
+        {
+            var pconn = new Mock<PlatformConnectionBase>();
+            pconn.CallBase = true;
+
+            using (var s = Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}FdoCacheInfo.xml"))
+            {
+                var fci = pconn.Object.DeserializeObject<Commands.FdoCacheInfo>(s);
+                Assert.NotNull(fci.Configuration);
+                Assert.Equal("True", fci.Configuration.DataConnectionPoolEnabled);
+                Assert.Equal("OSGeo.SDF,OSGeo.SHP", fci.Configuration.DataConnectionPoolExcludedProviders);
+                Assert.Equal(200, fci.Configuration.DataConnectionPoolSize);
+                Assert.Equal("OSGeo.Gdal:1", fci.Configuration.DataConnectionPoolSizeCustom);
+                Assert.Equal(28800, fci.Configuration.DataConnectionTimeout);
+
+                Assert.Single(fci.Providers);
+                Assert.Equal("OSGeo.Gdal", fci.Providers[0].FeatureSourceId);
+                Assert.Equal(1, fci.Providers[0].MaximumDataConnectionPoolSize);
+                Assert.Equal(0, fci.Providers[0].CurrentDataConnectionPoolSize);
+                Assert.Equal(0, fci.Providers[0].CurrentDataConnections);
+                Assert.Equal("Not initialized.", fci.Providers[0].ThreadModel);
+                Assert.Equal("True", fci.Providers[0].KeepDataConnectionsCached);
+            }
+        }
     }
 }

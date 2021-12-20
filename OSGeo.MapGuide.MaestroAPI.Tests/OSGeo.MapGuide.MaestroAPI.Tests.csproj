@@ -38,6 +38,9 @@
     <None Update="Resources\DrawingSource_1_0_0.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\FdoCacheInfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\FeatureJoinSelectSample.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
