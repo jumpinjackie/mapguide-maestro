@@ -27,6 +27,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
     public class ExpressionTests
     {
         [Fact]
+        public void TestMalformedExpression()
+        {
+            Assert.Throws<FdoMalformedExpressionException>(() => FdoExpression.Parse("!sdfj"));
+        }
+
+        [Fact]
         public void TestExpressionParse()
         {
             FdoExpression expr = null;
