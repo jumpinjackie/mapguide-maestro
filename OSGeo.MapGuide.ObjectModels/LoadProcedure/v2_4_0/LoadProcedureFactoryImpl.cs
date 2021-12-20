@@ -54,6 +54,7 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0
             lt.GenerateLayers = true;
             lt.GenerateSpatialDataSources = true;
             lt.SourceFile = new System.ComponentModel.BindingList<string>();
+            lt.ResourceId = new System.ComponentModel.BindingList<string>();
         }
 
         public static ILoadProcedure CreateDefaultSdf()
