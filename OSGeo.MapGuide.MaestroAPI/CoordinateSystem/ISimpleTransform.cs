@@ -23,6 +23,7 @@
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
 using System;
+using System.Linq;
 
 namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 {
@@ -50,7 +51,12 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         private ProjNet.CoordinateSystems.CoordinateSystem _target;
         private ICoordinateTransformation _trans;
 
-        private const string CSMAP_WGS84_PSEUDO_MERCATOR = @"PROJCS[""WGS84.PseudoMercator"",GEOGCS[""LL84"",DATUM[""WGS84"",SPHEROID[""WGS84"",6378137.000,298.25722293]],PRIMEM[""Greenwich"",0],UNIT[""Degree"",0.017453292519943295]],PROJECTION[""Popular Visualisation Pseudo Mercator""],PARAMETER[""false_easting"",0.000],PARAMETER[""false_northing"",0.000],PARAMETER[""central_meridian"",0.00000000000000],UNIT[""Meter"",1.00000000000000]]"; //NOXLATE
+        static readonly string[] CSMAP_WGS84_PSEUDO_MERCATOR_ALIASES =
+        {
+            // The defn of WGS84.PseudoMercator may vary between releases of MapGuide, so add all known variants here
+            @"PROJCS[""WGS84.PseudoMercator"",GEOGCS[""LL84"",DATUM[""WGS84"",SPHEROID[""WGS84"",6378137.000,298.25722293]],PRIMEM[""Greenwich"",0],UNIT[""Degree"",0.017453292519943295]],PROJECTION[""Popular Visualisation Pseudo Mercator""],PARAMETER[""false_easting"",0.000],PARAMETER[""false_northing"",0.000],PARAMETER[""central_meridian"",0.00000000000000],UNIT[""Meter"",1.00000000000000]]", //NOXLATE
+             "PROJCS[\"WGS84.PseudoMercator\",GEOGCS[\"LL84\",DATUM[\"WGS84\",SPHEROID[\"WGS84\",6378137.000,298.25722356]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.017453292519943295]],PROJECTION[\"Popular Visualisation Pseudo Mercator\"],PARAMETER[\"false_easting\",0.000],PARAMETER[\"false_northing\",0.000],PARAMETER[\"central_meridian\",0.00000000000000],UNIT[\"Meter\",1.00000000000000]]" //NOXLATE
+        };
 
         // Proj.Net cannot handle the WGS84.PseudoMercator WKT. Here's an alternative WKT that is Proj.Net compatible and produces
         // approximately similar results:
@@ -84,8 +90,8 @@ AUTHORITY[""EPSG"",""3785""]]"; //NOXLATE
         internal DefaultSimpleTransform(string sourceCsWkt, string targetCsWkt)
         {
             //Check for and replace the WGS84.PseudoMercator WKT
-            string srcWkt = sourceCsWkt == CSMAP_WGS84_PSEUDO_MERCATOR ? POPULAR_VISUALISATION_CRS : sourceCsWkt;
-            string dstWkt = targetCsWkt == CSMAP_WGS84_PSEUDO_MERCATOR ? POPULAR_VISUALISATION_CRS : targetCsWkt;
+            string srcWkt = CSMAP_WGS84_PSEUDO_MERCATOR_ALIASES.Contains(sourceCsWkt) ? POPULAR_VISUALISATION_CRS : sourceCsWkt;
+            string dstWkt = CSMAP_WGS84_PSEUDO_MERCATOR_ALIASES.Contains(targetCsWkt) ? POPULAR_VISUALISATION_CRS : targetCsWkt;
             var fact = new CoordinateSystemFactory();
             _source = fact.CreateFromWkt(srcWkt);
             _target = fact.CreateFromWkt(dstWkt);
