@@ -1692,6 +1692,16 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (header.Metadata.Simple.Property.Count == 0)
                 header.Metadata = null;
         }
+
+        public static bool IsSessionExpiredException(Exception ex)
+        {
+            var wex = ex as System.Net.WebException;
+            if (wex != null && (wex.Message.ToLower().IndexOf("session expired") >= 0 || wex.Message.ToLower().IndexOf("session not found") >= 0 || wex.Message.ToLower().IndexOf("mgsessionexpiredexception") >= 0))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 
     /// <summary>

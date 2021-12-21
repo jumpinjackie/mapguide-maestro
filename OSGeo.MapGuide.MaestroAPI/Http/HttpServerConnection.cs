@@ -116,10 +116,11 @@ namespace OSGeo.MapGuide.MaestroAPI
                                         IMappingService,
                                         IDrawingService,
                                         IFusionService,
-                                        ISiteService
+                                        ISiteService,
+                                        IHttpGetRequestOptions
     {
         private RequestBuilder m_reqBuilder;
-        private HttpClient _http;
+        private IHttpRequestor _http;
         internal RequestBuilder RequestBuilder => m_reqBuilder;
 
         //These only change after server reboot, so it is probably safe to cache them
@@ -129,14 +130,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         private bool mAnonymousUser = false;
 
-        internal HttpServerConnection()
+        private HttpServerConnection(IHttpRequestor http)
             : base()
         {
-            _http = new HttpClient();
+            _http = http;
         }
 
-        internal HttpServerConnection(RequestBuilder builder)
-            : this()
+        internal HttpServerConnection(IHttpRequestor http, RequestBuilder builder)
+            : this(http)
         {
             m_reqBuilder = builder;
         }
@@ -170,6 +171,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        //TODO: This should eventually be encapsulated behind the default implementation IHttpRequestor. Anything that would access this would also
+        //be behind this implementation as well
         private ICredentials _cred;
 
         private void InitConnection(Uri hosturl, string sessionid, string locale, bool allowUntestedVersion)
@@ -222,6 +225,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             mAnonymousUser = (username == "Anonymous");
 
             _cred = new NetworkCredential(username, password);
+            _http.AttachCredentials(_cred);
 
             m_username = username;
             m_password = password;
@@ -243,10 +247,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             m_password = password;
         }
 
-        //This is the constructor used by ConnectionProviderRegistry.CreateConnection
-
-        internal HttpServerConnection(NameValueCollection initParams)
-            : this()
+        /// <summary>
+        /// This is the constructor used by <see cref="ConnectionProviderRegistry.CreateConnection(string, NameValueCollection)"/>. Internal use only. Do not invoke directly
+        /// </summary>
+        /// <param name="http"></param>
+        /// <param name="initParams"></param>
+        /// <exception cref="ArgumentException"></exception>
+        public HttpServerConnection(IHttpRequestor http, NameValueCollection initParams)
+            : this(http)
         {
             if (initParams[HttpServerConnectionParams.PARAM_URL] == null)
                 throw new ArgumentException("Missing required connection parameter: " + HttpServerConnectionParams.PARAM_URL);
@@ -275,14 +283,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        internal HttpServerConnection(Uri hosturl, string sessionid, string locale, bool allowUntestedVersion)
-            : this()
+        internal HttpServerConnection(IHttpRequestor http, Uri hosturl, string sessionid, string locale, bool allowUntestedVersion)
+            : this(http)
         {
             InitConnection(hosturl, sessionid, locale, allowUntestedVersion);
         }
 
-        internal HttpServerConnection(Uri hosturl, string username, string password, string locale, bool allowUntestedVersion)
-            : this()
+        internal HttpServerConnection(IHttpRequestor http, Uri hosturl, string username, string password, string locale, bool allowUntestedVersion)
+            : this(http)
         {
             InitConnection(hosturl, username, password, locale, allowUntestedVersion);
         }
@@ -471,6 +479,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public override void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback)
         {
+            //TODO: Offload to IHttpRequestor
+
             //Protect against session expired
             if (this.m_autoRestartSession && m_username != null && m_password != null)
                 this.DownloadData(m_reqBuilder.GetSiteVersion());
@@ -644,6 +654,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public override void SetResourceXmlData(string resourceId, Stream content, Stream header)
         {
+            //TODO: Offload to IHttpRequestor
             bool exists = ResourceExists(resourceId);
 
             using (var outStream = MemoryStreamPool.GetStream())
@@ -709,7 +720,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        private void LogResponse(HttpWebResponse resp)
+        public void LogResponse(HttpWebResponse resp)
         {
             OnRequestDispatched(string.Format("{0:d} {1} {2} {3}", resp.StatusCode, resp.StatusDescription, resp.Method, GetResponseString(resp)));
         }
@@ -722,7 +733,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return resp.ResponseUri.AbsolutePath;
         }
 
-        private void LogFailedRequest(WebException ex)
+        public void LogFailedRequest(WebException ex)
         {
             var resp = ex.Response as HttpWebResponse;
             if (resp != null)
@@ -1203,15 +1214,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 #endif
         }
 
-        public override bool IsSessionExpiredException(Exception ex)
-        {
-            var wex = ex as WebException;
-            if (wex != null && (wex.Message.ToLower().IndexOf("session expired") >= 0 || wex.Message.ToLower().IndexOf("session not found") >= 0 || wex.Message.ToLower().IndexOf("mgsessionexpiredexception") >= 0))
-            {
-                return true;
-            }
-            return false;
-        }
+        public override bool IsSessionExpiredException(Exception ex) => Utility.IsSessionExpiredException(ex);
 
         /// <summary>
         /// Returns the avalible application templates on the server
@@ -1417,6 +1420,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>The data at the given location</returns>
         internal byte[] DownloadData(string req)
         {
+            return _http.DownloadData(req, this);
+            /*
             string prev_session = m_reqBuilder.SessionID;
             try
             {
@@ -1464,6 +1469,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     }
                 }
             }
+            */
         }
 
         /// <summary>
@@ -1473,6 +1479,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>The data at the given location</returns>
         internal Stream OpenRead(string req)
         {
+            return _http.Get(req, this);
+            /*
             string prev_session = m_reqBuilder.SessionID;
             try
             {
@@ -1509,6 +1517,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     return new WebResponseStream(httpresp);
                 }
             }
+            */
         }
 
         const int SECONDS = 1000;
@@ -2107,9 +2116,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override IServerConnection Clone()
         {
             if (this.IsAnonymous)
-                return new HttpServerConnection(new Uri(this.ServerURI), "Anonymous", string.Empty, null, true); //NOXLATE
+                return new HttpServerConnection(_http, new Uri(this.ServerURI), "Anonymous", string.Empty, null, true); //NOXLATE
             else
-                return new HttpServerConnection(new Uri(this.ServerURI), this.SessionID, null, true);
+                return new HttpServerConnection(_http, new Uri(this.ServerURI), this.SessionID, null, true);
         }
 
         public override SiteInformation GetSiteInfo()

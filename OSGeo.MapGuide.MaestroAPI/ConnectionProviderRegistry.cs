@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI.Http;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -158,7 +159,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             var httpProvider = HTTP_PROVIDER.ToUpper();
             _ctors[httpProvider] = new ConnectionFactoryMethod((initParams) =>
             {
-                var conn = new HttpServerConnection(initParams);
+                var conn = new HttpServerConnection(new DefaultHttpRequestor(), initParams);
                 return conn;
             });
             _providers.Add(new ConnectionProviderEntry(httpProvider, "HTTP Connection Provider", null, true));
