@@ -4,6 +4,8 @@
     <IsPackable>false</IsPackable>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <DebugType>portable</DebugType>
+	<SignAssembly>true</SignAssembly>
+	<AssemblyOriginatorKeyFile>$(MSBuildProjectDirectory)\..\Properties\maestroapi.key</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>

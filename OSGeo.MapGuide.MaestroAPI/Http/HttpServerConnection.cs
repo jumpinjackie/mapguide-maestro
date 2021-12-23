@@ -103,13 +103,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         public const string PARAM_PASSWORD = "Password"; //NOXLATE
     }
-    
-    //TODO/FIXME: Had to make public to facilitate unit testing because InternalsVisibleToAttribute isn't working
 
     /// <summary>
     /// Primary http based connection to the MapGuide Server. Internal use only. Do not instantiate directly. Create via <see cref="ConnectionProviderRegistry"/>
     /// </summary>
-    public class HttpServerConnection : MgServerConnectionBase,
+    internal class HttpServerConnection : MgServerConnectionBase,
                                         IServerConnection,
                                         IDisposable,
                                         IFeatureService,
@@ -247,13 +245,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             m_password = password;
         }
 
-        /// <summary>
-        /// This is the constructor used by <see cref="ConnectionProviderRegistry.CreateConnection(string, NameValueCollection)"/>. Internal use only. Do not invoke directly
-        /// </summary>
-        /// <param name="http"></param>
-        /// <param name="initParams"></param>
-        /// <exception cref="ArgumentException"></exception>
-        public HttpServerConnection(IHttpRequestor http, NameValueCollection initParams)
+        internal HttpServerConnection(IHttpRequestor http, NameValueCollection initParams)
             : this(http)
         {
             if (initParams[HttpServerConnectionParams.PARAM_URL] == null)
