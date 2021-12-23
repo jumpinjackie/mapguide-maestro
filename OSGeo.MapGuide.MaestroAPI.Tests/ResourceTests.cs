@@ -41,6 +41,58 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
     public class ResourceTests
     {
         [Fact]
+        public void ProviderCapabilities_SDF_Deserialization_v100()
+        {
+            var mConn = new Mock<PlatformConnectionBase>();
+            mConn.CallBase = true;
+
+            using (var s = Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}ProviderCapabilities_SDF_v1.0.0.xml"))
+            {
+                var caps = mConn.Object.DeserializeObject<ObjectModels.Capabilities.v1_0_0.FdoProviderCapabilities>(s);
+                Assert.Equal("OSGeo.SDF", caps.Provider.Name);
+            }    
+        }
+
+        [Fact]
+        public void ProviderCapabilities_SDF_Deserialization_v110()
+        {
+            var mConn = new Mock<PlatformConnectionBase>();
+            mConn.CallBase = true;
+
+            using (var s = Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}ProviderCapabilities_SDF_v1.1.0.xml"))
+            {
+                var caps = mConn.Object.DeserializeObject<ObjectModels.Capabilities.v1_1_0.FdoProviderCapabilities>(s);
+                Assert.Equal("OSGeo.SDF", caps.Provider.Name);
+            }
+        }
+
+        [Fact]
+        public void FeatureProviderRegistry_Deserialization()
+        {
+            var mConn = new Mock<PlatformConnectionBase>();
+            mConn.CallBase = true;
+
+            using (var s = Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}FeatureProviders.xml"))
+            {
+                var registry = mConn.Object.DeserializeObject<FeatureProviderRegistry>(s);
+                Assert.Equal(13, registry.FeatureProvider.Count);
+                Assert.Contains(registry.FeatureProvider, p => p.Name == "OSGeo.SDF.4.2");
+                Assert.Contains(registry.FeatureProvider, p => p.Name == "OSGeo.SHP.4.2");
+                Assert.Contains(registry.FeatureProvider, p => p.Name == "OSGeo.ArcSDE.4.2");
+                Assert.Contains(registry.FeatureProvider, p => p.Name == "OSGeo.WFS.4.2");
+                Assert.Contains(registry.FeatureProvider, p => p.Name == "OSGeo.WMS.4.2");
+                Assert.Contains(registry.FeatureProvider, p => p.Name == "OSGeo.ODBC.4.2");
+                Assert.Contains(registry.FeatureProvider, p => p.Name == "OSGeo.MySQL.4.2");
+                Assert.Contains(registry.FeatureProvider, p => p.Name == "OSGeo.Gdal.4.2");
+                Assert.Contains(registry.FeatureProvider, p => p.Name == "OSGeo.OGR.4.2");
+                Assert.Contains(registry.FeatureProvider, p => p.Name == "OSGeo.KingOracle.4.2");
+                Assert.Contains(registry.FeatureProvider, p => p.Name == "OSGeo.SQLServerSpatial.4.2");
+                Assert.Contains(registry.FeatureProvider, p => p.Name == "OSGeo.SQLite.4.2");
+                Assert.Contains(registry.FeatureProvider, p => p.Name == "OSGeo.PostgreSQL.4.2");
+            }
+        }
+
+        [Fact]
         public void TestResourceContentVersionChecker()
         {
             var xml = "<LayerDefinition xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"LayerDefinition-1.0.0.xsd\"></LayerDefinition>";

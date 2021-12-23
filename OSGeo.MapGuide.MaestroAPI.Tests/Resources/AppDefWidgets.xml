@@ -1,0 +1,2251 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ApplicationDefinitionWidgetInfoSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ApplicationDefinitionInfo-1.0.0.xsd">
+	<WidgetInfo>
+		<Type>About</Type>
+		<LocalizedType>About</LocalizedType>
+		<Description>This widget displays information about the application including the license and copyright information retrieved from a URL set as a parameter</Description>
+		<Location></Location>
+		<Label>About</Label>
+		<Tooltip>Click to show information about this application</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>about</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>AboutURL</Name>
+			<Description>This is a pointer to the URL that will be displayed in the popup window</Description>
+			<Type>String</Type>
+			<Label>URL pointing to the About page</Label>
+			<DefaultValue>widgets/About/About.html</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>ActivityIndicator</Type>
+		<LocalizedType>Activity Indicator</LocalizedType>
+		<Description>AcitivityIndicator is a widget that shows or hides its DOM element based on whether the map widget is busy or not. The map widget becomes busy when loading maps, reloading maps or redrawing layers.</Description>
+		<Location></Location>
+		<Label>Activity Indicator</Label>
+		<Tooltip>The application is busy</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icon_loading.gif</ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>false</StandardUi>
+		<ContainableBy>Toolbar</ContainableBy>
+		<Parameter>
+			<Name>ElementId</Name>
+			<Description>ID of the element in the DOM which contains the indicator</Description>
+			<Type>String</Type>
+			<Label>Element ID</Label>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>BasemapSwitcher</Type>
+		<LocalizedType>BasemapSwitcher</LocalizedType>
+		<Description>A widget to allow selection of the basemaps display under the overlay MapGuide layer</Description>
+		<Location></Location>
+		<Label>External Providers</Label>
+		<Tooltip>Click to change the basemap</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>options</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Buffer</Type>
+		<LocalizedType>Buffer</LocalizedType>
+		<Description>This widget will perform a buffering operation on selected features in the Map.  Either a popup window or the task pane will be used to gather user input, depending on the setting of the Target parameter</Description>
+		<Label>Create a buffer</Label>
+		<Tooltip>Click to create a buffer</Tooltip>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>buffer</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>LayerName</Name>
+			<Label>Layer name</Label>
+			<Type>string</Type>
+			<Description>The name of the buffer layer</Description>
+			<DefaultValue>Buffer</DefaultValue>
+			<IsMandatory>0</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>LayerNameInput</Name>
+			<Label>Layer name input field label</Label>
+			<Type>string</Type>
+			<Description>The label for the buffer layer name input field</Description>
+			<DefaultValue>BufferLayerName</DefaultValue>
+			<IsMandatory>0</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>BufferDistance</Name>
+			<Label>Buffer distance</Label>
+			<Type>double</Type>
+			<Description>The distance to buffer</Description>
+			<DefaultValue>100</DefaultValue>
+			<IsMandatory>0</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>BufferDistanceInput</Name>
+			<Label>Buffer distance input field label</Label>
+			<Type>string</Type>
+			<Description>The label for the buffer distance input field</Description>
+			<DefaultValue>BufferDistance</DefaultValue>
+			<IsMandatory>0</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>BufferUnits</Name>
+			<Label>Buffer units</Label>
+			<Type>string</Type>
+			<Description>The units for the buffer distance</Description>
+			<AllowedValue>
+				<Name>meters</Name>
+				<Label>Meters</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>feet</Name>
+				<Label>Feet</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>miles</Name>
+				<Label>Miles</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>kilometers</Name>
+				<Label>Kilometers</Label>
+			</AllowedValue>
+			<DefaultValue>meters</DefaultValue>
+			<IsMandatory>0</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>BufferUnitsInput</Name>
+			<Label>Buffer units input field label</Label>
+			<Type>string</Type>
+			<Description>The label for the buffer units input field</Description>
+			<DefaultValue>BufferUnits</DefaultValue>
+			<IsMandatory>0</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>BorderColor</Name>
+			<Label>Border color</Label>
+			<Type>color</Type>
+			<Description>The color of the buffer border</Description>
+			<DefaultValue>ff000000</DefaultValue>
+			<IsMandatory>0</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>BorderColorInput</Name>
+			<Label>Border color input field label</Label>
+			<Type>string</Type>
+			<Description>The label for the border color input field</Description>
+			<DefaultValue>BufferBorderColor</DefaultValue>
+			<IsMandatory>0</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>FillColor</Name>
+			<Label>Fill color</Label>
+			<Type>color</Type>
+			<Description>The color of the buffer fill</Description>
+			<DefaultValue>33FF0000</DefaultValue>
+			<IsMandatory>0</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>FillColorInput</Name>
+			<Label>Fill color input field label</Label>
+			<Type>string</Type>
+			<Description>The label for the fill color input field</Description>
+			<DefaultValue>BufferFillColor</DefaultValue>
+			<IsMandatory>0</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>BufferPanel</Type>
+		<LocalizedType>Buffer Panel</LocalizedType>
+		<Description>This widget will perform a buffering operation on selected features in the Map.  Either a popup window or the task pane will be used to gather user input, depending on the setting of the Target parameter</Description>
+		<Label>Buffer</Label>
+		<Tooltip>Click to create a buffer</Tooltip>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>buffer</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Target</Name>
+			<Label>Target</Label>
+			<Type>target</Type>
+			<Description>The frame, window, or TaskPane in which to display any UI for the widget. If empty, a new window is used</Description>
+			<IsMandatory>true</IsMandatory>
+			<DefaultValue>TaskPane</DefaultValue>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>CenterSelection</Type>
+		<LocalizedType>Center Selection</LocalizedType>
+		<Description>Center the current selection, if any, but maintain the current scale if possible. Zoom out if not</Description>
+		<Location></Location>
+		<Label>Center selection</Label>
+		<Tooltip>Click to center the map on the current selection</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>select-centre</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>ClearSelection</Type>
+		<LocalizedType>Clear Selection</LocalizedType>
+		<Description>Clears the current selection</Description>
+		<Label>Clear Selection</Label>
+		<Tooltip>Click to clear the current selection</Tooltip>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>select-clear</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>ColorPicker</Type>
+		<LocalizedType>Color Picker</LocalizedType>
+		<Description>The user can pick from a palette of web-safe colors or enter a hex value</Description>
+		<Location></Location>
+		<Label>Color picker</Label>
+		<Tooltip>Use this tool to select a color</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy></ContainableBy>
+		<Parameter>
+			<Name>ColorInputId</Name>
+			<Description>The HTML Input element where the selected color should be written</Description>
+			<Type>String</Type>
+			<Label>ColorInputId</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>true</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>CoordinateTracker</Type>
+		<LocalizedType>CoordinateTracker</LocalizedType>
+		<Description>This widget displays mouse coordinates in various projections</Description>
+		<Location></Location>
+		<Label>Coordinate Tracker</Label>
+		<Tooltip>Click to view mouse coordinates in various projections</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>coordinate-tracker</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Target</Name>
+			<Description>The frame, window, or TaskPane in which to display any UI for the widget. If empty, a new window is used</Description>
+			<Type>target</Type>
+			<Label>Target</Label>
+			<DefaultValue>TaskPane</DefaultValue>
+			<IsMandatory>true</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Projection</Name>
+			<Description>Indicates a list of projections (as EPSG codes) to display coordinates in</Description>
+			<Type>xml</Type>
+			<Label>Projection</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>true</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>CursorPosition</Type>
+		<LocalizedType>Cursor Position</LocalizedType>
+		<Description>Provides dynamic cursor tracking as it moves over the map</Description>
+		<Label>CursorPosition</Label>
+		<Tooltip>this will display the cursor position</Tooltip>
+		<StandardUi>false</StandardUi>
+		<ContainableBy>Splitterbar</ContainableBy>
+		<Parameter>
+			<Name>Template</Name>
+			<Type>string</Type>
+			<Label>Template</Label>
+			<Description>The template string to use to generate the displayed text</Description>
+			<DefaultValue>x: {x}, y: {y}</DefaultValue>
+			<IsMandatory>1</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Precision</Name>
+			<Type>integer</Type>
+			<Label>Precision</Label>
+			<Description>The precision to display for the coordinates</Description>
+			<DefaultValue>4</DefaultValue>
+			<Min>0</Min>
+			<Max>15</Max>
+			<IsMandatory>0</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>DisplayProjection</Name>
+			<Type>string</Type>
+			<Label>DisplayProjection</Label>
+			<Description>The projection to display mouse coordinates in. This can be an EPSG code (EPSG:XXXX) or a WKT string. This parameter takes precedence over the Units parameter if specified</Description>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>0</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Units</Name>
+			<Type>string</Type>
+			<Label>Units</Label>
+			<Description>The coordinate units</Description>
+			<DefaultValue>dd</DefaultValue>
+			<IsMandatory>1</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>EditableScale</Type>
+		<LocalizedType>Editable Scale</LocalizedType>
+		<Description>This widget displays the map scale and provides a way for the user to enter a scale value at which to display the map</Description>
+		<Label>Editable Scale</Label>
+		<Tooltip>Allows display and entry of map scale</Tooltip>
+		<ImageUrl></ImageUrl>
+		<StandardUi>false</StandardUi>
+		<ContainableBy>Splitterbar</ContainableBy>
+		<Parameter>
+			<Name>Precision</Name>
+			<Type>integer</Type>
+			<Label>Precision</Label>
+			<Description>The precision at which to display the scale</Description>
+			<DefaultValue>4</DefaultValue>
+			<Min>0</Min>
+			<Max>15</Max>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>ExtentHistory</Type>
+		<LocalizedType>Extent History</LocalizedType>
+		<Description>A widget to navigate forward or backward in the map view extent history</Description>
+		<Label></Label>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<Tooltip></Tooltip>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Direction</Name>
+			<Description>The direction in which to traverse the extent history</Description>
+			<Type>string</Type>
+			<Label>Direction</Label>
+			<AllowedValue>
+				<Name>Next</Name>
+				<Label>Next</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Previous</Name>
+				<Label>Previous</Label>
+			</AllowedValue>
+			<DefaultValue>Previous</DefaultValue>
+			<IsMandatory>true</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>FeatureInfo</Type>
+		<Location></Location>
+		<LocalizedType>FeatureInfo</LocalizedType>
+		<Description>This widget will display information about selected features in a task panel.</Description>
+		<Label>Feature Info</Label>
+		<Tooltip>Click to display selected feature info</Tooltip>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>feature-info</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Target</Name>
+			<Label>Target</Label>
+			<Type>target</Type>
+			<Description>The frame, window, or TaskPane in which to display any UI for the widget. If empty, a new window is used</Description>
+			<IsMandatory>true</IsMandatory>
+			<DefaultValue>TaskPane</DefaultValue>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Geolocation</Type>
+		<LocalizedType>Geolocation</LocalizedType>
+		<Description>This widget zooms to your current geographic location</Description>
+		<Location></Location>
+		<Label>My Location</Label>
+		<Tooltip>Click to zoom to your current geographic location</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>geolocation</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>ZoomLevel</Name>
+			<Description>The zoom to apply in addition to panning to your current geographic location</Description>
+			<Type>integer</Type>
+			<Label>Zoom Level</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>EnableHighAccuracy</Name>
+			<Description>A Boolean that indicates the application would like to receive the best possible results. If true and if the device is able to provide a more accurate position, it will do so. Note that this can result in slower response times or increased power consumption (with a GPS chip on a mobile device for example). On the other hand, if false (the default value), the device can take the liberty to save resources by responding more quickly and/or using less power</Description>
+			<Type>boolean</Type>
+			<Label>Enable High Accuracy</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Timeout</Name>
+			<Description>A positive number representing the maximum length of time (in milliseconds) the device is allowed to take in order to return a position.</Description>
+			<Type>integer</Type>
+			<Label>Timeout</Label>
+			<DefaultValue>5000</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>MaximumAge</Name>
+			<Description>A positive number indicating the maximum age in milliseconds of a possible cached position that is acceptable to return. If set to 0, it means that the device cannot use a cached position and must attempt to retrieve the real current position. If set to Infinity the device must return a cached position regardless of its age.</Description>
+			<Type>integer</Type>
+			<Label>Maximum Age</Label>
+			<DefaultValue>0</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>GoogleStreetViewer</Type>
+		<LocalizedType>Google StreetViewer</LocalizedType>
+		<Description>This widget is used to show Google StreetView on the map</Description>
+		<Location></Location>
+		<Label>Google StreetView</Label>
+		<Tooltip>Click to show Google StreetView</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>../../../widgets/GoogleStreetViewer/GoogleStreetView.png</ImageUrl>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Target</Name>
+			<Label>Target</Label>
+			<Type>target</Type>
+			<Description>The frame, window, or TaskPane in which to display Google StreetView for the widget. If empty, a new window is used</Description>
+			<IsMandatory>true</IsMandatory>
+			<DefaultValue>TaskPane</DefaultValue>
+		</Parameter>
+		<Parameter>
+			<Name>SymbolLayerName</Name>
+			<Label>Symbol Layer Name</Label>
+			<Description>The name of layer that shows the navigator symbol on map</Description>
+			<Type>string</Type>
+			<IsMandatory>false</IsMandatory>
+			<DefaultValue>GoogleStreetViewerSymbolLayer</DefaultValue>
+		</Parameter>
+		<Parameter>
+			<Name>ShowDirection</Name>
+			<Label>Show Direction</Label>
+			<Type>boolean</Type>
+			<Description>Whether to show a line to describe the current direction of the camera</Description>
+			<IsMandatory>false</IsMandatory>
+			<DefaultValue>true</DefaultValue>
+		</Parameter>
+		<Parameter>
+			<Name>DirectionLength</Name>
+			<Label>Direction Line Length</Label>
+			<Type>integer</Type>
+			<Description>The length of the line to describe the current direction of the camera</Description>
+			<IsMandatory>false</IsMandatory>
+			<DefaultValue>22</DefaultValue>
+		</Parameter>
+		<Parameter>
+			<Name>AdditionalParameter</Name>
+			<Description>A list of key/value pairs that will be added to the URL</Description>
+			<Type>XML</Type>
+			<Label>Additional parameter</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Help</Type>
+		<LocalizedType>Help</LocalizedType>
+		<Description>Outputs a user help page</Description>
+		<Location></Location>
+		<Label>Help</Label>
+		<Tooltip>Click to get help</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>help</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Target</Name>
+			<Description>The frame, window, or TaskPane in which to display any UI for the widget. If empty, a new window is used</Description>
+			<Type>String</Type>
+			<Label>Target</Label>
+			<DefaultValue>HelpWindow</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Url</Name>
+			<Description>The URL which contaions the help page contents.</Description>
+			<Type>String</Type>
+			<Label>Help URL</Label>
+			<DefaultValue>widgets/Help/Help.html</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>InitialMapView</Type>
+		<LocalizedType>Initial Map View</LocalizedType>
+		<Description>A widget that will zoom the map to the full extents</Description>
+		<Location></Location>
+		<Label>Zoom Extents</Label>
+		<Tooltip>Click to zoom to the full map extents</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>zoom-full</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>ViewType</Name>
+			<Description>option to zoom to full map extents or just the initial extent</Description>
+			<Type>String</Type>
+			<Label>ViewType</Label>
+			<AllowedValue>
+				<Name>full</Name>
+				<Label>full extent</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>initial</Name>
+				<Label>initial map extent</Label>
+			</AllowedValue>
+			<DefaultValue>initial</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>InvokeScript</Type>
+		<LocalizedType>Invoke Script</LocalizedType>
+		<Description>A widget to execute arbitrary javascript</Description>
+		<Location></Location>
+		<Label></Label>
+		<Tooltip></Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Script</Name>
+			<Description>The JavaScript code to be executed</Description>
+			<Type>String</Type>
+			<Label>Script</Label>
+			<IsMandatory>true</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>InvokeURL</Type>
+		<LocalizedType>Invoke URL</LocalizedType>
+		<Description>A widget to call up a URL into the TaskPane, a new window or HTML element. The map name and Session ID are automatically added to the URL, as well as any additional parameters specifed</Description>
+		<Location></Location>
+		<Label></Label>
+		<Tooltip></Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Target</Name>
+			<Description>The frame, window, or TaskPane in which to display any UI for the widget. If empty, a new window is used</Description>
+			<Type>String</Type>
+			<Label>Target</Label>
+			<DefaultValue>InvokeUrlWindow</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Url</Name>
+			<Description>The URL to be opened in the target</Description>
+			<Type>String</Type>
+			<Label>URL</Label>
+			<IsMandatory>true</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>DisableIfSelectionEmpty</Name>
+			<Description>A flag to indicate if this widget should only be enabled if there is a selection available on the map</Description>
+			<Type>boolean</Type>
+			<Label>DisableIfSelectionEmpty</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>AdditionalParameter</Name>
+			<Description>A list of key/value pairs that will be added to the URL</Description>
+			<Type>XML</Type>
+			<Label>Additional parameter</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Legend</Type>
+		<LocalizedType>Legend</LocalizedType>
+		<Description>A widget that displays a listing of all layers that make up the map as a tree structure</Description>
+		<Location></Location>
+		<Label>Legend</Label>
+		<Tooltip>Map Legend</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>false</StandardUi>
+		<ContainableBy></ContainableBy>
+		<Parameter>
+			<Name>HideInvisibleLayers</Name>
+			<Description>Suppress invisible layers from the legend</Description>
+			<Type>boolean</Type>
+			<Label>Hide Invisible Layers</Label>
+			<DefaultValue>true</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ShowRootFolder</Name>
+			<Description>flag to indicate if the root folder is shown</Description>
+			<Type>boolean</Type>
+			<Label>Show the root folder</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ShowMapFolder</Name>
+			<Description>flag to indicate if the map folder is shown</Description>
+			<Type>boolean</Type>
+			<Label>Show the map folder</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>LayerRasterIcon</Name>
+			<Description>Icon to use for raster layers</Description>
+			<Type>String</Type>
+			<Label>Raster layer icon</Label>
+			<DefaultValue>images/icons/legend-raster.png</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>LayerDWFIcon</Name>
+			<Description>Icon to use for DWF layers</Description>
+			<Type>String</Type>
+			<Label>DWF layer icon</Label>
+			<DefaultValue>images/icons/legend-DWF.png</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>LayerThemeIcon</Name>
+			<Description>Icon to use for theme layers</Description>
+			<Type>String</Type>
+			<Label>Theme layer icon</Label>
+			<DefaultValue>images/icons/legend-theme.png</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>DisabledLayerIcon</Name>
+			<Description>Icon to use for disabled layers</Description>
+			<Type>String</Type>
+			<Label>Disabled layer icon</Label>
+			<DefaultValue>images/icons/legend-layer.png</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>LayerInfoIcon</Name>
+			<Description>Icon to use for layer information</Description>
+			<Type>String</Type>
+			<Label>Layer information icon</Label>
+			<DefaultValue>images/icons/tree_layer_info.png</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>GroupInfoIcon</Name>
+			<Description>Icon to use for layer groups</Description>
+			<Type>String</Type>
+			<Label>Group information icon</Label>
+			<DefaultValue>images/icons/tree_group_info.png</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>RootFolderIcon</Name>
+			<Description>Icon to use for the root folder</Description>
+			<Type>String</Type>
+			<Label>Map root folder icon</Label>
+			<DefaultValue>images/icons/legend-map.png</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>LinkToView</Type>
+		<LocalizedType>Link to View</LocalizedType>
+		<Description>Displays a hyperlink to the current view of the application</Description>
+		<Location></Location>
+		<Label>Link to view</Label>
+		<Tooltip>A link to the current map view</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>false</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>MapMenu</Type>
+		<LocalizedType>Map Menu</LocalizedType>
+		<Description>A widget that displays a list of maps that can be loaded into the application</Description>
+		<Location></Location>
+		<Label>Maps</Label>
+		<Tooltip>Choose a map theme</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>legend-map</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Folder</Name>
+			<Label>MapDefinition root folder</Label>
+			<Type>string</Type>
+			<Description>The hierarchy below this folder will be searched for MapDefinitions to display</Description>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>0</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Maptip</Type>
+		<LocalizedType>Map Tip</LocalizedType>
+		<Description>A widget to display information about features under the mouse as it hovers over the map</Description>
+		<Location></Location>
+		<Label>Maptip</Label>
+		<Tooltip>Click to Enable/Disable get information about features from Server</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>maptip</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Delay</Name>
+			<Description>The delay in milliseconds before showing a map tip</Description>
+			<Type>integer</Type>
+			<Label>Delay</Label>
+			<Min>0</Min>
+			<Max>10000</Max>
+			<DefaultValue>350</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Layer</Name>
+			<Description>The layers to display information about</Description>
+			<Type>String</Type>
+			<Label>Layers</Label>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Tolerance</Name>
+			<Description>The number of screen pixels around the cursor to query</Description>
+			<Type>integer</Type>
+			<Label>Tolerance</Label>
+			<Min>0</Min>
+			<Max>10</Max>
+			<DefaultValue>2</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Target</Name>
+			<Label>Target</Label>
+			<Type>String</Type>
+			<Description>The frame, window, or TaskPane in which to open hyperlinks. If empty, a new window is used</Description>
+			<IsMandatory>false</IsMandatory>
+			<DefaultValue>MaptipWindow</DefaultValue>
+		</Parameter>
+		<Parameter>
+			<Name>WinFeatures</Name>
+			<Label>Window Features</Label>
+			<Type>String</Type>
+			<Description>Options for opening hyperlinks new window, if used</Description>
+			<IsMandatory>false</IsMandatory>
+			<DefaultValue>menubar=no,location=no,resizable=no,status=no</DefaultValue>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Measure</Type>
+		<LocalizedType>Measure</LocalizedType>
+		<Description>A widget that allows measurements to be made on the map</Description>
+		<Location></Location>
+		<Label>Measure</Label>
+		<Tooltip>Measure distances and areas on the map</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>measure</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Units</Name>
+			<Description>the units to display distances in</Description>
+			<Type>String</Type>
+			<Label>Units</Label>
+			<AllowedValue>
+				<Name>Meters</Name>
+				<Label>Meters</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Miles</Name>
+				<Label>Miles</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Degrees</Name>
+				<Label>Degrees</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Kilometers</Name>
+				<Label>Kilometers</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Feet</Name>
+				<Label>Feet</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Inches</Name>
+				<Label>Inches</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Nautical Miles</Name>
+				<Label>Nautical Miles</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Millimeters</Name>
+				<Label>Millimeters</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Centimeters</Name>
+				<Label>Centimeters</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Pixels</Name>
+				<Label>Pixels</Label>
+			</AllowedValue>
+			<DefaultValue>none</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>DistancePrecision</Name>
+			<Description>Precision of the distance displayed</Description>
+			<Type>integer</Type>
+			<Label>DistancePrecision</Label>
+			<Min>1</Min>
+			<Max>8</Max>
+			<DefaultValue>4</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>AreaPrecision</Name>
+			<Description>Precision of the area displayed</Description>
+			<Type>integer</Type>
+			<Label>Area Precision</Label>
+			<Min>1</Min>
+			<Max>8</Max>
+			<DefaultValue>4</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Type</Name>
+			<Description>The type of measurement to display</Description>
+			<Type>String</Type>
+			<Label>measurement type</Label>
+			<AllowedValue>
+				<Name>Both</Name>
+				<Label>Distance and Area</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Distance</Name>
+				<Label>Distance</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Area</Name>
+				<Label>Area</Label>
+			</AllowedValue>
+			<DefaultValue>Both</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>MeasureTooltipContainer</Name>
+			<Description>String</Description>
+			<Type>String</Type>
+			<Label>an HTML container to put the current distance in</Label>
+			<DefaultValue>MeasureContainerBox</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>FillStyle</Name>
+			<Description>Style for the polygon used for area draw</Description>
+			<Type>String</Type>
+			<Label>Fill style</Label>
+			<DefaultValue>rgba(0,0,255, 0.3)</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>LineStyleWidth</Name>
+			<Description>width of the line to use</Description>
+			<Type>integer</Type>
+			<Label>Line style width</Label>
+			<Min>1</Min>
+			<Max>6</Max>
+			<DefaultValue>2</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>LineStyleColor</Name>
+			<Description>color to use for drawing lines</Description>
+			<Type>String</Type>
+			<Label>Line style color</Label>
+			<DefaultValue>rgba(0,0,255,0.3)</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>MeasureTooltipType</Name>
+			<Description>Type of tooltip measurement to use</Description>
+			<Type>String</Type>
+			<Label>Measure tooltip type</Label>
+			<AllowedValue>
+				<Name>static</Name>
+				<Label>static</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>dynamic</Name>
+				<Label>dynamic</Label>
+			</AllowedValue>
+			<DefaultValue>static</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>MeasureTipPositionTop</Name>
+			<Description>Static position of Tooltip Box TOP</Description>
+			<Type>String</Type>
+			<Label>Measure Tip Top Position</Label>
+			<DefaultValue>100</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>MeasureTipPositionLeft</Name>
+			<Description>Static position of Tooltip Box LEFT</Description>
+			<Type>String</Type>
+			<Label>Measure Tip Left Position</Label>
+			<DefaultValue>15</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Target</Name>
+			<Label>Target</Label>
+			<Type>target</Type>
+			<Description>The frame, window, or TaskPane in which to display any UI for the widget. If empty, a new window is used</Description>
+			<IsMandatory>true</IsMandatory>
+			<DefaultValue>TaskPane</DefaultValue>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Navigator</Type>
+		<LocalizedType>Navigator</LocalizedType>
+		<Description>In-map navigator widget</Description>
+		<Location></Location>
+		<Label>Navigator</Label>
+		<Tooltip>Click to navigate the map</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>false</StandardUi>
+		<ContainableBy></ContainableBy>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>OverviewMap</Type>
+		<LocalizedType>Overview Map</LocalizedType>
+		<Description>A key map to locate the vewing area of the primary map</Description>
+		<Location></Location>
+		<Label>Overview map</Label>
+		<Tooltip>Click and drag to recenter the map</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>false</StandardUi>
+		<ContainableBy></ContainableBy>
+		<Parameter>
+			<Name>MapId</Name>
+			<Description>The ID of a map from the fusion MapSet to use as the map image. If this parameter is missing, the main map will be re-used.</Description>
+			<Type>mapgroup</Type>
+			<Label>MapId</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>MinRatio</Name>
+			<Description>The ratio of the overview map resolution to the main map resolution at which to zoom farther out on the overview map.</Description>
+			<Type>float</Type>
+			<Label>Minimum ratio</Label>
+			<DefaultValue>32</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>MaxRatio</Name>
+			<Description>The ratio of the overview map resolution to the main map resolution at which to zoom farther in on the overview map.</Description>
+			<Type>float</Type>
+			<Label>Maximum ratio</Label>
+			<DefaultValue>128</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Pan</Type>
+		<LocalizedType>Pan</LocalizedType>
+		<Description>Pans the map</Description>
+		<Location></Location>
+		<Label>Pan</Label>
+		<Tooltip>Click and drag to pan the map</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>pan</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>PanOnClick</Type>
+		<LocalizedType>Pan on Click</LocalizedType>
+		<Description>Pans the map in the specified direction on a click</Description>
+		<Location></Location>
+		<Label></Label>
+		<Tooltip></Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Percentage</Name>
+			<Description>Percentage of the map width/height to move in the specified direction</Description>
+			<Type>integer</Type>
+			<Label>Percentage</Label>
+			<Min>10</Min>
+			<Max>100</Max>
+			<DefaultValue>75</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Direction</Name>
+			<Description>The direction in which to pan</Description>
+			<Type>String</Type>
+			<Label>Direction</Label>
+			<AllowedValue>
+				<Name>north</Name>
+				<Label>north</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>south</Name>
+				<Label>south</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>east</Name>
+				<Label>east</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>west</Name>
+				<Label>west</Label>
+			</AllowedValue>
+			<DefaultValue>none</DefaultValue>
+			<IsMandatory>true</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>PanQuery</Type>
+		<LocalizedType>Pan Query</LocalizedType>
+		<Description>A widget that combines pan and query actions.  If the mouse did not move, a query is issued, otherwise a pan is performed</Description>
+		<Location></Location>
+		<Label>Pan query</Label>
+		<Tooltip>Drag the mouse to pan, click to query</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>pan</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>SelectionType</Name>
+			<Description>The type of selection to do</Description>
+			<Type>String</Type>
+			<Label>Selection type</Label>
+			<DefaultValue>INTERSECTS</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Tolerance</Name>
+			<Description>pixel tolerance for a point click</Description>
+			<Type>integer</Type>
+			<Label>Tolerance</Label>
+			<Min>1</Min>
+			<DefaultValue>3</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>QueryActiveLayer</Name>
+			<Description>Flag to indicate if features should be selected only on the active layer</Description>
+			<Type>boolean</Type>
+			<Label>Query active layer</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Print</Type>
+		<LocalizedType>Print</LocalizedType>
+		<Description>Produces a printable version of the page</Description>
+		<Label>Print</Label>
+		<Tooltip>Print the current map view</Tooltip>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>file-print</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>ShowPrintUI</Name>
+			<Description>Show the print dialog to allow configuration before printing</Description>
+			<Type>boolean</Type>
+			<Label>Show print dialog</Label>
+			<DefaultValue>true</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ShowTitle</Name>
+			<Description>Show the title on the page</Description>
+			<Type>boolean</Type>
+			<Label>Show title</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>PageTitle</Name>
+			<Description>The title for the page</Description>
+			<Type>string</Type>
+			<Label>Page title</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ShowLegend</Name>
+			<Description>Show the legend on the page</Description>
+			<Type>boolean</Type>
+			<Label>Show legend</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ShowNorthArrow</Name>
+			<Description>Show the north arrow on the page</Description>
+			<Type>boolean</Type>
+			<Label>Show north arrow</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ImageBaseUrl</Name>
+			<Description>relative URL to the images directory for dialog</Description>
+			<Type>string</Type>
+			<Label>Image Base URL</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Query</Type>
+		<Location></Location>
+		<LocalizedType>Query</LocalizedType>
+		<Description>This widget will execute a custom query on the map.  Either a popup window or the task pane will be used to gather user input, depending on the setting of the Target parameter</Description>
+		<Label>Query</Label>
+		<Tooltip>Click to execute a custom query</Tooltip>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>query</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Target</Name>
+			<Label>Target</Label>
+			<Type>target</Type>
+			<Description>The frame, window, or TaskPane in which to display any UI for the widget. If empty, a new window is used</Description>
+			<IsMandatory>true</IsMandatory>
+			<DefaultValue>TaskPane</DefaultValue>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>QuickPlot</Type>
+		<LocalizedType>QuickPlot</LocalizedType>
+		<Description>This widget offers a quick way to print map</Description>
+		<Label>Quick Plot</Label>
+		<Tooltip>Click to create a plot quickly</Tooltip>
+		<ImageUrl>images/icons/print.png</ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Target</Name>
+			<Description>The frame, window, or TaskPane in which to display any UI for the widget. If empty, a new window is used</Description>
+			<Type>target</Type>
+			<Label>Target</Label>
+			<DefaultValue>TaskPane</DefaultValue>
+			<IsMandatory>true</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>RememberPlotOptions</Name>
+			<Description>Indicates whether to persist the current QuickPlot UI settings to a cookie. If empty or false, these settings will not be saved</Description>
+			<Type>boolean</Type>
+			<Label>RememberPlotOptions</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ShowCoordinateLabels</Name>
+			<Description>Indicates whether to show the coordinate labels in the QuickPlot preview dialog. If empty, will default to true</Description>
+			<Type>boolean</Type>
+			<Label>ShowCoordinateLabels</Label>
+			<DefaultValue>true</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ShowSubTitle</Name>
+			<Description>Indicates whether to show the sub title in the QuickPlot UI and preview dialog. If empty, will default to true</Description>
+			<Type>boolean</Type>
+			<Label>ShowSubTitle</Label>
+			<DefaultValue>true</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>DefaultDpi</Name>
+			<Description>Indicates the default DPI to use for plotting. If specified, this will hide the DPI field in the QuickPlot UI and will override whatever DPI is used.</Description>
+			<Type>integer</Type>
+			<Label>DefaultDpi</Label>
+			<DefaultValue>96</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>PaperListEntry</Name>
+			<Description>Indicates a list of name/value pairs that will override the paper size list in the QuickPlot UI if specified.</Description>
+			<Type>xml</Type>
+			<Label>PaperListEntry</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ScaleListEntry</Name>
+			<Description>Indicates a list of name/value pairs that will override the scale list in the QuickPlot UI if specified.</Description>
+			<Type>xml</Type>
+			<Label>ScaleListEntry</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>DefaultMargin</Name>
+			<Description>Indicates the default Margin to use for plotting. If specified, this will hide the Margin field in the QuickPlot UI and will override whatever Margin is used.</Description>
+			<Type>string</Type>
+			<Label>Margin</Label>
+			<DefaultValue>25.4,12.7,12.7,12.7</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Disclaimer</Name>
+			<Description>The legal disclaimer text to show in the preview dialog and final printout</Description>
+			<Type>string</Type>
+			<Label>Disclaimer</Label>
+			<DefaultValue>The materials available at this web site are for informational purposes only and do not constitute a legal document.</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>AllowDisclaimerToggle</Name>
+			<Description>Indicates whether the disclaimer element in the Quick Plot UI is shown by default (allowing it to be toggled). This is already hidden if there is no configured disclaimer, this option allows you to hide it if there is a configured disclaimer (ie. You always want to have the disclaimer in the final plot). Defaults to true if unspecified</Description>
+			<Type>boolean</Type>
+			<Label>AllowDisclaimerToggle</Label>
+			<DefaultValue>true</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ShowLegend</Name>
+			<Description>Indicates whether the legend element in the Quick Plot UI is checked by default. Defaults to false if unspecified</Description>
+			<Type>boolean</Type>
+			<Label>ShowLegend</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ShowNorthArrow</Name>
+			<Description>Indicates whether the north arrow element in the Quick Plot UI is checked by default. Defaults to false if unspecified</Description>
+			<Type>boolean</Type>
+			<Label>ShowNorthArrow</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ShowCoordinates</Name>
+			<Description>Indicates whether the coordinates element in the Quick Plot UI is checked by default. Defaults to false if unspecified</Description>
+			<Type>boolean</Type>
+			<Label>ShowCoordinates</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ShowScaleBar</Name>
+			<Description>Indicates whether the scale bar element in the Quick Plot UI is checked by default. Defaults to false if unspecified</Description>
+			<Type>boolean</Type>
+			<Label>ShowScaleBar</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ShowLegalDisclaimer</Name>
+			<Description>Indicates whether the legal disclaimer element in the Quick Plot UI is checked by default. Has no effect if this widget has no disclaimer configured. Defaults to true if unspecified</Description>
+			<Type>boolean</Type>
+			<Label>ShowLegalDisclaimer</Label>
+			<DefaultValue>true</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Redline</Type>
+		<Location></Location>
+		<LocalizedType>Redline</LocalizedType>
+		<Description>This widget opens a panel in the TaskPane and allows the user to digitize features that can be downloaded as a GML file or uploaded to restore previously digitized features.</Description>
+		<Label>Redline</Label>
+		<Tooltip>Click to draw redline features</Tooltip>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>redline</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Target</Name>
+			<Label>Target</Label>
+			<Type>target</Type>
+			<Description>The frame, window, or TaskPane in which to display any UI for the widget. If empty, a new window is used</Description>
+			<IsMandatory>true</IsMandatory>
+			<DefaultValue>TaskPane</DefaultValue>
+		</Parameter>
+		<Parameter>
+			<Name>AutogenerateLayerNames</Name>
+			<Description>Indicates whether to prompt the auto-generate redline layer names when creating a new redline layer or to prompt the user. Default is true (don't prompt)</Description>
+			<Type>boolean</Type>
+			<Label>AutogenerateLayerNames</Label>
+			<DefaultValue>true</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>UseMapMessage</Name>
+			<Description>Indicates to use the map message bar for digitization prompts. Default is true</Description>
+			<Type>boolean</Type>
+			<Label>UseMapMessage</Label>
+			<DefaultValue>true</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>DataStoreFormat</Name>
+			<Description>The default data store format. Valid values include: SDF, SHP or SQLite</Description>
+			<Type>String</Type>
+			<Label>DataStoreFormat</Label>
+			<AllowedValue>
+				<Name>SDF</Name>
+				<Label>SDF</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>SHP</Name>
+				<Label>SHP</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>SQLite</Name>
+				<Label>SQLite</Label>
+			</AllowedValue>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>RedlineGeometryFormat</Name>
+			<Description>The types of redline geometry that the user can record. If the data store is SHP, only one geometry type can be specified. Value is a bitmask of any of the following values: (1=point, 2=line, 4=polygon)</Description>
+			<Type>integer</Type>
+			<Label>RedlineGeometryFormat</Label>
+			<AllowedValue>
+				<Name>1</Name>
+				<Label>Point</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>2</Name>
+				<Label>Line</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>4</Name>
+				<Label>Polygon</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>3</Name>
+				<Label>Point+Line</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>5</Name>
+				<Label>Point+Polygon</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>6</Name>
+				<Label>Line+Polygon</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>7</Name>
+				<Label>Point+Line+Polygon</Label>
+			</AllowedValue>
+			<DefaultValue>7</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>AutoCreateOnStartup</Name>
+			<Description>If DataStoreFormat and RedlineGeometryFormat parameters are specified, determines if the redline data store is automatically created on widget invocation. If true, the widget starts off in the Redline editing page instead of the Redline Management page</Description>
+			<Type>boolean</Type>
+			<Label>AutoCreateOnStartup</Label>
+			<DefaultValue>true</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>StylizationType</Name>
+			<Description>Determines which type of stylization to use for rendering redline features.</Description>
+			<Type>string</Type>
+			<Label>StylizationType</Label>
+			<AllowedValue>
+				<Name>basic</Name>
+				<Label>Basic Stylization</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>advanced</Name>
+				<Label>Advanced (Composite) Stylization</Label>
+			</AllowedValue>
+			<DefaultValue>basic</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>RefreshMap</Type>
+		<LocalizedType>Refresh Map</LocalizedType>
+		<Description>A widget that redraws the map</Description>
+		<Location></Location>
+		<Label>Refresh</Label>
+		<Tooltip>Click to redraw the map</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>view-refresh</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>SaveMap</Type>
+		<LocalizedType>Save Map</LocalizedType>
+		<Description>A widget to save the map as an image</Description>
+		<Label>Save map</Label>
+		<Tooltip>Click to save the map as an image</Tooltip>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>file-save</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Format</Name>
+			<Description>The image format to use</Description>
+			<Type>String</Type>
+			<Label>Format</Label>
+			<AllowedValue>
+				<Name>dwf</Name>
+				<Label>DWF</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>png</Name>
+				<Label>PNG</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>jpg</Name>
+				<Label>JPEG</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>gif</Name>
+				<Label>GIF</Label>
+			</AllowedValue>
+			<DefaultValue>png</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Scale</Name>
+			<Description>The scale at which the map is to be saved, or 0 to use the current map scale</Description>
+			<Type>integer</Type>
+			<Label>Scale</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ResourceId</Name>
+			<Description>The print layout to be used for DWF creation.  This is mandatory if the format is set to DWF.</Description>
+			<Type>PrintLayout</Type>
+			<Label>Print Layout (DWF Only)</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Scalebar</Type>
+		<LocalizedType>Scale Bar</LocalizedType>
+		<Description>Outputs a cartographic scalebar</Description>
+		<Location></Location>
+		<Label>Scalebar</Label>
+		<Tooltip></Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>false</StandardUi>
+		<ContainableBy></ContainableBy>
+		<Parameter>
+			<Name>Style</Name>
+			<Description>Name of a style for the scalebbar</Description>
+			<Type>String</Type>
+			<Label>Style</Label>
+			<AllowedValue>
+				<Name>fancy</Name>
+				<Label>Fancy</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>fat</Name>
+				<Label>Fat</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>thin</Name>
+				<Label>Thin</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>thinner</Name>
+				<Label>Thinner</Label>
+			</AllowedValue>
+			<DefaultValue>thin</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>DisplaySystem</Name>
+			<Description>Units to display</Description>
+			<Type>String</Type>
+			<Label>Display units</Label>
+			<AllowedValue>
+				<Name>metric</Name>
+				<Label>Metric</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>english</Name>
+				<Label>English</Label>
+			</AllowedValue>
+			<DefaultValue>metric</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>MinWidth</Name>
+			<Description>Minimum width of the scalebar in pixels</Description>
+			<Type>integer</Type>
+			<Label>Minimum width</Label>
+			<DefaultValue>100</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>MaxWidth</Name>
+			<Description>Maximum width of the scalebar in pixels</Description>
+			<Type>integer</Type>
+			<Label>Maximum width</Label>
+			<DefaultValue>200</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Divisions</Name>
+			<Description>The number of major divsions to use</Description>
+			<Type>integer</Type>
+			<Label>Divisions</Label>
+			<DefaultValue>2</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>SubDivisions</Name>
+			<Description>The number of minor divisions within each major divsion</Description>
+			<Type>integer</Type>
+			<Label>SubDivisions</Label>
+			<DefaultValue>2</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ShowMinorMeasures</Name>
+			<Description>A flag to indicate if the minor divsions should be displayed</Description>
+			<Type>boolean</Type>
+			<Label>ShowMinorMeasures</Label>
+			<DefaultValue>true</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>AbbreviateLabel</Name>
+			<Description>A flag to indicate if the full or an abbreviated units name is displayed</Description>
+			<Type>boolean</Type>
+			<Label>Abbreviate label</Label>
+			<DefaultValue>true</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>SingleLine</Name>
+			<Description>A flag to indicate if the scalebar should bee drawn all on a single line</Description>
+			<Type>boolean</Type>
+			<Label>Single line</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>ScalebarDual</Type>
+		<LocalizedType>Scale Bar Dual</LocalizedType>
+		<Description>A dynamically generated cartographic scalebar that looks like the Google scalebar</Description>
+		<Location></Location>
+		<Label>ScalebarDual</Label>
+		<Tooltip></Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>false</StandardUi>
+		<ContainableBy></ContainableBy>
+		<Parameter>
+			<Name>MaxWidth</Name>
+			<Description>Maximum width of the scalebar in pixels</Description>
+			<Type>integer</Type>
+			<Label>Maximum width</Label>
+			<DefaultValue>300</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>TopInUnits</Name>
+			<Description>Units for zoomed in on top bar</Description>
+			<Type>String</Type>
+			<Label>Top bar units (zoomed in)</Label>
+			<DefaultValue>ft</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>TopOutUnits</Name>
+			<Description>Units for zoomed out on top bar</Description>
+			<Type>String</Type>
+			<Label>Top bar units (zoomed out)</Label>
+			<DefaultValue>mi</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>BottomInUnits</Name>
+			<Description>Units for zoomed in on bottom bar</Description>
+			<Type>String</Type>
+			<Label>Bottom bar units (zoomed in)</Label>
+			<DefaultValue>m</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>BottomOutUnits</Name>
+			<Description>Units for zoomed out on bottom bar</Description>
+			<Type>String</Type>
+			<Label>Bottom bar units (zoomed out)</Label>
+			<DefaultValue>km</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Search</Type>
+		<LocalizedType>Search</LocalizedType>
+		<Description>A widget which will perform an attribute based search</Description>
+		<Location></Location>
+		<Label>Search</Label>
+		<Tooltip>Click to carry out a search on the map data</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>search</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Target</Name>
+			<Label>Target</Label>
+			<Type>target</Type>
+			<Description>The frame, window, or TaskPane in which to display any UI for the widget. If empty, a new window is used</Description>
+			<IsMandatory>true</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Prompt</Name>
+			<Description>The prompt to display beside the user input</Description>
+			<Type>String</Type>
+			<Label>Prompt</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Layer</Name>
+			<Description>Layer name in the map on which to carry out the search</Description>
+			<Type>String</Type>
+			<Label>Layer</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Filter</Name>
+			<Description>The search expression template to return features. The filter must include a $USER_VARIABLE placeholder (that will contain the search term)</Description>
+			<Type>String</Type>
+			<Label>Filter</Label>
+			<DefaultValue>String</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>MatchLimit</Name>
+			<Description>The maximum number of hits to return</Description>
+			<Type>integer</Type>
+			<Label>Match limit</Label>
+			<Min>0</Min>
+			<DefaultValue>100</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ResultColumns</Name>
+			<Description>An XML structure describing the columns to be returned as part of the search and their labels</Description>
+			<Type>XML</Type>
+			<Label>ResultColumns</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Title</Name>
+			<Description>The title to use for the search form</Description>
+			<Type>String</Type>
+			<Label>Title</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>PointZoomLevel</Name>
+			<Label>Point zoom level</Label>
+			<Type>double</Type>
+			<Description>The zoom level to use when clicking on a point feature search result. Note that when basemaps are active, it will zoom to the discrete zoom level closest to the specified value</Description>
+			<DefaultValue>500.0</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Select</Type>
+		<LocalizedType>Select</LocalizedType>
+		<Description>A widget that allows selection of features on a map</Description>
+		<Location></Location>
+		<Label>Select</Label>
+		<Tooltip>Click to select features</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>select</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>SelectionType</Name>
+			<Description>The type of selection to do</Description>
+			<Type>String</Type>
+			<Label>Selection type</Label>
+			<DefaultValue>INTERSECTS</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Tolerance</Name>
+			<Description>pixel tolerance for a point click</Description>
+			<Type>integer</Type>
+			<Label>Tolerance</Label>
+			<Min>1</Min>
+			<DefaultValue>3</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>QueryActiveLayer</Name>
+			<Description>Flag to indicate if features should be selected only on the active layer</Description>
+			<Type>boolean</Type>
+			<Label>Query active layer</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>SelectionInfo</Type>
+		<LocalizedType>Selection Info</LocalizedType>
+		<Description>Displays the number of features and number of layers in the current selection.</Description>
+		<Location></Location>
+		<Label>Selection info</Label>
+		<Tooltip></Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>false</StandardUi>
+		<ContainableBy>Splitterbar</ContainableBy>
+		<Parameter>
+			<Name>Template</Name>
+			<Description>The format of the output string.</Description>
+			<Type>String</Type>
+			<Label>Template</Label>
+			<DefaultValue>{0} feature(s) selected on {1} layer(s)</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>EmptyText</Name>
+			<Description>The string to display when nothing is selected</Description>
+			<Type>String</Type>
+			<Label>Empty selection string</Label>
+			<DefaultValue>No features selected</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>SelectionPanel</Type>
+		<LocalizedType>Selection Panel</LocalizedType>
+		<Description>The SelectionPanel widget displays attributes for the features that are selected on the map.</Description>
+		<Location></Location>
+		<Label>Selection Panel</Label>
+		<Tooltip></Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>false</StandardUi>
+		<ContainableBy></ContainableBy>
+		<Parameter>
+			<Name>PreviousImageUrl</Name>
+			<Label>Previous Image URL</Label>
+			<Type>string</Type>
+			<Description>Previous Image icon URL</Description>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>NextImageUrl</Name>
+			<Label>Next Image URL</Label>
+			<Type>string</Type>
+			<Description>Next Image icon URL</Description>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ResultsPerPage</Name>
+			<Label>Results Per Page</Label>
+			<Type>integer</Type>
+			<Description>The number of results to show per page</Description>
+			<DefaultValue>0</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>SelectionRenderer</Name>
+			<Label>Selection Renderer</Label>
+			<Type>string</Type>
+			<Description>The type of selection renderer to use</Description>
+			<AllowedValue>
+				<Name>Fusion.Widget.SelectionPanel.SelectionRendererDefault</Name>
+				<Label>Default</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Fusion.Widget.SelectionPanel.SelectionRendererHorizontal</Name>
+				<Label>Horizontal</Label>
+			</AllowedValue>
+			<DefaultValue>Fusion.Widget.SelectionPanel.SelectionRendererDefault</DefaultValue>
+			<IsMandatory>true</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>SelectPolygon</Type>
+		<LocalizedType>Select Polygon</LocalizedType>
+		<Description>Perform a selection using a polygon</Description>
+		<Location></Location>
+		<Label>Select Polygon</Label>
+		<Tooltip>Draw a polygon to perform a selection</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>select-polygon</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>SelectionType</Name>
+			<Description>The type of selection to do</Description>
+			<Type>String</Type>
+			<Label>Selection type</Label>
+			<DefaultValue>INTERSECTS</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Tolerance</Name>
+			<Description>pixel tolerance for a point click</Description>
+			<Type>integer</Type>
+			<Label>Tolerance</Label>
+			<Min>1</Min>
+			<DefaultValue>3</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>SelectRadius</Type>
+		<LocalizedType>Select Radius</LocalizedType>
+		<Description>Perform a selection within a certain radius of a click</Description>
+		<Label>Select Radius</Label>
+		<Tooltip>Click to select within a radius</Tooltip>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>select-radius</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>SelectionType</Name>
+			<Description>The type of selection to do</Description>
+			<Type>String</Type>
+			<Label>Selection type</Label>
+			<DefaultValue>INTERSECTS</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Tolerance</Name>
+			<Description>Pixel tolerance for a point click</Description>
+			<Type>integer</Type>
+			<Label>Tolerance</Label>
+			<Min>1</Min>
+			<DefaultValue>3</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>DefaultRadius</Name>
+			<Description>The radius in pixels to use for the selection</Description>
+			<Type>integer</Type>
+			<Label>Default radius</Label>
+			<DefaultValue>20</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>RadiusTooltipContainer</Name>
+			<Description>String</Description>
+			<Type>String</Type>
+			<Label>An HTML container to put the radius value in</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>RadiusTooltipType</Name>
+			<Description>Type of tooltip to use</Description>
+			<Type>String</Type>
+			<Label>Radius tooltip type</Label>
+			<AllowedValue>
+				<Name>static</Name>
+				<Label>static</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>dynamic</Name>
+				<Label>dynamic</Label>
+			</AllowedValue>
+			<DefaultValue>dynamic</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>SelectRadiusValue</Type>
+		<LocalizedType>Select Radius Value</LocalizedType>
+		<Description>A widget to allow the user can manually enter a radius for the SelectRadius widget</Description>
+		<Location></Location>
+		<Label>Select radius value</Label>
+		<Tooltip>enter the radius for the Select by Radius tool</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>RadiusName</Name>
+			<Description>The name of the SelectRadius widget this applies to</Description>
+			<Type>String</Type>
+			<Label>SelectRadius widget name</Label>
+			<DefaultValue>SelectRadius</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Label</Name>
+			<Description>Label to use for this widget</Description>
+			<Type>String</Type>
+			<Label>Label</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ClassName</Name>
+			<Description>CSS class name for the Label</Description>
+			<Type>String</Type>
+			<Label>CSS Class name</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>SelectWithin</Type>
+		<LocalizedType>Select Within</LocalizedType>
+		<Description>A widget to perform a selection within a currently selected set of features</Description>
+		<Location></Location>
+		<Label>Select within</Label>
+		<Tooltip>Click to select features within this selection</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>select-features</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Target</Name>
+			<Label>Target</Label>
+			<Type>target</Type>
+			<Description>The frame, window, or TaskPane in which to display any UI for the widget. If empty, a new window is used</Description>
+			<DefaultValue>TaskPane</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>DisableIfSelectionEmpty</Name>
+			<Description>A flag to indicate if this widget should only be enabled if there is a selection available on the map</Description>
+			<Type>boolean</Type>
+			<Label>Disable If Selection Empty</Label>
+			<DefaultValue>true</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>OmitInvisibleLayers</Name>
+			<Description>A flag to indicate if invisible layers that are in the current selection should be omitted from the list of layers to restrict</Description>
+			<Type>boolean</Type>
+			<Label>Omit invisible layers</Label>
+			<DefaultValue>false</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>TaskPane</Type>
+		<LocalizedType>Task Pane</LocalizedType>
+		<Description>A widget that acts as a workspace for widgets that require user input/output, e.g. InvokeURL, Buffer, Search, etc. widgets</Description>
+		<Location></Location>
+		<Label>TaskPane</Label>
+		<Tooltip></Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>false</StandardUi>
+		<ContainableBy></ContainableBy>
+		<Parameter>
+			<Name>InitialTask</Name>
+			<Description>The URL of the task that acts as the 'home' task</Description>
+			<Type>String</Type>
+			<Label>Initial Task URL</Label>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>MenuContainer</Name>
+			<Description>The menu displayed in the drop-down task list</Description>
+			<Type>menu</Type>
+			<Label>Task menu</Label>
+			<DefaultValue>TaskMenu</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Theme</Type>
+		<Location></Location>
+		<LocalizedType>Theme</LocalizedType>
+		<Description>This widget will create a new themed layer based on an existing map layer.  Either a popup window or the task pane will be used to gather user input, depending on the setting of the Target parameter</Description>
+		<Label>Theme</Label>
+		<Tooltip>Click to create a themed layer</Tooltip>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>theme</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Target</Name>
+			<Label>Target</Label>
+			<Type>target</Type>
+			<Description>The frame, window, or TaskPane in which to display any UI for the widget. If empty, a new window is used</Description>
+			<IsMandatory>true</IsMandatory>
+			<DefaultValue>TaskPane</DefaultValue>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>ViewOptions</Type>
+		<LocalizedType>View Options</LocalizedType>
+		<Description>A widget to allow selection of the display units for various widgets</Description>
+		<Location></Location>
+		<Label>Options</Label>
+		<Tooltip>Click to change the units displayed</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>options</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>DisplayUnits</Name>
+			<Description>The units to use for display by other widgets</Description>
+			<Type>String</Type>
+			<Label>Display units</Label>
+			<AllowedValue>
+				<Name>Miles</Name>
+				<Label>Miles</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Meters</Name>
+				<Label>Meters</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Degrees</Name>
+				<Label>Degrees</Label>
+			</AllowedValue>
+			<DefaultValue></DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>ViewSize</Type>
+		<LocalizedType>View Size</LocalizedType>
+		<Description>Display the size of the current view in user-definable units</Description>
+		<Location></Location>
+		<Label>ViewSize</Label>
+		<Tooltip>The size of the map</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>false</StandardUi>
+		<ContainableBy>Splitterbar</ContainableBy>
+		<Parameter>
+			<Name>Units</Name>
+			<Description>the units to display the size in</Description>
+			<Type>String</Type>
+			<Label>Units</Label>
+			<AllowedValue>
+				<Name>Meters</Name>
+				<Label>Meters</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Kilometers</Name>
+				<Label>Kilometers</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Feet</Name>
+				<Label>Feet</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Yards</Name>
+				<Label>Yards</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Miles</Name>
+				<Label>Miles</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Degrees</Name>
+				<Label>Degrees</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>Pixels</Name>
+				<Label>Pixels</Label>
+			</AllowedValue>
+			<DefaultValue>Meters</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Precision</Name>
+			<Description>Precision of the size displayed</Description>
+			<Type>integer</Type>
+			<Label>DistancePrecision</Label>
+			<Min>-1</Min>
+			<Max>6</Max>
+			<DefaultValue>2</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Template</Name>
+			<Description>A template string to display the size. Values in {} will be replaced by actual values</Description>
+			<Type>String</Type>
+			<Label>Template</Label>
+			<DefaultValue>{w} x {h} {units}</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>Zoom</Type>
+		<LocalizedType>Zoom</LocalizedType>
+		<Description>Zooms in on the map</Description>
+		<Label>Zoom Rectangle</Label>
+		<Tooltip>Click or click and drag on the map to zoom in</Tooltip>
+		<StatusText>Click or click and drag on the map to zoom in</StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>zoom-in</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Tolerance</Name>
+			<Description>Zoom tolerance</Description>
+			<Type>integer</Type>
+			<Label>Tolerance</Label>
+			<Min></Min>
+			<Max></Max>
+			<DefaultValue>5</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Factor</Name>
+			<Description>The amount to zoom in or out</Description>
+			<Type>integer</Type>
+			<Label>Factor</Label>
+			<Min>1</Min>
+			<DefaultValue>2</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>Direction</Name>
+			<Description>Indicates if the map should zoom in or out</Description>
+			<Type>String</Type>
+			<Label>Direction</Label>
+			<AllowedValue>
+				<Name>in</Name>
+				<Label>in</Label>
+			</AllowedValue>
+			<AllowedValue>
+				<Name>out</Name>
+				<Label>out</Label>
+			</AllowedValue>
+			<DefaultValue>in</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>ZoomOnClick</Type>
+		<LocalizedType>Zoom on Click</LocalizedType>
+		<Description>Zoom the map by a fixed amount when a button is clicked</Description>
+		<Location></Location>
+		<Label></Label>
+		<Tooltip></Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl></ImageUrl>
+		<ImageClass></ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>Factor</Name>
+			<Description>The factor to zoom by. Values less than 0 zoom out.</Description>
+			<Type>double</Type>
+			<Label>Factor</Label>
+			<DefaultValue>2</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+	<WidgetInfo>
+		<Type>ZoomToSelection</Type>
+		<LocalizedType>Zoom to Selection</LocalizedType>
+		<Description>A widget that will zoom the map to the currently selected features</Description>
+		<Location></Location>
+		<Label>Zoom Selection</Label>
+		<Tooltip>Click to zoom to the selection</Tooltip>
+		<StatusText></StatusText>
+		<ImageUrl>images/icons.png</ImageUrl>
+		<ImageClass>select-zoom</ImageClass>
+		<StandardUi>true</StandardUi>
+		<ContainableBy>Any</ContainableBy>
+		<Parameter>
+			<Name>MaximumZoomDimension</Name>
+			<Description>Controls how much to zoom</Description>
+			<Type>integer</Type>
+			<Label>MaximumZoomDimension</Label>
+			<DefaultValue>-1</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+		<Parameter>
+			<Name>ZoomFactor</Name>
+			<Description>The amount to zoom allowing all features to still be displayed</Description>
+			<Type>float</Type>
+			<Label>Zoom factor</Label>
+			<DefaultValue>2</DefaultValue>
+			<IsMandatory>false</IsMandatory>
+		</Parameter>
+	</WidgetInfo>
+</ApplicationDefinitionWidgetInfoSet>

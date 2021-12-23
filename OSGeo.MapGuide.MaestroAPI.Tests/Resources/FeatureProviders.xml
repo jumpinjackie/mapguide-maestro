@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<FeatureProviderRegistry>
+	<FeatureProvider>
+		<Name>OSGeo.SDF.4.2</Name>
+		<DisplayName>OSGeo FDO Provider for SDF</DisplayName>
+		<Description>Read/write access to Autodesk's spatial database format, a file-based personal geodatabase that supports multiple features/attributes, spatial indexing, and file-locking.</Description>
+		<Version>4.2.0.0</Version>
+		<FeatureDataObjectsVersion>4.2.0.0</FeatureDataObjectsVersion>
+		<ConnectionProperties>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="true">
+				<Name>File</Name>
+				<LocalizedName>File </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="true" Protected="false" Required="false">
+				<Name>ReadOnly</Name>
+				<LocalizedName>ReadOnly </LocalizedName>
+				<DefaultValue>TRUE</DefaultValue>
+				<Value>FALSE</Value>
+				<Value>TRUE</Value>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>MaxCacheSize</Name>
+				<LocalizedName>MaxCacheSize </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+		</ConnectionProperties>
+	</FeatureProvider>
+	<FeatureProvider>
+		<Name>OSGeo.SHP.4.2</Name>
+		<DisplayName>OSGeo FDO Provider for SHP</DisplayName>
+		<Description>Read/write access to spatial and attribute data in an ESRI SHP file.</Description>
+		<Version>4.2.0.0</Version>
+		<FeatureDataObjectsVersion>4.2.0.0</FeatureDataObjectsVersion>
+		<ConnectionProperties>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>DefaultFileLocation</Name>
+				<LocalizedName>DefaultFileLocation </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>TemporaryFileLocation</Name>
+				<LocalizedName>TemporaryFileLocation </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+		</ConnectionProperties>
+	</FeatureProvider>
+	<FeatureProvider>
+		<Name>OSGeo.ArcSDE.4.2</Name>
+		<DisplayName>OSGeo FDO Provider for ArcSDE</DisplayName>
+		<Description>Read/write access to an ESRI ArcSDE-based data store, using Oracle and SQL Server.</Description>
+		<Version>4.2.0.0</Version>
+		<FeatureDataObjectsVersion>4.2.0.0</FeatureDataObjectsVersion>
+		<ConnectionProperties/>
+	</FeatureProvider>
+	<FeatureProvider>
+		<Name>OSGeo.WFS.4.2</Name>
+		<DisplayName>OSGeo FDO Provider for WFS</DisplayName>
+		<Description>Read access to OGC WFS-based data store.</Description>
+		<Version>4.2.0.0</Version>
+		<FeatureDataObjectsVersion>4.2.0.0</FeatureDataObjectsVersion>
+		<ConnectionProperties>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="true">
+				<Name>FeatureServer</Name>
+				<LocalizedName>FeatureServer </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>Username</Name>
+				<LocalizedName>Username </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>Password</Name>
+				<LocalizedName>Password </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>ProxyServerName</Name>
+				<LocalizedName>ProxyServerName </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>ProxyServerPort</Name>
+				<LocalizedName>ProxyServerPort </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>ProxyServerUsername</Name>
+				<LocalizedName>ProxyServerUsername </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>ProxyServerPassword</Name>
+				<LocalizedName>ProxyServerPassword </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>InvertAxis</Name>
+				<LocalizedName>InvertAxis</LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+		</ConnectionProperties>
+	</FeatureProvider>
+	<FeatureProvider>
+		<Name>OSGeo.WMS.4.2</Name>
+		<DisplayName>OSGeo FDO Provider for WMS</DisplayName>
+		<Description>Read access to OGC WMS-based data store.</Description>
+		<Version>4.2.0.0</Version>
+		<FeatureDataObjectsVersion>4.2.0.0</FeatureDataObjectsVersion>
+		<ConnectionProperties>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="true">
+				<Name>FeatureServer</Name>
+				<LocalizedName>FeatureServer </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>Username</Name>
+				<LocalizedName>Username </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>Password</Name>
+				<LocalizedName>Password </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>DefaultImageHeight</Name>
+				<LocalizedName>DefaultImageHeight </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>ProxyServerName</Name>
+				<LocalizedName>ProxyServerName </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>ProxyServerPort</Name>
+				<LocalizedName>ProxyServerPort </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>ProxyServerUsername</Name>
+				<LocalizedName>ProxyServerUsername </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>ProxyServerPassword</Name>
+				<LocalizedName>ProxyServerPassword </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+		</ConnectionProperties>
+	</FeatureProvider>
+	<FeatureProvider>
+		<Name>OSGeo.ODBC.4.2</Name>
+		<DisplayName>OSGeo FDO Provider for ODBC</DisplayName>
+		<Description>FDO Provider for ODBC</Description>
+		<Version>4.2.0.0</Version>
+		<FeatureDataObjectsVersion>4.2.0.0</FeatureDataObjectsVersion>
+		<ConnectionProperties>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>UserId</Name>
+				<LocalizedName>UserId </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="true" Required="false">
+				<Name>Password</Name>
+				<LocalizedName>Password </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="true" Protected="false" Required="false">
+				<Name>DataSourceName</Name>
+				<LocalizedName>DataSourceName </LocalizedName>
+				<DefaultValue></DefaultValue>
+				<Value>SqlServer</Value>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>ConnectionString</Name>
+				<LocalizedName>ConnectionString </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>GenerateDefaultGeometryProperty</Name>
+				<LocalizedName>GenerateDefaultGeometryProperty </LocalizedName>
+				<DefaultValue>true</DefaultValue>
+			</ConnectionProperty>
+		</ConnectionProperties>
+	</FeatureProvider>
+	<FeatureProvider>
+		<Name>OSGeo.MySQL.4.2</Name>
+		<DisplayName>OSGeo FDO Provider for MySQL</DisplayName>
+		<Description>FDO Provider for MySql</Description>
+		<Version>4.2.0.0</Version>
+		<FeatureDataObjectsVersion>4.2.0.0</FeatureDataObjectsVersion>
+		<ConnectionProperties>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="true">
+				<Name>Username</Name>
+				<LocalizedName>Username </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="true" Required="true">
+				<Name>Password</Name>
+				<LocalizedName>Password </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="true">
+				<Name>Service</Name>
+				<LocalizedName>Service </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="true" Protected="false" Required="false">
+				<Name>DataStore</Name>
+				<LocalizedName>DataStore </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+		</ConnectionProperties>
+	</FeatureProvider>
+	<FeatureProvider>
+		<Name>OSGeo.Gdal.4.2</Name>
+		<DisplayName>OSGeo FDO Provider for GDAL</DisplayName>
+		<Description>FDO Provider for GDAL</Description>
+		<Version>4.2.0.0</Version>
+		<FeatureDataObjectsVersion>4.2.0.0</FeatureDataObjectsVersion>
+		<ConnectionProperties>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>DefaultRasterFileLocation</Name>
+				<LocalizedName>DefaultRasterFileLocation</LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="true" Protected="false" Required="false">
+				<Name>ResamplingMethod</Name>
+				<LocalizedName>ResamplingMethod</LocalizedName>
+				<DefaultValue></DefaultValue>
+				<Value>BILINEAR</Value>
+				<Value>CUBIC</Value>
+				<Value>CUBICSPLINE</Value>
+				<Value>LANCZOS</Value>
+			</ConnectionProperty>
+		</ConnectionProperties>
+	</FeatureProvider>
+	<FeatureProvider>
+		<Name>OSGeo.OGR.4.2</Name>
+		<DisplayName>OSGeo FDO Provider for OGR</DisplayName>
+		<Description>FDO Access to OGR Data Sources</Description>
+		<Version>4.2.0.0</Version>
+		<FeatureDataObjectsVersion>4.2.0.0</FeatureDataObjectsVersion>
+		<ConnectionProperties>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="true">
+				<Name>DataSource</Name>
+				<LocalizedName>DataSource</LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>ReadOnly</Name>
+				<LocalizedName>ReadOnly</LocalizedName>
+				<DefaultValue>TRUE</DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>DefaultSchemaName</Name>
+				<LocalizedName>DefaultSchemaName</LocalizedName>
+				<DefaultValue>OGRSchema</DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>DataSourceEncoding</Name>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+		</ConnectionProperties>
+	</FeatureProvider>
+	<FeatureProvider>
+		<Name>OSGeo.KingOracle.4.2</Name>
+		<DisplayName>OSGeo FDO Provider for Oracle</DisplayName>
+		<Description>Read/write access to spatial and attribute data in an Oracle Spatial.</Description>
+		<Version>4.2.0.0</Version>
+		<FeatureDataObjectsVersion>4.2.0.0</FeatureDataObjectsVersion>
+		<ConnectionProperties>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>Username</Name>
+				<LocalizedName>Username</LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="true" Required="false">
+				<Name>Password</Name>
+				<LocalizedName>Password</LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>Service</Name>
+				<LocalizedName>Service</LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>OracleSchema</Name>
+				<LocalizedName>OracleSchema</LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>KingFdoClass</Name>
+				<LocalizedName>KingFdoClass</LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="false">
+				<Name>SDE Schema</Name>
+				<LocalizedName>SDE Schema</LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+		</ConnectionProperties>
+	</FeatureProvider>
+	<FeatureProvider>
+		<Name>OSGeo.SQLServerSpatial.4.2</Name>
+		<DisplayName>OSGeo FDO Provider for SQL Server Spatial</DisplayName>
+		<Description>Read/Write access to feature data in a MS SQL Server spatially enabled data store. Supports geospatial and non-geospatial data and schema.</Description>
+		<Version>4.2.0.0</Version>
+		<FeatureDataObjectsVersion>4.2.0.0</FeatureDataObjectsVersion>
+		<ConnectionProperties>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="true">
+				<Name>Username</Name>
+				<LocalizedName>Username </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="true" Required="true">
+				<Name>Password</Name>
+				<LocalizedName>Password </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="true">
+				<Name>Service</Name>
+				<LocalizedName>Service </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="true" Protected="false" Required="false">
+				<Name>DataStore</Name>
+				<LocalizedName>DataStore </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+		</ConnectionProperties>
+	</FeatureProvider>
+	<FeatureProvider>
+		<Name>OSGeo.SQLite.4.2</Name>
+		<DisplayName>OSGeo FDO Provider for SQLite (spatial)</DisplayName>
+		<Description>Read/write access to feature data in a SQLite file.</Description>
+		<Version>4.2.0.0</Version>
+		<FeatureDataObjectsVersion>4.2.0.0</FeatureDataObjectsVersion>
+		<ConnectionProperties>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="true">
+				<Name>File</Name>
+				<LocalizedName>File</LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="true" Protected="false" Required="false">
+				<Name>UseFdoMetadata</Name>
+				<LocalizedName>Fdo Enabled</LocalizedName>
+				<DefaultValue>FALSE</DefaultValue>
+				<Value>TRUE</Value>
+				<Value>FALSE</Value>
+			</ConnectionProperty>
+		</ConnectionProperties>
+	</FeatureProvider>
+	<FeatureProvider>
+		<Name>OSGeo.PostgreSQL.4.2</Name>
+		<DisplayName>OSGeo FDO Provider for PostgreSQL/PostGIS</DisplayName>
+		<Description>Read/write access to PostgreSQL/PostGIS-based data store. Supports spatial data types and spatial query operations.</Description>
+		<Version>4.2.0.0</Version>
+		<FeatureDataObjectsVersion>4.2.0.0</FeatureDataObjectsVersion>
+		<ConnectionProperties>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="true">
+				<Name>Username</Name>
+				<LocalizedName>Username </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="true" Required="true">
+				<Name>Password</Name>
+				<LocalizedName>Password </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="false" Protected="false" Required="true">
+				<Name>Service</Name>
+				<LocalizedName>Service </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+			<ConnectionProperty Enumerable="true" Protected="false" Required="false">
+				<Name>DataStore</Name>
+				<LocalizedName>DataStore </LocalizedName>
+				<DefaultValue></DefaultValue>
+			</ConnectionProperty>
+		</ConnectionProperties>
+	</FeatureProvider>
+</FeatureProviderRegistry>

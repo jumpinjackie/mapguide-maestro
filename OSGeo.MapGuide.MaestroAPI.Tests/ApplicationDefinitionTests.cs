@@ -20,9 +20,12 @@
 
 #endregion Disclaimer / License
 
+using Moq;
 using Newtonsoft.Json.Linq;
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Tests;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0;
 using OSGeo.MapGuide.ObjectModels.Json;
 using System;
 using System.Collections.Generic;
@@ -34,6 +37,53 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
 {
     public class ApplicationDefinitionTests
     {
+        [Fact]
+        public void ApplicationDefinition_AvailableTemplates_Deserialization()
+        {
+            var conn = new Mock<PlatformConnectionBase>();
+            conn.CallBase = true;
+
+            using (var s = Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}AppDefTemplates.xml"))
+            {
+                var availTemplates = conn.Object.DeserializeObject<ApplicationDefinitionTemplateInfoSet>(s);
+                Assert.Equal(5, availTemplates.TemplateInfo.Count);
+                Assert.Contains(availTemplates.TemplateInfo, t => t.Name == "Slate");
+                Assert.Contains(availTemplates.TemplateInfo, t => t.Name == "Aqua");
+                Assert.Contains(availTemplates.TemplateInfo, t => t.Name == "Maroon");
+                Assert.Contains(availTemplates.TemplateInfo, t => t.Name == "LimeGold");
+                Assert.Contains(availTemplates.TemplateInfo, t => t.Name == "TurquoiseYellow");
+            }
+        }
+
+        [Fact]
+        public void ApplicationDefinition_AvailableContainers_Deserialization()
+        {
+            var conn = new Mock<PlatformConnectionBase>();
+            conn.CallBase = true;
+
+            using (var s = Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}AppDefContainers.xml"))
+            {
+                var availContainers = conn.Object.DeserializeObject<ApplicationDefinitionContainerInfoSet>(s);
+                Assert.Equal(3, availContainers.ContainerInfo.Count);
+                Assert.Contains(availContainers.ContainerInfo, t => t.Type == "ContextMenu");
+                Assert.Contains(availContainers.ContainerInfo, t => t.Type == "Splitterbar");
+                Assert.Contains(availContainers.ContainerInfo, t => t.Type == "Toolbar");
+            }
+        }
+
+        [Fact]
+        public void ApplicationDefinition_AvailableWidgets_Deserialization()
+        {
+            var conn = new Mock<PlatformConnectionBase>();
+            conn.CallBase = true;
+
+            using (var s = Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}AppDefWidgets.xml"))
+            {
+                var availWidgets = conn.Object.DeserializeObject<ApplicationDefinitionWidgetInfoSet>(s);
+                Assert.Equal(52, availWidgets.WidgetInfo.Count);
+            }
+        }
+
         [Fact]
         public void ApplicationDefinitionDeserializationWithFullContentModel()
         {
