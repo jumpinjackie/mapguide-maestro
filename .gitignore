@@ -23,3 +23,5 @@ Install/vcredist_x86.exe
 /OpenCoverCoverage.net6.0.xml
 publish_linux
 publish_win
+/OSGeo.MapGuide.MaestroAPI.Tests/coverage.net6.0.cobertura.xml
+/codecov
