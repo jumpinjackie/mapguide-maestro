@@ -82,6 +82,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockHttp.Verify(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
             mockHttp.Verify(h => h.Get(It.Is<string>(s => s == getSiteInfoUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
             mockHttp.Verify(h => h.Get(It.Is<string>(s => s == createRuntimeMapUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
+
+            Assert.NotNull(rtm.Layers);
+            Assert.Equal(7, rtm.Layers.Count);
+            Assert.Equal(10, rtm.FiniteDisplayScales.Length);
         }
 
         [Fact]
@@ -132,6 +136,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockHttp.Verify(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
             mockHttp.Verify(h => h.Get(It.Is<string>(s => s == getSiteInfoUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
             mockHttp.Verify(h => h.Get(It.Is<string>(s => s == describeRuntimeMapUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
+
+            Assert.NotNull(rtm.Layers);
+            Assert.Equal(7, rtm.Layers.Count);
+            Assert.Equal(10, rtm.FiniteDisplayScales.Length);
         }
     }
 }
