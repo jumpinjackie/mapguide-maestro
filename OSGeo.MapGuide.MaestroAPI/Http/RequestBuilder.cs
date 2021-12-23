@@ -162,6 +162,25 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
+        internal string CreateSessionGet(string username, string password)
+        {
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "CREATESESSION" },
+                { "VERSION", "1.0.0" },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+            if (username != null)
+                param.Add("USERNAME", username);
+            if (password != null)
+                param.Add("PASSWORD", password);
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
         internal System.Net.WebRequest CreateSession(string username, string password, System.IO.Stream outStream)
         {
             var param = new NameValueCollection

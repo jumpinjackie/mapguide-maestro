@@ -35,6 +35,12 @@
     <None Update="Resources\AppDef-1.0.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\CreateRuntimeMap.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\DescribeRuntimeMap.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\DrawingSource_1_0_0.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -45,6 +51,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Resources\FeatureSource-1.0.0.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\GetSiteInfo.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Resources\OldTiledMap.txt">

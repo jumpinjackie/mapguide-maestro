@@ -103,11 +103,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         public const string PARAM_PASSWORD = "Password"; //NOXLATE
     }
+    
+    //TODO/FIXME: Had to make public to facilitate unit testing because InternalsVisibleToAttribute isn't working
 
     /// <summary>
-    /// Primary http based connection to the MapGuide Server
+    /// Primary http based connection to the MapGuide Server. Internal use only. Do not instantiate directly. Create via <see cref="ConnectionProviderRegistry"/>
     /// </summary>
-    internal class HttpServerConnection : MgServerConnectionBase,
+    public class HttpServerConnection : MgServerConnectionBase,
                                         IServerConnection,
                                         IDisposable,
                                         IFeatureService,
@@ -229,8 +231,6 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             m_username = username;
             m_password = password;
-
-            m_reqBuilder.SessionID = CreateSessionInternal(m_reqBuilder);
 
             try
             {
@@ -1280,8 +1280,35 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         private readonly object SyncRoot = new object();
 
+        class SessionOnlyGetRequestOptions : IHttpGetRequestOptions
+        {
+            readonly IHttpGetRequestOptions _inner;
+
+            public SessionOnlyGetRequestOptions(IHttpGetRequestOptions inner) => _inner = inner;
+
+            public bool AutoRestartSession => false;
+
+            public string SessionID => null;
+
+            public void LogFailedRequest(WebException wex) => _inner.LogFailedRequest(wex);
+
+            public void LogResponse(HttpWebResponse resp) => _inner.LogResponse(resp);
+
+            public bool RestartSession(bool throwException) => false;
+        }
+
         private string CreateSessionInternal(RequestBuilder reqb)
         {
+            var req = reqb.CreateSessionGet(m_username, m_password);
+            using (var s = _http.Get(req, new SessionOnlyGetRequestOptions(this)))
+            {
+                using (var sr = new StreamReader(s))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
+
+            /*
             using (var outStream = MemoryStreamPool.GetStream())
             {
                 var req = reqb.CreateSession(m_username, m_password, outStream);
@@ -1321,6 +1348,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                         throw;
                 }
             }
+            */
         }
 
         /// <summary>
@@ -1391,6 +1419,11 @@ namespace OSGeo.MapGuide.MaestroAPI
                     }
                 }
 
+                lock (SyncRoot)
+                {
+                    m_reqBuilder = reqb;
+                }
+
                 var si = GetSiteInfo();
 
                 //Reset cached items
@@ -1399,7 +1432,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                     m_siteVersion = new Version(si.SiteServer.Version);
 
                     m_featureProviders = null;
-                    m_reqBuilder = reqb;
                 }
 
                 return true;
