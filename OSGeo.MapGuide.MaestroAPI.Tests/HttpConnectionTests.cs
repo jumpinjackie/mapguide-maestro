@@ -36,7 +36,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         [Fact]
         public void HttpConnection_CreateRuntimeMap()
         {
-            var resp = Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}CreateRuntimeMap.xml");
             var mockHttp = new Mock<IHttpRequestor>();
 
             var baseUrl = "http://localhost:8008/mapguide/mapagent/mapagent.fcgi";
@@ -83,6 +82,56 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             mockHttp.Verify(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
             mockHttp.Verify(h => h.Get(It.Is<string>(s => s == getSiteInfoUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
             mockHttp.Verify(h => h.Get(It.Is<string>(s => s == createRuntimeMapUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
+        }
+
+        [Fact]
+        public void HttpConnection_DescribeRuntimeMap()
+        {
+            var mockHttp = new Mock<IHttpRequestor>();
+
+            var baseUrl = "http://localhost:8008/mapguide/mapagent/mapagent.fcgi";
+            var mdfId = "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition";
+            var mapName = "Sheboygan";
+            var sessionId = "abcd1234";
+            var requestedFeatures = 7;
+            var userName = "Administrator";
+            var password = "admin";
+
+            var createSessionUrl = $"{baseUrl}?OPERATION=CREATESESSION&VERSION=1.0.0&FORMAT=text%2Fxml&CLIENTAGENT=MapGuide%20Maestro%20API%20v6.0.0.0&USERNAME={userName}&PASSWORD={password}";
+            var describeRuntimeMapUrl = $"{baseUrl}?OPERATION=DESCRIBERUNTIMEMAP&VERSION=4.0.0&SESSION={sessionId}&MAPNAME={mapName}&REQUESTEDFEATURES={requestedFeatures}&ICONSPERSCALERANGE=25&ICONFORMAT=PNG&ICONWIDTH=16&ICONHEIGHT=16";
+            var getSiteInfoUrl = $"{baseUrl}?OPERATION=GETSITEINFO&VERSION=1.0.0&SESSION={sessionId}&FORMAT=text%2Fxml&CLIENTAGENT=MapGuide%20Maestro%20API%20v6.0.0.0";
+
+            mockHttp
+                .Setup(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>()))
+                .Returns(() => new MemoryStream(Encoding.UTF8.GetBytes(sessionId)));
+
+            mockHttp
+                .Setup(h => h.Get(It.Is<string>(s => s == getSiteInfoUrl), It.IsAny<IHttpGetRequestOptions>()))
+                .Returns(() => Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}GetSiteInfo.xml"));
+
+            mockHttp
+                .Setup(h => h.Get(It.Is<string>(s => s == describeRuntimeMapUrl), It.IsAny<IHttpGetRequestOptions>()))
+                .Returns(() => Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}DescribeRuntimeMap.xml"));
+
+            var conn = new HttpServerConnection(mockHttp.Object, new NameValueCollection
+            {
+                { HttpServerConnectionParams.PARAM_URL, baseUrl },
+                { HttpServerConnectionParams.PARAM_USERNAME, userName },
+                { HttpServerConnectionParams.PARAM_PASSWORD, password }
+            });
+
+            Assert.Equal(sessionId, conn.SessionID);
+
+            var cmd = conn.CreateCommand((int)CommandType.DescribeRuntimeMap) as IDescribeRuntimeMap;
+            cmd.Name = mapName;
+            cmd.RequestedFeatures = requestedFeatures;
+
+            var rtm = cmd.Execute();
+            Assert.NotNull(rtm);
+
+            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
+            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == getSiteInfoUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
+            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == describeRuntimeMapUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
         }
     }
 }
