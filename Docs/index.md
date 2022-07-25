@@ -37,3 +37,9 @@ MapGuide Maestro aims to support most of the features avalible in MapGuide Open 
 ## Issues/Questions/etc
 
 When using the tool, please bear in mind that the project is a continual work in progress, and may not always perform as expected. Try to keep backups of all important data. If you encounter an error, or have a feature request, please check our [issue list](https://github.com/jumpinjackie/mapguide-maestro/issues), and if it has not already been reported ​please report it (You must have a GitHub account). If you have a question about the usage, you can ask at the [mapguide-users mailing list](http://lists.osgeo.org/listinfo/mapguide-users).
+
+## Applicable version
+
+This documentation is relevant as of the 6.0m11 release. For older versions, refer to the links below:
+
+ * [6.0m8](archive/6.0m8/index.html)
