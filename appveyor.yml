@@ -75,6 +75,8 @@ artifacts:
     name: installer_windows
   - path: .\artifacts\MapGuideMaestro-$(configuration)-$(ARTIFACT_RELEASE_LABEL).zip
     name: portable_package
+  - path: .\Docs\_site
+    name: docs
   - path: .\artifacts\MgTileSeeder-win-x64-$(ARTIFACT_RELEASE_LABEL).zip
     name: seeder_windows
   - path: .\artifacts\MgTileSeeder-linux-x64-$(ARTIFACT_RELEASE_LABEL).zip
