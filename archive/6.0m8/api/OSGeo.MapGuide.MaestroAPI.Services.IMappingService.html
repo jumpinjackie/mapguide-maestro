@@ -1,0 +1,2477 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IMappingService
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IMappingService
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService">
+  
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService" class="text-break">Interface IMappingService
+  </h1>
+  <div class="markdown level0 summary"><p>Provides services for interaction with the runtime map</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.html">OSGeo.MapGuide.MaestroAPI.Services</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IMappingService : IService</code></pre>
+  </div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_examples"><strong>Examples</strong></h5>
+  <p>This example shows how to obtain a mapping service instance. Note that you should check if this service type is
+supported through its capabilities.</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);</code></pre>
+
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(IMapDefinition)">CreateMap(IMapDefinition)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMap CreateMap(IMapDefinition mapDef)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IMapDefinition</span></td>
+        <td><span class="parametername">mapDef</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Calculation of meters-per-unit may differ between implementations. This may have an adverse
+effect on things such as rendering and measuring depending on the underlying implementation</p>
+<p>If you are certain of the meters-per-unit value required, use the overloaded method that
+accepts a metersPerUnit parameter.</p>
+</div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition__examples">Examples</h5>
+  <p>This example shows how to create a new runtime map instance</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+IMapDefinition mapDef = (IMapDefinition)conn.ResourceService.GetResource(&quot;Library://Path/To/My.MapDefinition&quot;);
+RuntimeMap map = mappingSvc.CreateMap(mapDef);</code></pre>
+
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(IMapDefinition,System.Boolean)">CreateMap(IMapDefinition, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMap CreateMap(IMapDefinition mapDef, bool suppressErrors)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IMapDefinition</span></td>
+        <td><span class="parametername">mapDef</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">suppressErrors</span></td>
+        <td><p>If false, this method will throw an exception on the first layer that cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Calculation of meters-per-unit may differ between implementations. This may have an adverse
+effect on things such as rendering and measuring depending on the underlying implementation</p>
+<p>If you are certain of the meters-per-unit value required, use the overloaded method that
+accepts a metersPerUnit parameter.</p>
+</div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_System_Boolean__examples">Examples</h5>
+  <p>This example shows how to create a new runtime map instance</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+IMapDefinition mapDef = (IMapDefinition)conn.ResourceService.GetResource(&quot;Library://Path/To/My.MapDefinition&quot;);
+bool suppressErrors = true;
+RuntimeMap map = mappingSvc.CreateMap(mapDef, suppressErrors);</code></pre>
+
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_System_Double_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(IMapDefinition,System.Double)">CreateMap(IMapDefinition, Double)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition. Meters per unit
+is calculated from the Coordinate System WKT of the map definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMap CreateMap(IMapDefinition mapDef, double metersPerUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IMapDefinition</span></td>
+        <td><span class="parametername">mapDef</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">metersPerUnit</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_System_Double__examples">Examples</h5>
+  <p>This example shows how to create a new runtime map instance</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+IMapDefinition mapDef = (IMapDefinition)conn.ResourceService.GetResource(&quot;Library://Path/To/My.MapDefinition&quot;);
+double metersPerUnit = 1.0;
+RuntimeMap map = mappingSvc.CreateMap(mapDef, metersPerUnit);</code></pre>
+
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_System_Double_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(IMapDefinition,System.Double,System.Boolean)">CreateMap(IMapDefinition, Double, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition. Meters per unit
+is calculated from the Coordinate System WKT of the map definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMap CreateMap(IMapDefinition mapDef, double metersPerUnit, bool suppressErrors)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IMapDefinition</span></td>
+        <td><span class="parametername">mapDef</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">metersPerUnit</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">suppressErrors</span></td>
+        <td><p>If false, this method will throw an exception on the first layer that cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_System_Double_System_Boolean__examples">Examples</h5>
+  <p>This example shows how to create a new runtime map instance</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+IMapDefinition mapDef = (IMapDefinition)conn.ResourceService.GetResource(&quot;Library://Path/To/My.MapDefinition&quot;);
+double metersPerUnit = 1.0;
+bool suppressErrors = true;
+RuntimeMap map = mappingSvc.CreateMap(mapDef, metersPerUnit, suppressErrors);</code></pre>
+
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,IMapDefinition)">CreateMap(String, IMapDefinition)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition. Meters per unit
+is calculated from the Coordinate System WKT of the map definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">runtimeMapResourceId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IMapDefinition</span></td>
+        <td><span class="parametername">mdf</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Calculation of meters-per-unit may differ between implementations. This may have an adverse
+effect on things such as rendering and measuring depending on the underlying implementation</p>
+<p>If you are certain of the meters-per-unit value required, use the overloaded method that
+accepts a metersPerUnit parameter.</p>
+</div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition__examples">Examples</h5>
+  <p>This example shows how to create a new runtime map instance</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+string mapName = &quot;MyMap&quot;;
+string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + mapName + &quot;.Map&quot;;
+IMapDefinition mdf = (IMapDefinition)conn.ResourceService.GetResource(&quot;Library://Path/To/My.MapDefinition&quot;);
+RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf);</code></pre>
+
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,IMapDefinition,System.Boolean)">CreateMap(String, IMapDefinition, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition. Meters per unit
+is calculated from the Coordinate System WKT of the map definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, bool suppressErrors)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">runtimeMapResourceId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IMapDefinition</span></td>
+        <td><span class="parametername">mdf</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">suppressErrors</span></td>
+        <td><p>If false, this method will throw an exception on the first layer that cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Calculation of meters-per-unit may differ between implementations. This may have an adverse
+effect on things such as rendering and measuring depending on the underlying implementation</p>
+<p>If you are certain of the meters-per-unit value required, use the overloaded method that
+accepts a metersPerUnit parameter.</p>
+</div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_System_Boolean__examples">Examples</h5>
+  <p>This example shows how to create a new runtime map instance</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+string mapName = &quot;MyMap&quot;;
+string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + mapName + &quot;.Map&quot;;
+IMapDefinition mdf = (IMapDefinition)conn.ResourceService.GetResource(&quot;Library://Path/To/My.MapDefinition&quot;);
+bool suppressErrors = true;
+RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf, suppressErrors);</code></pre>
+
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_System_Double_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,IMapDefinition,System.Double)">CreateMap(String, IMapDefinition, Double)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, double metersPerUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">runtimeMapResourceId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IMapDefinition</span></td>
+        <td><span class="parametername">mdf</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">metersPerUnit</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_System_Double__examples">Examples</h5>
+  <p>This example shows how to create a new runtime map instance</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+double metersPerUnit = 1.0;
+string mapName = &quot;MyMap&quot;;
+string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + mapName + &quot;.Map&quot;;
+IMapDefinition mdf = (IMapDefinition)conn.ResourceService.GetResource(&quot;Library://Path/To/My.MapDefinition&quot;);
+RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf, metersPerUnit);</code></pre>
+
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_System_Double_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,IMapDefinition,System.Double,System.Boolean)">CreateMap(String, IMapDefinition, Double, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, double metersPerUnit, bool suppressErrors)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">runtimeMapResourceId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IMapDefinition</span></td>
+        <td><span class="parametername">mdf</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">metersPerUnit</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">suppressErrors</span></td>
+        <td><p>If false, this method will throw an exception on the first layer that cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_System_Double_System_Boolean__examples">Examples</h5>
+  <p>This example shows how to create a new runtime map instance</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+double metersPerUnit = 1.0;
+string mapName = &quot;MyMap&quot;;
+string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + mapName + &quot;.Map&quot;;
+IMapDefinition mdf = (IMapDefinition)conn.ResourceService.GetResource(&quot;Library://Path/To/My.MapDefinition&quot;);
+bool suppressErrors = true;
+RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf, metersPerUnit, suppressErrors);</code></pre>
+
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,System.String)">CreateMap(String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition. Meters per unit
+is calculated from the Coordinate System WKT of the map definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">runtimeMapResourceId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">baseMapDefinitionId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Calculation of meters-per-unit may differ between implementations. This may have an adverse
+effect on things such as rendering and measuring depending on the underlying implementation</p>
+<p>If you are certain of the meters-per-unit value required, use the overloaded method that
+accepts a metersPerUnit parameter.</p>
+</div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String__examples">Examples</h5>
+  <p>This example shows how to create a new runtime map instance</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+string mapName = &quot;MyMap&quot;;
+string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + mapName + &quot;.Map&quot;;
+string baseMapDefId = &quot;Library://Path/To/My.MapDefinition&quot;;
+RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId);</code></pre>
+
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,System.String,System.Boolean)">CreateMap(String, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition. Meters per unit
+is calculated from the Coordinate System WKT of the map definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId, bool suppressErrors)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">runtimeMapResourceId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">baseMapDefinitionId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">suppressErrors</span></td>
+        <td><p>If false, this method will throw an exception on the first layer that cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Calculation of meters-per-unit may differ between implementations. This may have an adverse
+effect on things such as rendering and measuring depending on the underlying implementation</p>
+<p>If you are certain of the meters-per-unit value required, use the overloaded method that
+accepts a metersPerUnit parameter.</p>
+</div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_System_Boolean__examples">Examples</h5>
+  <p>This example shows how to create a new runtime map instance</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+string mapName = &quot;MyMap&quot;;
+string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + mapName + &quot;.Map&quot;;
+string baseMapDefId = &quot;Library://Path/To/My.MapDefinition&quot;;
+bool suppressErrors = true;
+RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, suppressErrors);</code></pre>
+
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_System_Double_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,System.String,System.Double)">CreateMap(String, String, Double)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId, double metersPerUnit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">runtimeMapResourceId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">baseMapDefinitionId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">metersPerUnit</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_System_Double__examples">Examples</h5>
+  <p>This example shows how to create a new runtime map instance</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+string mapName = &quot;MyMap&quot;;
+string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + mapName + &quot;.Map&quot;;
+string baseMapDefId = &quot;Library://Path/To/My.MapDefinition&quot;;
+double metersPerUnit = 1.0;
+RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit);</code></pre>
+
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_System_Double_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,System.String,System.Double,System.Boolean)">CreateMap(String, String, Double, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId, double metersPerUnit, bool suppressErrors)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">runtimeMapResourceId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">baseMapDefinitionId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">metersPerUnit</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">suppressErrors</span></td>
+        <td><p>If false, this method will throw an exception on the first layer that cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_System_Double_System_Boolean__examples">Examples</h5>
+  <p>This example shows how to create a new runtime map instance</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+string mapName = &quot;MyMap&quot;;
+string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + mapName + &quot;.Map&quot;;
+string baseMapDefId = &quot;Library://Path/To/My.MapDefinition&quot;;
+double metersPerUnit = 1.0;
+bool suppressErrors = true;
+RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, suppressErrors);</code></pre>
+
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_RuntimeMap_IBaseMapGroup_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup(RuntimeMap,IBaseMapGroup)">CreateMapGroup(RuntimeMap, IBaseMapGroup)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMapGroup CreateMapGroup(RuntimeMap parent, IBaseMapGroup group)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">parent</span></td>
+        <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IBaseMapGroup</span></td>
+        <td><span class="parametername">group</span></td>
+        <td><p>The group.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMapGroup</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_RuntimeMap_IMapLayerGroup_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup(RuntimeMap,IMapLayerGroup)">CreateMapGroup(RuntimeMap, IMapLayerGroup)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMapGroup CreateMapGroup(RuntimeMap parent, IMapLayerGroup group)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">parent</span></td>
+        <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IMapLayerGroup</span></td>
+        <td><span class="parametername">group</span></td>
+        <td><p>The group.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMapGroup</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_RuntimeMap_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup(RuntimeMap,System.String)">CreateMapGroup(RuntimeMap, String)</h4>
+  <div class="markdown level1 summary"><p>Creates the map group.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMapGroup CreateMapGroup(RuntimeMap parent, string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">parent</span></td>
+        <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMapGroup</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_RuntimeMap_IBaseMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(RuntimeMap,IBaseMapLayer)">CreateMapLayer(RuntimeMap, IBaseMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a> instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IBaseMapLayer source)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">parent</span></td>
+        <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IBaseMapLayer</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>The map definition layer</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMapLayer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_RuntimeMap_IBaseMapLayer_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(RuntimeMap,IBaseMapLayer,System.Boolean)">CreateMapLayer(RuntimeMap, IBaseMapLayer, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a> instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IBaseMapLayer source, bool suppressErrors)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">parent</span></td>
+        <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IBaseMapLayer</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>The map definition layer</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">suppressErrors</span></td>
+        <td><p>If false, this method will throw an exception if the layer cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMapLayer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_RuntimeMap_ILayerDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(RuntimeMap,ILayerDefinition)">CreateMapLayer(RuntimeMap, ILayerDefinition)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified Layer Definition</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMapLayer CreateMapLayer(RuntimeMap parent, ILayerDefinition ldf)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">parent</span></td>
+        <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ILayerDefinition</span></td>
+        <td><span class="parametername">ldf</span></td>
+        <td><p>The layer definition</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMapLayer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_RuntimeMap_ILayerDefinition_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(RuntimeMap,ILayerDefinition,System.Boolean)">CreateMapLayer(RuntimeMap, ILayerDefinition, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified Layer Definition</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMapLayer CreateMapLayer(RuntimeMap parent, ILayerDefinition ldf, bool suppressErrors)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">parent</span></td>
+        <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ILayerDefinition</span></td>
+        <td><span class="parametername">ldf</span></td>
+        <td><p>The layer definition</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">suppressErrors</span></td>
+        <td><p>If false, this method will throw an exception if the layer cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMapLayer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_RuntimeMap_IMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(RuntimeMap,IMapLayer)">CreateMapLayer(RuntimeMap, IMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer.html">IMapLayer</a> instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">parent</span></td>
+        <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IMapLayer</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>The map definition layer</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMapLayer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_RuntimeMap_IMapLayer_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(RuntimeMap,IMapLayer,System.Boolean)">CreateMapLayer(RuntimeMap, IMapLayer, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer.html">IMapLayer</a> instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source, bool suppressErrors)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">parent</span></td>
+        <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IMapLayer</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>The map definition layer</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">suppressErrors</span></td>
+        <td><p>If false, this method will throw an exception if the layer cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMapLayer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_GetLegendImageStream_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.GetLegendImageStream*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_GetLegendImageStream_System_Double_System_String_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.GetLegendImageStream(System.Double,System.String,System.Int32,System.Int32)">GetLegendImageStream(Double, String, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders a minature bitmap of the layers style</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream GetLegendImageStream(double scale, string layerdefinition, int themeIndex, int type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td><p>The scale for the bitmap to match</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">layerdefinition</span></td>
+        <td><p>The layer definition resource id</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">themeIndex</span></td>
+        <td><p>If the layer is themed, this gives the theme index, otherwise set to 0</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><p>The legend image stream</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_GetLegendImageStream_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.GetLegendImageStream*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_GetLegendImageStream_System_Double_System_String_System_Int32_System_Int32_System_Int32_System_Int32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.GetLegendImageStream(System.Double,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">GetLegendImageStream(Double, String, Int32, Int32, Int32, Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Renders a minature bitmap of the layers style</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream GetLegendImageStream(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td><p>The scale for the bitmap to match</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">layerdefinition</span></td>
+        <td><p>The layer definition resource id</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">themeIndex</span></td>
+        <td><p>If the layer is themed, this gives the theme index, otherwise set to 0</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width of the image to request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height of the image to request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>The image format (PNG, JPG or GIF).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><p>The legend image stream</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_OpenMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.OpenMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_OpenMap_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.OpenMap(System.String)">OpenMap(String)</h4>
+  <div class="markdown level1 summary"><p>Opens an existing runtime map instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMap OpenMap(string runtimeMapResourceId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">runtimeMapResourceId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_OpenMap_System_String__examples">Examples</h5>
+  <p>This example shows how to open a RuntimeMap instance from a resource id</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+string mapName = &quot;MyMap&quot;;
+string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + mapName + &quot;.Map&quot;;
+RuntimeMap map = mappingSvc.OpenMap(rtMapId);</code></pre>
+
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_QueryMapFeatures_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.QueryMapFeatures*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_QueryMapFeatures_RuntimeMap_System_Int32_System_String_System_Boolean_System_String_OSGeo_MapGuide_MaestroAPI_Services_QueryMapOptions_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.QueryMapFeatures(RuntimeMap,System.Int32,System.String,System.Boolean,System.String,OSGeo.MapGuide.MaestroAPI.Services.QueryMapOptions)">QueryMapFeatures(RuntimeMap, Int32, String, Boolean, String, QueryMapOptions)</h4>
+  <div class="markdown level1 summary"><p>Identifies features that meet the specified spatial selection criteria. These features can be persisted as selected features in a map.
+This operation is generally used to implement selection/tooltip functionality for a client-side map viewer.
+QueryMapFeatures returns an XML document describing the set of selected features.
+If a single feature is selected, the XML contains the tooltip, hyperlink, and properties of the feature.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string QueryMapFeatures(RuntimeMap map, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The RuntimeMap instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxFeatures</span></td>
+        <td><p>The maximum number of features to return</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">wkt</span></td>
+        <td><p>The WKT of the filter geometry, specifying the selection area</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">persist</span></td>
+        <td><p>Indicates whether the selection should be persisted as part of the map</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">selectionVariant</span></td>
+        <td><p>The spatial operator to use against the selection geometry</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.QueryMapOptions.html">QueryMapOptions</a></td>
+        <td><span class="parametername">extraOptions</span></td>
+        <td><p>Extra options for controlling selection criteria</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_RuntimeMap_MapSelection_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay(RuntimeMap,MapSelection,System.String)">RenderDynamicOverlay(RuntimeMap, MapSelection, String)</h4>
+  <div class="markdown level1 summary"><p>Renders a dynamic overlay image of the map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MapSelection</span></td>
+        <td><span class="parametername">selection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_RuntimeMap_MapSelection_System_String_Color_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay(RuntimeMap,MapSelection,System.String,Color,System.Int32)">RenderDynamicOverlay(RuntimeMap, MapSelection, String, Color, Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders a dynamic overlay image of the map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behaviour)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The runtime map instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">MapSelection</span></td>
+        <td><span class="parametername">selection</span></td>
+        <td><p>The map selection</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>The image format</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Color</span></td>
+        <td><span class="parametername">selectionColor</span></td>
+        <td><p>The color of the selection</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">behaviour</span></td>
+        <td><p>A bitmask for the rendering behaviour (1 = Render Selection, 2 = Render Layers, 4 = Keep Selection, 8 = Render Base Layers)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_RuntimeMap_MapSelection_System_String_Color_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The render base layers bitmask behaviour (8) is only supported from MapGuide Open Source 2.5 onwards</p>
+</div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_RuntimeMap_MapSelection_System_String_Color_System_Int32__examples">Examples</h5>
+  <p>This example shows how to create a render a dynamic overlay image from a map and load it into a System.Drawing.Image</p>
+<pre><code>IServerConnection conn;
+...
+IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+string mapName = &quot;MyMap&quot;;
+string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + mapName + &quot;.Map&quot;;
+RuntimeMap map = mappingSvc.OpenMap(rtMapId);
+string format = &quot;PNG&quot;;
+Color selectionColor = Color.Blue;
+int behaviour = 1 | 2 | 4;
+using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format, selectionColor, behaviour))
+{
+    Image img = Image.FromStream(stream);
+}</code></pre>
+
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.NotSupportedException</span></td>
+        <td><p>Thrown if the service is too old to be able to support this API</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_RuntimeMap_MapSelection_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay(RuntimeMap,MapSelection,System.String,System.Boolean)">RenderDynamicOverlay(RuntimeMap, MapSelection, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Renders a dynamic overlay image of the map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, bool keepSelection)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MapSelection</span></td>
+        <td><span class="parametername">selection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">keepSelection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderMapLegend_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderMapLegend*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderMapLegend_RuntimeMap_System_Int32_System_Int32_Color_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderMapLegend(RuntimeMap,System.Int32,System.Int32,Color,System.String)">RenderMapLegend(RuntimeMap, Int32, Int32, Color, String)</h4>
+  <div class="markdown level1 summary"><p>Renders the legend for the specified <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a> to the requested size and format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream RenderMapLegend(RuntimeMap map, int width, int height, Color backgroundColor, string format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Color</span></td>
+        <td><span class="parametername">backgroundColor</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Double, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders the runtime map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The runtime map instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x1</span></td>
+        <td><p>The x1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y1</span></td>
+        <td><p>The y1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x2</span></td>
+        <td><p>The x2.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y2</span></td>
+        <td><p>The y2.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
+        <td><p>The dpi.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Double, Int32, Int32, Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Renders the runtime map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The runtime map instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x1</span></td>
+        <td><p>The x1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y1</span></td>
+        <td><p>The y1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x2</span></td>
+        <td><p>The x2.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y2</span></td>
+        <td><p>The y2.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
+        <td><p>The dpi.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>The format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String,System.Boolean)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Double, Int32, Int32, Int32, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Renders the runtime map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The runtime map</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x1</span></td>
+        <td><p>The x1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y1</span></td>
+        <td><p>The y1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x2</span></td>
+        <td><p>The x2.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y2</span></td>
+        <td><p>The y2.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
+        <td><p>The dpi.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>The format.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">clip</span></td>
+        <td><p>if set to <code>true</code> [clip].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders the runtime map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The runtime map instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The x.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The y.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td><p>The scale.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
+        <td><p>The dpi.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Int32, Int32, Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Renders the runtime map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The runtime map instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The x.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The y.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td><p>The scale.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
+        <td><p>The dpi.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>The format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String,System.Boolean)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Int32, Int32, Int32, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Renders the runtime map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The runtime map instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The x.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The y.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td><p>The scale.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
+        <td><p>The dpi.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>The format.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">clip</span></td>
+        <td><p>if set to <code>true</code> [clip].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

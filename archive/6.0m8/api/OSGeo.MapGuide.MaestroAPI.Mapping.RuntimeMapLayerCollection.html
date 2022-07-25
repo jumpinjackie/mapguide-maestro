@@ -1,0 +1,589 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class RuntimeMapLayerCollection
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class RuntimeMapLayerCollection
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection">
+  
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection" class="text-break">Class RuntimeMapLayerCollection
+  </h1>
+  <div class="markdown level0 summary"><p>A collection of runtime map layers</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html">KeyValueCollection</a>&lt;<span class="xref">System.String</span>, <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a>&gt;</div>
+    <div class="level2"><span class="xref">RuntimeMapLayerCollection</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">IList</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2__values">KeyValueCollection&lt;String, RuntimeMapLayer&gt;._values</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2__valuesByKey">KeyValueCollection&lt;String, RuntimeMapLayer&gt;._valuesByKey</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_IndexOf__1_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.IndexOf(RuntimeMapLayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_IndexOf__0_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.IndexOf(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Insert_System_Int32__1_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.Insert(Int32, RuntimeMapLayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_RemoveAt_System_Int32_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.RemoveAt(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Item_System_Int32_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.Item[Int32]</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_SetNewIndex_System_Int32__1_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.SetNewIndex(Int32, RuntimeMapLayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Add__1_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.Add(RuntimeMapLayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Clear">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.Clear()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Contains__1_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.Contains(RuntimeMapLayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_CopyTo__1___System_Int32_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.CopyTo(RuntimeMapLayer[], Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Count">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.Count</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_IsReadOnly">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.IsReadOnly</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Remove__1_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.Remove(RuntimeMapLayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_GetEnumerator">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.GetEnumerator()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Item__0_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.Item[String]</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_CollectionChanged">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.CollectionChanged</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnCollectionChanged">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.OnCollectionChanged()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnBeforeItemAdded__1_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.OnBeforeItemAdded(RuntimeMapLayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnBeforeItemRemove__1_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.OnBeforeItemRemove(RuntimeMapLayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnItemAdded__1_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.OnItemAdded(RuntimeMapLayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnItemRemoved__1_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.OnItemRemoved(RuntimeMapLayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_SelectKey__1_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.SelectKey(RuntimeMapLayer)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.html">OSGeo.MapGuide.MaestroAPI.Mapping</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RuntimeMapLayerCollection : KeyValueCollection&lt;string, RuntimeMapLayer&gt;, IList</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Item*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Item_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the element at the specified index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override RuntimeMapLayer this[int index] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td><p>The element at the specified index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection&lt;System.String, OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer&gt;.Item[System.Int32]</span></div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">index</code> is not a valid index in the <span class="xref">System.Collections.Generic.IList`1</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.NotSupportedException</span></td>
+        <td><p>The property is set and the <span class="xref">System.Collections.Generic.IList`1</span> is read-only.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Add_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Add*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Add_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Add(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">Add(RuntimeMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Adds the specified layer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Add(RuntimeMapLayer item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The layer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection&lt;System.String, OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer&gt;.Add(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)</span></div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_GetByObjectId_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.GetByObjectId*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_GetByObjectId_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.GetByObjectId(System.String)">GetByObjectId(String)</h4>
+  <div class="markdown level1 summary"><p>Gets a runtime map layer by its object id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RuntimeMapLayer GetByObjectId(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The object id.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Insert_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Insert*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Insert_System_Int32_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Insert(System.Int32,OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">Insert(Int32, RuntimeMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Inserts an item to the <span class="xref">System.Collections.Generic.IList`1</span> at the specified index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Insert(int index, RuntimeMapLayer item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The zero-based index at which <code data-dev-comment-type="paramref" class="paramref">item</code> should be inserted.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The object to insert into the <span class="xref">System.Collections.Generic.IList`1</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection&lt;System.String, OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer&gt;.Insert(System.Int32, OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)</span></div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">index</code> is not a valid index in the <span class="xref">System.Collections.Generic.IList`1</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.NotSupportedException</span></td>
+        <td><p>The <span class="xref">System.Collections.Generic.IList`1</span> is read-only.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnBeforeItemAdded_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnBeforeItemAdded*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnBeforeItemAdded_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnBeforeItemAdded(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">OnBeforeItemAdded(RuntimeMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Called when [before item added].</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnBeforeItemAdded(RuntimeMapLayer item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The layer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection&lt;System.String, OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer&gt;.OnBeforeItemAdded(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)</span></div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnItemAdded_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnItemAdded*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnItemAdded_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnItemAdded(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">OnItemAdded(RuntimeMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Called when [item added].</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnItemAdded(RuntimeMapLayer item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The layer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection&lt;System.String, OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer&gt;.OnItemAdded(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)</span></div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnItemRemoved_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnItemRemoved*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnItemRemoved_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnItemRemoved(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">OnItemRemoved(RuntimeMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Called when [item removed].</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnItemRemoved(RuntimeMapLayer value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The layer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection&lt;System.String, OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer&gt;.OnItemRemoved(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)</span></div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Remove_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Remove*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Remove_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Remove(System.String)">Remove(String)</h4>
+  <div class="markdown level1 summary"><p>Removes the specified layer by its name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Remove(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_SelectKey_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.SelectKey*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_SelectKey_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.SelectKey(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">SelectKey(RuntimeMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Selects the key given the value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override string SelectKey(RuntimeMapLayer value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection&lt;System.String, OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer&gt;.SelectKey(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)</span></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">IList</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1127 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IWebLayout
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IWebLayout
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout">
+  
+  
+  <h1 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout" class="text-break">Interface IWebLayout
+  </h1>
+  <div class="markdown level0 summary"><p>The Web Layout</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_ValidatingSchema">IResource.ValidatingSchema</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_ResourceID">IResource.ResourceID</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_ResourceType">IResource.ResourceType</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_Serialize">IResource.Serialize()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_IsStronglyTyped">IResource.IsStronglyTyped</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IVersionedEntity.html#OSGeo_MapGuide_ObjectModels_IVersionedEntity_ResourceVersion">IVersionedEntity.ResourceVersion</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.html">OSGeo.MapGuide.ObjectModels.WebLayout</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IWebLayout : IResource, IVersionedEntity, ICloneable, INotifyPropertyChanged</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CommandSet_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CommandSet*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CommandSet" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CommandSet">CommandSet</h4>
+  <div class="markdown level1 summary"><p>Gets the command set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ICommandSet CommandSet { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.ICommandSet.html">ICommandSet</a></td>
+        <td><p>The command set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_ContextMenu_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.ContextMenu*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_ContextMenu" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.ContextMenu">ContextMenu</h4>
+  <div class="markdown level1 summary"><p>Gets the context menu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IContextMenu ContextMenu { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IContextMenu.html">IContextMenu</a></td>
+        <td><p>The context menu.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_InformationPane_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.InformationPane*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_InformationPane" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.InformationPane">InformationPane</h4>
+  <div class="markdown level1 summary"><p>Gets the information pane.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IInformationPane InformationPane { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IInformationPane.html">IInformationPane</a></td>
+        <td><p>The information pane.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_Map_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.Map*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_Map" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.Map">Map</h4>
+  <div class="markdown level1 summary"><p>Gets the map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMap Map { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IMap.html">IMap</a></td>
+        <td><p>The map.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_StatusBar_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.StatusBar*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_StatusBar" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.StatusBar">StatusBar</h4>
+  <div class="markdown level1 summary"><p>Gets the status bar.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IStatusBar StatusBar { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IStatusBar.html">IStatusBar</a></td>
+        <td><p>The status bar.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_TaskPane_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.TaskPane*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_TaskPane" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.TaskPane">TaskPane</h4>
+  <div class="markdown level1 summary"><p>Gets the task pane.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ITaskPane TaskPane { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.ITaskPane.html">ITaskPane</a></td>
+        <td><p>The task pane.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_Title_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.Title*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_Title" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.Title">Title</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the title.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Title { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The title.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_ToolBar_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.ToolBar*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_ToolBar" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.ToolBar">ToolBar</h4>
+  <div class="markdown level1 summary"><p>Gets the tool bar.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IToolbar ToolBar { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IToolbar.html">IToolbar</a></td>
+        <td><p>The tool bar.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_ZoomControl_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.ZoomControl*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_ZoomControl" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.ZoomControl">ZoomControl</h4>
+  <div class="markdown level1 summary"><p>Gets the zoom control.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IZoomControl ZoomControl { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IZoomControl.html">IZoomControl</a></td>
+        <td><p>The zoom control.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateBasicCommand_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateBasicCommand*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateBasicCommand_System_String_System_String_System_String_System_String_OSGeo_MapGuide_ObjectModels_WebLayout_TargetViewerType_OSGeo_MapGuide_ObjectModels_WebLayout_BasicCommandActionType_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateBasicCommand(System.String,System.String,System.String,System.String,OSGeo.MapGuide.ObjectModels.WebLayout.TargetViewerType,OSGeo.MapGuide.ObjectModels.WebLayout.BasicCommandActionType)">CreateBasicCommand(String, String, String, String, TargetViewerType, BasicCommandActionType)</h4>
+  <div class="markdown level1 summary"><p>Creates the basic command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IBasicCommand CreateBasicCommand(string label, string tooltip, string description, string iconName, TargetViewerType targets, BasicCommandActionType action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">label</span></td>
+        <td><p>The label.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tooltip</span></td>
+        <td><p>The tooltip.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>The description.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">iconName</span></td>
+        <td><p>Name of the icon.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.TargetViewerType.html">TargetViewerType</a></td>
+        <td><span class="parametername">targets</span></td>
+        <td><p>The targets.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.BasicCommandActionType.html">BasicCommandActionType</a></td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The action.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IBasicCommand.html">IBasicCommand</a></td>
+        <td><p>The basic command</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateCommandItem_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateCommandItem*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateCommandItem_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateCommandItem(System.String)">CreateCommandItem(String)</h4>
+  <div class="markdown level1 summary"><p>Creates the command item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ICommandItem CreateCommandItem(string cmdName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">cmdName</span></td>
+        <td><p>Name of the command.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.ICommandItem.html">ICommandItem</a></td>
+        <td><p>The command item</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateDefaultView_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateDefaultView*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateDefaultView" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateDefaultView">CreateDefaultView()</h4>
+  <div class="markdown level1 summary"><p>Creates the default view.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMapView CreateDefaultView()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IMapView.html">IMapView</a></td>
+        <td><p>The default view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateFlyout_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateFlyout*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateFlyout_System_String_System_String_System_String_System_String_System_String_OSGeo_MapGuide_ObjectModels_WebLayout_IUIItem___" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateFlyout(System.String,System.String,System.String,System.String,System.String,OSGeo.MapGuide.ObjectModels.WebLayout.IUIItem[])">CreateFlyout(String, String, String, String, String, IUIItem[])</h4>
+  <div class="markdown level1 summary"><p>Creates the flyout.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IFlyoutItem CreateFlyout(string label, string tooltip, string description, string imageUrl, string disabledImageUrl, params IUIItem[] subItems)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">label</span></td>
+        <td><p>The label.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tooltip</span></td>
+        <td><p>The tooltip.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>The description.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">imageUrl</span></td>
+        <td><p>The image URL.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">disabledImageUrl</span></td>
+        <td><p>The disabled image URL.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IUIItem.html">IUIItem</a>[]</td>
+        <td><span class="parametername">subItems</span></td>
+        <td><p>The sub items.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IFlyoutItem.html">IFlyoutItem</a></td>
+        <td><p>The flyout</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateInvokeScriptCommand_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateInvokeScriptCommand*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateInvokeScriptCommand" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateInvokeScriptCommand">CreateInvokeScriptCommand()</h4>
+  <div class="markdown level1 summary"><p>Creates the invoke script command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IInvokeScriptCommand CreateInvokeScriptCommand()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IInvokeScriptCommand.html">IInvokeScriptCommand</a></td>
+        <td><p>The invoke script command</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateInvokeUrlCommand_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateInvokeUrlCommand*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateInvokeUrlCommand" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateInvokeUrlCommand">CreateInvokeUrlCommand()</h4>
+  <div class="markdown level1 summary"><p>Creates the invoke URL command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IInvokeUrlCommand CreateInvokeUrlCommand()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IInvokeUrlCommand.html">IInvokeUrlCommand</a></td>
+        <td><p>The invoke URL command</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateSearchCommand_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateSearchCommand*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateSearchCommand" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateSearchCommand">CreateSearchCommand()</h4>
+  <div class="markdown level1 summary"><p>Creates the search command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ISearchCommand CreateSearchCommand()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.ISearchCommand.html">ISearchCommand</a></td>
+        <td><p>The search command</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateSeparator_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateSeparator*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateSeparator" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateSeparator">CreateSeparator()</h4>
+  <div class="markdown level1 summary"><p>Creates the separator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ISeparatorItem CreateSeparator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.ISeparatorItem.html">ISeparatorItem</a></td>
+        <td><p>The separator</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateTargetedCommand_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateTargetedCommand*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_CreateTargetedCommand__1_System_String_System_String_System_String_System_String_System_String_OSGeo_MapGuide_ObjectModels_WebLayout_TargetViewerType_OSGeo_MapGuide_ObjectModels_WebLayout_TargetType_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.CreateTargetedCommand``1(System.String,System.String,System.String,System.String,System.String,OSGeo.MapGuide.ObjectModels.WebLayout.TargetViewerType,OSGeo.MapGuide.ObjectModels.WebLayout.TargetType,System.String)">CreateTargetedCommand&lt;T&gt;(String, String, String, String, String, TargetViewerType, TargetType, String)</h4>
+  <div class="markdown level1 summary"><p>Creates the targeted command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">T CreateTargetedCommand&lt;T&gt;(string name, string label, string tooltip, string description, string iconName, TargetViewerType targets, TargetType target, string targetFrame)where T : ITargetedCommand, new ()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">label</span></td>
+        <td><p>The label.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tooltip</span></td>
+        <td><p>The tooltip.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>The description.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">iconName</span></td>
+        <td><p>Name of the icon.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.TargetViewerType.html">TargetViewerType</a></td>
+        <td><span class="parametername">targets</span></td>
+        <td><p>The targets.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.TargetType.html">TargetType</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>The target.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">targetFrame</span></td>
+        <td><p>The target frame.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><p>The targeted command</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_ExportCustomCommands_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.ExportCustomCommands*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_ExportCustomCommands_System_String_System_String___" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.ExportCustomCommands(System.String,System.String[])">ExportCustomCommands(String, String[])</h4>
+  <div class="markdown level1 summary"><p>Exports the specified commands to the specified file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ExportCustomCommands(string file, string[] cmdNames)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">file</span></td>
+        <td><p>The file to export to</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">cmdNames</span></td>
+        <td><p>The specified commands</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_FindCommand_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.FindCommand*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_FindCommand_System_String_OSGeo_MapGuide_ObjectModels_WebLayout_IMenu_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.FindCommand(System.String,OSGeo.MapGuide.ObjectModels.WebLayout.IMenu)">FindCommand(String, IMenu)</h4>
+  <div class="markdown level1 summary"><p>Finds the command by its name in the specified menu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool FindCommand(string name, IMenu menu)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IMenu.html">IMenu</a></td>
+        <td><span class="parametername">menu</span></td>
+        <td><p>The menu.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if found. False otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_GetCommandByName_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.GetCommandByName*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_GetCommandByName_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.GetCommandByName(System.String)">GetCommandByName(String)</h4>
+  <div class="markdown level1 summary"><p>Gets a command by its name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ICommand GetCommandByName(string cmdName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">cmdName</span></td>
+        <td><p>Name of the command.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.ICommand.html">ICommand</a></td>
+        <td><p>The command</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_GetCustomCommands_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.GetCustomCommands*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_GetCustomCommands" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.GetCustomCommands">GetCustomCommands()</h4>
+  <div class="markdown level1 summary"><p>Gets the custom commands.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;ICommand&gt; GetCustomCommands()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.ICommand.html">ICommand</a>&gt;</td>
+        <td><p>The enumerable of commands</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_ImportCustomCommands_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.ImportCustomCommands*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_ImportCustomCommands_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.ImportCustomCommands(System.String)">ImportCustomCommands(String)</h4>
+  <div class="markdown level1 summary"><p>Imports commands from the specified file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ImportedCommandResult[] ImportCustomCommands(string file)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">file</span></td>
+        <td><p>The file to import from</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.ImportedCommandResult.html">ImportedCommandResult</a>[]</td>
+        <td><p>The imported commands</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_IsCommandReferenced_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.IsCommandReferenced*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_IsCommandReferenced_System_String_OSGeo_MapGuide_ObjectModels_WebLayout_WebLayoutRegion____" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.IsCommandReferenced(System.String,OSGeo.MapGuide.ObjectModels.WebLayout.WebLayoutRegion[]@)">IsCommandReferenced(String, out WebLayoutRegion[])</h4>
+  <div class="markdown level1 summary"><p>Determines whether the specified command name is referenced in any regions</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsCommandReferenced(string name, out WebLayoutRegion[] region)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.WebLayoutRegion.html">WebLayoutRegion</a>[]</td>
+        <td><span class="parametername">region</span></td>
+        <td><p>The region.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if referenced. False otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_RemoveAllReferences_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.RemoveAllReferences*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout_RemoveAllReferences_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.RemoveAllReferences(System.String)">RemoveAllReferences(String)</h4>
+  <div class="markdown level1 summary"><p>Removes all references to the specified command name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int RemoveAllReferences(string cmdName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">cmdName</span></td>
+        <td><p>Name of the command.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The number removed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

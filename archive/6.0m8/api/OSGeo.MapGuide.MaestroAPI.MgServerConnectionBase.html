@@ -1,0 +1,2114 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class MgServerConnectionBase
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class MgServerConnectionBase
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase">
+  
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase" class="text-break">Class MgServerConnectionBase
+  </h1>
+  <div class="markdown level0 summary"><p>Base class of all MapGuide connection classes. Covers functionality encompassed by
+the MapGuide Geospatial Platform API and the MapGuide-specific services (Site, Rendering,
+Mapping, Tile, Drawing)</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html">PlatformConnectionBase</a></div>
+    <div class="level2"><span class="xref">MgServerConnectionBase</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_m_serializers">PlatformConnectionBase.m_serializers</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_m_validator">PlatformConnectionBase.m_validator</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_m_schemasPath">PlatformConnectionBase.m_schemasPath</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_m_cachedSchemas">PlatformConnectionBase.m_cachedSchemas</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_m_disableValidation">PlatformConnectionBase.m_disableValidation</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_DeserializeObject__1_Stream_">PlatformConnectionBase.DeserializeObject&lt;T&gt;(Stream)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_DeserializeObject_Type_Stream_">PlatformConnectionBase.DeserializeObject(Type, Stream)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_SerializeObject_System_Object_">PlatformConnectionBase.SerializeObject(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_SerializeObject_System_Object_Stream_">PlatformConnectionBase.SerializeObject(Object, Stream)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetSerializer_Type_">PlatformConnectionBase.GetSerializer(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_DisableValidation">PlatformConnectionBase.DisableValidation</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_ValidateVersion_SiteVersion_">PlatformConnectionBase.ValidateVersion(SiteVersion)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_ValidateVersion_Version_">PlatformConnectionBase.ValidateVersion(Version)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetPreviewUrlGenerator">PlatformConnectionBase.GetPreviewUrlGenerator()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_ProviderName">PlatformConnectionBase.ProviderName</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CloneParameters">PlatformConnectionBase.CloneParameters</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_SessionID">PlatformConnectionBase.SessionID</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetInterface">PlatformConnectionBase.GetInterface()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_RemoveVersionFromProviderName_System_String_">PlatformConnectionBase.RemoveVersionFromProviderName(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetSchema_Type_">PlatformConnectionBase.GetSchema(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_ResourceAdded">PlatformConnectionBase.ResourceAdded</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_ResourceDeleted">PlatformConnectionBase.ResourceDeleted</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_ResourceUpdated">PlatformConnectionBase.ResourceUpdated</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_OnResourceAdded_System_String_">PlatformConnectionBase.OnResourceAdded(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_OnResourceDeleted_System_String_">PlatformConnectionBase.OnResourceDeleted(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_OnResourceUpdated_System_String_">PlatformConnectionBase.OnResourceUpdated(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CachedSchemas">PlatformConnectionBase.CachedSchemas</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_Dispose">PlatformConnectionBase.Dispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_Dispose_System_Boolean_">PlatformConnectionBase.Dispose(Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_Clone">PlatformConnectionBase.Clone()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_RequestDispatched">PlatformConnectionBase.RequestDispatched</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_OnRequestDispatched_System_String_">PlatformConnectionBase.OnRequestDispatched(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateGeometryReader">PlatformConnectionBase.CreateGeometryReader()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetResourceXmlData_System_String_">PlatformConnectionBase.GetResourceXmlData(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetResource_System_String_">PlatformConnectionBase.GetResource(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_DeleteResource_System_String_">PlatformConnectionBase.DeleteResource(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_WriteResource_System_String_System_Object_">PlatformConnectionBase.WriteResource(String, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_SetResourceXmlData_System_String_System_IO_Stream_">PlatformConnectionBase.SetResourceXmlData(String, Stream)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetRepositoryResources">PlatformConnectionBase.GetRepositoryResources()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetRepositoryResources_System_Int32_">PlatformConnectionBase.GetRepositoryResources(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetRepositoryResources_System_String_System_Int32_">PlatformConnectionBase.GetRepositoryResources(String, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetRepositoryResources_System_String_">PlatformConnectionBase.GetRepositoryResources(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetRepositoryResources_System_String_System_String_">PlatformConnectionBase.GetRepositoryResources(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetRepositoryResources_System_String_System_String_System_Int32_">PlatformConnectionBase.GetRepositoryResources(String, String, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetRepositoryResources_System_String_System_String_System_Int32_System_Boolean_">PlatformConnectionBase.GetRepositoryResources(String, String, Int32, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_Touch_System_String_">PlatformConnectionBase.Touch(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_ResourceExists_System_String_">PlatformConnectionBase.ResourceExists(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_UpdateResourceReferences_System_Object_System_String_System_String_System_Boolean_">PlatformConnectionBase.UpdateResourceReferences(Object, String, String, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_UpdateResourceReferences_System_Object_System_String_System_String_System_Boolean_Hashtable_">PlatformConnectionBase.UpdateResourceReferences(Object, String, String, Boolean, Hashtable)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_MoveResourceWithReferences_System_String_System_String_OSGeo_MapGuide_MaestroAPI_LengthyOperationCallBack_OSGeo_MapGuide_MaestroAPI_LengthyOperationProgressCallBack_">PlatformConnectionBase.MoveResourceWithReferences(String, String, LengthyOperationCallBack, LengthyOperationProgressCallBack)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_MoveFolderWithReferences_System_String_System_String_OSGeo_MapGuide_MaestroAPI_LengthyOperationCallBack_OSGeo_MapGuide_MaestroAPI_LengthyOperationProgressCallBack_">PlatformConnectionBase.MoveFolderWithReferences(String, String, LengthyOperationCallBack, LengthyOperationProgressCallBack)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CopyFolderWithReferences_System_String_System_String_OSGeo_MapGuide_MaestroAPI_LengthyOperationCallBack_OSGeo_MapGuide_MaestroAPI_LengthyOperationProgressCallBack_">PlatformConnectionBase.CopyFolderWithReferences(String, String, LengthyOperationCallBack, LengthyOperationProgressCallBack)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_FixAndValidateFolderPath_System_String_">PlatformConnectionBase.FixAndValidateFolderPath(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateFolder_System_String_">PlatformConnectionBase.CreateFolder(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_HasFolder_System_String_">PlatformConnectionBase.HasFolder(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_EnumerateResourceReferences_System_String_">PlatformConnectionBase.EnumerateResourceReferences(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CopyResource_System_String_System_String_System_Boolean_">PlatformConnectionBase.CopyResource(String, String, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CopyFolder_System_String_System_String_System_Boolean_">PlatformConnectionBase.CopyFolder(String, String, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_MoveResource_System_String_System_String_System_Boolean_">PlatformConnectionBase.MoveResource(String, String, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_MoveFolder_System_String_System_String_System_Boolean_">PlatformConnectionBase.MoveFolder(String, String, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetResourceData_System_String_System_String_">PlatformConnectionBase.GetResourceData(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_SetResourceData_System_String_System_String_ResourceDataType_Stream_">PlatformConnectionBase.SetResourceData(String, String, ResourceDataType, Stream)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_SetResourceData_System_String_System_String_ResourceDataType_Stream_OSGeo_MapGuide_MaestroAPI_Utility_StreamCopyProgressDelegate_">PlatformConnectionBase.SetResourceData(String, String, ResourceDataType, Stream, Utility.StreamCopyProgressDelegate)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_PurgeCachedItemsOf_System_String_">PlatformConnectionBase.PurgeCachedItemsOf(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_SaveResource_IResource_">PlatformConnectionBase.SaveResource(IResource)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_SaveResourceAs_IResource_System_String_">PlatformConnectionBase.SaveResourceAs(IResource, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_UploadPackage_System_String_OSGeo_MapGuide_MaestroAPI_Utility_StreamCopyProgressDelegate_">PlatformConnectionBase.UploadPackage(String, Utility.StreamCopyProgressDelegate)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_UpdateRepository_System_String_ResourceFolderHeaderType_">PlatformConnectionBase.UpdateRepository(String, ResourceFolderHeaderType)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetFolderOrResourceHeader_System_String_">PlatformConnectionBase.GetFolderOrResourceHeader(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_SetResourceXmlData_System_String_System_IO_Stream_System_IO_Stream_">PlatformConnectionBase.SetResourceXmlData(String, Stream, Stream)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetResourceHeader_System_String_">PlatformConnectionBase.GetResourceHeader(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetFolderHeader_System_String_">PlatformConnectionBase.GetFolderHeader(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_SetFolderHeader_System_String_ResourceFolderHeaderType_">PlatformConnectionBase.SetFolderHeader(String, ResourceFolderHeaderType)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_SetResourceHeader_System_String_ResourceDocumentHeaderType_">PlatformConnectionBase.SetResourceHeader(String, ResourceDocumentHeaderType)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_SetFolderOrResourceHeader_System_String_System_Object_">PlatformConnectionBase.SetFolderOrResourceHeader(String, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_EnumerateUnmanagedData_System_String_System_String_System_Boolean_OSGeo_MapGuide_MaestroAPI_UnmanagedDataTypes_">PlatformConnectionBase.EnumerateUnmanagedData(String, String, Boolean, UnmanagedDataTypes)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetFeatureProvider_System_String_">PlatformConnectionBase.GetFeatureProvider(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_TestConnection_System_String_">PlatformConnectionBase.TestConnection(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_FeatureProviders">PlatformConnectionBase.FeatureProviders</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetSpatialContextInfo_System_String_System_Boolean_">PlatformConnectionBase.GetSpatialContextInfo(String, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetIdentityProperties_System_String_System_String_">PlatformConnectionBase.GetIdentityProperties(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_DescribeFeatureSource_System_String_System_String_">PlatformConnectionBase.DescribeFeatureSource(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_DescribeFeatureSourcePartial_System_String_System_String_System_String___">PlatformConnectionBase.DescribeFeatureSourcePartial(String, String, String[])</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_m_featureSchemaCache">PlatformConnectionBase.m_featureSchemaCache</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_m_classDefinitionCache">PlatformConnectionBase.m_classDefinitionCache</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_DescribeFeatureSourceInternal_System_String_">PlatformConnectionBase.DescribeFeatureSourceInternal(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_DescribeFeatureSource_System_String_">PlatformConnectionBase.DescribeFeatureSource(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetClassDefinitionInternal_System_String_System_String_System_String_">PlatformConnectionBase.GetClassDefinitionInternal(String, String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetClassDefinition_System_String_System_String_">PlatformConnectionBase.GetClassDefinition(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CacheStats">PlatformConnectionBase.CacheStats</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_ResetFeatureSourceSchemaCache">PlatformConnectionBase.ResetFeatureSourceSchemaCache()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_AggregateQueryFeatureSource_System_String_System_String_System_String_">PlatformConnectionBase.AggregateQueryFeatureSource(String, String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_AggregateQueryFeatureSource_System_String_System_String_System_String_System_String___">PlatformConnectionBase.AggregateQueryFeatureSource(String, String, String, String[])</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_AggregateQueryFeatureSource_System_String_System_String_System_String_System_Collections_Specialized_NameValueCollection_">PlatformConnectionBase.AggregateQueryFeatureSource(String, String, String, Specialized.NameValueCollection)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetSpatialExtent_System_String_System_String_System_String_">PlatformConnectionBase.GetSpatialExtent(String, String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetSpatialExtent_System_String_System_String_System_String_System_String_">PlatformConnectionBase.GetSpatialExtent(String, String, String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetSpatialExtent_System_String_System_String_System_String_System_Boolean_">PlatformConnectionBase.GetSpatialExtent(String, String, String, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetSpatialExtent_System_String_System_String_System_String_System_String_System_Boolean_">PlatformConnectionBase.GetSpatialExtent(String, String, String, String, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_EnumerateDataStores_System_String_System_String_">PlatformConnectionBase.EnumerateDataStores(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetSchemas_System_String_">PlatformConnectionBase.GetSchemas(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetClassNames_System_String_System_String_">PlatformConnectionBase.GetClassNames(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetLongTransactions_System_String_System_Boolean_">PlatformConnectionBase.GetLongTransactions(String, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetSchemaMapping_System_String_System_String_">PlatformConnectionBase.GetSchemaMapping(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_QueryFeatureSource_System_String_System_String_System_String_">PlatformConnectionBase.QueryFeatureSource(String, String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_QueryFeatureSource_System_String_System_String_">PlatformConnectionBase.QueryFeatureSource(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_QueryFeatureSource_System_String_System_String_System_String_System_String___">PlatformConnectionBase.QueryFeatureSource(String, String, String, String[])</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_QueryFeatureSource_System_String_System_String_System_String_System_String___NameValueCollection_System_Int32_">PlatformConnectionBase.QueryFeatureSource(String, String, String, String[], NameValueCollection, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_QueryFeatureSource_System_String_System_String_System_String_System_String___NameValueCollection_">PlatformConnectionBase.QueryFeatureSource(String, String, String, String[], NameValueCollection)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_MaxTestedVersion">PlatformConnectionBase.MaxTestedVersion</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_SiteVersion">PlatformConnectionBase.SiteVersion</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetCustomPropertyNames">PlatformConnectionBase.GetCustomPropertyNames()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetCustomPropertyType_System_String_">PlatformConnectionBase.GetCustomPropertyType(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_SetCustomProperty_System_String_System_Object_">PlatformConnectionBase.SetCustomProperty(String, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetCustomProperty_System_String_">PlatformConnectionBase.GetCustomProperty(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateCommand_System_Int32_">PlatformConnectionBase.CreateCommand(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_InferMPU_System_String_System_Double_">PlatformConnectionBase.InferMPU(String, Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_GetCalculator">PlatformConnectionBase.GetCalculator()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMapGroup_RuntimeMap_System_String_">PlatformConnectionBase.CreateMapGroup(RuntimeMap, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMapGroup_RuntimeMap_IBaseMapGroup_">PlatformConnectionBase.CreateMapGroup(RuntimeMap, IBaseMapGroup)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMapGroup_RuntimeMap_IMapLayerGroup_">PlatformConnectionBase.CreateMapGroup(RuntimeMap, IMapLayerGroup)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMapLayer_RuntimeMap_ILayerDefinition_">PlatformConnectionBase.CreateMapLayer(RuntimeMap, ILayerDefinition)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMapLayer_RuntimeMap_ILayerDefinition_System_Boolean_">PlatformConnectionBase.CreateMapLayer(RuntimeMap, ILayerDefinition, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMapLayer_RuntimeMap_IBaseMapLayer_">PlatformConnectionBase.CreateMapLayer(RuntimeMap, IBaseMapLayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMapLayer_RuntimeMap_IBaseMapLayer_System_Boolean_">PlatformConnectionBase.CreateMapLayer(RuntimeMap, IBaseMapLayer, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMapLayer_RuntimeMap_IMapLayer_">PlatformConnectionBase.CreateMapLayer(RuntimeMap, IMapLayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMapLayer_RuntimeMap_IMapLayer_System_Boolean_">PlatformConnectionBase.CreateMapLayer(RuntimeMap, IMapLayer, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMap_System_String_System_String_">PlatformConnectionBase.CreateMap(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMap_System_String_System_String_System_Boolean_">PlatformConnectionBase.CreateMap(String, String, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMap_System_String_System_String_System_Double_">PlatformConnectionBase.CreateMap(String, String, Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMap_System_String_System_String_System_Double_System_Boolean_">PlatformConnectionBase.CreateMap(String, String, Double, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMap_IMapDefinition_">PlatformConnectionBase.CreateMap(IMapDefinition)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMap_IMapDefinition_System_Boolean_">PlatformConnectionBase.CreateMap(IMapDefinition, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMap_IMapDefinition_System_Double_">PlatformConnectionBase.CreateMap(IMapDefinition, Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMap_IMapDefinition_System_Double_System_Boolean_">PlatformConnectionBase.CreateMap(IMapDefinition, Double, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMap_System_String_IMapDefinition_">PlatformConnectionBase.CreateMap(String, IMapDefinition)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMap_System_String_IMapDefinition_System_Boolean_">PlatformConnectionBase.CreateMap(String, IMapDefinition, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMap_System_String_IMapDefinition_System_Double_">PlatformConnectionBase.CreateMap(String, IMapDefinition, Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_CreateMap_System_String_IMapDefinition_System_Double_System_Boolean_">PlatformConnectionBase.CreateMap(String, IMapDefinition, Double, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_OpenMap_System_String_">PlatformConnectionBase.OpenMap(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_ExecuteLoadProcedure_ILoadProcedure_OSGeo_MapGuide_MaestroAPI_LengthyOperationProgressCallBack_System_Boolean_">PlatformConnectionBase.ExecuteLoadProcedure(ILoadProcedure, LengthyOperationProgressCallBack, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.PlatformConnectionBase.html#OSGeo_MapGuide_MaestroAPI_PlatformConnectionBase_ExecuteLoadProcedure_System_String_OSGeo_MapGuide_MaestroAPI_LengthyOperationProgressCallBack_System_Boolean_">PlatformConnectionBase.ExecuteLoadProcedure(String, LengthyOperationProgressCallBack, Boolean)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.html">OSGeo.MapGuide.MaestroAPI</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class MgServerConnectionBase : PlatformConnectionBase</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.#ctor*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase__ctor" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.#ctor">MgServerConnectionBase()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.html">MgServerConnectionBase</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected MgServerConnectionBase()</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase__canAutoRestartSession" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase._canAutoRestartSession">_canAutoRestartSession</h4>
+  <div class="markdown level1 summary"><p>Determines whether session auto-recover is possible</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool _canAutoRestartSession</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_m_autoRestartSession" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.m_autoRestartSession">m_autoRestartSession</h4>
+  <div class="markdown level1 summary"><p>A flag that indicates if a session will be automatically restarted</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool m_autoRestartSession</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_m_cachedGroupList" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.m_cachedGroupList">m_cachedGroupList</h4>
+  <div class="markdown level1 summary"><p>cached group list</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ObjCommon.GroupList m_cachedGroupList</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.GroupList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_m_cachedUserList" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.m_cachedUserList">m_cachedUserList</h4>
+  <div class="markdown level1 summary"><p>cached user list</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ObjCommon.UserList m_cachedUserList</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.UserList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_m_password" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.m_password">m_password</h4>
+  <div class="markdown level1 summary"><p>The password used to open this connection, if any</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected string m_password</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_m_username" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.m_username">m_username</h4>
+  <div class="markdown level1 summary"><p>The username used to open this connection, if any</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected string m_username</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_AutoRestartSession_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.AutoRestartSession*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_AutoRestartSession" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.AutoRestartSession">AutoRestartSession</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating if the session should automatically be restarted if it expires</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool AutoRestartSession { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_CheckAndRaiseSessionChanged_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.CheckAndRaiseSessionChanged*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_CheckAndRaiseSessionChanged_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.CheckAndRaiseSessionChanged(System.String,System.String)">CheckAndRaiseSessionChanged(String, String)</h4>
+  <div class="markdown level1 summary"><p>Raises the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.html#OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_SessionIDChanged">SessionIDChanged</a> event if the
+old and new session ids do not match</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void CheckAndRaiseSessionChanged(string oldSessionId, string newSessionId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">oldSessionId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">newSessionId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_DisableAutoSessionRecovery_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.DisableAutoSessionRecovery*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_DisableAutoSessionRecovery" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.DisableAutoSessionRecovery">DisableAutoSessionRecovery()</h4>
+  <div class="markdown level1 summary"><p>Indicates this connection cannot use session recovery, normally due to the fact the connection was initialized
+with just a session id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void DisableAutoSessionRecovery()</code></pre>
+  </div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_EnumerateGroups_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.EnumerateGroups*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_EnumerateGroups" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.EnumerateGroups">EnumerateGroups()</h4>
+  <div class="markdown level1 summary"><p>Gets a list of all groups on the server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract ObjCommon.GroupList EnumerateGroups()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.GroupList</span></td>
+        <td><p>The list of groups</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_EnumerateUsers_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.EnumerateUsers*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_EnumerateUsers" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.EnumerateUsers">EnumerateUsers()</h4>
+  <div class="markdown level1 summary"><p>Gets a list of all users on the server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual ObjCommon.UserList EnumerateUsers()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.UserList</span></td>
+        <td><p>The list of users</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_EnumerateUsers_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.EnumerateUsers*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_EnumerateUsers_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.EnumerateUsers(System.String)">EnumerateUsers(String)</h4>
+  <div class="markdown level1 summary"><p>Gets a list of users in a group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract ObjCommon.UserList EnumerateUsers(string group)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">group</span></td>
+        <td><p>The group to retrieve the users from</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.UserList</span></td>
+        <td><p>The list of users</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_GetLegendImageStream_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.GetLegendImageStream*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_GetLegendImageStream_System_Double_System_String_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.GetLegendImageStream(System.Double,System.String,System.Int32,System.Int32)">GetLegendImageStream(Double, String, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders a minature bitmap of the layers style</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Stream GetLegendImageStream(double scale, string layerdefinition, int themeIndex, int type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td><p>The scale for the bitmap to match</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">layerdefinition</span></td>
+        <td><p>The layer the image should represent</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">themeIndex</span></td>
+        <td><p>If the layer is themed, this gives the theme index, otherwise set to 0</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><p>The minature bitmap</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_GetLegendImageStream_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.GetLegendImageStream*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_GetLegendImageStream_System_Double_System_String_System_Int32_System_Int32_System_Int32_System_Int32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.GetLegendImageStream(System.Double,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">GetLegendImageStream(Double, String, Int32, Int32, Int32, Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Gets the legend image.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Stream GetLegendImageStream(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td><p>The scale.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">layerdefinition</span></td>
+        <td><p>The layerdefinition.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">themeIndex</span></td>
+        <td><p>Index of the theme.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>The format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_GetSiteInfo_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.GetSiteInfo*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_GetSiteInfo" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.GetSiteInfo">GetSiteInfo()</h4>
+  <div class="markdown level1 summary"><p>Gets the site info.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract ObjCommon.SiteInformation GetSiteInfo()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.SiteInformation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_GetTile_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.GetTile*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_GetTile_System_String_System_String_System_Int32_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.GetTile(System.String,System.String,System.Int32,System.Int32,System.Int32)">GetTile(String, String, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the tile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">mapdefinition</span></td>
+        <td><p>The mapdefinition.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">baselayergroup</span></td>
+        <td><p>The baselayergroup.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">col</span></td>
+        <td><p>The col.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td><p>The row.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">scaleindex</span></td>
+        <td><p>The scaleindex.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_IsSessionExpiredException_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.IsSessionExpiredException*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_IsSessionExpiredException_Exception_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.IsSessionExpiredException(Exception)">IsSessionExpiredException(Exception)</h4>
+  <div class="markdown level1 summary"><p>Determines if an exception is a &quot;Session Expired&quot; exception.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract bool IsSessionExpiredException(Exception ex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">ex</span></td>
+        <td><p>The exception to evaluate</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if the exception is a session expired exception</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_QueryMapFeatures_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.QueryMapFeatures*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_QueryMapFeatures_RuntimeMap_System_Int32_System_String_System_Boolean_System_String_QueryMapOptions_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.QueryMapFeatures(RuntimeMap,System.Int32,System.String,System.Boolean,System.String,QueryMapOptions)">QueryMapFeatures(RuntimeMap, Int32, String, Boolean, String, QueryMapOptions)</h4>
+  <div class="markdown level1 summary"><p>Identifies those features that meet the specified spatial selection criteria. This operation is used to implement server-side selection. In addition to a selection set, this operation returns attribute information in case only one feature is selected.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract string QueryMapFeatures(RuntimeMap rtMap, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">rtMap</span></td>
+        <td><p>The runtime map to identify features</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxFeatures</span></td>
+        <td><p>The maximum number of features to return</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">wkt</span></td>
+        <td><p>The WKT of the filter geometry</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">persist</span></td>
+        <td><p>If true will update the selection set for the given map</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">selectionVariant</span></td>
+        <td><p>The type of spatial operator to use for the spatial query</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QueryMapOptions</span></td>
+        <td><span class="parametername">extraOptions</span></td>
+        <td><p>Extra querying options</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderDynamicOverlay_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderDynamicOverlay*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderDynamicOverlay_RuntimeMap_MapSelection_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderDynamicOverlay(RuntimeMap,MapSelection,System.String)">RenderDynamicOverlay(RuntimeMap, MapSelection, String)</h4>
+  <div class="markdown level1 summary"><p>Renders a dynamic overlay image of the map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MapSelection</span></td>
+        <td><span class="parametername">selection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderDynamicOverlay_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderDynamicOverlay*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderDynamicOverlay_RuntimeMap_MapSelection_System_String_Color_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderDynamicOverlay(RuntimeMap,MapSelection,System.String,Color,System.Int32)">RenderDynamicOverlay(RuntimeMap, MapSelection, String, Color, Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders a dynamic overlay image of the map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behaviour)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MapSelection</span></td>
+        <td><span class="parametername">selection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Color</span></td>
+        <td><span class="parametername">selectionColor</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">behaviour</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderDynamicOverlay_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderDynamicOverlay*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderDynamicOverlay_RuntimeMap_MapSelection_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderDynamicOverlay(RuntimeMap,MapSelection,System.String,System.Boolean)">RenderDynamicOverlay(RuntimeMap, MapSelection, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Renders a dynamic overlay image of the map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, bool keepSelection)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MapSelection</span></td>
+        <td><span class="parametername">selection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">keepSelection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderRuntimeMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Double, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders the runtime map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The runtime map instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x1</span></td>
+        <td><p>The x1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y1</span></td>
+        <td><p>The y1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x2</span></td>
+        <td><p>The x2.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y2</span></td>
+        <td><p>The y2.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
+        <td><p>The dpi.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderRuntimeMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Double, Int32, Int32, Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Renders the runtime map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The runtime map instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x1</span></td>
+        <td><p>The x1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y1</span></td>
+        <td><p>The y1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x2</span></td>
+        <td><p>The x2.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y2</span></td>
+        <td><p>The y2.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
+        <td><p>The dpi.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>The format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderRuntimeMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String,System.Boolean)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Double, Int32, Int32, Int32, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Renders the runtime map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The runtime map instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x1</span></td>
+        <td><p>The x1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y1</span></td>
+        <td><p>The y1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x2</span></td>
+        <td><p>The x2.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y2</span></td>
+        <td><p>The y2.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
+        <td><p>The dpi.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>The format.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">clip</span></td>
+        <td><p>if set to <code>true</code> [clip].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderRuntimeMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Renders the runtime map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The runtime map instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The x.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The y.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td><p>The scale.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
+        <td><p>The dpi.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderRuntimeMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Int32, Int32, Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Renders the runtime map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The runtime map instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The x.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The y.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td><p>The scale.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
+        <td><p>The dpi.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>The format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderRuntimeMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String,System.Boolean)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Int32, Int32, Int32, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Renders the runtime map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RuntimeMap</span></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The runtime map instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The x.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The y.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td><p>The scale.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>The width.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
+        <td><p>The dpi.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>The format.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">clip</span></td>
+        <td><p>if set to <code>true</code> [clip].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RestartSession_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RestartSession*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RestartSession" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RestartSession">RestartSession()</h4>
+  <div class="markdown level1 summary"><p>Restarts the server session, and creates a new session ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RestartSession()</code></pre>
+  </div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RestartSession_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RestartSession*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RestartSession_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RestartSession(System.Boolean)">RestartSession(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Restarts the server session, and creates a new session ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RestartSession(bool throwException)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">throwException</span></td>
+        <td><p>If set to true, the call throws an exception if the call failed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if the creation succeed, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RestartSessionInternal_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RestartSessionInternal*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_RestartSessionInternal_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.RestartSessionInternal(System.Boolean)">RestartSessionInternal(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Attempts to create a new session</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract bool RestartSessionInternal(bool throwException)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">throwException</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  
+  
+  <h4 id="OSGeo_MapGuide_MaestroAPI_MgServerConnectionBase_SessionIDChanged" data-uid="OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.SessionIDChanged">SessionIDChanged</h4>
+  <div class="markdown level1 summary"><p>Raised when the associated session id has changed. This would happen if the connection detected an expired session
+and built a new session</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler SessionIDChanged</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EventHandler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>The Maestro User Interface | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="The Maestro User Interface | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="user-interface">
+<h1 id="the-maestro-user-interface">The Maestro User Interface</h1>
+
+<p>The main Maestro application window is composed of the following main components:</p>
+<p><img src="../images/maestro_ui.png" alt=""></p>
+<p>Legend</p>
+<pre><code>1. The Site Explorer
+2. Open Resource Editors
+3. Messages, Outbound Requests and IronPython Console
+4. Resource ID bar
+</code></pre><p>The <strong>Site Explorer</strong> presents the visual view of your MapGuide Server <strong>Site Repository</strong>, showing all the folders and resources stored within. 
+When you double click a resource in the Site Explorer, it will open the matching editor for that particular resource. If the resource is not known to Maestro or the
+version of the resource is not known to Maestro the XML Editor will be shown instead loaded with the XML content of the selected resource. When you right click a 
+resource in the Site Explorer a whole assortment of options on the context menu is available for that selected resource.</p>
+<p>All <strong>Open Resources</strong> will be shown in the main area of the Maestro application window.</p>
+<p>Maestro is designed to be as transparent as possible to the user, as such it logs a lot of messages useful for diagnostic purposes. Maestro also logs most communication
+that it makes to the MapGuide Server. You can see these logged messages and requests in the <strong>Messages and Outbound Requests</strong> tabs.</p>
+<p>The <strong>IronPython Console</strong> provides the user with an interactive REPL console, by which the user can run and evaluate snippets of IronPython code. The full Maestro API is
+exposed to the console, allowing the user to script and automate the application through IronPython code. IronPython is a dialect of Python geared towards integration with
+the .net Framework. For more information about this feature, see <a class="xref" href="scripting_and_automating_maestro.html">Scripting and Automating Maestro</a>. For more information about IronPython, see <a href="http://ironpython.net">IronPython.net</a></p>
+<div class="NOTE"><h5>Note</h5><p>The IronPython Console feature is only available on Windows and is only bundled with the Windows installer package of Maestro</p>
+</div>
+<p>The <strong>Resource ID bar</strong> functions like an address bar in a web browser. Entering a Resource ID in the <strong>Resource ID bar</strong> and clicking <code>Go</code> will allow you to directly open
+the specified resource for editing. Similarly, selecting an open editor tab will show you the Resource ID of the resource being edited. This is a feature that power users
+will appreciate, as it allows for quick resource access without the need to navigate the repository in the <strong>Site Explorer</strong> to find it.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/Docs/userguide/user_interface.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1020 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class MapSelection
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class MapSelection
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection">
+  
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection" class="text-break">Class MapSelection
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a map selection</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">MapSelection</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">IList</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a>&gt;</div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.html">OSGeo.MapGuide.MaestroAPI.Mapping</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MapSelection : IBinarySerializable, IList&lt;MapSelection.LayerSelection&gt;</code></pre>
+  </div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_examples"><strong>Examples</strong></h5>
+  <p>This sample shows how to list selected features in ASP.net. The sample expects 3 parameters:
+<ol><li>The session ID (SESSION)</li><li>The runtime map name (MAPNAME)</li><li>The selection XML (SELECTION)</li></ol></p>
+<pre><code>string agent = &quot;http://localhost/mapguide/mapagent/mapagent.fcgi&quot;;
+IServerConnection conn = ConnectionProviderRegistry.CreateConnection(
+           &quot;Maestro.Http&quot;,
+           &quot;Url&quot;, agent,
+           &quot;SessionId&quot;, Request.Params[&quot;SESSION&quot;]);
+
+IMappingService mpSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + Request.Params[&quot;MAPNAME&quot;] + &quot;.Map&quot;;
+RuntimeMap rtMap = mpSvc.OpenMap(rtMapId);
+
+string xml = Request.Params[&quot;SELECTION&quot;];
+//The map selection contains one or more layer selections
+//each containing a one or more sets of identity property values
+//(because a feature may have multiple identity properties)
+
+MapSelection selection = new MapSelection(rtMap, System.Web.HttpUtility.UrlDecode(xml));
+if (selection.Count > 0)
+{
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i &lt; selection.Count; i++)
+    {
+        MapSelection.LayerSelection layerSel = selection[i];
+        sb.Append(&quot;&lt;p>Layer: &quot; + layerSel.Layer.Name + &quot; (&quot; + layerSel.Count + &quot; selected item)&quot;);
+        sb.Append(&quot;&lt;table>&quot;);
+        for (int j = 0; j &lt; layerSel.Count; j++)
+        {
+            sb.Append(&quot;&lt;tr>&quot;);
+            object[] values = layerSel[j];
+            for (int k = 0; k &lt; values.Length; k++)
+            {
+                sb.Append(&quot;&lt;td>&quot;);
+                sb.Append(values[k].ToString());
+                sb.Append(&quot;&lt;/td>&quot;);
+            }
+            sb.AppendFormat(&quot;&lt;td>&lt;a href=&apos;FeatureInfo.aspx?MAPNAME={0}&amp;SESSION={1}&amp;LAYERID={2}&amp;ID={3}&apos;>More Info&lt;/a>&lt;/td>&quot;,
+                rtMap.Name,
+                conn.SessionID,
+                layerSel.Layer.ObjectId,
+                System.Web.HttpUtility.UrlEncode(layerSel.EncodeIDString(values)));
+            sb.Append(&quot;&lt;/tr>&quot;);
+        }
+        sb.Append(&quot;&lt;/table>&quot;);
+        Response.WriteLine(&quot;&lt;p>Showing IDs of selected features&lt;/p>&quot;);
+        Response.WriteLine(sb.ToString());
+    }
+}
+else
+{
+    Response.WriteLine(&quot;Nothing selected. Select some features first then run this sample again.&quot;);
+}</code></pre>
+
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.#ctor*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection__ctor_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.#ctor(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap)">MapSelection(RuntimeMap)</h4>
+  <div class="markdown level1 summary"><p>Constructor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MapSelection(RuntimeMap map)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
+        <td><span class="parametername">map</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.#ctor*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection__ctor_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.#ctor(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,System.String)">MapSelection(RuntimeMap, String)</h4>
+  <div class="markdown level1 summary"><p>Constructor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MapSelection(RuntimeMap map, string xml)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
+        <td><span class="parametername">map</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">xml</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Count_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Count*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Count" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Count">Count</h4>
+  <div class="markdown level1 summary"><p>Gets the number of layers in this selection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IsReadOnly_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IsReadOnly*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IsReadOnly" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IsReadOnly">IsReadOnly</h4>
+  <div class="markdown level1 summary"><p>Gets whether this is read only</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsReadOnly { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Item*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Item_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Item(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">Item[RuntimeMapLayer]</h4>
+  <div class="markdown level1 summary"><p>Gets the selection layer at a given index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MapSelection.LayerSelection this[RuntimeMapLayer index] { get; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index to get or set the item for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a></td>
+        <td><p>The item at the given index</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Item*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Item_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the selection layer at a given index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MapSelection.LayerSelection this[int index] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index to get or set the item for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a></td>
+        <td><p>The item at the given index</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Add_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Add*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Add_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Add(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)">Add(MapSelection.LayerSelection)</h4>
+  <div class="markdown level1 summary"><p>Adds the specified layer selection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(MapSelection.LayerSelection item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Add_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Add*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Add_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Add(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">Add(RuntimeMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Adds the specified layer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(RuntimeMapLayer layer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td><span class="parametername">layer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Clear_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Clear*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Clear" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Clear">Clear()</h4>
+  <div class="markdown level1 summary"><p>Clears this selction</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Contains_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Contains*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Contains_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Contains(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)">Contains(MapSelection.LayerSelection)</h4>
+  <div class="markdown level1 summary"><p>Gets whether this selection contains the specified layer selection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(MapSelection.LayerSelection item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Contains_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Contains*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Contains_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Contains(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">Contains(RuntimeMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Gets whether this selection contains the specified layer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(RuntimeMapLayer item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_CopyTo_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.CopyTo*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_CopyTo_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection___System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.CopyTo(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection[],System.Int32)">CopyTo(MapSelection.LayerSelection[], Int32)</h4>
+  <div class="markdown level1 summary"><p>Copies the elements of the <span class="xref">System.Collections.Generic.ICollection`1</span> to an <span class="xref">System.Array</span>, starting at a particular <span class="xref">System.Array</span> index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyTo(MapSelection.LayerSelection[] array, int arrayIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a>[]</td>
+        <td><span class="parametername">array</span></td>
+        <td><p>The one-dimensional <span class="xref">System.Array</span> that is the destination of the elements copied from <span class="xref">System.Collections.Generic.ICollection`1</span>. The <span class="xref">System.Array</span> must have zero-based indexing.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">arrayIndex</span></td>
+        <td><p>The zero-based index in <code data-dev-comment-type="paramref" class="paramref">array</code> at which copying begins.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">array</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">arrayIndex</code> is less than 0.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">array</code> is multidimensional.
+-or-
+<code data-dev-comment-type="paramref" class="paramref">arrayIndex</code> is equal to or greater than the length of <code data-dev-comment-type="paramref" class="paramref">array</code>.
+-or-
+The number of elements in the source <span class="xref">System.Collections.Generic.ICollection`1</span> is greater than the available space from <code data-dev-comment-type="paramref" class="paramref">arrayIndex</code> to the end of the destination <code data-dev-comment-type="paramref" class="paramref">array</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Deserialize_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Deserialize*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Deserialize_MgBinaryDeserializer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Deserialize(MgBinaryDeserializer)">Deserialize(MgBinaryDeserializer)</h4>
+  <div class="markdown level1 summary"><p>Deserializes this object using the specified deserializer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Deserialize(MgBinaryDeserializer d)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">MgBinaryDeserializer</span></td>
+        <td><span class="parametername">d</span></td>
+        <td><p>The deserializer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_GetEnumerator_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.GetEnumerator*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_GetEnumerator" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"><p>Gets the layer selection enumerator</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;MapSelection.LayerSelection&gt; GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerator</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IndexOf_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IndexOf*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IndexOf_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IndexOf(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)">IndexOf(MapSelection.LayerSelection)</h4>
+  <div class="markdown level1 summary"><p>Returns the index of the given layer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int IndexOf(MapSelection.LayerSelection item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The layer to look for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The index of the layer, or -1 if the layer is not in the collection</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IndexOf_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IndexOf*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IndexOf_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IndexOf(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">IndexOf(RuntimeMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Returns the index of the given layer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int IndexOf(RuntimeMapLayer layer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td><span class="parametername">layer</span></td>
+        <td><p>The layer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The index of the layer, or -1 if the layer is not in the collection</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Insert_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Insert*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Insert_System_Int32_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Insert(System.Int32,OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)">Insert(Int32, MapSelection.LayerSelection)</h4>
+  <div class="markdown level1 summary"><p>Inserts a selection layer into the collection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Insert(int index, MapSelection.LayerSelection item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index to place the item at</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The item to insert</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Insert_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Insert*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Insert_System_Int32_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Insert(System.Int32,OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">Insert(Int32, RuntimeMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Inserts a selection layer into the collection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Insert(int index, RuntimeMapLayer layer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index to place the item at</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td><span class="parametername">layer</span></td>
+        <td><p>The layer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LoadXml_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LoadXml*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LoadXml_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LoadXml(System.String)">LoadXml(String)</h4>
+  <div class="markdown level1 summary"><p>Initialize this selection from the specified xml string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadXml(string xml)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">xml</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Remove_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Remove*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Remove_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Remove(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)">Remove(MapSelection.LayerSelection)</h4>
+  <div class="markdown level1 summary"><p>Removes the specified layer selection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(MapSelection.LayerSelection item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_RemoveAt_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.RemoveAt*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_RemoveAt_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.RemoveAt(System.Int32)">RemoveAt(Int32)</h4>
+  <div class="markdown level1 summary"><p>Removes the item at the given index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index to remove the item at</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Serialize_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Serialize*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Serialize_MgBinarySerializer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Serialize(MgBinarySerializer)">Serialize(MgBinarySerializer)</h4>
+  <div class="markdown level1 summary"><p>Serializes this instance using the specified serializer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Serialize(MgBinarySerializer s)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">MgBinarySerializer</span></td>
+        <td><span class="parametername">s</span></td>
+        <td><p>The serializer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_ToXml_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.ToXml*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_ToXml" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.ToXml">ToXml()</h4>
+  <div class="markdown level1 summary"><p>Returns an xml document that represents the current map selection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToXml()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>An xml document that represents the current map selection</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_Collections_IEnumerable_GetEnumerator_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.System#Collections#IEnumerable#GetEnumerator*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_Collections_IEnumerable_GetEnumerator" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerator IEnumerable.GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">IList&lt;&gt;</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

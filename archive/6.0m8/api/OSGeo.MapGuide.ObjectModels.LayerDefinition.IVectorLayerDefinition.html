@@ -1,0 +1,793 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IVectorLayerDefinition
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IVectorLayerDefinition
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition">
+  
+  
+  <h1 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition" class="text-break">Interface IVectorLayerDefinition
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a layer definition based on a vector-based feature source</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ISubLayerDefinition.html#OSGeo_MapGuide_ObjectModels_LayerDefinition_ISubLayerDefinition_LayerType">ISubLayerDefinition.LayerType</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ISubLayerDefinition.html#OSGeo_MapGuide_ObjectModels_LayerDefinition_ISubLayerDefinition_ResourceId">ISubLayerDefinition.ResourceId</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.html">OSGeo.MapGuide.ObjectModels.LayerDefinition</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IVectorLayerDefinition : ISubLayerDefinition, INotifyPropertyChanged</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_FeatureName_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.FeatureName*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_FeatureName" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.FeatureName">FeatureName</h4>
+  <div class="markdown level1 summary"><p>Gets or sets fully qualified name of the feature class which this layer applies</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string FeatureName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_Filter_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.Filter*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_Filter" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.Filter">Filter</h4>
+  <div class="markdown level1 summary"><p>Gets or sets an FDO filter which is applied when rendering/styling features</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Filter { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_Geometry_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.Geometry*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_Geometry" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.Geometry">Geometry</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the geometry field of the feature class which this layer applies</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Geometry { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_PropertyMapping_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.PropertyMapping*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_PropertyMapping" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.PropertyMapping">PropertyMapping</h4>
+  <div class="markdown level1 summary"><p>Gets the property mappings for this layer. This determines which properties
+are displayed (and what labels to use) in the property pane and</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;INameStringPair&gt; PropertyMapping { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.INameStringPair.html">INameStringPair</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_SymbolDefinitionVersion_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.SymbolDefinitionVersion*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_SymbolDefinitionVersion" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.SymbolDefinitionVersion">SymbolDefinitionVersion</h4>
+  <div class="markdown level1 summary"><p>Gets the supported symbol definition version to use for composite symbolization.
+If the Layer Definition does not support composite symbolization, null is returned</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Version SymbolDefinitionVersion { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_ToolTip_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.ToolTip*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_ToolTip" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.ToolTip">ToolTip</h4>
+  <div class="markdown level1 summary"><p>Gets or sets an FDO expression which represents the HTML content that is displayed
+when the mouse is over the current feature</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string ToolTip { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_Url_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.Url*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_Url" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.Url">Url</h4>
+  <div class="markdown level1 summary"><p>Gets or sets an FDO expression which represents the URL that is opened when
+a feature is selected</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Url { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_Url_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If this is a <a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition2.html">IVectorLayerDefinition2</a>
+instance, this property is a pass through to the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IUrlData.html#OSGeo_MapGuide_ObjectModels_LayerDefinition_IUrlData_Content">Content</a>
+property value. In other words it is equivalent to getting or setting the value of UrlData.Content</p>
+</div>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_VectorScaleRange_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.VectorScaleRange*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_VectorScaleRange" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.VectorScaleRange">VectorScaleRange</h4>
+  <div class="markdown level1 summary"><p>Gets the scale ranges for this layer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;IVectorScaleRange&gt; VectorScaleRange { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorScaleRange.html">IVectorScaleRange</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_AddPropertyMapping_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.AddPropertyMapping*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_AddPropertyMapping_OSGeo_MapGuide_ObjectModels_LayerDefinition_INameStringPair_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.AddPropertyMapping(OSGeo.MapGuide.ObjectModels.LayerDefinition.INameStringPair)">AddPropertyMapping(INameStringPair)</h4>
+  <div class="markdown level1 summary"><p>Adds the specified property mapping</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void AddPropertyMapping(INameStringPair pair)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.INameStringPair.html">INameStringPair</a></td>
+        <td><span class="parametername">pair</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_AddVectorScaleRange_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.AddVectorScaleRange*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_AddVectorScaleRange_OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorScaleRange_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.AddVectorScaleRange(OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorScaleRange)">AddVectorScaleRange(IVectorScaleRange)</h4>
+  <div class="markdown level1 summary"><p>Adds the specified vector scale range</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void AddVectorScaleRange(IVectorScaleRange range)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorScaleRange.html">IVectorScaleRange</a></td>
+        <td><span class="parametername">range</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_ClearPropertyMappings_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.ClearPropertyMappings*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_ClearPropertyMappings" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.ClearPropertyMappings">ClearPropertyMappings()</h4>
+  <div class="markdown level1 summary"><p>Removes all property mappings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ClearPropertyMappings()</code></pre>
+  </div>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_GetPosition_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.GetPosition*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_GetPosition_OSGeo_MapGuide_ObjectModels_LayerDefinition_INameStringPair_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.GetPosition(OSGeo.MapGuide.ObjectModels.LayerDefinition.INameStringPair)">GetPosition(INameStringPair)</h4>
+  <div class="markdown level1 summary"><p>Gets the position of the specified pair in the order of property mappings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetPosition(INameStringPair pair)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.INameStringPair.html">INameStringPair</a></td>
+        <td><span class="parametername">pair</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_GetPropertyMapping_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.GetPropertyMapping*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_GetPropertyMapping_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.GetPropertyMapping(System.String)">GetPropertyMapping(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the property mapping for the feature class property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">INameStringPair GetPropertyMapping(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.INameStringPair.html">INameStringPair</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_GetPropertyMappingAt_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.GetPropertyMappingAt*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_GetPropertyMappingAt_System_Int32_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.GetPropertyMappingAt(System.Int32)">GetPropertyMappingAt(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the property mapping at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">INameStringPair GetPropertyMappingAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.INameStringPair.html">INameStringPair</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_GetScaleRangeAt_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.GetScaleRangeAt*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_GetScaleRangeAt_System_Int32_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.GetScaleRangeAt(System.Int32)">GetScaleRangeAt(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the scale range at this specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IVectorScaleRange GetScaleRangeAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorScaleRange.html">IVectorScaleRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_IndexOfScaleRange_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.IndexOfScaleRange*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_IndexOfScaleRange_OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorScaleRange_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.IndexOfScaleRange(OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorScaleRange)">IndexOfScaleRange(IVectorScaleRange)</h4>
+  <div class="markdown level1 summary"><p>Gets the collection index of this scale range</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int IndexOfScaleRange(IVectorScaleRange range)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorScaleRange.html">IVectorScaleRange</a></td>
+        <td><span class="parametername">range</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_MoveDown_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.MoveDown*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_MoveDown_OSGeo_MapGuide_ObjectModels_LayerDefinition_INameStringPair_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.MoveDown(OSGeo.MapGuide.ObjectModels.LayerDefinition.INameStringPair)">MoveDown(INameStringPair)</h4>
+  <div class="markdown level1 summary"><p>Moves the specified pair down the order of property mappings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int MoveDown(INameStringPair pair)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.INameStringPair.html">INameStringPair</a></td>
+        <td><span class="parametername">pair</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_MoveUp_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.MoveUp*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_MoveUp_OSGeo_MapGuide_ObjectModels_LayerDefinition_INameStringPair_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.MoveUp(OSGeo.MapGuide.ObjectModels.LayerDefinition.INameStringPair)">MoveUp(INameStringPair)</h4>
+  <div class="markdown level1 summary"><p>Moves the specified pair up the order of property mappings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int MoveUp(INameStringPair pair)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.INameStringPair.html">INameStringPair</a></td>
+        <td><span class="parametername">pair</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_RemoveAllScaleRanges_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.RemoveAllScaleRanges*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_RemoveAllScaleRanges" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.RemoveAllScaleRanges">RemoveAllScaleRanges()</h4>
+  <div class="markdown level1 summary"><p>Removes all scale ranges from this layer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveAllScaleRanges()</code></pre>
+  </div>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_RemovePropertyMapping_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.RemovePropertyMapping*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_RemovePropertyMapping_OSGeo_MapGuide_ObjectModels_LayerDefinition_INameStringPair_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.RemovePropertyMapping(OSGeo.MapGuide.ObjectModels.LayerDefinition.INameStringPair)">RemovePropertyMapping(INameStringPair)</h4>
+  <div class="markdown level1 summary"><p>Removes the specified property mapping</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemovePropertyMapping(INameStringPair pair)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.INameStringPair.html">INameStringPair</a></td>
+        <td><span class="parametername">pair</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_RemoveVectorScaleRange_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.RemoveVectorScaleRange*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorLayerDefinition_RemoveVectorScaleRange_OSGeo_MapGuide_ObjectModels_LayerDefinition_IVectorScaleRange_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorLayerDefinition.RemoveVectorScaleRange(OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorScaleRange)">RemoveVectorScaleRange(IVectorScaleRange)</h4>
+  <div class="markdown level1 summary"><p>Removes the specified vector scale range</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveVectorScaleRange(IVectorScaleRange range)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorScaleRange.html">IVectorScaleRange</a></td>
+        <td><span class="parametername">range</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,674 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface ICoordinateSystemCatalog
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface ICoordinateSystemCatalog
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog">
+  
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog" class="text-break">Interface ICoordinateSystemCatalog
+  </h1>
+  <div class="markdown level0 summary"><p>Defines a coordinate system catalog</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.html">OSGeo.MapGuide.MaestroAPI.CoordinateSystem</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ICoordinateSystemCatalog</code></pre>
+  </div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_examples"><strong>Examples</strong></h5>
+  <p>This example uses the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.html">ICoordinateSystemCatalog</a>
+to create a simple coordinate system transformation to transform points.</p>
+<pre><code>IServerConnection conn;
+...
+ICoordinateSystemCatalog csCatalog = conn.CoordinateSystemCatalog;
+//Find the source and target coordinate system definitions
+CoordinateSystemDefinitionBase srcCs = csCatalog.FindCoordSys(&quot;LL84&quot;);
+CoordinateSystemDefinitionBase dstCs = csCatalog.FindCoordSys(&quot;WGS84.PseudoMercator&quot;);
+//Create the transform using the WKTs of the source and target coordinate system definitions
+ISimpleTransform trans = csCatalog.CreateTransform(srcCs.WKT, dstCs.WKT);
+
+double x = -71.061342;
+double y = 42.355892;
+double tx;
+double ty;
+
+trans.Transform(x, y, out tx, out ty);
+//tx and ty will contain the transformed coordinates</code></pre>
+
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_Categories_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.Categories*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_Categories" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.Categories">Categories</h4>
+  <div class="markdown level1 summary"><p>Gets an array of coordinate system categories</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">CoordinateSystemCategory[] Categories { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordinateSystemCategory.html">CoordinateSystemCategory</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_Coordsys_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.Coordsys*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_Coordsys" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.Coordsys">Coordsys</h4>
+  <div class="markdown level1 summary"><p>Gets an array of all coordinate systems in this catalog</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">CoordinateSystemDefinitionBase[] Coordsys { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordinateSystemDefinitionBase.html">CoordinateSystemDefinitionBase</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_IsLoaded_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.IsLoaded*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_IsLoaded" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.IsLoaded">IsLoaded</h4>
+  <div class="markdown level1 summary"><p>Gets whether the coordinate system catalog has been loaded</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsLoaded { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_LibraryName_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.LibraryName*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_LibraryName" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.LibraryName">LibraryName</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the coordinate system library</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string LibraryName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_ConvertCoordinateSystemCodeToWkt_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.ConvertCoordinateSystemCodeToWkt*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_ConvertCoordinateSystemCodeToWkt_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.ConvertCoordinateSystemCodeToWkt(System.String)">ConvertCoordinateSystemCodeToWkt(String)</h4>
+  <div class="markdown level1 summary"><p>Convers the specified coordinate system code to WKT</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string ConvertCoordinateSystemCodeToWkt(string coordcode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">coordcode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_ConvertEpsgCodeToWkt_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.ConvertEpsgCodeToWkt*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_ConvertEpsgCodeToWkt_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.ConvertEpsgCodeToWkt(System.String)">ConvertEpsgCodeToWkt(String)</h4>
+  <div class="markdown level1 summary"><p>Converts the specified epsg code to WKT</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string ConvertEpsgCodeToWkt(string epsg)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">epsg</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_ConvertWktToCoordinateSystemCode_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.ConvertWktToCoordinateSystemCode*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_ConvertWktToCoordinateSystemCode_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.ConvertWktToCoordinateSystemCode(System.String)">ConvertWktToCoordinateSystemCode(String)</h4>
+  <div class="markdown level1 summary"><p>Converts the specified WKT into a coordinate system code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string ConvertWktToCoordinateSystemCode(string wkt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">wkt</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_ConvertWktToEpsgCode_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.ConvertWktToEpsgCode*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_ConvertWktToEpsgCode_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.ConvertWktToEpsgCode(System.String)">ConvertWktToEpsgCode(String)</h4>
+  <div class="markdown level1 summary"><p>Converts the specified WKT into an EPSG code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string ConvertWktToEpsgCode(string wkt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">wkt</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_CreateCoordinateSystem_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.CreateCoordinateSystem*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_CreateCoordinateSystem_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.CreateCoordinateSystem(System.String)">CreateCoordinateSystem(String)</h4>
+  <div class="markdown level1 summary"><p>Creates a coordiante system from the given WKT</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ICoordinateSystemRef CreateCoordinateSystem(string wkt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">wkt</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemRef.html">ICoordinateSystemRef</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_CreateEmptyCoordinateSystem_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.CreateEmptyCoordinateSystem*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_CreateEmptyCoordinateSystem" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.CreateEmptyCoordinateSystem">CreateEmptyCoordinateSystem()</h4>
+  <div class="markdown level1 summary"><p>Gets an empty coordinate system</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">CoordinateSystemDefinitionBase CreateEmptyCoordinateSystem()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordinateSystemDefinitionBase.html">CoordinateSystemDefinitionBase</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_CreateTransform_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.CreateTransform*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_CreateTransform_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.CreateTransform(System.String,System.String)">CreateTransform(String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates a simple coordinate system transformation from the source and target WKT strings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ISimpleTransform CreateTransform(string sourceWkt, string targetWkt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sourceWkt</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">targetWkt</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ISimpleTransform.html">ISimpleTransform</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_EnumerateCoordinateSystems_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.EnumerateCoordinateSystems*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_EnumerateCoordinateSystems_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.EnumerateCoordinateSystems(System.String)">EnumerateCoordinateSystems(String)</h4>
+  <div class="markdown level1 summary"><p>Gets an array of all coordinate systems in the specified category</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">CoordinateSystemDefinitionBase[] EnumerateCoordinateSystems(string category)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">category</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordinateSystemDefinitionBase.html">CoordinateSystemDefinitionBase</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_FindCoordSys_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.FindCoordSys*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_FindCoordSys_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.FindCoordSys(System.String)">FindCoordSys(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the coordinate system that matches the specified code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">CoordinateSystemDefinitionBase FindCoordSys(string coordcode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">coordcode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordinateSystemDefinitionBase.html">CoordinateSystemDefinitionBase</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_IsValid_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.IsValid*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_CoordinateSystem_ICoordinateSystemCatalog_IsValid_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog.IsValid(System.String)">IsValid(String)</h4>
+  <div class="markdown level1 summary"><p>Checks if the specified WKT is valid</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsValid(string wkt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">wkt</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

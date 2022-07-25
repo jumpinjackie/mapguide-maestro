@@ -1,0 +1,856 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface ILayerElementFactory
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface ILayerElementFactory
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory">
+  
+  
+  <h1 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory" class="text-break">Interface ILayerElementFactory
+  </h1>
+  <div class="markdown level0 summary"><p>Factory interface to assist in creating common layer definition elements</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.html">OSGeo.MapGuide.ObjectModels.LayerDefinition</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ILayerElementFactory</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CloneCompositeSymbolization_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CloneCompositeSymbolization*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CloneCompositeSymbolization_OSGeo_MapGuide_ObjectModels_LayerDefinition_ICompositeSymbolization_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CloneCompositeSymbolization(OSGeo.MapGuide.ObjectModels.LayerDefinition.ICompositeSymbolization)">CloneCompositeSymbolization(ICompositeSymbolization)</h4>
+  <div class="markdown level1 summary"><p>Clones the given symbolization</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ICompositeSymbolization CloneCompositeSymbolization(ICompositeSymbolization sym)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ICompositeSymbolization.html">ICompositeSymbolization</a></td>
+        <td><span class="parametername">sym</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ICompositeSymbolization.html">ICompositeSymbolization</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultAdvancedPlacement_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultAdvancedPlacement*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultAdvancedPlacement_System_Double_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultAdvancedPlacement(System.Double)">CreateDefaultAdvancedPlacement(Double)</h4>
+  <div class="markdown level1 summary"><p>Creates a default advanced placement setting</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAdvancedPlacement CreateDefaultAdvancedPlacement(double scaleLimit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scaleLimit</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IAdvancedPlacement.html">IAdvancedPlacement</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultAreaRule_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultAreaRule*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultAreaRule" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultAreaRule">CreateDefaultAreaRule()</h4>
+  <div class="markdown level1 summary"><p>Creates a default area rule (monochromatic)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAreaRule CreateDefaultAreaRule()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IAreaRule.html">IAreaRule</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultAreaStyle_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultAreaStyle*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultAreaStyle" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultAreaStyle">CreateDefaultAreaStyle()</h4>
+  <div class="markdown level1 summary"><p>Creates a default area style (monochromatic)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAreaVectorStyle CreateDefaultAreaStyle()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IAreaVectorStyle.html">IAreaVectorStyle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultAreaSymbolizationFill_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultAreaSymbolizationFill*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultAreaSymbolizationFill" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultAreaSymbolizationFill">CreateDefaultAreaSymbolizationFill()</h4>
+  <div class="markdown level1 summary"><p>Creates a default AreaSymbolizationFill element</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAreaSymbolizationFill CreateDefaultAreaSymbolizationFill()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IAreaSymbolizationFill.html">IAreaSymbolizationFill</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultCompositeRule_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultCompositeRule*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultCompositeRule" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultCompositeRule">CreateDefaultCompositeRule()</h4>
+  <div class="markdown level1 summary"><p>Creates the default composite rule.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ICompositeRule CreateDefaultCompositeRule()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ICompositeRule.html">ICompositeRule</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultCompositeRule_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method does not create any composite symbolizations. This is up for the calling method to provide</p>
+</div>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultCompositeStyle_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultCompositeStyle*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultCompositeStyle" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultCompositeStyle">CreateDefaultCompositeStyle()</h4>
+  <div class="markdown level1 summary"><p>Creates a default composite style.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ICompositeTypeStyle CreateDefaultCompositeStyle()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ICompositeTypeStyle.html">ICompositeTypeStyle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultCompositeStyle_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method does not create any composite symbolizations. This is up for the calling method to provide</p>
+</div>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultFill_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultFill*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultFill" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultFill">CreateDefaultFill()</h4>
+  <div class="markdown level1 summary"><p>Creates a default fill (monochromatic)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IFill CreateDefaultFill()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IFill.html">IFill</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultFontSymbol_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultFontSymbol*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultFontSymbol" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultFontSymbol">CreateDefaultFontSymbol()</h4>
+  <div class="markdown level1 summary"><p>Creates a font symbol</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IFontSymbol CreateDefaultFontSymbol()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IFontSymbol.html">IFontSymbol</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultLineRule_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultLineRule*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultLineRule" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultLineRule">CreateDefaultLineRule()</h4>
+  <div class="markdown level1 summary"><p>Creates a default line rule</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ILineRule CreateDefaultLineRule()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILineRule.html">ILineRule</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultLineStyle_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultLineStyle*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultLineStyle" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultLineStyle">CreateDefaultLineStyle()</h4>
+  <div class="markdown level1 summary"><p>Creates a default line style (monochromatic)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ILineVectorStyle CreateDefaultLineStyle()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILineVectorStyle.html">ILineVectorStyle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultMarkSymbol_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultMarkSymbol*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultMarkSymbol" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultMarkSymbol">CreateDefaultMarkSymbol()</h4>
+  <div class="markdown level1 summary"><p>Creates a default mark symbol</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMarkSymbol CreateDefaultMarkSymbol()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IMarkSymbol.html">IMarkSymbol</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultPointRule_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultPointRule*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultPointRule" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultPointRule">CreateDefaultPointRule()</h4>
+  <div class="markdown level1 summary"><p>Creates a default point rule</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IPointRule CreateDefaultPointRule()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IPointRule.html">IPointRule</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultPointStyle_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultPointStyle*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultPointStyle" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultPointStyle">CreateDefaultPointStyle()</h4>
+  <div class="markdown level1 summary"><p>Creates a default point style</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IPointVectorStyle CreateDefaultPointStyle()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IPointVectorStyle.html">IPointVectorStyle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultPointSymbolization2D_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultPointSymbolization2D*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultPointSymbolization2D" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultPointSymbolization2D">CreateDefaultPointSymbolization2D()</h4>
+  <div class="markdown level1 summary"><p>Creates a default 2D point symbolization</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IPointSymbolization2D CreateDefaultPointSymbolization2D()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IPointSymbolization2D.html">IPointSymbolization2D</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultStroke_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultStroke*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultStroke" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultStroke">CreateDefaultStroke()</h4>
+  <div class="markdown level1 summary"><p>Creates a default stroke</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IStroke CreateDefaultStroke()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IStroke.html">IStroke</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultTextSymbol_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultTextSymbol*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultTextSymbol" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultTextSymbol">CreateDefaultTextSymbol()</h4>
+  <div class="markdown level1 summary"><p>Creates a default text symbol</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ITextSymbol CreateDefaultTextSymbol()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ITextSymbol.html">ITextSymbol</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultW2DSymbol_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultW2DSymbol*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateDefaultW2DSymbol_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateDefaultW2DSymbol(System.String,System.String)">CreateDefaultW2DSymbol(String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates a W2D symbol from a Symbol Library</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IW2DSymbol CreateDefaultW2DSymbol(string symbolLibrary, string symbolName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">symbolLibrary</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">symbolName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IW2DSymbol.html">IW2DSymbol</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateFill_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateFill*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateFill_System_String_System_Drawing_Color_System_Drawing_Color_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateFill(System.String,System.Drawing.Color,System.Drawing.Color)">CreateFill(String, Drawing.Color, Drawing.Color)</h4>
+  <div class="markdown level1 summary"><p>Creates a fill</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IFill CreateFill(string pattern, Drawing.Color background, Drawing.Color foreground)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pattern</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td><span class="parametername">background</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td><span class="parametername">foreground</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IFill.html">IFill</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreatePair_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreatePair*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreatePair_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreatePair(System.String,System.String)">CreatePair(String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates a name-value pair</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">INameStringPair CreatePair(string name, string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.INameStringPair.html">INameStringPair</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateStroke_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateStroke*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateStroke_System_Drawing_Color_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateStroke(System.Drawing.Color)">CreateStroke(Drawing.Color)</h4>
+  <div class="markdown level1 summary"><p>Creates a stroke of the specified color</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IStroke CreateStroke(Drawing.Color color)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IStroke.html">IStroke</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateUrlData_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateUrlData*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateUrlData" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateUrlData">CreateUrlData()</h4>
+  <div class="markdown level1 summary"><p>Creates tehe default URL data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IUrlData CreateUrlData()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IUrlData.html">IUrlData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateVectorScaleRange_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateVectorScaleRange*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerElementFactory_CreateVectorScaleRange" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerElementFactory.CreateVectorScaleRange">CreateVectorScaleRange()</h4>
+  <div class="markdown level1 summary"><p>Creates a vector scale range</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IVectorScaleRange CreateVectorScaleRange()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorScaleRange.html">IVectorScaleRange</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface ICreateDataStore
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface ICreateDataStore
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore">
+  
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore" class="text-break">Interface ICreateDataStore
+  </h1>
+  <div class="markdown level0 summary"><p>Defines a command that creates a file-based data store on a given feature source</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.ICommand.html#OSGeo_MapGuide_MaestroAPI_Commands_ICommand_Parent">ICommand.Parent</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.html">OSGeo.MapGuide.MaestroAPI.Commands</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ICreateDataStore : ICommand, IFdoSpatialContext</code></pre>
+  </div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>This command is only supported on certain implementations of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a>
+You can find out if the connection supports this command through the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html#OSGeo_MapGuide_MaestroAPI_IServerConnection_Capabilities">Capabilities</a></p>
+</div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_examples"><strong>Examples</strong></h5>
+  <p>How to create a data store with a given schema</p>
+<pre><code>    IServerConnection conn = ...;
+
+    FeatureSchema schema = new FeatureSchema(&quot;Default&quot;, &quot;&quot;);
+    ClassDefinition cls = new ClassDefinition(&quot;MyClass&quot;, &quot;&quot;);
+
+    cls.DefaultGeometryProperty = &quot;GEOM&quot;;
+    //Add identity property KEY
+    cls.AddProperty(new DataPropertyDefinition(&quot;KEY&quot;, &quot;&quot;)
+    {
+        DataType = DataPropertyType.Int32,
+        IsAutoGenerated = true,
+        IsReadOnly = true,
+        IsNullable = false
+    }, true);
+    //Add string property NAME
+    cls.AddProperty(new DataPropertyDefinition(&quot;NAME&quot;, &quot;&quot;)
+    {
+        DataType = DataPropertyType.String,
+        Length = 255,
+        IsNullable = true,
+        IsReadOnly = false
+    });
+    //Add geometry property GEOM
+    cls.AddProperty(new GeometricPropertyDefinition(&quot;GEOM&quot;, &quot;&quot;)
+    {
+        GeometricTypes = FeatureGeometricType.Point,
+        SpatialContextAssociation = &quot;Default&quot;
+    });
+
+    schema.AddClass(cls);
+
+    ICreateDataStore create = (ICreateDataStore)conn.CreateCommand((int)CommandType.CreateDataStore);
+    CoordinateSystemDefinitionBase coordSys = conn.CoordinateSystemCatalog.FindCoordSys(&quot;LL84&quot;);
+    create.FeatureSourceId = fsId;
+    create.CoordinateSystemWkt = coordSys.WKT;
+    create.Name = &quot;Default&quot;;
+    create.ExtentType = OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContextExtentType.Dynamic;
+    create.FileName = &quot;Test.sdf&quot;;
+    create.Provider = &quot;OSGeo.SDF&quot;;
+    create.Schema = schema;
+    create.XYTolerance = 0.001;
+    create.ZTolerance = 0.001;
+    create.Execute();</code></pre>
+
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_FeatureSourceId_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.FeatureSourceId*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_FeatureSourceId" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.FeatureSourceId">FeatureSourceId</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the Feature Source ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string FeatureSourceId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_FileName_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.FileName*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_FileName" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.FileName">FileName</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the file name for the data store</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string FileName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Provider_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Provider*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Provider" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Provider">Provider</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the FDO provider name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Provider { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Schema_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Schema*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Schema" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Schema">Schema</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the Feature Schema that models the structure of the data store</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">FeatureSchema Schema { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">FeatureSchema</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Execute_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Execute*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Execute" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Execute">Execute()</h4>
+  <div class="markdown level1 summary"><p>Executes the command</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Execute()</code></pre>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

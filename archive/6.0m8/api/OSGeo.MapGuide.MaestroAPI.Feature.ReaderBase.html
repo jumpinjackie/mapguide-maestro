@@ -1,0 +1,1750 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ReaderBase
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ReaderBase
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase">
+  
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase" class="text-break">Class ReaderBase
+  </h1>
+  <div class="markdown level0 summary"><p>Base implementation of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a>
+interface</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ReaderBase</span></div>
+      <div class="level2"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.html">FeatureReaderBase</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a></div>
+    <div><span class="xref">IDisposable</span></div>
+    <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.html">OSGeo.MapGuide.MaestroAPI.Feature</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class ReaderBase : IReader, IDisposable, IRecord</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Current_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Current*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Current" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Current">Current</h4>
+  <div class="markdown level1 summary"><p>Gets the current iterated record</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRecord Current { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_FieldCount_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.FieldCount*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_FieldCount" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.FieldCount">FieldCount</h4>
+  <div class="markdown level1 summary"><p>Gets the number of fields in this record</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FieldCount { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Item*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Item_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"><p>Gets the <span class="xref">System.Object</span> at the specified index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object this[int index] { get; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Item*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Item_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Item(System.String)">Item[String]</h4>
+  <div class="markdown level1 summary"><p>Gets the <span class="xref">System.Object</span> with the specified name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object this[string name] { get; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReaderType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReaderType*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReaderType" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReaderType">ReaderType</h4>
+  <div class="markdown level1 summary"><p>Gets the type of the reader.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract ReaderType ReaderType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderType.html">ReaderType</a></td>
+        <td><p>The type of the reader.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Close_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Close*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Close" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Close">Close()</h4>
+  <div class="markdown level1 summary"><p>Closes the object, freeing any resources it may be holding.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Close()</code></pre>
+  </div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Dispose_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Dispose*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Dispose" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Dispose_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Dispose*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Dispose_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Dispose of this instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Finalize_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Finalize*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Finalize" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Finalize">Finalize()</h4>
+  <div class="markdown level1 summary"><p>Finalizer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Finalize()</code></pre>
+  </div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBlob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBlob*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBlob_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBlob(System.Int32)">GetBlob(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the blob value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBlob(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBlob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBlob*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBlob_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBlob(System.String)">GetBlob(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the blob value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBlob(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBoolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBoolean*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBoolean_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBoolean(System.Int32)">GetBoolean(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the boolean value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetBoolean(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBoolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBoolean*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBoolean_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBoolean(System.String)">GetBoolean(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the boolean value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetBoolean(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetByte_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetByte*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetByte_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetByte(System.Int32)">GetByte(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the byte value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte GetByte(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetByte_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetByte*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetByte_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetByte(System.String)">GetByte(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the byte value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte GetByte(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetClob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetClob*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetClob_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetClob(System.Int32)">GetClob(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the clob value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public char[] GetClob(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetClob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetClob*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetClob_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetClob(System.String)">GetClob(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the clob value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public char[] GetClob(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDateTime_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDateTime*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDateTime_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDateTime(System.Int32)">GetDateTime(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the datetime value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime GetDateTime(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DateTime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDateTime_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDateTime*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDateTime_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDateTime(System.String)">GetDateTime(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the datetime value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime GetDateTime(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DateTime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDouble_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDouble*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDouble_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDouble(System.Int32)">GetDouble(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the double value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetDouble(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDouble_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDouble*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDouble_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDouble(System.String)">GetDouble(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the double value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetDouble(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetFieldType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetFieldType*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetFieldType_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetFieldType(System.Int32)">GetFieldType(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the CLR type of the field at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Type GetFieldType(int i)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">i</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetGeometry_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetGeometry*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetGeometry_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetGeometry(System.Int32)">GetGeometry(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the geometry value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IGeometryRef GetGeometry(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IGeometryRef</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetGeometry_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetGeometry*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetGeometry_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetGeometry(System.String)">GetGeometry(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the geometry value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IGeometryRef GetGeometry(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IGeometryRef</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt16_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt16*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt16_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt16(System.Int32)">GetInt16(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the int16 value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short GetInt16(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt16_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt16*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt16_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt16(System.String)">GetInt16(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the int16 value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short GetInt16(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt32*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt32(System.Int32)">GetInt32(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the int32 value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetInt32(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt32*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt32(System.String)">GetInt32(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the int32 value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetInt32(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt64_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt64*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt64_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt64(System.Int32)">GetInt64(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the int64 value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long GetInt64(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt64_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt64*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt64_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt64(System.String)">GetInt64(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the int64 value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long GetInt64(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetName_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetName*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetName_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetName(System.Int32)">GetName(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the field at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract string GetName(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetPropertyType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetPropertyType*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetPropertyType_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetPropertyType(System.Int32)">GetPropertyType(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the type of the property at the specified index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract PropertyValueType GetPropertyType(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyValueType.html">PropertyValueType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetPropertyType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetPropertyType*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetPropertyType_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetPropertyType(System.String)">GetPropertyType(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the type of the property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract PropertyValueType GetPropertyType(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyValueType.html">PropertyValueType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetSingle_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetSingle*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetSingle_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetSingle(System.Int32)">GetSingle(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the single value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetSingle(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetSingle_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetSingle*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetSingle_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetSingle(System.String)">GetSingle(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the single value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetSingle(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetString_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetString*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetString_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetString(System.Int32)">GetString(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the string value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetString(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetString_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetString*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetString_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetString(System.String)">GetString(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the string value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetString(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_IsNull_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.IsNull*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_IsNull_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.IsNull(System.Int32)">IsNull(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets whether the property value at the specified index has a null property value. You must
+call this method first to determine if it is safe to call the corresponding GetXXX() methods</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsNull(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_IsNull_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.IsNull*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_IsNull_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.IsNull(System.String)">IsNull(String)</h4>
+  <div class="markdown level1 summary"><p>Gets whether the specified property name has a null property value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsNull(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReadNext_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReadNext*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReadNext" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReadNext">ReadNext()</h4>
+  <div class="markdown level1 summary"><p>Advances the reader to the next item and determines whether there is another object to read.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ReadNext()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReadNextRecord_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReadNextRecord*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReadNextRecord" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReadNextRecord">ReadNextRecord()</h4>
+  <div class="markdown level1 summary"><p>Reads the next record.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract IRecord ReadNextRecord()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a>
+  </div>
+  <div>
+      <span class="xref">IDisposable</span>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

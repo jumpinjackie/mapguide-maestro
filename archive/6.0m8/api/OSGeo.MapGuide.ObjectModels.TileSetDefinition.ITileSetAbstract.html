@@ -1,0 +1,627 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface ITileSetAbstract
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface ITileSetAbstract
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract">
+  
+  
+  <h1 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract" class="text-break">Interface ITileSetAbstract
+  </h1>
+  <div class="markdown level0 summary"><p>An abstraction that works with both Tile Set Definitions and the base map section of a Map Definition</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.html">OSGeo.MapGuide.ObjectModels.TileSetDefinition</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ITileSetAbstract</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_BaseMapLayerGroups_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.BaseMapLayerGroups*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_BaseMapLayerGroups" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.BaseMapLayerGroups">BaseMapLayerGroups</h4>
+  <div class="markdown level1 summary"><p>The base map layer groups</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;IBaseMapGroup&gt; BaseMapLayerGroups { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">IBaseMapGroup</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_FiniteDisplayScale_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.FiniteDisplayScale*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_FiniteDisplayScale" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.FiniteDisplayScale">FiniteDisplayScale</h4>
+  <div class="markdown level1 summary"><p>The finite display scale list</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;double&gt; FiniteDisplayScale { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.Double</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_GroupCount_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.GroupCount*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_GroupCount" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.GroupCount">GroupCount</h4>
+  <div class="markdown level1 summary"><p>Gets the group count.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GroupCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The group count.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_ScaleCount_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.ScaleCount*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_ScaleCount" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.ScaleCount">ScaleCount</h4>
+  <div class="markdown level1 summary"><p>Gets the scale count.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int ScaleCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The scale count.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_SupportsCustomFiniteDisplayScales_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.SupportsCustomFiniteDisplayScales*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_SupportsCustomFiniteDisplayScales" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.SupportsCustomFiniteDisplayScales">SupportsCustomFiniteDisplayScales</h4>
+  <div class="markdown level1 summary"><p>Gets whether this tile set supports custom finite display scales. If false, none
+of the scale operations should be used</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SupportsCustomFiniteDisplayScales { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_SupportsCustomFiniteDisplayScalesUnconditionally_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.SupportsCustomFiniteDisplayScalesUnconditionally*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_SupportsCustomFiniteDisplayScalesUnconditionally" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.SupportsCustomFiniteDisplayScalesUnconditionally">SupportsCustomFiniteDisplayScalesUnconditionally</h4>
+  <div class="markdown level1 summary"><p>Gets whether this tile set supports under certain conditions. If false, the caller
+should check if <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_SupportsCustomFiniteDisplayScales">SupportsCustomFiniteDisplayScales</a> is true in order to
+safely invoke any scale based operations</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SupportsCustomFiniteDisplayScalesUnconditionally { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_AddBaseLayerGroup_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.AddBaseLayerGroup*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_AddBaseLayerGroup_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.AddBaseLayerGroup(System.String)">AddBaseLayerGroup(String)</h4>
+  <div class="markdown level1 summary"><p>Adds the base layer group.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IBaseMapGroup AddBaseLayerGroup(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IBaseMapGroup</span></td>
+        <td><p>The group</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_AddFiniteDisplayScale_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.AddFiniteDisplayScale*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_AddFiniteDisplayScale_System_Double_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.AddFiniteDisplayScale(System.Double)">AddFiniteDisplayScale(Double)</h4>
+  <div class="markdown level1 summary"><p>Adds the finite display scale. The implementation may internally sort after adding the added item</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void AddFiniteDisplayScale(double value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_GetGroupAt_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.GetGroupAt*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_GetGroupAt_System_Int32_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.GetGroupAt(System.Int32)">GetGroupAt(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the group at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IBaseMapGroup GetGroupAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IBaseMapGroup</span></td>
+        <td><p>The group</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_GetLayersForGroup_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.GetLayersForGroup*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_GetLayersForGroup_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.GetLayersForGroup(System.String)">GetLayersForGroup(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the layer for the given base layer group name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;IBaseMapLayer&gt; GetLayersForGroup(string groupName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">groupName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">IBaseMapLayer</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_GetScaleAt_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.GetScaleAt*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_GetScaleAt_System_Int32_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.GetScaleAt(System.Int32)">GetScaleAt(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the scale at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">double GetScaleAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The scale</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_RemoveAllScales_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.RemoveAllScales*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_RemoveAllScales" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.RemoveAllScales">RemoveAllScales()</h4>
+  <div class="markdown level1 summary"><p>Removes all scales.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveAllScales()</code></pre>
+  </div>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_RemoveBaseLayerGroup_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.RemoveBaseLayerGroup*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_RemoveBaseLayerGroup_IBaseMapGroup_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.RemoveBaseLayerGroup(IBaseMapGroup)">RemoveBaseLayerGroup(IBaseMapGroup)</h4>
+  <div class="markdown level1 summary"><p>Removes the base layer group.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveBaseLayerGroup(IBaseMapGroup group)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IBaseMapGroup</span></td>
+        <td><span class="parametername">group</span></td>
+        <td><p>The group.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_RemoveFiniteDisplayScale_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.RemoveFiniteDisplayScale*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_RemoveFiniteDisplayScale_System_Double_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.RemoveFiniteDisplayScale(System.Double)">RemoveFiniteDisplayScale(Double)</h4>
+  <div class="markdown level1 summary"><p>Removes the finite display scale.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveFiniteDisplayScale(double value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_RemoveScaleAt_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.RemoveScaleAt*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_RemoveScaleAt_System_Int32_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.RemoveScaleAt(System.Int32)">RemoveScaleAt(Int32)</h4>
+  <div class="markdown level1 summary"><p>Removes the scale at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveScaleAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_SetFiniteDisplayScales_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.SetFiniteDisplayScales*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_SetFiniteDisplayScales_IEnumerable_System_Double__" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.SetFiniteDisplayScales(IEnumerable{System.Double})">SetFiniteDisplayScales(IEnumerable&lt;Double&gt;)</h4>
+  <div class="markdown level1 summary"><p>Sets the finite display scale list</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetFiniteDisplayScales(IEnumerable&lt;double&gt; scales)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.Double</span>&gt;</td>
+        <td><span class="parametername">scales</span></td>
+        <td><p>The scales to set</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

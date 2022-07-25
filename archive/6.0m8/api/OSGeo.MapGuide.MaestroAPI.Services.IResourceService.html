@@ -1,0 +1,1653 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IResourceService
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IResourceService
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService">
+  
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService" class="text-break">Interface IResourceService
+  </h1>
+  <div class="markdown level0 summary"><p>Provides services for accessing resources in a repository</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.html">OSGeo.MapGuide.MaestroAPI.Services</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IResourceService : IService</code></pre>
+  </div>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Note that <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> provides
+built-in access to resource and feature services. Using the <span class="xref">OSGeo.MapGuide.MaestroAPI.IServerConnection.GetService</span>
+method is not necessary</p>
+</div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_CopyFolderWithReferences_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.CopyFolderWithReferences*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_CopyFolderWithReferences_System_String_System_String_OSGeo_MapGuide_MaestroAPI_LengthyOperationCallBack_OSGeo_MapGuide_MaestroAPI_LengthyOperationProgressCallBack_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.CopyFolderWithReferences(System.String,System.String,OSGeo.MapGuide.MaestroAPI.LengthyOperationCallBack,OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack)">CopyFolderWithReferences(String, String, LengthyOperationCallBack, LengthyOperationProgressCallBack)</h4>
+  <div class="markdown level1 summary"><p>Copies the specified folder to the specified path. Any resources referencing this folder
+are updated to reference the resources&apos;s new location</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool CopyFolderWithReferences(string oldResourceID, string newResourceID, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">oldResourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">newResourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.LengthyOperationCallBack.html">LengthyOperationCallBack</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack.html">LengthyOperationProgressCallBack</a></td>
+        <td><span class="parametername">progress</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_CopyResource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.CopyResource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_CopyResource_System_String_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.CopyResource(System.String,System.String,System.Boolean)">CopyResource(String, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Copies the specified resource to the specified path</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void CopyResource(string oldResourceID, string newResourceID, bool overwrite)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">oldResourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">newResourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">overwrite</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeleteResource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeleteResource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeleteResource_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeleteResource(System.String)">DeleteResource(String)</h4>
+  <div class="markdown level1 summary"><p>Delete the specified resource. For folders, ensure the resource ID has a trailing slash &quot;/&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DeleteResource(string resourceID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeleteResourceData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeleteResourceData*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeleteResourceData_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeleteResourceData(System.String,System.String)">DeleteResourceData(String, String)</h4>
+  <div class="markdown level1 summary"><p>Deletes the specified attached resource data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DeleteResourceData(string resourceID, string dataname)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">dataname</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeserializeObject_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeserializeObject*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeserializeObject__1_System_IO_Stream_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeserializeObject``1(System.IO.Stream)">DeserializeObject&lt;T&gt;(Stream)</h4>
+  <div class="markdown level1 summary"><p>Converts the specified XML stream to a strongly typed object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">T DeserializeObject&lt;T&gt;(Stream data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateResourceData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateResourceData*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateResourceData_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateResourceData(System.String)">EnumerateResourceData(String)</h4>
+  <div class="markdown level1 summary"><p>Gets a listing of all resource data attached to the specified resource</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.ResourceDataList EnumerateResourceData(string resourceID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceDataList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateResourceReferences_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateResourceReferences*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateResourceReferences_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateResourceReferences(System.String)">EnumerateResourceReferences(String)</h4>
+  <div class="markdown level1 summary"><p>Gets a listing of all resources dependent on the specified resource</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.ResourceReferenceList EnumerateResourceReferences(string resourceID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceReferenceList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateUnmanagedData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateUnmanagedData*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateUnmanagedData_System_String_System_String_System_Boolean_OSGeo_MapGuide_MaestroAPI_UnmanagedDataTypes_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateUnmanagedData(System.String,System.String,System.Boolean,OSGeo.MapGuide.MaestroAPI.UnmanagedDataTypes)">EnumerateUnmanagedData(String, String, Boolean, UnmanagedDataTypes)</h4>
+  <div class="markdown level1 summary"><p>Enumerates all unmanaged folders, meaning alias&apos;ed folders</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">startpath</span></td>
+        <td><p>The path to retrieve the data from</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter</span></td>
+        <td><p>A filter applied to the items</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">recursive</span></td>
+        <td><p>True if the list should contains recursive results</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.UnmanagedDataTypes.html">UnmanagedDataTypes</a></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type of data to return</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.UnmanagedDataList</span></td>
+        <td><p>A list of unmanaged data</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetFolderHeader_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetFolderHeader*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetFolderHeader_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetFolderHeader(System.String)">GetFolderHeader(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the folder header of the specified resource</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.ResourceFolderHeaderType GetFolderHeader(string resourceID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceFolderHeaderType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources">GetRepositoryResources()</h4>
+  <div class="markdown level1 summary"><p>Gets a listing of resources in this repository. This performs a full listing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.ResourceList GetRepositoryResources()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.Int32)">GetRepositoryResources(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets a listing of resources in this repository</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.ResourceList GetRepositoryResources(int depth)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">depth</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String)">GetRepositoryResources(String)</h4>
+  <div class="markdown level1 summary"><p>Gets a listing of resources in this repository</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.ResourceList GetRepositoryResources(string startingpoint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">startingpoint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String,System.Int32)">GetRepositoryResources(String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets a listing of resources in this repository</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.ResourceList GetRepositoryResources(string startingpoint, int depth)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">startingpoint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">depth</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String,System.String)">GetRepositoryResources(String, String)</h4>
+  <div class="markdown level1 summary"><p>Gets a listing of resources in this repository</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.ResourceList GetRepositoryResources(string startingpoint, string type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">startingpoint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_System_String_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String,System.String,System.Int32)">GetRepositoryResources(String, String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets a listing of resources in this repository</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.ResourceList GetRepositoryResources(string startingpoint, string type, int depth)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">startingpoint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">depth</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_System_String_System_Int32_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String,System.String,System.Int32,System.Boolean)">GetRepositoryResources(String, String, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Gets a listing of resources in this repository</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">startingpoint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">depth</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">computeChildren</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResource_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResource(System.String)">GetResource(String)</h4>
+  <div class="markdown level1 summary"><p>Gets a typed resource object from the specified resource id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IResource GetResource(string resourceID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IResource</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceData*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceData_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceData(System.String,System.String)">GetResourceData(String, String)</h4>
+  <div class="markdown level1 summary"><p>Gets the stream of the attached data of the specified resource</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream GetResourceData(string resourceID, string dataname)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">dataname</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceHeader_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceHeader*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceHeader_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceHeader(System.String)">GetResourceHeader(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the document header of the specified resource</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ObjCommon.ResourceDocumentHeaderType GetResourceHeader(string resourceID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceDocumentHeaderType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceXmlData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceXmlData*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceXmlData_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceXmlData(System.String)">GetResourceXmlData(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the raw XML stream of the specified resource id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Stream GetResourceXmlData(string resourceID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_MoveResource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.MoveResource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_MoveResource_System_String_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.MoveResource(System.String,System.String,System.Boolean)">MoveResource(String, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Moves the specified resources to the specified path</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void MoveResource(string oldResourceID, string newResourceID, bool overwrite)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">oldResourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">newResourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">overwrite</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_MoveResourceWithReferences_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.MoveResourceWithReferences*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_MoveResourceWithReferences_System_String_System_String_OSGeo_MapGuide_MaestroAPI_LengthyOperationCallBack_OSGeo_MapGuide_MaestroAPI_LengthyOperationProgressCallBack_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.MoveResourceWithReferences(System.String,System.String,OSGeo.MapGuide.MaestroAPI.LengthyOperationCallBack,OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack)">MoveResourceWithReferences(String, String, LengthyOperationCallBack, LengthyOperationProgressCallBack)</h4>
+  <div class="markdown level1 summary"><p>Moves the specified resources to the specified path. Any resources referencing this resource
+are updated to reference the resource&apos;s new location</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool MoveResourceWithReferences(string oldResourceID, string newResourceID, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">oldResourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">newResourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.LengthyOperationCallBack.html">LengthyOperationCallBack</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack.html">LengthyOperationProgressCallBack</a></td>
+        <td><span class="parametername">progress</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_ResourceExists_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.ResourceExists*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_ResourceExists_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.ResourceExists(System.String)">ResourceExists(String)</h4>
+  <div class="markdown level1 summary"><p>Gets whether the specified resource id exists</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ResourceExists(string resourceID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResource*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResource_IResource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResource(IResource)">SaveResource(IResource)</h4>
+  <div class="markdown level1 summary"><p>Saves an object into the repository</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SaveResource(IResource resource)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IResource</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResourceAs_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResourceAs*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResourceAs_IResource_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResourceAs(IResource,System.String)">SaveResourceAs(IResource, String)</h4>
+  <div class="markdown level1 summary"><p>Saves an object into the repository using the specified resource id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SaveResourceAs(IResource resource, string resourceID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IResource</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td><p>The object to save</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td><p>The resourceId to save the object as</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResourceAs_IResource_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The <code data-dev-comment-type="paramref" class="paramref">resourceID</code> parameter only instructs this method where to save the resource to. It does
+not modify the <span class="xref">IResource.ResourceID</span> property of the input resource does not get
+updated as a result of this operation.</p>
+</div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SerializeObject_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SerializeObject*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SerializeObject_System_Object_System_IO_Stream_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SerializeObject(System.Object,System.IO.Stream)">SerializeObject(Object, Stream)</h4>
+  <div class="markdown level1 summary"><p>Serializes the specified object to the specified stream</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SerializeObject(object o, Stream stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">o</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetFolderHeader_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetFolderHeader*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetFolderHeader_System_String_ObjCommon_ResourceFolderHeaderType_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetFolderHeader(System.String,ObjCommon.ResourceFolderHeaderType)">SetFolderHeader(String, ObjCommon.ResourceFolderHeaderType)</h4>
+  <div class="markdown level1 summary"><p>Sets the header for the specified folder</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetFolderHeader(string resourceID, ObjCommon.ResourceFolderHeaderType header)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceFolderHeaderType</span></td>
+        <td><span class="parametername">header</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceData*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_System_String_System_String_ObjCommon_ResourceDataType_System_IO_Stream_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceData(System.String,System.String,ObjCommon.ResourceDataType,System.IO.Stream)">SetResourceData(String, String, ObjCommon.ResourceDataType, Stream)</h4>
+  <div class="markdown level1 summary"><p>Sets the resource data of a specified resource</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetResourceData(string resourceid, string dataname, ObjCommon.ResourceDataType datatype, Stream stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceid</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">dataname</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceDataType</span></td>
+        <td><span class="parametername">datatype</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_System_String_System_String_ObjCommon_ResourceDataType_System_IO_Stream__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>For the HTTP implementation of this API, the input stream must be seekable</p>
+</div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceData*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_System_String_System_String_ObjCommon_ResourceDataType_System_IO_Stream_OSGeo_MapGuide_MaestroAPI_Utility_StreamCopyProgressDelegate_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceData(System.String,System.String,ObjCommon.ResourceDataType,System.IO.Stream,OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate)">SetResourceData(String, String, ObjCommon.ResourceDataType, Stream, Utility.StreamCopyProgressDelegate)</h4>
+  <div class="markdown level1 summary"><p>Sets the resource data of a specified resource</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetResourceData(string resourceID, string dataName, ObjCommon.ResourceDataType dataType, Stream stream, Utility.StreamCopyProgressDelegate callback)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">dataName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceDataType</span></td>
+        <td><span class="parametername">dataType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate.html">Utility.StreamCopyProgressDelegate</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_System_String_System_String_ObjCommon_ResourceDataType_System_IO_Stream_OSGeo_MapGuide_MaestroAPI_Utility_StreamCopyProgressDelegate__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>For the HTTP implementation of this API, the input stream must be seekable</p>
+</div>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceHeader_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceHeader*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceHeader_System_String_ObjCommon_ResourceDocumentHeaderType_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceHeader(System.String,ObjCommon.ResourceDocumentHeaderType)">SetResourceHeader(String, ObjCommon.ResourceDocumentHeaderType)</h4>
+  <div class="markdown level1 summary"><p>Sets the header for the specified resource</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetResourceHeader(string resourceID, ObjCommon.ResourceDocumentHeaderType header)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceDocumentHeaderType</span></td>
+        <td><span class="parametername">header</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceXmlData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceXmlData*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceXmlData_System_String_System_IO_Stream_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceXmlData(System.String,System.IO.Stream)">SetResourceXmlData(String, Stream)</h4>
+  <div class="markdown level1 summary"><p>Sets the raw XML data of the specified resource</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetResourceXmlData(string resourceID, Stream stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_Touch_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.Touch*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_Touch_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.Touch(System.String)">Touch(String)</h4>
+  <div class="markdown level1 summary"><p>Forces a timestamp update of the specified resource. This is akin to
+setting the resource&apos;s content using its existing content.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Touch(string resourceID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_UpdateRepository_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.UpdateRepository*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_UpdateRepository_System_String_ObjCommon_ResourceFolderHeaderType_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.UpdateRepository(System.String,ObjCommon.ResourceFolderHeaderType)">UpdateRepository(String, ObjCommon.ResourceFolderHeaderType)</h4>
+  <div class="markdown level1 summary"><p>Updates the repository</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UpdateRepository(string resourceID, ObjCommon.ResourceFolderHeaderType header)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resourceID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">ObjCommon.ResourceFolderHeaderType</span></td>
+        <td><span class="parametername">header</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_UploadPackage_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.UploadPackage*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_UploadPackage_System_String_OSGeo_MapGuide_MaestroAPI_Utility_StreamCopyProgressDelegate_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.UploadPackage(System.String,OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate)">UploadPackage(String, Utility.StreamCopyProgressDelegate)</h4>
+  <div class="markdown level1 summary"><p>Upload a MapGuide Package file to the server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UploadPackage(string fileName, Utility.StreamCopyProgressDelegate callback)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td><p>Name of the file to upload</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate.html">Utility.StreamCopyProgressDelegate</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td><p>A callback argument used to display progress. May be null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  
+  
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_ResourceAdded" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.ResourceAdded">ResourceAdded</h4>
+  <div class="markdown level1 summary"><p>Raised when a resource is added</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event ResourceEventHandler ResourceAdded</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ResourceEventHandler.html">ResourceEventHandler</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_ResourceDeleted" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.ResourceDeleted">ResourceDeleted</h4>
+  <div class="markdown level1 summary"><p>Raised when a resource is deleted. Note if a folder is deleted, this will
+only be raised for the folder and not its children. Also note that this is
+raised on any move operations as the original source is for all intents and
+purposes, deleted.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event ResourceEventHandler ResourceDeleted</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ResourceEventHandler.html">ResourceEventHandler</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_ResourceUpdated" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.ResourceUpdated">ResourceUpdated</h4>
+  <div class="markdown level1 summary"><p>Raised when a resource is updated</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event ResourceEventHandler ResourceUpdated</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ResourceEventHandler.html">ResourceEventHandler</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

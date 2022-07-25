@@ -1,0 +1,736 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IApplicationDefinition
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IApplicationDefinition
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition">
+  
+  
+  <h1 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition" class="text-break">Interface IApplicationDefinition
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a fusion flexible layout (aka. An Application Definition document)</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_ValidatingSchema">IResource.ValidatingSchema</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_ResourceID">IResource.ResourceID</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_ResourceType">IResource.ResourceType</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_Serialize">IResource.Serialize()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html#OSGeo_MapGuide_ObjectModels_IResource_IsStronglyTyped">IResource.IsStronglyTyped</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.IVersionedEntity.html#OSGeo_MapGuide_ObjectModels_IVersionedEntity_ResourceVersion">IVersionedEntity.ResourceVersion</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement.html#OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_Extension">IExtensibleElement.Extension</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.html">OSGeo.MapGuide.ObjectModels.ApplicationDefinition</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IApplicationDefinition : IResource, IVersionedEntity, ICloneable, INotifyPropertyChanged, IExtensibleElement</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_MapSet_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.MapSet*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_MapSet" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.MapSet">MapSet</h4>
+  <div class="markdown level1 summary"><p>Gets the map set</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMapSet MapSet { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMapSet.html">IMapSet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_TemplateUrl_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.TemplateUrl*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_TemplateUrl" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.TemplateUrl">TemplateUrl</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the template url</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string TemplateUrl { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_Title_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.Title*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_Title" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.Title">Title</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the title</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Title { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_WidgetSets_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.WidgetSets*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_WidgetSets" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.WidgetSets">WidgetSets</h4>
+  <div class="markdown level1 summary"><p>Gets the widget sets</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;IWidgetSet&gt; WidgetSets { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IWidgetSet.html">IWidgetSet</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_AddMapGroup_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.AddMapGroup*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_AddMapGroup_System_String_System_Boolean_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.AddMapGroup(System.String,System.Boolean,System.String)">AddMapGroup(String, Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>Adds the new map group to the current map set with a default MapGuide child map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMapGroup AddMapGroup(string id, bool singleTile, string mapDefinitionId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">singleTile</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">mapDefinitionId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMapGroup.html">IMapGroup</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_AddMapGroup_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.AddMapGroup*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_AddMapGroup_System_String_System_Boolean_System_String_System_Double_System_Double_System_Double_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.AddMapGroup(System.String,System.Boolean,System.String,System.Double,System.Double,System.Double)">AddMapGroup(String, Boolean, String, Double, Double, Double)</h4>
+  <div class="markdown level1 summary"><p>Adds a new map group to the specified map set with a default MapGuide child map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMapGroup AddMapGroup(string id, bool singleTile, string mapDefinitionId, double centerX, double centerY, double scale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">singleTile</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">mapDefinitionId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">centerX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">centerY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMapGroup.html">IMapGroup</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_AddWidgetSet_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.AddWidgetSet*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_AddWidgetSet_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IWidgetSet_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.AddWidgetSet(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IWidgetSet)">AddWidgetSet(IWidgetSet)</h4>
+  <div class="markdown level1 summary"><p>Adds the specified widget set</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void AddWidgetSet(IWidgetSet set)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IWidgetSet.html">IWidgetSet</a></td>
+        <td><span class="parametername">set</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_CreateContainer_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.CreateContainer*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_CreateContainer_System_String_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinitionContainerInfo_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.CreateContainer(System.String,OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionContainerInfo)">CreateContainer(String, IApplicationDefinitionContainerInfo)</h4>
+  <div class="markdown level1 summary"><p>Creates a widget reference UI container</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IUIItemContainer CreateContainer(string name, IApplicationDefinitionContainerInfo containerInfo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionContainerInfo.html">IApplicationDefinitionContainerInfo</a></td>
+        <td><span class="parametername">containerInfo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItemContainer.html">IUIItemContainer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_CreateFlyout_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.CreateFlyout*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_CreateFlyout_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.CreateFlyout(System.String)">CreateFlyout(String)</h4>
+  <div class="markdown level1 summary"><p>Create a flyout menu</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IFlyoutItem CreateFlyout(string label)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">label</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IFlyoutItem.html">IFlyoutItem</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_CreateMapWidget_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.CreateMapWidget*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_CreateMapWidget_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.CreateMapWidget(System.String,System.String)">CreateMapWidget(String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates a map widget</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMapWidget CreateMapWidget(string mapId, string contextMenuId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">mapId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">contextMenuId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMapWidget.html">IMapWidget</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_CreateSeparator_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.CreateSeparator*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_CreateSeparator" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.CreateSeparator">CreateSeparator()</h4>
+  <div class="markdown level1 summary"><p>Creates a separator</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ISeparator CreateSeparator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ISeparator.html">ISeparator</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_CreateWidget_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.CreateWidget*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_CreateWidget_System_String_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IWidgetInfo_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.CreateWidget(System.String,OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IWidgetInfo)">CreateWidget(String, IWidgetInfo)</h4>
+  <div class="markdown level1 summary"><p>Create a widget from the specified widget information</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IWidget CreateWidget(string name, IWidgetInfo widgetInfo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IWidgetInfo.html">IWidgetInfo</a></td>
+        <td><span class="parametername">widgetInfo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IWidget.html">IWidget</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_CreateWidgetReference_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.CreateWidgetReference*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_CreateWidgetReference_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.CreateWidgetReference(System.String)">CreateWidgetReference(String)</h4>
+  <div class="markdown level1 summary"><p>Creates a widget reference</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IWidgetItem CreateWidgetReference(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IWidgetItem.html">IWidgetItem</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_CreateWidgetSet_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.CreateWidgetSet*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_CreateWidgetSet_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMapWidget_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.CreateWidgetSet(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMapWidget)">CreateWidgetSet(IMapWidget)</h4>
+  <div class="markdown level1 summary"><p>Creates a widget set</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IWidgetSet CreateWidgetSet(IMapWidget mapWidget)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMapWidget.html">IMapWidget</a></td>
+        <td><span class="parametername">mapWidget</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IWidgetSet.html">IWidgetSet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_RemoveWidgetSet_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.RemoveWidgetSet*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_RemoveWidgetSet_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IWidgetSet_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.RemoveWidgetSet(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IWidgetSet)">RemoveWidgetSet(IWidgetSet)</h4>
+  <div class="markdown level1 summary"><p>Removes the specified widget set</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveWidgetSet(IWidgetSet set)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IWidgetSet.html">IWidgetSet</a></td>
+        <td><span class="parametername">set</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

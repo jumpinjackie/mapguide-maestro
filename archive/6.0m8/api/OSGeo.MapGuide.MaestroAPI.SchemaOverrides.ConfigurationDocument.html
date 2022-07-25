@@ -1,0 +1,788 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ConfigurationDocument
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ConfigurationDocument
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument">
+  
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument" class="text-break">Class ConfigurationDocument
+  </h1>
+  <div class="markdown level0 summary"><p>The base class of all configuration documents</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ConfigurationDocument</span></div>
+      <div class="level2"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.html">GdalConfigurationDocument</a></div>
+      <div class="level2"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GenericConfigurationDocument.html">GenericConfigurationDocument</a></div>
+      <div class="level2"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.OdbcConfigurationDocument.html">OdbcConfigurationDocument</a></div>
+      <div class="level2"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.WmsConfigurationDocument.html">WmsConfigurationDocument</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.html">OSGeo.MapGuide.MaestroAPI.SchemaOverrides</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class ConfigurationDocument : IFdoSerializable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.#ctor*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument__ctor" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.#ctor">ConfigurationDocument()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html">ConfigurationDocument</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ConfigurationDocument()</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument__schemas" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument._schemas">_schemas</h4>
+  <div class="markdown level1 summary"><p>The list of logical schemas</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;FeatureSchema&gt; _schemas</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">FeatureSchema</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument__spatialContexts" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument._spatialContexts">_spatialContexts</h4>
+  <div class="markdown level1 summary"><p>The list of spatial contexts</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;IFdoSpatialContext&gt; _spatialContexts</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">IFdoSpatialContext</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_Schemas_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.Schemas*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_Schemas" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.Schemas">Schemas</h4>
+  <div class="markdown level1 summary"><p>Gets the array of logical schemas.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FeatureSchema[] Schemas { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">FeatureSchema</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_SpatialContexts_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.SpatialContexts*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_SpatialContexts" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.SpatialContexts">SpatialContexts</h4>
+  <div class="markdown level1 summary"><p>Gets the array of spatial contexts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IFdoSpatialContext[] SpatialContexts { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IFdoSpatialContext</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_AddSchema_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.AddSchema*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_AddSchema_FeatureSchema_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.AddSchema(FeatureSchema)">AddSchema(FeatureSchema)</h4>
+  <div class="markdown level1 summary"><p>Adds the logical schema.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddSchema(FeatureSchema schema)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">FeatureSchema</span></td>
+        <td><span class="parametername">schema</span></td>
+        <td><p>The schema.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_AddSpatialContext_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.AddSpatialContext*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_AddSpatialContext_IFdoSpatialContext_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.AddSpatialContext(IFdoSpatialContext)">AddSpatialContext(IFdoSpatialContext)</h4>
+  <div class="markdown level1 summary"><p>Adds the spatial context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddSpatialContext(IFdoSpatialContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IFdoSpatialContext</span></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The context.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_GetClass_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.GetClass*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_GetClass_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.GetClass(System.String,System.String)">GetClass(String, String)</h4>
+  <div class="markdown level1 summary"><p>Gets the class definition by schema and class names</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ClassDefinition GetClass(string schemaName, string className)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">schemaName</span></td>
+        <td><p>Name of the schema.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">className</span></td>
+        <td><p>Name of the class.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ClassDefinition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_GetSchema_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.GetSchema*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_GetSchema_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.GetSchema(System.String)">GetSchema(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the schema by name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FeatureSchema GetSchema(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">FeatureSchema</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_GetSpatialContext_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.GetSpatialContext*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_GetSpatialContext_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.GetSpatialContext(System.String)">GetSpatialContext(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the spatial context by name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IFdoSpatialContext GetSpatialContext(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IFdoSpatialContext</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_GetSpatialContextNames_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.GetSpatialContextNames*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_GetSpatialContextNames" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.GetSpatialContextNames">GetSpatialContextNames()</h4>
+  <div class="markdown level1 summary"><p>Gets the array spatial context names.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] GetSpatialContextNames()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_Load_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.Load*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_Load_System_IO_Stream_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.Load(System.IO.Stream)">Load(Stream)</h4>
+  <div class="markdown level1 summary"><p>Creates a configuration document from the specified stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ConfigurationDocument Load(Stream stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html">ConfigurationDocument</a></td>
+        <td><p>The configuration document</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_LoadXml_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.LoadXml*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_LoadXml_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.LoadXml(System.String)">LoadXml(String)</h4>
+  <div class="markdown level1 summary"><p>Creates a configuration document from XML.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ConfigurationDocument LoadXml(string xml)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">xml</span></td>
+        <td><p>The XML.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html">ConfigurationDocument</a></td>
+        <td><p>The configuration document</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_ReadSchemaMappings_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.ReadSchemaMappings*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_ReadSchemaMappings_XmlNode_XmlNamespaceManager_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.ReadSchemaMappings(XmlNode,XmlNamespaceManager)">ReadSchemaMappings(XmlNode, XmlNamespaceManager)</h4>
+  <div class="markdown level1 summary"><p>Write this document&apos;s schema mappings from the given XML document</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract void ReadSchemaMappings(XmlNode node, XmlNamespaceManager mgr)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">XmlNode</span></td>
+        <td><span class="parametername">node</span></td>
+        <td><p>The node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">XmlNamespaceManager</span></td>
+        <td><span class="parametername">mgr</span></td>
+        <td><p>The namespace manager.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_ReadXml_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.ReadXml*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_ReadXml_XmlNode_XmlNamespaceManager_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.ReadXml(XmlNode,XmlNamespaceManager)">ReadXml(XmlNode, XmlNamespaceManager)</h4>
+  <div class="markdown level1 summary"><p>Set the current element&apos;s content from the current XML node</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReadXml(XmlNode node, XmlNamespaceManager mgr)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">XmlNode</span></td>
+        <td><span class="parametername">node</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">XmlNamespaceManager</span></td>
+        <td><span class="parametername">mgr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_RemoveSchema_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.RemoveSchema*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_RemoveSchema_FeatureSchema_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.RemoveSchema(FeatureSchema)">RemoveSchema(FeatureSchema)</h4>
+  <div class="markdown level1 summary"><p>Removes the logical schema.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveSchema(FeatureSchema schema)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">FeatureSchema</span></td>
+        <td><span class="parametername">schema</span></td>
+        <td><p>The schema.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_RemoveSpatialContext_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.RemoveSpatialContext*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_RemoveSpatialContext_IFdoSpatialContext_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.RemoveSpatialContext(IFdoSpatialContext)">RemoveSpatialContext(IFdoSpatialContext)</h4>
+  <div class="markdown level1 summary"><p>Removes the spatial context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveSpatialContext(IFdoSpatialContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IFdoSpatialContext</span></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The context.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_ToXml_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.ToXml*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_ToXml" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.ToXml">ToXml()</h4>
+  <div class="markdown level1 summary"><p>Returns the XML form of this document</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToXml()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_WriteSchemaMappings_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.WriteSchemaMappings*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_WriteSchemaMappings_XmlDocument_XmlNode_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.WriteSchemaMappings(XmlDocument,XmlNode)">WriteSchemaMappings(XmlDocument, XmlNode)</h4>
+  <div class="markdown level1 summary"><p>Write this document&apos;s schema mappings to the given XML document</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract void WriteSchemaMappings(XmlDocument doc, XmlNode currentNode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">XmlDocument</span></td>
+        <td><span class="parametername">doc</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">XmlNode</span></td>
+        <td><span class="parametername">currentNode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_WriteXml_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.WriteXml*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_WriteXml_XmlDocument_XmlNode_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.WriteXml(XmlDocument,XmlNode)">WriteXml(XmlDocument, XmlNode)</h4>
+  <div class="markdown level1 summary"><p>Writes the current element&apos;s content</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void WriteXml(XmlDocument doc, XmlNode currentNode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">XmlDocument</span></td>
+        <td><span class="parametername">doc</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">XmlNode</span></td>
+        <td><span class="parametername">currentNode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

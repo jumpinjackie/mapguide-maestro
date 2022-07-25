@@ -1,0 +1,650 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ResourceTypeDescriptor
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ResourceTypeDescriptor
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor">
+  
+  
+  <h1 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor" class="text-break">Class ResourceTypeDescriptor
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a unique resource type / version pair</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ResourceTypeDescriptor</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.html">OSGeo.MapGuide.ObjectModels</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ResourceTypeDescriptor</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor__ctor_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.#ctor*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor__ctor_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.#ctor(System.String,System.String)">ResourceTypeDescriptor(String, String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.html">ResourceTypeDescriptor</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ResourceTypeDescriptor(string resType, string ver)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resType</span></td>
+        <td><p>Type of the res.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ver</span></td>
+        <td><p>The ver.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_ApplicationDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.ApplicationDefinition*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_ApplicationDefinition" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.ApplicationDefinition">ApplicationDefinition</h4>
+  <div class="markdown level1 summary"><p>Application Definition v1.0.0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResourceTypeDescriptor ApplicationDefinition { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.html">ResourceTypeDescriptor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_DrawingSource_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.DrawingSource*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_DrawingSource" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.DrawingSource">DrawingSource</h4>
+  <div class="markdown level1 summary"><p>Drawing Source v1.0.0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResourceTypeDescriptor DrawingSource { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.html">ResourceTypeDescriptor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_FeatureSource_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.FeatureSource*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_FeatureSource" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.FeatureSource">FeatureSource</h4>
+  <div class="markdown level1 summary"><p>Feature Source v1.0.0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResourceTypeDescriptor FeatureSource { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.html">ResourceTypeDescriptor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_LayerDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.LayerDefinition*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_LayerDefinition" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.LayerDefinition">LayerDefinition</h4>
+  <div class="markdown level1 summary"><p>Layer Definition v1.0.0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResourceTypeDescriptor LayerDefinition { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.html">ResourceTypeDescriptor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_LoadProcedure_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.LoadProcedure*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_LoadProcedure" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.LoadProcedure">LoadProcedure</h4>
+  <div class="markdown level1 summary"><p>Load Procedure v1.0.0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResourceTypeDescriptor LoadProcedure { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.html">ResourceTypeDescriptor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_MapDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.MapDefinition*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_MapDefinition" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.MapDefinition">MapDefinition</h4>
+  <div class="markdown level1 summary"><p>Map Definition v1.0.0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResourceTypeDescriptor MapDefinition { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.html">ResourceTypeDescriptor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_PrintLayout_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.PrintLayout*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_PrintLayout" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.PrintLayout">PrintLayout</h4>
+  <div class="markdown level1 summary"><p>Print Layout v1.0.0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResourceTypeDescriptor PrintLayout { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.html">ResourceTypeDescriptor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_ResourceType_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.ResourceType*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_ResourceType" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.ResourceType">ResourceType</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the type of the resource.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ResourceType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The type of the resource.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_SymbolDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.SymbolDefinition*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_SymbolDefinition" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.SymbolDefinition">SymbolDefinition</h4>
+  <div class="markdown level1 summary"><p>Symbol Definition v1.0.0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResourceTypeDescriptor SymbolDefinition { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.html">ResourceTypeDescriptor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_SymbolLibrary_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.SymbolLibrary*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_SymbolLibrary" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.SymbolLibrary">SymbolLibrary</h4>
+  <div class="markdown level1 summary"><p>Symbol Library v1.0.0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResourceTypeDescriptor SymbolLibrary { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.html">ResourceTypeDescriptor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.Version*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_Version" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.Version">Version</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the version.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Version { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The version.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_WebLayout_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.WebLayout*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_WebLayout" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.WebLayout">WebLayout</h4>
+  <div class="markdown level1 summary"><p>Web Layout v1.0.0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResourceTypeDescriptor WebLayout { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.html">ResourceTypeDescriptor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_XsdName_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.XsdName*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_XsdName" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.XsdName">XsdName</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the validating XML schema</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string XsdName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_Equals_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.Equals*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_Equals_System_Object_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the specified <span class="xref">System.Object</span> is equal to this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>The <span class="xref">System.Object</span> to compare with this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if the specified <span class="xref">System.Object</span> is equal to this instance; otherwise, <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Object.Equals(System.Object)</span></div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.NullReferenceException</span></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">obj</code> parameter is null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_GetHashCode_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.GetHashCode*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_GetHashCode" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"><p>Returns a hash code for this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Object.GetHashCode()</span></div>
+  
+  
+  <a id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_ToString_" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.ToString*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_ToString" data-uid="OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Returns a <span class="xref">System.String</span> that represents this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>A <span class="xref">System.String</span> that represents this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Object.ToString()</span></div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

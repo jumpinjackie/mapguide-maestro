@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Understanding Layers | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Understanding Layers | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="layer-editor">
+<h1 id="understanding-layers">Understanding Layers</h1>
+
+<p>There are 3 types of Layer Definitions:</p>
+<ul>
+<li>Vector Layer Definitions</li>
+<li>Drawing Layer Definitions</li>
+<li>Grid (Raster) Layer Definitions</li>
+</ul>
+<p><strong>Vector Layer Definitions</strong> describe style and presentation settings for vector data coming from a Feature Source. Structurally, a Vector
+Layer Definition has:</p>
+<ul>
+<li>1 or more Scale Ranges</li>
+<li>Each Scale Range can have 1 or more point/area/line rules. Creating a theme will auto-generate a certain number of point/area/line rules based on the theming criteria.</li>
+</ul>
+<p><strong>Drawing Layer Definitions</strong> describe presentation settings for data coming from a Drawing Source. A Drawing Source layer simply specifies 
+the DWF layers from the Drawing Source that will be displayed for this Layer Definition</p>
+<p><strong>Raster Layer Definitions</strong> describe style and presentation settings for raster data coming from a Feature Source. Structurally a Raster
+Layer Definition has a single scale range, with a specified color style and optional hillshade and elevation settings.</p>
+<p>This section describes the Layer Definition editor and its various settings.</p>
+<h2 id="vector-layer-editor">Vector Layer Editor</h2>
+<h3 id="resource-settings">Resource Settings</h3>
+<p>The <strong>Resource Settings</strong> section of the Vector Layer editor specifies the core properties of this Vector Layer</p>
+<p><img src="../images/ldf_vector_settings.png" alt=""></p>
+<p> <em>Resource Settings section</em></p>
+<p>The <strong>Feature Source</strong> field specifies the Feature Source this Layer Definition applies to. The <strong>Feature Class</strong> field and <strong>Geometry Property</strong>
+fields specifies the Geometry property that these style settings will be applied to.</p>
+<p>All the fields under the <strong>Layer Settings</strong> group specify viewer interaction behaviors:</p>
+<ul>
+<li><strong>Filter</strong> specifies an FDO attribute filter that will be applied when querying data from the Feature Source for rendering</li>
+<li><strong>Hyperlink</strong> specifies an FDO expression that represents the URL that will be launched when the user CTRL+clicks on a feature in this layer</li>
+<li><strong>Tooltip</strong> specifics an FDO expression that represents the HTML content that is displayed in a tooltip when the user hovers over any feature on this layer with the mouse pointer.</li>
+</ul>
+<h3 id="layer-properties-visible-in-viewer">Layer Properties Visible in Viewer</h3>
+<p>The <strong>Layer Properties Visible in Viewer</strong> section of the editor specifies what properties of this layer are visible in the <strong>Properties Pane</strong> of the AJAX or Fusion viewer when a feature
+from this layer is selected.</p>
+<p><img src="../images/ldf_vector_property_mappings.png" alt=""></p>
+<p> <em>Layer Properties Visible in Viewer</em></p>
+<p>Simply tick the desired properties to make them visible. You can edit cells in the <strong>Display Name</strong> column to change the label for each property.</p>
+<h3 id="layer-styles">Layer Styles</h3>
+<p>The <strong>Layer Styles</strong> section is the meat and potatoes of this editor. </p>
+<p><img src="../images/ldf_vector_scale_range.png" alt=""></p>
+<p> <em>Layer Styles</em></p>
+<p>The above screenshot shows an editor for one particular scale range (0 to 10000). Clicking <strong>Add</strong> on the toolbar will add another control
+for a new scale range. Each scale range has:</p>
+<ul>
+<li>0 or more point styles. Un-ticking <strong>Display points</strong> will detach all currently specified point styles.</li>
+<li>0 or more line styles. Un-ticking <strong>Display lines</strong> will detach all currently specified line styles.</li>
+<li>0 or more area (polygon) styles. Un-ticking <strong>Display areas</strong> will detach all currently specified area styles.</li>
+</ul>
+<p>Each point/line/area style is represented by a control like the one below</p>
+<p><img src="../images/ldf_vector_rule_control.png" alt=""></p>
+<p> <em>A style rule control</em></p>
+<p>These controls will allow you to edit (from left to right):</p>
+<ul>
+<li>The FDO filter that a feature must satisfy for this rule to be applied (default is empty = all features). Clicking the button will launch the FDO Expression Editor.</li>
+<li>The legend label for this rule</li>
+<li>The style preview for this rule. Clicking the button will launch the respective point/line/area style editor.</li>
+<li>The feature label. Clicking the button will launch the FDO Expression Editor.</li>
+</ul>
+<p>Rules can be added by clicking the add button on the top toolbar (indicated by a green plus icon).</p>
+<p>A theme can be generated by clicking on the theme button on the top toolbar (indicated by 3 overlapping circles of different colors). See <a class="xref" href="understanding_layers.html#theming-layers">Understanding Layers</a> for more information.</p>
+<p>Rules can be removed by clicking the remove button for the associated rule style control (indicated by a red minus icon)</p>
+<h3 id="theming-layers">Theming Layers</h3>
+<p>Clicking the theme button will display the following dialog</p>
+<p><img src="../images/ldf_vector_theme_generator.png" alt=""></p>
+<p> <em>The theme creator dialog</em></p>
+<p>This dialog provides all the options for generating a theme, which can be based on:</p>
+<ul>
+<li>All values of a specific property</li>
+<li>All ranges/distributions of a specific property</li>
+</ul>
+<p>Each generated rule wil use a color from a specified color ramp. The color ramp can be gradient-based or use
+ColorBrewer thematics.</p>
+<p>An option is also available that allows you to use the first rule of your current style as the &quot;prototype&quot; from which your theme rules will be created
+from, avoiding the need to manually re-style each individual theme rule after generation.</p>
+<p>Once you have specified the theme settings and clicked <strong>OK</strong>, the matching rules will be generated and will replace
+or be appended to your existing set of style rules for this scale range.</p>
+<h3 id="point-style-rules">Point Style Rules</h3>
+<p>Clicking the <strong>...</strong> button beside the previewed point style on the rule editor control will display the Point Style Dialog</p>
+<p><img src="../images/ldf_vector_point_rule.png" alt=""></p>
+<p> <em>The Point Style dialog</em></p>
+<p><img src="../images/ldf_vector_point_rule_pt2.png" alt=""></p>
+<p> <em>The Point Style dialog (fill/border settings)</em></p>
+<p>There are many options here, but this guide will only cover the main ones.</p>
+<p>Point features can be drawn as symbols or as text labels. The <strong>Display Points</strong> checkbox governs this behavior. Ticking it will
+cause these points to be drawn as symbols. Un-ticking it will cause these points to be drawn as text. The symbol size and rotation
+parameters can either be numbers or numerical FDO expressions.</p>
+<p>For point symbology, you can choose a pre-defined list of symbols under the <strong>Symbol</strong> dropdown. The very last option 
+in that dropdown (<code>Symbol</code>) allows you to pick a custom symbol from an existing <strong>Symbol Library</strong> resource.</p>
+<p>Note that the generated preview at the bottom of the dialog is an approximation and does not exactly reflect the style settings you have defined. This preview would
+be the same image if you were to look at this layer&#39;s icon in the AJAX or Fusion viewer legend.</p>
+<p>If you want an exact representation, use the <strong>Preview</strong> command in the main toolbar to view this Layer in your system default web browser. Here
+you can better verify your point style settings are correct.</p>
+<h3 id="line-style-rules">Line Style Rules</h3>
+<p>Clicking the <strong>...</strong> button beside the previewed line style on the rule editor control will display the Line Style Dialog</p>
+<p><img src="../images/ldf_vector_line_rule.png" alt=""></p>
+<p> <em>The Line Style Dialog</em></p>
+<p>Just like point rules, line rules need not actually display lines. Line rules can display text. If so, the text labels will
+be rendered along the line geometry of each matching feature, but the line itself will not be rendered. The <strong>Apply line style</strong>
+checkbox governs whether the lines will be rendered. </p>
+<p>You can specify color, thickness and line pattern for the line style. Size context and units govern how the thickness
+parameter is to be interpreted when rendering.</p>
+<p>Line styles can be single or composite. The <strong>Use composite lines</strong> checkbox determines whether the line style will be single or composite. </p>
+<p><img src="../images/ldf_vector_line_rule_composite.png" alt=""></p>
+<p> <em>The Line Style Dialog with composite settings enabled</em></p>
+<p>Composite line styles consists of multiple line patterns stacked on top of each other to form a composite line style. Line 
+geometries of each matching feature will be rendered with this line style. To add or remove lines from the composite line style,
+use the <strong>Add</strong> and <strong>Remove</strong> buttons on the Composite Line toolbar.</p>
+<h3 id="area-style-rules">Area Style Rules</h3>
+<p>Clicking the <strong>...</strong> button beside the previewed area style on the rule editor control will display the Area Style Dialog</p>
+<p><img src="../images/ldf_vector_area_rule.png" alt=""></p>
+<p> <em>The Area Style Dialog</em></p>
+<p>This dialog allows you to control the two main aspects of an area style:</p>
+<ul>
+<li>The fill display</li>
+<li>The edge/border display</li>
+</ul>
+<p>Once again, the preview at the bottom of the dialog reflects your current style settings. </p>
+<h3 id="composite-style-rules">Composite Style Rules</h3>
+<p>Clicking the <strong>...</strong> button beside the previewed area style on the rule editor control will display the Symbol Instances Dialog</p>
+<p><img src="../images/ldf_vector_composite_rule.png" alt=""></p>
+<p> <em>A Composite Style Rule control</em></p>
+<p>This dialog allows you to include references to existing Symbol Defintions or define such Symbol Definitions inline.</p>
+<p><img src="../images/ldf_symbol_instances_dialog.png" alt=""></p>
+<p> <em>The Symbol Instances Dialog</em></p>
+<p>For each symbol definition you include (referenced or inline), you can provide override any parameter values that are exposed. You 
+can use FDO expressions for override parameter values.</p>
+<p>The inline symbol definitions use the same editors as the normal symbol definition editor. See <a class="xref" href="understanding_symbol_definitions.html">Understanding Symbol Definitions</a></p>
+<div class="NOTE"><h5>Note</h5><p>Unlike Point/Line/Area styles, the top-level preview is blank because rendering composite symbolization preview is not currently supported. However
+the <strong>Symbol Instances Dialog</strong> does offer basic previewing support. What you see in the symbol preview is simply an enlarged version of the icon that
+you would see for this layer if it was displayed in the AJAX or Fusion viewer legend.</p>
+</div>
+<h3 id="label-settings">Label Settings</h3>
+<p>Clicking the <strong>...</strong> button beside the label preview on the rule editor control will display the Label Settings Dialog</p>
+<p><img src="../images/ldf_vector_label.png" alt=""></p>
+<p> <em>The Label Settings Dialog</em></p>
+<p>This dialog allows you to control the labelling of line/area/point styles. Label text can be hard-coded strings or more commonly: derived
+from an FDO expression or a Feature Class Property.</p>
+<h2 id="drawing-layer-editor">Drawing Layer Editor</h2>
+<p>Just like the Drawing Source editor, the Drawing Layer editor is pretty simple and straight forward.</p>
+<p><img src="../images/ldf_drawing_settings.png" alt=""></p>
+<p> <em>The Drawing Layer Editor</em></p>
+<p>All you need to specify are:</p>
+<ul>
+<li>The Drawing Source this layer will read from.</li>
+<li>The DWF sheet this layer will read from.</li>
+<li>The DWF layers this layer will read from.</li>
+<li>The min/max scale that this Drawing Layer will be visible at.</li>
+</ul>
+<h2 id="raster-layer-editor">Raster Layer Editor</h2>
+<h3 id="raster-layer-settings">Raster Layer Settings</h3>
+<p>The Raster Layer editor defines style settings for raster data coming from a Feature Source.</p>
+<p><img src="../images/ldf_raster_settings.png" alt=""></p>
+<p> <em>Raster Layer Settings</em></p>
+<p>Just like the Vector Layer editor, the Raster Layer editor requires a reference to a <strong>Feature Source</strong> and
+the <strong>Geometry Property</strong> (Raster Property) of a <strong>Feature Class</strong> so it knows where to source its raster 
+data from.</p>
+<h3 id="raster-layer-visibility">Raster Layer Visibility</h3>
+<p>The Raster Layer Visibility settings govern what scale this Raster Layer is visible at.  </p>
+<p><img src="../images/ldf_raster_visibility.png" alt=""></p>
+<p> <em>Raster Layer Visibility</em></p>
+<p>You can also define bitonal image color settings and the zoom factor which the raster is rebuilt.</p>
+<h3 id="advanced-raster-settings">Advanced Raster Settings</h3>
+<p>The Advanced Raster Settings allows you to enable settings for raster formats that support such settings.</p>
+<p><img src="../images/ldf_raster_advanced.png" alt=""></p>
+<p> <em>Advanced Raster Layer Settings</em></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/Docs/userguide/understanding_layers.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

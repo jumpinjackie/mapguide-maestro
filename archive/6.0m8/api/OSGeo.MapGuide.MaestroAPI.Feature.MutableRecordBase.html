@@ -1,0 +1,1313 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class MutableRecordBase
+   | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class MutableRecordBase
+   | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase">
+  
+  
+  <h1 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase" class="text-break">Class MutableRecordBase
+  </h1>
+  <div class="markdown level0 summary"><p>A record whose properties can be modified</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html">RecordBase</a></div>
+    <div class="level2"><span class="xref">MutableRecordBase</span></div>
+      <div class="level3"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.MutableFeatureBase.html">MutableFeatureBase</a></div>
+      <div class="level3"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecord.html">MutableRecord</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecordReset.html">IRecordReset</a></div>
+    <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IMutableRecord.html">IMutableRecord</a></div>
+    <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a></div>
+    <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecordInitialize.html">IRecordInitialize</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase__values">RecordBase._values</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase__ordinalMap">RecordBase._ordinalMap</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetValue_System_String_">RecordBase.GetValue(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_PropertyExists_System_String_">RecordBase.PropertyExists(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_PutValue_System_String_OSGeo_MapGuide_MaestroAPI_Feature_PropertyValue_">RecordBase.PutValue(String, PropertyValue)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_IsNull_System_String_">RecordBase.IsNull(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_IsNull_System_Int32_">RecordBase.IsNull(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetBoolean_System_String_">RecordBase.GetBoolean(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetByte_System_String_">RecordBase.GetByte(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetBlob_System_String_">RecordBase.GetBlob(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetClob_System_String_">RecordBase.GetClob(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetDouble_System_String_">RecordBase.GetDouble(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetDateTime_System_String_">RecordBase.GetDateTime(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetFeatureObject_System_String_">RecordBase.GetFeatureObject(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetInt16_System_String_">RecordBase.GetInt16(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetInt32_System_String_">RecordBase.GetInt32(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetInt64_System_String_">RecordBase.GetInt64(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetSingle_System_String_">RecordBase.GetSingle(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetString_System_String_">RecordBase.GetString(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetGeometry_System_String_">RecordBase.GetGeometry(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetBoolean_System_Int32_">RecordBase.GetBoolean(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetByte_System_Int32_">RecordBase.GetByte(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetBlob_System_Int32_">RecordBase.GetBlob(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetClob_System_Int32_">RecordBase.GetClob(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetDouble_System_Int32_">RecordBase.GetDouble(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_OSGeo_MapGuide_MaestroAPI_Feature_IRecord_GetDateTime_System_Int32_">RecordBase.IRecord.GetDateTime(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetFeatureObject_System_Int32_">RecordBase.GetFeatureObject(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetInt16_System_Int32_">RecordBase.GetInt16(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetInt32_System_Int32_">RecordBase.GetInt32(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetInt64_System_Int32_">RecordBase.GetInt64(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetSingle_System_Int32_">RecordBase.GetSingle(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetString_System_Int32_">RecordBase.GetString(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetGeometry_System_Int32_">RecordBase.GetGeometry(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_FieldCount">RecordBase.FieldCount</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetName_System_Int32_">RecordBase.GetName(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetFieldType_System_Int32_">RecordBase.GetFieldType(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_Update_OSGeo_MapGuide_MaestroAPI_Feature_IRecord_">RecordBase.Update(IRecord)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_PropertyNames">RecordBase.PropertyNames</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetPropertyType_System_String_">RecordBase.GetPropertyType(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.RecordBase.html#OSGeo_MapGuide_MaestroAPI_Feature_RecordBase_GetPropertyType_System_Int32_">RecordBase.GetPropertyType(Int32)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.html">OSGeo.MapGuide.MaestroAPI.Feature</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MutableRecordBase : RecordBase, IRecordReset, IMutableRecord, IRecord, IRecordInitialize</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.#ctor*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase__ctor_OSGeo_MapGuide_MaestroAPI_Feature_IRecordInitialize_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.#ctor(OSGeo.MapGuide.MaestroAPI.Feature.IRecordInitialize)">MutableRecordBase(IRecordInitialize)</h4>
+  <div class="markdown level1 summary"><p>Creates a new instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected MutableRecordBase(IRecordInitialize prototype)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecordInitialize.html">IRecordInitialize</a></td>
+        <td><span class="parametername">prototype</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.Item*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_Item_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the <span class="xref">System.Object</span> at the specified index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object this[int index] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.Item*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_Item_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.Item(System.String)">Item[String]</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the <span class="xref">System.Object</span> with the specified name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object this[string name] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_ClonePropertyValue_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.ClonePropertyValue*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_ClonePropertyValue_OSGeo_MapGuide_MaestroAPI_Feature_PropertyValue_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.ClonePropertyValue(OSGeo.MapGuide.MaestroAPI.Feature.PropertyValue)">ClonePropertyValue(PropertyValue)</h4>
+  <div class="markdown level1 summary"><p>Creates a clone of the specified <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.PropertyValue.html">PropertyValue</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected PropertyValue ClonePropertyValue(PropertyValue propertyValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.PropertyValue.html">PropertyValue</a></td>
+        <td><span class="parametername">propertyValue</span></td>
+        <td><p>The instance to clone</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.PropertyValue.html">PropertyValue</a></td>
+        <td><p>The cloned instance</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetBlob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetBlob*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetBlob_System_Int32_System_Byte___" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetBlob(System.Int32,System.Byte[])">SetBlob(Int32, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Sets the blob value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBlob(int index, byte[] value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetBlob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetBlob*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetBlob_System_String_System_Byte___" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetBlob(System.String,System.Byte[])">SetBlob(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Sets the blob value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBlob(string name, byte[] value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetBoolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetBoolean*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetBoolean_System_Int32_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetBoolean(System.Int32,System.Boolean)">SetBoolean(Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Sets the boolean value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBoolean(int index, bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetBoolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetBoolean*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetBoolean_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetBoolean(System.String,System.Boolean)">SetBoolean(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Sets the boolean value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBoolean(string name, bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetByte_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetByte*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetByte_System_Int32_System_Byte_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetByte(System.Int32,System.Byte)">SetByte(Int32, Byte)</h4>
+  <div class="markdown level1 summary"><p>Sets the byte value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetByte(int index, byte value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetByte_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetByte*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetByte_System_String_System_Byte_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetByte(System.String,System.Byte)">SetByte(String, Byte)</h4>
+  <div class="markdown level1 summary"><p>Sets the byte value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetByte(string name, byte value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetClob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetClob*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetClob_System_Int32_System_Char___" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetClob(System.Int32,System.Char[])">SetClob(Int32, Char[])</h4>
+  <div class="markdown level1 summary"><p>Sets the clob value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetClob(int index, char[] value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Char</span>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetClob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetClob*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetClob_System_String_System_Char___" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetClob(System.String,System.Char[])">SetClob(String, Char[])</h4>
+  <div class="markdown level1 summary"><p>Sets the clob value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetClob(string name, char[] value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Char</span>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetDateTime_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetDateTime*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetDateTime_System_Int32_DateTime_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetDateTime(System.Int32,DateTime)">SetDateTime(Int32, DateTime)</h4>
+  <div class="markdown level1 summary"><p>Sets the datetime value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDateTime(int index, DateTime value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DateTime</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetDateTime_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetDateTime*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetDateTime_System_String_DateTime_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetDateTime(System.String,DateTime)">SetDateTime(String, DateTime)</h4>
+  <div class="markdown level1 summary"><p>Sets the datetime value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDateTime(string name, DateTime value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DateTime</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetDouble_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetDouble*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetDouble_System_Int32_System_Double_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetDouble(System.Int32,System.Double)">SetDouble(Int32, Double)</h4>
+  <div class="markdown level1 summary"><p>Sets the double value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDouble(int index, double value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetDouble_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetDouble*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetDouble_System_String_System_Double_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetDouble(System.String,System.Double)">SetDouble(String, Double)</h4>
+  <div class="markdown level1 summary"><p>Sets the double value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDouble(string name, double value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetGeometry_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetGeometry*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetGeometry_System_Int32_IGeometryRef_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetGeometry(System.Int32,IGeometryRef)">SetGeometry(Int32, IGeometryRef)</h4>
+  <div class="markdown level1 summary"><p>Sets the geometry value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetGeometry(int index, IGeometryRef value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IGeometryRef</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetGeometry_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetGeometry*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetGeometry_System_String_IGeometryRef_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetGeometry(System.String,IGeometryRef)">SetGeometry(String, IGeometryRef)</h4>
+  <div class="markdown level1 summary"><p>Sets the geometry value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetGeometry(string name, IGeometryRef value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IGeometryRef</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetInt16_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetInt16*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetInt16_System_Int32_System_Int16_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetInt16(System.Int32,System.Int16)">SetInt16(Int32, Int16)</h4>
+  <div class="markdown level1 summary"><p>Sets the int16 value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetInt16(int index, short value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetInt16_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetInt16*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetInt16_System_String_System_Int16_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetInt16(System.String,System.Int16)">SetInt16(String, Int16)</h4>
+  <div class="markdown level1 summary"><p>Sets the int16 value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetInt16(string name, short value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetInt32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetInt32*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetInt32_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetInt32(System.Int32,System.Int32)">SetInt32(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets the int32 value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetInt32(int index, int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetInt32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetInt32*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetInt32_System_String_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetInt32(System.String,System.Int32)">SetInt32(String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets the int32 value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetInt32(string name, int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetInt64_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetInt64*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetInt64_System_Int32_System_Int64_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetInt64(System.Int32,System.Int64)">SetInt64(Int32, Int64)</h4>
+  <div class="markdown level1 summary"><p>Sets the int64 value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetInt64(int index, long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetInt64_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetInt64*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetInt64_System_String_System_Int64_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetInt64(System.String,System.Int64)">SetInt64(String, Int64)</h4>
+  <div class="markdown level1 summary"><p>Sets the int64 value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetInt64(string name, long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetNull_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetNull*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetNull_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetNull(System.Int32)">SetNull(Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets whether the property value at the specified index has a null property value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetNull(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetNull_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetNull*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetNull_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetNull(System.String)">SetNull(String)</h4>
+  <div class="markdown level1 summary"><p>Sets whether the specified property name has a null property value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetNull(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetSingle_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetSingle*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetSingle_System_Int32_System_Single_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetSingle(System.Int32,System.Single)">SetSingle(Int32, Single)</h4>
+  <div class="markdown level1 summary"><p>Sets the single value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSingle(int index, float value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetSingle_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetSingle*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetSingle_System_String_System_Single_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetSingle(System.String,System.Single)">SetSingle(String, Single)</h4>
+  <div class="markdown level1 summary"><p>Sets the single value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSingle(string name, float value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetString_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetString*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetString_System_Int32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetString(System.Int32,System.String)">SetString(Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Sets the string value at the specified index</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetString(int index, string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetString_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetString*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_MutableRecordBase_SetString_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.MutableRecordBase.SetString(System.String,System.String)">SetString(String, String)</h4>
+  <div class="markdown level1 summary"><p>Sets the string value of the specified property</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetString(string name, string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecordReset.html">IRecordReset</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IMutableRecord.html">IMutableRecord</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecordInitialize.html">IRecordInitialize</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

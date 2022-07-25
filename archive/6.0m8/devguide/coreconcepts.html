@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Core Concepts | MapGuide Maestro </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Core Concepts | MapGuide Maestro ">
+    <meta name="generator" content="docfx 2.26.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="core-concepts">Core Concepts</h1>
+
+<p>.. todo::
+    Still has references to old SDK package</p>
+<h2 id="connections">Connections</h2>
+<h3 id="overview">Overview</h3>
+<p>Connections are the primary entry point into the functionality offered by the
+Maestro API. It abstracts away the various methods of interacting with a MapGuide
+Server into a single unified interface</p>
+<p><img src="../images/ConnectionOverview.png" alt=""></p>
+<h3 id="known-implementations">Known Implementations</h3>
+<p>There are 3 known implementations of the <a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> interface:</p>
+<ul>
+<li><code>Maestro.Http</code>: A HTTP implementation (that communicates with the http mapagent)</li>
+<li><code>Maestro.LocalNative</code>: A Local Native implementation (that wraps the official MapGuide API)</li>
+<li><code>Maestro.Local</code>: A Local implementation (that wraps the <a href="http://trac.osgeo.org/mapguide/wiki/mg-desktop">mg-desktop</a> API)    </li>
+</ul>
+<h2 id="service-interfaces">Service Interfaces</h2>
+<p>A connection is represented by the <a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> interface. Creating such connections is done via the <a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.html">ConnectionProviderRegistry</a>
+class. This class uses the <code>ConnectionProviders.xml</code> file to resolve and load the matching implementation</p>
+<p>Additional implementations can be registered in the <code>ConnectionProviders.xml</code> file</p>
+<div class="NOTE"><h5>Note</h5><p>Starting with the <strong>6.0m8</strong> release, the <code>Maestro.Http</code> provider is built into the Maestro API itself. The <code>ConnectionProviders.xml</code>
+file is not required if you are only using this connection provider.</p>
+</div>
+<p>The LocalNative implementation source code is included with this SDK, but requires the official
+MapGuide API binaries to be also added to your application&#39;s directory. As a result this
+provider is disabled in the <code>ConnectionProviders.xml</code> file by default. The SDK includes a tool
+to help you build this LocalNative provider. </p>
+<p>The Local implementation is not included with the SDK. The windows version of Maestro
+includes this implementation and you can copy the required files from your Maestro
+installation should you choose to use this implementation.</p>
+<p>All examples outlined in this guide assume the use of the HTTP implementation (<code>Maestro.Http</code>)</p>
+<h2 id="resource-objects">Resource Objects</h2>
+<h3 id="overview-1">Overview</h3>
+<p>Unlike the official MapGuide API, all resources in the Maestro API are strongly-typed objects
+and not blobs of arbitrary XML content that needs to be manually processed and manipulated by your
+application.</p>
+<p>All XML resource elements are represented as classes. These classes are automatically generated
+from the respective XSD used to validate this resource content. Because a resource can have many
+different schema versions, these classes implement a set of common interfaces that reside under the
+<code>OSGeo.MapGuide.ObjectModels</code> namespace. </p>
+<p>This has 2 benefits:</p>
+<ul>
+<li>It prevents collision of the autogenerated classes across different versions. The generated classes are partitioned under internal version-specific namespaces</li>
+<li>By working against the resource interfaces, your code can work with any supported schema version of a given resource. In addition, adding support for newer schema revisions requires no changes on your side</li>
+</ul>
+<p>When working with the Maestro API, <strong>always write code against the resource interfaces</strong>. Despite being public types and included in the Maestro API assemblies, never write code against the
+autogenerated classes because multiple versions of them exist. It is for this reason that the autogenerated classes are not included in this API documentation.</p>
+<h3 id="resource-interface-versions">Resource Interface Versions</h3>
+<p>Each schema revision introduces new elements, which require new resource interfaces in the Maestro API that map to these new elements.
+In such cases, we adopt the approach of COM interfaces and create a new interface that extends the old one
+and incorporates the methods and properties to handle the new elements. The new interface is suffixed with a number
+that increases with each new schema revision</p>
+<p>For example, the <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.html">IWebLayout</a> interface represents the Web Layout resource (version <code>1.0.0</code>). The
+<code>1.1.0</code> schema introduces a new <code>PingServer</code> element (to prevent viewer session expiry). To tap into this newly exposed element 
+provided by this schema, a <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout2.html">IWebLayout2</a> interface included, which extends the original <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.html">IWebLayout</a> interface and includes 
+the new <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout2.html#OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout2_EnablePingServer">EnablePingServer</a> property. All other resource interfaces follow the same pattern of design.</p>
+<p>Of course, due to the large number of schema revisions made since the very first release of MapGuide Open Source, it is a bit difficult 
+to keep track of all the relevant schema revisions and the resource interfaces that are affected. The following table shows which resource 
+schema versions a newer resource interface is applicable to:</p>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>Interfaces introduced for this version (also applicable for versions after it)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Layer Definition (v1.1.0)</td>
+<td><a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.IVectorScaleRange2.html">IVectorScaleRange2</a>, <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.ICompositeTypeStyle.html">ICompositeTypeStyle</a>, <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.ICompositeRule.html">ICompositeRule</a>,<a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.IStroke2.html">IStroke2</a>, <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.ElevationTypeType.html">ElevationTypeType</a>, <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.IElevationSettings.html">IElevationSettings</a>, <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.ICompositeSymbolization.html">ICompositeSymbolization</a>, <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.IParameterOverride.html">IParameterOverride</a>, <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.IParameterOverrideCollection.html">IParameterOverrideCollection</a></td>
+</tr>
+<tr>
+<td>Layer Definition (v1.2.0)</td>
+<td><a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.ISymbolInstance2.html">ISymbolInstance2</a>, <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.IParameterOverride2.html">IParameterOverride2</a>, <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.IThemeLabel.html">IThemeLabel</a>,<a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.UsageContextType.html">UsageContextType</a>, <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.GeometryContextType.html">GeometryContextType</a></td>
+</tr>
+<tr>
+<td>Layer Definition (v1.3.0)</td>
+<td><a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.ICompositeTypeStyle2.html">ICompositeTypeStyle2</a>, <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.IAreaVectorStyle2.html">IAreaVectorStyle2</a>, <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.ILineVectorStyle2.html">ILineVectorStyle2</a>,<a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.IPointVectorStyle2.html">IPointVectorStyle2</a></td>
+</tr>
+<tr>
+<td>Layer Definition (v2.4.0)</td>
+<td><a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.LayerDefinition.ISubLayerDefinition2.html">ISubLayerDefinition2</a></td>
+</tr>
+<tr>
+<td>Map Definition (v2.3.0)</td>
+<td><a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition2.html">IMapDefinition2</a></td>
+</tr>
+<tr>
+<td>Map Definition (v3.0.0)</td>
+<td><a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition3.html">IMapDefinition3</a></td>
+</tr>
+<tr>
+<td>Web Layout (v1.1.0)</td>
+<td><a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout2.html">IWebLayout2</a></td>
+</tr>
+<tr>
+<td>Symbol Definition (v1.1.0)</td>
+<td><a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISymbolInstance.html">ISymbolInstance</a>, <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.SymbolDefinition.ITextGraphic2.html">ITextGraphic2</a>, <a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.SymbolDefinition.DataType2.html">DataType2</a></td>
+</tr>
+<tr>
+<td>Symbol Definition (v2.4.0)</td>
+<td><a class="xref" href="../api/OSGeo.MapGuide.ObjectModels.SymbolDefinition.IPathGraphic2.html">IPathGraphic2</a></td>
+</tr>
+</tbody>
+</table>
+<p>To determine whether a given interface is accessible, you can either check the ResourceVersion and refer to this 
+table to see if these interfaces can be casted from their older versions. Or you can utilise language features 
+such as C#&#39;s <code>as</code> keyword to cast objects to specific interfaces. If the casted object is not null, then that 
+interface is supported.</p>
+<p>If you are using C# 7.0 or higher language features, you can take advantage of pattern matching to achieve the same effect</p>
+<h2 id="the-runtime-map">The Runtime Map</h2>
+<h3 id="overview-2">Overview</h3>
+<p>The <a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a> represents the state of the map that a user is currently looking at in the viewer. It contains all the 
+relevant information about the current map: </p>
+<ul>
+<li>The current view center and scale</li>
+<li>The list of <a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a> instances that belong to this map</li>
+<li>The list of <a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapGroup.html">RuntimeMapGroup</a> instances that belong to this map</li>
+<li>The current extents of the map</li>
+<li>The display width/height/dpi of the map</li>
+</ul>
+<p>To obtain a reference to a runtime map, you will have to create one (via <a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.Services.IMappingService.html">IMappingService</a>.<code>CreateMap</code>) or open an existing 
+one (via <a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.Services.IMappingService.html">IMappingService</a>.<code>OpenMap</code>). Note that when opening an existing runtime map, you need to supply the resource id 
+of the runtime map state </p>
+<p>If given a map name and session id, the runtime map state resource id is usually of the form: </p>
+<p> <code>Session:session-id//mapName.Map</code></p>
+<p>Most of this runtime map state can be manipulated through the APIs provided by the Maestro API. When manipulating the state 
+of the runtime map (which also includes modifications to layers and groups that belong to it), you must remember to call 
+<a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html#OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Save">Save()</a> on the map to persist your modifications.</p>
+<h3 id="compatibility">Compatibility</h3>
+<p>The RuntimeMap operates on an encoded binary blob on the MapGuide Server that represents the internal state of the runtime map. New 
+versions of MapGuide may introduce new states that may break compatibility with the <a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a> class. As such, usage of the 
+<a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a> in the Maestro API is restricted to the following versions of MapGuide (includes point releases and service packs): </p>
+<ul>
+<li>MapGuide Open Source 1.2 and newer</li>
+<li>Autodesk MapGuide Enterprise / Infrastructure Map Serve 2008 and newer</li>
+</ul>
+<p>If you are not using a version of MapGuide that is on this list, there is no guarantee the <a class="xref" href="../api/OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a> will work as expected</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/Docs/devguide/coreconcepts.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2009 - 2017 Jackie Ng
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
