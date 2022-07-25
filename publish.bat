@@ -4,6 +4,10 @@ if "%CONF%"=="" set CONF=Release
 pushd Maestro
 dotnet publish -r win-x64 -c %CONF% --self-contained true .\Maestro.csproj -o "..\out\publish\%CONF%"
 popd
+REM data
+if not exist "%CD%\out\publish\%CONF%\Data" mkdir "%CD%\out\publish\%CONF%\Data"
+if not exist "%CD%\out\publish\%CONF%\Data\TipOfTheDay" mkdir "%CD%\out\publish\%CONF%\Data\TipOfTheDay"
+copy /Y "%CD%\Maestro\Data\TipOfTheDay\en.xml" "%CD%\out\publish\%CONF%\Data\TipOfTheDay"
 REM copy addins
 REM ExtendedObjectModels
 if not exist "%CD%\out\publish\%CONF%\AddIns\ExtendedObjectModels" mkdir "%CD%\out\publish\%CONF%\AddIns\ExtendedObjectModels"
