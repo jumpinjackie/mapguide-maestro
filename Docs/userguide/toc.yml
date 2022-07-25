@@ -37,6 +37,8 @@
   href: resource_validation.md
 - name: Packaging Data
   href: packaging.md
+- name: Known Issues
+  href: known_issues.md
 
 # Tools and Addons
 
