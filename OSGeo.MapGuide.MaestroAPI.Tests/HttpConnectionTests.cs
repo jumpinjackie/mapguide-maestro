@@ -45,10 +45,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var requestedFeatures = 7;
             var userName = "Administrator";
             var password = "admin";
-            
-            var createSessionUrl = $"{baseUrl}?OPERATION=CREATESESSION&VERSION=1.0.0&FORMAT=text%2Fxml&CLIENTAGENT=MapGuide%20Maestro%20API%20v6.0.0.0&USERNAME={userName}&PASSWORD={password}";
+
+            var asmVer = typeof(HttpServerConnection).Assembly.GetName().Version.ToString();
+
+            var createSessionUrl = $"{baseUrl}?OPERATION=CREATESESSION&VERSION=1.0.0&FORMAT=text%2Fxml&CLIENTAGENT=MapGuide%20Maestro%20API%20v{asmVer}&USERNAME={userName}&PASSWORD={password}";
             var createRuntimeMapUrl = $"{baseUrl}?OPERATION=CREATERUNTIMEMAP&VERSION=4.0.0&SESSION={sessionId}&MAPDEFINITION={Uri.EscapeDataString(mdfId)}&TARGETMAPNAME={mapName}&REQUESTEDFEATURES={requestedFeatures}&ICONSPERSCALERANGE=25&ICONFORMAT=PNG&ICONWIDTH=16&ICONHEIGHT=16";
-            var getSiteInfoUrl = $"{baseUrl}?OPERATION=GETSITEINFO&VERSION=1.0.0&SESSION={sessionId}&FORMAT=text%2Fxml&CLIENTAGENT=MapGuide%20Maestro%20API%20v6.0.0.0";
+            var getSiteInfoUrl = $"{baseUrl}?OPERATION=GETSITEINFO&VERSION=1.0.0&SESSION={sessionId}&FORMAT=text%2Fxml&CLIENTAGENT=MapGuide%20Maestro%20API%20v{asmVer}";
 
             mockHttp
                 .Setup(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>()))
@@ -108,9 +110,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var userName = "Administrator";
             var password = "admin";
 
-            var createSessionUrl = $"{baseUrl}?OPERATION=CREATESESSION&VERSION=1.0.0&FORMAT=text%2Fxml&CLIENTAGENT=MapGuide%20Maestro%20API%20v6.0.0.0&USERNAME={userName}&PASSWORD={password}";
+            var asmVer = typeof(HttpServerConnection).Assembly.GetName().Version.ToString();
+
+            var createSessionUrl = $"{baseUrl}?OPERATION=CREATESESSION&VERSION=1.0.0&FORMAT=text%2Fxml&CLIENTAGENT=MapGuide%20Maestro%20API%20v{asmVer}&USERNAME={userName}&PASSWORD={password}";
             var describeRuntimeMapUrl = $"{baseUrl}?OPERATION=DESCRIBERUNTIMEMAP&VERSION=4.0.0&SESSION={sessionId}&MAPNAME={mapName}&REQUESTEDFEATURES={requestedFeatures}&ICONSPERSCALERANGE=25&ICONFORMAT=PNG&ICONWIDTH=16&ICONHEIGHT=16";
-            var getSiteInfoUrl = $"{baseUrl}?OPERATION=GETSITEINFO&VERSION=1.0.0&SESSION={sessionId}&FORMAT=text%2Fxml&CLIENTAGENT=MapGuide%20Maestro%20API%20v6.0.0.0";
+            var getSiteInfoUrl = $"{baseUrl}?OPERATION=GETSITEINFO&VERSION=1.0.0&SESSION={sessionId}&FORMAT=text%2Fxml&CLIENTAGENT=MapGuide%20Maestro%20API%20v{asmVer}";
 
             mockHttp
                 .Setup(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>()))
