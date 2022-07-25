@@ -27,7 +27,7 @@ This tool is available:
  * On the Maestro Start Menu folder if you installed Maestro via the windows installer.
  * In the Feature Source editor under the **Other Options** panel.
 
-Once again like **MgCooker**, this tool requires you to login on startup. Once logged in select the feature source
+This tool requires you to login on startup. Once logged in select the feature source
 to be previewed. Once the feature source is selected, the left pane will be populated with all feature schemas found
 and their Feature Classes (and their properties)
 

@@ -6,7 +6,7 @@ uid: using-mgtileseeder
 
 ## Introduction
 
-**MgTileSeeder** is the successor to **MgCooker**. It has the following improvements over **MgCooker**:
+**MgTileSeeder** is the successor to **MgCooker** (which is no longer bundled with Maestro as of the `6.0m11` release). It has the following improvements over **MgCooker**:
 
  * Supports seeding of XYZ tile sets introduced in MapGuide Open Source 3.0
    * Can also function as a generic seeder for any tile set based on a XYZ tiling scheme (eg. OpenStreetMap)
