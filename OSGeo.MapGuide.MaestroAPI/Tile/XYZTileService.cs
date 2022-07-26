@@ -49,6 +49,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             this.SetUrlTemplate(urlTemplate);
         }
 
+        /// <summary>
+        /// Sets the URL template for fetching XYZ tiles. The template must have {x}, {y} and {z} placeholder tokens
+        /// </summary>
+        /// <param name="urlTemplate"></param>
         public void SetUrlTemplate(string urlTemplate)
         {
             //Convert into a string.Format-able form

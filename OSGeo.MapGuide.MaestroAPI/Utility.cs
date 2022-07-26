@@ -1047,9 +1047,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         */
 
         /// <summary>
-        /// Transforms the envelope.
+        /// Transforms the envelope from the given source coordinate system to the
+        /// given target coordinate system
         /// </summary>
-        /// <param name="env">The env.</param>
+        /// <param name="csCatalog">The connection's associated coordinate system catalog</param>
+        /// <param name="env">The envelope.</param>
         /// <param name="srcCsWkt">The source coordinate system WKT.</param>
         /// <param name="dstCsWkt">The destination coordinate system WKT.</param>
         /// <returns></returns>
@@ -1674,25 +1676,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             return ObjectFactory.CreateFlexibleLayout(conn.SiteVersion, templates, widgets, containers, templateName, statelessMode);
         }
 
-        public static void StripWmsMetadata(ObjectModels.Common.ResourceDocumentHeaderType header)
-        {
-            //Rather than a wholsale nukage of the Metadata, we will only remove known WMS metadata
-            //properties (so any custom metadata is preserved)
-            header.Metadata.SetProperty("_Title", null); //NOXLATE
-            header.Metadata.SetProperty("_Keywords", null); //NOXLATE
-            header.Metadata.SetProperty("_Abstract", null); //NOXLATE
-            header.Metadata.SetProperty("_ExtendedMetadata", null); //NOXLATE
-
-            header.Metadata.SetProperty("_Queryable", null); //NOXLATE
-            header.Metadata.SetProperty("_Opaque", null); //NOXLATE
-            header.Metadata.SetProperty("_IsPublished", null); //NOXLATE
-            header.Metadata.SetProperty("_EnableGeometry", null); //NOXLATE
-            header.Metadata.SetProperty("_Bounds", null); //NOXLATE
-
-            if (header.Metadata.Simple.Property.Count == 0)
-                header.Metadata = null;
-        }
-
+        /// <summary>
+        /// Helper to determine if the given exception is related to session expiry
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <returns></returns>
         public static bool IsSessionExpiredException(Exception ex)
         {
             var wex = ex as System.Net.WebException;

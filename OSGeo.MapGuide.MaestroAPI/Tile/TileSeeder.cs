@@ -118,6 +118,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         readonly ITileWalker _walker;
         readonly TileSeederOptions _options;
 
+        /// <summary>
+        /// If true, the list of tiles to fetch/seed will be randomized
+        /// before seeding begins
+        /// </summary>
         public bool RandomizeRequests { get; set; }
 
         /// <summary>
@@ -150,6 +154,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             }
         }
 
+        /// <summary>
+        /// Populates the tile cache for the configured tiled map definition or tile set
+        /// </summary>
+        /// <param name="progress"></param>
+        /// <returns></returns>
         public async Task<TileSeedStats> RunAsync(IProgress<TileProgress> progress = null)
         {
             var failed = 0;

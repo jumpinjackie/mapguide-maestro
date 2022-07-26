@@ -103,7 +103,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var mockHttp = new Mock<IHttpRequestor>();
 
             var baseUrl = "http://localhost:8008/mapguide/mapagent/mapagent.fcgi";
-            var mdfId = "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition";
             var mapName = "Sheboygan";
             var sessionId = "abcd1234";
             var requestedFeatures = 7;

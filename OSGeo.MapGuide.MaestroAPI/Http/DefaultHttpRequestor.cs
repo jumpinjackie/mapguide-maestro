@@ -29,7 +29,11 @@ using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
-    public class DefaultHttpRequestor : IHttpRequestor
+    /// <summary>
+    /// The default implementation of <see cref="IHttpRequestor"/> that is backed
+    /// by <see cref="HttpClient"/>
+    /// </summary>
+    internal class DefaultHttpRequestor : IHttpRequestor
     {
         private ICredentials _cred;
         readonly HttpClient _http;

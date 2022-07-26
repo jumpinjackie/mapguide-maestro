@@ -32,16 +32,42 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     /// </summary>
     public enum WmsVersion
     {
+        /// <summary>
+        /// WMS v1.0.0
+        /// </summary>
         v1_0_0,
+        /// <summary>
+        /// WMS v1.1.0
+        /// </summary>
         v1_1_0,
+        /// <summary>
+        /// WMS v1.1.1
+        /// </summary>
         v1_1_1,
+        /// <summary>
+        /// WMS v1.3.0
+        /// </summary>
         v1_3_0,
     }
 
+    /// <summary>
+    /// Gets the document describing the WMS capabilities of this service
+    /// </summary>
     public interface IGetWmsCapabilities : ICommand
     {
+        /// <summary>
+        /// Requests WMS capabilities for the given WMS version
+        /// </summary>
+        /// <param name="version"></param>
+        /// <returns></returns>
         Stream Execute(WmsVersion version);
 
+        /// <summary>
+        /// Asynchronously requests WMS capabilities for the given WMS version
+        /// </summary>
+        /// <param name="version"></param>
+        /// <param name="cancel"></param>
+        /// <returns></returns>
         Task<Stream> ExecuteAsync(WmsVersion version, CancellationToken cancel = default);
     }
 }

@@ -43,7 +43,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
         public static string ResolvePath(string relPath)
         {
-            UriBuilder uri = new UriBuilder(Assembly.GetExecutingAssembly().CodeBase);
+            UriBuilder uri = new UriBuilder(Assembly.GetExecutingAssembly().Location);
             string path = Uri.UnescapeDataString(uri.Path);
             string absPath = Path.Combine(Path.GetDirectoryName(path), relPath);
             return absPath;

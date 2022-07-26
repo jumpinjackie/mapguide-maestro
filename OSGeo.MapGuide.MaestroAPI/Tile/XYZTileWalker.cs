@@ -70,6 +70,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             _maxZoomLevel = maxZoomLevel;
         }
 
+        /// <summary>
+        /// The default maximum allowed zoom level for XYZ tiles
+        /// </summary>
         public const int DEFAULT_MAX_ZOOM_LEVEL = 19;
 
         /// <summary>

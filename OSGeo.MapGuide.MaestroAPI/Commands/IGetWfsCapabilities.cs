@@ -32,14 +32,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     /// </summary>
     public enum WfsVersion
     {
+        /// <summary>
+        /// WFS v1.0.0
+        /// </summary>
         v1_0_0,
+        /// <summary>
+        /// WFS v1.1.0
+        /// </summary>
         v1_1_0
     }
 
+    /// <summary>
+    /// Gets the document describing the WFS capabilities of this service
+    /// </summary>
     public interface IGetWfsCapabilities : ICommand
     {
+        /// <summary>
+        /// Requests WFS capabilities for the given WFS version
+        /// </summary>
+        /// <param name="version"></param>
+        /// <returns></returns>
         Stream Execute(WfsVersion version);
 
+        /// <summary>
+        /// Asynchronously requests WFS capabilities for the given WFS version
+        /// </summary>
+        /// <param name="version"></param>
+        /// <param name="cancel"></param>
+        /// <returns></returns>
         Task<Stream> ExecuteAsync(WfsVersion version, CancellationToken cancel = default);
     }
 }

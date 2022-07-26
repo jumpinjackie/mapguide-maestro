@@ -20,7 +20,6 @@
 
 #endregion Disclaimer / License
 
-
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -28,14 +27,39 @@ using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
+    /// <summary>
+    /// A basic http client abstraction
+    /// </summary>
     public interface IHttpRequestor
     {
+        /// <summary>
+        /// Attaches the given credentials for authentication purposes
+        /// </summary>
+        /// <param name="cred"></param>
         void AttachCredentials(ICredentials cred);
 
+        /// <summary>
+        /// Performs a synchronous GET request
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         Stream Get(string uri, IHttpGetRequestOptions options);
 
+        /// <summary>
+        /// Performs an asynchronous GET request
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <returns></returns>
         Task<HttpResponseMessage> GetAsync(string uri);
 
+        /// <summary>
+        /// Performs a synchronous GET request with the expectation that the
+        /// response will be a byte array
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         byte[] DownloadData(string uri, IHttpGetRequestOptions options);
     }
 }

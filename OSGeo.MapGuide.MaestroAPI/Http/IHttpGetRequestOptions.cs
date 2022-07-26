@@ -25,16 +25,39 @@ using System.Net;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
+    /// <summary>
+    /// HTTP GET request options
+    /// </summary>
     public interface IHttpGetRequestOptions
     {
+        /// <summary>
+        /// If the current session id has expired, attempt to establish a new session
+        /// and resume the current operation with the re-established session id
+        /// </summary>
         bool AutoRestartSession { get; }
 
+        /// <summary>
+        /// The current session id
+        /// </summary>
         string SessionID { get; }
 
+        /// <summary>
+        /// Log the given HTTP response to the implementation-defined logging system
+        /// </summary>
+        /// <param name="resp"></param>
         void LogResponse(HttpWebResponse resp);
 
+        /// <summary>
+        /// Log the given failed HTTP request to the implementation-defined logging system
+        /// </summary>
+        /// <param name="wex"></param>
         void LogFailedRequest(WebException wex);
 
+        /// <summary>
+        /// Attempt to establish a new session
+        /// </summary>
+        /// <param name="throwException"></param>
+        /// <returns></returns>
         bool RestartSession(bool throwException);
     }
 }
