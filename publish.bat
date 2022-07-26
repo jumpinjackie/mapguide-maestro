@@ -3,6 +3,7 @@ set CONF=%1
 if "%CONF%"=="" set CONF=Release
 pushd Maestro
 dotnet publish -r win-x64 -c %CONF% --self-contained true --verbosity detailed .\Maestro.csproj -o "..\out\publish\%CONF%"
+IF %ERRORLEVEL% NEQ 0 exit /B %ERRORLEVEL%
 popd
 REM data
 if not exist "%CD%\out\publish\%CONF%\Data" mkdir "%CD%\out\publish\%CONF%\Data"
