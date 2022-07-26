@@ -1677,6 +1677,29 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
+        /// Strips known WMS metadata from the given resource document header
+        /// </summary>
+        /// <param name="header"></param>
+        public static void StripWmsMetadata(ObjectModels.Common.ResourceDocumentHeaderType header)
+        {
+            //Rather than a wholsale nukage of the Metadata, we will only remove known WMS metadata
+            //properties (so any custom metadata is preserved)
+            header.Metadata.SetProperty("_Title", null); //NOXLATE
+            header.Metadata.SetProperty("_Keywords", null); //NOXLATE
+            header.Metadata.SetProperty("_Abstract", null); //NOXLATE
+            header.Metadata.SetProperty("_ExtendedMetadata", null); //NOXLATE
+
+            header.Metadata.SetProperty("_Queryable", null); //NOXLATE
+            header.Metadata.SetProperty("_Opaque", null); //NOXLATE
+            header.Metadata.SetProperty("_IsPublished", null); //NOXLATE
+            header.Metadata.SetProperty("_EnableGeometry", null); //NOXLATE
+            header.Metadata.SetProperty("_Bounds", null); //NOXLATE
+
+            if (header.Metadata.Simple.Property.Count == 0)
+                header.Metadata = null;
+        }
+
+        /// <summary>
         /// Helper to determine if the given exception is related to session expiry
         /// </summary>
         /// <param name="ex"></param>
