@@ -31,7 +31,16 @@ The MapGuide Maestro API package is built with SourceLink support, which if enab
 
 To enable source link in Visual Studio, do the following:
 
-1. Enable the NuGet Symbol Server
-2. Disable "Just My Code"
-3. Enable Source Server and Source Link Support
-4. Step into Maestro API sources
+1. Enable the NuGet Symbol Server under `Debugging > Symbols`
+
+![](../images/1_SourceLink_EnableNuGetSymbolServer.png)
+
+2. Disable `Just My Code` under `Debugging > General`
+
+![](../images/2_SourceLink_DisableJustMyCode.png)
+
+3. Enable Source Server and Source Link Support under the same section
+
+![](../images/3_SourceLink_Enable.png)
+
+4. SourceLink is now enabled and you can step into Maestro API sources
