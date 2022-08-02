@@ -3,9 +3,6 @@ uid: scripting-and-automating-maestro
 ---
 # Scripting and Automating Maestro
 
-> [!NOTE]
-> The IronPython Console feature is only available on Windows and is only bundled with the Windows installer package of Maestro
-
 As mentioned in the section (<xref:user-interface>), Maestro includes an **IronPython Console** which provides the user an interactive scripting environment to drive and automate certain parts of the Maestro application with IronPython code
 
 ## About IronPython
