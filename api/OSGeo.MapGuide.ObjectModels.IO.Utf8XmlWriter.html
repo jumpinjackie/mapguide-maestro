@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Utf8XmlWriter
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -87,18 +89,341 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Utf8XmlWriter</span></div>
+    <div class="level1"><span class="xref">System.Xml.XmlWriter</span></div>
+    <div class="level2"><span class="xref">System.Xml.XmlTextWriter</span></div>
+    <div class="level3"><span class="xref">Utf8XmlWriter</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Close()</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Create(System.IO.Stream)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Create(System.IO.Stream, System.Xml.XmlWriterSettings)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Create(System.IO.TextWriter)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Create(System.IO.TextWriter, System.Xml.XmlWriterSettings)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Create(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Create(System.String, System.Xml.XmlWriterSettings)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Create(System.Text.StringBuilder)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Create(System.Text.StringBuilder, System.Xml.XmlWriterSettings)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Create(System.Xml.XmlWriter)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Create(System.Xml.XmlWriter, System.Xml.XmlWriterSettings)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Dispose()</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Dispose(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Flush()</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.FlushAsync()</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.LookupPrefix(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteAttributes(System.Xml.XmlReader, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteAttributesAsync(System.Xml.XmlReader, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteAttributeString(System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteAttributeString(System.String, System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteAttributeString(System.String, System.String, System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteAttributeStringAsync(System.String, System.String, System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteBase64(System.Byte[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteBase64Async(System.Byte[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteBinHex(System.Byte[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteBinHexAsync(System.Byte[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteCData(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteCDataAsync(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteCharEntity(System.Char)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteCharEntityAsync(System.Char)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteChars(System.Char[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteCharsAsync(System.Char[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteComment(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteCommentAsync(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteDocType(System.String, System.String, System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteDocTypeAsync(System.String, System.String, System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteElementString(System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteElementString(System.String, System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteElementString(System.String, System.String, System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteElementStringAsync(System.String, System.String, System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteEndAttribute()</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteEndAttributeAsync()</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteEndDocument()</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteEndDocumentAsync()</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteEndElement()</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteEndElementAsync()</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteEntityRef(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteEntityRefAsync(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteFullEndElement()</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteFullEndElementAsync()</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteName(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteNameAsync(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteNmToken(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteNmTokenAsync(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteNode(System.Xml.XmlReader, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteNode(System.Xml.XPath.XPathNavigator, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteNodeAsync(System.Xml.XmlReader, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteNodeAsync(System.Xml.XPath.XPathNavigator, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteProcessingInstruction(System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteProcessingInstructionAsync(System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteQualifiedName(System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteQualifiedNameAsync(System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteRaw(System.Char[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteRaw(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteRawAsync(System.Char[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteRawAsync(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteStartAttribute(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteStartAttribute(System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteStartAttribute(System.String, System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteStartAttributeAsync(System.String, System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteStartDocumentAsync()</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteStartDocumentAsync(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteStartElement(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteStartElement(System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteStartElement(System.String, System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteStartElementAsync(System.String, System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteString(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteStringAsync(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteSurrogateCharEntity(System.Char, System.Char)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteSurrogateCharEntityAsync(System.Char, System.Char)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteValue(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteValue(System.DateTime)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteValue(System.DateTimeOffset)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteValue(System.Decimal)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteValue(System.Double)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteValue(System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteValue(System.Int64)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteValue(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteValue(System.Single)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteValue(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteWhitespace(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteWhitespaceAsync(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.Settings</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.WriteState</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.XmlLang</span>
+    </div>
+    <div>
+      <span class="xref">System.Xml.XmlWriter.XmlSpace</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.IO.html">OSGeo.MapGuide.ObjectModels.IO</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.ObjectModels.dll</h6>
   <h5 id="OSGeo_MapGuide_ObjectModels_IO_Utf8XmlWriter_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Utf8XmlWriter : XmlTextWriter</code></pre>
+    <pre><code class="lang-csharp hljs">public class Utf8XmlWriter : XmlTextWriter, IDisposable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_IO_Utf8XmlWriter__ctor_System_IO_Stream_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter.%23ctor(System.IO.Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/IO/Utf8XmlWriter.cs/#L35">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_IO_Utf8XmlWriter__ctor_" data-uid="OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_IO_Utf8XmlWriter__ctor_System_IO_Stream_" data-uid="OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter.#ctor(System.IO.Stream)">Utf8XmlWriter(Stream)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter.html">Utf8XmlWriter</a> class.</p>
@@ -126,8 +451,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_IO_Utf8XmlWriter__ctor_System_IO_TextWriter_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter.%23ctor(System.IO.TextWriter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/IO/Utf8XmlWriter.cs/#L55">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_IO_Utf8XmlWriter__ctor_" data-uid="OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_IO_Utf8XmlWriter__ctor_System_IO_TextWriter_" data-uid="OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter.#ctor(System.IO.TextWriter)">Utf8XmlWriter(TextWriter)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter.html">Utf8XmlWriter</a> class.</p>
@@ -157,8 +487,13 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_IO_Utf8XmlWriter_WriteStartDocument.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter.WriteStartDocument%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/IO/Utf8XmlWriter.cs/#L67">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_IO_Utf8XmlWriter_WriteStartDocument_" data-uid="OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter.WriteStartDocument*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_IO_Utf8XmlWriter_WriteStartDocument" data-uid="OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter.WriteStartDocument">WriteStartDocument()</h4>
   <div class="markdown level1 summary"><p>Writes the XML declaration with the version &quot;1.0&quot;.</p>
@@ -168,6 +503,8 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void WriteStartDocument()</code></pre>
   </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Xml.XmlTextWriter.WriteStartDocument()</span></div>
   <h5 class="exceptions">Exceptions</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -184,8 +521,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_IO_Utf8XmlWriter_WriteStartDocument_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter.WriteStartDocument(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/IO/Utf8XmlWriter.cs/#L79">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_IO_Utf8XmlWriter_WriteStartDocument_" data-uid="OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter.WriteStartDocument*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_IO_Utf8XmlWriter_WriteStartDocument_System_Boolean_" data-uid="OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter.WriteStartDocument(System.Boolean)">WriteStartDocument(Boolean)</h4>
   <div class="markdown level1 summary"><p>Writes the XML declaration with the version &quot;1.0&quot; and the standalone attribute.</p>
@@ -213,6 +555,8 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Xml.XmlTextWriter.WriteStartDocument(System.Boolean)</span></div>
   <h5 class="exceptions">Exceptions</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -229,6 +573,10 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
 </article>
           </div>
           
@@ -236,10 +584,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_IO_Utf8XmlWriter.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.IO.Utf8XmlWriter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/IO/Utf8XmlWriter.cs/#L29" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -253,7 +608,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

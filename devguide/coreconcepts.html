@@ -8,7 +8,7 @@
     <title>Core Concepts | MapGuide Maestro </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Core Concepts | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -20,7 +20,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -59,9 +59,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -99,13 +101,6 @@ class. This class uses the <code>ConnectionProviders.xml</code> file to resolve 
 <div class="NOTE"><h5>Note</h5><p>Starting with the <strong>6.0m8</strong> release, the <code>Maestro.Http</code> provider is built into the Maestro API itself. The <code>ConnectionProviders.xml</code>
 file is not required if you are only using this connection provider.</p>
 </div>
-<p>The LocalNative implementation source code is included with this SDK, but requires the official
-MapGuide API binaries to be also added to your application&#39;s directory. As a result this
-provider is disabled in the <code>ConnectionProviders.xml</code> file by default. The SDK includes a tool
-to help you build this LocalNative provider. </p>
-<p>The Local implementation is not included with the SDK. The windows version of Maestro
-includes this implementation and you can copy the required files from your Maestro
-installation should you choose to use this implementation.</p>
 <p>All examples outlined in this guide assume the use of the HTTP implementation (<code>Maestro.Http</code>)</p>
 <h2 id="resource-objects">Resource Objects</h2>
 <h3 id="overview-1">Overview</h3>
@@ -227,7 +222,8 @@ versions of MapGuide may introduce new states that may break compatibility with 
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -241,7 +237,7 @@ versions of MapGuide may introduce new states that may break compatibility with 
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

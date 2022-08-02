@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IResource
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -89,17 +91,28 @@
     <div>
       <a class="xref" href="OSGeo.MapGuide.ObjectModels.IVersionedEntity.html#OSGeo_MapGuide_ObjectModels_IVersionedEntity_ResourceVersion">IVersionedEntity.ResourceVersion</a>
     </div>
+    <div>
+      <span class="xref">System.ICloneable.Clone()</span>
+    </div>
+    <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged.PropertyChanged</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.html">OSGeo.MapGuide.ObjectModels</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.ObjectModels.dll</h6>
   <h5 id="OSGeo_MapGuide_ObjectModels_IResource_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IResource : IVersionedEntity, ICloneable, INotifyPropertyChanged</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_IResource_IsStronglyTyped.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.IResource.IsStronglyTyped%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/IResource.cs/#L70">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_IResource_IsStronglyTyped_" data-uid="OSGeo.MapGuide.ObjectModels.IResource.IsStronglyTyped*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_IResource_IsStronglyTyped" data-uid="OSGeo.MapGuide.ObjectModels.IResource.IsStronglyTyped">IsStronglyTyped</h4>
   <div class="markdown level1 summary"><p>Indicates whether this resource is strongly typed. If false it means the implementer
@@ -109,7 +122,8 @@ could not be found because the resource version is unrecognised.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IsStronglyTyped { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+bool IsStronglyTyped { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -126,8 +140,13 @@ could not be found because the resource version is unrecognised.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_IResource_ResourceID.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.IResource.ResourceID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/IResource.cs/#L47">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_IResource_ResourceID_" data-uid="OSGeo.MapGuide.ObjectModels.IResource.ResourceID*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_IResource_ResourceID" data-uid="OSGeo.MapGuide.ObjectModels.IResource.ResourceID">ResourceID</h4>
   <div class="markdown level1 summary"><p>Gets or sets the resource ID.</p>
@@ -135,7 +154,8 @@ could not be found because the resource version is unrecognised.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string ResourceID { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+string ResourceID { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -153,8 +173,13 @@ could not be found because the resource version is unrecognised.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_IResource_ResourceType.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.IResource.ResourceType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/IResource.cs/#L54">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_IResource_ResourceType_" data-uid="OSGeo.MapGuide.ObjectModels.IResource.ResourceType*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_IResource_ResourceType" data-uid="OSGeo.MapGuide.ObjectModels.IResource.ResourceType">ResourceType</h4>
   <div class="markdown level1 summary"><p>Gets the type of the resource.</p>
@@ -162,7 +187,8 @@ could not be found because the resource version is unrecognised.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string ResourceType { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+string ResourceType { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -180,8 +206,13 @@ could not be found because the resource version is unrecognised.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_IResource_ValidatingSchema.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.IResource.ValidatingSchema%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/IResource.cs/#L40">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_IResource_ValidatingSchema_" data-uid="OSGeo.MapGuide.ObjectModels.IResource.ValidatingSchema*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_IResource_ValidatingSchema" data-uid="OSGeo.MapGuide.ObjectModels.IResource.ValidatingSchema">ValidatingSchema</h4>
   <div class="markdown level1 summary"><p>Gets the validating schema.</p>
@@ -189,7 +220,8 @@ could not be found because the resource version is unrecognised.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string ValidatingSchema { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+string ValidatingSchema { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -209,8 +241,13 @@ could not be found because the resource version is unrecognised.</p>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_IResource_Serialize.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.IResource.Serialize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/IResource.cs/#L63">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_IResource_Serialize_" data-uid="OSGeo.MapGuide.ObjectModels.IResource.Serialize*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_IResource_Serialize" data-uid="OSGeo.MapGuide.ObjectModels.IResource.Serialize">Serialize()</h4>
   <div class="markdown level1 summary"><p>Serializes this instance to XML and returns the XML content. It is not recommended to call this method directly
@@ -237,6 +274,19 @@ hooks that may have been set up for this particular resource.</p>
       </tr>
     </tbody>
   </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_ExtensionMethods_CopyResourceDataTo_OSGeo_MapGuide_ObjectModels_IResource_OSGeo_MapGuide_MaestroAPI_IServerConnection_OSGeo_MapGuide_ObjectModels_IResource_">ExtensionMethods.CopyResourceDataTo(IResource, IServerConnection, IResource)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_ExtensionMethods_CopyResourceDataTo_OSGeo_MapGuide_ObjectModels_IResource_OSGeo_MapGuide_MaestroAPI_IServerConnection_System_String_">ExtensionMethods.CopyResourceDataTo(IResource, IServerConnection, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceExtensions.html#OSGeo_MapGuide_ObjectModels_ResourceExtensions_SerializeToStream_OSGeo_MapGuide_ObjectModels_IResource_">ResourceExtensions.SerializeToStream(IResource)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceExtensions.html#OSGeo_MapGuide_ObjectModels_ResourceExtensions_GetResourceTypeDescriptor_OSGeo_MapGuide_ObjectModels_IResource_">ResourceExtensions.GetResourceTypeDescriptor(IResource)</a>
+  </div>
 </article>
           </div>
           
@@ -244,10 +294,17 @@ hooks that may have been set up for this particular resource.</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_IResource.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.IResource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/IResource.cs/#L34" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -261,7 +318,7 @@ hooks that may have been set up for this particular resource.</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

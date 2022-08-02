@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class GeometricPropertyDefinition
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -91,15 +93,21 @@
     <div class="level2"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html">PropertyDefinition</a></div>
     <div class="level3"><span class="xref">GeometricPropertyDefinition</span></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
-    <div><span class="xref">IFdoSerializable</span></div>
-    <div><span class="xref">IExpressionPropertySource</span></div>
+    <div><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html">IFdoSerializable</a></div>
+    <div><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IExpressionPropertySource.html">IExpressionPropertySource</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_Parent">PropertyDefinition.Parent</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_OSGeo_MapGuide_ObjectModels_Common_IFdoSerializable_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_">PropertyDefinition.IFdoSerializable.ReadXml(XmlNode, XmlNamespaceManager)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_OSGeo_MapGuide_ObjectModels_Common_IFdoSerializable_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_">PropertyDefinition.IFdoSerializable.WriteXml(XmlDocument, XmlNode)</a>
     </div>
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_Parse_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_">PropertyDefinition.Parse(XmlNode, XmlNamespaceManager)</a>
@@ -114,16 +122,10 @@
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.SchemaElement.html#OSGeo_MapGuide_MaestroAPI_Schema_SchemaElement_Description">SchemaElement.Description</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -134,17 +136,28 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.html">OSGeo.MapGuide.MaestroAPI.Schema</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class GeometricPropertyDefinition : PropertyDefinition, IFdoSerializable, IExpressionPropertySource</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition__ctor_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.%23ctor(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/GeometricPropertyDefinition.cs/#L137">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition__ctor_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.#ctor(System.String,System.String)">GeometricPropertyDefinition(String, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.html">GeometricPropertyDefinition</a> class.</p>
@@ -180,8 +193,13 @@
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_ExpressionType.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.ExpressionType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/GeometricPropertyDefinition.cs/#L498">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_ExpressionType_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.ExpressionType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_ExpressionType" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.ExpressionType">ExpressionType</h4>
   <div class="markdown level1 summary"><p>Gets the expression data type</p>
@@ -208,8 +226,13 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_ExpressionType">PropertyDefinition.ExpressionType</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_GeometricTypes.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.GeometricTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/GeometricPropertyDefinition.cs/#L171">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_GeometricTypes_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.GeometricTypes*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_GeometricTypes" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.GeometricTypes">GeometricTypes</h4>
   <div class="markdown level1 summary"><p>Gets or sets the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.FeatureGeometricType.html">FeatureGeometricType</a> that can be stored in this geometric
@@ -236,8 +259,13 @@ enumeration combined via a bit-wise or operation.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_HasElevation.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.HasElevation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/GeometricPropertyDefinition.cs/#L157">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_HasElevation_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.HasElevation*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_HasElevation" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.HasElevation">HasElevation</h4>
   <div class="markdown level1 summary"><p>Gets or sets a Boolean value that indicates if the geometry of this property include elevation values.</p>
@@ -262,8 +290,13 @@ enumeration combined via a bit-wise or operation.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_HasMeasure.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.HasMeasure%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/GeometricPropertyDefinition.cs/#L152">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_HasMeasure_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.HasMeasure*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_HasMeasure" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.HasMeasure">HasMeasure</h4>
   <div class="markdown level1 summary"><p>Gets or sets a Boolean value that indicates if the geometry of this property includes measurement values that can be used for dynamic segmentation.</p>
@@ -288,8 +321,13 @@ enumeration combined via a bit-wise or operation.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_IsReadOnly.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.IsReadOnly%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/GeometricPropertyDefinition.cs/#L147">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_IsReadOnly_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.IsReadOnly*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_IsReadOnly" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.IsReadOnly">IsReadOnly</h4>
   <div class="markdown level1 summary"><p>Gets or sets a Boolean value that indicates if this geometric property is read-only.</p>
@@ -314,8 +352,13 @@ enumeration combined via a bit-wise or operation.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_SpatialContextAssociation.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.SpatialContextAssociation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/GeometricPropertyDefinition.cs/#L162">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_SpatialContextAssociation_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.SpatialContextAssociation*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_SpatialContextAssociation" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.SpatialContextAssociation">SpatialContextAssociation</h4>
   <div class="markdown level1 summary"><p>Gets or sets the Spatial Context name associated to this geometric property.</p>
@@ -340,8 +383,13 @@ enumeration combined via a bit-wise or operation.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_SpecificGeometryTypes.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.SpecificGeometryTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/GeometricPropertyDefinition.cs/#L217">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_SpecificGeometryTypes_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.SpecificGeometryTypes*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_SpecificGeometryTypes" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.SpecificGeometryTypes">SpecificGeometryTypes</h4>
   <div class="markdown level1 summary"><p>Gets or sets the specific set of geometry types that can be stored in this geometric property. The provided value is a
@@ -367,8 +415,13 @@ list of geometry types that are supported. Usually, one specific type is support
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_Type.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/GeometricPropertyDefinition.cs/#L281">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_Type_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.Type*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_Type" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.Type">Type</h4>
   <div class="markdown level1 summary"><p>Gets the type of property definition</p>
@@ -397,8 +450,13 @@ list of geometry types that are supported. Usually, one specific type is support
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_Type">PropertyDefinition.Type</a></div>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_GeometryTypesToString.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.GeometryTypesToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/GeometricPropertyDefinition.cs/#L341">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_GeometryTypesToString_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.GeometryTypesToString*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_GeometryTypesToString" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.GeometryTypesToString">GeometryTypesToString()</h4>
   <div class="markdown level1 summary"><p>Converts the current specified geometry types to a space-delimited list of types</p>
@@ -423,8 +481,13 @@ list of geometry types that are supported. Usually, one specific type is support
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_GetIndividualGeometricTypes.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.GetIndividualGeometricTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/GeometricPropertyDefinition.cs/#L358">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_GetIndividualGeometricTypes_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.GetIndividualGeometricTypes*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_GetIndividualGeometricTypes" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.GetIndividualGeometricTypes">GetIndividualGeometricTypes()</h4>
   <div class="markdown level1 summary"><p>Gets an array of the individual <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.FeatureGeometricType.html">FeatureGeometricType</a> values that
@@ -451,8 +514,13 @@ property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.ReadXml(System.Xml.XmlNode%2CSystem.Xml.XmlNamespaceManager)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/GeometricPropertyDefinition.cs/#L318">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_ReadXml_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.ReadXml*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.ReadXml(System.Xml.XmlNode,System.Xml.XmlNamespaceManager)">ReadXml(XmlNode, XmlNamespaceManager)</h4>
   <div class="markdown level1 summary"><p>Set the current element&apos;s content from the current XML node</p>
@@ -486,8 +554,13 @@ property</p>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_">PropertyDefinition.ReadXml(XmlNode, XmlNamespaceManager)</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.WriteXml(System.Xml.XmlDocument%2CSystem.Xml.XmlNode)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/GeometricPropertyDefinition.cs/#L288">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_WriteXml_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.WriteXml*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition.WriteXml(System.Xml.XmlDocument,System.Xml.XmlNode)">WriteXml(XmlDocument, XmlNode)</h4>
   <div class="markdown level1 summary"><p>Writes the current element&apos;s content</p>
@@ -523,10 +596,10 @@ property</p>
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_">PropertyDefinition.WriteXml(XmlDocument, XmlNode)</a></div>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">IFdoSerializable</span>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html">IFdoSerializable</a>
   </div>
   <div>
-      <span class="xref">IExpressionPropertySource</span>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IExpressionPropertySource.html">IExpressionPropertySource</a>
   </div>
 </article>
           </div>
@@ -535,10 +608,17 @@ property</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_GeometricPropertyDefinition.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/GeometricPropertyDefinition.cs/#L125" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -552,7 +632,7 @@ property</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

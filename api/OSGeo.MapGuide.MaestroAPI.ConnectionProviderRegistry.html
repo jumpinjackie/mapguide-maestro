@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ConnectionProviderRegistry
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -94,7 +96,7 @@ file called ConnectionProviders.xml which contains all the registered providers.
 <ol><li>The name of the provider</li><li>The assembly containing the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> implementation</li><li>The name of this <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> implementation</li></ol>
 <p>
 The <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> implementation is expected to have a non-public constructor which takes a single parameter,
-a <see cref="!:System.Collections.Specialized.NameValueCollection"></see> containing the initialization parameters parsed from the given connection
+a <span class="xref">System.Collections.Specialized.NameValueCollection</span> containing the initialization parameters parsed from the given connection
 string.
 </p>
 </div>
@@ -107,16 +109,10 @@ string.
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -127,9 +123,15 @@ string.
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.html">OSGeo.MapGuide.MaestroAPI</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class ConnectionProviderRegistry</code></pre>
@@ -157,10 +159,15 @@ IServerConnection conn = ConnectionProviderRegistry.CreateConnection(&quot;Maest
 
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_System_String_System_Collections_Specialized_NameValueCollection_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection(System.String%2CSystem.Collections.Specialized.NameValueCollection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/ConnectionProviderRegistry.cs/#L329">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_System_String_NameValueCollection_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection(System.String,NameValueCollection)">CreateConnection(String, NameValueCollection)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_System_String_System_Collections_Specialized_NameValueCollection_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection(System.String,System.Collections.Specialized.NameValueCollection)">CreateConnection(String, NameValueCollection)</h4>
   <div class="markdown level1 summary"><p>Creates an initialized <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> object given the provider name and the initalization parameters</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -184,7 +191,7 @@ IServerConnection conn = ConnectionProviderRegistry.CreateConnection(&quot;Maest
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="xref">System.Collections.Specialized.NameValueCollection</span></td>
         <td><span class="parametername">connInitParams</span></td>
         <td></td>
       </tr>
@@ -205,8 +212,13 @@ IServerConnection conn = ConnectionProviderRegistry.CreateConnection(&quot;Maest
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/ConnectionProviderRegistry.cs/#L305">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection(System.String,System.String)">CreateConnection(String, String)</h4>
   <div class="markdown level1 summary"><p>Creates an initialized <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> object given the provider name and connection string</p>
@@ -265,8 +277,13 @@ as subsequent calls are returned immediately.</p>
 (most likely will not) respect the values of your connection parameters.</p>
 <p>You can programmatically check this via the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionProviderEntry.html#OSGeo_MapGuide_MaestroAPI_ConnectionProviderEntry_HasGlobalState">HasGlobalState</a> property</p>
 </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_System_String_System_String___.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/ConnectionProviderRegistry.cs/#L351">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_CreateConnection_System_String_System_String___" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.CreateConnection(System.String,System.String[])">CreateConnection(String, String[])</h4>
   <div class="markdown level1 summary"><p>Creates an initialized <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> object given the provider name and the initalization parameters.</p>
@@ -314,8 +331,13 @@ as subsequent calls are returned immediately.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_FindProvider_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.FindProvider(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/ConnectionProviderRegistry.cs/#L377">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_FindProvider_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.FindProvider*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_FindProvider_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.FindProvider(System.String)">FindProvider(String)</h4>
   <div class="markdown level1 summary"><p>Gets the entry for the given connection provider name</p>
@@ -357,8 +379,13 @@ as subsequent calls are returned immediately.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_GetInvocationCount_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.GetInvocationCount(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/ConnectionProviderRegistry.cs/#L262">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_GetInvocationCount_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.GetInvocationCount*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_GetInvocationCount_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.GetInvocationCount(System.String)">GetInvocationCount(String)</h4>
   <div class="markdown level1 summary"><p>Gets the invocation count for the given provider (the number of times a connection has been created for that provider)</p>
@@ -406,8 +433,13 @@ as subsequent calls are returned immediately.</p>
 be used to programmatically determine if creating a connection for a given provider will respect the connection parameter values
 you pass to it. (0 calls will respect your parameter values. 1 or more will not)</p>
 </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_GetProviders.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.GetProviders%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/ConnectionProviderRegistry.cs/#L247">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_GetProviders_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.GetProviders*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_GetProviders" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.GetProviders">GetProviders()</h4>
   <div class="markdown level1 summary"><p>Gets a list of registered provider names. The returned names are in upper-case.</p>
@@ -432,8 +464,13 @@ you pass to it. (0 calls will respect your parameter values. 1 or more will not)
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_InitRegistry_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.InitRegistry(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/ConnectionProviderRegistry.cs/#L176">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_InitRegistry_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.InitRegistry*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_InitRegistry_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.InitRegistry(System.String)">InitRegistry(String)</h4>
   <div class="markdown level1 summary"><p>Initializes the connection provider registry. You only need to do this if you intend to load connections
@@ -463,8 +500,13 @@ from providers registered in ConnectionProviders.xml</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_ParseConnectionString_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.ParseConnectionString(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/ConnectionProviderRegistry.cs/#L229">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_ParseConnectionString_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.ParseConnectionString*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_ParseConnectionString_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.ParseConnectionString(System.String)">ParseConnectionString(String)</h4>
   <div class="markdown level1 summary"><p>Parses the given Maestro connection string into a <span class="xref">System.Collections.Specialized.NameValueCollection</span></p>
@@ -501,13 +543,18 @@ from providers registered in ConnectionProviders.xml</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="xref">System.Collections.Specialized.NameValueCollection</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_RegisterProvider_OSGeo_MapGuide_MaestroAPI_ConnectionProviderEntry_OSGeo_MapGuide_MaestroAPI_ConnectionFactoryMethod_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.RegisterProvider(OSGeo.MapGuide.MaestroAPI.ConnectionProviderEntry%2COSGeo.MapGuide.MaestroAPI.ConnectionFactoryMethod)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/ConnectionProviderRegistry.cs/#L275">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_RegisterProvider_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.RegisterProvider*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry_RegisterProvider_OSGeo_MapGuide_MaestroAPI_ConnectionProviderEntry_OSGeo_MapGuide_MaestroAPI_ConnectionFactoryMethod_" data-uid="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry.RegisterProvider(OSGeo.MapGuide.MaestroAPI.ConnectionProviderEntry,OSGeo.MapGuide.MaestroAPI.ConnectionFactoryMethod)">RegisterProvider(ConnectionProviderEntry, ConnectionFactoryMethod)</h4>
   <div class="markdown level1 summary"><p>Registers a new connection provider</p>
@@ -548,10 +595,17 @@ from providers registered in ConnectionProviders.xml</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_ConnectionProviderRegistry.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/ConnectionProviderRegistry.cs/#L142" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -565,7 +619,7 @@ from providers registered in ConnectionProviders.xml</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

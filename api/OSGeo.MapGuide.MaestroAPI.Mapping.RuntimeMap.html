@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class RuntimeMap
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -90,6 +92,10 @@
     <div class="level1"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapObservable.html">MapObservable</a></div>
     <div class="level2"><span class="xref">RuntimeMap</span></div>
   </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.ComponentModel.INotifyPropertyChanged</span></div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -99,17 +105,38 @@
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapObservable.html#OSGeo_MapGuide_MaestroAPI_Mapping_MapObservable_SetField__1___0____0_System_String_">MapObservable.SetField&lt;T&gt;(T, T, String)</a>
     </div>
     <div>
-      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapObservable.html#OSGeo_MapGuide_MaestroAPI_Mapping_MapObservable_ObservableSet__1___0___0_Action___0__System_String_">MapObservable.ObservableSet&lt;T&gt;(T, T, Action&lt;T&gt;, String)</a>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapObservable.html#OSGeo_MapGuide_MaestroAPI_Mapping_MapObservable_ObservableSet__1___0___0_System_Action___0__System_String_">MapObservable.ObservableSet&lt;T&gt;(T, T, Action&lt;T&gt;, String)</a>
     </div>
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapObservable.html#OSGeo_MapGuide_MaestroAPI_Mapping_MapObservable_PropertyChanged">MapObservable.PropertyChanged</a>
     </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.html">OSGeo.MapGuide.MaestroAPI.Mapping</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RuntimeMap : MapObservable</code></pre>
+    <pre><code class="lang-csharp hljs">public class RuntimeMap : MapObservable, INotifyPropertyChanged</code></pre>
   </div>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>
@@ -187,8 +214,13 @@ involved, as an excessively large thread pool size may negatively affect stabili
 
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__ctor.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L179">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__ctor" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.#ctor">RuntimeMap()</h4>
   <div class="markdown level1 summary"></div>
@@ -197,8 +229,13 @@ involved, as an excessively large thread pool size may negatively affect stabili
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected RuntimeMap()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__ctor_OSGeo_MapGuide_MaestroAPI_IServerConnection_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.%23ctor(OSGeo.MapGuide.MaestroAPI.IServerConnection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L185">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__ctor_OSGeo_MapGuide_MaestroAPI_IServerConnection_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.#ctor(OSGeo.MapGuide.MaestroAPI.IServerConnection)">RuntimeMap(IServerConnection)</h4>
   <div class="markdown level1 summary"><p>Initializes this instance</p>
@@ -227,8 +264,13 @@ involved, as an excessively large thread pool size may negatively affect stabili
   </table>
   <h3 id="fields">Fields
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__bgColor.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._bgColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L676">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__bgColor" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._bgColor">_bgColor</h4>
   <div class="markdown level1 summary"><p>The background color of the map</p>
 </div>
@@ -247,13 +289,18 @@ involved, as an excessively large thread pool size may negatively affect stabili
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Color</span></td>
+        <td><span class="xref">System.Drawing.Color</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__dataExtent.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._dataExtent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L418">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__dataExtent" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._dataExtent">_dataExtent</h4>
   <div class="markdown level1 summary"><p>The data extent</p>
 </div>
@@ -272,13 +319,18 @@ involved, as an excessively large thread pool size may negatively affect stabili
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnvelope</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IEnvelope.html">IEnvelope</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__dispHeight.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._dispHeight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L473">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__dispHeight" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._dispHeight">_dispHeight</h4>
   <div class="markdown level1 summary"><p>The display height</p>
 </div>
@@ -302,8 +354,13 @@ involved, as an excessively large thread pool size may negatively affect stabili
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__dispWidth.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._dispWidth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L494">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__dispWidth" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._dispWidth">_dispWidth</h4>
   <div class="markdown level1 summary"><p>The display width</p>
 </div>
@@ -327,8 +384,13 @@ involved, as an excessively large thread pool size may negatively affect stabili
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__dpi.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._dpi%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L452">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__dpi" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._dpi">_dpi</h4>
   <div class="markdown level1 summary"><p>The dpi</p>
 </div>
@@ -352,8 +414,13 @@ involved, as an excessively large thread pool size may negatively affect stabili
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__getRes.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._getRes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L144">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__getRes" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._getRes">_getRes</h4>
   <div class="markdown level1 summary"><p>The GetResourceContents command</p>
 </div>
@@ -372,13 +439,18 @@ involved, as an excessively large thread pool size may negatively affect stabili
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IGetResourceContents</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.IGetResourceContents.html">IGetResourceContents</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__mapSrs.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._mapSrs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L659">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__mapSrs" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._mapSrs">_mapSrs</h4>
   <div class="markdown level1 summary"><p>The Coordinate System WKT of the map</p>
 </div>
@@ -402,8 +474,13 @@ involved, as an excessively large thread pool size may negatively affect stabili
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__mapSvc.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._mapSvc%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L139">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__mapSvc" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._mapSvc">_mapSvc</h4>
   <div class="markdown level1 summary"><p>The mapping service</p>
 </div>
@@ -422,13 +499,18 @@ involved, as an excessively large thread pool size may negatively affect stabili
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IMappingService</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.html">IMappingService</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__name.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L644">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__name" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._name">_name</h4>
   <div class="markdown level1 summary"><p>The name of the map</p>
 </div>
@@ -452,8 +534,13 @@ involved, as an excessively large thread pool size may negatively affect stabili
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__viewCenter.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._viewCenter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L588">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__viewCenter" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._viewCenter">_viewCenter</h4>
   <div class="markdown level1 summary"><p>The view center</p>
 </div>
@@ -472,13 +559,18 @@ involved, as an excessively large thread pool size may negatively affect stabili
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IPoint2D</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IPoint2D.html">IPoint2D</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__viewScale.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._viewScale%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L623">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap__viewScale" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap._viewScale">_viewScale</h4>
   <div class="markdown level1 summary"><p>The view scale</p>
 </div>
@@ -502,8 +594,13 @@ involved, as an excessively large thread pool size may negatively affect stabili
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ClassId.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ClassId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L749">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ClassId" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ClassId">ClassId</h4>
   <div class="markdown level1 summary"><p>MapGuide internal class id</p>
 </div>
@@ -527,8 +624,13 @@ involved, as an excessively large thread pool size may negatively affect stabili
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_layerDefinitionCache.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.layerDefinitionCache%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1236">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_layerDefinitionCache" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.layerDefinitionCache">layerDefinitionCache</h4>
   <div class="markdown level1 summary"><p>A cache of Layer Definition objects. Used to reduce lookup time of the same layer definitions</p>
 </div>
@@ -547,13 +649,18 @@ involved, as an excessively large thread pool size may negatively affect stabili
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">ILayerDefinition</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition.html">ILayerDefinition</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_MgBinaryVersion.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.MgBinaryVersion%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L744">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_MgBinaryVersion" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.MgBinaryVersion">MgBinaryVersion</h4>
   <div class="markdown level1 summary"><p>MapGuide internal value</p>
 </div>
@@ -577,8 +684,13 @@ involved, as an excessively large thread pool size may negatively affect stabili
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Z_ORDER_INCREMENT.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Z_ORDER_INCREMENT%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L149">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Z_ORDER_INCREMENT" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Z_ORDER_INCREMENT">Z_ORDER_INCREMENT</h4>
   <div class="markdown level1 summary"><p>The amount to increment the Z order for successive layers being added</p>
 </div>
@@ -602,8 +714,13 @@ involved, as an excessively large thread pool size may negatively affect stabili
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Z_ORDER_TOP.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Z_ORDER_TOP%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L154">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Z_ORDER_TOP" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Z_ORDER_TOP">Z_ORDER_TOP</h4>
   <div class="markdown level1 summary"><p>The draw order of the topmost layer</p>
 </div>
@@ -629,8 +746,13 @@ involved, as an excessively large thread pool size may negatively affect stabili
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_BackgroundColor.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.BackgroundColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L684">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_BackgroundColor_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.BackgroundColor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_BackgroundColor" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.BackgroundColor">BackgroundColor</h4>
   <div class="markdown level1 summary"><p>Gets or sets the color of the background. Check the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html#OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableBackgroundColor">SupportsMutableBackgroundColor</a>
@@ -651,7 +773,7 @@ to see if setting the background color is allowed.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Color</span></td>
+        <td><span class="xref">System.Drawing.Color</span></td>
         <td><p>The color of the background.</p>
 </td>
       </tr>
@@ -673,8 +795,13 @@ to see if setting the background color is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_CoordinateSystem.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.CoordinateSystem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L667">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_CoordinateSystem_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.CoordinateSystem*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_CoordinateSystem" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.CoordinateSystem">CoordinateSystem</h4>
   <div class="markdown level1 summary"><p>Gets or sets the coordinate system in WKT format. Check the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html#OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableCoordinateSystem">SupportsMutableCoordinateSystem</a>
@@ -717,8 +844,13 @@ to see if setting the coordinate system WKT is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_CurrentConnection.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.CurrentConnection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L132">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_CurrentConnection_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.CurrentConnection*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_CurrentConnection" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.CurrentConnection">CurrentConnection</h4>
   <div class="markdown level1 summary"><p>Gets the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> that is attached to this instance</p>
@@ -743,8 +875,13 @@ to see if setting the coordinate system WKT is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_DataExtent.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.DataExtent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L424">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_DataExtent_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.DataExtent*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_DataExtent" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.DataExtent">DataExtent</h4>
   <div class="markdown level1 summary"><p>Gets or sets the data extent.</p>
@@ -764,14 +901,19 @@ to see if setting the coordinate system WKT is allowed.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnvelope</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IEnvelope.html">IEnvelope</a></td>
         <td><p>The data extent.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_DisplayDpi.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.DisplayDpi%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L458">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_DisplayDpi_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.DisplayDpi*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_DisplayDpi" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.DisplayDpi">DisplayDpi</h4>
   <div class="markdown level1 summary"><p>Gets or sets the display dpi.</p>
@@ -797,8 +939,13 @@ to see if setting the coordinate system WKT is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_DisplayHeight.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.DisplayHeight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L479">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_DisplayHeight_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.DisplayHeight*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_DisplayHeight" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.DisplayHeight">DisplayHeight</h4>
   <div class="markdown level1 summary"><p>Gets or sets the display height.</p>
@@ -824,8 +971,13 @@ to see if setting the coordinate system WKT is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_DisplayWidth.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.DisplayWidth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L500">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_DisplayWidth_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.DisplayWidth*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_DisplayWidth" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.DisplayWidth">DisplayWidth</h4>
   <div class="markdown level1 summary"><p>Gets or sets the display width.</p>
@@ -851,8 +1003,13 @@ to see if setting the coordinate system WKT is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_FiniteDisplayScaleCount.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.FiniteDisplayScaleCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L394">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_FiniteDisplayScaleCount_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.FiniteDisplayScaleCount*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_FiniteDisplayScaleCount" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.FiniteDisplayScaleCount">FiniteDisplayScaleCount</h4>
   <div class="markdown level1 summary"><p>Gets the number of finite display scales</p>
@@ -877,8 +1034,13 @@ to see if setting the coordinate system WKT is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Groups.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Groups%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1228">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Groups_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Groups*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Groups" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Groups">Groups</h4>
   <div class="markdown level1 summary"><p>The collection of groups in this map</p>
@@ -903,8 +1065,13 @@ to see if setting the coordinate system WKT is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_IsDirty.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.IsDirty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1418">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_IsDirty_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.IsDirty*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_IsDirty" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.IsDirty">IsDirty</h4>
   <div class="markdown level1 summary"><p>Gets whether this instance has state changes which require a call to <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html#OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Save">Save()</a></p>
@@ -930,8 +1097,13 @@ to see if setting the coordinate system WKT is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_IsValidForRendering.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.IsValidForRendering%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L515">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_IsValidForRendering_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.IsValidForRendering*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_IsValidForRendering" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.IsValidForRendering">IsValidForRendering</h4>
   <div class="markdown level1 summary"><p>Gets whether this map is valid for rendering</p>
@@ -956,8 +1128,13 @@ to see if setting the coordinate system WKT is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_LayerRefreshMode.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.LayerRefreshMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L755">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_LayerRefreshMode_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.LayerRefreshMode*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_LayerRefreshMode" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.LayerRefreshMode">LayerRefreshMode</h4>
   <div class="markdown level1 summary"><p>Gets the layer refresh mode.</p>
@@ -983,8 +1160,13 @@ to see if setting the coordinate system WKT is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Layers.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Layers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1220">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Layers_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Layers*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Layers" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Layers">Layers</h4>
   <div class="markdown level1 summary"><p>The collection of layers in this map</p>
@@ -1009,8 +1191,13 @@ to see if setting the coordinate system WKT is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_MapDefinition.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.MapDefinition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L559">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_MapDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.MapDefinition*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_MapDefinition" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.MapDefinition">MapDefinition</h4>
   <div class="markdown level1 summary"><p>Gets or sets the map definition resource id</p>
@@ -1036,8 +1223,13 @@ to see if setting the coordinate system WKT is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_MapExtent.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.MapExtent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L409">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_MapExtent_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.MapExtent*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_MapExtent" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.MapExtent">MapExtent</h4>
   <div class="markdown level1 summary"><p>Gets or sets the map extents. Inspect the <span class="xref">OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableMapExtents</span>
@@ -1058,7 +1250,7 @@ to determine if setting the map extents is allowed</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnvelope</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IEnvelope.html">IEnvelope</a></td>
         <td><p>The map extents.</p>
 </td>
       </tr>
@@ -1080,8 +1272,13 @@ to determine if setting the map extents is allowed</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_MetersPerUnit.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.MetersPerUnit%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L726">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_MetersPerUnit_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.MetersPerUnit*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_MetersPerUnit" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.MetersPerUnit">MetersPerUnit</h4>
   <div class="markdown level1 summary"><p>Gets the meters per unit value. Check the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html#OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableMetersPerUnit">SupportsMutableMetersPerUnit</a>
@@ -1124,8 +1321,13 @@ to see if setting the meters per unit value is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Name.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L650">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Name_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Name*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Name" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Name">Name</h4>
   <div class="markdown level1 summary"><p>Gets or sets the name.</p>
@@ -1151,8 +1353,13 @@ to see if setting the meters per unit value is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ObjectId.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ObjectId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L569">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ObjectId_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ObjectId*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ObjectId" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ObjectId">ObjectId</h4>
   <div class="markdown level1 summary"><p>Gets or sets the object id.</p>
@@ -1178,8 +1385,13 @@ to see if setting the meters per unit value is allowed.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ResourceID.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ResourceID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L703">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ResourceID_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ResourceID*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ResourceID" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ResourceID">ResourceID</h4>
   <div class="markdown level1 summary"><p>Gets or sets the resource ID. When setting, if the name of this map has
@@ -1206,8 +1418,13 @@ not been specified already, the name will be set based on this resource id</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ResourceType.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ResourceType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L718">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ResourceType_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ResourceType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ResourceType" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ResourceType">ResourceType</h4>
   <div class="markdown level1 summary"><p>Gets the type of the resource.</p>
@@ -1227,14 +1444,19 @@ not been specified already, the name will be set based on this resource id</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ResourceTypes</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceTypes.html">ResourceTypes</a></td>
         <td><p>The type of the resource.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Selection.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Selection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1160">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Selection_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Selection*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Selection" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Selection">Selection</h4>
   <div class="markdown level1 summary"><p>Gets the selection set</p>
@@ -1260,8 +1482,13 @@ not been specified already, the name will be set based on this resource id</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SessionId.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SessionId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L579">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SessionId_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SessionId*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SessionId" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SessionId">SessionId</h4>
   <div class="markdown level1 summary"><p>Gets or sets the session id.</p>
@@ -1287,8 +1514,13 @@ not been specified already, the name will be set based on this resource id</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_StrictSelection.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.StrictSelection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1681">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_StrictSelection_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.StrictSelection*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_StrictSelection" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.StrictSelection">StrictSelection</h4>
   <div class="markdown level1 summary"><p>If true, any selections made against this map are validated to ensure the layer(s) being selected 
@@ -1314,8 +1546,13 @@ have identity properties</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableBackgroundColor.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableBackgroundColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L169">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableBackgroundColor_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableBackgroundColor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableBackgroundColor" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableBackgroundColor">SupportsMutableBackgroundColor</h4>
   <div class="markdown level1 summary"><p>Gets whether the background color of this map can be modified at runtime</p>
@@ -1340,8 +1577,13 @@ have identity properties</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableCoordinateSystem.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableCoordinateSystem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L164">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableCoordinateSystem_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableCoordinateSystem*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableCoordinateSystem" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableCoordinateSystem">SupportsMutableCoordinateSystem</h4>
   <div class="markdown level1 summary"><p>Gets whether the coordinate system of this map can be modified at runtime</p>
@@ -1366,8 +1608,13 @@ have identity properties</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableExtents.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableExtents%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L159">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableExtents_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableExtents*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableExtents" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableExtents">SupportsMutableExtents</h4>
   <div class="markdown level1 summary"><p>Gets whether extents of this map can be modified at runtime</p>
@@ -1392,8 +1639,13 @@ have identity properties</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableMetersPerUnit.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableMetersPerUnit%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L174">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableMetersPerUnit_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableMetersPerUnit*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SupportsMutableMetersPerUnit" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableMetersPerUnit">SupportsMutableMetersPerUnit</h4>
   <div class="markdown level1 summary"><p>Gets whether the meters-per-unit value of this map can be modified at runtime</p>
@@ -1418,8 +1670,75 @@ have identity properties</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_TileFormat.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.TileFormat%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L540">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_TileFormat_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.TileFormat*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_TileFormat" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.TileFormat">TileFormat</h4>
+  <div class="markdown level1 summary"><p>Gets the tile format. Only applicable for MapGuide Open Source 4.0 or later</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string TileFormat { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_TilePixelRatio.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.TilePixelRatio%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L549">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_TilePixelRatio_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.TilePixelRatio*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_TilePixelRatio" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.TilePixelRatio">TilePixelRatio</h4>
+  <div class="markdown level1 summary"><p>Gets the tile pixel ratio. Only applicable for MapGuide Open Source 4.0 or later</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int TilePixelRatio { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_TileSetDefinition.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.TileSetDefinition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L522">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_TileSetDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.TileSetDefinition*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_TileSetDefinition" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.TileSetDefinition">TileSetDefinition</h4>
   <div class="markdown level1 summary"><p>Gets or sets the tile set definition resource id. Only applicable
@@ -1446,8 +1765,44 @@ to a tile set</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_TileSetProvider.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.TileSetProvider%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L531">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_TileSetProvider_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.TileSetProvider*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_TileSetProvider" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.TileSetProvider">TileSetProvider</h4>
+  <div class="markdown level1 summary"><p>Gets the tile set provider. Only applicable for MapGuide Open Source 4.0 or later</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string TileSetProvider { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ViewCenter.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ViewCenter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L594">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ViewCenter_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ViewCenter*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ViewCenter" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ViewCenter">ViewCenter</h4>
   <div class="markdown level1 summary"><p>Gets or sets the view center.</p>
@@ -1467,14 +1822,19 @@ to a tile set</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IPoint2D</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IPoint2D.html">IPoint2D</a></td>
         <td><p>The view center.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ViewScale.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ViewScale%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L629">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ViewScale_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ViewScale*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ViewScale" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ViewScale">ViewScale</h4>
   <div class="markdown level1 summary"><p>Gets or sets the view scale.</p>
@@ -1500,8 +1860,13 @@ to a tile set</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_WatermarkUsage.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.WatermarkUsage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L735">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_WatermarkUsage_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.WatermarkUsage*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_WatermarkUsage" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.WatermarkUsage">WatermarkUsage</h4>
   <div class="markdown level1 summary"><p>Gets the watermark usage. Not applicable for version of MapGuide older than 2.3</p>
@@ -1528,8 +1893,13 @@ to a tile set</p>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ClearChanges.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ClearChanges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1476">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ClearChanges_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ClearChanges*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ClearChanges" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ClearChanges">ClearChanges()</h4>
   <div class="markdown level1 summary"><p>Clears all tracked changes</p>
@@ -1539,8 +1909,13 @@ to a tile set</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected void ClearChanges()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ConvertTiledGroupsToNonTiled.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ConvertTiledGroupsToNonTiled%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1396">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ConvertTiledGroupsToNonTiled_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ConvertTiledGroupsToNonTiled*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ConvertTiledGroupsToNonTiled" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ConvertTiledGroupsToNonTiled">ConvertTiledGroupsToNonTiled()</h4>
   <div class="markdown level1 summary"><p>Convers all tiled groups in this map to untiled groups. All layers within these groups
@@ -1551,10 +1926,15 @@ are convered to dynamic layers</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void ConvertTiledGroupsToNonTiled()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Deserialize_OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Deserialize(OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L979">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Deserialize_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Deserialize*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Deserialize_MgBinaryDeserializer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Deserialize(MgBinaryDeserializer)">Deserialize(MgBinaryDeserializer)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Deserialize_OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Deserialize(OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer)">Deserialize(MgBinaryDeserializer)</h4>
   <div class="markdown level1 summary"><p>Initializes this instance from the specified binary stream</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1573,14 +1953,19 @@ are convered to dynamic layers</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">MgBinaryDeserializer</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.html">MgBinaryDeserializer</a></td>
         <td><span class="parametername">d</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetFiniteDisplayScaleAt_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetFiniteDisplayScaleAt(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L401">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetFiniteDisplayScaleAt_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetFiniteDisplayScaleAt*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetFiniteDisplayScaleAt_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetFiniteDisplayScaleAt(System.Int32)">GetFiniteDisplayScaleAt(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the finite display scale at the specified index</p>
@@ -1622,8 +2007,13 @@ are convered to dynamic layers</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetGroupByName_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetGroupByName(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1203">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetGroupByName_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetGroupByName*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetGroupByName_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetGroupByName(System.String)">GetGroupByName(String)</h4>
   <div class="markdown level1 summary"><p>Gets the group by its specified name</p>
@@ -1631,7 +2021,8 @@ are convered to dynamic layers</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RuntimeMapGroup GetGroupByName(string name)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the indexer of the Groups property instead&quot;)]
+public RuntimeMapGroup GetGroupByName(string name)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1666,8 +2057,13 @@ are convered to dynamic layers</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetGroupsOfGroup_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetGroupsOfGroup(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1306">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetGroupsOfGroup_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetGroupsOfGroup*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetGroupsOfGroup_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetGroupsOfGroup(System.String)">GetGroupsOfGroup(String)</h4>
   <div class="markdown level1 summary"><p>Gets the groups of the specified group.</p>
@@ -1710,8 +2106,13 @@ are convered to dynamic layers</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetLayerByObjectId_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetLayerByObjectId(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1215">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetLayerByObjectId_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetLayerByObjectId*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetLayerByObjectId_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetLayerByObjectId(System.String)">GetLayerByObjectId(String)</h4>
   <div class="markdown level1 summary"><p>Gets the layer by object id.</p>
@@ -1754,8 +2155,13 @@ are convered to dynamic layers</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetLayersOfGroup_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetLayersOfGroup(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1286">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetLayersOfGroup_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetLayersOfGroup*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetLayersOfGroup_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetLayersOfGroup(System.String)">GetLayersOfGroup(String)</h4>
   <div class="markdown level1 summary"><p>Gets the layers of the specified group</p>
@@ -1798,8 +2204,13 @@ are convered to dynamic layers</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetLegendImageStream_System_String_System_Double_System_Int32_System_Int32_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetLegendImageStream(System.String%2CSystem.Double%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1667">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetLegendImageStream_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetLegendImageStream*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_GetLegendImageStream_System_String_System_Double_System_Int32_System_Int32_System_String_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.GetLegendImageStream(System.String,System.Double,System.Int32,System.Int32,System.String,System.Int32,System.Int32)">GetLegendImageStream(String, Double, Int32, Int32, String, Int32, Int32)</h4>
   <div class="markdown level1 summary"><p>Convenience method for rendering a layer style icon</p>
@@ -1871,8 +2282,13 @@ are convered to dynamic layers</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_IndexOfLayer_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.IndexOfLayer(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1243">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_IndexOfLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.IndexOfLayer*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_IndexOfLayer_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.IndexOfLayer(System.String)">IndexOfLayer(String)</h4>
   <div class="markdown level1 summary"><p>Gets the index of the first layer whose name matches the specified name</p>
@@ -1914,8 +2330,13 @@ are convered to dynamic layers</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_InitialiseDisplayParameters_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.InitialiseDisplayParameters(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L241">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_InitialiseDisplayParameters_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.InitialiseDisplayParameters*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_InitialiseDisplayParameters_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.InitialiseDisplayParameters(System.Int32,System.Int32)">InitialiseDisplayParameters(Int32, Int32)</h4>
   <div class="markdown level1 summary"><p>Sets the width, height and initial view scale</p>
@@ -1947,8 +2368,13 @@ are convered to dynamic layers</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OnPropertyChanged_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.OnPropertyChanged(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1467">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OnPropertyChanged_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.OnPropertyChanged*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OnPropertyChanged_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.OnPropertyChanged(System.String)">OnPropertyChanged(String)</h4>
   <div class="markdown level1 summary"><p>Raises the <span class="xref">OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.PropertyChanged</span> event</p>
@@ -1977,16 +2403,21 @@ are convered to dynamic layers</p>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapObservable.html#OSGeo_MapGuide_MaestroAPI_Mapping_MapObservable_OnPropertyChanged_System_String_">MapObservable.OnPropertyChanged(String)</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_QueryMapFeatures_System_String_System_Int32_System_Boolean_System_String_OSGeo_MapGuide_MaestroAPI_Services_QueryMapOptions_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.QueryMapFeatures(System.String%2CSystem.Int32%2CSystem.Boolean%2CSystem.String%2COSGeo.MapGuide.MaestroAPI.Services.QueryMapOptions%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1643">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_QueryMapFeatures_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.QueryMapFeatures*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_QueryMapFeatures_System_String_System_Int32_System_Boolean_System_String_QueryMapOptions_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.QueryMapFeatures(System.String,System.Int32,System.Boolean,System.String,QueryMapOptions)">QueryMapFeatures(String, Int32, Boolean, String, QueryMapOptions)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_QueryMapFeatures_System_String_System_Int32_System_Boolean_System_String_OSGeo_MapGuide_MaestroAPI_Services_QueryMapOptions_System_Nullable_System_Int32__" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.QueryMapFeatures(System.String,System.Int32,System.Boolean,System.String,OSGeo.MapGuide.MaestroAPI.Services.QueryMapOptions,System.Nullable{System.Int32})">QueryMapFeatures(String, Int32, Boolean, String, QueryMapOptions, Nullable&lt;Int32&gt;)</h4>
   <div class="markdown level1 summary"><p>Convenience method for performing selection based on the given geometry</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual string QueryMapFeatures(string wkt, int maxFeatures, bool persist, string selectionVariant, QueryMapOptions extraOptions)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual string QueryMapFeatures(string wkt, int maxFeatures, bool persist, string selectionVariant, QueryMapOptions extraOptions, int? requestData = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2019,8 +2450,13 @@ are convered to dynamic layers</p>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">QueryMapOptions</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.QueryMapOptions.html">QueryMapOptions</a></td>
         <td><span class="parametername">extraOptions</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">requestData</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -2040,8 +2476,13 @@ are convered to dynamic layers</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Render_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Render(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1546">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Render_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Render*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Render_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Render(System.String)">Render(String)</h4>
   <div class="markdown level1 summary"><p>Convenience method for rendering a bitmap of the current map</p>
@@ -2083,67 +2524,13 @@ are convered to dynamic layers</p>
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderDynamicOverlay_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderDynamicOverlay*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderDynamicOverlay_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_String_Color_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderDynamicOverlay(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection,System.String,Color,System.Int32)">RenderDynamicOverlay(MapSelection, String, Color, Int32)</h4>
-  <div class="markdown level1 summary"><p>Convenience method for rendering a dynamic overlay of the current map</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Stream RenderDynamicOverlay(MapSelection selection, string format, Color selectionColor, int behaviour)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.html">MapSelection</a></td>
-        <td><span class="parametername">selection</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">format</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Color</span></td>
-        <td><span class="parametername">selectionColor</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">behaviour</span></td>
-        <td><p>A bitmask for the rendering behaviour (1 = Render Selection, 2 = Render Layers, 4 = Keep Selection, 8 = Render Base Layers)</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.IO.Stream</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderDynamicOverlay_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderDynamicOverlay(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1578">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderDynamicOverlay_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderDynamicOverlay*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderDynamicOverlay_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderDynamicOverlay(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection,System.String,System.Boolean)">RenderDynamicOverlay(MapSelection, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Convenience method for rendering a dynamic overlay of the current map</p>
@@ -2151,7 +2538,8 @@ are convered to dynamic layers</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Stream RenderDynamicOverlay(MapSelection sel, string format, bool keepSelection)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the version of RenderDynamicOverlay that is not marked Obsolete&quot;)]
+public Stream RenderDynamicOverlay(MapSelection sel, string format, bool keepSelection)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2195,8 +2583,77 @@ are convered to dynamic layers</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderDynamicOverlay_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_String_System_Drawing_Color_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderDynamicOverlay(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection%2CSystem.String%2CSystem.Drawing.Color%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1599">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderDynamicOverlay_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderDynamicOverlay*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderDynamicOverlay_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_String_System_Drawing_Color_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderDynamicOverlay(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection,System.String,System.Drawing.Color,System.Int32)">RenderDynamicOverlay(MapSelection, String, Color, Int32)</h4>
+  <div class="markdown level1 summary"><p>Convenience method for rendering a dynamic overlay of the current map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Stream RenderDynamicOverlay(MapSelection selection, string format, Color selectionColor, int behaviour)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.html">MapSelection</a></td>
+        <td><span class="parametername">selection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Drawing.Color</span></td>
+        <td><span class="parametername">selectionColor</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">behaviour</span></td>
+        <td><p>A bitmask for the rendering behaviour (1 = Render Selection, 2 = Render Layers, 4 = Keep Selection, 8 = Render Base Layers)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderDynamicOverlay_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderDynamicOverlay(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1568">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderDynamicOverlay_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderDynamicOverlay*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderDynamicOverlay_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderDynamicOverlay(System.String,System.Boolean)">RenderDynamicOverlay(String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Convenience method for rendering a dynamic overlay of the current map</p>
@@ -2204,7 +2661,8 @@ are convered to dynamic layers</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Stream RenderDynamicOverlay(string format, bool keepSelection)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the version of RenderDynamicOverlay that is not marked Obsolete&quot;)]
+public Stream RenderDynamicOverlay(string format, bool keepSelection)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2243,10 +2701,15 @@ are convered to dynamic layers</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderMapLegend_System_Int32_System_Int32_System_Drawing_Color_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderMapLegend(System.Int32%2CSystem.Int32%2CSystem.Drawing.Color%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1620">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderMapLegend_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderMapLegend*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderMapLegend_System_Int32_System_Int32_Color_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderMapLegend(System.Int32,System.Int32,Color,System.String)">RenderMapLegend(Int32, Int32, Color, String)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_RenderMapLegend_System_Int32_System_Int32_System_Drawing_Color_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.RenderMapLegend(System.Int32,System.Int32,System.Drawing.Color,System.String)">RenderMapLegend(Int32, Int32, Color, String)</h4>
   <div class="markdown level1 summary"><p>Convenience method for rendering the legend for this map</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2275,7 +2738,7 @@ are convered to dynamic layers</p>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Color</span></td>
+        <td><span class="xref">System.Drawing.Color</span></td>
         <td><span class="parametername">color</span></td>
         <td></td>
       </tr>
@@ -2301,8 +2764,13 @@ are convered to dynamic layers</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Save.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Save%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1321">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Save_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Save*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Save" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Save">Save()</h4>
   <div class="markdown level1 summary"><p>Saves this instance. The changes are propagated back to the MapGuide Server</p>
@@ -2312,10 +2780,15 @@ are convered to dynamic layers</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void Save()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Serialize_OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Serialize(OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L767">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Serialize_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Serialize*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Serialize_MgBinarySerializer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Serialize(MgBinarySerializer)">Serialize(MgBinarySerializer)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_Serialize_OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Serialize(OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer)">Serialize(MgBinarySerializer)</h4>
   <div class="markdown level1 summary"><p>Serializes this instance to the specified binary stream</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2334,16 +2807,21 @@ are convered to dynamic layers</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">MgBinarySerializer</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.html">MgBinarySerializer</a></td>
         <td><span class="parametername">s</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SerializeLayerData_OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SerializeLayerData(OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L922">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SerializeLayerData_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SerializeLayerData*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SerializeLayerData_MgBinarySerializer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SerializeLayerData(MgBinarySerializer)">SerializeLayerData(MgBinarySerializer)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SerializeLayerData_OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SerializeLayerData(OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer)">SerializeLayerData(MgBinarySerializer)</h4>
   <div class="markdown level1 summary"><p>Serializes the layer data to the specified binary stream</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2362,14 +2840,19 @@ are convered to dynamic layers</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">MgBinarySerializer</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.html">MgBinarySerializer</a></td>
         <td><span class="parametername">s</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SetViewCenter_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SetViewCenter(System.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L607">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SetViewCenter_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SetViewCenter*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_SetViewCenter_System_Double_System_Double_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SetViewCenter(System.Double,System.Double)">SetViewCenter(Double, Double)</h4>
   <div class="markdown level1 summary"><p>Sets the view center</p>
@@ -2403,8 +2886,13 @@ are convered to dynamic layers</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ToMapDefinition_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ToMapDefinition(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1786">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ToMapDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ToMapDefinition*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_ToMapDefinition_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ToMapDefinition(System.Boolean)">ToMapDefinition(Boolean)</h4>
   <div class="markdown level1 summary"><p>Converts this instance to an equivalent Map Definition</p>
@@ -2442,15 +2930,20 @@ are convered to dynamic layers</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IMapDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html">IMapDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_UpdateMapDefinition_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.UpdateMapDefinition(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1688">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_UpdateMapDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.UpdateMapDefinition*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_UpdateMapDefinition_IMapDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.UpdateMapDefinition(IMapDefinition)">UpdateMapDefinition(IMapDefinition)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_UpdateMapDefinition_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.UpdateMapDefinition(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition)">UpdateMapDefinition(IMapDefinition)</h4>
   <div class="markdown level1 summary"><p>Updates and replaces the layer/group structure of the specified Map Definition with the
 layer/group structure of this Runtime Map</p>
 </div>
@@ -2470,7 +2963,7 @@ layer/group structure of this Runtime Map</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IMapDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html">IMapDefinition</a></td>
         <td><span class="parametername">newMdf</span></td>
         <td></td>
       </tr>
@@ -2478,8 +2971,13 @@ layer/group structure of this Runtime Map</p>
   </table>
   <h3 id="events">Events
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_LayerAdded.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.LayerAdded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L1513">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_LayerAdded" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.LayerAdded">LayerAdded</h4>
   <div class="markdown level1 summary"><p>Raise when a layer is added to the map</p>
 </div>
@@ -2503,6 +3001,10 @@ layer/group structure of this Runtime Map</p>
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged</span>
+  </div>
 </article>
           </div>
           
@@ -2510,10 +3012,17 @@ layer/group structure of this Runtime Map</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/RuntimeMap.cs/#L123" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -2527,7 +3036,7 @@ layer/group structure of this Runtime Map</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

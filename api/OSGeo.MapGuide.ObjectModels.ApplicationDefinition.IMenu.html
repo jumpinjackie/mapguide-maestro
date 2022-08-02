@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IMenu
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -85,15 +87,20 @@
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.html">OSGeo.MapGuide.ObjectModels.ApplicationDefinition</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.ObjectModels.dll</h6>
   <h5 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IMenu</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_ItemCount.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.ItemCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1723">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_ItemCount_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.ItemCount*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_ItemCount" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.ItemCount">ItemCount</h4>
   <div class="markdown level1 summary"><p>Gets the item count.</p>
@@ -119,8 +126,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_Items.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.Items%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1729">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_Items_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.Items*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_Items" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.Items">Items</h4>
   <div class="markdown level1 summary"><p>Gets the items.</p>
@@ -140,7 +152,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItem.html">IUIItem</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItem.html">IUIItem</a>&gt;</td>
         <td><p>The items.</p>
 </td>
       </tr>
@@ -148,8 +160,13 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_AddItem_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IUIItem_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.AddItem(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItem)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1763">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_AddItem_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.AddItem*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_AddItem_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IUIItem_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.AddItem(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItem)">AddItem(IUIItem)</h4>
   <div class="markdown level1 summary"><p>Adds the item.</p>
@@ -177,8 +194,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_GetIndex_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IUIItem_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.GetIndex(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItem)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1750">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_GetIndex_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.GetIndex*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_GetIndex_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IUIItem_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.GetIndex(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItem)">GetIndex(IUIItem)</h4>
   <div class="markdown level1 summary"><p>Gets the index of the specified item.</p>
@@ -221,8 +243,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_Insert_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IUIItem_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.Insert(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItem%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1757">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_Insert_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.Insert*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_Insert_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IUIItem_System_Int32_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.Insert(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItem,System.Int32)">Insert(IUIItem, Int32)</h4>
   <div class="markdown level1 summary"><p>Inserts the specified item at the specified index.</p>
@@ -256,8 +283,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_MoveDown_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IUIItem_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.MoveDown(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItem)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1743">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_MoveDown_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.MoveDown*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_MoveDown_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IUIItem_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.MoveDown(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItem)">MoveDown(IUIItem)</h4>
   <div class="markdown level1 summary"><p>Moves the specified item down.</p>
@@ -300,8 +332,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_MoveUp_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IUIItem_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.MoveUp(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItem)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1736">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_MoveUp_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.MoveUp*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_MoveUp_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IUIItem_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.MoveUp(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItem)">MoveUp(IUIItem)</h4>
   <div class="markdown level1 summary"><p>Moves the specified item up.</p>
@@ -344,8 +381,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_RemoveItem_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IUIItem_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.RemoveItem(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItem)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1769">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_RemoveItem_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.RemoveItem*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu_RemoveItem_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IUIItem_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu.RemoveItem(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IUIItem)">RemoveItem(IUIItem)</h4>
   <div class="markdown level1 summary"><p>Removes the item.</p>
@@ -380,10 +422,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMenu.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMenu%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1717" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -397,7 +446,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

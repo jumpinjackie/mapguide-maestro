@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ReaderBase
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -91,25 +93,19 @@ interface</p>
     <div class="level1"><span class="xref">ReaderBase</span></div>
       <div class="level2"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.html">FeatureReaderBase</a></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a></div>
-    <div><span class="xref">IDisposable</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
     <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -120,17 +116,28 @@ interface</p>
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.html">OSGeo.MapGuide.MaestroAPI.Feature</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class ReaderBase : IReader, IDisposable, IRecord</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Current.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Current%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L45">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Current_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Current*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Current" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Current">Current</h4>
   <div class="markdown level1 summary"><p>Gets the current iterated record</p>
@@ -155,8 +162,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_FieldCount.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.FieldCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L58">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_FieldCount_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.FieldCount*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_FieldCount" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.FieldCount">FieldCount</h4>
   <div class="markdown level1 summary"><p>Gets the number of fields in this record</p>
@@ -181,8 +193,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Item_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L305">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Item*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Item_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Item(System.Int32)">Item[Int32]</h4>
   <div class="markdown level1 summary"><p>Gets the <span class="xref">System.Object</span> at the specified index.</p>
@@ -224,8 +241,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Item_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Item(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L310">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Item*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Item_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Item(System.String)">Item[String]</h4>
   <div class="markdown level1 summary"><p>Gets the <span class="xref">System.Object</span> with the specified name.</p>
@@ -267,8 +289,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReaderType.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReaderType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L53">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReaderType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReaderType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReaderType" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReaderType">ReaderType</h4>
   <div class="markdown level1 summary"><p>Gets the type of the reader.</p>
@@ -296,8 +323,13 @@ interface</p>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Close.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Close%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L90">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Close_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Close*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Close" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Close">Close()</h4>
   <div class="markdown level1 summary"><p>Closes the object, freeing any resources it may be holding.</p>
@@ -307,8 +339,13 @@ interface</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void Close()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Dispose.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L97">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Dispose_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Dispose*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Dispose" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Dispose">Dispose()</h4>
   <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
@@ -318,8 +355,13 @@ interface</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L107">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Dispose_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Dispose*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Dispose_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Dispose(System.Boolean)">Dispose(Boolean)</h4>
   <div class="markdown level1 summary"><p>Dispose of this instance</p>
@@ -346,8 +388,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Finalize.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Finalize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L37">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Finalize_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Finalize*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Finalize" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.Finalize">Finalize()</h4>
   <div class="markdown level1 summary"><p>Finalizer</p>
@@ -357,8 +404,13 @@ interface</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected void Finalize()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBlob_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBlob(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L237">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBlob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBlob*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBlob_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBlob(System.Int32)">GetBlob(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the blob value at the specified index</p>
@@ -400,8 +452,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBlob_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBlob(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L153">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBlob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBlob*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBlob_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBlob(System.String)">GetBlob(String)</h4>
   <div class="markdown level1 summary"><p>Gets the blob value of the specified property</p>
@@ -443,8 +500,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBoolean_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBoolean(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L223">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBoolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBoolean*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBoolean_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBoolean(System.Int32)">GetBoolean(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the boolean value at the specified index</p>
@@ -486,8 +548,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBoolean_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBoolean(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L139">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBoolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBoolean*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetBoolean_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetBoolean(System.String)">GetBoolean(String)</h4>
   <div class="markdown level1 summary"><p>Gets the boolean value of the specified property</p>
@@ -529,8 +596,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetByte_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetByte(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L230">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetByte_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetByte*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetByte_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetByte(System.Int32)">GetByte(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the byte value at the specified index</p>
@@ -572,8 +644,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetByte_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetByte(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L146">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetByte_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetByte*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetByte_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetByte(System.String)">GetByte(String)</h4>
   <div class="markdown level1 summary"><p>Gets the byte value of the specified property</p>
@@ -615,8 +692,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetClob_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetClob(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L244">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetClob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetClob*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetClob_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetClob(System.Int32)">GetClob(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the clob value at the specified index</p>
@@ -658,8 +740,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetClob_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetClob(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L160">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetClob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetClob*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetClob_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetClob(System.String)">GetClob(String)</h4>
   <div class="markdown level1 summary"><p>Gets the clob value of the specified property</p>
@@ -701,8 +788,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDateTime_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDateTime(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L258">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDateTime_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDateTime*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDateTime_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDateTime(System.Int32)">GetDateTime(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the datetime value at the specified index</p>
@@ -739,13 +831,18 @@ interface</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDateTime_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDateTime(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L174">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDateTime_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDateTime*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDateTime_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDateTime(System.String)">GetDateTime(String)</h4>
   <div class="markdown level1 summary"><p>Gets the datetime value of the specified property</p>
@@ -782,13 +879,18 @@ interface</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDouble_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDouble(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L251">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDouble_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDouble*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDouble_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDouble(System.Int32)">GetDouble(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the double value at the specified index</p>
@@ -830,8 +932,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDouble_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDouble(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L167">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDouble_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDouble*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetDouble_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetDouble(System.String)">GetDouble(String)</h4>
   <div class="markdown level1 summary"><p>Gets the double value of the specified property</p>
@@ -873,8 +980,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetFieldType_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetFieldType(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L117">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetFieldType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetFieldType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetFieldType_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetFieldType(System.Int32)">GetFieldType(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the CLR type of the field at the specified index</p>
@@ -911,13 +1023,18 @@ interface</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Type</span></td>
+        <td><span class="xref">System.Type</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetGeometry_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetGeometry(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L300">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetGeometry_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetGeometry*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetGeometry_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetGeometry(System.Int32)">GetGeometry(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the geometry value at the specified index</p>
@@ -954,13 +1071,18 @@ interface</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IGeometryRef</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Geometry.IGeometryRef.html">IGeometryRef</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetGeometry_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetGeometry(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L216">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetGeometry_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetGeometry*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetGeometry_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetGeometry(System.String)">GetGeometry(String)</h4>
   <div class="markdown level1 summary"><p>Gets the geometry value of the specified property</p>
@@ -997,13 +1119,18 @@ interface</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IGeometryRef</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Geometry.IGeometryRef.html">IGeometryRef</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt16_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt16(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L265">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt16_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt16*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt16_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt16(System.Int32)">GetInt16(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the int16 value at the specified index</p>
@@ -1045,8 +1172,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt16_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt16(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L181">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt16_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt16*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt16_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt16(System.String)">GetInt16(String)</h4>
   <div class="markdown level1 summary"><p>Gets the int16 value of the specified property</p>
@@ -1088,8 +1220,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt32_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt32(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L272">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt32*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt32(System.Int32)">GetInt32(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the int32 value at the specified index</p>
@@ -1131,8 +1268,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt32_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt32(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L188">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt32*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt32(System.String)">GetInt32(String)</h4>
   <div class="markdown level1 summary"><p>Gets the int32 value of the specified property</p>
@@ -1174,8 +1316,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt64_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt64(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L279">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt64_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt64*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt64_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt64(System.Int32)">GetInt64(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the int64 value at the specified index</p>
@@ -1217,8 +1364,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt64_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt64(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L195">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt64_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt64*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetInt64_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetInt64(System.String)">GetInt64(String)</h4>
   <div class="markdown level1 summary"><p>Gets the int64 value of the specified property</p>
@@ -1260,8 +1412,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetName_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetName(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L69">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetName_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetName*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetName_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetName(System.Int32)">GetName(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the name of the field at the specified index</p>
@@ -1303,8 +1460,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetPropertyType_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetPropertyType(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L324">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetPropertyType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetPropertyType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetPropertyType_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetPropertyType(System.Int32)">GetPropertyType(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the type of the property at the specified index.</p>
@@ -1347,8 +1509,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetPropertyType_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetPropertyType(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L317">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetPropertyType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetPropertyType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetPropertyType_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetPropertyType(System.String)">GetPropertyType(String)</h4>
   <div class="markdown level1 summary"><p>Gets the type of the property.</p>
@@ -1391,8 +1558,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetSingle_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetSingle(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L286">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetSingle_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetSingle*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetSingle_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetSingle(System.Int32)">GetSingle(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the single value at the specified index</p>
@@ -1434,8 +1606,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetSingle_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetSingle(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L202">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetSingle_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetSingle*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetSingle_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetSingle(System.String)">GetSingle(String)</h4>
   <div class="markdown level1 summary"><p>Gets the single value of the specified property</p>
@@ -1477,8 +1654,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetString_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetString(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L293">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetString_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetString*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetString_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetString(System.Int32)">GetString(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the string value at the specified index</p>
@@ -1520,8 +1702,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetString_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetString(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L209">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetString_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetString*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetString_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.GetString(System.String)">GetString(String)</h4>
   <div class="markdown level1 summary"><p>Gets the string value of the specified property</p>
@@ -1563,8 +1750,13 @@ interface</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_IsNull_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.IsNull(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L132">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_IsNull_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.IsNull*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_IsNull_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.IsNull(System.Int32)">IsNull(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets whether the property value at the specified index has a null property value. You must
@@ -1607,8 +1799,13 @@ call this method first to determine if it is safe to call the corresponding GetX
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_IsNull_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.IsNull(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L124">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_IsNull_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.IsNull*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_IsNull_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.IsNull(System.String)">IsNull(String)</h4>
   <div class="markdown level1 summary"><p>Gets whether the specified property name has a null property value</p>
@@ -1650,8 +1847,13 @@ call this method first to determine if it is safe to call the corresponding GetX
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReadNext.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReadNext%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L75">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReadNext_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReadNext*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReadNext" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReadNext">ReadNext()</h4>
   <div class="markdown level1 summary"><p>Advances the reader to the next item and determines whether there is another object to read.</p>
@@ -1676,8 +1878,13 @@ call this method first to determine if it is safe to call the corresponding GetX
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReadNextRecord.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReadNextRecord%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L85">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReadNextRecord_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReadNextRecord*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_ReadNextRecord" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.ReadNextRecord">ReadNextRecord()</h4>
   <div class="markdown level1 summary"><p>Reads the next record.</p>
@@ -1707,7 +1914,7 @@ call this method first to determine if it is safe to call the corresponding GetX
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a>
   </div>
   <div>
-      <span class="xref">IDisposable</span>
+      <span class="xref">System.IDisposable</span>
   </div>
   <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a>
@@ -1719,10 +1926,17 @@ call this method first to determine if it is safe to call the corresponding GetX
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/ReaderBase.cs/#L32" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -1736,7 +1950,7 @@ call this method first to determine if it is safe to call the corresponding GetX
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

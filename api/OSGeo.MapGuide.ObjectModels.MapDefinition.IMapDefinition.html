@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IMapDefinition
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -105,19 +107,30 @@
       <a class="xref" href="OSGeo.MapGuide.ObjectModels.IVersionedEntity.html#OSGeo_MapGuide_ObjectModels_IVersionedEntity_ResourceVersion">IVersionedEntity.ResourceVersion</a>
     </div>
     <div>
+      <span class="xref">System.ICloneable.Clone()</span>
+    </div>
+    <div>
       <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinitionBase.html#OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinitionBase_BackgroundColor">IMapDefinitionBase.BackgroundColor</a>
+    </div>
+    <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged.PropertyChanged</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.html">OSGeo.MapGuide.ObjectModels.MapDefinition</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.ObjectModels.dll</h6>
   <h5 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IMapDefinition : IResource, IVersionedEntity, ICloneable, IMapDefinitionBase, INotifyPropertyChanged</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_BaseMap.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.BaseMap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L134">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_BaseMap_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.BaseMap*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_BaseMap" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.BaseMap">BaseMap</h4>
   <div class="markdown level1 summary"><p>Returns the base map section of this map definition. Ensure <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html#OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_InitBaseMap">InitBaseMap()</a>
@@ -143,8 +156,13 @@ is called first before accessing this property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_CoordinateSystem.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.CoordinateSystem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L107">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_CoordinateSystem_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.CoordinateSystem*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_CoordinateSystem" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.CoordinateSystem">CoordinateSystem</h4>
   <div class="markdown level1 summary"><p>Gets or sets the coordinate system. Layers whose coordinate system does
@@ -171,8 +189,13 @@ not match will be re-projected to this coordinate system when rendering</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_ExtentCalculator.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.ExtentCalculator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L164">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_ExtentCalculator_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.ExtentCalculator*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_ExtentCalculator" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.ExtentCalculator">ExtentCalculator</h4>
   <div class="markdown level1 summary"><p>Gets or sets a layer extent calculator</p>
@@ -197,8 +220,13 @@ not match will be re-projected to this coordinate system when rendering</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_Extents.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.Extents%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L113">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_Extents_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.Extents*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_Extents" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.Extents">Extents</h4>
   <div class="markdown level1 summary"><p>Gets or sets the extents.</p>
@@ -218,14 +246,19 @@ not match will be re-projected to this coordinate system when rendering</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnvelope</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IEnvelope.html">IEnvelope</a></td>
         <td><p>The extents.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MapLayer.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MapLayer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L159">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MapLayer*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MapLayer" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MapLayer">MapLayer</h4>
   <div class="markdown level1 summary"><p>Gets the map layers.</p>
@@ -245,14 +278,19 @@ not match will be re-projected to this coordinate system when rendering</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer.html">IMapLayer</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer.html">IMapLayer</a>&gt;</td>
         <td><p>The map layers.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MapLayerGroup.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MapLayerGroup%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L234">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MapLayerGroup_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MapLayerGroup*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MapLayerGroup" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MapLayerGroup">MapLayerGroup</h4>
   <div class="markdown level1 summary"><p>Gets the map layer groups.</p>
@@ -272,14 +310,19 @@ not match will be re-projected to this coordinate system when rendering</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup.html">IMapLayerGroup</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup.html">IMapLayerGroup</a>&gt;</td>
         <td><p>The map layer groups.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_Metadata.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.Metadata%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L128">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_Metadata_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.Metadata*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_Metadata" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.Metadata">Metadata</h4>
   <div class="markdown level1 summary"><p>Gets or sets the metadata.</p>
@@ -305,8 +348,13 @@ not match will be re-projected to this coordinate system when rendering</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_Name.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L100">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_Name_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.Name*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_Name" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.Name">Name</h4>
   <div class="markdown level1 summary"><p>Gets or sets the name.</p>
@@ -334,8 +382,13 @@ not match will be re-projected to this coordinate system when rendering</p>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_AddGroup_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.AddGroup(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L241">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_AddGroup_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.AddGroup*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_AddGroup_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.AddGroup(System.String)">AddGroup(String)</h4>
   <div class="markdown level1 summary"><p>Adds the group. The group will be added to the end of the list</p>
@@ -378,8 +431,13 @@ not match will be re-projected to this coordinate system when rendering</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_AddLayer_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.AddLayer(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L201">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_AddLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.AddLayer*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_AddLayer_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_System_String_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.AddLayer(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer,System.String,System.String,System.String)">AddLayer(IMapLayer, String, String, String)</h4>
   <div class="markdown level1 summary"><p>Adds a layer to this map. If this is the first layer to be added, the coordinate system
@@ -443,8 +501,13 @@ if this has not been set already.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_AddLayer_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.AddLayer(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L189">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_AddLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.AddLayer*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_AddLayer_System_String_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.AddLayer(System.String,System.String,System.String)">AddLayer(String, String, String)</h4>
   <div class="markdown level1 summary"><p>Adds a layer to this map. If this is the first layer to be added, the coordinate system
@@ -502,8 +565,13 @@ if this has not been set already.</p>
   <div class="markdown level1 remarks"><p>The layer is added to the beginning of the list. That is, if you called <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html#OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_GetIndex_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_">GetIndex(IMapLayer)</a>
 on your newly added layer, it will return 0. From a display perspective, your newly added layer will be at the top of the map&apos;s draw order when you create a runtime map from this map definition</p>
 </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_AttachBaseMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapDefinition_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.AttachBaseMap(OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapDefinition)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L141">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_AttachBaseMap_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.AttachBaseMap*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_AttachBaseMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.AttachBaseMap(OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapDefinition)">AttachBaseMap(IBaseMapDefinition)</h4>
   <div class="markdown level1 summary"><p>Attaches the given base map section to this map definition. If an existing base map section
@@ -531,8 +599,13 @@ exists, it is replaced</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_GetIndex_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.GetIndex(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L214">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_GetIndex_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.GetIndex*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_GetIndex_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.GetIndex(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)">GetIndex(IMapLayer)</h4>
   <div class="markdown level1 summary"><p>Gets the index of the specified layer</p>
@@ -575,8 +648,13 @@ exists, it is replaced</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_GetIndex_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayerGroup_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.GetIndex(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L254">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_GetIndex_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.GetIndex*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_GetIndex_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayerGroup_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.GetIndex(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup)">GetIndex(IMapLayerGroup)</h4>
   <div class="markdown level1 summary"><p>Gets the index of the specified group</p>
@@ -618,8 +696,13 @@ exists, it is replaced</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_InitBaseMap.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.InitBaseMap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L147">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_InitBaseMap_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.InitBaseMap*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_InitBaseMap" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.InitBaseMap">InitBaseMap()</h4>
   <div class="markdown level1 summary"><p>Initializes the base map section of this map definition. Subsequent calls
@@ -630,8 +713,13 @@ do nothing, unless you have cleared the section via <a class="xref" href="OSGeo.
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void InitBaseMap()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_InsertLayer_System_Int32_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.InsertLayer(System.Int32%2COSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L273">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_InsertLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.InsertLayer*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_InsertLayer_System_Int32_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.InsertLayer(System.Int32,OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)">InsertLayer(Int32, IMapLayer)</h4>
   <div class="markdown level1 summary"><p>Inserts the layer at the specified index</p>
@@ -663,8 +751,13 @@ do nothing, unless you have cleared the section via <a class="xref" href="OSGeo.
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_InsertLayer_System_Int32_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.InsertLayer(System.Int32%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L174">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_InsertLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.InsertLayer*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_InsertLayer_System_Int32_System_String_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.InsertLayer(System.Int32,System.String,System.String,System.String)">InsertLayer(Int32, String, String, String)</h4>
   <div class="markdown level1 summary"><p>Inserts a layer into this map at the specified index in the map&apos;s layer collection</p>
@@ -721,8 +814,13 @@ do nothing, unless you have cleared the section via <a class="xref" href="OSGeo.
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MoveDown_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MoveDown(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L228">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MoveDown_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MoveDown*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MoveDown_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MoveDown(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)">MoveDown(IMapLayer)</h4>
   <div class="markdown level1 summary"><p>Moves the layer down the draw order.</p>
@@ -766,8 +864,13 @@ do nothing, unless you have cleared the section via <a class="xref" href="OSGeo.
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MoveDownGroup_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayerGroup_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MoveDownGroup(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L280">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MoveDownGroup_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MoveDownGroup*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MoveDownGroup_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayerGroup_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MoveDownGroup(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup)">MoveDownGroup(IMapLayerGroup)</h4>
   <div class="markdown level1 summary"><p>Moves a Map Group down the presentation order</p>
@@ -810,8 +913,13 @@ do nothing, unless you have cleared the section via <a class="xref" href="OSGeo.
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MoveUp_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MoveUp(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L221">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MoveUp_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MoveUp*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MoveUp_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MoveUp(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)">MoveUp(IMapLayer)</h4>
   <div class="markdown level1 summary"><p>Moves the layer up the draw order</p>
@@ -855,8 +963,13 @@ do nothing, unless you have cleared the section via <a class="xref" href="OSGeo.
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MoveUpGroup_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayerGroup_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MoveUpGroup(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L287">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MoveUpGroup_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MoveUpGroup*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_MoveUpGroup_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayerGroup_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.MoveUpGroup(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup)">MoveUpGroup(IMapLayerGroup)</h4>
   <div class="markdown level1 summary"><p>Moves a Map Group up the presentation order</p>
@@ -899,8 +1012,13 @@ do nothing, unless you have cleared the section via <a class="xref" href="OSGeo.
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveAllGroups.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveAllGroups%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L292">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveAllGroups_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveAllGroups*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveAllGroups" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveAllGroups">RemoveAllGroups()</h4>
   <div class="markdown level1 summary"><p>Removes all dynamic groups from this Map Definition</p>
@@ -910,8 +1028,13 @@ do nothing, unless you have cleared the section via <a class="xref" href="OSGeo.
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void RemoveAllGroups()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveAllLayers.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveAllLayers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L297">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveAllLayers_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveAllLayers*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveAllLayers" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveAllLayers">RemoveAllLayers()</h4>
   <div class="markdown level1 summary"><p>Removes all dynamic layers from this Map Definition</p>
@@ -921,8 +1044,13 @@ do nothing, unless you have cleared the section via <a class="xref" href="OSGeo.
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void RemoveAllLayers()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveBaseMap.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveBaseMap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L153">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveBaseMap_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveBaseMap*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveBaseMap" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveBaseMap">RemoveBaseMap()</h4>
   <div class="markdown level1 summary"><p>Clears the base map section of this map definition. If you want to rebuild
@@ -933,8 +1061,13 @@ this section, ensure <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefini
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void RemoveBaseMap()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveGroup_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayerGroup_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveGroup(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L247">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveGroup_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveGroup*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveGroup_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayerGroup_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveGroup(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup)">RemoveGroup(IMapLayerGroup)</h4>
   <div class="markdown level1 summary"><p>Removes the group</p>
@@ -961,8 +1094,13 @@ this section, ensure <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefini
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveLayer_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveLayer(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L207">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveLayer*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_RemoveLayer_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.RemoveLayer(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)">RemoveLayer(IMapLayer)</h4>
   <div class="markdown level1 summary"><p>Removes the layer.</p>
@@ -990,8 +1128,13 @@ this section, ensure <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefini
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_SetBottomDrawOrder_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.SetBottomDrawOrder(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L266">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_SetBottomDrawOrder_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.SetBottomDrawOrder*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_SetBottomDrawOrder_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.SetBottomDrawOrder(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)">SetBottomDrawOrder(IMapLayer)</h4>
   <div class="markdown level1 summary"><p>Moves the specified layer to the bottom of the draw order</p>
@@ -1018,8 +1161,13 @@ this section, ensure <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefini
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_SetExtents_System_Double_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.SetExtents(System.Double%2CSystem.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L122">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_SetExtents_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.SetExtents*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_SetExtents_System_Double_System_Double_System_Double_System_Double_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.SetExtents(System.Double,System.Double,System.Double,System.Double)">SetExtents(Double, Double, Double, Double)</h4>
   <div class="markdown level1 summary"><p>Sets the extents.</p>
@@ -1065,8 +1213,13 @@ this section, ensure <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefini
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_SetTopDrawOrder_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.SetTopDrawOrder(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L260">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_SetTopDrawOrder_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.SetTopDrawOrder*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_SetTopDrawOrder_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_" data-uid="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.SetTopDrawOrder(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)">SetTopDrawOrder(IMapLayer)</h4>
   <div class="markdown level1 summary"><p>Moves the specified layer to the top of the draw order</p>
@@ -1093,6 +1246,67 @@ this section, ensure <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefini
       </tr>
     </tbody>
   </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_ExtensionMethods_CopyResourceDataTo_OSGeo_MapGuide_ObjectModels_IResource_OSGeo_MapGuide_MaestroAPI_IServerConnection_OSGeo_MapGuide_ObjectModels_IResource_">ExtensionMethods.CopyResourceDataTo(IResource, IServerConnection, IResource)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_ExtensionMethods_CopyResourceDataTo_OSGeo_MapGuide_ObjectModels_IResource_OSGeo_MapGuide_MaestroAPI_IServerConnection_System_String_">ExtensionMethods.CopyResourceDataTo(IResource, IServerConnection, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceExtensions.html#OSGeo_MapGuide_ObjectModels_ResourceExtensions_SerializeToStream_OSGeo_MapGuide_ObjectModels_IResource_">ResourceExtensions.SerializeToStream(IResource)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceExtensions.html#OSGeo_MapGuide_ObjectModels_ResourceExtensions_GetResourceTypeDescriptor_OSGeo_MapGuide_ObjectModels_IResource_">ResourceExtensions.GetResourceTypeDescriptor(IResource)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_AutoSetExtentsFromLayer_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_String_">MapDefinitionExtensions.AutoSetExtentsFromLayer(IMapDefinition, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_AddFiniteDisplayScale_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Double_">MapDefinitionExtensions.AddFiniteDisplayScale(IMapDefinition, Double)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_RemoveFiniteDisplayScale_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Double_System_Boolean_">MapDefinitionExtensions.RemoveFiniteDisplayScale(IMapDefinition, Double, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_RemoveAllFiniteDisplayScales_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Boolean_">MapDefinitionExtensions.RemoveAllFiniteDisplayScales(IMapDefinition, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_AddBaseLayerGroup_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_String_">MapDefinitionExtensions.AddBaseLayerGroup(IMapDefinition, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_RemoveBaseLayerGroup_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_System_Boolean_">MapDefinitionExtensions.RemoveBaseLayerGroup(IMapDefinition, IBaseMapGroup, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_UpdateDynamicGroupName_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_String_System_String_">MapDefinitionExtensions.UpdateDynamicGroupName(IMapDefinition, String, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_RemoveLayerGroupAndChildLayers_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_String_">MapDefinitionExtensions.RemoveLayerGroupAndChildLayers(IMapDefinition, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_GetLayerByName_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_String_">MapDefinitionExtensions.GetLayerByName(IMapDefinition, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_GetGroupByName_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_String_">MapDefinitionExtensions.GetGroupByName(IMapDefinition, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_GetDynamicLayerCount_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_">MapDefinitionExtensions.GetDynamicLayerCount(IMapDefinition)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_GetGroupCount_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_">MapDefinitionExtensions.GetGroupCount(IMapDefinition)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_GetLayersForGroup_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_String_">MapDefinitionExtensions.GetLayersForGroup(IMapDefinition, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_GetGroupsForGroup_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_String_">MapDefinitionExtensions.GetGroupsForGroup(IMapDefinition, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_GetLayersWithoutGroups_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_">MapDefinitionExtensions.GetLayersWithoutGroups(IMapDefinition)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.MapDefinitionExtensions.html#OSGeo_MapGuide_ObjectModels_MapDefinition_MapDefinitionExtensions_ConvertToTileSet_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Version_">MapDefinitionExtensions.ConvertToTileSet(IMapDefinition, Version)</a>
+  </div>
 </article>
           </div>
           
@@ -1100,10 +1314,17 @@ this section, ensure <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefini
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/MapDefinition/MapDefinitionInterfaces.cs/#L94" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -1117,7 +1338,7 @@ this section, ensure <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefini
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

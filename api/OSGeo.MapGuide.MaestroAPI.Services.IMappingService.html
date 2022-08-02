@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IMappingService
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -85,7 +87,7 @@
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.html">OSGeo.MapGuide.MaestroAPI.Services</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IMappingService : IService</code></pre>
@@ -99,10 +101,15 @@ IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.M
 
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L147">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(IMapDefinition)">CreateMap(IMapDefinition)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition)">CreateMap(IMapDefinition)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -121,7 +128,7 @@ IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.M
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IMapDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html">IMapDefinition</a></td>
         <td><span class="parametername">mapDef</span></td>
         <td></td>
       </tr>
@@ -137,18 +144,18 @@ IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.M
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition__remarks">Remarks</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Calculation of meters-per-unit may differ between implementations. This may have an adverse
 effect on things such as rendering and measuring depending on the underlying implementation</p>
 <p>If you are certain of the meters-per-unit value required, use the overloaded method that
 accepts a metersPerUnit parameter.</p>
 </div>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition__examples">Examples</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition__examples">Examples</h5>
   <p>This example shows how to create a new runtime map instance</p>
 <pre><code>IServerConnection conn;
 ...
@@ -156,10 +163,15 @@ IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.M
 IMapDefinition mapDef = (IMapDefinition)conn.ResourceService.GetResource(&quot;Library://Path/To/My.MapDefinition&quot;);
 RuntimeMap map = mappingSvc.CreateMap(mapDef);</code></pre>
 
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L175">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(IMapDefinition,System.Boolean)">CreateMap(IMapDefinition, Boolean)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition,System.Boolean)">CreateMap(IMapDefinition, Boolean)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -178,7 +190,7 @@ RuntimeMap map = mappingSvc.CreateMap(mapDef);</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IMapDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html">IMapDefinition</a></td>
         <td><span class="parametername">mapDef</span></td>
         <td></td>
       </tr>
@@ -200,18 +212,18 @@ RuntimeMap map = mappingSvc.CreateMap(mapDef);</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_System_Boolean__remarks">Remarks</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Calculation of meters-per-unit may differ between implementations. This may have an adverse
 effect on things such as rendering and measuring depending on the underlying implementation</p>
 <p>If you are certain of the meters-per-unit value required, use the overloaded method that
 accepts a metersPerUnit parameter.</p>
 </div>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_System_Boolean__examples">Examples</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Boolean__examples">Examples</h5>
   <p>This example shows how to create a new runtime map instance</p>
 <pre><code>IServerConnection conn;
 ...
@@ -220,10 +232,15 @@ IMapDefinition mapDef = (IMapDefinition)conn.ResourceService.GetResource(&quot;L
 bool suppressErrors = true;
 RuntimeMap map = mappingSvc.CreateMap(mapDef, suppressErrors);</code></pre>
 
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Double_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L197">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_System_Double_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(IMapDefinition,System.Double)">CreateMap(IMapDefinition, Double)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Double_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition,System.Double)">CreateMap(IMapDefinition, Double)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition. Meters per unit
 is calculated from the Coordinate System WKT of the map definition.</p>
 </div>
@@ -243,7 +260,7 @@ is calculated from the Coordinate System WKT of the map definition.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IMapDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html">IMapDefinition</a></td>
         <td><span class="parametername">mapDef</span></td>
         <td></td>
       </tr>
@@ -264,12 +281,12 @@ is calculated from the Coordinate System WKT of the map definition.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_System_Double__examples">Examples</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Double__examples">Examples</h5>
   <p>This example shows how to create a new runtime map instance</p>
 <pre><code>IServerConnection conn;
 ...
@@ -278,10 +295,15 @@ IMapDefinition mapDef = (IMapDefinition)conn.ResourceService.GetResource(&quot;L
 double metersPerUnit = 1.0;
 RuntimeMap map = mappingSvc.CreateMap(mapDef, metersPerUnit);</code></pre>
 
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Double_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition%2CSystem.Double%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L221">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_System_Double_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(IMapDefinition,System.Double,System.Boolean)">CreateMap(IMapDefinition, Double, Boolean)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Double_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition,System.Double,System.Boolean)">CreateMap(IMapDefinition, Double, Boolean)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition. Meters per unit
 is calculated from the Coordinate System WKT of the map definition.</p>
 </div>
@@ -301,7 +323,7 @@ is calculated from the Coordinate System WKT of the map definition.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IMapDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html">IMapDefinition</a></td>
         <td><span class="parametername">mapDef</span></td>
         <td></td>
       </tr>
@@ -328,12 +350,12 @@ is calculated from the Coordinate System WKT of the map definition.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_IMapDefinition_System_Double_System_Boolean__examples">Examples</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Double_System_Boolean__examples">Examples</h5>
   <p>This example shows how to create a new runtime map instance</p>
 <pre><code>IServerConnection conn;
 ...
@@ -343,10 +365,15 @@ double metersPerUnit = 1.0;
 bool suppressErrors = true;
 RuntimeMap map = mappingSvc.CreateMap(mapDef, metersPerUnit, suppressErrors);</code></pre>
 
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String%2COSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L366">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,IMapDefinition)">CreateMap(String, IMapDefinition)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition)">CreateMap(String, IMapDefinition)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition. Meters per unit
 is calculated from the Coordinate System WKT of the map definition.</p>
 </div>
@@ -371,7 +398,7 @@ is calculated from the Coordinate System WKT of the map definition.</p>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">IMapDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html">IMapDefinition</a></td>
         <td><span class="parametername">mdf</span></td>
         <td></td>
       </tr>
@@ -387,18 +414,18 @@ is calculated from the Coordinate System WKT of the map definition.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition__remarks">Remarks</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Calculation of meters-per-unit may differ between implementations. This may have an adverse
 effect on things such as rendering and measuring depending on the underlying implementation</p>
 <p>If you are certain of the meters-per-unit value required, use the overloaded method that
 accepts a metersPerUnit parameter.</p>
 </div>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition__examples">Examples</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition__examples">Examples</h5>
   <p>This example shows how to create a new runtime map instance</p>
 <pre><code>IServerConnection conn;
 ...
@@ -408,10 +435,15 @@ string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + mapNam
 IMapDefinition mdf = (IMapDefinition)conn.ResourceService.GetResource(&quot;Library://Path/To/My.MapDefinition&quot;);
 RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf);</code></pre>
 
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String%2COSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L398">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,IMapDefinition,System.Boolean)">CreateMap(String, IMapDefinition, Boolean)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition,System.Boolean)">CreateMap(String, IMapDefinition, Boolean)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition. Meters per unit
 is calculated from the Coordinate System WKT of the map definition.</p>
 </div>
@@ -436,7 +468,7 @@ is calculated from the Coordinate System WKT of the map definition.</p>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">IMapDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html">IMapDefinition</a></td>
         <td><span class="parametername">mdf</span></td>
         <td></td>
       </tr>
@@ -458,18 +490,18 @@ is calculated from the Coordinate System WKT of the map definition.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_System_Boolean__remarks">Remarks</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Calculation of meters-per-unit may differ between implementations. This may have an adverse
 effect on things such as rendering and measuring depending on the underlying implementation</p>
 <p>If you are certain of the meters-per-unit value required, use the overloaded method that
 accepts a metersPerUnit parameter.</p>
 </div>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_System_Boolean__examples">Examples</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Boolean__examples">Examples</h5>
   <p>This example shows how to create a new runtime map instance</p>
 <pre><code>IServerConnection conn;
 ...
@@ -480,10 +512,15 @@ IMapDefinition mdf = (IMapDefinition)conn.ResourceService.GetResource(&quot;Libr
 bool suppressErrors = true;
 RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf, suppressErrors);</code></pre>
 
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Double_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String%2COSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L422">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_System_Double_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,IMapDefinition,System.Double)">CreateMap(String, IMapDefinition, Double)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Double_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition,System.Double)">CreateMap(String, IMapDefinition, Double)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -507,7 +544,7 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf, suppressErrors);</code></pre
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">IMapDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html">IMapDefinition</a></td>
         <td><span class="parametername">mdf</span></td>
         <td></td>
       </tr>
@@ -528,12 +565,12 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf, suppressErrors);</code></pre
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_System_Double__examples">Examples</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Double__examples">Examples</h5>
   <p>This example shows how to create a new runtime map instance</p>
 <pre><code>IServerConnection conn;
 ...
@@ -544,10 +581,15 @@ string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + mapNam
 IMapDefinition mdf = (IMapDefinition)conn.ResourceService.GetResource(&quot;Library://Path/To/My.MapDefinition&quot;);
 RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf, metersPerUnit);</code></pre>
 
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Double_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String%2COSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition%2CSystem.Double%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L448">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_System_Double_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,IMapDefinition,System.Double,System.Boolean)">CreateMap(String, IMapDefinition, Double, Boolean)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Double_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition,System.Double,System.Boolean)">CreateMap(String, IMapDefinition, Double, Boolean)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -571,7 +613,7 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf, metersPerUnit);</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">IMapDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html">IMapDefinition</a></td>
         <td><span class="parametername">mdf</span></td>
         <td></td>
       </tr>
@@ -598,12 +640,12 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf, metersPerUnit);</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_IMapDefinition_System_Double_System_Boolean__examples">Examples</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition_System_Double_System_Boolean__examples">Examples</h5>
   <p>This example shows how to create a new runtime map instance</p>
 <pre><code>IServerConnection conn;
 ...
@@ -615,8 +657,13 @@ IMapDefinition mdf = (IMapDefinition)conn.ResourceService.GetResource(&quot;Libr
 bool suppressErrors = true;
 RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf, metersPerUnit, suppressErrors);</code></pre>
 
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L251">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,System.String)">CreateMap(String, String)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition. Meters per unit
@@ -659,7 +706,7 @@ is calculated from the Coordinate System WKT of the map definition.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -680,8 +727,13 @@ string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + mapNam
 string baseMapDefId = &quot;Library://Path/To/My.MapDefinition&quot;;
 RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId);</code></pre>
 
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L283">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,System.String,System.Boolean)">CreateMap(String, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition. Meters per unit
@@ -730,7 +782,7 @@ is calculated from the Coordinate System WKT of the map definition.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -752,8 +804,13 @@ string baseMapDefId = &quot;Library://Path/To/My.MapDefinition&quot;;
 bool suppressErrors = true;
 RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, suppressErrors);</code></pre>
 
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_System_Double_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String%2CSystem.String%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L307">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_System_Double_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,System.String,System.Double)">CreateMap(String, String, Double)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition</p>
@@ -800,7 +857,7 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, suppressErrors);</c
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -816,8 +873,13 @@ string baseMapDefId = &quot;Library://Path/To/My.MapDefinition&quot;;
 double metersPerUnit = 1.0;
 RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit);</code></pre>
 
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_System_Double_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String%2CSystem.String%2CSystem.Double%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L333">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMap_System_String_System_String_System_Double_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMap(System.String,System.String,System.Double,System.Boolean)">CreateMap(String, String, Double, Boolean)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map instance from an existing map definition</p>
@@ -870,7 +932,7 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit);</co
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -887,10 +949,15 @@ double metersPerUnit = 1.0;
 bool suppressErrors = true;
 RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, suppressErrors);</code></pre>
 
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2COSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L62">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_RuntimeMap_IBaseMapGroup_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup(RuntimeMap,IBaseMapGroup)">CreateMapGroup(RuntimeMap, IBaseMapGroup)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup)">CreateMapGroup(RuntimeMap, IBaseMapGroup)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map group</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -909,13 +976,13 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">parent</span></td>
         <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IBaseMapGroup</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapGroup.html">IBaseMapGroup</a></td>
         <td><span class="parametername">group</span></td>
         <td><p>The group.</p>
 </td>
@@ -932,15 +999,20 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMapGroup</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapGroup.html">RuntimeMapGroup</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayerGroup_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2COSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L70">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_RuntimeMap_IMapLayerGroup_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup(RuntimeMap,IMapLayerGroup)">CreateMapGroup(RuntimeMap, IMapLayerGroup)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayerGroup_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup)">CreateMapGroup(RuntimeMap, IMapLayerGroup)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map group</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -959,13 +1031,13 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">parent</span></td>
         <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IMapLayerGroup</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayerGroup.html">IMapLayerGroup</a></td>
         <td><span class="parametername">group</span></td>
         <td><p>The group.</p>
 </td>
@@ -982,15 +1054,20 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMapGroup</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapGroup.html">RuntimeMapGroup</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L54">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_RuntimeMap_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup(RuntimeMap,System.String)">CreateMapGroup(RuntimeMap, String)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapGroup_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapGroup(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,System.String)">CreateMapGroup(RuntimeMap, String)</h4>
   <div class="markdown level1 summary"><p>Creates the map group.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1009,7 +1086,7 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">parent</span></td>
         <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
 </td>
@@ -1032,121 +1109,20 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMapGroup</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapGroup.html">RuntimeMapGroup</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerDefinition_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2COSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L78">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_RuntimeMap_IBaseMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(RuntimeMap,IBaseMapLayer)">CreateMapLayer(RuntimeMap, IBaseMapLayer)</h4>
-  <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a> instance</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IBaseMapLayer source)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">RuntimeMap</span></td>
-        <td><span class="parametername">parent</span></td>
-        <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">IBaseMapLayer</span></td>
-        <td><span class="parametername">source</span></td>
-        <td><p>The map definition layer</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">RuntimeMapLayer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_RuntimeMap_IBaseMapLayer_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(RuntimeMap,IBaseMapLayer,System.Boolean)">CreateMapLayer(RuntimeMap, IBaseMapLayer, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a> instance</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IBaseMapLayer source, bool suppressErrors)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">RuntimeMap</span></td>
-        <td><span class="parametername">parent</span></td>
-        <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">IBaseMapLayer</span></td>
-        <td><span class="parametername">source</span></td>
-        <td><p>The map definition layer</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">suppressErrors</span></td>
-        <td><p>If false, this method will throw an exception if the layer cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">RuntimeMapLayer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_RuntimeMap_ILayerDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(RuntimeMap,ILayerDefinition)">CreateMapLayer(RuntimeMap, ILayerDefinition)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition)">CreateMapLayer(RuntimeMap, ILayerDefinition)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified Layer Definition</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1165,13 +1141,13 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">parent</span></td>
         <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">ILayerDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition.html">ILayerDefinition</a></td>
         <td><span class="parametername">ldf</span></td>
         <td><p>The layer definition</p>
 </td>
@@ -1188,15 +1164,20 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMapLayer</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerDefinition_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2COSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L103">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_RuntimeMap_ILayerDefinition_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(RuntimeMap,ILayerDefinition,System.Boolean)">CreateMapLayer(RuntimeMap, ILayerDefinition, Boolean)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerDefinition_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition,System.Boolean)">CreateMapLayer(RuntimeMap, ILayerDefinition, Boolean)</h4>
   <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified Layer Definition</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1215,13 +1196,13 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">parent</span></td>
         <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">ILayerDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition.html">ILayerDefinition</a></td>
         <td><span class="parametername">ldf</span></td>
         <td><p>The layer definition</p>
 </td>
@@ -1244,21 +1225,26 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMapLayer</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2COSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L86">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_RuntimeMap_IMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(RuntimeMap,IMapLayer)">CreateMapLayer(RuntimeMap, IMapLayer)</h4>
-  <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer.html">IMapLayer</a> instance</p>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer)">CreateMapLayer(RuntimeMap, IBaseMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a> instance</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source)</code></pre>
+    <pre><code class="lang-csharp hljs">RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IBaseMapLayer source)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1271,13 +1257,13 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">parent</span></td>
         <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IMapLayer</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a></td>
         <td><span class="parametername">source</span></td>
         <td><p>The map definition layer</p>
 </td>
@@ -1294,21 +1280,26 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMapLayer</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapLayer_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2COSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L112">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_RuntimeMap_IMapLayer_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(RuntimeMap,IMapLayer,System.Boolean)">CreateMapLayer(RuntimeMap, IMapLayer, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer.html">IMapLayer</a> instance</p>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapLayer_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer,System.Boolean)">CreateMapLayer(RuntimeMap, IBaseMapLayer, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a> instance</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source, bool suppressErrors)</code></pre>
+    <pre><code class="lang-csharp hljs">RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IBaseMapLayer source, bool suppressErrors)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1321,13 +1312,13 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">parent</span></td>
         <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IMapLayer</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer.html">IBaseMapLayer</a></td>
         <td><span class="parametername">source</span></td>
         <td><p>The map definition layer</p>
 </td>
@@ -1350,13 +1341,134 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMapLayer</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2COSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L94">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)">CreateMapLayer(RuntimeMap, IMapLayer)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer.html">IMapLayer</a> instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
+        <td><span class="parametername">parent</span></td>
+        <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer.html">IMapLayer</a></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>The map definition layer</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2COSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L121">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_CreateMapLayer_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapLayer_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.CreateMapLayer(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer,System.Boolean)">CreateMapLayer(RuntimeMap, IMapLayer, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a new runtime map layer from the specified <a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer.html">IMapLayer</a> instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source, bool suppressErrors)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
+        <td><span class="parametername">parent</span></td>
+        <td><p>The parent runtime map. The runtime map must have been created or opened from this same service instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer.html">IMapLayer</a></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>The map definition layer</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">suppressErrors</span></td>
+        <td><p>If false, this method will throw an exception if the layer cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_GetLegendImageStream_System_Double_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.GetLegendImageStream(System.Double%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L724">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_GetLegendImageStream_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.GetLegendImageStream*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_GetLegendImageStream_System_Double_System_String_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.GetLegendImageStream(System.Double,System.String,System.Int32,System.Int32)">GetLegendImageStream(Double, String, Int32, Int32)</h4>
   <div class="markdown level1 summary"><p>Renders a minature bitmap of the layers style</p>
@@ -1418,8 +1530,13 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_GetLegendImageStream_System_Double_System_String_System_Int32_System_Int32_System_Int32_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.GetLegendImageStream(System.Double%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L740">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_GetLegendImageStream_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.GetLegendImageStream*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_GetLegendImageStream_System_Double_System_String_System_Int32_System_Int32_System_Int32_System_Int32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.GetLegendImageStream(System.Double,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">GetLegendImageStream(Double, String, Int32, Int32, Int32, Int32, String)</h4>
   <div class="markdown level1 summary"><p>Renders a minature bitmap of the layers style</p>
@@ -1499,8 +1616,13 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_OpenMap_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.OpenMap(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L471">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_OpenMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.OpenMap*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_OpenMap_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.OpenMap(System.String)">OpenMap(String)</h4>
   <div class="markdown level1 summary"><p>Opens an existing runtime map instance</p>
@@ -1537,7 +1659,7 @@ RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, supp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -1551,10 +1673,15 @@ string mapName = &quot;MyMap&quot;;
 string rtMapId = &quot;Session:&quot; + conn.SessionID + &quot;//&quot; + mapName + &quot;.Map&quot;;
 RuntimeMap map = mappingSvc.OpenMap(rtMapId);</code></pre>
 
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_QueryMapFeatures_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Int32_System_String_System_Boolean_System_String_OSGeo_MapGuide_MaestroAPI_Services_QueryMapOptions_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.QueryMapFeatures(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2CSystem.Int32%2CSystem.String%2CSystem.Boolean%2CSystem.String%2COSGeo.MapGuide.MaestroAPI.Services.QueryMapOptions%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L762">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_QueryMapFeatures_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.QueryMapFeatures*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_QueryMapFeatures_RuntimeMap_System_Int32_System_String_System_Boolean_System_String_OSGeo_MapGuide_MaestroAPI_Services_QueryMapOptions_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.QueryMapFeatures(RuntimeMap,System.Int32,System.String,System.Boolean,System.String,OSGeo.MapGuide.MaestroAPI.Services.QueryMapOptions)">QueryMapFeatures(RuntimeMap, Int32, String, Boolean, String, QueryMapOptions)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_QueryMapFeatures_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Int32_System_String_System_Boolean_System_String_OSGeo_MapGuide_MaestroAPI_Services_QueryMapOptions_System_Nullable_System_Int32__" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.QueryMapFeatures(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,System.Int32,System.String,System.Boolean,System.String,OSGeo.MapGuide.MaestroAPI.Services.QueryMapOptions,System.Nullable{System.Int32})">QueryMapFeatures(RuntimeMap, Int32, String, Boolean, String, QueryMapOptions, Nullable&lt;Int32&gt;)</h4>
   <div class="markdown level1 summary"><p>Identifies features that meet the specified spatial selection criteria. These features can be persisted as selected features in a map.
 This operation is generally used to implement selection/tooltip functionality for a client-side map viewer.
 QueryMapFeatures returns an XML document describing the set of selected features.
@@ -1563,7 +1690,7 @@ If a single feature is selected, the XML contains the tooltip, hyperlink, and pr
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string QueryMapFeatures(RuntimeMap map, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)</code></pre>
+    <pre><code class="lang-csharp hljs">string QueryMapFeatures(RuntimeMap map, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions, int? requestData)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1576,7 +1703,7 @@ If a single feature is selected, the XML contains the tooltip, hyperlink, and pr
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">map</span></td>
         <td><p>The RuntimeMap instance</p>
 </td>
@@ -1611,6 +1738,12 @@ If a single feature is selected, the XML contains the tooltip, hyperlink, and pr
         <td><p>Extra options for controlling selection criteria</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">requestData</span></td>
+        <td><p>1=Include attributes,2=Include Inline Selection,4=Tooltip Data,8=Include Hyperlink data</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -1628,16 +1761,22 @@ If a single feature is selected, the XML contains the tooltip, hyperlink, and pr
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2COSGeo.MapGuide.MaestroAPI.Mapping.MapSelection%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L480">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_RuntimeMap_MapSelection_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay(RuntimeMap,MapSelection,System.String)">RenderDynamicOverlay(RuntimeMap, MapSelection, String)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection,System.String)">RenderDynamicOverlay(RuntimeMap, MapSelection, String)</h4>
   <div class="markdown level1 summary"><p>Renders a dynamic overlay image of the map</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the version of RenderDynamicOverlay that is not marked Obsolete&quot;)]
+Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1650,12 +1789,12 @@ If a single feature is selected, the XML contains the tooltip, hyperlink, and pr
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">map</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">MapSelection</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.html">MapSelection</a></td>
         <td><span class="parametername">selection</span></td>
         <td></td>
       </tr>
@@ -1681,10 +1820,79 @@ If a single feature is selected, the XML contains the tooltip, hyperlink, and pr
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2COSGeo.MapGuide.MaestroAPI.Mapping.MapSelection%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L493">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_RuntimeMap_MapSelection_System_String_Color_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay(RuntimeMap,MapSelection,System.String,Color,System.Int32)">RenderDynamicOverlay(RuntimeMap, MapSelection, String, Color, Int32)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection,System.String,System.Boolean)">RenderDynamicOverlay(RuntimeMap, MapSelection, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Renders a dynamic overlay image of the map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the version of RenderDynamicOverlay that is not marked Obsolete&quot;)]
+Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, bool keepSelection)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
+        <td><span class="parametername">map</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.html">MapSelection</a></td>
+        <td><span class="parametername">selection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">keepSelection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_String_System_Drawing_Color_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2COSGeo.MapGuide.MaestroAPI.Mapping.MapSelection%2CSystem.String%2CSystem.Drawing.Color%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L532">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_String_System_Drawing_Color_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection,System.String,System.Drawing.Color,System.Int32)">RenderDynamicOverlay(RuntimeMap, MapSelection, String, Color, Int32)</h4>
   <div class="markdown level1 summary"><p>Renders a dynamic overlay image of the map</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1703,13 +1911,13 @@ If a single feature is selected, the XML contains the tooltip, hyperlink, and pr
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">map</span></td>
         <td><p>The runtime map instance</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">MapSelection</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.html">MapSelection</a></td>
         <td><span class="parametername">selection</span></td>
         <td><p>The map selection</p>
 </td>
@@ -1721,7 +1929,7 @@ If a single feature is selected, the XML contains the tooltip, hyperlink, and pr
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Color</span></td>
+        <td><span class="xref">System.Drawing.Color</span></td>
         <td><span class="parametername">selectionColor</span></td>
         <td><p>The color of the selection</p>
 </td>
@@ -1749,10 +1957,10 @@ If a single feature is selected, the XML contains the tooltip, hyperlink, and pr
       </tr>
     </tbody>
   </table>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_RuntimeMap_MapSelection_System_String_Color_System_Int32__remarks">Remarks</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_String_System_Drawing_Color_System_Int32__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The render base layers bitmask behaviour (8) is only supported from MapGuide Open Source 2.5 onwards</p>
 </div>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_RuntimeMap_MapSelection_System_String_Color_System_Int32__examples">Examples</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_String_System_Drawing_Color_System_Int32__examples">Examples</h5>
   <p>This example shows how to create a render a dynamic overlay image from a map and load it into a System.Drawing.Image</p>
 <pre><code>IServerConnection conn;
 ...
@@ -1784,16 +1992,21 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderDynamicOverlay_RuntimeMap_MapSelection_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderDynamicOverlay(RuntimeMap,MapSelection,System.String,System.Boolean)">RenderDynamicOverlay(RuntimeMap, MapSelection, String, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Renders a dynamic overlay image of the map</p>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderMap_System_String_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_System_Boolean_System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderMap(System.String%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.Boolean%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L687">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderMap*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderMap_System_String_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_System_Boolean_System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_System_String__" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderMap(System.String,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String,System.Boolean,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">RenderMap(String, Double, Double, Double, Int32, Int32, Int32, String, Boolean, IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Renders the given map definition in the requested image format</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, bool keepSelection)</code></pre>
+    <pre><code class="lang-csharp hljs">Stream RenderMap(string mapDefinitionId, double x, double y, double scale, int width, int height, int dpi = 96, string format = &quot;PNG&quot;, bool clip = false, IEnumerable&lt;string&gt; showLayers = null, IEnumerable&lt;string&gt; hideLayers = null, IEnumerable&lt;string&gt; showGroups = null, IEnumerable&lt;string&gt; hideGroups = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1806,13 +2019,38 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
-        <td><span class="parametername">map</span></td>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">mapDefinitionId</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">MapSelection</span></td>
-        <td><span class="parametername">selection</span></td>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">width</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">height</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dpi</span></td>
         <td></td>
       </tr>
       <tr>
@@ -1822,7 +2060,27 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">keepSelection</span></td>
+        <td><span class="parametername">clip</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">showLayers</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">hideLayers</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">showGroups</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">hideGroups</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1842,10 +2100,15 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderMapLegend_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Int32_System_Int32_System_Drawing_Color_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderMapLegend(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2CSystem.Int32%2CSystem.Int32%2CSystem.Drawing.Color%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L710">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderMapLegend_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderMapLegend*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderMapLegend_RuntimeMap_System_Int32_System_Int32_Color_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderMapLegend(RuntimeMap,System.Int32,System.Int32,Color,System.String)">RenderMapLegend(RuntimeMap, Int32, Int32, Color, String)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderMapLegend_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Int32_System_Int32_System_Drawing_Color_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderMapLegend(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,System.Int32,System.Int32,System.Drawing.Color,System.String)">RenderMapLegend(RuntimeMap, Int32, Int32, Color, String)</h4>
   <div class="markdown level1 summary"><p>Renders the legend for the specified <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a> to the requested size and format</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1864,7 +2127,7 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">map</span></td>
         <td></td>
       </tr>
@@ -1879,7 +2142,7 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Color</span></td>
+        <td><span class="xref">System.Drawing.Color</span></td>
         <td><span class="parametername">backgroundColor</span></td>
         <td></td>
       </tr>
@@ -1905,10 +2168,15 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L569">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Double, Int32, Int32, Int32)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Double, Int32, Int32, Int32)</h4>
   <div class="markdown level1 summary"><p>Renders the runtime map.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1927,7 +2195,7 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">map</span></td>
         <td><p>The runtime map instance.</p>
 </td>
@@ -1991,10 +2259,15 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L612">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Double, Int32, Int32, Int32, String)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Double, Int32, Int32, Int32, String)</h4>
   <div class="markdown level1 summary"><p>Renders the runtime map.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2013,7 +2286,7 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">map</span></td>
         <td><p>The runtime map instance.</p>
 </td>
@@ -2083,10 +2356,15 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L659">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String,System.Boolean)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Double, Int32, Int32, Int32, String, Boolean)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String,System.Boolean)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Double, Int32, Int32, Int32, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Renders the runtime map.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2105,7 +2383,7 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">map</span></td>
         <td><p>The runtime map</p>
 </td>
@@ -2181,10 +2459,15 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L549">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Int32, Int32, Int32)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Int32, Int32, Int32)</h4>
   <div class="markdown level1 summary"><p>Renders the runtime map.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2203,7 +2486,7 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">map</span></td>
         <td><p>The runtime map instance</p>
 </td>
@@ -2261,10 +2544,15 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L590">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Int32, Int32, Int32, String)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Int32, Int32, Int32, String)</h4>
   <div class="markdown level1 summary"><p>Renders the runtime map.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2283,7 +2571,7 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">map</span></td>
         <td><p>The runtime map instance.</p>
 </td>
@@ -2347,10 +2635,15 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L635">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(RuntimeMap,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String,System.Boolean)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Int32, Int32, Int32, String, Boolean)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IMappingService_RenderRuntimeMap_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_Double_System_Double_System_Double_System_Int32_System_Int32_System_Int32_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IMappingService.RenderRuntimeMap(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.String,System.Boolean)">RenderRuntimeMap(RuntimeMap, Double, Double, Double, Int32, Int32, Int32, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Renders the runtime map.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2369,7 +2662,7 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RuntimeMap</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.html">RuntimeMap</a></td>
         <td><span class="parametername">map</span></td>
         <td><p>The runtime map instance.</p>
 </td>
@@ -2446,10 +2739,17 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IMappingService.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IMappingService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IMappingService.cs/#L46" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -2463,7 +2763,7 @@ using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

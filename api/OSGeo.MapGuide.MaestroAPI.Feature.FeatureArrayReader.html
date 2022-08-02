@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class FeatureArrayReader
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -92,14 +94,15 @@ iterates over an array of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Featur
     <div class="level2"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.html">FeatureReaderBase</a></div>
     <div class="level3"><span class="xref">FeatureArrayReader</span></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a></div>
     <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a></div>
-    <div><span class="xref">IDisposable</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
     <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a></div>
     <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a></div>
-    <div><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a>&gt;</div>
+    <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a>&gt;</div>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -126,6 +129,9 @@ iterates over an array of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Featur
     </div>
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_GetEnumerator">FeatureReaderBase.GetEnumerator()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.FeatureReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_FeatureReaderBase_System_Collections_IEnumerable_GetEnumerator">FeatureReaderBase.IEnumerable.GetEnumerator()</a>
     </div>
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Current">ReaderBase.Current</a>
@@ -227,16 +233,10 @@ iterates over an array of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Featur
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Item_System_String_">ReaderBase.Item[String]</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -247,17 +247,28 @@ iterates over an array of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Featur
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.html">OSGeo.MapGuide.MaestroAPI.Feature</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FeatureArrayReader : FeatureReaderBase, IFeatureReader, IReader, IDisposable, IFeature, IRecord, IEnumerable&lt;IFeature&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class FeatureArrayReader : FeatureReaderBase, IFeatureReader, IReader, IDisposable, IFeature, IRecord, IEnumerable&lt;IFeature&gt;, IEnumerable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader__ctor_OSGeo_MapGuide_MaestroAPI_Feature_IFeature___.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.%23ctor(OSGeo.MapGuide.MaestroAPI.Feature.IFeature%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/FeatureBase.cs/#L143">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader__ctor_OSGeo_MapGuide_MaestroAPI_Feature_IFeature___" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.#ctor(OSGeo.MapGuide.MaestroAPI.Feature.IFeature[])">FeatureArrayReader(IFeature[])</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.html">FeatureArrayReader</a> class.</p>
@@ -287,8 +298,13 @@ iterates over an array of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Featur
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader_Close.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.Close%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/FeatureBase.cs/#L214">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader_Close_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.Close*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader_Close" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.Close">Close()</h4>
   <div class="markdown level1 summary"><p>Closes the object, freeing any resources it may be holding.</p>
@@ -300,8 +316,13 @@ iterates over an array of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Featur
   </div>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_Close">ReaderBase.Close()</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader_GetPropertyType_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.GetPropertyType(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/FeatureBase.cs/#L157">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader_GetPropertyType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.GetPropertyType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader_GetPropertyType_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.GetPropertyType(System.Int32)">GetPropertyType(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the property value type for the property at the specified index</p>
@@ -338,15 +359,20 @@ iterates over an array of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Featur
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">PropertyValueType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyValueType.html">PropertyValueType</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetPropertyType_System_Int32_">ReaderBase.GetPropertyType(Int32)</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader_GetPropertyType_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.GetPropertyType(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/FeatureBase.cs/#L178">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader_GetPropertyType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.GetPropertyType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader_GetPropertyType_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.GetPropertyType(System.String)">GetPropertyType(String)</h4>
   <div class="markdown level1 summary"><p>Gets the property value type for the property of the specified name</p>
@@ -383,15 +409,20 @@ iterates over an array of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Featur
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">PropertyValueType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyValueType.html">PropertyValueType</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.ReaderBase.html#OSGeo_MapGuide_MaestroAPI_Feature_ReaderBase_GetPropertyType_System_String_">ReaderBase.GetPropertyType(String)</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader_ReadNextFeature.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.ReadNextFeature%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/FeatureBase.cs/#L202">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader_ReadNextFeature_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.ReadNextFeature*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader_ReadNextFeature" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader.ReadNextFeature">ReadNextFeature()</h4>
   <div class="markdown level1 summary"><p>Reads the next feature.</p>
@@ -426,7 +457,7 @@ iterates over an array of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Featur
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a>
   </div>
   <div>
-      <span class="xref">IDisposable</span>
+      <span class="xref">System.IDisposable</span>
   </div>
   <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a>
@@ -435,7 +466,10 @@ iterates over an array of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Featur
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a>
   </div>
   <div>
-      <span class="xref">IEnumerable&lt;&gt;</span>
+      <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
   </div>
 </article>
           </div>
@@ -444,10 +478,17 @@ iterates over an array of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Featur
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_FeatureArrayReader.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.FeatureArrayReader%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/FeatureBase.cs/#L133" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -461,7 +502,7 @@ iterates over an array of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Featur
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

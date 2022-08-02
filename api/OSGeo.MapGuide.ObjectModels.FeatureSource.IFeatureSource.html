@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IFeatureSource
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -104,17 +106,28 @@
     <div>
       <a class="xref" href="OSGeo.MapGuide.ObjectModels.IVersionedEntity.html#OSGeo_MapGuide_ObjectModels_IVersionedEntity_ResourceVersion">IVersionedEntity.ResourceVersion</a>
     </div>
+    <div>
+      <span class="xref">System.ICloneable.Clone()</span>
+    </div>
+    <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged.PropertyChanged</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.html">OSGeo.MapGuide.ObjectModels.FeatureSource</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.ObjectModels.dll</h6>
   <h5 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IFeatureSource : IResource, IVersionedEntity, ICloneable, INotifyPropertyChanged</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_ConfigurationDocument.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.ConfigurationDocument%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L150">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_ConfigurationDocument_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.ConfigurationDocument*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_ConfigurationDocument" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.ConfigurationDocument">ConfigurationDocument</h4>
   <div class="markdown level1 summary"><p>Gets or sets the name of the configuration document.</p>
@@ -140,8 +153,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_ConnectionPropertyNames.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.ConnectionPropertyNames%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L44">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_ConnectionPropertyNames_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.ConnectionPropertyNames*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_ConnectionPropertyNames" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.ConnectionPropertyNames">ConnectionPropertyNames</h4>
   <div class="markdown level1 summary"><p>Gets an array of names of the currently specified connection properties</p>
@@ -166,8 +184,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_ConnectionString.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.ConnectionString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L70">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_ConnectionString_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.ConnectionString*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_ConnectionString" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.ConnectionString">ConnectionString</h4>
   <div class="markdown level1 summary"><p>Gets the connection string.</p>
@@ -193,8 +216,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_Extension.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.Extension%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L132">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_Extension_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.Extension*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_Extension" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.Extension">Extension</h4>
   <div class="markdown level1 summary"><p>Gets the extensions for this feature source.</p>
@@ -214,14 +242,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSourceExtension.html">IFeatureSourceExtension</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSourceExtension.html">IFeatureSourceExtension</a>&gt;</td>
         <td><p>The extensions.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_Provider.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.Provider%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L50">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_Provider_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.Provider*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_Provider" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.Provider">Provider</h4>
   <div class="markdown level1 summary"><p>Gets or sets the FDO provider.</p>
@@ -247,8 +280,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_SupplementalSpatialContextInfo.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.SupplementalSpatialContextInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L114">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_SupplementalSpatialContextInfo_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.SupplementalSpatialContextInfo*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_SupplementalSpatialContextInfo" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.SupplementalSpatialContextInfo">SupplementalSpatialContextInfo</h4>
   <div class="markdown level1 summary"><p>Gets the supplemental spatial context info (coordinate system overrides).</p>
@@ -268,14 +306,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.ISpatialContextInfo.html">ISpatialContextInfo</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.ISpatialContextInfo.html">ISpatialContextInfo</a>&gt;</td>
         <td><p>The supplemental spatial context info.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_UsesAliasedDataFiles.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.UsesAliasedDataFiles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L108">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_UsesAliasedDataFiles_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.UsesAliasedDataFiles*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_UsesAliasedDataFiles" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.UsesAliasedDataFiles">UsesAliasedDataFiles</h4>
   <div class="markdown level1 summary"><p>Gets a value indicating whether [uses aliased data files].</p>
@@ -301,8 +344,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_UsesEmbeddedDataFiles.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.UsesEmbeddedDataFiles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L100">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_UsesEmbeddedDataFiles_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.UsesEmbeddedDataFiles*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_UsesEmbeddedDataFiles" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.UsesEmbeddedDataFiles">UsesEmbeddedDataFiles</h4>
   <div class="markdown level1 summary"><p>Gets a value indicating whether [uses embedded data files].</p>
@@ -330,8 +378,13 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_AddExtension_OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSourceExtension_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.AddExtension(OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSourceExtension)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L138">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_AddExtension_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.AddExtension*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_AddExtension_OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSourceExtension_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.AddExtension(OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSourceExtension)">AddExtension(IFeatureSourceExtension)</h4>
   <div class="markdown level1 summary"><p>Adds the extension.</p>
@@ -359,8 +412,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_AddSpatialContextOverride_OSGeo_MapGuide_ObjectModels_FeatureSource_ISpatialContextInfo_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.AddSpatialContextOverride(OSGeo.MapGuide.ObjectModels.FeatureSource.ISpatialContextInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L120">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_AddSpatialContextOverride_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.AddSpatialContextOverride*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_AddSpatialContextOverride_OSGeo_MapGuide_ObjectModels_FeatureSource_ISpatialContextInfo_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.AddSpatialContextOverride(OSGeo.MapGuide.ObjectModels.FeatureSource.ISpatialContextInfo)">AddSpatialContextOverride(ISpatialContextInfo)</h4>
   <div class="markdown level1 summary"><p>Adds the spatial context override.</p>
@@ -388,8 +446,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_ClearConnectionProperties.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.ClearConnectionProperties%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L39">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_ClearConnectionProperties_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.ClearConnectionProperties*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_ClearConnectionProperties" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.ClearConnectionProperties">ClearConnectionProperties()</h4>
   <div class="markdown level1 summary"><p>Removes all specified connection properties</p>
@@ -399,8 +462,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void ClearConnectionProperties()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_GetAliasedFileName.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.GetAliasedFileName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L92">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_GetAliasedFileName_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.GetAliasedFileName*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_GetAliasedFileName" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.GetAliasedFileName">GetAliasedFileName()</h4>
   <div class="markdown level1 summary"><p>Gets the name of the aliased file. Can only be called if <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.html#OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_UsesAliasedDataFiles">UsesAliasedDataFiles</a> returns true. An
@@ -426,8 +494,29 @@ empty string is returned if it is a directory (ie. no file name was found)</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>If <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.html#OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_UsesAliasedDataFiles">UsesAliasedDataFiles</a> is false</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_GetAliasName.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.GetAliasName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L84">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_GetAliasName_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.GetAliasName*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_GetAliasName" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.GetAliasName">GetAliasName()</h4>
   <div class="markdown level1 summary"><p>Gets the name of the alias. Can only be called if <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.html#OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_UsesAliasedDataFiles">UsesAliasedDataFiles</a> returns true</p>
@@ -452,8 +541,29 @@ empty string is returned if it is a directory (ie. no file name was found)</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>If <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.html#OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_UsesAliasedDataFiles">UsesAliasedDataFiles</a> is false </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_GetConnectionProperty_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.GetConnectionProperty(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L57">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_GetConnectionProperty_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.GetConnectionProperty*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_GetConnectionProperty_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.GetConnectionProperty(System.String)">GetConnectionProperty(String)</h4>
   <div class="markdown level1 summary"><p>Gets the connection property.</p>
@@ -496,8 +606,13 @@ empty string is returned if it is a directory (ie. no file name was found)</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_GetEmbeddedDataName.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.GetEmbeddedDataName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L77">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_GetEmbeddedDataName_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.GetEmbeddedDataName*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_GetEmbeddedDataName" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.GetEmbeddedDataName">GetEmbeddedDataName()</h4>
   <div class="markdown level1 summary"><p>Gets the name of the embedded data resource. Can only be called if <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.html#OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_UsesEmbeddedDataFiles">UsesEmbeddedDataFiles</a> returns true.</p>
@@ -522,8 +637,29 @@ empty string is returned if it is a directory (ie. no file name was found)</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>If <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.html#OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_UsesEmbeddedDataFiles">UsesEmbeddedDataFiles</a> is false</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_RemoveExtension_OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSourceExtension_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.RemoveExtension(OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSourceExtension)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L144">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_RemoveExtension_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.RemoveExtension*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_RemoveExtension_OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSourceExtension_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.RemoveExtension(OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSourceExtension)">RemoveExtension(IFeatureSourceExtension)</h4>
   <div class="markdown level1 summary"><p>Removes the extension.</p>
@@ -551,8 +687,13 @@ empty string is returned if it is a directory (ie. no file name was found)</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_RemoveSpatialContextOverride_OSGeo_MapGuide_ObjectModels_FeatureSource_ISpatialContextInfo_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.RemoveSpatialContextOverride(OSGeo.MapGuide.ObjectModels.FeatureSource.ISpatialContextInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L126">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_RemoveSpatialContextOverride_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.RemoveSpatialContextOverride*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_RemoveSpatialContextOverride_OSGeo_MapGuide_ObjectModels_FeatureSource_ISpatialContextInfo_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.RemoveSpatialContextOverride(OSGeo.MapGuide.ObjectModels.FeatureSource.ISpatialContextInfo)">RemoveSpatialContextOverride(ISpatialContextInfo)</h4>
   <div class="markdown level1 summary"><p>Removes the spatial context override.</p>
@@ -580,8 +721,13 @@ empty string is returned if it is a directory (ie. no file name was found)</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_SetConnectionProperty_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.SetConnectionProperty(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L64">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_SetConnectionProperty_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.SetConnectionProperty*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_SetConnectionProperty_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.SetConnectionProperty(System.String,System.String)">SetConnectionProperty(String, String)</h4>
   <div class="markdown level1 summary"><p>Sets the connection property.</p>
@@ -615,6 +761,43 @@ empty string is returned if it is a directory (ie. no file name was found)</p>
       </tr>
     </tbody>
   </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_ExtensionMethods_CopyResourceDataTo_OSGeo_MapGuide_ObjectModels_IResource_OSGeo_MapGuide_MaestroAPI_IServerConnection_OSGeo_MapGuide_ObjectModels_IResource_">ExtensionMethods.CopyResourceDataTo(IResource, IServerConnection, IResource)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_ExtensionMethods_CopyResourceDataTo_OSGeo_MapGuide_ObjectModels_IResource_OSGeo_MapGuide_MaestroAPI_IServerConnection_System_String_">ExtensionMethods.CopyResourceDataTo(IResource, IServerConnection, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.FeatureSourceCredentialExtensions.html#OSGeo_MapGuide_ObjectModels_FeatureSource_FeatureSourceCredentialExtensions_SetEncryptedCredentials_OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_OSGeo_MapGuide_MaestroAPI_IServerConnection_System_String_System_String_">FeatureSourceCredentialExtensions.SetEncryptedCredentials(IFeatureSource, IServerConnection, String, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.FeatureSourceCredentialExtensions.html#OSGeo_MapGuide_ObjectModels_FeatureSource_FeatureSourceCredentialExtensions_GetEncryptedUsername_OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_OSGeo_MapGuide_MaestroAPI_IServerConnection_">FeatureSourceCredentialExtensions.GetEncryptedUsername(IFeatureSource, IServerConnection)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_FeatureSource_ExtensionMethods_GetConfigurationContent_OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_OSGeo_MapGuide_MaestroAPI_IServerConnection_">ExtensionMethods.GetConfigurationContent(IFeatureSource, IServerConnection)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_FeatureSource_ExtensionMethods_SetConfigurationContent_OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_OSGeo_MapGuide_MaestroAPI_IServerConnection_System_String_">ExtensionMethods.SetConfigurationContent(IFeatureSource, IServerConnection, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_FeatureSource_ExtensionMethods_GetIdentityProperties_OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_OSGeo_MapGuide_MaestroAPI_IServerConnection_System_String_">ExtensionMethods.GetIdentityProperties(IFeatureSource, IServerConnection, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceExtensions.html#OSGeo_MapGuide_ObjectModels_ResourceExtensions_SerializeToStream_OSGeo_MapGuide_ObjectModels_IResource_">ResourceExtensions.SerializeToStream(IResource)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceExtensions.html#OSGeo_MapGuide_ObjectModels_ResourceExtensions_GetResourceTypeDescriptor_OSGeo_MapGuide_ObjectModels_IResource_">ResourceExtensions.GetResourceTypeDescriptor(IResource)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.FeatureSourceExtensions.html#OSGeo_MapGuide_ObjectModels_FeatureSource_FeatureSourceExtensions_GetConnectionProperties_OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_">FeatureSourceExtensions.GetConnectionProperties(IFeatureSource)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.FeatureSourceExtensions.html#OSGeo_MapGuide_ObjectModels_FeatureSource_FeatureSourceExtensions_ApplyConnectionProperties_OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_System_Collections_Specialized_NameValueCollection_">FeatureSourceExtensions.ApplyConnectionProperties(IFeatureSource, NameValueCollection)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.FeatureSourceExtensions.html#OSGeo_MapGuide_ObjectModels_FeatureSource_FeatureSourceExtensions_AddSpatialContextOverride_OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource_System_String_System_String_">FeatureSourceExtensions.AddSpatialContextOverride(IFeatureSource, String, String)</a>
+  </div>
 </article>
           </div>
           
@@ -622,10 +805,17 @@ empty string is returned if it is a directory (ie. no file name was found)</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_FeatureSource_IFeatureSource.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/FeatureSource/FeatureSourceInterfaces.cs/#L34" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -639,7 +829,7 @@ empty string is returned if it is a directory (ie. no file name was found)</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

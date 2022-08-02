@@ -8,7 +8,7 @@
     <title>Installing MapGuide Maestro | MapGuide Maestro </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Installing MapGuide Maestro | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -20,7 +20,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -59,9 +59,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -83,29 +85,8 @@
 <li>A zip file</li>
 </ul>
 <h2 id="installing-on-windows">Installing on Windows</h2>
-<p>You can choose either the installer or zip file </p>
-<div class="NOTE"><h5>Note</h5><p>MapGuide Maestro requires .net Framework 4.6.1 installed first. The installer will download and install this for you if it is not present</p>
-</div>
-<div class="NOTE"><h5>Note</h5><p>As of the 4.0 release of Maestro, the zip package differs from the installer package in that the zip package does not include the :doc:<code>Local Connection Mode &lt;local_connection_mode&gt;</code> feature.</p>
-</div>
-<h2 id="installing-on-linuxmac-osx">Installing on Linux/Mac OSX</h2>
-<div class="WARNING"><h5>Warning</h5><p>MapGuide Maestro is not tested for these platforms. Binaries are only provided for the adventurous.</p>
-</div>
-<div class="NOTE"><h5>Note</h5><p>Before you run MapGuide Maestro, you need to install the Mono framework. Mono is available for download <a href="http://www.mono-project.com">here</a></p>
-</div>
-<p>The installation is simply unzipping the file:</p>
-<pre><code>unzip &quot;MapGuideMaestro-5.0.0-Release.zip&quot;
-</code></pre><p>Then run the application:</p>
-<pre><code>cd Maestro
-mono Maestro.exe
-</code></pre><div class="NOTE"><h5>Note</h5><p>For distributions like Ubuntu, the Mono package is split into several components. You need to ensure that the winforms component is installed. The following command installs it for Ubuntu::
-<code>sudo apt-get install mono-runtime libmono-system-windows-forms4.0-cil libmono-system-core4.0-cil libmono-system-numerics4.0-cil libmono-system-web4.0-cil</code>
-For other distros, please consult your system documentation. </p>
-</div>
-<div class="NOTE"><h5>Note</h5><p><strong>Please note that Mono support for WinForms is not 100% stable.</strong> Even though WinForms is feature complete, some features do not work flawlessly. This means that there are occasional drawing problems. Flipping a tab page back and forth usually solves the problem. Some buttons are missing, because Mono renders them outside the visible area. There are also some issues with certain icons.
-For best results, use the most current release of Mono (currently 2.10.2) where possible. The minimum usable release is Mono 2.8</p>
-</div>
-<div class="NOTE"><h5>Note</h5><p>The :doc:<code>Local Connection Mode &lt;local_connection_mode&gt;</code> feature is only available on windows. The zip package does not include this feature.</p>
+<p>You can choose either the installer or zip file. Both packages are self-contained .net applications and include all the files needed</p>
+<div class="NOTE"><h5>Note</h5><p>On Windows 10 and newer versions, you will have to un-block the executable installer first via its file properties before Windows will allow you to run the installer.</p>
 </div>
 </article>
           </div>
@@ -120,7 +101,8 @@ For best results, use the most current release of Mono (currently 2.10.2) where 
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -134,7 +116,7 @@ For best results, use the most current release of Mono (currently 2.10.2) where 
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

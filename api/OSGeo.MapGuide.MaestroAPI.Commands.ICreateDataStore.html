@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface ICreateDataStore
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -89,12 +91,42 @@
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.ICommand.html#OSGeo_MapGuide_MaestroAPI_Commands_ICommand_Parent">ICommand.Parent</a>
     </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSpatialContext.html#OSGeo_MapGuide_ObjectModels_Common_IFdoSpatialContext_CoordinateSystemName">IFdoSpatialContext.CoordinateSystemName</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSpatialContext.html#OSGeo_MapGuide_ObjectModels_Common_IFdoSpatialContext_CoordinateSystemWkt">IFdoSpatialContext.CoordinateSystemWkt</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSpatialContext.html#OSGeo_MapGuide_ObjectModels_Common_IFdoSpatialContext_Description">IFdoSpatialContext.Description</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSpatialContext.html#OSGeo_MapGuide_ObjectModels_Common_IFdoSpatialContext_Extent">IFdoSpatialContext.Extent</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSpatialContext.html#OSGeo_MapGuide_ObjectModels_Common_IFdoSpatialContext_ExtentType">IFdoSpatialContext.ExtentType</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSpatialContext.html#OSGeo_MapGuide_ObjectModels_Common_IFdoSpatialContext_Name">IFdoSpatialContext.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSpatialContext.html#OSGeo_MapGuide_ObjectModels_Common_IFdoSpatialContext_XYTolerance">IFdoSpatialContext.XYTolerance</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSpatialContext.html#OSGeo_MapGuide_ObjectModels_Common_IFdoSpatialContext_ZTolerance">IFdoSpatialContext.ZTolerance</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html#OSGeo_MapGuide_ObjectModels_Common_IFdoSerializable_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_">IFdoSerializable.WriteXml(XmlDocument, XmlNode)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html#OSGeo_MapGuide_ObjectModels_Common_IFdoSerializable_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_">IFdoSerializable.ReadXml(XmlNode, XmlNamespaceManager)</a>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.html">OSGeo.MapGuide.MaestroAPI.Commands</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface ICreateDataStore : ICommand, IFdoSpatialContext</code></pre>
+    <pre><code class="lang-csharp hljs">public interface ICreateDataStore : ICommand, IFdoSpatialContext, IFdoSerializable</code></pre>
   </div>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>This command is only supported on certain implementations of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a>
@@ -148,8 +180,13 @@ You can find out if the connection supports this command through the <a class="x
 
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_FeatureSourceId.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.FeatureSourceId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommands.cs/#L124">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_FeatureSourceId_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.FeatureSourceId*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_FeatureSourceId" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.FeatureSourceId">FeatureSourceId</h4>
   <div class="markdown level1 summary"><p>Gets or sets the Feature Source ID</p>
@@ -174,8 +211,13 @@ You can find out if the connection supports this command through the <a class="x
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_FileName.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.FileName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommands.cs/#L119">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_FileName_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.FileName*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_FileName" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.FileName">FileName</h4>
   <div class="markdown level1 summary"><p>Gets or sets the file name for the data store</p>
@@ -200,8 +242,13 @@ You can find out if the connection supports this command through the <a class="x
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Provider.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Provider%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommands.cs/#L114">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Provider_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Provider*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Provider" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Provider">Provider</h4>
   <div class="markdown level1 summary"><p>Gets or sets the FDO provider name</p>
@@ -226,8 +273,13 @@ You can find out if the connection supports this command through the <a class="x
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Schema.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Schema%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommands.cs/#L109">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Schema_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Schema*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Schema" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Schema">Schema</h4>
   <div class="markdown level1 summary"><p>Gets or sets the Feature Schema that models the structure of the data store</p>
@@ -247,15 +299,20 @@ You can find out if the connection supports this command through the <a class="x
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">FeatureSchema</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.html">FeatureSchema</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Execute.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Execute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommands.cs/#L129">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Execute_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Execute*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore_Execute" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.Execute">Execute()</h4>
   <div class="markdown level1 summary"><p>Executes the command</p>
@@ -272,10 +329,17 @@ You can find out if the connection supports this command through the <a class="x
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_ICreateDataStore.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommands.cs/#L104" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -289,7 +353,7 @@ You can find out if the connection supports this command through the <a class="x
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

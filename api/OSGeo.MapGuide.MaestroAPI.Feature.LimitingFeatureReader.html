@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class LimitingFeatureReader
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -89,28 +91,23 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">LimitingFeatureReader</span></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a></div>
     <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a></div>
-    <div><span class="xref">IDisposable</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
     <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a></div>
     <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a></div>
-    <div><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a>&gt;</div>
+    <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a>&gt;</div>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -121,17 +118,28 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.html">OSGeo.MapGuide.MaestroAPI.Feature</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class LimitingFeatureReader : IFeatureReader, IReader, IDisposable, IFeature, IRecord, IEnumerable&lt;IFeature&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class LimitingFeatureReader : IFeatureReader, IReader, IDisposable, IFeature, IRecord, IEnumerable&lt;IFeature&gt;, IEnumerable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader__ctor_OSGeo_MapGuide_MaestroAPI_Feature_IFeatureReader_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.%23ctor(OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L43">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader__ctor_OSGeo_MapGuide_MaestroAPI_Feature_IFeatureReader_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.#ctor(OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader,System.Int32)">LimitingFeatureReader(IFeatureReader, Int32)</h4>
   <div class="markdown level1 summary"></div>
@@ -164,8 +172,13 @@
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_ClassDefinition.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.ClassDefinition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L314">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_ClassDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.ClassDefinition*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_ClassDefinition" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.ClassDefinition">ClassDefinition</h4>
   <div class="markdown level1 summary"><p>Gets the class definition of the object currently being read. If the user has requested
@@ -192,8 +205,13 @@ definition reflects what the user has requested, rather than the full class defi
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_FieldCount.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.FieldCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L82">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_FieldCount_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.FieldCount*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_FieldCount" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.FieldCount">FieldCount</h4>
   <div class="markdown level1 summary"><p>Gets the number of fields in this record</p>
@@ -218,8 +236,13 @@ definition reflects what the user has requested, rather than the full class defi
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_Item_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L286">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.Item*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_Item_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.Item(System.Int32)">Item[Int32]</h4>
   <div class="markdown level1 summary"><p>Gets the object at the specified index</p>
@@ -261,8 +284,13 @@ definition reflects what the user has requested, rather than the full class defi
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_Item_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.Item(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L293">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.Item*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_Item_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.Item(System.String)">Item[String]</h4>
   <div class="markdown level1 summary"><p>Gets the object value for the specified property</p>
@@ -306,8 +334,13 @@ definition reflects what the user has requested, rather than the full class defi
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_Close.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.Close%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L67">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_Close_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.Close*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_Close" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.Close">Close()</h4>
   <div class="markdown level1 summary"><p>Closes the object, freeing any resources it may be holding.</p>
@@ -317,8 +350,13 @@ definition reflects what the user has requested, rather than the full class defi
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Close()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_Dispose.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L73">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_Dispose_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.Dispose*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_Dispose" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.Dispose">Dispose()</h4>
   <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting
@@ -329,8 +367,13 @@ unmanaged resources.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetBlob_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetBlob(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L216">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetBlob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetBlob*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetBlob_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetBlob(System.Int32)">GetBlob(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the blob value at the specified index</p>
@@ -372,8 +415,13 @@ unmanaged resources.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetBlob_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetBlob(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L132">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetBlob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetBlob*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetBlob_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetBlob(System.String)">GetBlob(String)</h4>
   <div class="markdown level1 summary"><p>Gets the blob value of the specified property</p>
@@ -415,8 +463,13 @@ unmanaged resources.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetBoolean_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetBoolean(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L202">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetBoolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetBoolean*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetBoolean_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetBoolean(System.Int32)">GetBoolean(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the boolean value at the specified index</p>
@@ -458,8 +511,13 @@ unmanaged resources.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetBoolean_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetBoolean(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L118">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetBoolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetBoolean*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetBoolean_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetBoolean(System.String)">GetBoolean(String)</h4>
   <div class="markdown level1 summary"><p>Gets the boolean value of the specified property</p>
@@ -501,8 +559,13 @@ unmanaged resources.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetByte_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetByte(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L209">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetByte_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetByte*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetByte_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetByte(System.Int32)">GetByte(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the byte value at the specified index</p>
@@ -544,8 +607,13 @@ unmanaged resources.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetByte_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetByte(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L125">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetByte_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetByte*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetByte_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetByte(System.String)">GetByte(String)</h4>
   <div class="markdown level1 summary"><p>Gets the byte value of the specified property</p>
@@ -587,8 +655,13 @@ unmanaged resources.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetClob_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetClob(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L223">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetClob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetClob*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetClob_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetClob(System.Int32)">GetClob(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the clob value at the specified index</p>
@@ -630,8 +703,13 @@ unmanaged resources.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetClob_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetClob(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L139">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetClob_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetClob*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetClob_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetClob(System.String)">GetClob(String)</h4>
   <div class="markdown level1 summary"><p>Gets the clob value of the specified property</p>
@@ -673,8 +751,13 @@ unmanaged resources.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetDateTime_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetDateTime(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L237">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetDateTime_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetDateTime*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetDateTime_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetDateTime(System.Int32)">GetDateTime(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the datetime value at the specified index</p>
@@ -711,13 +794,18 @@ unmanaged resources.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetDateTime_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetDateTime(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L153">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetDateTime_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetDateTime*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetDateTime_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetDateTime(System.String)">GetDateTime(String)</h4>
   <div class="markdown level1 summary"><p>Gets the datetime value of the specified property</p>
@@ -754,13 +842,18 @@ unmanaged resources.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetDouble_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetDouble(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L230">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetDouble_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetDouble*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetDouble_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetDouble(System.Int32)">GetDouble(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the double value at the specified index</p>
@@ -802,8 +895,13 @@ unmanaged resources.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetDouble_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetDouble(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L146">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetDouble_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetDouble*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetDouble_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetDouble(System.String)">GetDouble(String)</h4>
   <div class="markdown level1 summary"><p>Gets the double value of the specified property</p>
@@ -845,8 +943,13 @@ unmanaged resources.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetEnumerator.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetEnumerator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L336">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetEnumerator_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetEnumerator*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetEnumerator" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetEnumerator">GetEnumerator()</h4>
   <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the collection</p>
@@ -866,13 +969,18 @@ unmanaged resources.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerator</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetFeatureObject_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetFeatureObject(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L330">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetFeatureObject_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetFeatureObject*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetFeatureObject_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetFeatureObject(System.Int32)">GetFeatureObject(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets a <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a> containing
@@ -915,8 +1023,13 @@ all the nested features at the specified index</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetFeatureObject_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetFeatureObject(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L322">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetFeatureObject_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetFeatureObject*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetFeatureObject_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetFeatureObject(System.String)">GetFeatureObject(String)</h4>
   <div class="markdown level1 summary"><p>Gets a <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a> containing
@@ -959,8 +1072,13 @@ all the nested features of the specified property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetFieldType_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetFieldType(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L96">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetFieldType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetFieldType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetFieldType_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetFieldType(System.Int32)">GetFieldType(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the CLR type of the field at the specified index</p>
@@ -997,13 +1115,18 @@ all the nested features of the specified property</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Type</span></td>
+        <td><span class="xref">System.Type</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetGeometry_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetGeometry(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L279">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetGeometry_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetGeometry*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetGeometry_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetGeometry(System.Int32)">GetGeometry(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the geometry value at the specified index</p>
@@ -1040,13 +1163,18 @@ all the nested features of the specified property</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IGeometryRef</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Geometry.IGeometryRef.html">IGeometryRef</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetGeometry_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetGeometry(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L195">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetGeometry_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetGeometry*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetGeometry_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetGeometry(System.String)">GetGeometry(String)</h4>
   <div class="markdown level1 summary"><p>Gets the geometry value of the specified property</p>
@@ -1083,13 +1211,18 @@ all the nested features of the specified property</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IGeometryRef</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Geometry.IGeometryRef.html">IGeometryRef</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt16_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt16(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L244">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt16_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt16*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt16_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt16(System.Int32)">GetInt16(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the int16 value at the specified index</p>
@@ -1131,8 +1264,13 @@ all the nested features of the specified property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt16_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt16(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L160">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt16_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt16*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt16_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt16(System.String)">GetInt16(String)</h4>
   <div class="markdown level1 summary"><p>Gets the int16 value of the specified property</p>
@@ -1174,8 +1312,13 @@ all the nested features of the specified property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt32_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt32(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L251">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt32*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt32(System.Int32)">GetInt32(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the int32 value at the specified index</p>
@@ -1217,8 +1360,13 @@ all the nested features of the specified property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt32_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt32(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L167">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt32*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt32_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt32(System.String)">GetInt32(String)</h4>
   <div class="markdown level1 summary"><p>Gets the int32 value of the specified property</p>
@@ -1260,8 +1408,13 @@ all the nested features of the specified property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt64_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt64(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L258">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt64_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt64*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt64_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt64(System.Int32)">GetInt64(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the int64 value at the specified index</p>
@@ -1303,8 +1456,13 @@ all the nested features of the specified property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt64_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt64(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L174">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt64_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt64*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetInt64_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetInt64(System.String)">GetInt64(String)</h4>
   <div class="markdown level1 summary"><p>Gets the int64 value of the specified property</p>
@@ -1346,8 +1504,13 @@ all the nested features of the specified property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetName_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetName(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L89">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetName_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetName*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetName_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetName(System.Int32)">GetName(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the name of the field at the specified index</p>
@@ -1389,8 +1552,13 @@ all the nested features of the specified property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetPropertyType_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetPropertyType(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L307">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetPropertyType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetPropertyType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetPropertyType_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetPropertyType(System.Int32)">GetPropertyType(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the type of the property at the specified index.</p>
@@ -1432,8 +1600,13 @@ all the nested features of the specified property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetPropertyType_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetPropertyType(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L300">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetPropertyType_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetPropertyType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetPropertyType_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetPropertyType(System.String)">GetPropertyType(String)</h4>
   <div class="markdown level1 summary"><p>Gets the type of the property.</p>
@@ -1475,8 +1648,13 @@ all the nested features of the specified property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetSingle_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetSingle(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L265">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetSingle_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetSingle*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetSingle_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetSingle(System.Int32)">GetSingle(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the single value at the specified index</p>
@@ -1518,8 +1696,13 @@ all the nested features of the specified property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetSingle_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetSingle(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L181">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetSingle_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetSingle*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetSingle_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetSingle(System.String)">GetSingle(String)</h4>
   <div class="markdown level1 summary"><p>Gets the single value of the specified property</p>
@@ -1561,8 +1744,13 @@ all the nested features of the specified property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetString_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetString(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L272">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetString_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetString*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetString_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetString(System.Int32)">GetString(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the string value at the specified index</p>
@@ -1604,8 +1792,13 @@ all the nested features of the specified property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetString_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetString(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L188">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetString_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetString*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_GetString_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.GetString(System.String)">GetString(String)</h4>
   <div class="markdown level1 summary"><p>Gets the string value of the specified property</p>
@@ -1647,8 +1840,13 @@ all the nested features of the specified property</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_IsNull_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.IsNull(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L111">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_IsNull_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.IsNull*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_IsNull_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.IsNull(System.Int32)">IsNull(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets whether the property value at the specified index has a null property value. You must
@@ -1691,8 +1889,13 @@ call this method first to determine if it is safe to call the corresponding GetX
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_IsNull_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.IsNull(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L103">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_IsNull_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.IsNull*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_IsNull_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.IsNull(System.String)">IsNull(String)</h4>
   <div class="markdown level1 summary"><p>Gets whether the specified property name has a null property value</p>
@@ -1734,8 +1937,13 @@ call this method first to determine if it is safe to call the corresponding GetX
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_ReadNext.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.ReadNext%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L54">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_ReadNext_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.ReadNext*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_ReadNext" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.ReadNext">ReadNext()</h4>
   <div class="markdown level1 summary"><p>Advances the reader to the next item and determines whether there is another object to read.</p>
@@ -1762,8 +1970,13 @@ call this method first to determine if it is safe to call the corresponding GetX
   </table>
   <h3 id="eii">Explicit Interface Implementations
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_System_Collections_IEnumerable_GetEnumerator.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.System%23Collections%23IEnumerable%23GetEnumerator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L342">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_System_Collections_IEnumerable_GetEnumerator_" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.System#Collections#IEnumerable#GetEnumerator*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader_System_Collections_IEnumerable_GetEnumerator" data-uid="OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
   <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the collection.</p>
@@ -1796,7 +2009,7 @@ call this method first to determine if it is safe to call the corresponding GetX
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a>
   </div>
   <div>
-      <span class="xref">IDisposable</span>
+      <span class="xref">System.IDisposable</span>
   </div>
   <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeature.html">IFeature</a>
@@ -1805,7 +2018,10 @@ call this method first to determine if it is safe to call the corresponding GetX
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a>
   </div>
   <div>
-      <span class="xref">IEnumerable&lt;&gt;</span>
+      <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
   </div>
 </article>
           </div>
@@ -1814,10 +2030,17 @@ call this method first to determine if it is safe to call the corresponding GetX
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Feature_LimitingFeatureReader.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Feature.LimitingFeatureReader%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Feature/LimitingFeatureReader.cs/#L32" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -1831,7 +2054,7 @@ call this method first to determine if it is safe to call the corresponding GetX
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

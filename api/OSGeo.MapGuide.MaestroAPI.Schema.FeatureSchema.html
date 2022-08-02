@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class FeatureSchema
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -91,9 +93,9 @@ represent the internal logical structure of a Feature Source</p>
     <div class="level1"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.SchemaElement.html">SchemaElement</a></div>
     <div class="level2"><span class="xref">FeatureSchema</span></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
-    <div><span class="xref">IFdoSerializable</span></div>
+    <div><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html">IFdoSerializable</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -104,16 +106,10 @@ represent the internal logical structure of a Feature Source</p>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.SchemaElement.html#OSGeo_MapGuide_MaestroAPI_Schema_SchemaElement_Description">SchemaElement.Description</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -124,17 +120,28 @@ represent the internal logical structure of a Feature Source</p>
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.html">OSGeo.MapGuide.MaestroAPI.Schema</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class FeatureSchema : SchemaElement, IFdoSerializable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema__ctor_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.%23ctor(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/FeatureSchema.cs/#L50">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema__ctor_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.#ctor(System.String,System.String)">FeatureSchema(String, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.html">FeatureSchema</a> class.</p>
@@ -170,8 +177,13 @@ represent the internal logical structure of a Feature Source</p>
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_Classes.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.Classes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/FeatureSchema.cs/#L60">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_Classes_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.Classes*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_Classes" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.Classes">Classes</h4>
   <div class="markdown level1 summary"><p>Gets the class definitions</p>
@@ -191,13 +203,18 @@ represent the internal logical structure of a Feature Source</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ReadOnlyCollection</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition.html">ClassDefinition</a>&gt;</td>
+        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition.html">ClassDefinition</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_Item_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/FeatureSchema.cs/#L114">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.Item*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_Item_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.Item(System.Int32)">Item[Int32]</h4>
   <div class="markdown level1 summary"><p>Gets the class definition at the specified index</p>
@@ -241,8 +258,13 @@ represent the internal logical structure of a Feature Source</p>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_AddClass_OSGeo_MapGuide_MaestroAPI_Schema_ClassDefinition_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.AddClass(OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/FeatureSchema.cs/#L66">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_AddClass_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.AddClass*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_AddClass_OSGeo_MapGuide_MaestroAPI_Schema_ClassDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.AddClass(OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition)">AddClass(ClassDefinition)</h4>
   <div class="markdown level1 summary"><p>Adds the specified class definition</p>
@@ -269,8 +291,13 @@ represent the internal logical structure of a Feature Source</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_Clone_OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.Clone(OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/FeatureSchema.cs/#L211">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_Clone_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.Clone*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_Clone_OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.Clone(OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema)">Clone(FeatureSchema)</h4>
   <div class="markdown level1 summary"><p>Creates a clone of the specified instance</p>
@@ -313,8 +340,13 @@ represent the internal logical structure of a Feature Source</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_GetClass_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.GetClass(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/FeatureSchema.cs/#L92">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_GetClass_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.GetClass*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_GetClass_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.GetClass(System.String)">GetClass(String)</h4>
   <div class="markdown level1 summary"><p>Returns the Class Definition by its name</p>
@@ -357,8 +389,13 @@ represent the internal logical structure of a Feature Source</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_GetItem_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.GetItem(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/FeatureSchema.cs/#L121">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_GetItem_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.GetItem*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_GetItem_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.GetItem(System.Int32)">GetItem(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the class definition at the specified index</p>
@@ -400,8 +437,13 @@ represent the internal logical structure of a Feature Source</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_IndexOf_OSGeo_MapGuide_MaestroAPI_Schema_ClassDefinition_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.IndexOf(OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/FeatureSchema.cs/#L107">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_IndexOf_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.IndexOf*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_IndexOf_OSGeo_MapGuide_MaestroAPI_Schema_ClassDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.IndexOf(OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition)">IndexOf(ClassDefinition)</h4>
   <div class="markdown level1 summary"><p>Gets the index of the specified class definition</p>
@@ -443,8 +485,13 @@ represent the internal logical structure of a Feature Source</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.ReadXml(System.Xml.XmlNode%2CSystem.Xml.XmlNamespaceManager)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/FeatureSchema.cs/#L158">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_ReadXml_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.ReadXml*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.ReadXml(System.Xml.XmlNode,System.Xml.XmlNamespaceManager)">ReadXml(XmlNode, XmlNamespaceManager)</h4>
   <div class="markdown level1 summary"><p>Set the current element&apos;s content from the current XML node</p>
@@ -476,8 +523,13 @@ represent the internal logical structure of a Feature Source</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_RemoveClass_OSGeo_MapGuide_MaestroAPI_Schema_ClassDefinition_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.RemoveClass(OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/FeatureSchema.cs/#L77">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_RemoveClass_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.RemoveClass*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_RemoveClass_OSGeo_MapGuide_MaestroAPI_Schema_ClassDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.RemoveClass(OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition)">RemoveClass(ClassDefinition)</h4>
   <div class="markdown level1 summary"><p>Removes the specified class definition</p>
@@ -519,8 +571,13 @@ represent the internal logical structure of a Feature Source</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_RemoveClass_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.RemoveClass(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/FeatureSchema.cs/#L199">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_RemoveClass_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.RemoveClass*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_RemoveClass_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.RemoveClass(System.String)">RemoveClass(String)</h4>
   <div class="markdown level1 summary"><p>Removes a class definition by its name</p>
@@ -547,8 +604,13 @@ represent the internal logical structure of a Feature Source</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.WriteXml(System.Xml.XmlDocument%2CSystem.Xml.XmlNode)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/FeatureSchema.cs/#L128">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_WriteXml_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.WriteXml*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.WriteXml(System.Xml.XmlDocument,System.Xml.XmlNode)">WriteXml(XmlDocument, XmlNode)</h4>
   <div class="markdown level1 summary"><p>Writes the current element&apos;s content</p>
@@ -582,7 +644,7 @@ represent the internal logical structure of a Feature Source</p>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">IFdoSerializable</span>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html">IFdoSerializable</a>
   </div>
 </article>
           </div>
@@ -591,10 +653,17 @@ represent the internal logical structure of a Feature Source</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/FeatureSchema.cs/#L36" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -608,7 +677,7 @@ represent the internal logical structure of a Feature Source</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

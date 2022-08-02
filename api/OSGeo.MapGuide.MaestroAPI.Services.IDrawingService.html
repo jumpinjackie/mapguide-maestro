@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IDrawingService
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -85,7 +87,7 @@
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.html">OSGeo.MapGuide.MaestroAPI.Services</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IDrawingService : IService</code></pre>
@@ -99,8 +101,13 @@ IDrawingService drawingSvc = (IDrawingService)conn.GetService((int)ServiceType.D
 
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_DescribeDrawing_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.DescribeDrawing(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IDrawingService.cs/#L48">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_DescribeDrawing_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.DescribeDrawing*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_DescribeDrawing_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.DescribeDrawing(System.String)">DescribeDrawing(String)</h4>
   <div class="markdown level1 summary"><p>Gets the manifest.xml document which describes the supported document interfaces, the document properties, the sections and their contents, and section dependencies.</p>
@@ -142,8 +149,13 @@ IDrawingService drawingSvc = (IDrawingService)conn.GetService((int)ServiceType.D
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_EnumerateDrawingLayers_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.EnumerateDrawingLayers(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IDrawingService.cs/#L56">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_EnumerateDrawingLayers_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.EnumerateDrawingLayers*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_EnumerateDrawingLayers_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.EnumerateDrawingLayers(System.String,System.String)">EnumerateDrawingLayers(String, String)</h4>
   <div class="markdown level1 summary"><p>Gets the names of the layers in a DWF section.</p>
@@ -190,8 +202,13 @@ IDrawingService drawingSvc = (IDrawingService)conn.GetService((int)ServiceType.D
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_EnumerateDrawingSectionResources_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.EnumerateDrawingSectionResources(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IDrawingService.cs/#L64">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_EnumerateDrawingSectionResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.EnumerateDrawingSectionResources*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_EnumerateDrawingSectionResources_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.EnumerateDrawingSectionResources(System.String,System.String)">EnumerateDrawingSectionResources(String, String)</h4>
   <div class="markdown level1 summary"><p>Enumerates the resources of a DWF section (sometimes called a sheet).</p>
@@ -233,13 +250,18 @@ IDrawingService drawingSvc = (IDrawingService)conn.GetService((int)ServiceType.D
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DrawingSectionResourceList</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.DrawingSectionResourceList.html">DrawingSectionResourceList</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_EnumerateDrawingSections_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.EnumerateDrawingSections(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IDrawingService.cs/#L71">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_EnumerateDrawingSections_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.EnumerateDrawingSections*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_EnumerateDrawingSections_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.EnumerateDrawingSections(System.String)">EnumerateDrawingSections(String)</h4>
   <div class="markdown level1 summary"><p>Enumerates only the ePlot  sections (sheets) in a DWF.</p>
@@ -276,13 +298,18 @@ IDrawingService drawingSvc = (IDrawingService)conn.GetService((int)ServiceType.D
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DrawingSectionList</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.DrawingSectionList.html">DrawingSectionList</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetDrawing_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetDrawing(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IDrawingService.cs/#L85">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetDrawing_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetDrawing*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetDrawing_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetDrawing(System.String)">GetDrawing(String)</h4>
   <div class="markdown level1 summary"><p>Returns the DWF stream for a drawing specified by resource identifier.</p>
@@ -324,8 +351,13 @@ IDrawingService drawingSvc = (IDrawingService)conn.GetService((int)ServiceType.D
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetDrawingCoordinateSpace_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetDrawingCoordinateSpace(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IDrawingService.cs/#L78">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetDrawingCoordinateSpace_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetDrawingCoordinateSpace*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetDrawingCoordinateSpace_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetDrawingCoordinateSpace(System.String)">GetDrawingCoordinateSpace(String)</h4>
   <div class="markdown level1 summary"><p>Gets the coordinate system assigned to the DWF drawing.</p>
@@ -367,8 +399,13 @@ IDrawingService drawingSvc = (IDrawingService)conn.GetService((int)ServiceType.D
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetLayer_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetLayer(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IDrawingService.cs/#L94">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetLayer*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetLayer_System_String_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetLayer(System.String,System.String,System.String)">GetLayer(String, String, String)</h4>
   <div class="markdown level1 summary"><p>Gets a layer from a particular section of a DWF.</p>
@@ -420,8 +457,13 @@ IDrawingService drawingSvc = (IDrawingService)conn.GetService((int)ServiceType.D
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetSection_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetSection(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IDrawingService.cs/#L102">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetSection_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetSection*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetSection_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetSection(System.String,System.String)">GetSection(String, String)</h4>
   <div class="markdown level1 summary"><p>Gets a DWF containing only the requested section (sometimes called a sheet).</p>
@@ -468,8 +510,13 @@ IDrawingService drawingSvc = (IDrawingService)conn.GetService((int)ServiceType.D
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetSectionResource_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetSectionResource(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IDrawingService.cs/#L110">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetSectionResource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetSectionResource*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IDrawingService_GetSectionResource_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService.GetSectionResource(System.String,System.String)">GetSectionResource(String, String)</h4>
   <div class="markdown level1 summary"><p>Gets a specific resource from the DWF.</p>
@@ -523,10 +570,17 @@ IDrawingService drawingSvc = (IDrawingService)conn.GetService((int)ServiceType.D
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IDrawingService.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IDrawingService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IDrawingService.cs/#L41" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -540,7 +594,7 @@ IDrawingService drawingSvc = (IDrawingService)conn.GetService((int)ServiceType.D
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

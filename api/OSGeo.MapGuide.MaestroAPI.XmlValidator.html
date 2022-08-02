@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class XmlValidator
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -92,16 +94,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -112,17 +108,28 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.html">OSGeo.MapGuide.MaestroAPI</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_XmlValidator_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class XmlValidator</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_XmlValidator_ValidationErrors.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.XmlValidator.ValidationErrors%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/XmlValidator.cs/#L51">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_XmlValidator_ValidationErrors_" data-uid="OSGeo.MapGuide.MaestroAPI.XmlValidator.ValidationErrors*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_XmlValidator_ValidationErrors" data-uid="OSGeo.MapGuide.MaestroAPI.XmlValidator.ValidationErrors">ValidationErrors</h4>
   <div class="markdown level1 summary"><p>Gets the validation errors.</p>
@@ -142,13 +149,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ReadOnlyCollection</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_XmlValidator_ValidationWarnings.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.XmlValidator.ValidationWarnings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/XmlValidator.cs/#L46">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_XmlValidator_ValidationWarnings_" data-uid="OSGeo.MapGuide.MaestroAPI.XmlValidator.ValidationWarnings*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_XmlValidator_ValidationWarnings" data-uid="OSGeo.MapGuide.MaestroAPI.XmlValidator.ValidationWarnings">ValidationWarnings</h4>
   <div class="markdown level1 summary"><p>Gets the validation warnings.</p>
@@ -168,17 +180,22 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ReadOnlyCollection</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_XmlValidator_Validate_System_IO_Stream_System_Xml_Schema_XmlSchema___.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.XmlValidator.Validate(System.IO.Stream%2CSystem.Xml.Schema.XmlSchema%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/XmlValidator.cs/#L58">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_XmlValidator_Validate_" data-uid="OSGeo.MapGuide.MaestroAPI.XmlValidator.Validate*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_XmlValidator_Validate_Stream_XmlSchema___" data-uid="OSGeo.MapGuide.MaestroAPI.XmlValidator.Validate(Stream,XmlSchema[])">Validate(Stream, XmlSchema[])</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_XmlValidator_Validate_System_IO_Stream_System_Xml_Schema_XmlSchema___" data-uid="OSGeo.MapGuide.MaestroAPI.XmlValidator.Validate(System.IO.Stream,System.Xml.Schema.XmlSchema[])">Validate(Stream, XmlSchema[])</h4>
   <div class="markdown level1 summary"><p>Validates the specified XML.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -197,21 +214,26 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Stream</span></td>
+        <td><span class="xref">System.IO.Stream</span></td>
         <td><span class="parametername">xml</span></td>
         <td><p>The XML.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">XmlSchema</span>[]</td>
+        <td><span class="xref">System.Xml.Schema.XmlSchema</span>[]</td>
         <td><span class="parametername">xsds</span></td>
         <td><p>The array of <span class="xref">System.Xml.Schema.XmlSchema</span> objects to validate against.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_XmlValidator_ValidateResourceXmlContent_System_String_System_String_System_String____System_String____.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.XmlValidator.ValidateResourceXmlContent(System.String%2CSystem.String%2CSystem.String%5B%5D%40%2CSystem.String%5B%5D%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/XmlValidator.cs/#L117">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_XmlValidator_ValidateResourceXmlContent_" data-uid="OSGeo.MapGuide.MaestroAPI.XmlValidator.ValidateResourceXmlContent*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_XmlValidator_ValidateResourceXmlContent_System_String_System_String_System_String____System_String____" data-uid="OSGeo.MapGuide.MaestroAPI.XmlValidator.ValidateResourceXmlContent(System.String,System.String,System.String[]@,System.String[]@)">ValidateResourceXmlContent(String, String, out String[], out String[])</h4>
   <div class="markdown level1 summary"><p>Validates the content of the resource XML.</p>
@@ -264,10 +286,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_XmlValidator.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.XmlValidator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/XmlValidator.cs/#L38" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -281,7 +310,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

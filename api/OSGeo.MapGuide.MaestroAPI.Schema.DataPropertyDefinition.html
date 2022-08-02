@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class DataPropertyDefinition
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -93,15 +95,21 @@ collections of simple values. This can take on any of the data types listed in t
     <div class="level2"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html">PropertyDefinition</a></div>
     <div class="level3"><span class="xref">DataPropertyDefinition</span></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
-    <div><span class="xref">IFdoSerializable</span></div>
-    <div><span class="xref">IExpressionPropertySource</span></div>
+    <div><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html">IFdoSerializable</a></div>
+    <div><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IExpressionPropertySource.html">IExpressionPropertySource</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_Parent">PropertyDefinition.Parent</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_OSGeo_MapGuide_ObjectModels_Common_IFdoSerializable_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_">PropertyDefinition.IFdoSerializable.ReadXml(XmlNode, XmlNamespaceManager)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_OSGeo_MapGuide_ObjectModels_Common_IFdoSerializable_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_">PropertyDefinition.IFdoSerializable.WriteXml(XmlDocument, XmlNode)</a>
     </div>
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_Parse_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_">PropertyDefinition.Parse(XmlNode, XmlNamespaceManager)</a>
@@ -116,16 +124,10 @@ collections of simple values. This can take on any of the data types listed in t
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.SchemaElement.html#OSGeo_MapGuide_MaestroAPI_Schema_SchemaElement_Description">SchemaElement.Description</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -136,17 +138,28 @@ collections of simple values. This can take on any of the data types listed in t
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.html">OSGeo.MapGuide.MaestroAPI.Schema</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class DataPropertyDefinition : PropertyDefinition, IFdoSerializable, IExpressionPropertySource</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition__ctor_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.%23ctor(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L47">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition__ctor_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.#ctor(System.String,System.String)">DataPropertyDefinition(String, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.html">DataPropertyDefinition</a> class.</p>
@@ -182,8 +195,13 @@ collections of simple values. This can take on any of the data types listed in t
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_DataType.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.DataType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L57">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_DataType_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.DataType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_DataType" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.DataType">DataType</h4>
   <div class="markdown level1 summary"><p>Gets the data type of this property</p>
@@ -208,8 +226,13 @@ collections of simple values. This can take on any of the data types listed in t
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_DefaultValue.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.DefaultValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L62">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_DefaultValue_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.DefaultValue*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_DefaultValue" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.DefaultValue">DefaultValue</h4>
   <div class="markdown level1 summary"><p>Gets or sets the default value. Applies only to string data types</p>
@@ -234,8 +257,13 @@ collections of simple values. This can take on any of the data types listed in t
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_ExpressionType.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.ExpressionType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L316">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_ExpressionType_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.ExpressionType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_ExpressionType" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.ExpressionType">ExpressionType</h4>
   <div class="markdown level1 summary"><p>Gets the expression data type</p>
@@ -255,15 +283,20 @@ collections of simple values. This can take on any of the data types listed in t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ExpressionDataType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ExpressionDataType.html">ExpressionDataType</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_ExpressionType">PropertyDefinition.ExpressionType</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_IsAutoGenerated.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.IsAutoGenerated%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L92">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_IsAutoGenerated_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.IsAutoGenerated*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_IsAutoGenerated" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.IsAutoGenerated">IsAutoGenerated</h4>
   <div class="markdown level1 summary"><p>Gets or sets whether this property automatically generates a value on insert.</p>
@@ -288,8 +321,13 @@ collections of simple values. This can take on any of the data types listed in t
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_IsNullable.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.IsNullable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L72">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_IsNullable_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.IsNullable*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_IsNullable" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.IsNullable">IsNullable</h4>
   <div class="markdown level1 summary"><p>Gets or sets whether this property accepts null values</p>
@@ -314,8 +352,13 @@ collections of simple values. This can take on any of the data types listed in t
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_IsReadOnly.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.IsReadOnly%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L82">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_IsReadOnly_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.IsReadOnly*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_IsReadOnly" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.IsReadOnly">IsReadOnly</h4>
   <div class="markdown level1 summary"><p>Gets or sets whether this property is read-only</p>
@@ -340,8 +383,13 @@ collections of simple values. This can take on any of the data types listed in t
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_Length.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.Length%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L67">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_Length_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.Length*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_Length" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.Length">Length</h4>
   <div class="markdown level1 summary"><p>Gets or sets the length of this property. Applies only to string and blob/clob data types</p>
@@ -366,8 +414,13 @@ collections of simple values. This can take on any of the data types listed in t
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_Precision.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.Precision%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L77">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_Precision_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.Precision*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_Precision" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.Precision">Precision</h4>
   <div class="markdown level1 summary"><p>Gets or sets the precision of this property. Applies only to decimal data types</p>
@@ -392,8 +445,13 @@ collections of simple values. This can take on any of the data types listed in t
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_Scale.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.Scale%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L87">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_Scale_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.Scale*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_Scale" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.Scale">Scale</h4>
   <div class="markdown level1 summary"><p>Gets or sets the scale of this property. Applies only to decimal data types.</p>
@@ -418,8 +476,13 @@ collections of simple values. This can take on any of the data types listed in t
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_Type.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L97">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_Type_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.Type*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_Type" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.Type">Type</h4>
   <div class="markdown level1 summary"><p>Gets the type of Property Definition</p>
@@ -448,8 +511,13 @@ collections of simple values. This can take on any of the data types listed in t
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_Type">PropertyDefinition.Type</a></div>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_GetDataType_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.GetDataType(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L135">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_GetDataType_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.GetDataType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_GetDataType_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.GetDataType(System.String)">GetDataType(String)</h4>
   <div class="markdown level1 summary"><p>Gets the type of the data.</p>
@@ -492,8 +560,13 @@ collections of simple values. This can take on any of the data types listed in t
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_IsNumericType.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.IsNumericType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L263">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_IsNumericType_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.IsNumericType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_IsNumericType" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.IsNumericType">IsNumericType()</h4>
   <div class="markdown level1 summary"><p>Convenience method to get whether this data property is numeric</p>
@@ -518,8 +591,13 @@ collections of simple values. This can take on any of the data types listed in t
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.ReadXml(System.Xml.XmlNode%2CSystem.Xml.XmlNamespaceManager)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L247">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_ReadXml_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.ReadXml*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.ReadXml(System.Xml.XmlNode,System.Xml.XmlNamespaceManager)">ReadXml(XmlNode, XmlNamespaceManager)</h4>
   <div class="markdown level1 summary"><p>Set the current element&apos;s content from the current XML node</p>
@@ -553,8 +631,13 @@ collections of simple values. This can take on any of the data types listed in t
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_">PropertyDefinition.ReadXml(XmlNode, XmlNamespaceManager)</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.WriteXml(System.Xml.XmlDocument%2CSystem.Xml.XmlNode)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L205">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_WriteXml_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.WriteXml*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition.WriteXml(System.Xml.XmlDocument,System.Xml.XmlNode)">WriteXml(XmlDocument, XmlNode)</h4>
   <div class="markdown level1 summary"><p>Writes the current element&apos;s content</p>
@@ -590,10 +673,10 @@ collections of simple values. This can take on any of the data types listed in t
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_">PropertyDefinition.WriteXml(XmlDocument, XmlNode)</a></div>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">IFdoSerializable</span>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html">IFdoSerializable</a>
   </div>
   <div>
-      <span class="xref">IExpressionPropertySource</span>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IExpressionPropertySource.html">IExpressionPropertySource</a>
   </div>
 </article>
           </div>
@@ -602,10 +685,17 @@ collections of simple values. This can take on any of the data types listed in t
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_DataPropertyDefinition.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/DataPropertyDefinition.cs/#L35" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -619,7 +709,7 @@ collections of simple values. This can take on any of the data types listed in t
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

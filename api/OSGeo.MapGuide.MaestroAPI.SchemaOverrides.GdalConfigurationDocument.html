@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class GdalConfigurationDocument
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -91,6 +93,10 @@ the GDAL provider to optimally select the correct raster images to return for th
     <div class="level1"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html">ConfigurationDocument</a></div>
     <div class="level2"><span class="xref">GdalConfigurationDocument</span></div>
   </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html">IFdoSerializable</a></div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -106,10 +112,10 @@ the GDAL provider to optimally select the correct raster images to return for th
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_Schemas">ConfigurationDocument.Schemas</a>
     </div>
     <div>
-      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_AddSpatialContext_IFdoSpatialContext_">ConfigurationDocument.AddSpatialContext(IFdoSpatialContext)</a>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_AddSpatialContext_OSGeo_MapGuide_ObjectModels_Common_IFdoSpatialContext_">ConfigurationDocument.AddSpatialContext(IFdoSpatialContext)</a>
     </div>
     <div>
-      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_RemoveSpatialContext_IFdoSpatialContext_">ConfigurationDocument.RemoveSpatialContext(IFdoSpatialContext)</a>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_RemoveSpatialContext_OSGeo_MapGuide_ObjectModels_Common_IFdoSpatialContext_">ConfigurationDocument.RemoveSpatialContext(IFdoSpatialContext)</a>
     </div>
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_GetSpatialContext_System_String_">ConfigurationDocument.GetSpatialContext(String)</a>
@@ -118,10 +124,10 @@ the GDAL provider to optimally select the correct raster images to return for th
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_GetSpatialContextNames">ConfigurationDocument.GetSpatialContextNames()</a>
     </div>
     <div>
-      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_AddSchema_FeatureSchema_">ConfigurationDocument.AddSchema(FeatureSchema)</a>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_AddSchema_OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_">ConfigurationDocument.AddSchema(FeatureSchema)</a>
     </div>
     <div>
-      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_RemoveSchema_FeatureSchema_">ConfigurationDocument.RemoveSchema(FeatureSchema)</a>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_RemoveSchema_OSGeo_MapGuide_MaestroAPI_Schema_FeatureSchema_">ConfigurationDocument.RemoveSchema(FeatureSchema)</a>
     </div>
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_GetSchema_System_String_">ConfigurationDocument.GetSchema(String)</a>
@@ -130,13 +136,10 @@ the GDAL provider to optimally select the correct raster images to return for th
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_GetClass_System_String_System_String_">ConfigurationDocument.GetClass(String, String)</a>
     </div>
     <div>
-      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_WriteXml_XmlDocument_XmlNode_">ConfigurationDocument.WriteXml(XmlDocument, XmlNode)</a>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_">ConfigurationDocument.WriteXml(XmlDocument, XmlNode)</a>
     </div>
     <div>
-      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_ReadSchemaMappings_XmlNode_XmlNamespaceManager_">ConfigurationDocument.ReadSchemaMappings(XmlNode, XmlNamespaceManager)</a>
-    </div>
-    <div>
-      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_ReadXml_XmlNode_XmlNamespaceManager_">ConfigurationDocument.ReadXml(XmlNode, XmlNamespaceManager)</a>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_">ConfigurationDocument.ReadXml(XmlNode, XmlNamespaceManager)</a>
     </div>
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_ToXml">ConfigurationDocument.ToXml()</a>
@@ -147,17 +150,43 @@ the GDAL provider to optimally select the correct raster images to return for th
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_Load_System_IO_Stream_">ConfigurationDocument.Load(Stream)</a>
     </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.html">OSGeo.MapGuide.MaestroAPI.SchemaOverrides</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class GdalConfigurationDocument : ConfigurationDocument</code></pre>
+    <pre><code class="lang-csharp hljs">public class GdalConfigurationDocument : ConfigurationDocument, IFdoSerializable</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_RasterLocations.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.RasterLocations%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/SchemaOverrides/GdalConfigurationDocument.cs/#L92">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_RasterLocations_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.RasterLocations*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_RasterLocations" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.RasterLocations">RasterLocations</h4>
   <div class="markdown level1 summary"><p>Gets an array of all the raster locations for this document</p>
@@ -184,8 +213,13 @@ the GDAL provider to optimally select the correct raster images to return for th
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_AddLocation_OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalRasterLocationItem_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.AddLocation(OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalRasterLocationItem)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/SchemaOverrides/GdalConfigurationDocument.cs/#L43">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_AddLocation_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.AddLocation*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_AddLocation_OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalRasterLocationItem_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.AddLocation(OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalRasterLocationItem)">AddLocation(GdalRasterLocationItem)</h4>
   <div class="markdown level1 summary"><p>Adds the specified raster location to this document</p>
@@ -227,8 +261,13 @@ the GDAL provider to optimally select the correct raster images to return for th
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_AddLocation_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.AddLocation(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/SchemaOverrides/GdalConfigurationDocument.cs/#L81">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_AddLocation_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.AddLocation*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_AddLocation_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.AddLocation(System.String)">AddLocation(String)</h4>
   <div class="markdown level1 summary"><p>Adds the specified directory to this document</p>
@@ -270,8 +309,13 @@ the GDAL provider to optimally select the correct raster images to return for th
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_CalculateExtent.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.CalculateExtent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/SchemaOverrides/GdalConfigurationDocument.cs/#L63">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_CalculateExtent_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.CalculateExtent*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_CalculateExtent" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.CalculateExtent">CalculateExtent()</h4>
   <div class="markdown level1 summary"><p>Calculates the combined extent that encompasses all the raster images in this document.</p>
@@ -291,13 +335,18 @@ the GDAL provider to optimally select the correct raster images to return for th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnvelope</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IEnvelope.html">IEnvelope</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_ReadSchemaMappings_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.ReadSchemaMappings(System.Xml.XmlNode%2CSystem.Xml.XmlNamespaceManager)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/SchemaOverrides/GdalConfigurationDocument.cs/#L142">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_ReadSchemaMappings_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.ReadSchemaMappings*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_ReadSchemaMappings_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.ReadSchemaMappings(System.Xml.XmlNode,System.Xml.XmlNamespaceManager)">ReadSchemaMappings(XmlNode, XmlNamespaceManager)</h4>
   <div class="markdown level1 summary"><p>Write this document&apos;s schema mappings from the given XML document</p>
@@ -331,8 +380,15 @@ the GDAL provider to optimally select the correct raster images to return for th
       </tr>
     </tbody>
   </table>
-  
-  
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_ReadSchemaMappings_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_">ConfigurationDocument.ReadSchemaMappings(XmlNode, XmlNamespaceManager)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_RemoveLocation_OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalRasterLocationItem_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.RemoveLocation(OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalRasterLocationItem)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/SchemaOverrides/GdalConfigurationDocument.cs/#L57">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_RemoveLocation_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.RemoveLocation*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_RemoveLocation_OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalRasterLocationItem_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.RemoveLocation(OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalRasterLocationItem)">RemoveLocation(GdalRasterLocationItem)</h4>
   <div class="markdown level1 summary"><p>Removes the specified raster location from this document</p>
@@ -374,10 +430,15 @@ the GDAL provider to optimally select the correct raster images to return for th
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_WriteSchemaMappings_System_Xml_XmlDocument_System_Xml_XmlNode_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.WriteSchemaMappings(System.Xml.XmlDocument%2CSystem.Xml.XmlNode)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/SchemaOverrides/GdalConfigurationDocument.cs/#L99">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_WriteSchemaMappings_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.WriteSchemaMappings*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_WriteSchemaMappings_XmlDocument_XmlNode_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.WriteSchemaMappings(XmlDocument,XmlNode)">WriteSchemaMappings(XmlDocument, XmlNode)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument_WriteSchemaMappings_System_Xml_XmlDocument_System_Xml_XmlNode_" data-uid="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument.WriteSchemaMappings(System.Xml.XmlDocument,System.Xml.XmlNode)">WriteSchemaMappings(XmlDocument, XmlNode)</h4>
   <div class="markdown level1 summary"><p>Write this document&apos;s schema mappings to the given XML document</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -396,19 +457,23 @@ the GDAL provider to optimally select the correct raster images to return for th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">XmlDocument</span></td>
+        <td><span class="xref">System.Xml.XmlDocument</span></td>
         <td><span class="parametername">doc</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">XmlNode</span></td>
+        <td><span class="xref">System.Xml.XmlNode</span></td>
         <td><span class="parametername">currentNode</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_WriteSchemaMappings_XmlDocument_XmlNode_">ConfigurationDocument.WriteSchemaMappings(XmlDocument, XmlNode)</a></div>
+  <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html#OSGeo_MapGuide_MaestroAPI_SchemaOverrides_ConfigurationDocument_WriteSchemaMappings_System_Xml_XmlDocument_System_Xml_XmlNode_">ConfigurationDocument.WriteSchemaMappings(XmlDocument, XmlNode)</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html">IFdoSerializable</a>
+  </div>
 </article>
           </div>
           
@@ -416,10 +481,17 @@ the GDAL provider to optimally select the correct raster images to return for th
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_SchemaOverrides_GdalConfigurationDocument.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.SchemaOverrides.GdalConfigurationDocument%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/SchemaOverrides/GdalConfigurationDocument.cs/#L34" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -433,7 +505,7 @@ the GDAL provider to optimally select the correct raster images to return for th
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

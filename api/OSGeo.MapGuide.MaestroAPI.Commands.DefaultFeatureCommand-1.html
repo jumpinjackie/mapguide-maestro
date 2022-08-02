@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class DefaultFeatureCommand&lt;TConn&gt;
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -94,7 +96,7 @@
       <div class="level3"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.DefaultInsertCommand-1.html">DefaultInsertCommand&lt;TConn&gt;</a></div>
       <div class="level3"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.DefaultUpdateCommand-1.html">DefaultUpdateCommand&lt;TConn&gt;</a></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.IFeatureCommand.html">IFeatureCommand</a></div>
     <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.ICommand.html">ICommand</a></div>
@@ -111,16 +113,10 @@
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCommand-1.html#OSGeo_MapGuide_MaestroAPI_Commands_DefaultCommand_1_ValidateCoreParams">DefaultCommand&lt;TConn&gt;.ValidateCoreParams()</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -131,9 +127,15 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.html">OSGeo.MapGuide.MaestroAPI.Commands</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultFeatureCommand_1_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class DefaultFeatureCommand&lt;TConn&gt; : DefaultCommand&lt;TConn&gt;, IFeatureCommand, ICommand where TConn : IServerConnection</code></pre>
@@ -156,8 +158,13 @@
   </table>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultFeatureCommand_1__ctor__0_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultFeatureCommand%601.%23ctor(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L79">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultFeatureCommand_1__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultFeatureCommand`1.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultFeatureCommand_1__ctor__0_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultFeatureCommand`1.#ctor(`0)">DefaultFeatureCommand(TConn)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.DefaultFeatureCommand-1.html">DefaultFeatureCommand&lt;TConn&gt;</a> class.</p>
@@ -187,8 +194,13 @@
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultFeatureCommand_1_ClassName.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultFeatureCommand%601.ClassName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L102">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultFeatureCommand_1_ClassName_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultFeatureCommand`1.ClassName*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultFeatureCommand_1_ClassName" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultFeatureCommand`1.ClassName">ClassName</h4>
   <div class="markdown level1 summary"><p>Gets or sets the name of the class.</p>
@@ -214,8 +226,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultFeatureCommand_1_FeatureSourceId.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultFeatureCommand%601.FeatureSourceId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L90">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultFeatureCommand_1_FeatureSourceId_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultFeatureCommand`1.FeatureSourceId*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultFeatureCommand_1_FeatureSourceId" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultFeatureCommand`1.FeatureSourceId">FeatureSourceId</h4>
   <div class="markdown level1 summary"><p>Gets or sets the feature source id.</p>
@@ -243,8 +260,13 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultFeatureCommand_1_ValidateParams.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultFeatureCommand%601.ValidateParams%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L111">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultFeatureCommand_1_ValidateParams_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultFeatureCommand`1.ValidateParams*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultFeatureCommand_1_ValidateParams" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultFeatureCommand`1.ValidateParams">ValidateParams()</h4>
   <div class="markdown level1 summary"><p>Performs basic validation of core command parameters</p>
@@ -268,10 +290,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultFeatureCommand_1.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultFeatureCommand%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L73" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -285,7 +314,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

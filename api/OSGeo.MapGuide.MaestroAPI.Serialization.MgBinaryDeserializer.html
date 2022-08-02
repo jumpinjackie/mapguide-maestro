@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class MgBinaryDeserializer
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -92,16 +94,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -112,19 +108,30 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Serialization.html">OSGeo.MapGuide.MaestroAPI.Serialization</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class MgBinaryDeserializer</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer__ctor_System_IO_Stream_System_Version_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.%23ctor(System.IO.Stream%2CSystem.Version)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L49">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.#ctor*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer__ctor_Stream_Version_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.#ctor(Stream,Version)">MgBinaryDeserializer(Stream, Version)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer__ctor_System_IO_Stream_System_Version_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.#ctor(System.IO.Stream,System.Version)">MgBinaryDeserializer(Stream, Version)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.html">MgBinaryDeserializer</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -143,13 +150,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Stream</span></td>
+        <td><span class="xref">System.IO.Stream</span></td>
         <td><span class="parametername">stream</span></td>
         <td><p>The stream.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">siteversion</span></td>
         <td><p>The siteversion.</p>
 </td>
@@ -158,8 +165,13 @@
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_SiteVersion.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.SiteVersion%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L42">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_SiteVersion_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.SiteVersion*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_SiteVersion" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.SiteVersion">SiteVersion</h4>
   <div class="markdown level1 summary"><p>Gets the site version.</p>
@@ -179,7 +191,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><p>The site version.</p>
 </td>
       </tr>
@@ -187,8 +199,13 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadBool.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadBool%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L203">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadBool_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadBool*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadBool" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadBool">ReadBool()</h4>
   <div class="markdown level1 summary"><p>Reads the bool.</p>
@@ -213,8 +230,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadByte.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadByte%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L209">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadByte_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadByte*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadByte" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadByte">ReadByte()</h4>
   <div class="markdown level1 summary"><p>Reads the byte.</p>
@@ -239,8 +261,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadClassId.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadClassId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L316">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadClassId_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadClassId*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadClassId" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadClassId">ReadClassId()</h4>
   <div class="markdown level1 summary"><p>Reads the class id.</p>
@@ -265,8 +292,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadCoordinates.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadCoordinates%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L248">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadCoordinates_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadCoordinates*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadCoordinates" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadCoordinates">ReadCoordinates()</h4>
   <div class="markdown level1 summary"><p>Reads the coordinates.</p>
@@ -291,8 +323,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadDouble.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadDouble%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L235">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadDouble_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadDouble*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadDouble" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadDouble">ReadDouble()</h4>
   <div class="markdown level1 summary"><p>Reads the double.</p>
@@ -317,8 +354,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt16.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt16%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L190">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt16_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt16*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt16" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt16">ReadInt16()</h4>
   <div class="markdown level1 summary"><p>Reads the int16.</p>
@@ -343,8 +385,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt32.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt32%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L177">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt32_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt32*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt32" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt32">ReadInt32()</h4>
   <div class="markdown level1 summary"><p>Reads the int32.</p>
@@ -369,8 +416,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt64.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt64%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L164">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt64_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt64*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInt64" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInt64">ReadInt64()</h4>
   <div class="markdown level1 summary"><p>Reads the int64.</p>
@@ -395,8 +447,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInternalString.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInternalString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L114">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInternalString_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInternalString*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadInternalString" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadInternalString">ReadInternalString()</h4>
   <div class="markdown level1 summary"><p>Reads the internal string.</p>
@@ -421,8 +478,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadObject.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadObject%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L339">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadObject_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadObject*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadObject" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadObject">ReadObject()</h4>
   <div class="markdown level1 summary"><p>Reads the object.</p>
@@ -447,8 +509,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadResourceIdentifier.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadResourceIdentifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L143">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadResourceIdentifier_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadResourceIdentifier*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadResourceIdentifier" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadResourceIdentifier">ReadResourceIdentifier()</h4>
   <div class="markdown level1 summary"><p>Reads the resource identifier.</p>
@@ -473,8 +540,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadSingle.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadSingle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L222">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadSingle_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadSingle*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadSingle" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadSingle">ReadSingle()</h4>
   <div class="markdown level1 summary"><p>Reads the single.</p>
@@ -499,8 +571,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStream.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStream%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L274">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStream_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStream*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStream" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStream">ReadStream()</h4>
   <div class="markdown level1 summary"><p>Reads the stream.</p>
@@ -520,13 +597,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Stream</span></td>
+        <td><span class="xref">System.IO.Stream</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamEnd.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamEnd%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L328">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamEnd_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamEnd*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamEnd" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamEnd">ReadStreamEnd()</h4>
   <div class="markdown level1 summary"><p>Reads the stream end.</p>
@@ -536,8 +618,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void ReadStreamEnd()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamRepeat_System_Byte___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamRepeat(System.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L377">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamRepeat_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamRepeat*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamRepeat_System_Byte___System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamRepeat(System.Byte[],System.Int32,System.Int32)">ReadStreamRepeat(Byte[], Int32, Int32)</h4>
   <div class="markdown level1 summary"><p>Internal helper that will read from a potentially fragmented stream</p>
@@ -577,8 +664,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamRepeat_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamRepeat(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L364">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamRepeat_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamRepeat*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadStreamRepeat_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadStreamRepeat(System.Int32)">ReadStreamRepeat(Int32)</h4>
   <div class="markdown level1 summary"><p>Reads the stream repeat.</p>
@@ -621,8 +713,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadString.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L90">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadString_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadString*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_ReadString" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.ReadString">ReadString()</h4>
   <div class="markdown level1 summary"><p>Reads the string.</p>
@@ -654,10 +751,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinaryDeserializer.cs/#L32" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -671,7 +775,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ObjectFactory
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -89,7 +91,7 @@ it.</p>
 Open Source 2.6 / AIMS 2015). In order to be able to create newer versions where support has not yet been added to
 this library, you will need to register the appropriate methods that can create resources of this version:</p>
 <ul>
-<li><a class="xref" href="OSGeo.MapGuide.ObjectModels.ObjectFactory.html#OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLayerFactoryMethod_Version_Func_LayerType_ILayerDefinition__">RegisterLayerFactoryMethod(Version, Func&lt;LayerType, ILayerDefinition&gt;)</a> for Layer Definitions</li>
+<li><a class="xref" href="OSGeo.MapGuide.ObjectModels.ObjectFactory.html#OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLayerFactoryMethod_System_Version_System_Func_OSGeo_MapGuide_ObjectModels_LayerDefinition_LayerType_OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerDefinition__">RegisterLayerFactoryMethod(Version, Func&lt;LayerType, ILayerDefinition&gt;)</a> for Layer Definitions</li>
 </ul>
 <p>This registration needs to be done as part of your application&apos;s startup/initialization phase.</p>
 </div>
@@ -102,16 +104,10 @@ this library, you will need to register the appropriate methods that can create 
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -122,17 +118,28 @@ this library, you will need to register the appropriate methods that can create 
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.html">OSGeo.MapGuide.ObjectModels</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.ObjectModels.dll</h6>
   <h5 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class ObjectFactory</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateAttributeRelation.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateAttributeRelation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L535">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateAttributeRelation_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateAttributeRelation*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateAttributeRelation" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateAttributeRelation">CreateAttributeRelation()</h4>
   <div class="markdown level1 summary"><p>Creates the attribute relation.</p>
@@ -152,13 +159,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAttributeRelation</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.IAttributeRelation.html">IAttributeRelation</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCalculatedProperty.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCalculatedProperty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L509">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCalculatedProperty_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCalculatedProperty*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCalculatedProperty" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCalculatedProperty">CreateCalculatedProperty()</h4>
   <div class="markdown level1 summary"><p>Creates the calculated property.</p>
@@ -178,13 +190,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ICalculatedProperty</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.ICalculatedProperty.html">ICalculatedProperty</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCalculatedProperty_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCalculatedProperty(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L522">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCalculatedProperty_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCalculatedProperty*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCalculatedProperty_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCalculatedProperty(System.String,System.String)">CreateCalculatedProperty(String, String)</h4>
   <div class="markdown level1 summary"><p>Creates the calculated property.</p>
@@ -228,15 +245,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ICalculatedProperty</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.ICalculatedProperty.html">ICalculatedProperty</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCompoundSymbol_System_Version_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCompoundSymbol(System.Version%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L1454">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCompoundSymbol_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCompoundSymbol*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCompoundSymbol_Version_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCompoundSymbol(Version,System.String,System.String)">CreateCompoundSymbol(Version, String, String)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateCompoundSymbol_System_Version_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateCompoundSymbol(System.Version,System.String,System.String)">CreateCompoundSymbol(Version, String, String)</h4>
   <div class="markdown level1 summary"><p>Creates the compound symbol.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -255,7 +277,7 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td><p>The version.</p>
 </td>
@@ -284,15 +306,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ICompoundSymbolDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ICompoundSymbolDefinition.html">ICompoundSymbolDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateDefaultLayer_OSGeo_MapGuide_ObjectModels_LayerDefinition_LayerType_System_Version_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateDefaultLayer(OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType%2CSystem.Version)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L583">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateDefaultLayer_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateDefaultLayer*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateDefaultLayer_LayerType_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateDefaultLayer(LayerType,Version)">CreateDefaultLayer(LayerType, Version)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateDefaultLayer_OSGeo_MapGuide_ObjectModels_LayerDefinition_LayerType_System_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateDefaultLayer(OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType,System.Version)">CreateDefaultLayer(LayerType, Version)</h4>
   <div class="markdown level1 summary"><p>Creates the default layer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -311,13 +338,13 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">LayerType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.html">LayerType</a></td>
         <td><span class="parametername">type</span></td>
         <td><p>The type.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td><p>The version.</p>
 </td>
@@ -334,13 +361,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ILayerDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition.html">ILayerDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateDrawingSource.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateDrawingSource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L597">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateDrawingSource_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateDrawingSource*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateDrawingSource" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateDrawingSource">CreateDrawingSource()</h4>
   <div class="markdown level1 summary"><p>Creates the drawing source.</p>
@@ -360,13 +392,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IDrawingSource</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.html">IDrawingSource</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateEnvelope_System_Double_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateEnvelope(System.Double%2CSystem.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L554">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateEnvelope_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateEnvelope*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateEnvelope_System_Double_System_Double_System_Double_System_Double_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateEnvelope(System.Double,System.Double,System.Double,System.Double)">CreateEnvelope(Double, Double, Double, Double)</h4>
   <div class="markdown level1 summary"><p>Creates an envelope (bounding box)</p>
@@ -418,13 +455,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnvelope</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IEnvelope.html">IEnvelope</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSource_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSource(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L612">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSource_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSource*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSource_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSource(System.String)">CreateFeatureSource(String)</h4>
   <div class="markdown level1 summary"><p>Creates the feature source.</p>
@@ -462,15 +504,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IFeatureSource</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.html">IFeatureSource</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSource_System_String_System_Collections_Specialized_NameValueCollection_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSource(System.String%2CSystem.Collections.Specialized.NameValueCollection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L627">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSource_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSource*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSource_System_String_NameValueCollection_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSource(System.String,NameValueCollection)">CreateFeatureSource(String, NameValueCollection)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSource_System_String_System_Collections_Specialized_NameValueCollection_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSource(System.String,System.Collections.Specialized.NameValueCollection)">CreateFeatureSource(String, NameValueCollection)</h4>
   <div class="markdown level1 summary"><p>Creates the feature source.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -495,7 +542,7 @@ this library, you will need to register the appropriate methods that can create 
 </td>
       </tr>
       <tr>
-        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="xref">System.Collections.Specialized.NameValueCollection</span></td>
         <td><span class="parametername">values</span></td>
         <td><p>The connection properties.</p>
 </td>
@@ -512,13 +559,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IFeatureSource</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource.html">IFeatureSource</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSourceExtension.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSourceExtension%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L496">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSourceExtension_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSourceExtension*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSourceExtension" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSourceExtension">CreateFeatureSourceExtension()</h4>
   <div class="markdown level1 summary"><p>Creates the feature source extension.</p>
@@ -538,13 +590,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IFeatureSourceExtension</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSourceExtension.html">IFeatureSourceExtension</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSourceExtension_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSourceExtension(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L481">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSourceExtension_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSourceExtension*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFeatureSourceExtension_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFeatureSourceExtension(System.String,System.String)">CreateFeatureSourceExtension(String, String)</h4>
   <div class="markdown level1 summary"><p>Creates the feature source extension.</p>
@@ -586,21 +643,26 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IFeatureSourceExtension</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSourceExtension.html">IFeatureSourceExtension</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFlexibleLayout_System_Version_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinitionTemplateInfoSet_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinitionWidgetInfoSet_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinitionContainerInfoSet_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFlexibleLayout(System.Version%2COSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionTemplateInfoSet%2COSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionWidgetInfoSet%2COSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionContainerInfoSet%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L855">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFlexibleLayout_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFlexibleLayout*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFlexibleLayout_Version_IApplicationDefinitionTemplateInfoSet_IApplicationDefinitionWidgetInfoSet_IApplicationDefinitionContainerInfoSet_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFlexibleLayout(Version,IApplicationDefinitionTemplateInfoSet,IApplicationDefinitionWidgetInfoSet,IApplicationDefinitionContainerInfoSet,System.String)">CreateFlexibleLayout(Version, IApplicationDefinitionTemplateInfoSet, IApplicationDefinitionWidgetInfoSet, IApplicationDefinitionContainerInfoSet, String)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateFlexibleLayout_System_Version_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinitionTemplateInfoSet_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinitionWidgetInfoSet_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinitionContainerInfoSet_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateFlexibleLayout(System.Version,OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionTemplateInfoSet,OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionWidgetInfoSet,OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionContainerInfoSet,System.String,System.Boolean)">CreateFlexibleLayout(Version, IApplicationDefinitionTemplateInfoSet, IApplicationDefinitionWidgetInfoSet, IApplicationDefinitionContainerInfoSet, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Creates a fusion flexible layout</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IApplicationDefinition CreateFlexibleLayout(Version siteVersion, IApplicationDefinitionTemplateInfoSet templates, IApplicationDefinitionWidgetInfoSet widgets, IApplicationDefinitionContainerInfoSet containers, string templateName)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IApplicationDefinition CreateFlexibleLayout(Version siteVersion, IApplicationDefinitionTemplateInfoSet templates, IApplicationDefinitionWidgetInfoSet widgets, IApplicationDefinitionContainerInfoSet containers, string templateName, bool statelessMode = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -613,25 +675,25 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">siteVersion</span></td>
         <td><p>The site version</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IApplicationDefinitionTemplateInfoSet</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionTemplateInfoSet.html">IApplicationDefinitionTemplateInfoSet</a></td>
         <td><span class="parametername">templates</span></td>
         <td><p>The set of available templates</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IApplicationDefinitionWidgetInfoSet</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionWidgetInfoSet.html">IApplicationDefinitionWidgetInfoSet</a></td>
         <td><span class="parametername">widgets</span></td>
         <td><p>The set of available widgets</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IApplicationDefinitionContainerInfoSet</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionContainerInfoSet.html">IApplicationDefinitionContainerInfoSet</a></td>
         <td><span class="parametername">containers</span></td>
         <td><p>The set of available containers</p>
 </td>
@@ -640,6 +702,12 @@ this library, you will need to register the appropriate methods that can create 
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">templateName</span></td>
         <td><p>The name of the template. See <a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.FusionTemplateNames.html">FusionTemplateNames</a> for the common pre-defined names</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">statelessMode</span></td>
+        <td><p>If true, the widget set will only be populated with widgets that can work without a running MapGuide Server</p>
 </td>
       </tr>
     </tbody>
@@ -654,15 +722,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IApplicationDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.html">IApplicationDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateLoadProcedure_OSGeo_MapGuide_ObjectModels_LoadProcedure_LoadType_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateLoadProcedure(OSGeo.MapGuide.ObjectModels.LoadProcedure.LoadType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L678">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateLoadProcedure_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateLoadProcedure*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateLoadProcedure_LoadType_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateLoadProcedure(LoadType)">CreateLoadProcedure(LoadType)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateLoadProcedure_OSGeo_MapGuide_ObjectModels_LoadProcedure_LoadType_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateLoadProcedure(OSGeo.MapGuide.ObjectModels.LoadProcedure.LoadType)">CreateLoadProcedure(LoadType)</h4>
   <div class="markdown level1 summary"><p>Creates the load procedure.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -681,7 +754,7 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">LoadType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.LoadType.html">LoadType</a></td>
         <td><span class="parametername">type</span></td>
         <td><p>The type.</p>
 </td>
@@ -698,15 +771,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ILoadProcedure</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.ILoadProcedure.html">ILoadProcedure</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateLoadProcedure_OSGeo_MapGuide_ObjectModels_LoadProcedure_LoadType_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateLoadProcedure(OSGeo.MapGuide.ObjectModels.LoadProcedure.LoadType%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L656">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateLoadProcedure_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateLoadProcedure*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateLoadProcedure_LoadType_IEnumerable_System_String__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateLoadProcedure(LoadType,IEnumerable{System.String})">CreateLoadProcedure(LoadType, IEnumerable&lt;String&gt;)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateLoadProcedure_OSGeo_MapGuide_ObjectModels_LoadProcedure_LoadType_System_Collections_Generic_IEnumerable_System_String__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateLoadProcedure(OSGeo.MapGuide.ObjectModels.LoadProcedure.LoadType,System.Collections.Generic.IEnumerable{System.String})">CreateLoadProcedure(LoadType, IEnumerable&lt;String&gt;)</h4>
   <div class="markdown level1 summary"><p>Creates the load procedure.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -725,13 +803,13 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">LoadType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.LoadType.html">LoadType</a></td>
         <td><span class="parametername">type</span></td>
         <td><p>The type.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">fileNames</span></td>
         <td><p>The file names.</p>
 </td>
@@ -748,15 +826,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ILoadProcedure</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.ILoadProcedure.html">ILoadProcedure</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_System_Version_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition(System.Version%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L698">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_Version_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition(Version,System.String)">CreateMapDefinition(Version, String)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_System_Version_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition(System.Version,System.String)">CreateMapDefinition(Version, String)</h4>
   <div class="markdown level1 summary"><p>Creates the map definition.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -775,7 +858,7 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td></td>
       </tr>
@@ -796,15 +879,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IMapDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html">IMapDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_System_Version_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition(System.Version%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L715">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_Version_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition(Version,System.String,System.String)">CreateMapDefinition(Version, String, String)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_System_Version_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition(System.Version,System.String,System.String)">CreateMapDefinition(Version, String, String)</h4>
   <div class="markdown level1 summary"><p>Creates the map definition.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -823,7 +911,7 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">ver</span></td>
         <td></td>
       </tr>
@@ -849,15 +937,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IMapDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html">IMapDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_System_Version_System_String_System_String_OSGeo_MapGuide_ObjectModels_Common_IEnvelope_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition(System.Version%2CSystem.String%2CSystem.String%2COSGeo.MapGuide.ObjectModels.Common.IEnvelope)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L731">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_Version_System_String_System_String_IEnvelope_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition(Version,System.String,System.String,IEnvelope)">CreateMapDefinition(Version, String, String, IEnvelope)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMapDefinition_System_Version_System_String_System_String_OSGeo_MapGuide_ObjectModels_Common_IEnvelope_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMapDefinition(System.Version,System.String,System.String,OSGeo.MapGuide.ObjectModels.Common.IEnvelope)">CreateMapDefinition(Version, String, String, IEnvelope)</h4>
   <div class="markdown level1 summary"><p>Creates the map definition.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -876,7 +969,7 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">ver</span></td>
         <td></td>
       </tr>
@@ -891,7 +984,7 @@ this library, you will need to register the appropriate methods that can create 
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">IEnvelope</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IEnvelope.html">IEnvelope</a></td>
         <td><span class="parametername">env</span></td>
         <td></td>
       </tr>
@@ -907,13 +1000,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IMapDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html">IMapDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMetadata.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMetadata%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L442">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMetadata_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMetadata*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateMetadata" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateMetadata">CreateMetadata()</h4>
   <div class="markdown level1 summary"><p>Creates an empty resource document header metadata object</p>
@@ -933,13 +1031,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ResourceDocumentHeaderTypeMetadata</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceDocumentHeaderTypeMetadata.html">ResourceDocumentHeaderTypeMetadata</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePoint2D_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePoint2D(System.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L1521">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePoint2D_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePoint2D*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePoint2D_System_Double_System_Double_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePoint2D(System.Double,System.Double)">CreatePoint2D(Double, Double)</h4>
   <div class="markdown level1 summary"><p>Creates a 2d point</p>
@@ -981,13 +1084,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IPoint2D</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IPoint2D.html">IPoint2D</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePoint3D_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePoint3D(System.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L1533">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePoint3D_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePoint3D*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePoint3D_System_Double_System_Double_System_Double_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePoint3D(System.Double,System.Double,System.Double)">CreatePoint3D(Double, Double, Double)</h4>
   <div class="markdown level1 summary"><p>Creates a 3d point</p>
@@ -1034,13 +1142,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IPoint3D</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IPoint3D.html">IPoint3D</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePrintLayout.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePrintLayout%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L1469">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePrintLayout_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePrintLayout*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreatePrintLayout" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreatePrintLayout">CreatePrintLayout()</h4>
   <div class="markdown level1 summary"><p>Creates the print layout.</p>
@@ -1060,13 +1173,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IPrintLayout</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout.html">IPrintLayout</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSecurityGroup.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSecurityGroup%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L457">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSecurityGroup_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSecurityGroup*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSecurityGroup" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSecurityGroup">CreateSecurityGroup()</h4>
   <div class="markdown level1 summary"><p>Creates an empty group security object</p>
@@ -1086,13 +1204,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ResourceSecurityTypeGroups</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceSecurityTypeGroups.html">ResourceSecurityTypeGroups</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSecurityUser.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSecurityUser%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L469">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSecurityUser_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSecurityUser*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSecurityUser" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSecurityUser">CreateSecurityUser()</h4>
   <div class="markdown level1 summary"><p>Creates an empty user security object</p>
@@ -1112,15 +1235,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ResourceSecurityTypeUsers</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceSecurityTypeUsers.html">ResourceSecurityTypeUsers</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleLabel_System_Version_OSGeo_MapGuide_ObjectModels_LayerDefinition_GeometryContextType_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleLabel(System.Version%2COSGeo.MapGuide.ObjectModels.LayerDefinition.GeometryContextType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L1213">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleLabel_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleLabel*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleLabel_Version_GeometryContextType_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleLabel(Version,GeometryContextType)">CreateSimpleLabel(Version, GeometryContextType)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleLabel_System_Version_OSGeo_MapGuide_ObjectModels_LayerDefinition_GeometryContextType_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleLabel(System.Version,OSGeo.MapGuide.ObjectModels.LayerDefinition.GeometryContextType)">CreateSimpleLabel(Version, GeometryContextType)</h4>
   <div class="markdown level1 summary"><p>Creates a simple label symbol</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1139,12 +1267,12 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">GeometryContextType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.GeometryContextType.html">GeometryContextType</a></td>
         <td><span class="parametername">type</span></td>
         <td></td>
       </tr>
@@ -1160,15 +1288,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ISimpleSymbolDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISimpleSymbolDefinition.html">ISimpleSymbolDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimplePoint_System_Version_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimplePoint(System.Version)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L1312">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimplePoint_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimplePoint*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimplePoint_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimplePoint(Version)">CreateSimplePoint(Version)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimplePoint_System_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimplePoint(System.Version)">CreateSimplePoint(Version)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1186,7 +1319,7 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td></td>
       </tr>
@@ -1202,15 +1335,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ISimpleSymbolDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISimpleSymbolDefinition.html">ISimpleSymbolDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSolidFill_System_Version_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSolidFill(System.Version)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L1395">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSolidFill_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSolidFill*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSolidFill_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSolidFill(Version)">CreateSimpleSolidFill(Version)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSolidFill_System_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSolidFill(System.Version)">CreateSimpleSolidFill(Version)</h4>
   <div class="markdown level1 summary"><p>Creates a simple solid fill symbol</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1229,7 +1367,7 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td></td>
       </tr>
@@ -1245,15 +1383,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ISimpleSymbolDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISimpleSymbolDefinition.html">ISimpleSymbolDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSolidLine_System_Version_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSolidLine(System.Version)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L1355">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSolidLine_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSolidLine*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSolidLine_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSolidLine(Version)">CreateSimpleSolidLine(Version)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSolidLine_System_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSolidLine(System.Version)">CreateSimpleSolidLine(Version)</h4>
   <div class="markdown level1 summary"><p>Creates a simple solid line symbol</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1272,7 +1415,7 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td></td>
       </tr>
@@ -1288,15 +1431,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ISimpleSymbolDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISimpleSymbolDefinition.html">ISimpleSymbolDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSymbol_System_Version_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSymbol(System.Version%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L1436">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSymbol_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSymbol*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSymbol_Version_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSymbol(Version,System.String,System.String)">CreateSimpleSymbol(Version, String, String)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSimpleSymbol_System_Version_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSimpleSymbol(System.Version,System.String,System.String)">CreateSimpleSymbol(Version, String, String)</h4>
   <div class="markdown level1 summary"><p>Creates a simple symbol definition.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1315,7 +1463,7 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td><p>The version.</p>
 </td>
@@ -1344,13 +1492,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ISimpleSymbolDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISimpleSymbolDefinition.html">ISimpleSymbolDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSymbolLibrary.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSymbolLibrary%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L1507">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSymbolLibrary_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSymbolLibrary*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateSymbolLibrary" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateSymbolLibrary">CreateSymbolLibrary()</h4>
   <div class="markdown level1 summary"><p>Creates a new symbol library</p>
@@ -1370,15 +1523,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ISymbolLibrary</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.SymbolLibrary.ISymbolLibrary.html">ISymbolLibrary</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateTileSetDefinition_System_Version_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateTileSetDefinition(System.Version)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L744">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateTileSetDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateTileSetDefinition*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateTileSetDefinition_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateTileSetDefinition(Version)">CreateTileSetDefinition(Version)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateTileSetDefinition_System_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateTileSetDefinition(System.Version)">CreateTileSetDefinition(Version)</h4>
   <div class="markdown level1 summary"><p>Creates the tile set definition</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1397,7 +1555,7 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td></td>
       </tr>
@@ -1413,15 +1571,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ITileSetDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetDefinition.html">ITileSetDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateTileSetDefinition_System_Version_OSGeo_MapGuide_ObjectModels_Common_IEnvelope_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateTileSetDefinition(System.Version%2COSGeo.MapGuide.ObjectModels.Common.IEnvelope)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L760">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateTileSetDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateTileSetDefinition*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateTileSetDefinition_Version_IEnvelope_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateTileSetDefinition(Version,IEnvelope)">CreateTileSetDefinition(Version, IEnvelope)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateTileSetDefinition_System_Version_OSGeo_MapGuide_ObjectModels_Common_IEnvelope_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateTileSetDefinition(System.Version,OSGeo.MapGuide.ObjectModels.Common.IEnvelope)">CreateTileSetDefinition(Version, IEnvelope)</h4>
   <div class="markdown level1 summary"><p>Creates the tile set definition using the default provider</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1440,12 +1603,12 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">IEnvelope</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IEnvelope.html">IEnvelope</a></td>
         <td><span class="parametername">extents</span></td>
         <td></td>
       </tr>
@@ -1461,15 +1624,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ITileSetDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetDefinition.html">ITileSetDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateWatermark_OSGeo_MapGuide_ObjectModels_SymbolDefinition_SymbolDefinitionType_System_Version_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateWatermark(OSGeo.MapGuide.ObjectModels.SymbolDefinition.SymbolDefinitionType%2CSystem.Version)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L641">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateWatermark_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateWatermark*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateWatermark_SymbolDefinitionType_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateWatermark(SymbolDefinitionType,Version)">CreateWatermark(SymbolDefinitionType, Version)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateWatermark_OSGeo_MapGuide_ObjectModels_SymbolDefinition_SymbolDefinitionType_System_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateWatermark(OSGeo.MapGuide.ObjectModels.SymbolDefinition.SymbolDefinitionType,System.Version)">CreateWatermark(SymbolDefinitionType, Version)</h4>
   <div class="markdown level1 summary"><p>Creates a Watermark Definition</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1488,12 +1656,12 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SymbolDefinitionType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.SymbolDefinition.SymbolDefinitionType.html">SymbolDefinitionType</a></td>
         <td><span class="parametername">type</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td></td>
       </tr>
@@ -1509,15 +1677,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IWatermarkDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermarkDefinition.html">IWatermarkDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateWebLayout_System_Version_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateWebLayout(System.Version%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L773">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateWebLayout_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateWebLayout*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateWebLayout_Version_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateWebLayout(Version,System.String)">CreateWebLayout(Version, String)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_CreateWebLayout_System_Version_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateWebLayout(System.Version,System.String)">CreateWebLayout(Version, String)</h4>
   <div class="markdown level1 summary"><p>Creates the web layout.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1536,7 +1709,7 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td><p>The version.</p>
 </td>
@@ -1559,15 +1732,20 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IWebLayout</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.html">IWebLayout</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_Deserialize_System_String_System_IO_Stream_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.Deserialize(System.String%2CSystem.IO.Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L1574">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_Deserialize_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.Deserialize*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_Deserialize_System_String_Stream_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.Deserialize(System.String,Stream)">Deserialize(String, Stream)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_Deserialize_System_String_System_IO_Stream_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.Deserialize(System.String,System.IO.Stream)">Deserialize(String, Stream)</h4>
   <div class="markdown level1 summary"><p>Deserializes the specified stream for the specified resource type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1592,7 +1770,7 @@ this library, you will need to register the appropriate methods that can create 
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Stream</span></td>
+        <td><span class="xref">System.IO.Stream</span></td>
         <td><span class="parametername">stream</span></td>
         <td><p>The stream.</p>
 </td>
@@ -1614,10 +1792,15 @@ this library, you will need to register the appropriate methods that can create 
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_DeserializeEmbeddedFlexLayout_System_Version_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.DeserializeEmbeddedFlexLayout(System.Version)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L788">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_DeserializeEmbeddedFlexLayout_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.DeserializeEmbeddedFlexLayout*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_DeserializeEmbeddedFlexLayout_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.DeserializeEmbeddedFlexLayout(Version)">DeserializeEmbeddedFlexLayout(Version)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_DeserializeEmbeddedFlexLayout_System_Version_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.DeserializeEmbeddedFlexLayout(System.Version)">DeserializeEmbeddedFlexLayout(Version)</h4>
   <div class="markdown level1 summary"><p>Returns a deserialized copy of an embedded Flexible Layout</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1636,7 +1819,7 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">siteVersion</span></td>
         <td></td>
       </tr>
@@ -1652,13 +1835,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IApplicationDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition.html">IApplicationDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_DeserializeXml_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.DeserializeXml(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L1543">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_DeserializeXml_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.DeserializeXml*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_DeserializeXml_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.DeserializeXml(System.String)">DeserializeXml(String)</h4>
   <div class="markdown level1 summary"><p>Deserializes the specified XML.</p>
@@ -1701,10 +1889,15 @@ this library, you will need to register the appropriate methods that can create 
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterCompoundSymbolFactoryMethod_System_Version_System_Func_OSGeo_MapGuide_ObjectModels_SymbolDefinition_ICompoundSymbolDefinition__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterCompoundSymbolFactoryMethod(System.Version%2CSystem.Func%7BOSGeo.MapGuide.ObjectModels.SymbolDefinition.ICompoundSymbolDefinition%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L322">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterCompoundSymbolFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterCompoundSymbolFactoryMethod*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterCompoundSymbolFactoryMethod_Version_Func_ICompoundSymbolDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterCompoundSymbolFactoryMethod(Version,Func{ICompoundSymbolDefinition})">RegisterCompoundSymbolFactoryMethod(Version, Func&lt;ICompoundSymbolDefinition&gt;)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterCompoundSymbolFactoryMethod_System_Version_System_Func_OSGeo_MapGuide_ObjectModels_SymbolDefinition_ICompoundSymbolDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterCompoundSymbolFactoryMethod(System.Version,System.Func{OSGeo.MapGuide.ObjectModels.SymbolDefinition.ICompoundSymbolDefinition})">RegisterCompoundSymbolFactoryMethod(Version, Func&lt;ICompoundSymbolDefinition&gt;)</h4>
   <div class="markdown level1 summary"><p>Registers the compound symbol factory method</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1723,21 +1916,26 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">ICompoundSymbolDefinition</span>&gt;</td>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ICompoundSymbolDefinition.html">ICompoundSymbolDefinition</a>&gt;</td>
         <td><span class="parametername">func</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLayerFactoryMethod_System_Version_System_Func_OSGeo_MapGuide_ObjectModels_LayerDefinition_LayerType_OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerDefinition__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterLayerFactoryMethod(System.Version%2CSystem.Func%7BOSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType%2COSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L352">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLayerFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterLayerFactoryMethod*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLayerFactoryMethod_Version_Func_LayerType_ILayerDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterLayerFactoryMethod(Version,Func{LayerType,ILayerDefinition})">RegisterLayerFactoryMethod(Version, Func&lt;LayerType, ILayerDefinition&gt;)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLayerFactoryMethod_System_Version_System_Func_OSGeo_MapGuide_ObjectModels_LayerDefinition_LayerType_OSGeo_MapGuide_ObjectModels_LayerDefinition_ILayerDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterLayerFactoryMethod(System.Version,System.Func{OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType,OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition})">RegisterLayerFactoryMethod(Version, Func&lt;LayerType, ILayerDefinition&gt;)</h4>
   <div class="markdown level1 summary"><p>Registers the layer factory method.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1756,23 +1954,28 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td><p>The ver.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">LayerType</span>, <span class="xref">ILayerDefinition</span>&gt;</td>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.html">LayerType</a>, <a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition.html">ILayerDefinition</a>&gt;</td>
         <td><span class="parametername">method</span></td>
         <td><p>The method.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLoadProcedureFactoryMethod_OSGeo_MapGuide_ObjectModels_LoadProcedure_LoadType_System_Func_OSGeo_MapGuide_ObjectModels_LoadProcedure_ILoadProcedure__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterLoadProcedureFactoryMethod(OSGeo.MapGuide.ObjectModels.LoadProcedure.LoadType%2CSystem.Func%7BOSGeo.MapGuide.ObjectModels.LoadProcedure.ILoadProcedure%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L367">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLoadProcedureFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterLoadProcedureFactoryMethod*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLoadProcedureFactoryMethod_LoadType_Func_ILoadProcedure__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterLoadProcedureFactoryMethod(LoadType,Func{ILoadProcedure})">RegisterLoadProcedureFactoryMethod(LoadType, Func&lt;ILoadProcedure&gt;)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterLoadProcedureFactoryMethod_OSGeo_MapGuide_ObjectModels_LoadProcedure_LoadType_System_Func_OSGeo_MapGuide_ObjectModels_LoadProcedure_ILoadProcedure__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterLoadProcedureFactoryMethod(OSGeo.MapGuide.ObjectModels.LoadProcedure.LoadType,System.Func{OSGeo.MapGuide.ObjectModels.LoadProcedure.ILoadProcedure})">RegisterLoadProcedureFactoryMethod(LoadType, Func&lt;ILoadProcedure&gt;)</h4>
   <div class="markdown level1 summary"><p>Registers the load procedure factory method.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1791,23 +1994,28 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">LoadType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.LoadType.html">LoadType</a></td>
         <td><span class="parametername">type</span></td>
         <td><p>The type.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">ILoadProcedure</span>&gt;</td>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.ILoadProcedure.html">ILoadProcedure</a>&gt;</td>
         <td><span class="parametername">method</span></td>
         <td><p>The method.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterMapDefinitionFactoryMethod_System_Version_System_Func_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterMapDefinitionFactoryMethod(System.Version%2CSystem.Func%7BOSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L396">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterMapDefinitionFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterMapDefinitionFactoryMethod*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterMapDefinitionFactoryMethod_Version_Func_IMapDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterMapDefinitionFactoryMethod(Version,Func{IMapDefinition})">RegisterMapDefinitionFactoryMethod(Version, Func&lt;IMapDefinition&gt;)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterMapDefinitionFactoryMethod_System_Version_System_Func_OSGeo_MapGuide_ObjectModels_MapDefinition_IMapDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterMapDefinitionFactoryMethod(System.Version,System.Func{OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition})">RegisterMapDefinitionFactoryMethod(Version, Func&lt;IMapDefinition&gt;)</h4>
   <div class="markdown level1 summary"><p>Register the map definition factory method</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1826,19 +2034,24 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">IMapDefinition</span>&gt;</td>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.html">IMapDefinition</a>&gt;</td>
         <td><span class="parametername">method</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterResource_OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_OSGeo_MapGuide_ObjectModels_ResourceSerializer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterResource(OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor%2COSGeo.MapGuide.ObjectModels.ResourceSerializer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L296">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterResource_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterResource*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterResource_OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_OSGeo_MapGuide_ObjectModels_ResourceSerializer_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterResource(OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor,OSGeo.MapGuide.ObjectModels.ResourceSerializer)">RegisterResource(ResourceTypeDescriptor, ResourceSerializer)</h4>
   <div class="markdown level1 summary"><p>Registers a resource serializer</p>
@@ -1872,10 +2085,15 @@ this library, you will need to register the appropriate methods that can create 
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterResourceSerializer_OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_System_Func_OSGeo_MapGuide_ObjectModels_IResource_System_IO_Stream__System_Func_System_String_OSGeo_MapGuide_ObjectModels_IResource__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterResourceSerializer(OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor%2CSystem.Func%7BOSGeo.MapGuide.ObjectModels.IResource%2CSystem.IO.Stream%7D%2CSystem.Func%7BSystem.String%2COSGeo.MapGuide.ObjectModels.IResource%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L309">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterResourceSerializer_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterResourceSerializer*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterResourceSerializer_OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_Func_OSGeo_MapGuide_ObjectModels_IResource_Stream__Func_System_String_OSGeo_MapGuide_ObjectModels_IResource__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterResourceSerializer(OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor,Func{OSGeo.MapGuide.ObjectModels.IResource,Stream},Func{System.String,OSGeo.MapGuide.ObjectModels.IResource})">RegisterResourceSerializer(ResourceTypeDescriptor, Func&lt;IResource, Stream&gt;, Func&lt;String, IResource&gt;)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterResourceSerializer_OSGeo_MapGuide_ObjectModels_ResourceTypeDescriptor_System_Func_OSGeo_MapGuide_ObjectModels_IResource_System_IO_Stream__System_Func_System_String_OSGeo_MapGuide_ObjectModels_IResource__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterResourceSerializer(OSGeo.MapGuide.ObjectModels.ResourceTypeDescriptor,System.Func{OSGeo.MapGuide.ObjectModels.IResource,System.IO.Stream},System.Func{System.String,OSGeo.MapGuide.ObjectModels.IResource})">RegisterResourceSerializer(ResourceTypeDescriptor, Func&lt;IResource, Stream&gt;, Func&lt;String, IResource&gt;)</h4>
   <div class="markdown level1 summary"><p>Registers a resource serializer</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1900,23 +2118,28 @@ this library, you will need to register the appropriate methods that can create 
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html">IResource</a>, <span class="xref">Stream</span>&gt;</td>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html">IResource</a>, <span class="xref">System.IO.Stream</span>&gt;</td>
         <td><span class="parametername">serializer</span></td>
         <td><p>The serialize method.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html">IResource</a>&gt;</td>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html">IResource</a>&gt;</td>
         <td><span class="parametername">deserializer</span></td>
         <td><p>The deserialize method.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterSimpleSymbolFactoryMethod_System_Version_System_Func_OSGeo_MapGuide_ObjectModels_SymbolDefinition_ISimpleSymbolDefinition__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterSimpleSymbolFactoryMethod(System.Version%2CSystem.Func%7BOSGeo.MapGuide.ObjectModels.SymbolDefinition.ISimpleSymbolDefinition%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L337">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterSimpleSymbolFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterSimpleSymbolFactoryMethod*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterSimpleSymbolFactoryMethod_Version_Func_ISimpleSymbolDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterSimpleSymbolFactoryMethod(Version,Func{ISimpleSymbolDefinition})">RegisterSimpleSymbolFactoryMethod(Version, Func&lt;ISimpleSymbolDefinition&gt;)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterSimpleSymbolFactoryMethod_System_Version_System_Func_OSGeo_MapGuide_ObjectModels_SymbolDefinition_ISimpleSymbolDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterSimpleSymbolFactoryMethod(System.Version,System.Func{OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISimpleSymbolDefinition})">RegisterSimpleSymbolFactoryMethod(Version, Func&lt;ISimpleSymbolDefinition&gt;)</h4>
   <div class="markdown level1 summary"><p>Regsiters the simple symbol factory method</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1935,21 +2158,26 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">ISimpleSymbolDefinition</span>&gt;</td>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISimpleSymbolDefinition.html">ISimpleSymbolDefinition</a>&gt;</td>
         <td><span class="parametername">func</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterTileSetDefinitionFactoryMethod_System_Version_System_Func_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterTileSetDefinitionFactoryMethod(System.Version%2CSystem.Func%7BOSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetDefinition%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L426">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterTileSetDefinitionFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterTileSetDefinitionFactoryMethod*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterTileSetDefinitionFactoryMethod_Version_Func_ITileSetDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterTileSetDefinitionFactoryMethod(Version,Func{ITileSetDefinition})">RegisterTileSetDefinitionFactoryMethod(Version, Func&lt;ITileSetDefinition&gt;)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterTileSetDefinitionFactoryMethod_System_Version_System_Func_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterTileSetDefinitionFactoryMethod(System.Version,System.Func{OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetDefinition})">RegisterTileSetDefinitionFactoryMethod(Version, Func&lt;ITileSetDefinition&gt;)</h4>
   <div class="markdown level1 summary"><p>Registers the Tile Set Definition factory method</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1968,21 +2196,26 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">ITileSetDefinition</span>&gt;</td>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetDefinition.html">ITileSetDefinition</a>&gt;</td>
         <td><span class="parametername">func</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterWatermarkDefinitionFactoryMethod_System_Version_System_Func_OSGeo_MapGuide_ObjectModels_SymbolDefinition_SymbolDefinitionType_OSGeo_MapGuide_ObjectModels_WatermarkDefinition_IWatermarkDefinition__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(System.Version%2CSystem.Func%7BOSGeo.MapGuide.ObjectModels.SymbolDefinition.SymbolDefinitionType%2COSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermarkDefinition%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L411">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterWatermarkDefinitionFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterWatermarkDefinitionFactoryMethod*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterWatermarkDefinitionFactoryMethod_Version_Func_SymbolDefinitionType_IWatermarkDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(Version,Func{SymbolDefinitionType,IWatermarkDefinition})">RegisterWatermarkDefinitionFactoryMethod(Version, Func&lt;SymbolDefinitionType, IWatermarkDefinition&gt;)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterWatermarkDefinitionFactoryMethod_System_Version_System_Func_OSGeo_MapGuide_ObjectModels_SymbolDefinition_SymbolDefinitionType_OSGeo_MapGuide_ObjectModels_WatermarkDefinition_IWatermarkDefinition__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(System.Version,System.Func{OSGeo.MapGuide.ObjectModels.SymbolDefinition.SymbolDefinitionType,OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermarkDefinition})">RegisterWatermarkDefinitionFactoryMethod(Version, Func&lt;SymbolDefinitionType, IWatermarkDefinition&gt;)</h4>
   <div class="markdown level1 summary"><p>Registers the Watermark Definition factory method</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2001,21 +2234,26 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">SymbolDefinitionType</span>, <span class="xref">IWatermarkDefinition</span>&gt;</td>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.SymbolDefinition.SymbolDefinitionType.html">SymbolDefinitionType</a>, <a class="xref" href="OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermarkDefinition.html">IWatermarkDefinition</a>&gt;</td>
         <td><span class="parametername">method</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterWebLayoutFactoryMethod_System_Version_System_Func_System_String_OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterWebLayoutFactoryMethod(System.Version%2CSystem.Func%7BSystem.String%2COSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L381">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterWebLayoutFactoryMethod_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterWebLayoutFactoryMethod*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterWebLayoutFactoryMethod_Version_Func_System_String_IWebLayout__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterWebLayoutFactoryMethod(Version,Func{System.String,IWebLayout})">RegisterWebLayoutFactoryMethod(Version, Func&lt;String, IWebLayout&gt;)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_RegisterWebLayoutFactoryMethod_System_Version_System_Func_System_String_OSGeo_MapGuide_ObjectModels_WebLayout_IWebLayout__" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.RegisterWebLayoutFactoryMethod(System.Version,System.Func{System.String,OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout})">RegisterWebLayoutFactoryMethod(Version, Func&lt;String, IWebLayout&gt;)</h4>
   <div class="markdown level1 summary"><p>Registers the web layout factory method.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2034,21 +2272,26 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">version</span></td>
         <td><p>The version.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">System.String</span>, <span class="xref">IWebLayout</span>&gt;</td>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout.html">IWebLayout</a>&gt;</td>
         <td><span class="parametername">method</span></td>
         <td><p>The method.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_Reset.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.Reset%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L105">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_Reset_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.Reset*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_Reset" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.Reset">Reset()</h4>
   <div class="markdown level1 summary"><p>Resets the object factory by clearing all registered factories</p>
@@ -2058,8 +2301,13 @@ this library, you will need to register the appropriate methods that can create 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static void Reset()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_Serialize_OSGeo_MapGuide_ObjectModels_IResource_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.Serialize(OSGeo.MapGuide.ObjectModels.IResource)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L1553">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_Serialize_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.Serialize*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_Serialize_OSGeo_MapGuide_ObjectModels_IResource_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.Serialize(OSGeo.MapGuide.ObjectModels.IResource)">Serialize(IResource)</h4>
   <div class="markdown level1 summary"><p>Serializes the specified resource.</p>
@@ -2097,13 +2345,18 @@ this library, you will need to register the appropriate methods that can create 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Stream</span></td>
+        <td><span class="xref">System.IO.Stream</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory_SerializeAsString_OSGeo_MapGuide_ObjectModels_IResource_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory.SerializeAsString(OSGeo.MapGuide.ObjectModels.IResource)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L1563">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ObjectFactory_SerializeAsString_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.SerializeAsString*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ObjectFactory_SerializeAsString_OSGeo_MapGuide_ObjectModels_IResource_" data-uid="OSGeo.MapGuide.ObjectModels.ObjectFactory.SerializeAsString(OSGeo.MapGuide.ObjectModels.IResource)">SerializeAsString(IResource)</h4>
   <div class="markdown level1 summary"><p>Serializes the specified resource.</p>
@@ -2152,10 +2405,17 @@ this library, you will need to register the appropriate methods that can create 
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ObjectFactory.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ObjectFactory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ObjectFactory.cs/#L77" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -2169,7 +2429,7 @@ this library, you will need to register the appropriate methods that can create 
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

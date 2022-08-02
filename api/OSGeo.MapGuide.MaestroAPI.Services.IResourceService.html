@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IResourceService
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -85,7 +87,7 @@
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.html">OSGeo.MapGuide.MaestroAPI.Services</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IResourceService : IService</code></pre>
@@ -97,8 +99,13 @@ method is not necessary</p>
 </div>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_CopyFolderWithReferences_System_String_System_String_OSGeo_MapGuide_MaestroAPI_LengthyOperationCallBack_OSGeo_MapGuide_MaestroAPI_LengthyOperationProgressCallBack_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.CopyFolderWithReferences(System.String%2CSystem.String%2COSGeo.MapGuide.MaestroAPI.LengthyOperationCallBack%2COSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L283">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_CopyFolderWithReferences_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.CopyFolderWithReferences*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_CopyFolderWithReferences_System_String_System_String_OSGeo_MapGuide_MaestroAPI_LengthyOperationCallBack_OSGeo_MapGuide_MaestroAPI_LengthyOperationProgressCallBack_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.CopyFolderWithReferences(System.String,System.String,OSGeo.MapGuide.MaestroAPI.LengthyOperationCallBack,OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack)">CopyFolderWithReferences(String, String, LengthyOperationCallBack, LengthyOperationProgressCallBack)</h4>
   <div class="markdown level1 summary"><p>Copies the specified folder to the specified path. Any resources referencing this folder
@@ -156,8 +163,13 @@ are updated to reference the resources&apos;s new location</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_CopyResource_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.CopyResource(System.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L253">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_CopyResource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.CopyResource*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_CopyResource_System_String_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.CopyResource(System.String,System.String,System.Boolean)">CopyResource(String, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Copies the specified resource to the specified path</p>
@@ -194,8 +206,13 @@ are updated to reference the resources&apos;s new location</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeleteResource_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeleteResource(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L238">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeleteResource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeleteResource*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeleteResource_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeleteResource(System.String)">DeleteResource(String)</h4>
   <div class="markdown level1 summary"><p>Delete the specified resource. For folders, ensure the resource ID has a trailing slash &quot;/&quot;</p>
@@ -222,8 +239,13 @@ are updated to reference the resources&apos;s new location</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeleteResourceData_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeleteResourceData(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L225">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeleteResourceData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeleteResourceData*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeleteResourceData_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeleteResourceData(System.String,System.String)">DeleteResourceData(String, String)</h4>
   <div class="markdown level1 summary"><p>Deletes the specified attached resource data</p>
@@ -255,8 +277,13 @@ are updated to reference the resources&apos;s new location</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeserializeObject__1_System_IO_Stream_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeserializeObject%60%601(System.IO.Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L118">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeserializeObject_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeserializeObject*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_DeserializeObject__1_System_IO_Stream_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.DeserializeObject``1(System.IO.Stream)">DeserializeObject&lt;T&gt;(Stream)</h4>
   <div class="markdown level1 summary"><p>Converts the specified XML stream to a strongly typed object</p>
@@ -313,8 +340,13 @@ are updated to reference the resources&apos;s new location</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateResourceData_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateResourceData(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L232">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateResourceData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateResourceData*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateResourceData_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateResourceData(System.String)">EnumerateResourceData(String)</h4>
   <div class="markdown level1 summary"><p>Gets a listing of all resource data attached to the specified resource</p>
@@ -322,7 +354,7 @@ are updated to reference the resources&apos;s new location</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.ResourceDataList EnumerateResourceData(string resourceID)</code></pre>
+    <pre><code class="lang-csharp hljs">ResourceDataList EnumerateResourceData(string resourceID)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -351,13 +383,18 @@ are updated to reference the resources&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceDataList</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceDataList.html">ResourceDataList</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateResourceReferences_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateResourceReferences(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L245">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateResourceReferences_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateResourceReferences*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateResourceReferences_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateResourceReferences(System.String)">EnumerateResourceReferences(String)</h4>
   <div class="markdown level1 summary"><p>Gets a listing of all resources dependent on the specified resource</p>
@@ -365,7 +402,7 @@ are updated to reference the resources&apos;s new location</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.ResourceReferenceList EnumerateResourceReferences(string resourceID)</code></pre>
+    <pre><code class="lang-csharp hljs">ResourceReferenceList EnumerateResourceReferences(string resourceID)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -394,13 +431,18 @@ are updated to reference the resources&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceReferenceList</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceReferenceList.html">ResourceReferenceList</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateUnmanagedData_System_String_System_String_System_Boolean_OSGeo_MapGuide_MaestroAPI_UnmanagedDataTypes_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateUnmanagedData(System.String%2CSystem.String%2CSystem.Boolean%2COSGeo.MapGuide.MaestroAPI.UnmanagedDataTypes)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L318">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateUnmanagedData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateUnmanagedData*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_EnumerateUnmanagedData_System_String_System_String_System_Boolean_OSGeo_MapGuide_MaestroAPI_UnmanagedDataTypes_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.EnumerateUnmanagedData(System.String,System.String,System.Boolean,OSGeo.MapGuide.MaestroAPI.UnmanagedDataTypes)">EnumerateUnmanagedData(String, String, Boolean, UnmanagedDataTypes)</h4>
   <div class="markdown level1 summary"><p>Enumerates all unmanaged folders, meaning alias&apos;ed folders</p>
@@ -408,7 +450,7 @@ are updated to reference the resources&apos;s new location</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type)</code></pre>
+    <pre><code class="lang-csharp hljs">UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -456,14 +498,19 @@ are updated to reference the resources&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.UnmanagedDataList</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.UnmanagedDataList.html">UnmanagedDataList</a></td>
         <td><p>A list of unmanaged data</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetFolderHeader_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetFolderHeader(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L148">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetFolderHeader_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetFolderHeader*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetFolderHeader_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetFolderHeader(System.String)">GetFolderHeader(String)</h4>
   <div class="markdown level1 summary"><p>Gets the folder header of the specified resource</p>
@@ -471,7 +518,7 @@ are updated to reference the resources&apos;s new location</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.ResourceFolderHeaderType GetFolderHeader(string resourceID)</code></pre>
+    <pre><code class="lang-csharp hljs">ResourceFolderHeaderType GetFolderHeader(string resourceID)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -500,13 +547,18 @@ are updated to reference the resources&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceFolderHeaderType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceFolderHeaderType.html">ResourceFolderHeaderType</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L61">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources">GetRepositoryResources()</h4>
   <div class="markdown level1 summary"><p>Gets a listing of resources in this repository. This performs a full listing</p>
@@ -514,7 +566,7 @@ are updated to reference the resources&apos;s new location</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.ResourceList GetRepositoryResources()</code></pre>
+    <pre><code class="lang-csharp hljs">ResourceList GetRepositoryResources()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -526,13 +578,18 @@ are updated to reference the resources&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceList</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceList.html">ResourceList</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L68">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.Int32)">GetRepositoryResources(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets a listing of resources in this repository</p>
@@ -540,7 +597,7 @@ are updated to reference the resources&apos;s new location</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.ResourceList GetRepositoryResources(int depth)</code></pre>
+    <pre><code class="lang-csharp hljs">ResourceList GetRepositoryResources(int depth)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -569,13 +626,18 @@ are updated to reference the resources&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceList</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceList.html">ResourceList</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L83">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String)">GetRepositoryResources(String)</h4>
   <div class="markdown level1 summary"><p>Gets a listing of resources in this repository</p>
@@ -583,7 +645,7 @@ are updated to reference the resources&apos;s new location</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.ResourceList GetRepositoryResources(string startingpoint)</code></pre>
+    <pre><code class="lang-csharp hljs">ResourceList GetRepositoryResources(string startingpoint)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -612,13 +674,18 @@ are updated to reference the resources&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceList</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceList.html">ResourceList</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L76">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String,System.Int32)">GetRepositoryResources(String, Int32)</h4>
   <div class="markdown level1 summary"><p>Gets a listing of resources in this repository</p>
@@ -626,7 +693,7 @@ are updated to reference the resources&apos;s new location</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.ResourceList GetRepositoryResources(string startingpoint, int depth)</code></pre>
+    <pre><code class="lang-csharp hljs">ResourceList GetRepositoryResources(string startingpoint, int depth)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -660,13 +727,18 @@ are updated to reference the resources&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceList</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceList.html">ResourceList</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L91">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String,System.String)">GetRepositoryResources(String, String)</h4>
   <div class="markdown level1 summary"><p>Gets a listing of resources in this repository</p>
@@ -674,7 +746,7 @@ are updated to reference the resources&apos;s new location</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.ResourceList GetRepositoryResources(string startingpoint, string type)</code></pre>
+    <pre><code class="lang-csharp hljs">ResourceList GetRepositoryResources(string startingpoint, string type)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -708,13 +780,18 @@ are updated to reference the resources&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceList</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceList.html">ResourceList</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String%2CSystem.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L100">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_System_String_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String,System.String,System.Int32)">GetRepositoryResources(String, String, Int32)</h4>
   <div class="markdown level1 summary"><p>Gets a listing of resources in this repository</p>
@@ -722,7 +799,7 @@ are updated to reference the resources&apos;s new location</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.ResourceList GetRepositoryResources(string startingpoint, string type, int depth)</code></pre>
+    <pre><code class="lang-csharp hljs">ResourceList GetRepositoryResources(string startingpoint, string type, int depth)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -761,13 +838,18 @@ are updated to reference the resources&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceList</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceList.html">ResourceList</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_System_String_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L110">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetRepositoryResources_System_String_System_String_System_Int32_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetRepositoryResources(System.String,System.String,System.Int32,System.Boolean)">GetRepositoryResources(String, String, Int32, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets a listing of resources in this repository</p>
@@ -775,7 +857,7 @@ are updated to reference the resources&apos;s new location</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren)</code></pre>
+    <pre><code class="lang-csharp hljs">ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -819,13 +901,18 @@ are updated to reference the resources&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceList</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceList.html">ResourceList</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResource_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResource(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L162">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResource*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResource_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResource(System.String)">GetResource(String)</h4>
   <div class="markdown level1 summary"><p>Gets a typed resource object from the specified resource id</p>
@@ -862,13 +949,18 @@ are updated to reference the resources&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IResource</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html">IResource</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceData_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceData(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L133">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceData*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceData_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceData(System.String,System.String)">GetResourceData(String, String)</h4>
   <div class="markdown level1 summary"><p>Gets the stream of the attached data of the specified resource</p>
@@ -915,8 +1007,13 @@ are updated to reference the resources&apos;s new location</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceHeader_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceHeader(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L141">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceHeader_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceHeader*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceHeader_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceHeader(System.String)">GetResourceHeader(String)</h4>
   <div class="markdown level1 summary"><p>Gets the document header of the specified resource</p>
@@ -924,7 +1021,7 @@ are updated to reference the resources&apos;s new location</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.ResourceDocumentHeaderType GetResourceHeader(string resourceID)</code></pre>
+    <pre><code class="lang-csharp hljs">ResourceDocumentHeaderType GetResourceHeader(string resourceID)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -953,13 +1050,21 @@ are updated to reference the resources&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceDocumentHeaderType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceDocumentHeaderType.html">ResourceDocumentHeaderType</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceHeader_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This operation does not work with session-based resources.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceXmlData_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceXmlData(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L155">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceXmlData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceXmlData*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResourceXmlData_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResourceXmlData(System.String)">GetResourceXmlData(String)</h4>
   <div class="markdown level1 summary"><p>Gets the raw XML stream of the specified resource id</p>
@@ -996,13 +1101,18 @@ are updated to reference the resources&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Stream</span></td>
+        <td><span class="xref">System.IO.Stream</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_MoveResource_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.MoveResource(System.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L261">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_MoveResource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.MoveResource*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_MoveResource_System_String_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.MoveResource(System.String,System.String,System.Boolean)">MoveResource(String, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Moves the specified resources to the specified path</p>
@@ -1039,8 +1149,13 @@ are updated to reference the resources&apos;s new location</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_MoveResourceWithReferences_System_String_System_String_OSGeo_MapGuide_MaestroAPI_LengthyOperationCallBack_OSGeo_MapGuide_MaestroAPI_LengthyOperationProgressCallBack_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.MoveResourceWithReferences(System.String%2CSystem.String%2COSGeo.MapGuide.MaestroAPI.LengthyOperationCallBack%2COSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L272">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_MoveResourceWithReferences_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.MoveResourceWithReferences*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_MoveResourceWithReferences_System_String_System_String_OSGeo_MapGuide_MaestroAPI_LengthyOperationCallBack_OSGeo_MapGuide_MaestroAPI_LengthyOperationProgressCallBack_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.MoveResourceWithReferences(System.String,System.String,OSGeo.MapGuide.MaestroAPI.LengthyOperationCallBack,OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack)">MoveResourceWithReferences(String, String, LengthyOperationCallBack, LengthyOperationProgressCallBack)</h4>
   <div class="markdown level1 summary"><p>Moves the specified resources to the specified path. Any resources referencing this resource
@@ -1098,8 +1213,13 @@ are updated to reference the resource&apos;s new location</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_ResourceExists_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.ResourceExists(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L290">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_ResourceExists_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.ResourceExists*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_ResourceExists_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.ResourceExists(System.String)">ResourceExists(String)</h4>
   <div class="markdown level1 summary"><p>Gets whether the specified resource id exists</p>
@@ -1141,10 +1261,15 @@ are updated to reference the resource&apos;s new location</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResource_OSGeo_MapGuide_ObjectModels_IResource_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResource(OSGeo.MapGuide.ObjectModels.IResource)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L296">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResource*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResource_IResource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResource(IResource)">SaveResource(IResource)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResource_OSGeo_MapGuide_ObjectModels_IResource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResource(OSGeo.MapGuide.ObjectModels.IResource)">SaveResource(IResource)</h4>
   <div class="markdown level1 summary"><p>Saves an object into the repository</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1163,16 +1288,21 @@ are updated to reference the resource&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IResource</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html">IResource</a></td>
         <td><span class="parametername">resource</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResourceAs_OSGeo_MapGuide_ObjectModels_IResource_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResourceAs(OSGeo.MapGuide.ObjectModels.IResource%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L308">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResourceAs_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResourceAs*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResourceAs_IResource_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResourceAs(IResource,System.String)">SaveResourceAs(IResource, String)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResourceAs_OSGeo_MapGuide_ObjectModels_IResource_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResourceAs(OSGeo.MapGuide.ObjectModels.IResource,System.String)">SaveResourceAs(IResource, String)</h4>
   <div class="markdown level1 summary"><p>Saves an object into the repository using the specified resource id.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1191,7 +1321,7 @@ are updated to reference the resource&apos;s new location</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IResource</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.IResource.html">IResource</a></td>
         <td><span class="parametername">resource</span></td>
         <td><p>The object to save</p>
 </td>
@@ -1204,13 +1334,18 @@ are updated to reference the resource&apos;s new location</p>
       </tr>
     </tbody>
   </table>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResourceAs_IResource_System_String__remarks">Remarks</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SaveResourceAs_OSGeo_MapGuide_ObjectModels_IResource_System_String__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The <code data-dev-comment-type="paramref" class="paramref">resourceID</code> parameter only instructs this method where to save the resource to. It does
 not modify the <span class="xref">IResource.ResourceID</span> property of the input resource does not get
 updated as a result of this operation.</p>
 </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SerializeObject_System_Object_System_IO_Stream_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SerializeObject(System.Object%2CSystem.IO.Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L125">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SerializeObject_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SerializeObject*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SerializeObject_System_Object_System_IO_Stream_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SerializeObject(System.Object,System.IO.Stream)">SerializeObject(Object, Stream)</h4>
   <div class="markdown level1 summary"><p>Serializes the specified object to the specified stream</p>
@@ -1242,16 +1377,21 @@ updated as a result of this operation.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetFolderHeader_System_String_OSGeo_MapGuide_ObjectModels_Common_ResourceFolderHeaderType_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetFolderHeader(System.String%2COSGeo.MapGuide.ObjectModels.Common.ResourceFolderHeaderType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L204">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetFolderHeader_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetFolderHeader*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetFolderHeader_System_String_ObjCommon_ResourceFolderHeaderType_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetFolderHeader(System.String,ObjCommon.ResourceFolderHeaderType)">SetFolderHeader(String, ObjCommon.ResourceFolderHeaderType)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetFolderHeader_System_String_OSGeo_MapGuide_ObjectModels_Common_ResourceFolderHeaderType_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetFolderHeader(System.String,OSGeo.MapGuide.ObjectModels.Common.ResourceFolderHeaderType)">SetFolderHeader(String, ResourceFolderHeaderType)</h4>
   <div class="markdown level1 summary"><p>Sets the header for the specified folder</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SetFolderHeader(string resourceID, ObjCommon.ResourceFolderHeaderType header)</code></pre>
+    <pre><code class="lang-csharp hljs">void SetFolderHeader(string resourceID, ResourceFolderHeaderType header)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1269,22 +1409,27 @@ updated as a result of this operation.</p>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceFolderHeaderType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceFolderHeaderType.html">ResourceFolderHeaderType</a></td>
         <td><span class="parametername">header</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_System_String_System_String_OSGeo_MapGuide_ObjectModels_Common_ResourceDataType_System_IO_Stream_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceData(System.String%2CSystem.String%2COSGeo.MapGuide.ObjectModels.Common.ResourceDataType%2CSystem.IO.Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L179">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceData*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_System_String_System_String_ObjCommon_ResourceDataType_System_IO_Stream_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceData(System.String,System.String,ObjCommon.ResourceDataType,System.IO.Stream)">SetResourceData(String, String, ObjCommon.ResourceDataType, Stream)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_System_String_System_String_OSGeo_MapGuide_ObjectModels_Common_ResourceDataType_System_IO_Stream_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceData(System.String,System.String,OSGeo.MapGuide.ObjectModels.Common.ResourceDataType,System.IO.Stream)">SetResourceData(String, String, ResourceDataType, Stream)</h4>
   <div class="markdown level1 summary"><p>Sets the resource data of a specified resource</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SetResourceData(string resourceid, string dataname, ObjCommon.ResourceDataType datatype, Stream stream)</code></pre>
+    <pre><code class="lang-csharp hljs">void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, Stream stream)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1307,7 +1452,7 @@ updated as a result of this operation.</p>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceDataType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.html">ResourceDataType</a></td>
         <td><span class="parametername">datatype</span></td>
         <td></td>
       </tr>
@@ -1318,19 +1463,24 @@ updated as a result of this operation.</p>
       </tr>
     </tbody>
   </table>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_System_String_System_String_ObjCommon_ResourceDataType_System_IO_Stream__remarks">Remarks</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_System_String_System_String_OSGeo_MapGuide_ObjectModels_Common_ResourceDataType_System_IO_Stream__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>For the HTTP implementation of this API, the input stream must be seekable</p>
 </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_System_String_System_String_OSGeo_MapGuide_ObjectModels_Common_ResourceDataType_System_IO_Stream_OSGeo_MapGuide_MaestroAPI_Utility_StreamCopyProgressDelegate_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceData(System.String%2CSystem.String%2COSGeo.MapGuide.ObjectModels.Common.ResourceDataType%2CSystem.IO.Stream%2COSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L190">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceData*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_System_String_System_String_ObjCommon_ResourceDataType_System_IO_Stream_OSGeo_MapGuide_MaestroAPI_Utility_StreamCopyProgressDelegate_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceData(System.String,System.String,ObjCommon.ResourceDataType,System.IO.Stream,OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate)">SetResourceData(String, String, ObjCommon.ResourceDataType, Stream, Utility.StreamCopyProgressDelegate)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_System_String_System_String_OSGeo_MapGuide_ObjectModels_Common_ResourceDataType_System_IO_Stream_OSGeo_MapGuide_MaestroAPI_Utility_StreamCopyProgressDelegate_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceData(System.String,System.String,OSGeo.MapGuide.ObjectModels.Common.ResourceDataType,System.IO.Stream,OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate)">SetResourceData(String, String, ResourceDataType, Stream, Utility.StreamCopyProgressDelegate)</h4>
   <div class="markdown level1 summary"><p>Sets the resource data of a specified resource</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SetResourceData(string resourceID, string dataName, ObjCommon.ResourceDataType dataType, Stream stream, Utility.StreamCopyProgressDelegate callback)</code></pre>
+    <pre><code class="lang-csharp hljs">void SetResourceData(string resourceID, string dataName, ResourceDataType dataType, Stream stream, Utility.StreamCopyProgressDelegate callback)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1353,7 +1503,7 @@ updated as a result of this operation.</p>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceDataType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.html">ResourceDataType</a></td>
         <td><span class="parametername">dataType</span></td>
         <td></td>
       </tr>
@@ -1369,19 +1519,24 @@ updated as a result of this operation.</p>
       </tr>
     </tbody>
   </table>
-  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_System_String_System_String_ObjCommon_ResourceDataType_System_IO_Stream_OSGeo_MapGuide_MaestroAPI_Utility_StreamCopyProgressDelegate__remarks">Remarks</h5>
+  <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceData_System_String_System_String_OSGeo_MapGuide_ObjectModels_Common_ResourceDataType_System_IO_Stream_OSGeo_MapGuide_MaestroAPI_Utility_StreamCopyProgressDelegate__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>For the HTTP implementation of this API, the input stream must be seekable</p>
 </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceHeader_System_String_OSGeo_MapGuide_ObjectModels_Common_ResourceDocumentHeaderType_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceHeader(System.String%2COSGeo.MapGuide.ObjectModels.Common.ResourceDocumentHeaderType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L211">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceHeader_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceHeader*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceHeader_System_String_ObjCommon_ResourceDocumentHeaderType_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceHeader(System.String,ObjCommon.ResourceDocumentHeaderType)">SetResourceHeader(String, ObjCommon.ResourceDocumentHeaderType)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceHeader_System_String_OSGeo_MapGuide_ObjectModels_Common_ResourceDocumentHeaderType_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceHeader(System.String,OSGeo.MapGuide.ObjectModels.Common.ResourceDocumentHeaderType)">SetResourceHeader(String, ResourceDocumentHeaderType)</h4>
   <div class="markdown level1 summary"><p>Sets the header for the specified resource</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SetResourceHeader(string resourceID, ObjCommon.ResourceDocumentHeaderType header)</code></pre>
+    <pre><code class="lang-csharp hljs">void SetResourceHeader(string resourceID, ResourceDocumentHeaderType header)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1399,14 +1554,19 @@ updated as a result of this operation.</p>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceDocumentHeaderType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceDocumentHeaderType.html">ResourceDocumentHeaderType</a></td>
         <td><span class="parametername">header</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceXmlData_System_String_System_IO_Stream_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceXmlData(System.String%2CSystem.IO.Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L197">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceXmlData_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceXmlData*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_SetResourceXmlData_System_String_System_IO_Stream_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SetResourceXmlData(System.String,System.IO.Stream)">SetResourceXmlData(String, Stream)</h4>
   <div class="markdown level1 summary"><p>Sets the raw XML data of the specified resource</p>
@@ -1438,8 +1598,13 @@ updated as a result of this operation.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_Touch_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.Touch(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L169">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_Touch_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.Touch*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_Touch_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.Touch(System.String)">Touch(String)</h4>
   <div class="markdown level1 summary"><p>Forces a timestamp update of the specified resource. This is akin to
@@ -1467,16 +1632,21 @@ setting the resource&apos;s content using its existing content.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_UpdateRepository_System_String_OSGeo_MapGuide_ObjectModels_Common_ResourceFolderHeaderType_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.UpdateRepository(System.String%2COSGeo.MapGuide.ObjectModels.Common.ResourceFolderHeaderType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L218">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_UpdateRepository_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.UpdateRepository*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_UpdateRepository_System_String_ObjCommon_ResourceFolderHeaderType_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.UpdateRepository(System.String,ObjCommon.ResourceFolderHeaderType)">UpdateRepository(String, ObjCommon.ResourceFolderHeaderType)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_UpdateRepository_System_String_OSGeo_MapGuide_ObjectModels_Common_ResourceFolderHeaderType_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.UpdateRepository(System.String,OSGeo.MapGuide.ObjectModels.Common.ResourceFolderHeaderType)">UpdateRepository(String, ResourceFolderHeaderType)</h4>
   <div class="markdown level1 summary"><p>Updates the repository</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void UpdateRepository(string resourceID, ObjCommon.ResourceFolderHeaderType header)</code></pre>
+    <pre><code class="lang-csharp hljs">void UpdateRepository(string resourceID, ResourceFolderHeaderType header)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1494,14 +1664,19 @@ setting the resource&apos;s content using its existing content.</p>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">ObjCommon.ResourceFolderHeaderType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ResourceFolderHeaderType.html">ResourceFolderHeaderType</a></td>
         <td><span class="parametername">header</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_UploadPackage_System_String_OSGeo_MapGuide_MaestroAPI_Utility_StreamCopyProgressDelegate_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.UploadPackage(System.String%2COSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L325">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_UploadPackage_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.UploadPackage*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_UploadPackage_System_String_OSGeo_MapGuide_MaestroAPI_Utility_StreamCopyProgressDelegate_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.UploadPackage(System.String,OSGeo.MapGuide.MaestroAPI.Utility.StreamCopyProgressDelegate)">UploadPackage(String, Utility.StreamCopyProgressDelegate)</h4>
   <div class="markdown level1 summary"><p>Upload a MapGuide Package file to the server</p>
@@ -1537,8 +1712,13 @@ setting the resource&apos;s content using its existing content.</p>
   </table>
   <h3 id="events">Events
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_ResourceAdded.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.ResourceAdded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L42">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_ResourceAdded" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.ResourceAdded">ResourceAdded</h4>
   <div class="markdown level1 summary"><p>Raised when a resource is added</p>
 </div>
@@ -1562,8 +1742,13 @@ setting the resource&apos;s content using its existing content.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_ResourceDeleted.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.ResourceDeleted%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L50">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_ResourceDeleted" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.ResourceDeleted">ResourceDeleted</h4>
   <div class="markdown level1 summary"><p>Raised when a resource is deleted. Note if a folder is deleted, this will
 only be raised for the folder and not its children. Also note that this is
@@ -1590,8 +1775,13 @@ purposes, deleted.</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService_ResourceUpdated.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService.ResourceUpdated%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L55">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IResourceService_ResourceUpdated" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.ResourceUpdated">ResourceUpdated</h4>
   <div class="markdown level1 summary"><p>Raised when a resource is updated</p>
 </div>
@@ -1622,10 +1812,17 @@ purposes, deleted.</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IResourceService.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IResourceService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IResourceService.cs/#L37" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -1639,7 +1836,7 @@ purposes, deleted.</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

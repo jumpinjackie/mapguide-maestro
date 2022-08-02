@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class RuntimeMapLayerCollection
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -90,9 +92,14 @@
     <div class="level1"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html">KeyValueCollection</a>&lt;<span class="xref">System.String</span>, <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a>&gt;</div>
     <div class="level2"><span class="xref">RuntimeMapLayerCollection</span></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
-    <div><span class="xref">IList</span></div>
+    <div><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a>&gt;</div>
+    <div><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a>&gt;</div>
+    <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a>&gt;</div>
+    <div><span class="xref">System.Collections.IList</span></div>
+    <div><span class="xref">System.Collections.ICollection</span></div>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -145,6 +152,9 @@
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_GetEnumerator">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.GetEnumerator()</a>
     </div>
     <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IEnumerable_GetEnumerator">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.IEnumerable.GetEnumerator()</a>
+    </div>
+    <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Item__0_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.Item[String]</a>
     </div>
     <div>
@@ -168,17 +178,85 @@
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_SelectKey__1_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.SelectKey(RuntimeMapLayer)</a>
     </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Add_System_Object_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.IList.Add(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Clear">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.IList.Clear()</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Contains_System_Object_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.IList.Contains(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_IndexOf_System_Object_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.IList.IndexOf(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Insert_System_Int32_System_Object_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.IList.Insert(Int32, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_IsFixedSize">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.IList.IsFixedSize</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_IsReadOnly">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.IList.IsReadOnly</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Remove_System_Object_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.IList.Remove(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_RemoveAt_System_Int32_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.IList.RemoveAt(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Item_System_Int32_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.IList.Item[Int32]</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_CopyTo_System_Array_System_Int32_">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.ICollection.CopyTo(Array, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_Count">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.ICollection.Count</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_IsSynchronized">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.ICollection.IsSynchronized</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_SyncRoot">KeyValueCollection&lt;String, RuntimeMapLayer&gt;.ICollection.SyncRoot</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.html">OSGeo.MapGuide.MaestroAPI.Mapping</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RuntimeMapLayerCollection : KeyValueCollection&lt;string, RuntimeMapLayer&gt;, IList</code></pre>
+    <pre><code class="lang-csharp hljs">public class RuntimeMapLayerCollection : KeyValueCollection&lt;string, RuntimeMapLayer&gt;, IList&lt;RuntimeMapLayer&gt;, ICollection&lt;RuntimeMapLayer&gt;, IEnumerable&lt;RuntimeMapLayer&gt;, IList, ICollection, IEnumerable</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Item_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L569">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Item*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Item_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Item(System.Int32)">Item[Int32]</h4>
   <div class="markdown level1 summary"><p>Gets or sets the element at the specified index.</p>
@@ -234,20 +312,25 @@
     <tbody>
       <tr>
         <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
-        <td><p><code data-dev-comment-type="paramref" class="paramref">index</code> is not a valid index in the <span class="xref">System.Collections.Generic.IList`1</span>.</p>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">index</code> is not a valid index in the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.NotSupportedException</span></td>
-        <td><p>The property is set and the <span class="xref">System.Collections.Generic.IList`1</span> is read-only.</p>
+        <td><p>The property is set and the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> is read-only.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Add_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Add(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L482">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Add_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Add*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Add_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Add(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">Add(RuntimeMapLayer)</h4>
   <div class="markdown level1 summary"><p>Adds the specified layer.</p>
@@ -277,8 +360,13 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><span class="xref">OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection&lt;System.String, OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer&gt;.Add(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)</span></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_GetByObjectId_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.GetByObjectId(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L553">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_GetByObjectId_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.GetByObjectId*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_GetByObjectId_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.GetByObjectId(System.String)">GetByObjectId(String)</h4>
   <div class="markdown level1 summary"><p>Gets a runtime map layer by its object id.</p>
@@ -321,11 +409,16 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Insert_System_Int32_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Insert(System.Int32%2COSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L504">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Insert_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Insert*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Insert_System_Int32_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Insert(System.Int32,OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">Insert(Int32, RuntimeMapLayer)</h4>
-  <div class="markdown level1 summary"><p>Inserts an item to the <span class="xref">System.Collections.Generic.IList`1</span> at the specified index.</p>
+  <div class="markdown level1 summary"><p>Inserts an item to the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> at the specified index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -351,7 +444,7 @@
       <tr>
         <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer.html">RuntimeMapLayer</a></td>
         <td><span class="parametername">item</span></td>
-        <td><p>The object to insert into the <span class="xref">System.Collections.Generic.IList`1</span>.</p>
+        <td><p>The object to insert into the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -369,18 +462,23 @@
     <tbody>
       <tr>
         <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
-        <td><p><code data-dev-comment-type="paramref" class="paramref">index</code> is not a valid index in the <span class="xref">System.Collections.Generic.IList`1</span>.</p>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">index</code> is not a valid index in the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.NotSupportedException</span></td>
-        <td><p>The <span class="xref">System.Collections.Generic.IList`1</span> is read-only.</p>
+        <td><p>The <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> is read-only.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnBeforeItemAdded_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnBeforeItemAdded(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L514">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnBeforeItemAdded_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnBeforeItemAdded*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnBeforeItemAdded_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnBeforeItemAdded(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">OnBeforeItemAdded(RuntimeMapLayer)</h4>
   <div class="markdown level1 summary"><p>Called when [before item added].</p>
@@ -410,8 +508,13 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><span class="xref">OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection&lt;System.String, OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer&gt;.OnBeforeItemAdded(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)</span></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnItemAdded_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnItemAdded(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L524">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnItemAdded_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnItemAdded*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnItemAdded_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnItemAdded(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">OnItemAdded(RuntimeMapLayer)</h4>
   <div class="markdown level1 summary"><p>Called when [item added].</p>
@@ -441,8 +544,13 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><span class="xref">OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection&lt;System.String, OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer&gt;.OnItemAdded(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)</span></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnItemRemoved_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnItemRemoved(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L534">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnItemRemoved_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnItemRemoved*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_OnItemRemoved_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.OnItemRemoved(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">OnItemRemoved(RuntimeMapLayer)</h4>
   <div class="markdown level1 summary"><p>Called when [item removed].</p>
@@ -472,8 +580,13 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><span class="xref">OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection&lt;System.String, OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer&gt;.OnItemRemoved(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)</span></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Remove_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Remove(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L586">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Remove_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Remove*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_Remove_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.Remove(System.String)">Remove(String)</h4>
   <div class="markdown level1 summary"><p>Removes the specified layer by its name.</p>
@@ -501,8 +614,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_SelectKey_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.SelectKey(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L546">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_SelectKey_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.SelectKey*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection_SelectKey_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.SelectKey(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">SelectKey(RuntimeMapLayer)</h4>
   <div class="markdown level1 summary"><p>Selects the key given the value.</p>
@@ -549,7 +667,22 @@
   <div><span class="xref">OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection&lt;System.String, OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer&gt;.SelectKey(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)</span></div>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">IList</span>
+      <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IList</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.ICollection</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
   </div>
 </article>
           </div>
@@ -558,10 +691,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayerCollection.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L466" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -575,7 +715,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

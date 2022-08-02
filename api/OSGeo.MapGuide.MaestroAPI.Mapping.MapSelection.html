@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class MapSelection
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -89,15 +91,43 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">MapSelection</span></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
-    <div><span class="xref">IList</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a>&gt;</div>
+    <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Serialization.IBinarySerializable.html">IBinarySerializable</a></div>
+    <div><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a>&gt;</div>
+    <div><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a>&gt;</div>
+    <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a>&gt;</div>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.html">OSGeo.MapGuide.MaestroAPI.Mapping</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class MapSelection : IBinarySerializable, IList&lt;MapSelection.LayerSelection&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class MapSelection : IBinarySerializable, IList&lt;MapSelection.LayerSelection&gt;, ICollection&lt;MapSelection.LayerSelection&gt;, IEnumerable&lt;MapSelection.LayerSelection&gt;, IEnumerable</code></pre>
   </div>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_examples"><strong>Examples</strong></h5>
   <p>This sample shows how to list selected features in ASP.net. The sample expects 3 parameters:
@@ -155,8 +185,13 @@ else
 
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection__ctor_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.%23ctor(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L85">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection__ctor_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.#ctor(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap)">MapSelection(RuntimeMap)</h4>
   <div class="markdown level1 summary"><p>Constructor</p>
@@ -183,8 +218,13 @@ else
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection__ctor_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.%23ctor(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L96">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection__ctor_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMap_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.#ctor(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap,System.String)">MapSelection(RuntimeMap, String)</h4>
   <div class="markdown level1 summary"><p>Constructor</p>
@@ -218,8 +258,13 @@ else
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Count.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Count%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L754">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Count_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Count*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Count" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Count">Count</h4>
   <div class="markdown level1 summary"><p>Gets the number of layers in this selection</p>
@@ -244,8 +289,13 @@ else
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IsReadOnly.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IsReadOnly%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L759">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IsReadOnly_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IsReadOnly*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IsReadOnly" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IsReadOnly">IsReadOnly</h4>
   <div class="markdown level1 summary"><p>Gets whether this is read only</p>
@@ -270,8 +320,13 @@ else
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Item_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Item(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L676">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Item*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Item_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Item(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">Item[RuntimeMapLayer]</h4>
   <div class="markdown level1 summary"><p>Gets the selection layer at a given index</p>
@@ -315,8 +370,13 @@ else
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Item_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L657">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Item*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Item_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Item(System.Int32)">Item[Int32]</h4>
   <div class="markdown level1 summary"><p>Gets or sets the selection layer at a given index</p>
@@ -362,8 +422,13 @@ else
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Add_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Add(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L686">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Add_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Add*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Add_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Add(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)">Add(MapSelection.LayerSelection)</h4>
   <div class="markdown level1 summary"><p>Adds the specified layer selection</p>
@@ -390,8 +455,13 @@ else
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Add_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Add(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L698">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Add_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Add*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Add_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Add(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">Add(RuntimeMapLayer)</h4>
   <div class="markdown level1 summary"><p>Adds the specified layer</p>
@@ -418,8 +488,13 @@ else
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Clear.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Clear%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L710">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Clear_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Clear*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Clear" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Clear">Clear()</h4>
   <div class="markdown level1 summary"><p>Clears this selction</p>
@@ -429,8 +504,13 @@ else
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Contains_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Contains(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L724">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Contains_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Contains*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Contains_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Contains(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)">Contains(MapSelection.LayerSelection)</h4>
   <div class="markdown level1 summary"><p>Gets whether this selection contains the specified layer selection</p>
@@ -472,8 +552,13 @@ else
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Contains_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Contains(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L717">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Contains_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Contains*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Contains_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Contains(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">Contains(RuntimeMapLayer)</h4>
   <div class="markdown level1 summary"><p>Gets whether this selection contains the specified layer</p>
@@ -515,11 +600,16 @@ else
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_CopyTo_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection___System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.CopyTo(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection%5B%5D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L746">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_CopyTo_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.CopyTo*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_CopyTo_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection___System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.CopyTo(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection[],System.Int32)">CopyTo(MapSelection.LayerSelection[], Int32)</h4>
-  <div class="markdown level1 summary"><p>Copies the elements of the <span class="xref">System.Collections.Generic.ICollection`1</span> to an <span class="xref">System.Array</span>, starting at a particular <span class="xref">System.Array</span> index.</p>
+  <div class="markdown level1 summary"><p>Copies the elements of the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span> to an <span class="xref">System.Array</span>, starting at a particular <span class="xref">System.Array</span> index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -539,7 +629,7 @@ else
       <tr>
         <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a>[]</td>
         <td><span class="parametername">array</span></td>
-        <td><p>The one-dimensional <span class="xref">System.Array</span> that is the destination of the elements copied from <span class="xref">System.Collections.Generic.ICollection`1</span>. The <span class="xref">System.Array</span> must have zero-based indexing.</p>
+        <td><p>The one-dimensional <span class="xref">System.Array</span> that is the destination of the elements copied from <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>. The <span class="xref">System.Array</span> must have zero-based indexing.</p>
 </td>
       </tr>
       <tr>
@@ -575,15 +665,20 @@ else
 -or-
 <code data-dev-comment-type="paramref" class="paramref">arrayIndex</code> is equal to or greater than the length of <code data-dev-comment-type="paramref" class="paramref">array</code>.
 -or-
-The number of elements in the source <span class="xref">System.Collections.Generic.ICollection`1</span> is greater than the available space from <code data-dev-comment-type="paramref" class="paramref">arrayIndex</code> to the end of the destination <code data-dev-comment-type="paramref" class="paramref">array</code>.</p>
+The number of elements in the source <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span> is greater than the available space from <code data-dev-comment-type="paramref" class="paramref">arrayIndex</code> to the end of the destination <code data-dev-comment-type="paramref" class="paramref">array</code>.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Deserialize_OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Deserialize(OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L583">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Deserialize_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Deserialize*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Deserialize_MgBinaryDeserializer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Deserialize(MgBinaryDeserializer)">Deserialize(MgBinaryDeserializer)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Deserialize_OSGeo_MapGuide_MaestroAPI_Serialization_MgBinaryDeserializer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Deserialize(OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer)">Deserialize(MgBinaryDeserializer)</h4>
   <div class="markdown level1 summary"><p>Deserializes this object using the specified deserializer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -602,15 +697,20 @@ The number of elements in the source <span class="xref">System.Collections.Gener
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">MgBinaryDeserializer</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinaryDeserializer.html">MgBinaryDeserializer</a></td>
         <td><span class="parametername">d</span></td>
         <td><p>The deserializer.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_GetEnumerator.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.GetEnumerator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L784">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_GetEnumerator_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.GetEnumerator*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_GetEnumerator" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.GetEnumerator">GetEnumerator()</h4>
   <div class="markdown level1 summary"><p>Gets the layer selection enumerator</p>
@@ -630,13 +730,18 @@ The number of elements in the source <span class="xref">System.Collections.Gener
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerator</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection.html">MapSelection.LayerSelection</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IndexOf_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IndexOf(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L614">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IndexOf_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IndexOf*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IndexOf_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IndexOf(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)">IndexOf(MapSelection.LayerSelection)</h4>
   <div class="markdown level1 summary"><p>Returns the index of the given layer</p>
@@ -680,8 +785,13 @@ The number of elements in the source <span class="xref">System.Collections.Gener
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IndexOf_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IndexOf(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L623">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IndexOf_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IndexOf*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_IndexOf_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.IndexOf(OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">IndexOf(RuntimeMapLayer)</h4>
   <div class="markdown level1 summary"><p>Returns the index of the given layer</p>
@@ -725,8 +835,13 @@ The number of elements in the source <span class="xref">System.Collections.Gener
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Insert_System_Int32_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Insert(System.Int32%2COSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L637">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Insert_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Insert*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Insert_System_Int32_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Insert(System.Int32,OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)">Insert(Int32, MapSelection.LayerSelection)</h4>
   <div class="markdown level1 summary"><p>Inserts a selection layer into the collection</p>
@@ -760,8 +875,13 @@ The number of elements in the source <span class="xref">System.Collections.Gener
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Insert_System_Int32_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Insert(System.Int32%2COSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L644">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Insert_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Insert*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Insert_System_Int32_OSGeo_MapGuide_MaestroAPI_Mapping_RuntimeMapLayer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Insert(System.Int32,OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer)">Insert(Int32, RuntimeMapLayer)</h4>
   <div class="markdown level1 summary"><p>Inserts a selection layer into the collection</p>
@@ -795,8 +915,13 @@ The number of elements in the source <span class="xref">System.Collections.Gener
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LoadXml_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LoadXml(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L106">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LoadXml_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LoadXml*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LoadXml_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LoadXml(System.String)">LoadXml(String)</h4>
   <div class="markdown level1 summary"><p>Initialize this selection from the specified xml string</p>
@@ -823,8 +948,13 @@ The number of elements in the source <span class="xref">System.Collections.Gener
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Remove_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Remove(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L766">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Remove_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Remove*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Remove_OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_LayerSelection_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Remove(OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.LayerSelection)">Remove(MapSelection.LayerSelection)</h4>
   <div class="markdown level1 summary"><p>Removes the specified layer selection</p>
@@ -866,8 +996,13 @@ The number of elements in the source <span class="xref">System.Collections.Gener
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_RemoveAt_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.RemoveAt(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L650">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_RemoveAt_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.RemoveAt*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_RemoveAt_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.RemoveAt(System.Int32)">RemoveAt(Int32)</h4>
   <div class="markdown level1 summary"><p>Removes the item at the given index</p>
@@ -895,10 +1030,15 @@ The number of elements in the source <span class="xref">System.Collections.Gener
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Serialize_OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Serialize(OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L546">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Serialize_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Serialize*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Serialize_MgBinarySerializer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Serialize(MgBinarySerializer)">Serialize(MgBinarySerializer)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_Serialize_OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.Serialize(OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer)">Serialize(MgBinarySerializer)</h4>
   <div class="markdown level1 summary"><p>Serializes this instance using the specified serializer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -917,15 +1057,20 @@ The number of elements in the source <span class="xref">System.Collections.Gener
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">MgBinarySerializer</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.html">MgBinarySerializer</a></td>
         <td><span class="parametername">s</span></td>
         <td><p>The serializer.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_ToXml.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.ToXml%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L164">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_ToXml_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.ToXml*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_ToXml" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.ToXml">ToXml()</h4>
   <div class="markdown level1 summary"><p>Returns an xml document that represents the current map selection</p>
@@ -951,10 +1096,48 @@ The number of elements in the source <span class="xref">System.Collections.Gener
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_UpdateFrom_OSGeo_MapGuide_ObjectModels_SelectionModel_FeatureSet_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.UpdateFrom(OSGeo.MapGuide.ObjectModels.SelectionModel.FeatureSet)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L142">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_UpdateFrom_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.UpdateFrom*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_UpdateFrom_OSGeo_MapGuide_ObjectModels_SelectionModel_FeatureSet_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.UpdateFrom(OSGeo.MapGuide.ObjectModels.SelectionModel.FeatureSet)">UpdateFrom(FeatureSet)</h4>
+  <div class="markdown level1 summary"><p>Updates this selection from the given input selection set payload</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateFrom(FeatureSet featureSet)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.SelectionModel.FeatureSet.html">FeatureSet</a></td>
+        <td><span class="parametername">featureSet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="eii">Explicit Interface Implementations
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_Collections_IEnumerable_GetEnumerator.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.System%23Collections%23IEnumerable%23GetEnumerator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L790">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_Collections_IEnumerable_GetEnumerator_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.System#Collections#IEnumerable#GetEnumerator*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection_System_Collections_IEnumerable_GetEnumerator" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
   <div class="markdown level1 summary"></div>
@@ -980,7 +1163,19 @@ The number of elements in the source <span class="xref">System.Collections.Gener
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">IList&lt;&gt;</span>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Serialization.IBinarySerializable.html">IBinarySerializable</a>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
   </div>
 </article>
           </div>
@@ -989,10 +1184,17 @@ The number of elements in the source <span class="xref">System.Collections.Gener
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_MapSelection.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/MapSelection.cs/#L76" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -1006,7 +1208,7 @@ The number of elements in the source <span class="xref">System.Collections.Gener
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

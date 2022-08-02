@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IGridColorStyle
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -85,15 +87,20 @@
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.html">OSGeo.MapGuide.ObjectModels.LayerDefinition</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.ObjectModels.dll</h6>
   <h5 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IGridColorStyle</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_BrightnessFactor.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.BrightnessFactor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LayerDefinition/LayerDefinitionInterfaces.cs/#L1704">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_BrightnessFactor_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.BrightnessFactor*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_BrightnessFactor" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.BrightnessFactor">BrightnessFactor</h4>
   <div class="markdown level1 summary"><p>Gets or sets the brightness factor</p>
@@ -101,7 +108,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">double ? BrightnessFactor { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">double? BrightnessFactor { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -118,8 +125,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_ColorRule.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.ColorRule%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LayerDefinition/LayerDefinitionInterfaces.cs/#L1714">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_ColorRule_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.ColorRule*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_ColorRule" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.ColorRule">ColorRule</h4>
   <div class="markdown level1 summary"><p>Gets the color rules for this style</p>
@@ -139,13 +151,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorRule.html">IGridColorRule</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorRule.html">IGridColorRule</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_ColorRuleCount.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.ColorRuleCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LayerDefinition/LayerDefinitionInterfaces.cs/#L1719">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_ColorRuleCount_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.ColorRuleCount*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_ColorRuleCount" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.ColorRuleCount">ColorRuleCount</h4>
   <div class="markdown level1 summary"><p>Gets the number of color rules</p>
@@ -170,8 +187,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_ContrastFactor.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.ContrastFactor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LayerDefinition/LayerDefinitionInterfaces.cs/#L1709">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_ContrastFactor_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.ContrastFactor*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_ContrastFactor" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.ContrastFactor">ContrastFactor</h4>
   <div class="markdown level1 summary"><p>Gets or sets the contrast factor</p>
@@ -179,7 +201,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">double ? ContrastFactor { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">double? ContrastFactor { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -196,8 +218,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_HillShade.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.HillShade%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LayerDefinition/LayerDefinitionInterfaces.cs/#L1694">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_HillShade_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.HillShade*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_HillShade" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.HillShade">HillShade</h4>
   <div class="markdown level1 summary"><p>Gets or sets the hill shade.</p>
@@ -223,8 +250,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_TransparencyColor.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.TransparencyColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LayerDefinition/LayerDefinitionInterfaces.cs/#L1699">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_TransparencyColor_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.TransparencyColor*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_TransparencyColor" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.TransparencyColor">TransparencyColor</h4>
   <div class="markdown level1 summary"><p>Gets or sets the transparency color. If a pixel color prior to factoring in HillShade is this value then the pixel is transparent</p>
@@ -251,8 +283,13 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_AddColorRule_OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorRule_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.AddColorRule(OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorRule)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LayerDefinition/LayerDefinitionInterfaces.cs/#L1732">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_AddColorRule_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.AddColorRule*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_AddColorRule_OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorRule_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.AddColorRule(OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorRule)">AddColorRule(IGridColorRule)</h4>
   <div class="markdown level1 summary"><p>Adds a color rule to this style</p>
@@ -279,8 +316,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_CreateHillShade.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.CreateHillShade%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LayerDefinition/LayerDefinitionInterfaces.cs/#L1744">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_CreateHillShade_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.CreateHillShade*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_CreateHillShade" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.CreateHillShade">CreateHillShade()</h4>
   <div class="markdown level1 summary"><p>Creates a default hillshade</p>
@@ -305,8 +347,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_GetColorRuleAt_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.GetColorRuleAt(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LayerDefinition/LayerDefinitionInterfaces.cs/#L1726">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_GetColorRuleAt_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.GetColorRuleAt*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_GetColorRuleAt_System_Int32_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.GetColorRuleAt(System.Int32)">GetColorRuleAt(Int32)</h4>
   <div class="markdown level1 summary"><p>Gets the color rule at the specified index</p>
@@ -348,8 +395,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_RemoveColorRule_OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorRule_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.RemoveColorRule(OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorRule)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LayerDefinition/LayerDefinitionInterfaces.cs/#L1738">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_RemoveColorRule_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.RemoveColorRule*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_RemoveColorRule_OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorRule_" data-uid="OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle.RemoveColorRule(OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorRule)">RemoveColorRule(IGridColorRule)</h4>
   <div class="markdown level1 summary"><p>Removes the specified color rule from this style</p>
@@ -376,6 +428,10 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.LayerDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_LayerDefinition_ExtensionMethods_SetTransparencyColor_OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle_System_Drawing_Color_">ExtensionMethods.SetTransparencyColor(IGridColorStyle, Color)</a>
+  </div>
 </article>
           </div>
           
@@ -383,10 +439,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LayerDefinition_IGridColorStyle.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LayerDefinition.IGridColorStyle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LayerDefinition/LayerDefinitionInterfaces.cs/#L1688" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -400,7 +463,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

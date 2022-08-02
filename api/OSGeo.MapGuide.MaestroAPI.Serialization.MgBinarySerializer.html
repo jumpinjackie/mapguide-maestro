@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class MgBinarySerializer
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -92,16 +94,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -112,19 +108,30 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Serialization.html">OSGeo.MapGuide.MaestroAPI.Serialization</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class MgBinarySerializer</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer__ctor_System_IO_Stream_System_Version_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.%23ctor(System.IO.Stream%2CSystem.Version)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L77">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.#ctor*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer__ctor_Stream_Version_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.#ctor(Stream,Version)">MgBinarySerializer(Stream, Version)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer__ctor_System_IO_Stream_System_Version_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.#ctor(System.IO.Stream,System.Version)">MgBinarySerializer(Stream, Version)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.html">MgBinarySerializer</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -143,13 +150,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Stream</span></td>
+        <td><span class="xref">System.IO.Stream</span></td>
         <td><span class="parametername">stream</span></td>
         <td><p>The stream.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><span class="parametername">siteversion</span></td>
         <td><p>The siteversion.</p>
 </td>
@@ -158,8 +165,13 @@
   </table>
   <h3 id="fields">Fields
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_DoubleLen.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.DoubleLen%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L59">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_DoubleLen" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.DoubleLen">DoubleLen</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
@@ -182,8 +194,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_FloatLen.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.FloatLen%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L54">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_FloatLen" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.FloatLen">FloatLen</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
@@ -206,8 +223,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_UInt16Len.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.UInt16Len%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L39">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_UInt16Len" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.UInt16Len">UInt16Len</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
@@ -230,8 +252,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_UInt32Len.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.UInt32Len%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L44">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_UInt32Len" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.UInt32Len">UInt32Len</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
@@ -254,8 +281,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_UInt64Len.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.UInt64Len%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L49">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_UInt64Len" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.UInt64Len">UInt64Len</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
@@ -278,8 +310,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_UInt8Len.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.UInt8Len%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L64">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_UInt8Len" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.UInt8Len">UInt8Len</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
@@ -304,8 +341,13 @@
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_SiteVersion.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.SiteVersion%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L70">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_SiteVersion_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.SiteVersion*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_SiteVersion" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.SiteVersion">SiteVersion</h4>
   <div class="markdown level1 summary"><p>Gets the site version.</p>
@@ -325,7 +367,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Version</span></td>
+        <td><span class="xref">System.Version</span></td>
         <td><p>The site version.</p>
 </td>
       </tr>
@@ -333,8 +375,13 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_OSGeo_MapGuide_MaestroAPI_Serialization_IBinarySerializable_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(OSGeo.MapGuide.MaestroAPI.Serialization.IBinarySerializable)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L260">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_OSGeo_MapGuide_MaestroAPI_Serialization_IBinarySerializable_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(OSGeo.MapGuide.MaestroAPI.Serialization.IBinarySerializable)">Write(IBinarySerializable)</h4>
   <div class="markdown level1 summary"><p>Writes the specified value.</p>
@@ -362,37 +409,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_Stream_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(Stream)">Write(Stream)</h4>
-  <div class="markdown level1 summary"><p>Writes the specified stream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Write(Stream stream)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Stream</span></td>
-        <td><span class="parametername">stream</span></td>
-        <td><p>The stream.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L221">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.Boolean)">Write(Boolean)</h4>
   <div class="markdown level1 summary"><p>Writes the specified value.</p>
@@ -420,8 +443,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_Byte_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.Byte)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L231">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_Byte_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.Byte)">Write(Byte)</h4>
   <div class="markdown level1 summary"><p>Writes the specified value.</p>
@@ -449,8 +477,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_Double_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L211">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_Double_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.Double)">Write(Double)</h4>
   <div class="markdown level1 summary"><p>Writes the specified value.</p>
@@ -478,8 +511,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_Int16_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.Int16)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L174">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_Int16_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.Int16)">Write(Int16)</h4>
   <div class="markdown level1 summary"><p>Writes the specified value.</p>
@@ -507,8 +545,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L184">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.Int32)">Write(Int32)</h4>
   <div class="markdown level1 summary"><p>Writes the specified value.</p>
@@ -536,8 +579,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_Int64_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L194">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_Int64_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.Int64)">Write(Int64)</h4>
   <div class="markdown level1 summary"><p>Writes the specified value.</p>
@@ -565,8 +613,47 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_IO_Stream_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.IO.Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L284">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_IO_Stream_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.IO.Stream)">Write(Stream)</h4>
+  <div class="markdown level1 summary"><p>Writes the specified stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(Stream stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L138">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_Write_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.Write(System.String)">Write(String)</h4>
   <div class="markdown level1 summary"><p>Writes the specified value.</p>
@@ -594,8 +681,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteClassId_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteClassId(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L241">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteClassId_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteClassId*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteClassId_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteClassId(System.Int32)">WriteClassId(Int32)</h4>
   <div class="markdown level1 summary"><p>Writes the class id.</p>
@@ -623,8 +715,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteCoordinates_System_Double___System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteCoordinates(System.Double%5B%5D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L88">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteCoordinates_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteCoordinates*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteCoordinates_System_Double___System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteCoordinates(System.Double[],System.Int32)">WriteCoordinates(Double[], Int32)</h4>
   <div class="markdown level1 summary"><p>Writes the coordinates.</p>
@@ -658,8 +755,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteRaw_System_Byte___.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteRaw(System.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L375">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteRaw_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteRaw*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteRaw_System_Byte___" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteRaw(System.Byte[])">WriteRaw(Byte[])</h4>
   <div class="markdown level1 summary"><p>Writes the raw.</p>
@@ -687,8 +789,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteResourceIdentifier_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteResourceIdentifier(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L114">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteResourceIdentifier_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteResourceIdentifier*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteResourceIdentifier_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteResourceIdentifier(System.String)">WriteResourceIdentifier(String)</h4>
   <div class="markdown level1 summary"><p>Writes the resource identifier.</p>
@@ -716,8 +823,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteStreamEnd.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteStreamEnd%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L250">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteStreamEnd_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteStreamEnd*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteStreamEnd" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteStreamEnd">WriteStreamEnd()</h4>
   <div class="markdown level1 summary"><p>Writes the stream end.</p>
@@ -727,8 +839,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void WriteStreamEnd()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteStringInternal_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteStringInternal(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L157">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteStringInternal_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteStringInternal*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer_WriteStringInternal_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer.WriteStringInternal(System.String)">WriteStringInternal(String)</h4>
   <div class="markdown level1 summary"><p>Writes the string internal.</p>
@@ -763,10 +880,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Serialization_MgBinarySerializer.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Serialization.MgBinarySerializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Serialization/MgBinarySerializer.cs/#L31" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -780,7 +904,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

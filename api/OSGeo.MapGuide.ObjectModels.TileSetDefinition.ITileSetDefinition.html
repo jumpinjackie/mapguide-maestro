@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface ITileSetDefinition
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -105,7 +107,13 @@
       <a class="xref" href="OSGeo.MapGuide.ObjectModels.IVersionedEntity.html#OSGeo_MapGuide_ObjectModels_IVersionedEntity_ResourceVersion">IVersionedEntity.ResourceVersion</a>
     </div>
     <div>
-      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_SetFiniteDisplayScales_IEnumerable_System_Double__">ITileSetAbstract.SetFiniteDisplayScales(IEnumerable&lt;Double&gt;)</a>
+      <span class="xref">System.ICloneable.Clone()</span>
+    </div>
+    <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged.PropertyChanged</span>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_SetFiniteDisplayScales_System_Collections_Generic_IEnumerable_System_Double__">ITileSetAbstract.SetFiniteDisplayScales(IEnumerable&lt;Double&gt;)</a>
     </div>
     <div>
       <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_AddFiniteDisplayScale_System_Double_">ITileSetAbstract.AddFiniteDisplayScale(Double)</a>
@@ -150,19 +158,24 @@
       <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_AddBaseLayerGroup_System_String_">ITileSetAbstract.AddBaseLayerGroup(String)</a>
     </div>
     <div>
-      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_RemoveBaseLayerGroup_IBaseMapGroup_">ITileSetAbstract.RemoveBaseLayerGroup(IBaseMapGroup)</a>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetAbstract.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_RemoveBaseLayerGroup_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_">ITileSetAbstract.RemoveBaseLayerGroup(IBaseMapGroup)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.html">OSGeo.MapGuide.ObjectModels.TileSetDefinition</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.ObjectModels.dll</h6>
   <h5 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface ITileSetDefinition : IResource, IVersionedEntity, ICloneable, INotifyPropertyChanged, ITileSetAbstract</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_Extents.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetDefinition.Extents%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/TileSetDefinition/TileSetInterfaces.cs/#L46">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_Extents_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetDefinition.Extents*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_Extents" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetDefinition.Extents">Extents</h4>
   <div class="markdown level1 summary"><p>The extents of this tile set</p>
@@ -182,13 +195,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnvelope</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IEnvelope.html">IEnvelope</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_TileStoreParameters.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetDefinition.TileStoreParameters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/TileSetDefinition/TileSetInterfaces.cs/#L41">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_TileStoreParameters_" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetDefinition.TileStoreParameters*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_TileStoreParameters" data-uid="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetDefinition.TileStoreParameters">TileStoreParameters</h4>
   <div class="markdown level1 summary"><p>The configuration parameters</p>
@@ -213,6 +231,106 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_ExtensionMethods_CopyResourceDataTo_OSGeo_MapGuide_ObjectModels_IResource_OSGeo_MapGuide_MaestroAPI_IServerConnection_OSGeo_MapGuide_ObjectModels_IResource_">ExtensionMethods.CopyResourceDataTo(IResource, IServerConnection, IResource)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_ExtensionMethods_CopyResourceDataTo_OSGeo_MapGuide_ObjectModels_IResource_OSGeo_MapGuide_MaestroAPI_IServerConnection_System_String_">ExtensionMethods.CopyResourceDataTo(IResource, IServerConnection, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceExtensions.html#OSGeo_MapGuide_ObjectModels_ResourceExtensions_SerializeToStream_OSGeo_MapGuide_ObjectModels_IResource_">ResourceExtensions.SerializeToStream(IResource)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceExtensions.html#OSGeo_MapGuide_ObjectModels_ResourceExtensions_GetResourceTypeDescriptor_OSGeo_MapGuide_ObjectModels_IResource_">ResourceExtensions.GetResourceTypeDescriptor(IResource)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetBaseLayerCount_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_">ExtensionMethods.GetBaseLayerCount(ITileSetAbstract)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetMinScale_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_">ExtensionMethods.GetMinScale(ITileSetAbstract)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetMaxScale_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_">ExtensionMethods.GetMaxScale(ITileSetAbstract)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetGroupForLayer_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapLayer_">ExtensionMethods.GetGroupForLayer(ITileSetAbstract, IBaseMapLayer)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_HasLayers_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_">ExtensionMethods.HasLayers(ITileSetAbstract)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_HasGroups_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_">ExtensionMethods.HasGroups(ITileSetAbstract)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetFirstGroup_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_">ExtensionMethods.GetFirstGroup(ITileSetAbstract)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetBaseLayerByName_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_System_String_">ExtensionMethods.GetBaseLayerByName(ITileSetAbstract, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_LayerExists_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_System_String_">ExtensionMethods.LayerExists(ITileSetAbstract, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetGroup_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_System_String_">ExtensionMethods.GetGroup(ITileSetAbstract, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GroupExists_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_System_String_">ExtensionMethods.GroupExists(ITileSetAbstract, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetLayersForGroup_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetAbstract_System_String_">ExtensionMethods.GetLayersForGroup(ITileSetAbstract, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_RemoveBaseLayerGroup_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_OSGeo_MapGuide_ObjectModels_MapDefinition_IBaseMapGroup_">ExtensionMethods.RemoveBaseLayerGroup(ITileSetDefinition, IBaseMapGroup)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GroupExists_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_System_String_">ExtensionMethods.GroupExists(ITileSetDefinition, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetParameter_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_System_String_">ExtensionMethods.GetParameter(ITileSetDefinition, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetDefaultCoordinateSystem_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_">ExtensionMethods.GetDefaultCoordinateSystem(ITileSetDefinition)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_SetDefaultCoordinateSystem_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_System_String_">ExtensionMethods.SetDefaultCoordinateSystem(ITileSetDefinition, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetDefaultFiniteScaleList_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_">ExtensionMethods.GetDefaultFiniteScaleList(ITileSetDefinition)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_SetDefaultFiniteScaleList_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_System_Collections_Generic_IEnumerable_System_Double__">ExtensionMethods.SetDefaultFiniteScaleList(ITileSetDefinition, IEnumerable&lt;Double&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetTilePath_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_">ExtensionMethods.GetTilePath(ITileSetDefinition)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_SetTilePath_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_System_String_">ExtensionMethods.SetTilePath(ITileSetDefinition, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetDefaultTileWidth_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_">ExtensionMethods.GetDefaultTileWidth(ITileSetDefinition)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_SetDefaultTileWidth_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_System_Int32_">ExtensionMethods.SetDefaultTileWidth(ITileSetDefinition, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetDefaultTileHeight_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_">ExtensionMethods.GetDefaultTileHeight(ITileSetDefinition)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_SetDefaultTileHeight_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_System_Int32_">ExtensionMethods.SetDefaultTileHeight(ITileSetDefinition, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_GetTileFormat_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_">ExtensionMethods.GetTileFormat(ITileSetDefinition)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_SetTileFormat_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_System_String_">ExtensionMethods.SetTileFormat(ITileSetDefinition, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_SetXYZProviderParameters_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_System_String_System_String_">ExtensionMethods.SetXYZProviderParameters(ITileSetDefinition, String, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.TileSetDefinition.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_TileSetDefinition_ExtensionMethods_SetDefaultProviderParameters_OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition_System_Int32_System_Int32_System_String_System_Double___System_String_System_String_">ExtensionMethods.SetDefaultProviderParameters(ITileSetDefinition, Int32, Int32, String, Double[], String, String)</a>
+  </div>
 </article>
           </div>
           
@@ -220,10 +338,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_TileSetDefinition_ITileSetDefinition.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.TileSetDefinition.ITileSetDefinition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/TileSetDefinition/TileSetInterfaces.cs/#L36" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -237,7 +362,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

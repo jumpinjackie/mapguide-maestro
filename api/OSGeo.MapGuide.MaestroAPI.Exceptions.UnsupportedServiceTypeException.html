@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class UnsupportedServiceTypeException
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -88,22 +90,89 @@ supported by the connection</p>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Exceptions.MaestroException.html">MaestroException</a></div>
-    <div class="level2"><span class="xref">UnsupportedServiceTypeException</span></div>
+    <div class="level1"><span class="xref">System.Exception</span></div>
+    <div class="level2"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Exceptions.MaestroException.html">MaestroException</a></div>
+    <div class="level3"><span class="xref">UnsupportedServiceTypeException</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.Runtime.Serialization.ISerializable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Exception.GetBaseException()</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.Data</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.HelpLink</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.HResult</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.InnerException</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.Message</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.Source</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.StackTrace</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.TargetSite</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.SerializeObjectState</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Exceptions.html">OSGeo.MapGuide.MaestroAPI.Exceptions</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Serializable]
-public class UnsupportedServiceTypeException : MaestroException</code></pre>
+public class UnsupportedServiceTypeException : MaestroException, ISerializable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_OSGeo_MapGuide_MaestroAPI_Services_ServiceType_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.%23ctor(OSGeo.MapGuide.MaestroAPI.Services.ServiceType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Exceptions/UnsupportedServiceTypeException.cs/#L46">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.#ctor*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_ServiceType_" data-uid="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.#ctor(ServiceType)">UnsupportedServiceTypeException(ServiceType)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_OSGeo_MapGuide_MaestroAPI_Services_ServiceType_" data-uid="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.#ctor(OSGeo.MapGuide.MaestroAPI.Services.ServiceType)">UnsupportedServiceTypeException(ServiceType)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.html">UnsupportedServiceTypeException</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -122,17 +191,22 @@ public class UnsupportedServiceTypeException : MaestroException</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ServiceType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.ServiceType.html">ServiceType</a></td>
         <td><span class="parametername">st</span></td>
         <td><p>The st.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_OSGeo_MapGuide_MaestroAPI_Services_ServiceType_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.%23ctor(OSGeo.MapGuide.MaestroAPI.Services.ServiceType%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Exceptions/UnsupportedServiceTypeException.cs/#L56">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.#ctor*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_ServiceType_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.#ctor(ServiceType,System.String)">UnsupportedServiceTypeException(ServiceType, String)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_OSGeo_MapGuide_MaestroAPI_Services_ServiceType_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.#ctor(OSGeo.MapGuide.MaestroAPI.Services.ServiceType,System.String)">UnsupportedServiceTypeException(ServiceType, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.html">UnsupportedServiceTypeException</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -151,7 +225,7 @@ public class UnsupportedServiceTypeException : MaestroException</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ServiceType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.ServiceType.html">ServiceType</a></td>
         <td><span class="parametername">st</span></td>
         <td><p>The st.</p>
 </td>
@@ -164,10 +238,15 @@ public class UnsupportedServiceTypeException : MaestroException</code></pre>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_OSGeo_MapGuide_MaestroAPI_Services_ServiceType_System_String_System_Exception_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.%23ctor(OSGeo.MapGuide.MaestroAPI.Services.ServiceType%2CSystem.String%2CSystem.Exception)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Exceptions/UnsupportedServiceTypeException.cs/#L68">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.#ctor*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_ServiceType_System_String_Exception_" data-uid="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.#ctor(ServiceType,System.String,Exception)">UnsupportedServiceTypeException(ServiceType, String, Exception)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_OSGeo_MapGuide_MaestroAPI_Services_ServiceType_System_String_System_Exception_" data-uid="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.#ctor(OSGeo.MapGuide.MaestroAPI.Services.ServiceType,System.String,System.Exception)">UnsupportedServiceTypeException(ServiceType, String, Exception)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.html">UnsupportedServiceTypeException</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -186,7 +265,7 @@ public class UnsupportedServiceTypeException : MaestroException</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ServiceType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.ServiceType.html">ServiceType</a></td>
         <td><span class="parametername">st</span></td>
         <td><p>The st.</p>
 </td>
@@ -198,15 +277,20 @@ public class UnsupportedServiceTypeException : MaestroException</code></pre>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Exception</span></td>
+        <td><span class="xref">System.Exception</span></td>
         <td><span class="parametername">inner</span></td>
         <td><p>The inner.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.%23ctor(System.Runtime.Serialization.SerializationInfo%2CSystem.Runtime.Serialization.StreamingContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Exceptions/UnsupportedServiceTypeException.cs/#L85">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_" data-uid="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">UnsupportedServiceTypeException(SerializationInfo, StreamingContext)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.html">UnsupportedServiceTypeException</a> class.</p>
@@ -263,8 +347,13 @@ public class UnsupportedServiceTypeException : MaestroException</code></pre>
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException_ServiceType.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.ServiceType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Exceptions/UnsupportedServiceTypeException.cs/#L94">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException_ServiceType_" data-uid="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.ServiceType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException_ServiceType" data-uid="OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException.ServiceType">ServiceType</h4>
   <div class="markdown level1 summary"><p>Gets or sets the type of the service.</p>
@@ -284,12 +373,16 @@ public class UnsupportedServiceTypeException : MaestroException</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ServiceType</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.ServiceType.html">ServiceType</a></td>
         <td><p>The type of the service.</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.Runtime.Serialization.ISerializable</span>
+  </div>
 </article>
           </div>
           
@@ -297,10 +390,17 @@ public class UnsupportedServiceTypeException : MaestroException</code></pre>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Exceptions_UnsupportedServiceTypeException.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Exceptions.UnsupportedServiceTypeException%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Exceptions/UnsupportedServiceTypeException.cs/#L32" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -314,7 +414,7 @@ public class UnsupportedServiceTypeException : MaestroException</code></pre>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

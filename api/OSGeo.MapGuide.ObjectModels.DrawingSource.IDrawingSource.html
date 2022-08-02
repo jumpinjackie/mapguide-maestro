@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IDrawingSource
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -104,17 +106,28 @@
     <div>
       <a class="xref" href="OSGeo.MapGuide.ObjectModels.IVersionedEntity.html#OSGeo_MapGuide_ObjectModels_IVersionedEntity_ResourceVersion">IVersionedEntity.ResourceVersion</a>
     </div>
+    <div>
+      <span class="xref">System.ICloneable.Clone()</span>
+    </div>
+    <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged.PropertyChanged</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.DrawingSource.html">OSGeo.MapGuide.ObjectModels.DrawingSource</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.ObjectModels.dll</h6>
   <h5 id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IDrawingSource : IResource, IVersionedEntity, ICloneable, INotifyPropertyChanged</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_CoordinateSpace.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.CoordinateSpace%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/DrawingSource/DrawingSourceInterfaces.cs/#L43">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_CoordinateSpace_" data-uid="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.CoordinateSpace*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_CoordinateSpace" data-uid="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.CoordinateSpace">CoordinateSpace</h4>
   <div class="markdown level1 summary"><p>Gets or sets the coordinate space.</p>
@@ -140,8 +153,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_Sheet.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.Sheet%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/DrawingSource/DrawingSourceInterfaces.cs/#L54">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_Sheet_" data-uid="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.Sheet*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_Sheet" data-uid="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.Sheet">Sheet</h4>
   <div class="markdown level1 summary"><p>Gets the sheets.</p>
@@ -161,14 +179,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSourceSheet.html">IDrawingSourceSheet</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSourceSheet.html">IDrawingSourceSheet</a>&gt;</td>
         <td><p>The sheets.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_SourceName.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.SourceName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/DrawingSource/DrawingSourceInterfaces.cs/#L37">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_SourceName_" data-uid="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.SourceName*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_SourceName" data-uid="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.SourceName">SourceName</h4>
   <div class="markdown level1 summary"><p>Gets or sets the name of the source (dwf file).</p>
@@ -196,8 +219,13 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_AddSheet_OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSourceSheet_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.AddSheet(OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSourceSheet)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/DrawingSource/DrawingSourceInterfaces.cs/#L60">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_AddSheet_" data-uid="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.AddSheet*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_AddSheet_OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSourceSheet_" data-uid="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.AddSheet(OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSourceSheet)">AddSheet(IDrawingSourceSheet)</h4>
   <div class="markdown level1 summary"><p>Adds the sheet.</p>
@@ -225,8 +253,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_CreateSheet_System_String_System_Double_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.CreateSheet(System.String%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/DrawingSource/DrawingSourceInterfaces.cs/#L77">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_CreateSheet_" data-uid="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.CreateSheet*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_CreateSheet_System_String_System_Double_System_Double_System_Double_System_Double_" data-uid="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.CreateSheet(System.String,System.Double,System.Double,System.Double,System.Double)">CreateSheet(String, Double, Double, Double, Double)</h4>
   <div class="markdown level1 summary"><p>Creates the sheet.</p>
@@ -293,8 +326,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_RemoveAllSheets.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.RemoveAllSheets%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/DrawingSource/DrawingSourceInterfaces.cs/#L48">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_RemoveAllSheets_" data-uid="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.RemoveAllSheets*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_RemoveAllSheets" data-uid="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.RemoveAllSheets">RemoveAllSheets()</h4>
   <div class="markdown level1 summary"><p>Removes all sheets.</p>
@@ -304,8 +342,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void RemoveAllSheets()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_RemoveSheet_OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSourceSheet_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.RemoveSheet(OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSourceSheet)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/DrawingSource/DrawingSourceInterfaces.cs/#L66">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_RemoveSheet_" data-uid="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.RemoveSheet*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_RemoveSheet_OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSourceSheet_" data-uid="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource.RemoveSheet(OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSourceSheet)">RemoveSheet(IDrawingSourceSheet)</h4>
   <div class="markdown level1 summary"><p>Removes the sheet.</p>
@@ -333,6 +376,25 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_ExtensionMethods_CopyResourceDataTo_OSGeo_MapGuide_ObjectModels_IResource_OSGeo_MapGuide_MaestroAPI_IServerConnection_OSGeo_MapGuide_ObjectModels_IResource_">ExtensionMethods.CopyResourceDataTo(IResource, IServerConnection, IResource)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_ExtensionMethods_CopyResourceDataTo_OSGeo_MapGuide_ObjectModels_IResource_OSGeo_MapGuide_MaestroAPI_IServerConnection_System_String_">ExtensionMethods.CopyResourceDataTo(IResource, IServerConnection, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.DrawingSource.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_DrawingSource_ExtensionMethods_RegenerateSheetList_OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_OSGeo_MapGuide_MaestroAPI_IServerConnection_">ExtensionMethods.RegenerateSheetList(IDrawingSource, IServerConnection)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.DrawingSource.ExtensionMethods.html#OSGeo_MapGuide_ObjectModels_DrawingSource_ExtensionMethods_UpdateExtents_OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource_OSGeo_MapGuide_MaestroAPI_IServerConnection_">ExtensionMethods.UpdateExtents(IDrawingSource, IServerConnection)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceExtensions.html#OSGeo_MapGuide_ObjectModels_ResourceExtensions_SerializeToStream_OSGeo_MapGuide_ObjectModels_IResource_">ResourceExtensions.SerializeToStream(IResource)</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.ResourceExtensions.html#OSGeo_MapGuide_ObjectModels_ResourceExtensions_GetResourceTypeDescriptor_OSGeo_MapGuide_ObjectModels_IResource_">ResourceExtensions.GetResourceTypeDescriptor(IResource)</a>
+  </div>
 </article>
           </div>
           
@@ -340,10 +402,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_DrawingSource_IDrawingSource.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/DrawingSource/DrawingSourceInterfaces.cs/#L31" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -357,7 +426,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IBatchInsertFeatures
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -97,7 +99,7 @@
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.html">OSGeo.MapGuide.MaestroAPI.Commands</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Commands_IBatchInsertFeatures_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IBatchInsertFeatures : IFeatureCommand, ICommand</code></pre>
@@ -113,8 +115,13 @@ Nothing implements this interface at the moment
 </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_IBatchInsertFeatures_RecordsToInsert.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.IBatchInsertFeatures.RecordsToInsert%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommands.cs/#L198">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_IBatchInsertFeatures_RecordsToInsert_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.IBatchInsertFeatures.RecordsToInsert*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_IBatchInsertFeatures_RecordsToInsert" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.IBatchInsertFeatures.RecordsToInsert">RecordsToInsert</h4>
   <div class="markdown level1 summary"><p>Gets or sets the list of features to insert</p>
@@ -134,15 +141,20 @@ Nothing implements this interface at the moment
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ICollection</span>&lt;<span class="xref">IRecord</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IRecord.html">IRecord</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_IBatchInsertFeatures_Execute.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.IBatchInsertFeatures.Execute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommands.cs/#L208">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_IBatchInsertFeatures_Execute_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.IBatchInsertFeatures.Execute*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_IBatchInsertFeatures_Execute" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.IBatchInsertFeatures.Execute">Execute()</h4>
   <div class="markdown level1 summary"><p>Executes the command.</p>
@@ -162,7 +174,7 @@ Nothing implements this interface at the moment
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ICollection</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.InsertResult.html">InsertResult</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.InsertResult.html">InsertResult</a>&gt;</td>
         <td><p>A collection of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.InsertResult.html">InsertResult</a> instances.
 Inspect the individual <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.InsertResult.html">InsertResult</a> properties to
 determine which features failed to be inserted.</p>
@@ -177,10 +189,17 @@ determine which features failed to be inserted.</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_IBatchInsertFeatures.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.IBatchInsertFeatures%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommands.cs/#L193" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -194,7 +213,7 @@ determine which features failed to be inserted.</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

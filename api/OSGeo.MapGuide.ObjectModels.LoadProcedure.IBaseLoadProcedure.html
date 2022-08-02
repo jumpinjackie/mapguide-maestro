@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IBaseLoadProcedure
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -90,16 +92,27 @@ the following information:</p>
 and retrieved from the repository via the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.IResourceService.html#OSGeo_MapGuide_MaestroAPI_Services_IResourceService_GetResource_System_String_">GetResource(String)</a> method</p>
 </div>
   <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged.PropertyChanged</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.html">OSGeo.MapGuide.ObjectModels.LoadProcedure</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.ObjectModels.dll</h6>
   <h5 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IBaseLoadProcedure : INotifyPropertyChanged</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_CoordinateSystem.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.CoordinateSystem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L167">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_CoordinateSystem_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.CoordinateSystem*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_CoordinateSystem" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.CoordinateSystem">CoordinateSystem</h4>
   <div class="markdown level1 summary"><p>Gets or sets the coordinate system to use if none found in the source file.</p>
@@ -125,8 +138,13 @@ and retrieved from the repository via the <a class="xref" href="OSGeo.MapGuide.M
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_GenerateLayers.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.GenerateLayers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L196">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_GenerateLayers_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.GenerateLayers*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_GenerateLayers" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.GenerateLayers">GenerateLayers</h4>
   <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to create a layer for each spatial data source that
@@ -153,8 +171,13 @@ is created. This will be created in the <a class="xref" href="OSGeo.MapGuide.Obj
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_GenerateMaps.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.GenerateMaps%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L214">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_GenerateMaps_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.GenerateMaps*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_GenerateMaps" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.GenerateMaps">GenerateMaps</h4>
   <div class="markdown level1 summary"><p>Gets or sets the generate maps. Not supported by Maestro</p>
@@ -162,7 +185,7 @@ is created. This will be created in the <a class="xref" href="OSGeo.MapGuide.Obj
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool ? GenerateMaps { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">bool? GenerateMaps { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -180,8 +203,13 @@ is created. This will be created in the <a class="xref" href="OSGeo.MapGuide.Obj
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_GenerateSpatialDataSources.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.GenerateSpatialDataSources%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L177">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_GenerateSpatialDataSources_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.GenerateSpatialDataSources*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_GenerateSpatialDataSources" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.GenerateSpatialDataSources">GenerateSpatialDataSources</h4>
   <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to create a spatial data source for each source
@@ -209,8 +237,13 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_GenerateSymbolLibraries.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.GenerateSymbolLibraries%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L231">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_GenerateSymbolLibraries_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.GenerateSymbolLibraries*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_GenerateSymbolLibraries" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.GenerateSymbolLibraries">GenerateSymbolLibraries</h4>
   <div class="markdown level1 summary"><p>Not supported by Maestro</p>
@@ -218,7 +251,7 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool ? GenerateSymbolLibraries { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">bool? GenerateSymbolLibraries { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -235,8 +268,13 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_LayersFolder.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.LayersFolder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L208">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_LayersFolder_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.LayersFolder*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_LayersFolder" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.LayersFolder">LayersFolder</h4>
   <div class="markdown level1 summary"><p>Gets or sets the layers folder.</p>
@@ -262,8 +300,13 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_LayersPath.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.LayersPath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L202">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_LayersPath_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.LayersPath*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_LayersPath" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.LayersPath">LayersPath</h4>
   <div class="markdown level1 summary"><p>Gets or sets the layers path.</p>
@@ -289,8 +332,13 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_MapsFolder.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.MapsFolder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L226">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_MapsFolder_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.MapsFolder*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_MapsFolder" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.MapsFolder">MapsFolder</h4>
   <div class="markdown level1 summary"><p>Gets or sets the maps folder. Not supported by Maestro</p>
@@ -316,8 +364,13 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_MapsPath.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.MapsPath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L220">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_MapsPath_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.MapsPath*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_MapsPath" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.MapsPath">MapsPath</h4>
   <div class="markdown level1 summary"><p>Gets or sets the maps path. Not supported by Maestro</p>
@@ -343,8 +396,13 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_ResourceId.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.ResourceId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L247">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_ResourceId_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.ResourceId*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_ResourceId" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.ResourceId">ResourceId</h4>
   <div class="markdown level1 summary"><p>Gets or sets the resource id that were created as part of executing this load procedure</p>
@@ -364,14 +422,19 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">BindingList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.ComponentModel.BindingList</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><p>The resource id.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_RootPath.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.RootPath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L161">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_RootPath_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.RootPath*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_RootPath" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.RootPath">RootPath</h4>
   <div class="markdown level1 summary"><p>Gets or sets the root path.</p>
@@ -397,8 +460,13 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SourceFile.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SourceFile%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L143">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SourceFile_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SourceFile*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SourceFile" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SourceFile">SourceFile</h4>
   <div class="markdown level1 summary"><p>Gets the source files.</p>
@@ -418,14 +486,19 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">BindingList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.ComponentModel.BindingList</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><p>The source files.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SpatialDataSourcesFolder.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SpatialDataSourcesFolder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L189">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SpatialDataSourcesFolder_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SpatialDataSourcesFolder*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SpatialDataSourcesFolder" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SpatialDataSourcesFolder">SpatialDataSourcesFolder</h4>
   <div class="markdown level1 summary"><p>Gets or sets the spatial data sources folder.</p>
@@ -451,8 +524,13 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SpatialDataSourcesPath.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SpatialDataSourcesPath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L183">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SpatialDataSourcesPath_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SpatialDataSourcesPath*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SpatialDataSourcesPath" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SpatialDataSourcesPath">SpatialDataSourcesPath</h4>
   <div class="markdown level1 summary"><p>Gets or sets the spatial data sources path.</p>
@@ -478,8 +556,13 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SymbolLibrariesFolder.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SymbolLibrariesFolder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L241">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SymbolLibrariesFolder_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SymbolLibrariesFolder*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SymbolLibrariesFolder" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SymbolLibrariesFolder">SymbolLibrariesFolder</h4>
   <div class="markdown level1 summary"><p>Not supported by Maestro</p>
@@ -504,8 +587,13 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SymbolLibrariesPath.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SymbolLibrariesPath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L236">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SymbolLibrariesPath_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SymbolLibrariesPath*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_SymbolLibrariesPath" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.SymbolLibrariesPath">SymbolLibrariesPath</h4>
   <div class="markdown level1 summary"><p>Not supported by Maestro</p>
@@ -530,8 +618,13 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_Type.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L137">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_Type_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.Type*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_Type" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.Type">Type</h4>
   <div class="markdown level1 summary"><p>Gets the type.</p>
@@ -559,8 +652,13 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_AddFile_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.AddFile(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L149">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_AddFile_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.AddFile*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_AddFile_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.AddFile(System.String)">AddFile(String)</h4>
   <div class="markdown level1 summary"><p>Adds the file.</p>
@@ -588,8 +686,13 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_RemoveFile_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.RemoveFile(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L155">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_RemoveFile_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.RemoveFile*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_RemoveFile_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure.RemoveFile(System.String)">RemoveFile(String)</h4>
   <div class="markdown level1 summary"><p>Removes the file.</p>
@@ -617,6 +720,10 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
       </tr>
     </tbody>
   </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.BaseLoadProcedureExtensions.html#OSGeo_MapGuide_ObjectModels_LoadProcedure_BaseLoadProcedureExtensions_AddFiles_OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure_System_Collections_Generic_IEnumerable_System_String__">BaseLoadProcedureExtensions.AddFiles(IBaseLoadProcedure, IEnumerable&lt;String&gt;)</a>
+  </div>
 </article>
           </div>
           
@@ -624,10 +731,17 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_LoadProcedure_IBaseLoadProcedure.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseLoadProcedure%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/LoadProcedure/LoadProcedureInterfaces.cs/#L131" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -641,7 +755,7 @@ under the <a class="xref" href="OSGeo.MapGuide.ObjectModels.LoadProcedure.IBaseL
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace OSGeo.MapGuide.MaestroAPI.Tile
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -91,27 +93,11 @@
       <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.DefaultTileWalkOptions.html">DefaultTileWalkOptions</a></h4>
       <section><p>Defines options that control how the tile set is to be walked to obtain the full list of tiles to be requested</p>
 </section>
-      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.MapTilingConfiguration.html">MapTilingConfiguration</a></h4>
-      <section><p>Class that represents a single map to build tiles for</p>
-</section>
-      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.TileProgressEventArgs.html">TileProgressEventArgs</a></h4>
-      <section><p>Tile progress event</p>
-</section>
-      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.TileRenderingErrorEventArgs.html">TileRenderingErrorEventArgs</a></h4>
-      <section><p>The rendering error event</p>
-</section>
-      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.TileRunParameters.html">TileRunParameters</a></h4>
-      <section><p>Defines global parameters for a tiling run</p>
-</section>
       <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.TileSeeder.html">TileSeeder</a></h4>
       <section><p>Populates a tile cache by requesting all possible tiles for a given in map in a multi-threaded manner</p>
-<p>This is the successor to the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.TilingRunCollection.html">TilingRunCollection</a> with a simpler API design and implementation</p>
 </section>
       <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.TileSeederOptions.html">TileSeederOptions</a></h4>
       <section><p>Defines options for controlling the tile seeding process</p>
-</section>
-      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.TilingRunCollection.html">TilingRunCollection</a></h4>
-      <section><p>Class to hold settings for a batch run of tile building</p>
 </section>
       <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.XYZTileService.html">XYZTileService</a></h4>
       <section><p>An implementation of <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.ITileService.html">ITileService</a> for fetching XYZ tiles</p>
@@ -136,22 +122,6 @@ for an XYZ tile set</p>
       <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.ITileWalker.html">ITileWalker</a></h4>
       <section><p>Defines a strategy for walking through all the possible tiles for a given tiled map or tile set</p>
 </section>
-    <h3 id="enums">Enums
-  </h3>
-      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.CallbackStates.html">CallbackStates</a></h4>
-      <section><p>These are the avalible states for callbacks</p>
-</section>
-    <h3 id="delegates">Delegates
-  </h3>
-      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.TileErrorEventHandler.html">TileErrorEventHandler</a></h4>
-      <section><p>This delegate is used to monitor progress on tile rendering</p>
-</section>
-      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.TileProgressEventHandler.html">TileProgressEventHandler</a></h4>
-      <section><p>This delegate is used to monitor progress on tile rendering</p>
-</section>
-      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.TileRunParameters.RenderMethodDelegate.html">TileRunParameters.RenderMethodDelegate</a></h4>
-      <section><p>Defines a tile render method</p>
-</section>
 </article>
           </div>
           
@@ -162,7 +132,8 @@ for an XYZ tile set</p>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -176,7 +147,7 @@ for an XYZ tile set</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

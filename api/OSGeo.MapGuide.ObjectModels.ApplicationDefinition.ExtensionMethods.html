@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ExtensionMethods
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -92,16 +94,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -112,17 +108,81 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.html">OSGeo.MapGuide.ObjectModels.ApplicationDefinition</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.ObjectModels.dll</h6>
   <h5 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class ExtensionMethods</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_CreateExtensionElement_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.CreateExtensionElement(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1159">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_CreateExtensionElement_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.CreateExtensionElement*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_CreateExtensionElement_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.CreateExtensionElement(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement,System.String)">CreateExtensionElement(IExtensibleElement, String)</h4>
+  <div class="markdown level1 summary"><p>Creates an extension element for the given extensible element</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static XmlElement CreateExtensionElement(this IExtensibleElement ext, string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement.html">IExtensibleElement</a></td>
+        <td><span class="parametername">ext</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Xml.XmlElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindContainer_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinitionContainerInfoSet_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindContainer(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionContainerInfoSet%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L877">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindContainer_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindContainer*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindContainer_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinitionContainerInfoSet_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindContainer(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionContainerInfoSet,System.String)">FindContainer(IApplicationDefinitionContainerInfoSet, String)</h4>
   <div class="markdown level1 summary"><p>Gets a specific container info by type</p>
@@ -169,11 +229,16 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindElementByName_System_Xml_XmlElement___System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindElementByName(System.Xml.XmlElement%5B%5D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1189">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindElementByName_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindElementByName*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindElementByName_XmlElement___System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindElementByName(XmlElement[],System.String)">FindElementByName(XmlElement[], String)</h4>
-  <div class="markdown level1 summary"><p>Returns a <see cref="!:System.Xml.XmlElement"></see> whose name matches the specified name</p>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindElementByName_System_Xml_XmlElement___System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindElementByName(System.Xml.XmlElement[],System.String)">FindElementByName(XmlElement[], String)</h4>
+  <div class="markdown level1 summary"><p>Returns a <span class="xref">System.Xml.XmlElement</span> whose name matches the specified name</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -191,7 +256,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">XmlElement</span>[]</td>
+        <td><span class="xref">System.Xml.XmlElement</span>[]</td>
         <td><span class="parametername">elements</span></td>
         <td></td>
       </tr>
@@ -212,13 +277,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">XmlElement</span></td>
+        <td><span class="xref">System.Xml.XmlElement</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindTemplate_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinitionTemplateInfoSet_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindTemplate(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionTemplateInfoSet%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L915">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindTemplate_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindTemplate*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindTemplate_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinitionTemplateInfoSet_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindTemplate(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionTemplateInfoSet,System.String)">FindTemplate(IApplicationDefinitionTemplateInfoSet, String)</h4>
   <div class="markdown level1 summary"><p>Gets information for the named template</p>
@@ -265,8 +335,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindWidget_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindWidget(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L782">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindWidget_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindWidget*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindWidget_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindWidget(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition,System.String)">FindWidget(IApplicationDefinition, String)</h4>
   <div class="markdown level1 summary"><p>Gets the widget of the specified name</p>
@@ -313,8 +388,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindWidget_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinitionWidgetInfoSet_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindWidget(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionWidgetInfoSet%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L896">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindWidget_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindWidget*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_FindWidget_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinitionWidgetInfoSet_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.FindWidget(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinitionWidgetInfoSet,System.String)">FindWidget(IApplicationDefinitionWidgetInfoSet, String)</h4>
   <div class="markdown level1 summary"><p>Gets a specific Widget Info by name</p>
@@ -361,8 +441,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetAllValues_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetAllValues(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L969">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetAllValues_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetAllValues*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetAllValues_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetAllValues(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement)">GetAllValues(IExtensibleElement)</h4>
   <div class="markdown level1 summary"><p>Gets all the properties in this extensible element</p>
@@ -399,13 +484,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="xref">System.Collections.Specialized.NameValueCollection</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetFirstWidgetSet_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetFirstWidgetSet(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1227">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetFirstWidgetSet_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetFirstWidgetSet*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetFirstWidgetSet_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetFirstWidgetSet(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition)">GetFirstWidgetSet(IApplicationDefinition)</h4>
   <div class="markdown level1 summary"><p>Gets the first widget set of this application definition.</p>
@@ -447,8 +537,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetGroupById_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMapSet_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetGroupById(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMapSet%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L934">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetGroupById_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetGroupById*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetGroupById_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMapSet_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetGroupById(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMapSet,System.String)">GetGroupById(IMapSet, String)</h4>
   <div class="markdown level1 summary"><p>Gets the specified map group by its id</p>
@@ -495,8 +590,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetMapDefinition_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMap_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetMapDefinition(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMap)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1205">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetMapDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetMapDefinition*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetMapDefinition_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMap_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetMapDefinition(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMap)">GetMapDefinition(IMap)</h4>
   <div class="markdown level1 summary"><p>Set the map definition id</p>
@@ -538,8 +638,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetNames_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetNames(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L950">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetNames_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetNames*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetNames_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetNames(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement)">GetNames(IExtensibleElement)</h4>
   <div class="markdown level1 summary"><p>Gets the names of all properties of this extensible element</p>
@@ -581,8 +686,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetTemplateName_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetTemplateName(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L755">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetTemplateName_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetTemplateName*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetTemplateName_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetTemplateName(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition)">GetTemplateName(IApplicationDefinition)</h4>
   <div class="markdown level1 summary"><p>Gets the name of the fusion template</p>
@@ -624,8 +734,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetValue_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetValue(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1167">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetValue_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetValue*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetValue_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetValue(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement,System.String)">GetValue(IExtensibleElement, String)</h4>
   <div class="markdown level1 summary"><p>Gets the value of a property in this extensible element. If none exists, an empty string is returned</p>
@@ -672,8 +787,61 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetXYZUrls_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMap_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetXYZUrls(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMap)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1068">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetXYZUrls_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetXYZUrls*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_GetXYZUrls_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMap_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.GetXYZUrls(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMap)">GetXYZUrls(IMap)</h4>
+  <div class="markdown level1 summary"><p>Gets the configured XYZ urls for the given <a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMap.html">IMap</a> extension element</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;string&gt; GetXYZUrls(this IMap map)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMap.html">IMap</a></td>
+        <td><span class="parametername">map</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_RemoveWidget_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.RemoveWidget(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L804">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_RemoveWidget_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.RemoveWidget*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_RemoveWidget_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.RemoveWidget(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition,System.String,System.Boolean)">RemoveWidget(IApplicationDefinition, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Removes the specified widget from this</p>
@@ -713,10 +881,15 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetAllValues_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_System_Collections_Specialized_NameValueCollection_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetAllValues(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement%2CSystem.Collections.Specialized.NameValueCollection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1047">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetAllValues_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetAllValues*"></a>
-  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetAllValues_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_NameValueCollection_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetAllValues(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement,NameValueCollection)">SetAllValues(IExtensibleElement, NameValueCollection)</h4>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetAllValues_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_System_Collections_Specialized_NameValueCollection_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetAllValues(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement,System.Collections.Specialized.NameValueCollection)">SetAllValues(IExtensibleElement, NameValueCollection)</h4>
   <div class="markdown level1 summary"><p>Replace the values of all properties in this extensible element with the values provided</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -740,14 +913,19 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="xref">System.Collections.Specialized.NameValueCollection</span></td>
         <td><span class="parametername">values</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetMapDefinition_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMap_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetMapDefinition(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMap%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1216">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetMapDefinition_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetMapDefinition*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetMapDefinition_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMap_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetMapDefinition(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMap,System.String)">SetMapDefinition(IMap, String)</h4>
   <div class="markdown level1 summary"><p>Gets the map definition id</p>
@@ -779,8 +957,50 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetSubjectOrExternalLayerProperties_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_System_Collections_Generic_IDictionary_System_String_System_Object__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetSubjectOrExternalLayerProperties(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement%2CSystem.Collections.Generic.IDictionary%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1026">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetSubjectOrExternalLayerProperties_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetSubjectOrExternalLayerProperties*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetSubjectOrExternalLayerProperties_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_System_Collections_Generic_IDictionary_System_String_System_Object__" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetSubjectOrExternalLayerProperties(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement,System.Collections.Generic.IDictionary{System.String,System.Object})">SetSubjectOrExternalLayerProperties(IExtensibleElement, IDictionary&lt;String, Object&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetSubjectOrExternalLayerProperties(this IExtensibleElement ext, IDictionary&lt;string, object&gt; props)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement.html">IExtensibleElement</a></td>
+        <td><span class="parametername">ext</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">props</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetValue_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetValue(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1122">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetValue_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetValue*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetValue_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IExtensibleElement_System_String_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetValue(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IExtensibleElement,System.String,System.String)">SetValue(IExtensibleElement, String, String)</h4>
   <div class="markdown level1 summary"><p>Sets the value of a property in this extensible element.</p>
@@ -817,8 +1037,51 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetXYZUrls_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMap_System_String___.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetXYZUrls(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMap%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L1087">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetXYZUrls_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetXYZUrls*"></a>
+  <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_SetXYZUrls_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IMap_System_String___" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.SetXYZUrls(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMap,System.String[])">SetXYZUrls(IMap, String[])</h4>
+  <div class="markdown level1 summary"><p>Sets the XYZ urls for the given <a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMap.html">IMap</a> extension element</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetXYZUrls(this IMap map, params string[] urls)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IMap.html">IMap</a></td>
+        <td><span class="parametername">map</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">urls</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_WidgetNameExists_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.WidgetNameExists(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L768">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_WidgetNameExists_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.WidgetNameExists*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods_WidgetNameExists_OSGeo_MapGuide_ObjectModels_ApplicationDefinition_IApplicationDefinition_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods.WidgetNameExists(OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition,System.String)">WidgetNameExists(IApplicationDefinition, String)</h4>
   <div class="markdown level1 summary"><p>Gets whether a widget with the specified name already exists</p>
@@ -872,10 +1135,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_ApplicationDefinition_ExtensionMethods.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.ApplicationDefinition.ExtensionMethods%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/ApplicationDefinition/ApplicationDefinitionInterfaces.cs/#L748" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -889,7 +1159,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

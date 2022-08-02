@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IFeatureService
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -85,7 +87,7 @@
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Services.html">OSGeo.MapGuide.MaestroAPI.Services</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IFeatureService : IService</code></pre>
@@ -97,8 +99,13 @@ method is not necessary</p>
 </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_FeatureProviders.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.FeatureProviders%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L53">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_FeatureProviders_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.FeatureProviders*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_FeatureProviders" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.FeatureProviders">FeatureProviders</h4>
   <div class="markdown level1 summary"><p>Gets an array of all registered providers</p>
@@ -106,7 +113,7 @@ method is not necessary</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.FeatureProviderRegistryFeatureProvider[] FeatureProviders { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">FeatureProviderRegistryFeatureProvider[] FeatureProviders { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -118,15 +125,20 @@ method is not necessary</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.FeatureProviderRegistryFeatureProvider</span>[]</td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.FeatureProviderRegistryFeatureProvider.html">FeatureProviderRegistryFeatureProvider</a>[]</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L162">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_System_String_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource(System.String,System.String,System.String)">AggregateQueryFeatureSource(String, String, String)</h4>
   <div class="markdown level1 summary"><p>Executes an aggregate query on the specified feature source</p>
@@ -176,16 +188,21 @@ method is not necessary</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IReader</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a></td>
         <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a> containing the results of the query</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_System_String_System_String_System_String_System_Collections_Specialized_NameValueCollection_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource(System.String%2CSystem.String%2CSystem.String%2CSystem.Collections.Specialized.NameValueCollection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L182">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_System_String_System_String_System_String_NameValueCollection_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource(System.String,System.String,System.String,NameValueCollection)">AggregateQueryFeatureSource(String, String, String, NameValueCollection)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_System_String_System_String_System_String_System_Collections_Specialized_NameValueCollection_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource(System.String,System.String,System.String,System.Collections.Specialized.NameValueCollection)">AggregateQueryFeatureSource(String, String, String, NameValueCollection)</h4>
   <div class="markdown level1 summary"><p>Executes an aggregate query on the specified feature source</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -222,7 +239,7 @@ method is not necessary</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="xref">System.Collections.Specialized.NameValueCollection</span></td>
         <td><span class="parametername">aggregateFunctions</span></td>
         <td><p>A list of name/value pairs that contain the alias (name) for an FDO aggregate expression (value)</p>
 </td>
@@ -239,14 +256,19 @@ method is not necessary</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IReader</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a></td>
         <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a> containing the results of the query</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_System_String_System_String_System_String_System_String___.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource(System.String%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L172">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_AggregateQueryFeatureSource_System_String_System_String_System_String_System_String___" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.AggregateQueryFeatureSource(System.String,System.String,System.String,System.String[])">AggregateQueryFeatureSource(String, String, String, String[])</h4>
   <div class="markdown level1 summary"><p>Executes an aggregate query on the specified feature source</p>
@@ -302,14 +324,19 @@ method is not necessary</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IReader</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a></td>
         <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a> containing the results of the query</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSource_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSource(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L224">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSource*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSource_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSource(System.String)">DescribeFeatureSource(String)</h4>
   <div class="markdown level1 summary"><p>Describes the specified feature source</p>
@@ -347,7 +374,7 @@ method is not necessary</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">FeatureSourceDescription</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSourceDescription.html">FeatureSourceDescription</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -357,8 +384,13 @@ method is not necessary</p>
 <span class="xref">OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames</span> methods. Using this API will have a noticeable performance impact on
 really large datastores (whose size is in the 100s of classes).</p>
 </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSource_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSource(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L237">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSource*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSource_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSource(System.String,System.String)">DescribeFeatureSource(String, String)</h4>
   <div class="markdown level1 summary"><p>Describes the specified feature source</p>
@@ -402,7 +434,7 @@ really large datastores (whose size is in the 100s of classes).</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">FeatureSchema</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.html">FeatureSchema</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -412,8 +444,13 @@ really large datastores (whose size is in the 100s of classes).</p>
 <span class="xref">OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames</span> methods. Using this API will have a noticeable performance impact on
 really large datastores (whose size is in the 100s of classes).</p>
 </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSourcePartial_System_String_System_String_System_String___.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSourcePartial(System.String%2CSystem.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L251">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSourcePartial_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSourcePartial*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_DescribeFeatureSourcePartial_System_String_System_String_System_String___" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.DescribeFeatureSourcePartial(System.String,System.String,System.String[])">DescribeFeatureSourcePartial(String, String, String[])</h4>
   <div class="markdown level1 summary"><p>Describes the specified feature source restricted to only the specified schema and the specified class names</p>
@@ -463,7 +500,7 @@ really large datastores (whose size is in the 100s of classes).</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">FeatureSchema</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema.html">FeatureSchema</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -473,8 +510,13 @@ really large datastores (whose size is in the 100s of classes).</p>
 <span class="xref">OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames</span> methods. Using this API will have a noticeable performance impact on
 really large datastores (whose size is in the 100s of classes).</p>
 </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_EnumerateDataStores_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.EnumerateDataStores(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L283">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_EnumerateDataStores_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.EnumerateDataStores*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_EnumerateDataStores_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.EnumerateDataStores(System.String,System.String)">EnumerateDataStores(String, String)</h4>
   <div class="markdown level1 summary"><p>Enumerates all the data stores and if they are FDO enabled for the specified provider and partial connection string</p>
@@ -523,8 +565,13 @@ really large datastores (whose size is in the 100s of classes).</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_ExecuteSqlQuery_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.ExecuteSqlQuery(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L103">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_ExecuteSqlQuery_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.ExecuteSqlQuery*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_ExecuteSqlQuery_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.ExecuteSqlQuery(System.String,System.String)">ExecuteSqlQuery(String, String)</h4>
   <div class="markdown level1 summary"><p>Executes a SQL query</p>
@@ -568,7 +615,7 @@ really large datastores (whose size is in the 100s of classes).</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IReader</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a></td>
         <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IReader.html">IReader</a> containing the results of the query</p>
 </td>
       </tr>
@@ -578,8 +625,13 @@ really large datastores (whose size is in the 100s of classes).</p>
   <div class="markdown level1 remarks"><p>No validation is done on the SQL query string. The calling application should validate the SQL string to ensure
 that it does not contain any malicious operations.</p>
 </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetClassDefinition_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassDefinition(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L259">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetClassDefinition_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassDefinition*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetClassDefinition_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassDefinition(System.String,System.String)">GetClassDefinition(String, String)</h4>
   <div class="markdown level1 summary"><p>Gets the specified class definition</p>
@@ -623,13 +675,18 @@ that it does not contain any malicious operations.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ClassDefinition</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition.html">ClassDefinition</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetClassNames_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L301">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetClassNames_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetClassNames_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames(System.String,System.String)">GetClassNames(String, String)</h4>
   <div class="markdown level1 summary"><p>Gets an array of qualified feature class names from the specified feature source</p>
@@ -679,8 +736,13 @@ are returned</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetConnectionPropertyValues_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetConnectionPropertyValues(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L84">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetConnectionPropertyValues_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetConnectionPropertyValues*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetConnectionPropertyValues_System_String_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetConnectionPropertyValues(System.String,System.String,System.String)">GetConnectionPropertyValues(String, String, String)</h4>
   <div class="markdown level1 summary"><p>Gets the possible values for a given connection property</p>
@@ -736,8 +798,13 @@ are returned</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetFeatureProvider_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetFeatureProvider(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L91">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetFeatureProvider_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetFeatureProvider*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetFeatureProvider_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetFeatureProvider(System.String)">GetFeatureProvider(String)</h4>
   <div class="markdown level1 summary"><p>Returns an installed provider, given the name of the provider</p>
@@ -745,7 +812,7 @@ are returned</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.FeatureProviderRegistryFeatureProvider GetFeatureProvider(string providername)</code></pre>
+    <pre><code class="lang-csharp hljs">FeatureProviderRegistryFeatureProvider GetFeatureProvider(string providername)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -775,14 +842,19 @@ are returned</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.FeatureProviderRegistryFeatureProvider</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.FeatureProviderRegistryFeatureProvider.html">FeatureProviderRegistryFeatureProvider</a></td>
         <td><p>The first matching provider or null</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetIdentityProperties_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetIdentityProperties(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L275">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetIdentityProperties_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetIdentityProperties*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetIdentityProperties_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetIdentityProperties(System.String,System.String)">GetIdentityProperties(String, String)</h4>
   <div class="markdown level1 summary"><p>Gets the names of the identity properties from a feature</p>
@@ -832,8 +904,13 @@ are returned</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetLongTransactions_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetLongTransactions(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L309">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetLongTransactions_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetLongTransactions*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetLongTransactions_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetLongTransactions(System.String,System.Boolean)">GetLongTransactions(String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets the long transactions for the specified feature source</p>
@@ -877,13 +954,18 @@ are returned</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ILongTransactionList</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.ILongTransactionList.html">ILongTransactionList</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetProviderCapabilities_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetProviderCapabilities(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L48">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetProviderCapabilities_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetProviderCapabilities*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetProviderCapabilities_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetProviderCapabilities(System.String)">GetProviderCapabilities(String)</h4>
   <div class="markdown level1 summary"><p>Gets the capabilities of the specified provider</p>
@@ -925,8 +1007,13 @@ are returned</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSchemaMapping_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemaMapping(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L318">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSchemaMapping_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemaMapping*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSchemaMapping_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemaMapping(System.String,System.String)">GetSchemaMapping(String, String)</h4>
   <div class="markdown level1 summary"><p>Gets the schema mappings for the given FDO provider. These mappings form the basis for a custom configuration document
@@ -971,13 +1058,18 @@ for a feature source that supports configuration</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ConfigurationDocument</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument.html">ConfigurationDocument</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSchemas_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemas(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L290">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSchemas_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemas*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSchemas_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemas(System.String)">GetSchemas(String)</h4>
   <div class="markdown level1 summary"><p>Gets an array of schema names from the specified feature source</p>
@@ -1020,8 +1112,13 @@ for a feature source that supports configuration</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialContextInfo_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialContextInfo(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L267">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialContextInfo_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialContextInfo*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialContextInfo_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialContextInfo(System.String,System.Boolean)">GetSpatialContextInfo(String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Get the spatial context information for the specified feature source</p>
@@ -1029,7 +1126,7 @@ for a feature source that supports configuration</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.FdoSpatialContextList GetSpatialContextInfo(string resourceID, bool activeOnly)</code></pre>
+    <pre><code class="lang-csharp hljs">FdoSpatialContextList GetSpatialContextInfo(string resourceID, bool activeOnly)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1065,13 +1162,18 @@ for a feature source that supports configuration</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.FdoSpatialContextList</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextList.html">FdoSpatialContextList</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L191">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_System_String_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent(System.String,System.String,System.String)">GetSpatialExtent(String, String, String)</h4>
   <div class="markdown level1 summary"><p>Gets the geometric extent of the specified feature source</p>
@@ -1079,7 +1181,7 @@ for a feature source that supports configuration</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string className, string geometryPropertyName)</code></pre>
+    <pre><code class="lang-csharp hljs">IEnvelope GetSpatialExtent(string resourceID, string className, string geometryPropertyName)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1121,13 +1223,18 @@ for a feature source that supports configuration</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.IEnvelope</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IEnvelope.html">IEnvelope</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_System_String_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent(System.String%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L212">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_System_String_System_String_System_String_System_Boolean_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent(System.String,System.String,System.String,System.Boolean)">GetSpatialExtent(String, String, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets the geometric extent of the specified feature source</p>
@@ -1135,7 +1242,7 @@ for a feature source that supports configuration</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string className, string geometryPropertyName, bool allowFallbackToContextInformation)</code></pre>
+    <pre><code class="lang-csharp hljs">IEnvelope GetSpatialExtent(string resourceID, string className, string geometryPropertyName, bool allowFallbackToContextInformation)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1183,7 +1290,7 @@ for a feature source that supports configuration</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.IEnvelope</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IEnvelope.html">IEnvelope</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -1204,8 +1311,13 @@ for a feature source that supports configuration</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L201">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_GetSpatialExtent_System_String_System_String_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSpatialExtent(System.String,System.String,System.String,System.String)">GetSpatialExtent(String, String, String, String)</h4>
   <div class="markdown level1 summary"><p>Gets the geometric extent of the specified feature source</p>
@@ -1213,7 +1325,7 @@ for a feature source that supports configuration</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string className, string geometryPropertyName, string filter)</code></pre>
+    <pre><code class="lang-csharp hljs">IEnvelope GetSpatialExtent(string resourceID, string className, string geometryPropertyName, string filter)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1261,13 +1373,18 @@ for a feature source that supports configuration</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObjCommon.IEnvelope</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IEnvelope.html">IEnvelope</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L120">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String,System.String)">QueryFeatureSource(String, String)</h4>
   <div class="markdown level1 summary"><p>Executes a feature query on the specified feature source</p>
@@ -1311,14 +1428,19 @@ for a feature source that supports configuration</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IFeatureReader</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a></td>
         <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a> containing the results of the query</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L112">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String,System.String,System.String)">QueryFeatureSource(String, String, String)</h4>
   <div class="markdown level1 summary"><p>Executes a feature query on the specified feature source</p>
@@ -1368,14 +1490,19 @@ for a feature source that supports configuration</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IFeatureReader</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a></td>
         <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a> containing the results of the query</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_System_String_System_String___.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L130">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_System_String_System_String___" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String,System.String,System.String,System.String[])">QueryFeatureSource(String, String, String, String[])</h4>
   <div class="markdown level1 summary"><p>Executes a feature query on the specified feature source</p>
@@ -1431,16 +1558,21 @@ for a feature source that supports configuration</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IFeatureReader</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a></td>
         <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a> containing the results of the query</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_System_String_System_String___System_Collections_Specialized_NameValueCollection_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D%2CSystem.Collections.Specialized.NameValueCollection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L141">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_System_String_System_String___NameValueCollection_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String,System.String,System.String,System.String[],NameValueCollection)">QueryFeatureSource(String, String, String, String[], NameValueCollection)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_System_String_System_String___System_Collections_Specialized_NameValueCollection_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String,System.String,System.String,System.String[],System.Collections.Specialized.NameValueCollection)">QueryFeatureSource(String, String, String, String[], NameValueCollection)</h4>
   <div class="markdown level1 summary"><p>Executes a feature query on the specified feature source</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1483,7 +1615,7 @@ for a feature source that supports configuration</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="xref">System.Collections.Specialized.NameValueCollection</span></td>
         <td><span class="parametername">computedProperties</span></td>
         <td><p>A list of name/value pairs that contain the alias (name) for an FDO expression (value)</p>
 </td>
@@ -1500,16 +1632,21 @@ for a feature source that supports configuration</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IFeatureReader</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a></td>
         <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a> containing the results of the query</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_System_String_System_String___System_Collections_Specialized_NameValueCollection_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D%2CSystem.Collections.Specialized.NameValueCollection%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L153">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_System_String_System_String___NameValueCollection_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String,System.String,System.String,System.String[],NameValueCollection,System.Int32)">QueryFeatureSource(String, String, String, String[], NameValueCollection, Int32)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_QueryFeatureSource_System_String_System_String_System_String_System_String___System_Collections_Specialized_NameValueCollection_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.QueryFeatureSource(System.String,System.String,System.String,System.String[],System.Collections.Specialized.NameValueCollection,System.Int32)">QueryFeatureSource(String, String, String, String[], NameValueCollection, Int32)</h4>
   <div class="markdown level1 summary"><p>Executes a feature query on the specified feature source</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1552,7 +1689,7 @@ for a feature source that supports configuration</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="xref">System.Collections.Specialized.NameValueCollection</span></td>
         <td><span class="parametername">computedProperties</span></td>
         <td><p>A list of name/value pairs that contain the alias (name) for an FDO expression (value)</p>
 </td>
@@ -1575,14 +1712,19 @@ for a feature source that supports configuration</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IFeatureReader</span></td>
+        <td><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a></td>
         <td><p>A <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader.html">IFeatureReader</a> containing the results of the query</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_RemoveVersionFromProviderName_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.RemoveVersionFromProviderName(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L75">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_RemoveVersionFromProviderName_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.RemoveVersionFromProviderName*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_RemoveVersionFromProviderName_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.RemoveVersionFromProviderName(System.String)">RemoveVersionFromProviderName(String)</h4>
   <div class="markdown level1 summary"><p>Removes the version numbers from a providername</p>
@@ -1626,8 +1768,13 @@ for a feature source that supports configuration</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_TestConnection_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.TestConnection(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L68">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_TestConnection_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.TestConnection*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_TestConnection_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.TestConnection(System.String)">TestConnection(String)</h4>
   <div class="markdown level1 summary"><p>Tests the connection settings of the specified feature source</p>
@@ -1669,10 +1816,15 @@ for a feature source that supports configuration</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_TestConnection_System_String_System_Collections_Specialized_NameValueCollection_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.TestConnection(System.String%2CSystem.Collections.Specialized.NameValueCollection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L61">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_TestConnection_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.TestConnection*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_TestConnection_System_String_NameValueCollection_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.TestConnection(System.String,NameValueCollection)">TestConnection(String, NameValueCollection)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Services_IFeatureService_TestConnection_System_String_System_Collections_Specialized_NameValueCollection_" data-uid="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.TestConnection(System.String,System.Collections.Specialized.NameValueCollection)">TestConnection(String, NameValueCollection)</h4>
   <div class="markdown level1 summary"><p>Tests the specified connection settings</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1696,7 +1848,7 @@ for a feature source that supports configuration</p>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">NameValueCollection</span></td>
+        <td><span class="xref">System.Collections.Specialized.NameValueCollection</span></td>
         <td><span class="parametername">parameters</span></td>
         <td></td>
       </tr>
@@ -1724,10 +1876,17 @@ for a feature source that supports configuration</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Services_IFeatureService.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Services.IFeatureService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Services/IFeatureService.cs/#L41" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -1741,7 +1900,7 @@ for a feature source that supports configuration</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

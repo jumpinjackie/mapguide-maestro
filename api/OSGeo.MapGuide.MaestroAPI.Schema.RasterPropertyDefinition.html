@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class RasterPropertyDefinition
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -92,15 +94,21 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
     <div class="level2"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html">PropertyDefinition</a></div>
     <div class="level3"><span class="xref">RasterPropertyDefinition</span></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
-    <div><span class="xref">IFdoSerializable</span></div>
-    <div><span class="xref">IExpressionPropertySource</span></div>
+    <div><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html">IFdoSerializable</a></div>
+    <div><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IExpressionPropertySource.html">IExpressionPropertySource</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_Parent">PropertyDefinition.Parent</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_OSGeo_MapGuide_ObjectModels_Common_IFdoSerializable_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_">PropertyDefinition.IFdoSerializable.ReadXml(XmlNode, XmlNamespaceManager)</a>
+    </div>
+    <div>
+      <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_OSGeo_MapGuide_ObjectModels_Common_IFdoSerializable_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_">PropertyDefinition.IFdoSerializable.WriteXml(XmlDocument, XmlNode)</a>
     </div>
     <div>
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_Parse_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_">PropertyDefinition.Parse(XmlNode, XmlNamespaceManager)</a>
@@ -115,16 +123,10 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.SchemaElement.html#OSGeo_MapGuide_MaestroAPI_Schema_SchemaElement_Description">SchemaElement.Description</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -135,17 +137,28 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.html">OSGeo.MapGuide.MaestroAPI.Schema</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class RasterPropertyDefinition : PropertyDefinition, IFdoSerializable, IExpressionPropertySource</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition__ctor_System_String_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.%23ctor(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/RasterPropertyDefinition.cs/#L39">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition__ctor_System_String_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.#ctor(System.String,System.String)">RasterPropertyDefinition(String, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.html">RasterPropertyDefinition</a> class.</p>
@@ -181,8 +194,13 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_DefaultImageXSize.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.DefaultImageXSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/RasterPropertyDefinition.cs/#L48">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_DefaultImageXSize_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.DefaultImageXSize*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_DefaultImageXSize" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.DefaultImageXSize">DefaultImageXSize</h4>
   <div class="markdown level1 summary"><p>Gets or sets the default size of image file in the horizontal direction in pixels (number of columns).</p>
@@ -207,8 +225,13 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_DefaultImageYSize.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.DefaultImageYSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/RasterPropertyDefinition.cs/#L53">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_DefaultImageYSize_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.DefaultImageYSize*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_DefaultImageYSize" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.DefaultImageYSize">DefaultImageYSize</h4>
   <div class="markdown level1 summary"><p>Gets or sets the default size of an image file in the vertical direction in pixels (number of rows).</p>
@@ -233,8 +256,13 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_ExpressionType.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.ExpressionType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/RasterPropertyDefinition.cs/#L128">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_ExpressionType_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.ExpressionType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_ExpressionType" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.ExpressionType">ExpressionType</h4>
   <div class="markdown level1 summary"><p>Gets the expression data type</p>
@@ -261,8 +289,13 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_ExpressionType">PropertyDefinition.ExpressionType</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_IsNullable.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.IsNullable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/RasterPropertyDefinition.cs/#L58">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_IsNullable_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.IsNullable*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_IsNullable" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.IsNullable">IsNullable</h4>
   <div class="markdown level1 summary"><p>Gets or sets whether this property&apos;s value can be null.</p>
@@ -287,8 +320,13 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_IsReadOnly.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.IsReadOnly%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/RasterPropertyDefinition.cs/#L63">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_IsReadOnly_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.IsReadOnly*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_IsReadOnly" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.IsReadOnly">IsReadOnly</h4>
   <div class="markdown level1 summary"><p>Gets or sets whether this property is read-only.</p>
@@ -313,8 +351,13 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_SpatialContextAssociation.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.SpatialContextAssociation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/RasterPropertyDefinition.cs/#L68">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_SpatialContextAssociation_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.SpatialContextAssociation*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_SpatialContextAssociation" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.SpatialContextAssociation">SpatialContextAssociation</h4>
   <div class="markdown level1 summary"><p>Gets or sets the Spatial Context name associated to this raster property.</p>
@@ -339,8 +382,13 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_Type.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/RasterPropertyDefinition.cs/#L73">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_Type_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.Type*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_Type" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.Type">Type</h4>
   <div class="markdown level1 summary"><p>Gets the type of property definition</p>
@@ -369,8 +417,13 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_Type">PropertyDefinition.Type</a></div>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.ReadXml(System.Xml.XmlNode%2CSystem.Xml.XmlNamespaceManager)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/RasterPropertyDefinition.cs/#L107">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_ReadXml_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.ReadXml*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.ReadXml(System.Xml.XmlNode,System.Xml.XmlNamespaceManager)">ReadXml(XmlNode, XmlNamespaceManager)</h4>
   <div class="markdown level1 summary"><p>Set the current element&apos;s content from the current XML node</p>
@@ -404,8 +457,13 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_">PropertyDefinition.ReadXml(XmlNode, XmlNamespaceManager)</a></div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.WriteXml(System.Xml.XmlDocument%2CSystem.Xml.XmlNode)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/RasterPropertyDefinition.cs/#L80">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_WriteXml_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.WriteXml*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_" data-uid="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition.WriteXml(System.Xml.XmlDocument,System.Xml.XmlNode)">WriteXml(XmlDocument, XmlNode)</h4>
   <div class="markdown level1 summary"><p>Writes the current element&apos;s content</p>
@@ -441,10 +499,10 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
   <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition.html#OSGeo_MapGuide_MaestroAPI_Schema_PropertyDefinition_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_">PropertyDefinition.WriteXml(XmlDocument, XmlNode)</a></div>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">IFdoSerializable</span>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html">IFdoSerializable</a>
   </div>
   <div>
-      <span class="xref">IExpressionPropertySource</span>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IExpressionPropertySource.html">IExpressionPropertySource</a>
   </div>
 </article>
           </div>
@@ -453,10 +511,17 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Schema_RasterPropertyDefinition.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Schema/RasterPropertyDefinition.cs/#L32" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -470,7 +535,7 @@ necessary to insert a &apos;new&apos; raster, in the absence of any other inform
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

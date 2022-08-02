@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Struct TileRef
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -99,22 +101,27 @@
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
     </div>
     <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+      <span class="xref">System.Object.GetType()</span>
     </div>
     <div>
-      <span class="xref">System.Object.GetType()</span>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.html">OSGeo.MapGuide.MaestroAPI.Tile</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public struct TileRef</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Tile_TileRef__ctor_System_String_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Tile.TileRef.%23ctor(System.String%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Tile/ITileWalker.cs/#L39">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef__ctor_System_String_System_Int32_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.#ctor(System.String,System.Int32,System.Int32,System.Int32)">TileRef(String, Int32, Int32, Int32)</h4>
   <div class="markdown level1 summary"><p>Constructs a new instance</p>
@@ -158,8 +165,13 @@
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Col.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Col%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Tile/ITileWalker.cs/#L82">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Col_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Col*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Col" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Col">Col</h4>
   <div class="markdown level1 summary"><p>The column</p>
@@ -167,7 +179,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Col { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly int Col { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -184,8 +196,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Tile_TileRef_GroupName.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Tile.TileRef.GroupName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Tile/ITileWalker.cs/#L72">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef_GroupName_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.GroupName*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef_GroupName" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.GroupName">GroupName</h4>
   <div class="markdown level1 summary"><p>The base layer group</p>
@@ -193,7 +210,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string GroupName { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly string GroupName { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -210,8 +227,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Row.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Row%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Tile/ITileWalker.cs/#L77">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Row_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Row*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Row" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Row">Row</h4>
   <div class="markdown level1 summary"><p>The row</p>
@@ -219,7 +241,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Row { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly int Row { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -236,8 +258,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Scale.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Scale%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Tile/ITileWalker.cs/#L87">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Scale_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Scale*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Scale" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Scale">Scale</h4>
   <div class="markdown level1 summary"><p>The scale index</p>
@@ -245,7 +272,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Scale { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly int Scale { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -258,6 +285,87 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Parse_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Parse(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Tile/ITileWalker.cs/#L52">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Parse_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Parse*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Parse_System_String_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Parse(System.String)">Parse(String)</h4>
+  <div class="markdown level1 summary"><p>Parses a given tile ref string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TileRef? Parse(string str)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">str</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.html">TileRef</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Serialize.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Serialize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Tile/ITileWalker.cs/#L67">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Serialize_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Serialize*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Tile_TileRef_Serialize" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileRef.Serialize">Serialize()</h4>
+  <div class="markdown level1 summary"><p>Serializes this to a string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Serialize()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -269,10 +377,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Tile_TileRef.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Tile.TileRef%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Tile/ITileWalker.cs/#L30" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -286,7 +401,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

@@ -8,7 +8,7 @@
     <title>Getting Started | MapGuide Maestro </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Getting Started | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -20,7 +20,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -59,9 +59,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -94,13 +96,28 @@
 <h2 id="supported-platforms">Supported Platforms</h2>
 <p>The MapGuide Maestro API targets the following platforms:</p>
 <ul>
-<li>.net Framework 4.6.1</li>
 <li>.net Standard 2.0</li>
 </ul>
-<div class="NOTE"><h5>Note</h5><p>Until further notice, due to constraints imposed by upstream dependencies, the <strong>.net Standard 2.0</strong> target is not strong-named, while the <strong>.net Framework 4.6.1</strong> target is strong-named</p>
-</div>
 <h2 id="acquiring-the-maestro-api">Acquiring the Maestro API</h2>
 <p>The MapGuide Maestro API is available as a <a href="https://www.nuget.org/packages/OSGeo.MapGuide.MaestroAPI">pre-release NuGet package</a> and can be installed through the NuGet package manager in Visual Studio or the <code>dotnet add package</code> command from the dotnet CLI.</p>
+<h2 id="enabling-sourcelink">Enabling SourceLink</h2>
+<p>The MapGuide Maestro API package is built with SourceLink support, which if enabled in your development environment will allow you to step into the actual MapGuide Maestro API source code while debugging.</p>
+<p>To enable source link in Visual Studio, do the following:</p>
+<ol>
+<li>Enable the NuGet Symbol Server under <code>Debugging &gt; Symbols</code></li>
+</ol>
+<p><img src="../images/1_SourceLink_EnableNuGetSymbolServer.png" alt=""></p>
+<ol>
+<li>Disable <code>Just My Code</code> under <code>Debugging &gt; General</code></li>
+</ol>
+<p><img src="../images/2_SourceLink_DisableJustMyCode.png" alt=""></p>
+<ol>
+<li>Enable Source Server and Source Link Support under the same section</li>
+</ol>
+<p><img src="../images/3_SourceLink_Enable.png" alt=""></p>
+<ol>
+<li>SourceLink is now enabled and you can step into Maestro API sources</li>
+</ol>
 </article>
           </div>
           
@@ -114,7 +131,8 @@
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -128,7 +146,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace OSGeo.MapGuide.MaestroAPI.Commands
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -156,6 +158,12 @@
       <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.IGetTileProviders.html">IGetTileProviders</a></h4>
       <section><p>A command that enumerates the list of registered tile set providers</p>
 </section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.IGetWfsCapabilities.html">IGetWfsCapabilities</a></h4>
+      <section><p>Gets the document describing the WFS capabilities of this service</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.IGetWmsCapabilities.html">IGetWmsCapabilities</a></h4>
+      <section><p>Gets the document describing the WMS capabilities of this service</p>
+</section>
       <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.IInsertFeatures.html">IInsertFeatures</a></h4>
       <section><p>Defines a command that inserts a feature into a Feature Source</p>
 </section>
@@ -171,6 +179,12 @@
       <section><p>A bitmask that defines what information to include in a CreateRuntimeMap or DescribeRuntimeMap
 response.</p>
 </section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.WfsVersion.html">WfsVersion</a></h4>
+      <section><p>Version of WFS supported by MapGuide</p>
+</section>
+      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.WmsVersion.html">WmsVersion</a></h4>
+      <section><p>Version of WMS supported by MapGuide</p>
+</section>
 </article>
           </div>
           
@@ -181,7 +195,8 @@ response.</p>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -195,7 +210,7 @@ response.</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

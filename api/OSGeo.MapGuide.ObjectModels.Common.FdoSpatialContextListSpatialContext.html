@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class FdoSpatialContextListSpatialContext
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -89,22 +91,52 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">FdoSpatialContextListSpatialContext</span></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSpatialContext.html">IFdoSpatialContext</a></div>
     <div><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html">IFdoSerializable</a></div>
+    <div><span class="xref">System.ComponentModel.INotifyPropertyChanged</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.html">OSGeo.MapGuide.ObjectModels.Common</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.ObjectModels.dll</h6>
   <h5 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Serializable]
-public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropertyChanged, IFdoSpatialContext, IFdoSerializable</code></pre>
+public class FdoSpatialContextListSpatialContext : IFdoSpatialContext, IFdoSerializable, INotifyPropertyChanged</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext__ctor.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L274">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext__ctor_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext__ctor" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.#ctor">FdoSpatialContextListSpatialContext()</h4>
   <div class="markdown level1 summary"></div>
@@ -115,8 +147,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_CoordinateSystemName.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.CoordinateSystemName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L314">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_CoordinateSystemName_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.CoordinateSystemName*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_CoordinateSystemName" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.CoordinateSystemName">CoordinateSystemName</h4>
   <div class="markdown level1 summary"></div>
@@ -140,8 +177,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_CoordinateSystemWkt.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.CoordinateSystemWkt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L332">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_CoordinateSystemWkt_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.CoordinateSystemWkt*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_CoordinateSystemWkt" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.CoordinateSystemWkt">CoordinateSystemWkt</h4>
   <div class="markdown level1 summary"></div>
@@ -165,8 +207,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Description.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L296">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Description_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Description*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Description" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Description">Description</h4>
   <div class="markdown level1 summary"></div>
@@ -190,8 +237,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Extent.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Extent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L365">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Extent_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Extent*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Extent" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Extent">Extent</h4>
   <div class="markdown level1 summary"><p>This would return AWKT representing extents e.g. polygon, polyline or circle etc.</p>
@@ -216,8 +268,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_ExtentType.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.ExtentType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L350">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_ExtentType_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.ExtentType*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_ExtentType" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.ExtentType">ExtentType</h4>
   <div class="markdown level1 summary"></div>
@@ -241,8 +298,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_IsActive.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.IsActive%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L407">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_IsActive_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.IsActive*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_IsActive" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.IsActive">IsActive</h4>
   <div class="markdown level1 summary"></div>
@@ -266,8 +328,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Name.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L278">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Name_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Name*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Name" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Name">Name</h4>
   <div class="markdown level1 summary"></div>
@@ -291,8 +358,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_XYTolerance.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.XYTolerance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L383">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_XYTolerance_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.XYTolerance*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_XYTolerance" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.XYTolerance">XYTolerance</h4>
   <div class="markdown level1 summary"></div>
@@ -316,8 +388,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_ZTolerance.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.ZTolerance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L395">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_ZTolerance_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.ZTolerance*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_ZTolerance" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.ZTolerance">ZTolerance</h4>
   <div class="markdown level1 summary"></div>
@@ -343,8 +420,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Clone.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Clone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L587">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Clone_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Clone*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Clone" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Clone">Clone()</h4>
   <div class="markdown level1 summary"><p>Create a clone of this FdoSpatialContextListSpatialContext object</p>
@@ -369,8 +451,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Deserialize_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Deserialize(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L489">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Deserialize_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Deserialize*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Deserialize_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Deserialize(System.String)">Deserialize(String)</h4>
   <div class="markdown level1 summary"></div>
@@ -411,8 +498,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Deserialize_System_String_OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Deserialize(System.String%2COSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L484">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Deserialize_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Deserialize*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Deserialize_System_String_OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext__" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Deserialize(System.String,OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext@)">Deserialize(String, out FdoSpatialContextListSpatialContext)</h4>
   <div class="markdown level1 summary"></div>
@@ -458,8 +550,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Deserialize_System_String_OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext__System_Exception__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Deserialize(System.String%2COSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext%40%2CSystem.Exception%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L471">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Deserialize_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Deserialize*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Deserialize_System_String_OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext__System_Exception__" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Deserialize(System.String,OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext@,System.Exception@)">Deserialize(String, out FdoSpatialContextListSpatialContext, out Exception)</h4>
   <div class="markdown level1 summary"><p>Deserializes workflow markup into an FdoSpatialContextListSpatialContext object</p>
@@ -515,8 +612,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_LoadFromFile_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.LoadFromFile(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L561">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_LoadFromFile_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.LoadFromFile*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_LoadFromFile_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.LoadFromFile(System.String)">LoadFromFile(String)</h4>
   <div class="markdown level1 summary"></div>
@@ -557,8 +659,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_LoadFromFile_System_String_OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.LoadFromFile(System.String%2COSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L556">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_LoadFromFile_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.LoadFromFile*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_LoadFromFile_System_String_OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext__" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.LoadFromFile(System.String,OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext@)">LoadFromFile(String, out FdoSpatialContextListSpatialContext)</h4>
   <div class="markdown level1 summary"></div>
@@ -604,8 +711,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_LoadFromFile_System_String_OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext__System_Exception__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.LoadFromFile(System.String%2COSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext%40%2CSystem.Exception%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L543">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_LoadFromFile_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.LoadFromFile*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_LoadFromFile_System_String_OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext__System_Exception__" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.LoadFromFile(System.String,OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext@,System.Exception@)">LoadFromFile(String, out FdoSpatialContextListSpatialContext, out Exception)</h4>
   <div class="markdown level1 summary"><p>Deserializes xml markup from file into an FdoSpatialContextListSpatialContext object</p>
@@ -661,8 +773,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_OnPropertyChanged_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.OnPropertyChanged(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L432">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_OnPropertyChanged_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.OnPropertyChanged*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_OnPropertyChanged_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.OnPropertyChanged(System.String)">OnPropertyChanged(String)</h4>
   <div class="markdown level1 summary"></div>
@@ -688,8 +805,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.ReadXml(System.Xml.XmlNode%2CSystem.Xml.XmlNamespaceManager)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Common/IFdoSpatialContext.cs/#L241">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_ReadXml_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.ReadXml*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.ReadXml(System.Xml.XmlNode,System.Xml.XmlNamespaceManager)">ReadXml(XmlNode, XmlNamespaceManager)</h4>
   <div class="markdown level1 summary"><p>Initialize from the given XML node</p>
@@ -721,8 +843,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_SaveToFile_System_String_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.SaveToFile(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L520">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_SaveToFile_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.SaveToFile*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_SaveToFile_System_String_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.SaveToFile(System.String)">SaveToFile(String)</h4>
   <div class="markdown level1 summary"></div>
@@ -748,8 +875,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_SaveToFile_System_String_System_Exception__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.SaveToFile(System.String%2CSystem.Exception%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L508">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_SaveToFile_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.SaveToFile*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_SaveToFile_System_String_System_Exception__" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.SaveToFile(System.String,System.Exception@)">SaveToFile(String, out Exception)</h4>
   <div class="markdown level1 summary"><p>Serializes current FdoSpatialContextListSpatialContext object into file</p>
@@ -799,8 +931,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Serialize.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Serialize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L444">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Serialize_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Serialize*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_Serialize" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.Serialize">Serialize()</h4>
   <div class="markdown level1 summary"><p>Serializes current FdoSpatialContextListSpatialContext object into an XML document</p>
@@ -826,8 +963,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.WriteXml(System.Xml.XmlDocument%2CSystem.Xml.XmlNode)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Common/IFdoSpatialContext.cs/#L151">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_WriteXml_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.WriteXml*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.WriteXml(System.Xml.XmlDocument,System.Xml.XmlNode)">WriteXml(XmlDocument, XmlNode)</h4>
   <div class="markdown level1 summary"><p>Writes to XML</p>
@@ -861,14 +1003,19 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
   </table>
   <h3 id="events">Events
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_PropertyChanged.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.PropertyChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L430">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_PropertyChanged" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.PropertyChanged">PropertyChanged</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event ComponentModel.PropertyChangedEventHandler PropertyChanged</code></pre>
+    <pre><code class="lang-csharp hljs">public event PropertyChangedEventHandler PropertyChanged</code></pre>
   </div>
   <h5 class="eventType">Event Type</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -887,8 +1034,13 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
   </table>
   <h3 id="eii">Explicit Interface Implementations
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_OSGeo_MapGuide_ObjectModels_Common_IFdoSpatialContext_Extent.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.OSGeo%23MapGuide%23ObjectModels%23Common%23IFdoSpatialContext%23Extent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Common/IFdoSpatialContext.cs/#L104">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_OSGeo_MapGuide_ObjectModels_Common_IFdoSpatialContext_Extent_" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.OSGeo#MapGuide#ObjectModels#Common#IFdoSpatialContext#Extent*"></a>
   <h4 id="OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext_OSGeo_MapGuide_ObjectModels_Common_IFdoSpatialContext_Extent" data-uid="OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext.OSGeo#MapGuide#ObjectModels#Common#IFdoSpatialContext#Extent">IFdoSpatialContext.Extent</h4>
   <div class="markdown level1 summary"></div>
@@ -919,6 +1071,9 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
   <div>
       <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html">IFdoSerializable</a>
   </div>
+  <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged</span>
+  </div>
 </article>
           </div>
           
@@ -926,10 +1081,17 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_ObjectModels_Common_FdoSpatialContextListSpatialContext.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContext%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.ObjectModels/Generated/FdoSpatialContextList-1.0.0.designer.cs/#L238" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -943,7 +1105,7 @@ public class FdoSpatialContextListSpatialContext : ComponentModel.INotifyPropert
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

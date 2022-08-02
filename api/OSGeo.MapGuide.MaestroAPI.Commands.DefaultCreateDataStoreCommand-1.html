@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class DefaultCreateDataStoreCommand&lt;TConn&gt;
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -90,11 +92,12 @@
     <div class="level1"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCommand-1.html">DefaultCommand</a>&lt;TConn&gt;</div>
     <div class="level2"><span class="xref">DefaultCreateDataStoreCommand&lt;TConn&gt;</span></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore.html">ICreateDataStore</a></div>
     <div><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.ICommand.html">ICommand</a></div>
-    <div><span class="xref">IFdoSpatialContext</span></div>
+    <div><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSpatialContext.html">IFdoSpatialContext</a></div>
+    <div><a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html">IFdoSerializable</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -108,16 +111,10 @@
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCommand-1.html#OSGeo_MapGuide_MaestroAPI_Commands_DefaultCommand_1_ValidateCoreParams">DefaultCommand&lt;TConn&gt;.ValidateCoreParams()</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -128,12 +125,18 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.html">OSGeo.MapGuide.MaestroAPI.Commands</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class DefaultCreateDataStoreCommand&lt;TConn&gt; : DefaultCommand&lt;TConn&gt;, ICreateDataStore, ICommand, IFdoSpatialContext where TConn : IServerConnection</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class DefaultCreateDataStoreCommand&lt;TConn&gt; : DefaultCommand&lt;TConn&gt;, ICreateDataStore, ICommand, IFdoSpatialContext, IFdoSerializable where TConn : IServerConnection</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -153,8 +156,13 @@
   </table>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1__ctor__0_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.%23ctor(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L336">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1__ctor__0_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.#ctor(`0)">DefaultCreateDataStoreCommand(TConn)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand-1.html">DefaultCreateDataStoreCommand&lt;TConn&gt;</a> class.</p>
@@ -184,8 +192,13 @@
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_CoordinateSystemName.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.CoordinateSystemName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L423">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_CoordinateSystemName_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.CoordinateSystemName*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_CoordinateSystemName" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.CoordinateSystemName">CoordinateSystemName</h4>
   <div class="markdown level1 summary"><p>Gets or sets the name of the coordinate system.</p>
@@ -211,8 +224,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_CoordinateSystemWkt.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.CoordinateSystemWkt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L435">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_CoordinateSystemWkt_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.CoordinateSystemWkt*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_CoordinateSystemWkt" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.CoordinateSystemWkt">CoordinateSystemWkt</h4>
   <div class="markdown level1 summary"><p>Gets or sets the coordinate system WKT.</p>
@@ -238,8 +256,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Description.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L447">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Description_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.Description*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Description" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.Description">Description</h4>
   <div class="markdown level1 summary"><p>Gets or sets the description.</p>
@@ -265,8 +288,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Extent.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.Extent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L459">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Extent_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.Extent*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Extent" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.Extent">Extent</h4>
   <div class="markdown level1 summary"><p>Gets or sets the extent.</p>
@@ -292,8 +320,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_ExtentType.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.ExtentType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L471">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_ExtentType_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.ExtentType*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_ExtentType" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.ExtentType">ExtentType</h4>
   <div class="markdown level1 summary"><p>Gets or sets the type of the extent.</p>
@@ -319,8 +352,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_FeatureSourceId.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.FeatureSourceId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L359">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_FeatureSourceId_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.FeatureSourceId*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_FeatureSourceId" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.FeatureSourceId">FeatureSourceId</h4>
   <div class="markdown level1 summary"><p>Gets or sets the feature source id.</p>
@@ -346,8 +384,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_FileName.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.FileName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L383">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_FileName_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.FileName*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_FileName" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.FileName">FileName</h4>
   <div class="markdown level1 summary"><p>Gets or sets the name of the file.</p>
@@ -373,8 +416,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Name.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L483">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Name_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.Name*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Name" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.Name">Name</h4>
   <div class="markdown level1 summary"><p>Gets or sets the name of the spatial context to create.</p>
@@ -400,8 +448,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Provider.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.Provider%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L371">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Provider_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.Provider*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Provider" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.Provider">Provider</h4>
   <div class="markdown level1 summary"><p>Gets or sets the provider.</p>
@@ -427,8 +480,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Schema.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.Schema%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L347">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Schema_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.Schema*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Schema" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.Schema">Schema</h4>
   <div class="markdown level1 summary"><p>Gets or sets the schema.</p>
@@ -454,8 +512,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_XYTolerance.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.XYTolerance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L495">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_XYTolerance_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.XYTolerance*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_XYTolerance" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.XYTolerance">XYTolerance</h4>
   <div class="markdown level1 summary"><p>Gets or sets the XY tolerance.</p>
@@ -481,8 +544,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_ZTolerance.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.ZTolerance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L507">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_ZTolerance_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.ZTolerance*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_ZTolerance" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.ZTolerance">ZTolerance</h4>
   <div class="markdown level1 summary"><p>Gets or sets the Z tolerance.</p>
@@ -510,8 +578,13 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Execute.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.Execute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L392">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Execute_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.Execute*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_Execute" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.Execute">Execute()</h4>
   <div class="markdown level1 summary"><p>Executes this instance.</p>
@@ -521,8 +594,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Execute()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_ExecuteInternal.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.ExecuteInternal%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L415">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_ExecuteInternal_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.ExecuteInternal*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_ExecuteInternal" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.ExecuteInternal">ExecuteInternal()</h4>
   <div class="markdown level1 summary"><p>Performs actual execution of the command.</p>
@@ -532,8 +610,13 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected abstract void ExecuteInternal()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.ReadXml(System.Xml.XmlNode%2CSystem.Xml.XmlNamespaceManager)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L528">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_ReadXml_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.ReadXml*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_ReadXml_System_Xml_XmlNode_System_Xml_XmlNamespaceManager_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.ReadXml(System.Xml.XmlNode,System.Xml.XmlNamespaceManager)">ReadXml(XmlNode, XmlNamespaceManager)</h4>
   <div class="markdown level1 summary"></div>
@@ -564,8 +647,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601.WriteXml(System.Xml.XmlDocument%2CSystem.Xml.XmlNode)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L518">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_WriteXml_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.WriteXml*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1_WriteXml_System_Xml_XmlDocument_System_Xml_XmlNode_" data-uid="OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand`1.WriteXml(System.Xml.XmlDocument,System.Xml.XmlNode)">WriteXml(XmlDocument, XmlNode)</h4>
   <div class="markdown level1 summary"></div>
@@ -604,7 +692,10 @@
       <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Commands.ICommand.html">ICommand</a>
   </div>
   <div>
-      <span class="xref">IFdoSpatialContext</span>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSpatialContext.html">IFdoSpatialContext</a>
+  </div>
+  <div>
+      <a class="xref" href="OSGeo.MapGuide.ObjectModels.Common.IFdoSerializable.html">IFdoSerializable</a>
   </div>
 </article>
           </div>
@@ -613,10 +704,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Commands_DefaultCreateDataStoreCommand_1.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Commands.DefaultCreateDataStoreCommand%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Commands/FeatureManipulationCommandImpl.cs/#L330" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -630,7 +728,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

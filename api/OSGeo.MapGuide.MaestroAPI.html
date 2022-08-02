@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace OSGeo.MapGuide.MaestroAPI
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -85,12 +87,6 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
-      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ArgumentParser.html">ArgumentParser</a></h4>
-      <section><p>A helper class to parse command-line arguments</p>
-</section>
-      <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.CommandLineArguments.html">CommandLineArguments</a></h4>
-      <section><p>A set of common command-line arguments</p>
-</section>
       <h4><a class="xref" href="OSGeo.MapGuide.MaestroAPI.ConnectionProviderEntry.html">ConnectionProviderEntry</a></h4>
       <section><p>Represents an entry in the Connection Provider Registry</p>
 </section>
@@ -108,7 +104,7 @@ file called ConnectionProviders.xml which contains all the registered providers.
 <ol><li>The name of the provider</li><li>The assembly containing the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> implementation</li><li>The name of this <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> implementation</li></ol>
 <p>
 The <a class="xref" href="OSGeo.MapGuide.MaestroAPI.IServerConnection.html">IServerConnection</a> implementation is expected to have a non-public constructor which takes a single parameter,
-a <see cref="!:System.Collections.Specialized.NameValueCollection"></see> containing the initialization parameters parsed from the given connection
+a <span class="xref">System.Collections.Specialized.NameValueCollection</span> containing the initialization parameters parsed from the given connection
 string.
 </p>
 </section>
@@ -256,7 +252,8 @@ what features, services and resource types are not supported.
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -270,7 +267,7 @@ what features, services and resource types are not supported.
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

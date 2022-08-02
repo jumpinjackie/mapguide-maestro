@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class WeakEventHandler
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -92,16 +94,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -112,25 +108,36 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.html">OSGeo.MapGuide.MaestroAPI</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_WeakEventHandler_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class WeakEventHandler</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Match_System_Delegate_System_Delegate_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Match(System.Delegate%2CSystem.Delegate)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/WeakEventHandler.cs/#L163">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Match_" data-uid="OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Match*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Match_Delegate_Delegate_" data-uid="OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Match(Delegate,Delegate)">Match(Delegate, Delegate)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Match_System_Delegate_System_Delegate_" data-uid="OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Match(System.Delegate,System.Delegate)">Match(Delegate, Delegate)</h4>
   <div class="markdown level1 summary"><p>Returns true if the given weak and strong event handlers match</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Boolean Match(Delegate weakEventHandler, Delegate strongEventHandler)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool Match(Delegate weakEventHandler, Delegate strongEventHandler)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -143,12 +150,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Delegate</span></td>
+        <td><span class="xref">System.Delegate</span></td>
         <td><span class="parametername">weakEventHandler</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Delegate</span></td>
+        <td><span class="xref">System.Delegate</span></td>
         <td><span class="parametername">strongEventHandler</span></td>
         <td></td>
       </tr>
@@ -164,15 +171,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Boolean</span></td>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Wrap_System_EventHandler_System_Action_System_EventHandler__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Wrap(System.EventHandler%2CSystem.Action%7BSystem.EventHandler%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/WeakEventHandler.cs/#L128">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Wrap_" data-uid="OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Wrap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Wrap_EventHandler_Action_EventHandler__" data-uid="OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Wrap(EventHandler,Action{EventHandler})">Wrap(EventHandler, Action&lt;EventHandler&gt;)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Wrap_System_EventHandler_System_Action_System_EventHandler__" data-uid="OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Wrap(System.EventHandler,System.Action{System.EventHandler})">Wrap(EventHandler, Action&lt;EventHandler&gt;)</h4>
   <div class="markdown level1 summary"><p>Wraps the given event handler as a weak event</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -191,12 +203,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">EventHandler</span></td>
+        <td><span class="xref">System.EventHandler</span></td>
         <td><span class="parametername">eh</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Action</span>&lt;<span class="xref">EventHandler</span>&gt;</td>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.EventHandler</span>&gt;</td>
         <td><span class="parametername">cleanup</span></td>
         <td></td>
       </tr>
@@ -212,21 +224,27 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">EventHandler</span></td>
+        <td><span class="xref">System.EventHandler</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Wrap__1___0_System_Action___0__.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Wrap%60%601(%60%600%2CSystem.Action%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/WeakEventHandler.cs/#L140">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Wrap_" data-uid="OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Wrap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Wrap__1___0_Action___0__" data-uid="OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Wrap``1(``0,Action{``0})">Wrap&lt;TEventHandler&gt;(TEventHandler, Action&lt;TEventHandler&gt;)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Wrap__1___0_System_Action___0__" data-uid="OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Wrap``1(``0,System.Action{``0})">Wrap&lt;TEventHandler&gt;(TEventHandler, Action&lt;TEventHandler&gt;)</h4>
   <div class="markdown level1 summary"><p>Wraps the given event handler as a weak event</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static TEventHandler Wrap&lt;TEventHandler&gt;(TEventHandler eh, Action&lt;TEventHandler&gt; cleanup)where TEventHandler : class</code></pre>
+    <pre><code class="lang-csharp hljs">public static TEventHandler Wrap&lt;TEventHandler&gt;(TEventHandler eh, Action&lt;TEventHandler&gt; cleanup)
+    where TEventHandler : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -244,7 +262,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Action</span>&lt;TEventHandler&gt;</td>
+        <td><span class="xref">System.Action</span>&lt;TEventHandler&gt;</td>
         <td><span class="parametername">cleanup</span></td>
         <td></td>
       </tr>
@@ -280,16 +298,22 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Wrap__1_System_EventHandler___0__System_Action_System_EventHandler___0___.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Wrap%60%601(System.EventHandler%7B%60%600%7D%2CSystem.Action%7BSystem.EventHandler%7B%60%600%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/WeakEventHandler.cs/#L152">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Wrap_" data-uid="OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Wrap*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Wrap__1_EventHandler___0__Action_EventHandler___0___" data-uid="OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Wrap``1(EventHandler{``0},Action{EventHandler{``0}})">Wrap&lt;TEventArgs&gt;(EventHandler&lt;TEventArgs&gt;, Action&lt;EventHandler&lt;TEventArgs&gt;&gt;)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_WeakEventHandler_Wrap__1_System_EventHandler___0__System_Action_System_EventHandler___0___" data-uid="OSGeo.MapGuide.MaestroAPI.WeakEventHandler.Wrap``1(System.EventHandler{``0},System.Action{System.EventHandler{``0}})">Wrap&lt;TEventArgs&gt;(EventHandler&lt;TEventArgs&gt;, Action&lt;EventHandler&lt;TEventArgs&gt;&gt;)</h4>
   <div class="markdown level1 summary"><p>Wraps the given event handler as a weak event</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static EventHandler&lt;TEventArgs&gt; Wrap&lt;TEventArgs&gt;(EventHandler&lt;TEventArgs&gt; eh, Action&lt;EventHandler&lt;TEventArgs&gt;&gt; cleanup)where TEventArgs : EventArgs</code></pre>
+    <pre><code class="lang-csharp hljs">public static EventHandler&lt;TEventArgs&gt; Wrap&lt;TEventArgs&gt;(EventHandler&lt;TEventArgs&gt; eh, Action&lt;EventHandler&lt;TEventArgs&gt;&gt; cleanup)
+    where TEventArgs : EventArgs</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -302,12 +326,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">EventHandler</span>&lt;TEventArgs&gt;</td>
+        <td><span class="xref">System.EventHandler</span>&lt;TEventArgs&gt;</td>
         <td><span class="parametername">eh</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Action</span>&lt;<span class="xref">EventHandler</span>&lt;TEventArgs&gt;&gt;</td>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.EventHandler</span>&lt;TEventArgs&gt;&gt;</td>
         <td><span class="parametername">cleanup</span></td>
         <td></td>
       </tr>
@@ -323,7 +347,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">EventHandler</span>&lt;TEventArgs&gt;</td>
+        <td><span class="xref">System.EventHandler</span>&lt;TEventArgs&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -350,10 +374,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_WeakEventHandler.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.WeakEventHandler%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/WeakEventHandler.cs/#L34" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -367,7 +398,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

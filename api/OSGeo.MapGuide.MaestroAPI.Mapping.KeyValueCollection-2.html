@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class KeyValueCollection&lt;TKey, TVal&gt;
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -91,15 +93,44 @@
       <div class="level2"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapGroupCollection.html">RuntimeMapGroupCollection</a></div>
       <div class="level2"><a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection.html">RuntimeMapLayerCollection</a></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
-    <div><span class="xref">IList</span></div>
+    <div><span class="xref">System.Collections.Generic.IList</span>&lt;TVal&gt;</div>
+    <div><span class="xref">System.Collections.Generic.ICollection</span>&lt;TVal&gt;</div>
+    <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TVal&gt;</div>
+    <div><span class="xref">System.Collections.IList</span></div>
+    <div><span class="xref">System.Collections.ICollection</span></div>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.html">OSGeo.MapGuide.MaestroAPI.Mapping</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class KeyValueCollection&lt;TKey, TVal&gt; : IList&lt;TVal&gt;, IList where TVal : class</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class KeyValueCollection&lt;TKey, TVal&gt; : IList&lt;TVal&gt;, ICollection&lt;TVal&gt;, IEnumerable&lt;TVal&gt;, IList, ICollection, IEnumerable where TVal : class</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -124,8 +155,13 @@
   </table>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2__ctor.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L50">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.#ctor*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2__ctor" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.#ctor">KeyValueCollection()</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html">KeyValueCollection&lt;TKey, TVal&gt;</a> class.</p>
@@ -137,8 +173,13 @@
   </div>
   <h3 id="fields">Fields
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2__values.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602._values%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L40">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2__values" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2._values">_values</h4>
   <div class="markdown level1 summary"><p>The internal list of value</p>
 </div>
@@ -157,13 +198,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;TVal&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;TVal&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2__valuesByKey.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602._valuesByKey%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L45">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2__valuesByKey" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2._valuesByKey">_valuesByKey</h4>
   <div class="markdown level1 summary"><p>The internal dictionary of values keyed by its key</p>
 </div>
@@ -182,18 +228,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Dictionary</span>&lt;TKey, TVal&gt;</td>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;TKey, TVal&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Count.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.Count%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L289">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Count_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Count*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Count" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Count">Count</h4>
-  <div class="markdown level1 summary"><p>Gets the number of elements contained in the <span class="xref">System.Collections.Generic.ICollection`1</span>.</p>
+  <div class="markdown level1 summary"><p>Gets the number of elements contained in the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -211,16 +262,21 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td><p>The number of elements contained in the <span class="xref">System.Collections.Generic.ICollection`1</span>.</p>
+        <td><p>The number of elements contained in the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_IsReadOnly.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.IsReadOnly%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L296">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_IsReadOnly_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.IsReadOnly*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_IsReadOnly" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.IsReadOnly">IsReadOnly</h4>
-  <div class="markdown level1 summary"><p>Gets a value indicating whether the <span class="xref">System.Collections.Generic.ICollection`1</span> is read-only.</p>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span> is read-only.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -238,13 +294,18 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><p>true if the <span class="xref">System.Collections.Generic.ICollection`1</span> is read-only; otherwise, false.</p>
+        <td><p>true if the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span> is read-only; otherwise, false.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Item__0_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.Item(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L354">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Item*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Item__0_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Item(`0)">Item[TKey]</h4>
   <div class="markdown level1 summary"><p>Gets or sets the element at the specified index.</p>
@@ -298,18 +359,23 @@
     <tbody>
       <tr>
         <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
-        <td><p><code data-dev-comment-type="paramref" class="paramref">key</code> is not a valid index in the <span class="xref">System.Collections.Generic.IList`1</span>.</p>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">key</code> is not a valid index in the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.NotSupportedException</span></td>
-        <td><p>The property is set and the <span class="xref">System.Collections.Generic.IList`1</span> is read-only.</p>
+        <td><p>The property is set and the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> is read-only.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Item_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L144">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Item*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Item_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Item(System.Int32)">Item[Int32]</h4>
   <div class="markdown level1 summary"><p>Gets or sets the element at the specified index.</p>
@@ -363,23 +429,28 @@
     <tbody>
       <tr>
         <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
-        <td><p><code data-dev-comment-type="paramref" class="paramref">index</code> is not a valid index in the <span class="xref">System.Collections.Generic.IList`1</span>.</p>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">index</code> is not a valid index in the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.NotSupportedException</span></td>
-        <td><p>The property is set and the <span class="xref">System.Collections.Generic.IList`1</span> is read-only.</p>
+        <td><p>The property is set and the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> is read-only.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Add__1_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.Add(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L197">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Add_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Add*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Add__1_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Add(`1)">Add(TVal)</h4>
-  <div class="markdown level1 summary"><p>Adds an item to the <span class="xref">System.Collections.Generic.ICollection`1</span>.</p>
+  <div class="markdown level1 summary"><p>Adds an item to the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -399,7 +470,7 @@
       <tr>
         <td><span class="xref">TVal</span></td>
         <td><span class="parametername">item</span></td>
-        <td><p>The object to add to the <span class="xref">System.Collections.Generic.ICollection`1</span>.</p>
+        <td><p>The object to add to the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -415,16 +486,21 @@
     <tbody>
       <tr>
         <td><span class="xref">System.NotSupportedException</span></td>
-        <td><p>The <span class="xref">System.Collections.Generic.ICollection`1</span> is read-only.</p>
+        <td><p>The <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span> is read-only.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Clear.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.Clear%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L216">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Clear_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Clear*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Clear" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Clear">Clear()</h4>
-  <div class="markdown level1 summary"><p>Removes all items from the <span class="xref">System.Collections.Generic.ICollection`1</span>.</p>
+  <div class="markdown level1 summary"><p>Removes all items from the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -442,16 +518,21 @@
     <tbody>
       <tr>
         <td><span class="xref">System.NotSupportedException</span></td>
-        <td><p>The <span class="xref">System.Collections.Generic.ICollection`1</span> is read-only.</p>
+        <td><p>The <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span> is read-only.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Contains__1_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.Contains(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L257">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Contains_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Contains*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Contains__1_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Contains(`1)">Contains(TVal)</h4>
-  <div class="markdown level1 summary"><p>Determines whether the <span class="xref">System.Collections.Generic.ICollection`1</span> contains a specific value.</p>
+  <div class="markdown level1 summary"><p>Determines whether the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span> contains a specific value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -471,7 +552,7 @@
       <tr>
         <td><span class="xref">TVal</span></td>
         <td><span class="parametername">item</span></td>
-        <td><p>The object to locate in the <span class="xref">System.Collections.Generic.ICollection`1</span>.</p>
+        <td><p>The object to locate in the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -487,16 +568,21 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><p>true if <code data-dev-comment-type="paramref" class="paramref">item</code> is found in the <span class="xref">System.Collections.Generic.ICollection`1</span>; otherwise, false.</p>
+        <td><p>true if <code data-dev-comment-type="paramref" class="paramref">item</code> is found in the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>; otherwise, false.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_CopyTo__1___System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.CopyTo(%601%5B%5D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L281">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_CopyTo_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.CopyTo*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_CopyTo__1___System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.CopyTo(`1[],System.Int32)">CopyTo(TVal[], Int32)</h4>
-  <div class="markdown level1 summary"><p>Copies the elements of the <span class="xref">System.Collections.Generic.ICollection`1</span> to an <span class="xref">System.Array</span>, starting at a particular <span class="xref">System.Array</span> index.</p>
+  <div class="markdown level1 summary"><p>Copies the elements of the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span> to an <span class="xref">System.Array</span>, starting at a particular <span class="xref">System.Array</span> index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -516,7 +602,7 @@
       <tr>
         <td>TVal[]</td>
         <td><span class="parametername">array</span></td>
-        <td><p>The one-dimensional <span class="xref">System.Array</span> that is the destination of the elements copied from <span class="xref">System.Collections.Generic.ICollection`1</span>. The <span class="xref">System.Array</span> must have zero-based indexing.</p>
+        <td><p>The one-dimensional <span class="xref">System.Array</span> that is the destination of the elements copied from <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>. The <span class="xref">System.Array</span> must have zero-based indexing.</p>
 </td>
       </tr>
       <tr>
@@ -552,15 +638,20 @@
 -or-
 <code data-dev-comment-type="paramref" class="paramref">arrayIndex</code> is equal to or greater than the length of <code data-dev-comment-type="paramref" class="paramref">array</code>.
 -or-
-The number of elements in the source <span class="xref">System.Collections.Generic.ICollection`1</span> is greater than the available space from <code data-dev-comment-type="paramref" class="paramref">arrayIndex</code> to the end of the destination <code data-dev-comment-type="paramref" class="paramref">array</code>.
+The number of elements in the source <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span> is greater than the available space from <code data-dev-comment-type="paramref" class="paramref">arrayIndex</code> to the end of the destination <code data-dev-comment-type="paramref" class="paramref">array</code>.
 -or-
 Type <code data-dev-comment-type="typeparamref" class="typeparamref">TVal</code> cannot be cast automatically to the type of the destination <code data-dev-comment-type="paramref" class="paramref">array</code>.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_GetEnumerator.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.GetEnumerator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L330">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_GetEnumerator_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.GetEnumerator*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_GetEnumerator" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.GetEnumerator">GetEnumerator()</h4>
   <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the collection.</p>
@@ -580,14 +671,19 @@ Type <code data-dev-comment-type="typeparamref" class="typeparamref">TVal</code>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerator</span>&lt;TVal&gt;</td>
-        <td><p>A <span class="xref">System.Collections.Generic.IEnumerator`1</span> that can be used to iterate through the collection.</p>
+        <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;TVal&gt;</td>
+        <td><p>A <span class="xref">System.Collections.Generic.IEnumerator&lt;T&gt;</span> that can be used to iterate through the collection.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_IndexOf__0_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.IndexOf(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L72">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_IndexOf_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.IndexOf*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_IndexOf__0_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.IndexOf(`0)">IndexOf(TKey)</h4>
   <div class="markdown level1 summary"><p>Determines the index of a specific key in the collection</p>
@@ -631,11 +727,16 @@ Type <code data-dev-comment-type="typeparamref" class="typeparamref">TVal</code>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_IndexOf__1_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.IndexOf(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L63">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_IndexOf_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.IndexOf*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_IndexOf__1_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.IndexOf(`1)">IndexOf(TVal)</h4>
-  <div class="markdown level1 summary"><p>Determines the index of a specific item in the <span class="xref">System.Collections.Generic.IList`1</span>.</p>
+  <div class="markdown level1 summary"><p>Determines the index of a specific item in the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -655,7 +756,7 @@ Type <code data-dev-comment-type="typeparamref" class="typeparamref">TVal</code>
       <tr>
         <td><span class="xref">TVal</span></td>
         <td><span class="parametername">item</span></td>
-        <td><p>The object to locate in the <span class="xref">System.Collections.Generic.IList`1</span>.</p>
+        <td><p>The object to locate in the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -676,11 +777,16 @@ Type <code data-dev-comment-type="typeparamref" class="typeparamref">TVal</code>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Insert_System_Int32__1_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.Insert(System.Int32%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L90">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Insert_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Insert*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Insert_System_Int32__1_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Insert(System.Int32,`1)">Insert(Int32, TVal)</h4>
-  <div class="markdown level1 summary"><p>Inserts an item to the <span class="xref">System.Collections.Generic.IList`1</span> at the specified index.</p>
+  <div class="markdown level1 summary"><p>Inserts an item to the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> at the specified index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -706,7 +812,7 @@ Type <code data-dev-comment-type="typeparamref" class="typeparamref">TVal</code>
       <tr>
         <td><span class="xref">TVal</span></td>
         <td><span class="parametername">item</span></td>
-        <td><p>The object to insert into the <span class="xref">System.Collections.Generic.IList`1</span>.</p>
+        <td><p>The object to insert into the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -722,18 +828,23 @@ Type <code data-dev-comment-type="typeparamref" class="typeparamref">TVal</code>
     <tbody>
       <tr>
         <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
-        <td><p><code data-dev-comment-type="paramref" class="paramref">index</code> is not a valid index in the <span class="xref">System.Collections.Generic.IList`1</span>.</p>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">index</code> is not a valid index in the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.NotSupportedException</span></td>
-        <td><p>The <span class="xref">System.Collections.Generic.IList`1</span> is read-only.</p>
+        <td><p>The <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> is read-only.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnBeforeItemAdded__1_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.OnBeforeItemAdded(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L386">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnBeforeItemAdded_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.OnBeforeItemAdded*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnBeforeItemAdded__1_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.OnBeforeItemAdded(`1)">OnBeforeItemAdded(TVal)</h4>
   <div class="markdown level1 summary"><p>Called before an item is added</p>
@@ -761,8 +872,13 @@ Type <code data-dev-comment-type="typeparamref" class="typeparamref">TVal</code>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnBeforeItemRemove__1_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.OnBeforeItemRemove(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L394">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnBeforeItemRemove_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.OnBeforeItemRemove*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnBeforeItemRemove__1_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.OnBeforeItemRemove(`1)">OnBeforeItemRemove(TVal)</h4>
   <div class="markdown level1 summary"><p>Called before an item is removed</p>
@@ -790,8 +906,13 @@ Type <code data-dev-comment-type="typeparamref" class="typeparamref">TVal</code>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnCollectionChanged.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.OnCollectionChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L374">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnCollectionChanged_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.OnCollectionChanged*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnCollectionChanged" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.OnCollectionChanged">OnCollectionChanged()</h4>
   <div class="markdown level1 summary"><p>Raises the <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection-2.html#OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_CollectionChanged">CollectionChanged</a> event</p>
@@ -801,8 +922,13 @@ Type <code data-dev-comment-type="typeparamref" class="typeparamref">TVal</code>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual void OnCollectionChanged()</code></pre>
   </div>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnItemAdded__1_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.OnItemAdded(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L402">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnItemAdded_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.OnItemAdded*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnItemAdded__1_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.OnItemAdded(`1)">OnItemAdded(TVal)</h4>
   <div class="markdown level1 summary"><p>Called after an item has been added</p>
@@ -830,8 +956,13 @@ Type <code data-dev-comment-type="typeparamref" class="typeparamref">TVal</code>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnItemRemoved__1_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.OnItemRemoved(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L409">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnItemRemoved_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.OnItemRemoved*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_OnItemRemoved__1_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.OnItemRemoved(`1)">OnItemRemoved(TVal)</h4>
   <div class="markdown level1 summary"><p>Called after an item has been removed. Note this is only called if the remove
@@ -860,11 +991,16 @@ operation removed the item in question</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Remove__1_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.Remove(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L308">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Remove_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Remove*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_Remove__1_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.Remove(`1)">Remove(TVal)</h4>
-  <div class="markdown level1 summary"><p>Removes the first occurrence of a specific object from the <span class="xref">System.Collections.Generic.ICollection`1</span>.</p>
+  <div class="markdown level1 summary"><p>Removes the first occurrence of a specific object from the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -884,7 +1020,7 @@ operation removed the item in question</p>
       <tr>
         <td><span class="xref">TVal</span></td>
         <td><span class="parametername">item</span></td>
-        <td><p>The object to remove from the <span class="xref">System.Collections.Generic.ICollection`1</span>.</p>
+        <td><p>The object to remove from the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -900,7 +1036,7 @@ operation removed the item in question</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><p>true if <code data-dev-comment-type="paramref" class="paramref">item</code> was successfully removed from the <span class="xref">System.Collections.Generic.ICollection`1</span>; otherwise, false. This method also returns false if <code data-dev-comment-type="paramref" class="paramref">item</code> is not found in the original <span class="xref">System.Collections.Generic.ICollection`1</span>.</p>
+        <td><p>true if <code data-dev-comment-type="paramref" class="paramref">item</code> was successfully removed from the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>; otherwise, false. This method also returns false if <code data-dev-comment-type="paramref" class="paramref">item</code> is not found in the original <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -916,16 +1052,21 @@ operation removed the item in question</p>
     <tbody>
       <tr>
         <td><span class="xref">System.NotSupportedException</span></td>
-        <td><p>The <span class="xref">System.Collections.Generic.ICollection`1</span> is read-only.</p>
+        <td><p>The <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span> is read-only.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_RemoveAt_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.RemoveAt(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L114">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_RemoveAt_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.RemoveAt*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_RemoveAt_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.RemoveAt(System.Int32)">RemoveAt(Int32)</h4>
-  <div class="markdown level1 summary"><p>Removes the <span class="xref">System.Collections.Generic.IList`1</span> item at the specified index.</p>
+  <div class="markdown level1 summary"><p>Removes the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> item at the specified index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -961,18 +1102,23 @@ operation removed the item in question</p>
     <tbody>
       <tr>
         <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
-        <td><p><code data-dev-comment-type="paramref" class="paramref">index</code> is not a valid index in the <span class="xref">System.Collections.Generic.IList`1</span>.</p>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">index</code> is not a valid index in the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.NotSupportedException</span></td>
-        <td><p>The <span class="xref">System.Collections.Generic.IList`1</span> is read-only.</p>
+        <td><p>The <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> is read-only.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_SelectKey__1_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.SelectKey(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L416">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_SelectKey_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.SelectKey*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_SelectKey__1_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.SelectKey(`1)">SelectKey(TVal)</h4>
   <div class="markdown level1 summary"><p>Selects the key given the value.</p>
@@ -1015,8 +1161,13 @@ operation removed the item in question</p>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_SetNewIndex_System_Int32__1_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.SetNewIndex(System.Int32%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L168">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_SetNewIndex_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.SetNewIndex*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_SetNewIndex_System_Int32__1_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.SetNewIndex(System.Int32,`1)">SetNewIndex(Int32, TVal)</h4>
   <div class="markdown level1 summary"><p>Sets the new index of the specified object. This object must already be present inside the collection</p>
@@ -1050,8 +1201,13 @@ operation removed the item in question</p>
   </table>
   <h3 id="events">Events
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_CollectionChanged.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.CollectionChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L367">View Source</a>
+  </span>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_CollectionChanged" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.CollectionChanged">CollectionChanged</h4>
   <div class="markdown level1 summary"><p>Raised when the collection has been modified</p>
 </div>
@@ -1070,14 +1226,554 @@ operation removed the item in question</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">EventHandler</span></td>
+        <td><span class="xref">System.EventHandler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_CopyTo_System_Array_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23ICollection%23CopyTo(System.Array%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L452">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_CopyTo_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#ICollection#CopyTo*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_CopyTo_System_Array_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#ICollection#CopyTo(System.Array,System.Int32)">ICollection.CopyTo(Array, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ICollection.CopyTo(Array array, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Array</span></td>
+        <td><span class="parametername">array</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_Count.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23ICollection%23Count%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L454">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_Count_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#ICollection#Count*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_Count" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#ICollection#Count">ICollection.Count</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int ICollection.Count { get; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_IsSynchronized.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23ICollection%23IsSynchronized%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L456">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_IsSynchronized_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#ICollection#IsSynchronized*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_IsSynchronized" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#ICollection#IsSynchronized">ICollection.IsSynchronized</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ICollection.IsSynchronized { get; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_SyncRoot.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23ICollection%23SyncRoot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L460">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_SyncRoot_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#ICollection#SyncRoot*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_ICollection_SyncRoot" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#ICollection#SyncRoot">ICollection.SyncRoot</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object ICollection.SyncRoot { get; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IEnumerable_GetEnumerator.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23IEnumerable%23GetEnumerator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L338">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IEnumerable_GetEnumerator_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IEnumerable#GetEnumerator*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IEnumerable_GetEnumerator" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
+  <div class="markdown level1 summary"><p>Returns an enumerator that iterates through a collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerator IEnumerable.GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><p>An <span class="xref">System.Collections.IEnumerator</span> object that can be used to iterate through the collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Add_System_Object_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23IList%23Add(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L418">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Add_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#Add*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Add_System_Object_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#Add(System.Object)">IList.Add(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int IList.Add(object value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Clear.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23IList%23Clear%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L424">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Clear_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#Clear*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Clear" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#Clear">IList.Clear()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void IList.Clear()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Contains_System_Object_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23IList%23Contains(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L426">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Contains_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#Contains*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Contains_System_Object_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#Contains(System.Object)">IList.Contains(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IList.Contains(object value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_IndexOf_System_Object_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23IList%23IndexOf(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L428">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_IndexOf_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#IndexOf*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_IndexOf_System_Object_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#IndexOf(System.Object)">IList.IndexOf(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int IList.IndexOf(object value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Insert_System_Int32_System_Object_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23IList%23Insert(System.Int32%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L430">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Insert_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#Insert*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Insert_System_Int32_System_Object_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#Insert(System.Int32,System.Object)">IList.Insert(Int32, Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void IList.Insert(int index, object value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_IsFixedSize.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23IList%23IsFixedSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L432">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_IsFixedSize_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#IsFixedSize*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_IsFixedSize" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#IsFixedSize">IList.IsFixedSize</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IList.IsFixedSize { get; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_IsReadOnly.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23IList%23IsReadOnly%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L434">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_IsReadOnly_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#IsReadOnly*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_IsReadOnly" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#IsReadOnly">IList.IsReadOnly</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IList.IsReadOnly { get; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Item_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23IList%23Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L440">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Item_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#Item*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Item_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#Item(System.Int32)">IList.Item[Int32]</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object IList.this[int index] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Remove_System_Object_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23IList%23Remove(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L436">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Remove_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#Remove*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_Remove_System_Object_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#Remove(System.Object)">IList.Remove(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void IList.Remove(object value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_RemoveAt_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602.System%23Collections%23IList%23RemoveAt(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L438">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_RemoveAt_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#RemoveAt*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2_System_Collections_IList_RemoveAt_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection`2.System#Collections#IList#RemoveAt(System.Int32)">IList.RemoveAt(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void IList.RemoveAt(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">IList</span>
+      <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IList</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.ICollection</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
   </div>
 </article>
           </div>
@@ -1086,10 +1782,17 @@ operation removed the item in question</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Mapping_KeyValueCollection_2.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Mapping/Collections.cs/#L35" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -1103,7 +1806,7 @@ operation removed the item in question</p>
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>

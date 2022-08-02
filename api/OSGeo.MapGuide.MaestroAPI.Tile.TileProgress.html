@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Struct TileProgress
    | MapGuide Maestro ">
-    <meta name="generator" content="docfx 2.26.3.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -22,7 +22,7 @@
     <meta property="docfx:rel" content="../">
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -61,9 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
-          <div class="sr-items"></div>
-          <ul id="pagination"></ul>
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -99,30 +101,35 @@
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
     </div>
     <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+      <span class="xref">System.Object.GetType()</span>
     </div>
     <div>
-      <span class="xref">System.Object.GetType()</span>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="OSGeo.MapGuide.MaestroAPI.Tile.html">OSGeo.MapGuide.MaestroAPI.Tile</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: OSGeo.MapGuide.MaestroAPI.dll</h6>
   <h5 id="OSGeo_MapGuide_MaestroAPI_Tile_TileProgress_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public struct TileProgress</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Tile_TileProgress__ctor_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.%23ctor(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Tile/TileSeeder.cs/#L73">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Tile_TileProgress__ctor_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.#ctor*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Tile_TileProgress__ctor_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.#ctor(System.Int32,System.Int32)">TileProgress(Int32, Int32)</h4>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Tile_TileProgress__ctor_System_Int32_System_Int32_System_Int32_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.#ctor(System.Int32,System.Int32,System.Int32)">TileProgress(Int32, Int32, Int32)</h4>
   <div class="markdown level1 summary"><p>Constructs a new instance</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TileProgress(int rendered, int total)</code></pre>
+    <pre><code class="lang-csharp hljs">public TileProgress(int rendered, int total, int failed)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -144,20 +151,30 @@
         <td><span class="parametername">total</span></td>
         <td></td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">failed</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
-  <a id="OSGeo_MapGuide_MaestroAPI_Tile_TileProgress_Rendered_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.Rendered*"></a>
-  <h4 id="OSGeo_MapGuide_MaestroAPI_Tile_TileProgress_Rendered" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.Rendered">Rendered</h4>
-  <div class="markdown level1 summary"><p>The number of rendered tiles</p>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Tile_TileProgress_Failed.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.Failed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Tile/TileSeeder.cs/#L93">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Tile_TileProgress_Failed_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.Failed*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Tile_TileProgress_Failed" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.Failed">Failed</h4>
+  <div class="markdown level1 summary"><p>The number of failed tile requests</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Rendered { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly int Failed { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -174,8 +191,44 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Tile_TileProgress_Rendered.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.Rendered%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Tile/TileSeeder.cs/#L83">View Source</a>
+  </span>
+  <a id="OSGeo_MapGuide_MaestroAPI_Tile_TileProgress_Rendered_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.Rendered*"></a>
+  <h4 id="OSGeo_MapGuide_MaestroAPI_Tile_TileProgress_Rendered" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.Rendered">Rendered</h4>
+  <div class="markdown level1 summary"><p>The number of rendered tiles</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly int Rendered { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Tile_TileProgress_Total.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.Total%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Tile/TileSeeder.cs/#L88">View Source</a>
+  </span>
   <a id="OSGeo_MapGuide_MaestroAPI_Tile_TileProgress_Total_" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.Total*"></a>
   <h4 id="OSGeo_MapGuide_MaestroAPI_Tile_TileProgress_Total" data-uid="OSGeo.MapGuide.MaestroAPI.Tile.TileProgress.Total">Total</h4>
   <div class="markdown level1 summary"><p>The total number of tiles to be rendered</p>
@@ -183,7 +236,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Total { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly int Total { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -207,10 +260,17 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/new/master/apiSpec/new?filename=OSGeo_MapGuide_MaestroAPI_Tile_TileProgress.md&amp;value=---%0Auid%3A%20OSGeo.MapGuide.MaestroAPI.Tile.TileProgress%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/jumpinjackie/mapguide-maestro/blob/master/OSGeo.MapGuide.MaestroAPI/Tile/TileSeeder.cs/#L65" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
@@ -224,7 +284,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            Copyright © 2009 - 2017 Jackie Ng
+            Copyright © 2009 - 2022 Jackie Ng
             
           </div>
         </div>
