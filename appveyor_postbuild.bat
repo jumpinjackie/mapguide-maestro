@@ -6,6 +6,8 @@ if "%ARTIFACT_RELEASE_LABEL%" == "" SET ARTIFACT_RELEASE_LABEL=master
 
 if not exist %APPVEYOR_BUILD_FOLDER%\artifacts mkdir %APPVEYOR_BUILD_FOLDER%\artifacts
 cd /D %APPVEYOR_BUILD_FOLDER%\Docs
+docfx metadata
+IF %ERRORLEVEL% NEQ 0 exit /B %ERRORLEVEL%
 docfx build
 IF %ERRORLEVEL% NEQ 0 exit /B %ERRORLEVEL%
 cd /D %APPVEYOR_BUILD_FOLDER%\out\publish\Release

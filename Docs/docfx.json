@@ -4,20 +4,17 @@
       "src": [
         {
           "files": [
-            "OSGeo.FDO.Expressions/**/*.cs",
-            "OSGeo.MapGuide.ObjectModels/**/*.cs",
-            "OSGeo.MapGuide.MaestroAPI/**/*.cs"
+            "OSGeo.FDO.Expressions/**.csproj",
+            "OSGeo.MapGuide.ObjectModels/**.csproj",
+            "OSGeo.MapGuide.MaestroAPI/**.csproj"
           ],
-          "exclude": [
-            "*.designer.cs",
-            "**/obj/**",
-            "**/bin/**",
-            "_site/**"
-          ],
-          "cwd": ".."
+          "exclude": [ "**/bin/**", "**/obj/**" ],
+          "src": ".."
         }
       ],
       "dest": "api",
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false,
       "filter": "filterconfig.yml"
     }
   ],
@@ -76,7 +73,7 @@
     "dest": "_site",
     "globalMetadata": {
       "_appTitle": "MapGuide Maestro",
-      "_appFooter": "Copyright © 2009 - 2017 Jackie Ng",
+      "_appFooter": "Copyright © 2009 - 2022 Jackie Ng",
       "_appLogoPath": "logo.svg",
       "_appFaviconPath": "favicon.ico",
       "_disableBreadcrumb": false,
