@@ -64,20 +64,6 @@ namespace Maestro
             ServiceManager.Instance = new MaestroServiceManager();
             LoggingService.Info("Application start"); //NOXLATE
 
-            // Setup Platform.ini if required
-            if (!Platform.IsRunningOnMono)
-            {
-                if (!File.Exists("Platform.ini") && File.Exists("LocalConfigure.exe")) //NOXLATE
-                {
-                    var proc = new ProcessStartInfo("LocalConfigure.exe");
-                    if (Environment.OSVersion.Version.Major >= 6)
-                        proc.Verb = "runas"; //NOXLATE
-
-                    var p = Process.Start(proc);
-                    p.WaitForExit();
-                }
-            }
-
             //Init the Maestro connection registry with additional providers from ConnectionProviders.xml
             ConnectionProviderRegistry.InitRegistry();
 

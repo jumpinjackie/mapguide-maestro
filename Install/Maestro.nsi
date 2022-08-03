@@ -79,6 +79,8 @@ LicenseData "LGPL21.rtf"
 #!define INST_OUTPUT "MapGuideMaestro-${SLN_CONFIG}-${RELEASE_VERSION}-${CPU}-Setup.exe"
 !define INST_OUTPUT "MapGuideMaestro-${SLN_CONFIG}-${RELEASE_VERSION}-Setup.exe"
 
+!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLocalConfigure"
+
 # We'll disable this for preview releases, because release version will not be a valid version string
 
 #!if "${RELEASE_VERSION}" != "Trunk"
@@ -271,6 +273,10 @@ Function .onInit
     !endif
     
     !insertmacro MUI_LANGDLL_DISPLAY
+FunctionEnd
+
+Function LaunchLocalConfigure
+    Exec "$INSTDIR\LocalConfigure.exe"
 FunctionEnd
 
 Function LaunchLink
