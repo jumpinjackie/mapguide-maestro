@@ -137,12 +137,6 @@ LicenseData "${INST_SRC}\${INST_LICENSE}"
 #!insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
-    # These indented statements modify settings for MUI_PAGE_FINISH
-    !define MUI_FINISHPAGE_NOAUTOCLOSE
-    !define MUI_FINISHPAGE_RUN
-    !define MUI_FINISHPAGE_RUN_CHECKED
-    !define MUI_FINISHPAGE_RUN_TEXT "Run setup for local addin"
-    !define MUI_FINISHPAGE_RUN "$INSTDIR\LocalConfigure.exe"
 !insertmacro MUI_PAGE_FINISH
 
 !insertmacro MUI_UNPAGE_CONFIRM
