@@ -113,9 +113,9 @@ OutFile "${INST_OUTDIR}\${INST_OUTPUT}"
 ; Default installation folder
 ; For preview releases, use $INST_PRODUCT_NAME. Once ready for prime-time, switch to $INST_PRODUCT
 !if ${CPU} == "x64"
-InstallDir "$PROGRAMFILES64\OSGeo\${INST_PRODUCT_NAME}"
+InstallDir "$PROGRAMFILES64\${INST_PRODUCT_NAME}"
 !else
-InstallDir "$PROGRAMFILES\OSGeo\${INST_PRODUCT_NAME}"
+InstallDir "$PROGRAMFILES\${INST_PRODUCT_NAME}"
 !endif
 
 !ifdef INST_LICENSE
@@ -226,7 +226,6 @@ Section
     CreateDirectory "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}"
     
     CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\${LNK_MAESTRO}.lnk" "$INSTDIR\${EXE_MAESTRO}"
-    CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\MgCooker.lnk" "$INSTDIR\MgCooker.exe"
     CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Maestro Feature Source Preview.lnk" "$INSTDIR\MaestroFsPreview.exe"
     CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Live Map Definition Editor.lnk" "$INSTDIR\Maestro.LiveMapEditor.exe"
     CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Uninstall.lnk" "$INSTDIR\uninstall.exe"
