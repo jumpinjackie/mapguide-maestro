@@ -79,14 +79,12 @@ LicenseData "LGPL21.rtf"
 #!define INST_OUTPUT "MapGuideMaestro-${SLN_CONFIG}-${RELEASE_VERSION}-${CPU}-Setup.exe"
 !define INST_OUTPUT "MapGuideMaestro-${SLN_CONFIG}-${RELEASE_VERSION}-Setup.exe"
 
-!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLocalConfigure"
-
 # We'll disable this for preview releases, because release version will not be a valid version string
 
 #!if "${RELEASE_VERSION}" != "Trunk"
 #	VIProductVersion "${RELEASE_VERSION}"
 #	VIAddVersionKey "ProductName" "${INST_PRODUCT_NAME}"
-#	VIAddVersionKey "LegalCopyright" "� 2011-2021 Jackie Ng"
+#	VIAddVersionKey "LegalCopyright" "� 2011-2022 Jackie Ng"
 #	VIAddVersionKey "FileDescription" "Installer package for MapGuide Maestro"
 #	VIAddVersionKey "FileVersion" "${RELEASE_VERSION}"
 #!endif
@@ -141,10 +139,7 @@ LicenseData "${INST_SRC}\${INST_LICENSE}"
 !insertmacro MUI_PAGE_INSTFILES
     # These indented statements modify settings for MUI_PAGE_FINISH
     !define MUI_FINISHPAGE_NOAUTOCLOSE
-    !define MUI_FINISHPAGE_RUN
-    !define MUI_FINISHPAGE_RUN_CHECKED
-    !define MUI_FINISHPAGE_RUN_TEXT "Run MapGuide Maestro"
-    !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
+    !define MUI_FINISHPAGE_RUN "$INSTDIR\LocalConfigure.exe"
 !insertmacro MUI_PAGE_FINISH
 
 !insertmacro MUI_UNPAGE_CONFIRM
@@ -233,6 +228,9 @@ Section
     CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Uninstall.lnk" "$INSTDIR\uninstall.exe"
     
     CreateShortCut "$DESKTOP\${LNK_MAESTRO}.lnk" "$INSTDIR\${EXE_MAESTRO}"
+
+    # Run LocalConfigure (we should be elevated here)
+    Exec "$INSTDIR\LocalConfigure.exe"
     
 SectionEnd
 
@@ -273,14 +271,4 @@ Function .onInit
     !endif
     
     !insertmacro MUI_LANGDLL_DISPLAY
-FunctionEnd
-
-Function LaunchLocalConfigure
-    Exec "$INSTDIR\LocalConfigure.exe"
-FunctionEnd
-
-Function LaunchLink
-    ; TODO: Needs to launch under standard user. If installer was run under UAC elevated privileges, it will run under the
-    ; user who elevated these privileges.
-    ExecShell "" "$INSTDIR\${EXE_MAESTRO}"
 FunctionEnd
