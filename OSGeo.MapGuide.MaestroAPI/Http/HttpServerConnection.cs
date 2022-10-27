@@ -1501,9 +1501,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="req">The request URI</param>
         /// <returns>The data at the given location</returns>
-        internal Stream OpenRead(string req)
+        internal Stream OpenRead(string req, int? requestTimeout = null)
         {
-            return _http.Get(req, this);
+            return _http.Get(req, this, requestTimeout);
             /*
             string prev_session = m_reqBuilder.SessionID;
             try
@@ -2080,10 +2080,27 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        private int? GetSchemaWalkMaxTimeout()
+        {
+            // Give up to 5 mins to accomodate for really large schemas
+            const int timeout = 5 * 60 * 1000;
+            int? reqTimeout;
+
+            // If this max timeout is defined in MAESTRO_HTTP_MAX_REQUEST_TIMEOUT, then use that
+            // value first
+            string sTimeout = Environment.GetEnvironmentVariable("MAESTRO_HTTP_MAX_REQUEST_TIMEOUT");
+            if (int.TryParse(sTimeout, out var eTimeout))
+                reqTimeout = eTimeout;
+            else
+                reqTimeout = timeout;
+
+            return reqTimeout;
+        }
+
         public override string[] GetSchemas(string resourceId)
         {
             var req = m_reqBuilder.GetSchemas(resourceId);
-            using (var s = this.OpenRead(req))
+            using (var s = this.OpenRead(req, GetSchemaWalkMaxTimeout()))
             {
                 var sc = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.Common.StringCollection>(s);
                 return sc.Item.ToArray();
@@ -2093,7 +2110,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override string[] GetClassNames(string resourceId, string schemaName)
         {
             var req = m_reqBuilder.GetClassNames(resourceId, schemaName);
-            using (var s = this.OpenRead(req))
+            using (var s = this.OpenRead(req, GetSchemaWalkMaxTimeout()))
             {
                 var sc = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.Common.StringCollection>(s);
                 return sc.Item.ToArray();
@@ -2103,7 +2120,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         protected override ClassDefinition GetClassDefinitionInternal(string resourceId, string schemaName, string className)
         {
             var req = m_reqBuilder.GetClassDefinition(resourceId, schemaName, className);
-            using (var s = this.OpenRead(req))
+            using (var s = this.OpenRead(req, GetSchemaWalkMaxTimeout()))
             {
                 var fsd = new FeatureSourceDescription(s);
                 //We can't just assume first class item is the one, as ones that do not take

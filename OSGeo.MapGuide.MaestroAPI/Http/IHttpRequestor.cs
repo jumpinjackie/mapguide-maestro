@@ -43,8 +43,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
         /// </summary>
         /// <param name="uri"></param>
         /// <param name="options"></param>
+        /// <param name="requestTimeout"></param>
         /// <returns></returns>
-        Stream Get(string uri, IHttpGetRequestOptions options);
+        Stream Get(string uri, IHttpGetRequestOptions options, int? requestTimeout = null);
 
         /// <summary>
         /// Performs an asynchronous GET request

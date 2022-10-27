@@ -53,15 +53,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var getSiteInfoUrl = $"{baseUrl}?OPERATION=GETSITEINFO&VERSION=1.0.0&SESSION={sessionId}&FORMAT=text%2Fxml&CLIENTAGENT=MapGuide%20Maestro%20API%20v{asmVer}";
 
             mockHttp
-                .Setup(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>()))
+                .Setup(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>(), It.IsAny<int?>()))
                 .Returns(() => new MemoryStream(Encoding.UTF8.GetBytes(sessionId)));
 
             mockHttp
-                .Setup(h => h.Get(It.Is<string>(s => s == getSiteInfoUrl), It.IsAny<IHttpGetRequestOptions>()))
+                .Setup(h => h.Get(It.Is<string>(s => s == getSiteInfoUrl), It.IsAny<IHttpGetRequestOptions>(), It.IsAny<int?>()))
                 .Returns(() => Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}GetSiteInfo.xml"));
 
             mockHttp
-                .Setup(h => h.Get(It.Is<string>(s => s == createRuntimeMapUrl), It.IsAny<IHttpGetRequestOptions>()))
+                .Setup(h => h.Get(It.Is<string>(s => s == createRuntimeMapUrl), It.IsAny<IHttpGetRequestOptions>(), It.IsAny<int?>()))
                 .Returns(() => Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}CreateRuntimeMap.xml"));
 
             try
@@ -92,9 +92,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             }
 
-            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
-            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == getSiteInfoUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
-            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == createRuntimeMapUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
+            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>(), It.IsAny<int?>()), Times.Once);
+            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == getSiteInfoUrl), It.IsAny<IHttpGetRequestOptions>(), It.IsAny<int?>()), Times.Once);
+            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == createRuntimeMapUrl), It.IsAny<IHttpGetRequestOptions>(), It.IsAny<int?>()), Times.Once);
         }
 
         [Fact]
@@ -116,15 +116,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var getSiteInfoUrl = $"{baseUrl}?OPERATION=GETSITEINFO&VERSION=1.0.0&SESSION={sessionId}&FORMAT=text%2Fxml&CLIENTAGENT=MapGuide%20Maestro%20API%20v{asmVer}";
 
             mockHttp
-                .Setup(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>()))
+                .Setup(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>(), It.IsAny<int?>()))
                 .Returns(() => new MemoryStream(Encoding.UTF8.GetBytes(sessionId)));
 
             mockHttp
-                .Setup(h => h.Get(It.Is<string>(s => s == getSiteInfoUrl), It.IsAny<IHttpGetRequestOptions>()))
+                .Setup(h => h.Get(It.Is<string>(s => s == getSiteInfoUrl), It.IsAny<IHttpGetRequestOptions>(), It.IsAny<int?>()))
                 .Returns(() => Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}GetSiteInfo.xml"));
 
             mockHttp
-                .Setup(h => h.Get(It.Is<string>(s => s == describeRuntimeMapUrl), It.IsAny<IHttpGetRequestOptions>()))
+                .Setup(h => h.Get(It.Is<string>(s => s == describeRuntimeMapUrl), It.IsAny<IHttpGetRequestOptions>(), It.IsAny<int?>()))
                 .Returns(() => Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}DescribeRuntimeMap.xml"));
 
             try
@@ -154,9 +154,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             }
 
-            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
-            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == getSiteInfoUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
-            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == describeRuntimeMapUrl), It.IsAny<IHttpGetRequestOptions>()), Times.Once);
+            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == createSessionUrl), It.IsAny<IHttpGetRequestOptions>(), It.IsAny<int?>()), Times.Once);
+            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == getSiteInfoUrl), It.IsAny<IHttpGetRequestOptions>(), It.IsAny<int?>()), Times.Once);
+            mockHttp.Verify(h => h.Get(It.Is<string>(s => s == describeRuntimeMapUrl), It.IsAny<IHttpGetRequestOptions>(), It.IsAny<int?>()), Times.Once);
         }
     }
 }

@@ -99,12 +99,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             }
         }
 
-        public Stream Get(string uri, IHttpGetRequestOptions options)
+        public Stream Get(string uri, IHttpGetRequestOptions options, int? requestTimeout)
         {
             string prev_session = options.SessionID;
             try
             {
                 var httpreq = HttpWebRequest.Create(uri);
+
+                if (requestTimeout.HasValue)
+                    httpreq.Timeout = requestTimeout.Value;
+
                 if (_cred != null)
                     httpreq.Credentials = _cred;
                 var httpresp = (HttpWebResponse)httpreq.GetResponse();
