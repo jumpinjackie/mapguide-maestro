@@ -29,11 +29,6 @@ namespace Maestro.Editors.Fusion.MapEditors
 {
     internal static class EditorFactory
     {
-        private const string G_NORMAL_MAP = "G_NORMAL_MAP"; //NOXLATE
-        private const string G_SATELLITE_MAP = "G_SATELLITE_MAP"; //NOXLATE
-        private const string G_HYBRID_MAP = "G_HYBRID_MAP"; //NOXLATE
-        private const string G_PHYSICAL_MAP = "G_PHYSICAL_MAP"; //NOXLATE
-
         private const string BING_ROAD = "Road"; //NOXLATE
         private const string BING_AERIAL = "Aerial"; //NOXLATE
         /// <summary>
@@ -42,7 +37,6 @@ namespace Maestro.Editors.Fusion.MapEditors
         private const string BING_HYBRID = "Hybrid"; //NOXLATE
         private const string BING_AERIAL_WITH_LABELS = "AerialWithLabels"; //NOXLATE
 
-        internal const string Type_Google = "Google"; //NOXLATE
         internal const string Type_Bing = "VirtualEarth"; //NOXLATE
         internal const string Type_OSM = "OpenStreetMap"; //NOXLATE
         internal const string Type_MapGuide = "MapGuide"; //NOXLATE
@@ -58,15 +52,10 @@ namespace Maestro.Editors.Fusion.MapEditors
         private const string STAMEN_TONER = "toner"; //NOXLATE
         private const string STAMEN_WATERCOLOR = "watercolor"; //NOXLATE
 
-        internal const string GOOGLE_URL = "https://maps.googleapis.com/maps/api/js"; //NOXLATE
-
         internal static Control GetEditor(IEditorService edSvc, IMapGroup group, IMap map)
         {
             switch (map.Type)
             {
-                case Type_Google:
-                    return new CommercialMapEditor(edSvc, map, new string[] { G_NORMAL_MAP, G_SATELLITE_MAP, G_HYBRID_MAP, G_PHYSICAL_MAP });
-
                 case Type_Bing:
                     return new CommercialMapEditor(edSvc, map, new string[] { BING_ROAD, BING_AERIAL, BING_AERIAL_WITH_LABELS });
 
@@ -101,38 +90,6 @@ namespace Maestro.Editors.Fusion.MapEditors
             {
                 Name = Strings.CmsGeneric,
                 Action = group.CreateGenericEntry
-            };
-            yield return new EditorInvoker()
-            {
-                Name = Strings.CmsGoogleStreets,
-                Action = () =>
-                {
-                    return group.CreateCmsMapEntry(Type_Google, false, Strings.CmsGoogleStreets, G_NORMAL_MAP);
-                }
-            };
-            yield return new EditorInvoker()
-            {
-                Name = Strings.CmsGoogleSatellite,
-                Action = () =>
-                {
-                    return group.CreateCmsMapEntry(Type_Google, false, Strings.CmsGoogleSatellite, G_SATELLITE_MAP);
-                }
-            };
-            yield return new EditorInvoker()
-            {
-                Name = Strings.CmsGoogleHybrid,
-                Action = () =>
-                {
-                    return group.CreateCmsMapEntry(Type_Google, false, Strings.CmsGoogleHybrid, G_HYBRID_MAP);
-                }
-            };
-            yield return new EditorInvoker()
-            {
-                Name = Strings.CmsGooglePhysical,
-                Action = () =>
-                {
-                    return group.CreateCmsMapEntry(Type_Google, false, Strings.CmsGooglePhysical, G_PHYSICAL_MAP);
-                }
             };
             yield return new EditorInvoker()
             {

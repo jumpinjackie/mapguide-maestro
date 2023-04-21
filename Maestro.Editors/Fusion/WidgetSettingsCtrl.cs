@@ -146,7 +146,7 @@ namespace Maestro.Editors.Fusion
             }
             else
             {
-                var menu = this.SelectedNode.Tag as IMenu;
+                var menu = this.SelectedNode?.Tag as IMenu;
                 if (menu != null)
                 {
                     string[] widgets = _context.GetDockableWidgetNames(_flexLayout);
@@ -275,7 +275,7 @@ namespace Maestro.Editors.Fusion
         {
             get
             {
-                return this.SelectedNode.Tag as IUIItemContainer;
+                return this.SelectedNode?.Tag as IUIItemContainer;
             }
         }
 

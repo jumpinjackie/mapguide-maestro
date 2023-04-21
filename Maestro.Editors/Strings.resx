@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddWidgetReference" xml:space="preserve">
     <value>Add Widget Reference</value>
@@ -161,18 +161,6 @@
   </data>
   <data name="CmsGeneric" xml:space="preserve">
     <value>Generic Layer</value>
-  </data>
-  <data name="CmsGoogleHybrid" xml:space="preserve">
-    <value>Google Hybrid</value>
-  </data>
-  <data name="CmsGooglePhysical" xml:space="preserve">
-    <value>Google Physical</value>
-  </data>
-  <data name="CmsGoogleSatellite" xml:space="preserve">
-    <value>Google Satellite</value>
-  </data>
-  <data name="CmsGoogleStreets" xml:space="preserve">
-    <value>Google Streets</value>
   </data>
   <data name="CmsOsm" xml:space="preserve">
     <value>Open Street Map</value>

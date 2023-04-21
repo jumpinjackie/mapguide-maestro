@@ -214,42 +214,6 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Google Hybrid.
-        /// </summary>
-        internal static string CmsGoogleHybrid {
-            get {
-                return ResourceManager.GetString("CmsGoogleHybrid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Google Physical.
-        /// </summary>
-        internal static string CmsGooglePhysical {
-            get {
-                return ResourceManager.GetString("CmsGooglePhysical", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Google Satellite.
-        /// </summary>
-        internal static string CmsGoogleSatellite {
-            get {
-                return ResourceManager.GetString("CmsGoogleSatellite", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Google Streets.
-        /// </summary>
-        internal static string CmsGoogleStreets {
-            get {
-                return ResourceManager.GetString("CmsGoogleStreets", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Open Street Map.
         /// </summary>
         internal static string CmsOsm {

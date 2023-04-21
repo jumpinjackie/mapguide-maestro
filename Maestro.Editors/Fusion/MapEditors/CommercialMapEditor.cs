@@ -35,8 +35,6 @@ namespace Maestro.Editors.Fusion.MapEditors
         private readonly IEditorService _edSvc;
         private readonly IMap _map;
         private readonly bool _init;
-
-        const string GOOGLE_MAPS_EXTENSION_NAME = "GoogleScript";
         const string BING_MAPS_EXTENSION_NAME = "BingMapKey";
 
         public CommercialMapEditor(IEditorService edSvc, IMap map, string[] types)
@@ -54,17 +52,6 @@ namespace Maestro.Editors.Fusion.MapEditors
                 txtSubType.Text = opts.Type;
 
                 var appDef = (IApplicationDefinition)_edSvc.GetEditedResource();
-                var googleMapsUrl = appDef.GetValue(GOOGLE_MAPS_EXTENSION_NAME);
-                if (!string.IsNullOrEmpty(googleMapsUrl))
-                {
-                    var uri = new Uri(googleMapsUrl);
-                    var param = Utility.ParseQueryString(uri.Query);
-                    if (param.ContainsKey("key"))
-                        txtGoogleMapsApiKey.Text = param["key"];
-
-                    btnSetGoogleMapsApiKey.Enabled = false;
-                }
-
                 var bingMapsKey = appDef.GetValue(BING_MAPS_EXTENSION_NAME);
                 if (!string.IsNullOrEmpty(bingMapsKey))
                 {
@@ -93,33 +80,6 @@ namespace Maestro.Editors.Fusion.MapEditors
             appDef.SetValue(BING_MAPS_EXTENSION_NAME, txtBingMapsApiKey.Text); //NOXLATE
             _edSvc.HasChanged();
             btnSetBingMapsApiKey.Enabled = false;
-        }
-
-        private void btnSetGoogleMapsApiKey_Click(object sender, EventArgs e)
-        {
-            var appDef = (IApplicationDefinition)_edSvc.GetEditedResource();
-            var googleMapsUrl = appDef.GetValue(GOOGLE_MAPS_EXTENSION_NAME);
-            if (string.IsNullOrEmpty(googleMapsUrl))
-                googleMapsUrl = EditorFactory.GOOGLE_URL;
-
-            var tokens = new HashSet<string>();
-            
-            var baseUri = new UriBuilder(googleMapsUrl);
-            var queryToAppend = "key=" + txtGoogleMapsApiKey.Text;
-            if (baseUri.Query != null && baseUri.Query.Length > 1)
-                baseUri.Query = baseUri.Query.Substring(1) + "&" + queryToAppend;
-            else
-                baseUri.Query = queryToAppend;
-
-            var url = baseUri.Uri.GetComponents(UriComponents.AbsoluteUri & ~UriComponents.Port, UriFormat.UriEscaped);
-            appDef.SetValue(GOOGLE_MAPS_EXTENSION_NAME, url);
-            _edSvc.HasChanged();
-            btnSetGoogleMapsApiKey.Enabled = false;
-        }
-
-        private void txtGoogleMapsApiKey_TextChanged(object sender, EventArgs e)
-        {
-            btnSetGoogleMapsApiKey.Enabled = true;
         }
 
         private void txtBingMapsApiKey_TextChanged(object sender, EventArgs e)
