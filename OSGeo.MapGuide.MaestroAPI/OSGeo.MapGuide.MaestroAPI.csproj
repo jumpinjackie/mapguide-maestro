@@ -50,8 +50,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NetTopologySuite" Version="2.4.0" />
-    <PackageReference Include="Polly" Version="7.2.2" />
+    <PackageReference Include="NetTopologySuite" Version="2.5.0" />
+    <PackageReference Include="Polly" Version="7.2.3" />
     <PackageReference Include="ProjNet" Version="2.0.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
