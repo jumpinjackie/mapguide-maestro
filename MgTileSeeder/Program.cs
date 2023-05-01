@@ -113,9 +113,6 @@ namespace MgTileSeeder
         [Option("maxy", SetName = "bbox", Required = true)]
         public override double MaxY { get; set; }
 
-        [Option("strict", Default = false, HelpText = "If specified, the bbox specified must be within the lon/lat domain of [-180, -90, 180, 90]. Otherwise the input bbox will be normalized to be within this domain if outside the bounds")]
-        public bool Strict { get; set; }
-
         [Option("specific-zoom-levels", Required = false)]
         public IEnumerable<int> SpecificZoomLevels { get; set; }
 
@@ -124,28 +121,15 @@ namespace MgTileSeeder
 
         public override void Validate()
         {
-            if (this.Strict)
-            {
-                if (!Utility.InRange(this.MinX, -180, 180))
-                    throw new Exception("minx not in range of [-180, 180]");
-                if (!Utility.InRange(this.MaxX, -180, 180))
-                    throw new Exception("maxx not in range of [-180, 180]");
-                if (!Utility.InRange(this.MinY, -90, 90))
-                    throw new Exception("miny not in range of [-90, 90]");
-                if (!Utility.InRange(this.MaxY, -90, 90))
-                    throw new Exception("maxy not in range of [-90, 90]");
-            }
-            else // Snap to within domain
-            {
-                if (!Utility.InRange(this.MinX, -180, 180))
-                    this.MinX = Math.Max(this.MinX, -180);
-                if (!Utility.InRange(this.MaxX, -180, 180))
-                    this.MaxX = Math.Min(this.MaxX, 180);
-                if (!Utility.InRange(this.MinY, -90, 90))
-                    this.MinY = Math.Max(this.MinY, -90);
-                if (!Utility.InRange(this.MaxY, -90, 90))
-                    this.MaxY = Math.Min(this.MaxY, 90);
-            }
+            // Snap to within domain
+            if (!Utility.InRange(this.MinX, -180, 180))
+                this.MinX = Math.Max(this.MinX, -180);
+            if (!Utility.InRange(this.MaxX, -180, 180))
+                this.MaxX = Math.Min(this.MaxX, 180);
+            if (!Utility.InRange(this.MinY, -90, 90))
+                this.MinY = Math.Max(this.MinY, -90);
+            if (!Utility.InRange(this.MaxY, -90, 90))
+                this.MaxY = Math.Min(this.MaxY, 90);
 
             if (this.MinX > this.MaxX)
                 throw new Exception("Invalid BBOX: minx > maxx");
