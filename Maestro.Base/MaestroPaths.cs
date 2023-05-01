@@ -39,7 +39,7 @@ namespace Maestro.Base
             get
             {
                 var asmVersion = Assembly.GetExecutingAssembly().GetName().Version;
-                return $"Maestro-{asmVersion.Major}.{asmVersion.Minor}"; //NOXLATE
+                return $"Maestro-{asmVersion.Major}.{asmVersion.Minor}.{asmVersion.Build}.{asmVersion.Revision}"; //NOXLATE
             }
         }
 
