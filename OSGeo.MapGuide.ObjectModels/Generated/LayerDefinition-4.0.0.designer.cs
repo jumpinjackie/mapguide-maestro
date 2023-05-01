@@ -2742,6 +2742,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v4_0_0
         
         [EditorBrowsable(EditorBrowsableState.Never)]
         private TextSymbolTypeAdvancedPlacement advancedPlacementField;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        private string labelJustificationField;
         
         [EditorBrowsable(EditorBrowsableState.Never)]
         private ExtendedDataType extendedData1Field;
@@ -2949,6 +2952,31 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v4_0_0
                 else {
                     this.advancedPlacementField = value;
                     this.OnPropertyChanged("AdvancedPlacement");
+                }
+            }
+        }
+
+        [System.ComponentModel.DefaultValueAttribute("'Left'")]
+        public string LabelJustification
+        {
+            get
+            {
+                return this.labelJustificationField;
+            }
+            set
+            {
+                if ((this.labelJustificationField != null))
+                {
+                    if ((labelJustificationField.Equals(value) != true))
+                    {
+                        this.labelJustificationField = value;
+                        this.OnPropertyChanged(nameof(LabelJustification));
+                    }
+                }
+                else
+                {
+                    this.labelJustificationField = value;
+                    this.OnPropertyChanged(nameof(LabelJustification));
                 }
             }
         }
@@ -6961,6 +6989,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v4_0_0
         private bool includeBoundsForSelectedFeaturesField;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        private bool includeBoundsForSelectedFeaturesFieldSpecfied;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
         private BindingList<NameStringPairType> propertyMappingField;
         
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -7024,6 +7055,23 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v4_0_0
                 else {
                     this.filterField = value;
                     this.OnPropertyChanged("Filter");
+                }
+            }
+        }
+
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IncludeBoundsForSelectedFeaturesSpecified
+        {
+            get
+            {
+                return this.includeBoundsForSelectedFeaturesFieldSpecfied;
+            }
+            set
+            {
+                if ((includeBoundsForSelectedFeaturesFieldSpecfied.Equals(value) != true))
+                {
+                    this.includeBoundsForSelectedFeaturesFieldSpecfied = value;
+                    this.OnPropertyChanged(nameof(IncludeBoundsForSelectedFeaturesSpecified));
                 }
             }
         }

@@ -1108,6 +1108,27 @@ Returns: {0}</value>
     &lt;Value&gt;Expression...&lt;/Value&gt;
   &lt;/Horizontal&gt;
 
+  &lt;LabelJustification&gt;
+    &lt;Display&gt;Left&lt;/Display&gt;
+    &lt;Value&gt;'Left'&lt;/Value&gt;
+  &lt;/LabelJustification&gt;
+  &lt;LabelJustification&gt;
+    &lt;Display&gt;Right&lt;/Display&gt;
+    &lt;Value&gt;'Right'&lt;/Value&gt;
+  &lt;/LabelJustification&gt;
+  &lt;LabelJustification&gt;
+    &lt;Display&gt;Center&lt;/Display&gt;
+    &lt;Value&gt;'Center'&lt;/Value&gt;
+  &lt;/LabelJustification&gt;
+  &lt;LabelJustification&gt;
+    &lt;Display&gt;Justify&lt;/Display&gt;
+    &lt;Value&gt;'Justify'&lt;/Value&gt;
+  &lt;/LabelJustification&gt;
+  &lt;LabelJustification&gt;
+    &lt;Display&gt;Expression...&lt;/Display&gt;
+    &lt;Value&gt;Expression...&lt;/Value&gt;
+  &lt;/LabelJustification&gt;
+
 &lt;/ComboBoxDataSet&gt;</value>
   </data>
   <data name="GeomFilterTemplate" xml:space="preserve">

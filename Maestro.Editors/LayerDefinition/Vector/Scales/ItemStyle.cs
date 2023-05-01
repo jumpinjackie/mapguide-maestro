@@ -25,6 +25,7 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -202,13 +203,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var factory = (ILayerElementFactory)m_owner.Editor.GetEditedResource();
             Action commit = null;
             Action rollback = null;
+            Func<ITextSymbol> itemGetter = null;
             if (isLabel)
             {
                 m_origLabel = m_label;
                 m_editLabel = (m_label == null) ? null : (ITextSymbol)m_label.Clone();
 
-                uc = new FontStyleEditor(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId);
-                ((FontStyleEditor)uc).Item = m_editLabel;
+                uc = new FontStyleEditorCtrl(m_owner.Editor, m_owner.SelectedClass, m_owner.FeatureSourceId);
+                ((FontStyleEditorCtrl)uc).Item = m_editLabel;
+                itemGetter = () => ((FontStyleEditorCtrl)uc).Item;
             }
             else if (isW2dSymbol)
             {
@@ -363,7 +366,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
                     if (isLabel)
                     {
-                        m_label = ((FontStyleEditor)uc).Item;
+                        Debug.Assert(itemGetter != null);
+                        m_label = itemGetter.Invoke();
                         if (m_parent as IPointRule != null)
                             ((IPointRule)m_parent).Label = m_label;
                         else if (m_parent as ILineRule != null)
