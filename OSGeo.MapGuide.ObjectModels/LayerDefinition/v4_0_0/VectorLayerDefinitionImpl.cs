@@ -995,6 +995,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
     }
 
     partial class TextSymbolType : ITextSymbol
+#if LDF_400
+        , ITextSymbol2
+#endif
     {
         [XmlIgnore]
         IAdvancedPlacement ITextSymbol.AdvancedPlacement
@@ -1150,6 +1153,15 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
             var xml = this.Serialize();
             return TextSymbolType.Deserialize(xml);
         }
+
+#if LDF_400
+        [XmlIgnore]
+        string ITextSymbol2.LabelJustification
+        {
+            get { return this.LabelJustification; }
+            set { this.LabelJustification = value; }
+        }
+#endif
     }
 
     partial class MarkSymbolType : IMarkSymbol
@@ -2076,6 +2088,29 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
         {
             propertyMappingField.Clear();
         }
+
+#if LDF_400
+        [XmlIgnore]
+        bool? IVectorLayerDefinition3.IncludeBoundsForSelectedFeatures
+        {
+            get
+            {
+                return this.includeBoundsForSelectedFeaturesFieldSpecfied ? new Nullable<bool>(this.includeBoundsForSelectedFeaturesField) : null;
+            }
+            set
+            {
+                if (value.HasValue)
+                {
+                    this.includeBoundsForSelectedFeaturesField = value.Value;
+                    this.includeBoundsForSelectedFeaturesFieldSpecfied = true;
+                }
+                else
+                {
+                    this.includeBoundsForSelectedFeaturesFieldSpecfied = false;
+                }
+            }
+        }
+#endif
     }
 
     #region Composite Symbolization

@@ -32,15 +32,6 @@ Additional implementations can be registered in the `ConnectionProviders.xml` fi
 > Starting with the **6.0m8** release, the `Maestro.Http` provider is built into the Maestro API itself. The `ConnectionProviders.xml`
 > file is not required if you are only using this connection provider.
 
-The LocalNative implementation source code is included with this SDK, but requires the official
-MapGuide API binaries to be also added to your application's directory. As a result this
-provider is disabled in the `ConnectionProviders.xml` file by default. The SDK includes a tool
-to help you build this LocalNative provider. 
-
-The Local implementation is not included with the SDK. The windows version of Maestro
-includes this implementation and you can copy the required files from your Maestro
-installation should you choose to use this implementation.
-
 All examples outlined in this guide assume the use of the HTTP implementation (`Maestro.Http`)
 
 ## Resource Objects

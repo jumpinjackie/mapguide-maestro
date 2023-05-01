@@ -105,7 +105,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     }
 
     /// <summary>
-    /// Primary http based connection to the MapGuide Server
+    /// Primary http based connection to the MapGuide Server. Internal use only. Do not instantiate directly. Create via <see cref="ConnectionProviderRegistry"/>
     /// </summary>
     internal class HttpServerConnection : MgServerConnectionBase,
                                         IServerConnection,
@@ -116,10 +116,11 @@ namespace OSGeo.MapGuide.MaestroAPI
                                         IMappingService,
                                         IDrawingService,
                                         IFusionService,
-                                        ISiteService
+                                        ISiteService,
+                                        IHttpGetRequestOptions
     {
         private RequestBuilder m_reqBuilder;
-        private HttpClient _http;
+        private IHttpRequestor _http;
         internal RequestBuilder RequestBuilder => m_reqBuilder;
 
         //These only change after server reboot, so it is probably safe to cache them
@@ -129,13 +130,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         private bool mAnonymousUser = false;
 
-        internal HttpServerConnection()
+        private HttpServerConnection(IHttpRequestor http)
             : base()
         {
+            _http = http;
         }
 
-        internal HttpServerConnection(RequestBuilder builder)
-            : this()
+        internal HttpServerConnection(IHttpRequestor http, RequestBuilder builder)
+            : this(http)
         {
             m_reqBuilder = builder;
         }
@@ -146,8 +148,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 var nvc = new NameValueCollection();
                 nvc[HttpServerConnectionParams.PARAM_URL] = this.BaseURL;
-                nvc[CommandLineArguments.Provider] = this.ProviderName;
-                nvc[CommandLineArguments.Session] = this.SessionID;
+                nvc["Provider"] = this.ProviderName;
+                nvc["SessionId"] = this.SessionID;
                 return nvc;
             }
         }
@@ -169,6 +171,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        //TODO: This should eventually be encapsulated behind the default implementation IHttpRequestor. Anything that would access this would also
+        //be behind this implementation as well
         private ICredentials _cred;
 
         private void InitConnection(Uri hosturl, string sessionid, string locale, bool allowUntestedVersion)
@@ -221,11 +225,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             mAnonymousUser = (username == "Anonymous");
 
             _cred = new NetworkCredential(username, password);
+            _http.AttachCredentials(_cred);
 
             m_username = username;
             m_password = password;
-
-            m_reqBuilder.SessionID = CreateSessionInternal(m_reqBuilder);
 
             try
             {
@@ -242,10 +245,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             m_password = password;
         }
 
-        //This is the constructor used by ConnectionProviderRegistry.CreateConnection
-
-        internal HttpServerConnection(NameValueCollection initParams)
-            : this()
+        internal HttpServerConnection(IHttpRequestor http, NameValueCollection initParams)
+            : this(http)
         {
             if (initParams[HttpServerConnectionParams.PARAM_URL] == null)
                 throw new ArgumentException("Missing required connection parameter: " + HttpServerConnectionParams.PARAM_URL);
@@ -274,14 +275,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        internal HttpServerConnection(Uri hosturl, string sessionid, string locale, bool allowUntestedVersion)
-            : this()
+        internal HttpServerConnection(IHttpRequestor http, Uri hosturl, string sessionid, string locale, bool allowUntestedVersion)
+            : this(http)
         {
             InitConnection(hosturl, sessionid, locale, allowUntestedVersion);
         }
 
-        internal HttpServerConnection(Uri hosturl, string username, string password, string locale, bool allowUntestedVersion)
-            : this()
+        internal HttpServerConnection(IHttpRequestor http, Uri hosturl, string username, string password, string locale, bool allowUntestedVersion)
+            : this(http)
         {
             InitConnection(hosturl, username, password, locale, allowUntestedVersion);
         }
@@ -470,6 +471,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public override void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback)
         {
+            //TODO: Offload to IHttpRequestor
+
             //Protect against session expired
             if (this.m_autoRestartSession && m_username != null && m_password != null)
                 this.DownloadData(m_reqBuilder.GetSiteVersion());
@@ -643,6 +646,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public override void SetResourceXmlData(string resourceId, Stream content, Stream header)
         {
+            //TODO: Offload to IHttpRequestor
             bool exists = ResourceExists(resourceId);
 
             using (var outStream = MemoryStreamPool.GetStream())
@@ -708,7 +712,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        private void LogResponse(HttpWebResponse resp)
+        public void LogResponse(HttpWebResponse resp)
         {
             OnRequestDispatched(string.Format("{0:d} {1} {2} {3}", resp.StatusCode, resp.StatusDescription, resp.Method, GetResponseString(resp)));
         }
@@ -721,7 +725,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return resp.ResponseUri.AbsolutePath;
         }
 
-        private void LogFailedRequest(WebException ex)
+        public void LogFailedRequest(WebException ex)
         {
             var resp = ex.Response as HttpWebResponse;
             if (resp != null)
@@ -1100,6 +1104,36 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        public System.IO.Stream RenderMap(string mapDefinitionId,
+                                          double x,
+                                          double y,
+                                          double scale,
+                                          int width,
+                                          int height,
+                                          int dpi,
+                                          string format,
+                                          bool clip,
+                                          IEnumerable<string> showLayers,
+                                          IEnumerable<string> hideLayers,
+                                          IEnumerable<string> showGroups,
+                                          IEnumerable<string> hideGroups)
+        {
+            string req = m_reqBuilder.RenderMap(mapDefinitionId,
+                x,
+                y,
+                scale,
+                width,
+                height,
+                dpi,
+                format,
+                clip,
+                showLayers,
+                hideLayers,
+                showGroups,
+                hideGroups);
+            return this.OpenRead(req);
+        }
+
         public Stream RenderMapLegend(RuntimeMap map, int width, int height, Color backgroundColor, string format)
         {
             string req = m_reqBuilder.RenderMapLegend(map.Name, width, height, Utility.SerializeHTMLColorARGB(backgroundColor, true), format);
@@ -1172,15 +1206,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 #endif
         }
 
-        public override bool IsSessionExpiredException(Exception ex)
-        {
-            var wex = ex as WebException;
-            if (wex != null && (wex.Message.ToLower().IndexOf("session expired") >= 0 || wex.Message.ToLower().IndexOf("session not found") >= 0 || wex.Message.ToLower().IndexOf("mgsessionexpiredexception") >= 0))
-            {
-                return true;
-            }
-            return false;
-        }
+        public override bool IsSessionExpiredException(Exception ex) => Utility.IsSessionExpiredException(ex);
 
         /// <summary>
         /// Returns the avalible application templates on the server
@@ -1246,8 +1272,35 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         private readonly object SyncRoot = new object();
 
+        class SessionOnlyGetRequestOptions : IHttpGetRequestOptions
+        {
+            readonly IHttpGetRequestOptions _inner;
+
+            public SessionOnlyGetRequestOptions(IHttpGetRequestOptions inner) => _inner = inner;
+
+            public bool AutoRestartSession => false;
+
+            public string SessionID => null;
+
+            public void LogFailedRequest(WebException wex) => _inner.LogFailedRequest(wex);
+
+            public void LogResponse(HttpWebResponse resp) => _inner.LogResponse(resp);
+
+            public bool RestartSession(bool throwException) => false;
+        }
+
         private string CreateSessionInternal(RequestBuilder reqb)
         {
+            var req = reqb.CreateSessionGet(m_username, m_password);
+            using (var s = _http.Get(req, new SessionOnlyGetRequestOptions(this)))
+            {
+                using (var sr = new StreamReader(s))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
+
+            /*
             using (var outStream = MemoryStreamPool.GetStream())
             {
                 var req = reqb.CreateSession(m_username, m_password, outStream);
@@ -1287,6 +1340,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                         throw;
                 }
             }
+            */
         }
 
         /// <summary>
@@ -1357,6 +1411,11 @@ namespace OSGeo.MapGuide.MaestroAPI
                     }
                 }
 
+                lock (SyncRoot)
+                {
+                    m_reqBuilder = reqb;
+                }
+
                 var si = GetSiteInfo();
 
                 //Reset cached items
@@ -1365,7 +1424,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                     m_siteVersion = new Version(si.SiteServer.Version);
 
                     m_featureProviders = null;
-                    m_reqBuilder = reqb;
                 }
 
                 return true;
@@ -1386,6 +1444,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>The data at the given location</returns>
         internal byte[] DownloadData(string req)
         {
+            return _http.DownloadData(req, this);
+            /*
             string prev_session = m_reqBuilder.SessionID;
             try
             {
@@ -1433,6 +1493,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     }
                 }
             }
+            */
         }
 
         /// <summary>
@@ -1440,8 +1501,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="req">The request URI</param>
         /// <returns>The data at the given location</returns>
-        internal Stream OpenRead(string req)
+        internal Stream OpenRead(string req, int? requestTimeout = null)
         {
+            return _http.Get(req, this, requestTimeout);
+            /*
             string prev_session = m_reqBuilder.SessionID;
             try
             {
@@ -1478,6 +1541,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     return new WebResponseStream(httpresp);
                 }
             }
+            */
         }
 
         const int SECONDS = 1000;
@@ -2016,10 +2080,27 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        private int? GetSchemaWalkMaxTimeout()
+        {
+            // Give up to 5 mins to accomodate for really large schemas
+            const int timeout = 5 * 60 * 1000;
+            int? reqTimeout;
+
+            // If this max timeout is defined in MAESTRO_HTTP_MAX_REQUEST_TIMEOUT, then use that
+            // value first
+            string sTimeout = Environment.GetEnvironmentVariable("MAESTRO_HTTP_MAX_REQUEST_TIMEOUT");
+            if (int.TryParse(sTimeout, out var eTimeout))
+                reqTimeout = eTimeout;
+            else
+                reqTimeout = timeout;
+
+            return reqTimeout;
+        }
+
         public override string[] GetSchemas(string resourceId)
         {
             var req = m_reqBuilder.GetSchemas(resourceId);
-            using (var s = this.OpenRead(req))
+            using (var s = this.OpenRead(req, GetSchemaWalkMaxTimeout()))
             {
                 var sc = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.Common.StringCollection>(s);
                 return sc.Item.ToArray();
@@ -2029,7 +2110,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override string[] GetClassNames(string resourceId, string schemaName)
         {
             var req = m_reqBuilder.GetClassNames(resourceId, schemaName);
-            using (var s = this.OpenRead(req))
+            using (var s = this.OpenRead(req, GetSchemaWalkMaxTimeout()))
             {
                 var sc = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.Common.StringCollection>(s);
                 return sc.Item.ToArray();
@@ -2039,7 +2120,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         protected override ClassDefinition GetClassDefinitionInternal(string resourceId, string schemaName, string className)
         {
             var req = m_reqBuilder.GetClassDefinition(resourceId, schemaName, className);
-            using (var s = this.OpenRead(req))
+            using (var s = this.OpenRead(req, GetSchemaWalkMaxTimeout()))
             {
                 var fsd = new FeatureSourceDescription(s);
                 //We can't just assume first class item is the one, as ones that do not take
@@ -2076,9 +2157,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override IServerConnection Clone()
         {
             if (this.IsAnonymous)
-                return new HttpServerConnection(new Uri(this.ServerURI), "Anonymous", string.Empty, null, true); //NOXLATE
+                return new HttpServerConnection(_http, new Uri(this.ServerURI), "Anonymous", string.Empty, null, true); //NOXLATE
             else
-                return new HttpServerConnection(new Uri(this.ServerURI), this.SessionID, null, true);
+                return new HttpServerConnection(_http, new Uri(this.ServerURI), this.SessionID, null, true);
         }
 
         public override SiteInformation GetSiteInfo()
@@ -2105,6 +2186,10 @@ namespace OSGeo.MapGuide.MaestroAPI
                     return new HttpDescribeRuntimeMap(this);
                 case CommandType.GetTileProviders:
                     return new HttpGetTileProviders(this);
+                case CommandType.GetWfsCapabilities:
+                    return new HttpGetWfsCapabilities(this);
+                case CommandType.GetWmsCapabilities:
+                    return new HttpGetWmsCapabilities(this);
             }
 
             return base.CreateCommand(cmdType);
@@ -2197,5 +2282,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             resp.EnsureSuccessStatusCode();
             return await resp.Content.ReadAsStreamAsync();
         }
+
+        internal Task<HttpResponseMessage> GetAsync(string req) => _http.GetAsync(req);
     }
 }

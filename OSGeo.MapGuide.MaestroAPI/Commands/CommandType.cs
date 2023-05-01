@@ -75,6 +75,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// <summary>
         /// Enumerates registered Tile Set Providers
         /// </summary>
-        GetTileProviders
+        GetTileProviders,
+
+        /// <summary>
+        /// Gets WFS capabilities
+        /// </summary>
+        GetWfsCapabilities,
+
+        /// <summary>
+        /// Gets WMS capabilities
+        /// </summary>
+        GetWmsCapabilities
     }
 }

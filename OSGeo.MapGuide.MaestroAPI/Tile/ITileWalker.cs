@@ -44,6 +44,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             this.Scale = scale;
         }
 
+        /// <summary>
+        /// Parses a given tile ref string
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static TileRef? Parse(string str)
         {
             var tokens = str.Split('/');
@@ -55,6 +60,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             return null;
         }
 
+        /// <summary>
+        /// Serializes this to a string
+        /// </summary>
+        /// <returns></returns>
         public string Serialize() => $"{Row}/{Col}/{Scale}/{GroupName}";
 
         /// <summary>

@@ -32,13 +32,14 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     internal class VectorLayer110ItemTemplate : ItemTemplate
     {
         public VectorLayer110ItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_MGOS12;
-            Icon = Res.layer;
-            Description = Strings.TPL_VLDF_110_DESC;
-            Name = Strings.TPL_VLDF_110_NAME;
-            ResourceType = ResourceTypes.LayerDefinition.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_MGOS12,
+                   Res.layer,
+                   Strings.TPL_VLDF_110_DESC,
+                   Strings.TPL_VLDF_110_NAME,
+                   ResourceTypes.LayerDefinition.ToString(),
+                   "Vector", //NOXLATE
+                   new Version(1, 1, 0))
+        { }
 
         public override Version MinimumSiteVersion
         {

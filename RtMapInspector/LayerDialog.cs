@@ -26,6 +26,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace RtMapInspector
@@ -56,7 +57,12 @@ namespace RtMapInspector
 
             public override void OpenUrl(string url)
             {
-                System.Diagnostics.Process.Start(url);
+                var ps = new ProcessStartInfo(url)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                };
+                Process.Start(ps);
             }
 
             public override void RequestRefresh(string folderId)

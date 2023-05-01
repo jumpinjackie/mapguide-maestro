@@ -38,6 +38,6 @@ Fortunately, MapGuide Maestro is a capable alternative to MapGuide Studio. Besid
  * Maestro includes other various tools and utilities that fully exploit the services provided by MapGuide
    * A Feature Source previewing utility
    * A Runtime Map state inspection tool
-   * A tile pre-generation tool (MgCooker)
+   * A tile pre-generation tool (MgTileSeeder)
    * A "Live" Map Definition editor that supports editing workflows similar to MapGuide Author 6.5
  * and much more!

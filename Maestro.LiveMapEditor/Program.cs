@@ -35,7 +35,12 @@ namespace Maestro.LiveMapEditor
         {
             public void OpenUrl(string url)
             {
-                Process.Start(url);
+                var ps = new ProcessStartInfo(url)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                };
+                Process.Start(ps);
             }
         }
 

@@ -117,10 +117,6 @@ namespace Maestro.Editors.Fusion
                     var map = ed.Action();
                     switch (map.Type)
                     {
-                        case EditorFactory.Type_Google:
-                            _appDef.SetValue("GoogleScript", EditorFactory.GOOGLE_URL);
-                            bAddedCommercialLayer = true;
-                            break;
                         case EditorFactory.Type_Bing:
                             bAddedCommercialLayer = true;
                             break;

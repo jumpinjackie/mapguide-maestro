@@ -42,7 +42,7 @@ namespace Maestro.Base.Commands.SiteExplorer
             {
                 var conn = svc.GetConnection(exp.ConnectionName);
                 var resSvc = conn.ResourceService;
-                var items = exp.SelectedItems;
+                var items = exp.SelectedItems.OfType<RepositoryItem>().ToArray();
                 if (items.Length > 0)
                 {
                     //Ascertain the parent connection that requires refresh post-delete

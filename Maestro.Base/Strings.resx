@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_LanguageLabel" xml:space="preserve">
     <value>Selected language: {0}, OS Language: {1}</value>
@@ -469,9 +469,6 @@ Many thanks to the following people who have translated Maestro into other langu
   </data>
   <data name="Menu_Window" xml:space="preserve">
     <value>Window</value>
-  </data>
-  <data name="MgCooker" xml:space="preserve">
-    <value>MgCooker</value>
   </data>
   <data name="MgpHandlerAction" xml:space="preserve">
     <value>Load this package file</value>
@@ -1021,5 +1018,41 @@ Error message: {0}</value>
   </data>
   <data name="SiteExplorer_GetXYZTileSetUrl" xml:space="preserve">
     <value>Get XYZ tileset URLs</value>
+  </data>
+  <data name="WfsLayers" xml:space="preserve">
+    <value>Your Published WFS Layers</value>
+  </data>
+  <data name="WfsLayerTooltip" xml:space="preserve">
+    <value>Name: {1}{0}Title: {2}{0}Abstract: {3}{0}CRS: {4}</value>
+  </data>
+  <data name="WmsLayers" xml:space="preserve">
+    <value>Your Published WMS Layers</value>
+  </data>
+  <data name="WmsLayerTooltip" xml:space="preserve">
+    <value>Name: {1}{0}Title: {2}{0}Abstract: {3}{0}CRS: {4}{0}BBOX: ({5})</value>
+  </data>
+  <data name="UntitledWfsLayer" xml:space="preserve">
+    <value>(Untitled WFS Layer)</value>
+  </data>
+  <data name="UntitledWmsLayer" xml:space="preserve">
+    <value>(Untitled WMS Layer)</value>
+  </data>
+  <data name="SiteExplorer_SelectedItem_PreviewWmsLayer" xml:space="preserve">
+    <value>Preview this WMS Layer</value>
+  </data>
+  <data name="WmsPreviewUnsupportedVersion" xml:space="preserve">
+    <value>This command requires WMS layer preview support that is only available in MapGuide Open Source 4.0 or later</value>
+  </data>
+  <data name="SiteExplorer_SelectedItem_OpenWmsLayerDefn" xml:space="preserve">
+    <value>Open Associated Layer Definition</value>
+  </data>
+  <data name="SiteExplorer_SelectedItem_UnPublishWmsLayer" xml:space="preserve">
+    <value>Un-publish this WMS Layer</value>
+  </data>
+  <data name="WmsUnpublishConfirm" xml:space="preserve">
+    <value>Do you want to un-publish this WMS layer. This will delete all associated WMS layer metadata from the Layer Definition ({0})</value>
+  </data>
+  <data name="WmsUnpublishConfirmTitle" xml:space="preserve">
+    <value>Un-publish WMS Layer</value>
   </data>
 </root>

@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using ProjNet.CoordinateSystems.Projections;
 using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem

@@ -32,13 +32,14 @@ namespace Maestro.Base.Templates
     internal class RasterLayerDefinitionItemTemplate : ItemTemplate
     {
         public RasterLayerDefinitionItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_DEFAULT;
-            Icon = Res.layer;
-            Description = Strings.TPL_RLDF_DESC;
-            Name = Strings.TPL_RLDF_NAME;
-            ResourceType = ResourceTypes.LayerDefinition.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_DEFAULT,
+                   Res.layer,
+                   Strings.TPL_RLDF_DESC,
+                   Strings.TPL_RLDF_NAME,
+                   ResourceTypes.LayerDefinition.ToString(),
+                   "Raster", //NOXLATE
+                   new Version(1, 0, 0))
+        { }
 
         //temp disable as raster support is still being ported from 2.x
         public override Version MinimumSiteVersion

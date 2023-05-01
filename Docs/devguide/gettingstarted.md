@@ -19,12 +19,28 @@ As mentioned above, the Maestro API is an alternative option for MapGuide applic
 
 The MapGuide Maestro API targets the following platforms:
 
- * .net Framework 4.6.1
  * .net Standard 2.0
-
-> [!NOTE]
-> Until further notice, due to constraints imposed by upstream dependencies, the **.net Standard 2.0** target is not strong-named, while the **.net Framework 4.6.1** target is strong-named
 
 ## Acquiring the Maestro API
 
 The MapGuide Maestro API is available as a [pre-release NuGet package](https://www.nuget.org/packages/OSGeo.MapGuide.MaestroAPI) and can be installed through the NuGet package manager in Visual Studio or the ``dotnet add package`` command from the dotnet CLI.
+
+## Enabling SourceLink
+
+The MapGuide Maestro API package is built with SourceLink support, which if enabled in your development environment will allow you to step into the actual MapGuide Maestro API source code while debugging.
+
+To enable source link in Visual Studio, do the following:
+
+1. Enable the NuGet Symbol Server under `Debugging > Symbols`
+
+![](../images/1_SourceLink_EnableNuGetSymbolServer.png)
+
+2. Disable `Just My Code` under `Debugging > General`
+
+![](../images/2_SourceLink_DisableJustMyCode.png)
+
+3. Enable Source Server and Source Link Support under the same section
+
+![](../images/3_SourceLink_Enable.png)
+
+4. SourceLink is now enabled and you can step into Maestro API sources

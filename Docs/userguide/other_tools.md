@@ -1,6 +1,6 @@
 # Other Tools
 
-Besides **MgCooker** and the **Local Feature Source Preview** tool, there are other minor tools available
+Besides **MgTileSeeder** and the **Local Feature Source Preview** tool, there are other minor tools available
 in Maestro which provide valuable functionality. These are described below and are all accessible from the
 **Tools** application menu in Maestro.
 

@@ -27,6 +27,7 @@ using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -39,9 +40,10 @@ namespace Maestro.Base.Commands.SiteExplorer
             var omgr = ServiceRegistry.GetService<OpenResourceManager>();
             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = connMgr.GetConnection(exp.ConnectionName);
-            if (exp.SelectedItems.Length == 1)
+            var sel = exp.GetSelectedResources().ToArray();
+            if (sel.Length == 1)
             {
-                var current = exp.SelectedItems[0];
+                var current = sel[0];
                 var parent = current.Parent;
                 List<string> names = new List<string>();
                 foreach (var item in parent.Children)

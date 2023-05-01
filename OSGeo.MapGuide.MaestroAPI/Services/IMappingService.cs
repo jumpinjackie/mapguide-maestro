@@ -24,6 +24,7 @@ using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace OSGeo.MapGuide.MaestroAPI.Services
@@ -329,7 +330,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="metersPerUnit"></param>
         /// <param name="suppressErrors">If false, this method will throw an exception on the first layer that cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</param>
         /// <returns></returns>
-        RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId, double metersPerUnit, bool suppressErrors);
+        RuntimeMap CreateMap(string runtimeMapResourceId,
+                             string baseMapDefinitionId,
+                             double metersPerUnit,
+                             bool suppressErrors);
 
         /// <summary>
         /// Creates a new runtime map instance from an existing map definition. Meters per unit
@@ -441,7 +445,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="metersPerUnit"></param>
         /// <param name="suppressErrors">If false, this method will throw an exception on the first layer that cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</param>
         /// <returns></returns>
-        RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, double metersPerUnit, bool suppressErrors);
+        RuntimeMap CreateMap(string runtimeMapResourceId,
+                             IMapDefinition mdf,
+                             double metersPerUnit,
+                             bool suppressErrors);
 
         /// <summary>
         /// Opens an existing runtime map instance
@@ -471,7 +478,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="format"></param>
         /// <returns></returns>
         [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")] //NOXLATE
-        System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format);
+        System.IO.Stream RenderDynamicOverlay(RuntimeMap map,
+                                              MapSelection selection,
+                                              string format);
 
         /// <summary>
         /// Renders a dynamic overlay image of the map
@@ -482,7 +491,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="keepSelection"></param>
         /// <returns></returns>
         [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")] //NOXLATE
-        System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, bool keepSelection);
+        System.IO.Stream RenderDynamicOverlay(RuntimeMap map,
+                                              MapSelection selection,
+                                              string format,
+                                              bool keepSelection);
 
         /// <summary>
         /// Renders a dynamic overlay image of the map
@@ -517,7 +529,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="behaviour">A bitmask for the rendering behaviour (1 = Render Selection, 2 = Render Layers, 4 = Keep Selection, 8 = Render Base Layers)</param>
         /// <returns></returns>
         /// <exception cref="T:System.NotSupportedException">Thrown if the service is too old to be able to support this API</exception>
-        System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behaviour);
+        System.IO.Stream RenderDynamicOverlay(RuntimeMap map,
+                                              MapSelection selection,
+                                              string format,
+                                              Color selectionColor,
+                                              int behaviour);
 
         /// <summary>
         /// Renders the runtime map.
@@ -530,7 +546,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="height">The height.</param>
         /// <param name="dpi">The dpi.</param>
         /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi);
+        System.IO.Stream RenderRuntimeMap(RuntimeMap map,
+                                          double x,
+                                          double y,
+                                          double scale,
+                                          int width,
+                                          int height,
+                                          int dpi);
 
         /// <summary>
         /// Renders the runtime map.
@@ -544,7 +566,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="height">The height.</param>
         /// <param name="dpi">The dpi.</param>
         /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi);
+        System.IO.Stream RenderRuntimeMap(RuntimeMap map,
+                                          double x1,
+                                          double y1,
+                                          double x2,
+                                          double y2,
+                                          int width,
+                                          int height,
+                                          int dpi);
 
         /// <summary>
         /// Renders the runtime map.
@@ -558,7 +587,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="dpi">The dpi.</param>
         /// <param name="format">The format.</param>
         /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format);
+        System.IO.Stream RenderRuntimeMap(RuntimeMap map,
+                                          double x,
+                                          double y,
+                                          double scale,
+                                          int width,
+                                          int height,
+                                          int dpi,
+                                          string format);
 
         /// <summary>
         /// Renders the runtime map.
@@ -573,7 +609,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="dpi">The dpi.</param>
         /// <param name="format">The format.</param>
         /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format);
+        System.IO.Stream RenderRuntimeMap(RuntimeMap map,
+                                          double x1,
+                                          double y1,
+                                          double x2,
+                                          double y2,
+                                          int width,
+                                          int height,
+                                          int dpi,
+                                          string format);
 
         /// <summary>
         /// Renders the runtime map.
@@ -588,7 +632,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="format">The format.</param>
         /// <param name="clip">if set to <c>true</c> [clip].</param>
         /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip);
+        System.IO.Stream RenderRuntimeMap(RuntimeMap map,
+                                          double x,
+                                          double y,
+                                          double scale,
+                                          int width,
+                                          int height,
+                                          int dpi,
+                                          string format,
+                                          bool clip);
 
         /// <summary>
         /// Renders the runtime map.
@@ -604,7 +656,47 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="format">The format.</param>
         /// <param name="clip">if set to <c>true</c> [clip].</param>
         /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip);
+        System.IO.Stream RenderRuntimeMap(RuntimeMap map,
+                                          double x1,
+                                          double y1,
+                                          double x2,
+                                          double y2,
+                                          int width,
+                                          int height,
+                                          int dpi,
+                                          string format,
+                                          bool clip);
+
+        /// <summary>
+        /// Renders the given map definition in the requested image format
+        /// </summary>
+        /// <param name="mapDefinitionId"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="scale"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="dpi"></param>
+        /// <param name="format"></param>
+        /// <param name="clip"></param>
+        /// <param name="showLayers"></param>
+        /// <param name="hideLayers"></param>
+        /// <param name="showGroups"></param>
+        /// <param name="hideGroups"></param>
+        /// <returns></returns>
+        System.IO.Stream RenderMap(string mapDefinitionId,
+                                   double x,
+                                   double y,
+                                   double scale,
+                                   int width,
+                                   int height,
+                                   int dpi = 96,
+                                   string format = "PNG",
+                                   bool clip = false,
+                                   IEnumerable<string> showLayers = null,
+                                   IEnumerable<string> hideLayers = null,
+                                   IEnumerable<string> showGroups = null,
+                                   IEnumerable<string> hideGroups = null);
 
         /// <summary>
         /// Renders the legend for the specified <see cref="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap"/> to the requested size and format
@@ -615,7 +707,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="backgroundColor"></param>
         /// <param name="format"></param>
         /// <returns></returns>
-        System.IO.Stream RenderMapLegend(RuntimeMap map, int width, int height, Color backgroundColor, string format);
+        System.IO.Stream RenderMapLegend(RuntimeMap map,
+                                         int width,
+                                         int height,
+                                         Color backgroundColor,
+                                         string format);
 
         /// <summary>
         /// Renders a minature bitmap of the layers style
@@ -625,7 +721,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
         /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
         /// <returns>The legend image stream</returns>
-        System.IO.Stream GetLegendImageStream(double scale, string layerdefinition, int themeIndex, int type);
+        System.IO.Stream GetLegendImageStream(double scale,
+                                              string layerdefinition,
+                                              int themeIndex,
+                                              int type);
 
         /// <summary>
         /// Renders a minature bitmap of the layers style
@@ -638,7 +737,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="height">The height of the image to request.</param>
         /// <param name="format">The image format (PNG, JPG or GIF).</param>
         /// <returns>The legend image stream</returns>
-        System.IO.Stream GetLegendImageStream(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format);
+        System.IO.Stream GetLegendImageStream(double scale,
+                                              string layerdefinition,
+                                              int themeIndex,
+                                              int type,
+                                              int width,
+                                              int height,
+                                              string format);
 
         /// <summary>
         /// Identifies features that meet the specified spatial selection criteria. These features can be persisted as selected features in a map.
@@ -654,6 +759,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="extraOptions">Extra options for controlling selection criteria</param>
         /// <param name="requestData">1=Include attributes,2=Include Inline Selection,4=Tooltip Data,8=Include Hyperlink data</param>
         /// <returns></returns>
-        string QueryMapFeatures(RuntimeMap map, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions, int? requestData);
+        string QueryMapFeatures(RuntimeMap map,
+                                int maxFeatures,
+                                string wkt,
+                                bool persist,
+                                string selectionVariant,
+                                QueryMapOptions extraOptions,
+                                int? requestData);
     }
 }

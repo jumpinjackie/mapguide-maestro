@@ -149,5 +149,18 @@ namespace Maestro.Base
             : base(init)
         {
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // Workbench
+            // 
+            this.ClientSize = new System.Drawing.Size(1264, 861);
+            this.Name = "Workbench";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.ResumeLayout(false);
+
+        }
     }
 }

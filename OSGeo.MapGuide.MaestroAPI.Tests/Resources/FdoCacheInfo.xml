@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<FdoCacheInformation>
+	<TimeStamp>2021-12-20T18:19:34.353194</TimeStamp>
+	<ConfigurationSettings>
+		<DataConnectionPoolEnabled>True</DataConnectionPoolEnabled>
+		<DataConnectionPoolExcludedProviders>OSGeo.SDF,OSGeo.SHP</DataConnectionPoolExcludedProviders>
+		<DataConnectionPoolSize>200</DataConnectionPoolSize>
+		<DataConnectionPoolSizeCustom>OSGeo.Gdal:1</DataConnectionPoolSizeCustom>
+		<DataConnectionTimeout>28800</DataConnectionTimeout>
+	</ConfigurationSettings>
+	<Provider>
+		<Name>OSGeo.Gdal</Name>
+		<MaximumDataConnectionPoolSize>1</MaximumDataConnectionPoolSize>
+		<CurrentDataConnectionPoolSize>0</CurrentDataConnectionPoolSize>
+		<CurrentDataConnections>0</CurrentDataConnections>
+		<ThreadModel>Not initialized.</ThreadModel>
+		<KeepDataConnectionsCached>True</KeepDataConnectionsCached>
+	</Provider>
+</FdoCacheInformation>

@@ -30,6 +30,9 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.ObjectModels.Json
 {
+    /// <summary>
+    /// Helper class to convert an Application Definition to JSON
+    /// </summary>
     public static class AppDefJsonSerializer
     {
         const string XSI_NS = "http://www.w3.org/2001/XMLSchema-instance";
@@ -62,6 +65,11 @@ namespace OSGeo.MapGuide.ObjectModels.Json
             }
         }
 
+        /// <summary>
+        /// Serializes the given Application Definition to JSON
+        /// </summary>
+        /// <param name="appDef"></param>
+        /// <returns></returns>
         public static string Serialize(IApplicationDefinition appDef)
         {
             var xml = appDef.Serialize();

@@ -33,13 +33,14 @@ namespace Maestro.Base.Templates
     internal class DrawingLayerDefinitionItemTemplate : ItemTemplate
     {
         public DrawingLayerDefinitionItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_DEFAULT;
-            Icon = Res.layer;
-            Description = Strings.TPL_DLDF_DESC;
-            Name = Strings.TPL_DLDF_NAME;
-            ResourceType = ResourceTypes.LayerDefinition.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_DEFAULT,
+                   Res.layer,
+                   Strings.TPL_DLDF_DESC,
+                   Strings.TPL_DLDF_NAME,
+                   ResourceTypes.LayerDefinition.ToString(),
+                   "Drawing", //NOXLATE
+                   new Version(1, 0, 0))
+        { }
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {

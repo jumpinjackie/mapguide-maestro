@@ -30,13 +30,14 @@ namespace Maestro.Base.Templates
     internal class MapDefinitionItemTemplate : ItemTemplate
     {
         public MapDefinitionItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_DEFAULT;
-            Icon = Res.map;
-            Description = Strings.TPL_MDF_DESC;
-            Name = Strings.TPL_MDF_NAME;
-            ResourceType = ResourceTypes.MapDefinition.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_DEFAULT,
+                   Res.map,
+                   Strings.TPL_MDF_DESC,
+                   Strings.TPL_MDF_NAME,
+                   ResourceTypes.MapDefinition.ToString(),
+                   null,
+                   new Version(1, 0, 0))
+        { }
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {

@@ -38,17 +38,6 @@ using System.Text;
 namespace Maestro.AddIn.Scripting.Services
 {
     /// <summary>
-    /// Python built-ins injected into the Maestro IronPython REPL
-    /// </summary>
-    public static class ScriptGlobals
-    {
-        /// <summary>
-        /// The Host Application
-        /// </summary>
-        public const string HostApp = "app"; //NOXLATE
-    }
-
-    /// <summary>
     /// A simplified helper class that is exposed to python scripts to provide
     /// convenience functionality or to workaround concepts that don't cleanly
     /// translate to IronPython (eg. Generics)

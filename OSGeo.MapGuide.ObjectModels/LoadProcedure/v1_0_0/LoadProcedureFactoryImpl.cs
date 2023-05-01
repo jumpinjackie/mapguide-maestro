@@ -53,13 +53,14 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0
             lt.GenerateLayers = true;
             lt.GenerateSpatialDataSources = true;
             lt.SourceFile = new System.ComponentModel.BindingList<string>();
+            lt.ResourceId = new System.ComponentModel.BindingList<string>();
         }
 
         public static ILoadProcedure CreateDefaultSdf()
         {
             var proc = new LoadProcedure()
             {
-                Item = new SdfLoadProcedureType() { Generalization = 100.0 }
+                Item = new SdfLoadProcedureType() { Generalization = 100.0 },
             };
             ApplyDefaults(proc.Item);
             return proc;

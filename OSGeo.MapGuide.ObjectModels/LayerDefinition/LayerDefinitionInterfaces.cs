@@ -564,7 +564,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <summary>
         /// Controls whether bounding box data is included with selected features when selecting from this layer
         /// </summary>
-        bool IncludeBoundsForSelectedFeatures { get; set; }
+        bool? IncludeBoundsForSelectedFeatures { get; set; }
     }
 
     /// <summary>
@@ -660,6 +660,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         int GridScaleRangeCount { get; }
     }
 
+    /// <summary>
+    /// Represents a layer definition based on a raster-based feature source
+    /// </summary>
     public interface IRasterLayerDefinition2 : ISubLayerDefinition2
     {
 
@@ -1285,6 +1288,19 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// Gets or sets the advanced placement settings
         /// </summary>
         IAdvancedPlacement AdvancedPlacement { get; set; }
+    }
+
+    /// <summary>
+    /// Text symbolization settings for v4.0.0 Layer Definition schema
+    /// </summary>
+    public interface ITextSymbol2 : ITextSymbol
+    {
+        /// <summary>
+        /// A string FDO expression for the label justification.  Must evaluate to one of the 'Left', 'Right', 'Center' or 'Justify' (which is the same as 'Left').
+        /// 
+        /// If not specified, 'Left' is assumed
+        /// </summary>
+        string LabelJustification { get; set; }
     }
 
     /// <summary>

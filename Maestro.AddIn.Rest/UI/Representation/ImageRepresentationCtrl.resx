@@ -118,27 +118,45 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="permissionsCtrl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 236</value>
-  </data>
-  <data name="permissionsCtrl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 153</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="permissionsCtrl1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>ImageRepresentationCtrl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;getMethodCtrl1.Name" xml:space="preserve">
+    <value>getMethodCtrl1</value>
+  </data>
+  <data name="&gt;&gt;getMethodCtrl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;getMethodCtrl1.Type" xml:space="preserve">
+    <value>Maestro.AddIn.Rest.UI.Methods.GetMethodCtrl, Maestro.AddIn.Rest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;getMethodCtrl1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;permissionsCtrl1.Name" xml:space="preserve">
     <value>permissionsCtrl1</value>
   </data>
-  <data name="&gt;&gt;permissionsCtrl1.Type" xml:space="preserve">
-    <value>Maestro.AddIn.Rest.UI.Representation.PermissionsCtrl, Maestro.AddIn.Rest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;permissionsCtrl1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;permissionsCtrl1.Type" xml:space="preserve">
+    <value>Maestro.AddIn.Rest.UI.Representation.PermissionsCtrl, Maestro.AddIn.Rest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;permissionsCtrl1.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>554, 393</value>
   </data>
   <data name="getMethodCtrl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -149,31 +167,13 @@
   <data name="getMethodCtrl1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;getMethodCtrl1.Name" xml:space="preserve">
-    <value>getMethodCtrl1</value>
+  <data name="permissionsCtrl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 236</value>
   </data>
-  <data name="&gt;&gt;getMethodCtrl1.Type" xml:space="preserve">
-    <value>Maestro.AddIn.Rest.UI.Methods.GetMethodCtrl, Maestro.AddIn.Rest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="permissionsCtrl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 153</value>
   </data>
-  <data name="&gt;&gt;getMethodCtrl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;getMethodCtrl1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>554, 393</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>ImageRepresentationCtrl</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="permissionsCtrl1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
 </root>

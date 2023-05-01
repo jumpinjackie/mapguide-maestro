@@ -32,7 +32,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Http.Commands
             _conn = conn;
         }
 
-
         public ObjectModels.Common.TileProviderList Execute() => _conn.GetTileProviders();
 
         public IServerConnection Parent => _conn;

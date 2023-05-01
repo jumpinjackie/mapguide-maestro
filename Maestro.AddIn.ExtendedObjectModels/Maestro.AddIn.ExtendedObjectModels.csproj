@@ -1,195 +1,54 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{32BA7DF6-1AFA-441D-9231-5624C5920706}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Maestro.AddIn.ExtendedObjectModels</RootNamespace>
-    <AssemblyName>Maestro.AddIn.ExtendedObjectModels</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\out\Debug\AddIns\ExtendedObjectModels\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\out\Release\AddIns\ExtendedObjectModels\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <None Remove="Manifest.addin" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="..\Properties\CodeAnalysisRules.cs">
-      <Link>CodeAnalysisRules.cs</Link>
-    </Compile>
-    <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
-      <Link>GlobalAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="Commands\StartupCommand.cs" />
-    <Compile Include="Editor\EditorFactories.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Strings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Strings.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\MapDefinition300ItemTemplate.cs" />
-    <Compile Include="Templates\TileSetDefinition300ItemTemplate.cs" />
-    <Compile Include="Templates\RasterLayer240ItemTemplate.cs" />
-    <Compile Include="Templates\VectorLayer400ItemTemplate.cs" />
-    <Compile Include="Templates\WebLayout260ItemTemplate.cs" />
-    <Compile Include="Templates\SymbolDefinition240ItemTemplate.cs" />
-    <Compile Include="Templates\WatermarkDefinition240ItemTemplate.cs" />
-    <Compile Include="Templates\VectorLayer240ItemTemplate.cs" />
-    <Compile Include="Templates\MapDefinition240ItemTemplate.cs" />
-    <Compile Include="Templates\WatermarkDefinition230ItemTemplate.cs" />
-    <Compile Include="Templates\MapDefinition230ItemTemplate.cs" />
-    <Compile Include="Templates\VectorLayer230ItemTemplate.cs" />
-    <Compile Include="Templates\SQLiteLoadProcedureItemTemplate.cs" />
-    <Compile Include="Templates\SymbolDefinition110ItemTemplate.cs" />
-    <Compile Include="Templates\VectorLayer130ItemTemplate.cs" />
-    <Compile Include="Templates\VectorLayer120ItemTemplate.cs" />
-    <Compile Include="Templates\VectorLayer110ItemTemplate.cs" />
-    <Compile Include="Templates\WebLayout110ItemTemplate.cs" />
-    <Compile Include="Templates\WebLayout240ItemTemplate.cs" />
+    <Compile Include="..\Properties\CodeAnalysisRules.cs" Link="CodeAnalysisRules.cs" />
+    <Compile Include="..\Properties\GlobalAssemblyInfo.cs" Link="GlobalAssemblyInfo.cs" />
+    <Compile Include="..\Properties\WindowsOnlyAssemblyInfo.cs" Link="WindowsOnlyAssemblyInfo.cs" />
   </ItemGroup>
+
   <ItemGroup>
     <Content Include="Manifest.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\Images\grid.png" />
-    <None Include="app.config" />
-    <None Include="Resources\water.png" />
-    <None Include="Resources\edit.png" />
-    <None Include="Resources\marker.png" />
-    <None Include="Resources\application-browser.png" />
-    <None Include="Resources\map.png" />
-    <None Include="Resources\layer.png" />
-    <None Include="Resources\images-stack.png" />
-    <None Include="Resources\document.png" />
-    <None Include="Resources\database-share.png" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj">
-      <Project>{F1E2F468-5030-4DBA-968C-9620284AFAA1}</Project>
-      <Name>Maestro.Base</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj">
-      <Project>{5AD2CDBA-952E-4148-98A1-31D2E0D540D5}</Project>
-      <Name>Maestro.Editors</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj">
-      <Project>{CFD19053-2172-41D3-8460-0FD2123A1E88}</Project>
-      <Name>Maestro.Shared.UI</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
-      <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
-      <Name>OSGeo.MapGuide.MaestroAPI</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj">
-      <Project>{48c5eb23-45ae-4c4c-8fab-635428ae8ca1}</Project>
-      <Name>OSGeo.MapGuide.ObjectModels</Name>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj">
-      <Project>{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}</Project>
-      <Name>ICSharpCode.Core</Name>
-      <Private>False</Private>
-    </ProjectReference>
+	  <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj" />
+	  <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj" />
+	  <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj" />
+	  <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj" />
+	  <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj" />
+	  <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Strings.resx">
+    <Compile Update="Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>call "$(SolutionDir)addin_clean.bat" "$(TargetDir)"</PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if not exist &quot;$(SolutionDir)out\$(Configuration)\AddIns\ExtendedObjectModels&quot; mkdir &quot;$(SolutionDir)out\$(Configuration)\AddIns\ExtendedObjectModels&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\ExtendedObjectModels&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)Manifest.addin&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\ExtendedObjectModels&quot;&#xD;&#xA;if exist &quot;$(TargetDir)$(TargetName).pdb&quot; copy /Y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\ExtendedObjectModels&quot;" />
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

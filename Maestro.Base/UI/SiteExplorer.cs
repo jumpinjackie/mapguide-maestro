@@ -129,20 +129,17 @@ namespace Maestro.Base.UI
         {
             get
             {
-                if (trvResources.SelectedNode != null)
+                if (trvResources.SelectedNode != null && trvResources.SelectedNode.Tag is ISiteExplorerNode ri)
                 {
-                    var item = (RepositoryItem)trvResources.SelectedNode.Tag;
-                    return item.ConnectionName;
+                    return ri.ConnectionName;
                 }
-                else if (trvResources.SelectedNodes != null && trvResources.SelectedNodes.Count > 0)
+                else if (trvResources.SelectedNodes != null && trvResources.SelectedNodes.Count > 0 && trvResources.SelectedNodes[0].Tag is ISiteExplorerNode ri2)
                 {
-                    var item = (RepositoryItem)trvResources.SelectedNodes[0].Tag;
-                    return item.ConnectionName;
+                    return ri2.ConnectionName;
                 }
-                else if (trvResources.Root.Children.Count == 1)
+                else if (trvResources.Root.Children.Count == 1 && trvResources.Root.Children[0].Tag is ISiteExplorerNode ri3)
                 {
-                    var item = (RepositoryItem)trvResources.Root.Children[0].Tag;
-                    return item.ConnectionName;
+                    return ri3.ConnectionName;
                 }
                 return null;
             }
@@ -259,24 +256,37 @@ namespace Maestro.Base.UI
                 {
                     if (items.Length == 1) //Single select
                     {
-                        RepositoryItem item = items[0];
-                        if (item.IsFolder)
-                            ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedFolder", trvResources, e.X, e.Y); //NOXLATE
-                        else
-                            ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedDocument", trvResources, e.X, e.Y); //NOXLATE
+                        var item = items[0];
+                        if (item is RepositoryItem ri)
+                        {
+                            if (ri.IsFolder)
+                                ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedFolder", trvResources, e.X, e.Y); //NOXLATE
+                            else
+                                ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedDocument", trvResources, e.X, e.Y); //NOXLATE
+                        }
+                        else if (item is WmsLayerRepositoryItem wmsLayer)
+                        {
+                            ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedWmsLayer", trvResources, e.X, e.Y); //NOXLATE
+                        }
                     }
                     else //Multi select
                     {
                         //All must be uniform type
                         int folderCount = 0;
+                        int docCount = 0;
 
                         foreach (var item in items)
                         {
-                            if (item.IsFolder)
-                                folderCount++;
+                            if (item is RepositoryItem ri)
+                            {
+                                if (ri.IsFolder)
+                                    folderCount++;
+                                else
+                                    docCount++;
+                            }
                         }
 
-                        if (folderCount == 0) //All selected documents
+                        if (docCount == items.Length) //All selected documents
                         {
                             ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedDocuments", trvResources, e.X, e.Y); //NOXLATE
                         }
@@ -284,7 +294,7 @@ namespace Maestro.Base.UI
                         {
                             ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedFolders", trvResources, e.X, e.Y); //NOXLATE
                         }
-                        else //Mixed selection
+                        else if (folderCount > 0 || docCount > 0) //Mixed selection
                         {
                             ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedMixedResources", trvResources, e.X, e.Y); //NOXLATE
                         }
@@ -293,16 +303,17 @@ namespace Maestro.Base.UI
             }
         }
 
-        public RepositoryItem[] SelectedItems
+        public ISiteExplorerNode[] SelectedItems
         {
             get
             {
-                List<RepositoryItem> items = new List<RepositoryItem>();
+                var items = new List<ISiteExplorerNode>();
                 if (trvResources.SelectedNodes.Count > 0)
                 {
                     foreach (var node in trvResources.SelectedNodes)
                     {
-                        items.Add((RepositoryItem)node.Tag);
+                        if (node.Tag is ISiteExplorerNode item)
+                            items.Add(item);
                     }
                 }
                 return items.ToArray();
@@ -421,17 +432,27 @@ namespace Maestro.Base.UI
             var ocolor = PropertyService.Get(ConfigProperties.OpenColor, Color.LightGreen);
             var dcolor = PropertyService.Get(ConfigProperties.DirtyColor, Color.Pink);
 
-            var item = (RepositoryItem)e.Node.Tag;
-            var ctx = e.Context;
-            if (item.ClipboardState != RepositoryItem.ClipboardAction.None)
+            if (e.Node.Tag is RepositoryItem item)
             {
-                var oldFont = e.Font;
-                e.Font = new Font(oldFont.FontFamily, oldFont.Size, oldFont.Style | FontStyle.Italic);
+                var ctx = e.Context;
+                if (item.ClipboardState != RepositoryItem.ClipboardAction.None)
+                {
+                    var oldFont = e.Font;
+                    e.Font = new Font(oldFont.FontFamily, oldFont.Size, oldFont.Style | FontStyle.Italic);
+                }
+                if (item.IsDirty)
+                    e.BackgroundBrush = new SolidBrush(dcolor);
+                else if (item.IsOpen)
+                    e.BackgroundBrush = new SolidBrush(ocolor);
+            }/*
+            else if (e.Node.Tag is WfsRootRepositoryItem wfsr)
+            {
+
             }
-            if (item.IsDirty)
-                e.BackgroundBrush = new SolidBrush(dcolor);
-            else if (item.IsOpen)
-                e.BackgroundBrush = new SolidBrush(ocolor);
+            else if (e.Node.Tag is WmsRootRepositoryItem wmsr)
+            {
+
+            }*/
         }
 
         private void trvResources_ItemDrag(object sender, ItemDragEventArgs e)
@@ -443,9 +464,11 @@ namespace Maestro.Base.UI
                 List<RepositoryHandle> rids = new List<RepositoryHandle>();
                 foreach (var n in nodes)
                 {
-                    var ri = (RepositoryItem)n.Tag;
-                    conn = _connManager.GetConnection(ri.ConnectionName);
-                    rids.Add(new RepositoryHandle(new ResourceIdentifier(ri.ResourceId), conn));
+                    if (n.Tag is RepositoryItem ri)
+                    {
+                        conn = _connManager.GetConnection(ri.ConnectionName);
+                        rids.Add(new RepositoryHandle(new ResourceIdentifier(ri.ResourceId), conn));
+                    }
                 }
                 trvResources.DoDragDrop(rids.ToArray(), DragDropEffects.All);
             }

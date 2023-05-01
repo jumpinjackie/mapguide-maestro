@@ -1393,7 +1393,15 @@ namespace OSGeo.MapGuide.MaestroAPI
                 UpdateRepository(resourceID, header as ResourceFolderHeaderType);
             }
             else
+            {
+                /*
+                using (var sr = new StreamReader(this.SerializeObject(header)))
+                {
+                    var xml = sr.ReadToEnd();
+                }
+                */
                 this.SetResourceXmlData(resourceID, null, this.SerializeObject(header));
+            }
         }
 
         /// <summary>
@@ -2248,7 +2256,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="loadProc">The load proc.</param>
         /// <param name="callback">The callback.</param>
         /// <param name="ignoreUnsupported">if set to <c>true</c> [ignore unsupported].</param>
-        /// <returns></returns>
+        /// <returns>An array of resource IDs that were created from the execution of this load procedure</returns>
         public virtual string[] ExecuteLoadProcedure(ILoadProcedure loadProc, OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack callback, bool ignoreUnsupported)
         {
             var cmd = new ExecuteLoadProcedure(GetInterface());

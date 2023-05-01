@@ -32,13 +32,14 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     internal class TileSetDefinition300ItemTemplate : ItemTemplate
     {
         public TileSetDefinition300ItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_MGOS30;
-            Icon = Res.grid;
-            Description = Strings.TPL_TSD_300_DESC;
-            Name = Strings.TPL_TSD_300_NAME;
-            ResourceType = ResourceTypes.TileSetDefinition.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_MGOS30,
+                   Res.grid,
+                   Strings.TPL_TSD_300_DESC,
+                   Strings.TPL_TSD_300_NAME,
+                   ResourceTypes.TileSetDefinition.ToString(),
+                   null,
+                   new Version(3, 0, 0))
+        { }
 
         public override Version MinimumSiteVersion
         {

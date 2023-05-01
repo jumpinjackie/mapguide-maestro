@@ -20,9 +20,11 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Drawing;
 using System.Globalization;
@@ -66,12 +68,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal string GetSiteVersion()
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETSITEVERSION");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETSITEVERSION" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
             return m_hosturi + "?" + EncodeParameters(param);
@@ -82,12 +86,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETFEATUREPROVIDERS");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETFEATUREPROVIDERS" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
             return m_hosturi + "?" + EncodeParameters(param);
@@ -98,11 +104,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (type == null)
                 type = "";
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "ENUMERATERESOURCES");
-            param.Add("VERSION", "1.0.0");
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "ENUMERATERESOURCES" },
+                { "VERSION", "1.0.0" },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
             param.Add("RESOURCEID", startingpoint);
@@ -114,17 +122,19 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal string TransformCoordinates(string source, string target, (double x, double y)[] coordinates)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "CS.TRANSFORMCOORDINATES");
-            param.Add("VERSION", "4.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "CS.TRANSFORMCOORDINATES" },
+                { "VERSION", "4.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent },
 
-            param.Add("SOURCE", source);
-            param.Add("TARGET", target);
-            // A comma-delimited list of space-separated coordinate pairs
-            param.Add("COORDINATES", string.Join(",", coordinates.Select(c => $"{c.x} {c.y}")));
+                { "SOURCE", source },
+                { "TARGET", target },
+                // A comma-delimited list of space-separated coordinate pairs
+                { "COORDINATES", string.Join(",", coordinates.Select(c => $"{c.x} {c.y}")) }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -137,26 +147,49 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "TESTCONNECTION");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
-            param.Add("RESOURCEID", featuresource);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "TESTCONNECTION" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent },
+                { "RESOURCEID", featuresource }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
+        internal string CreateSessionGet(string username, string password)
+        {
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "CREATESESSION" },
+                { "VERSION", "1.0.0" },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+            if (username != null)
+                param.Add("USERNAME", username);
+            if (password != null)
+                param.Add("PASSWORD", password);
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
         internal System.Net.WebRequest CreateSession(string username, string password, System.IO.Stream outStream)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "CREATESESSION");
-            param.Add("VERSION", "1.0.0");
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "CREATESESSION" },
+                { "VERSION", "1.0.0" },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
             if (username != null)
@@ -176,12 +209,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "TESTCONNECTION");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "TESTCONNECTION" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -212,12 +247,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "TESTCONNECTION");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "TESTCONNECTION" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -281,11 +318,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETMAP");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETMAP" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -301,12 +340,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETRESOURCECONTENT");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETRESOURCECONTENT" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -320,12 +361,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETRESOURCEDATA");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETRESOURCEDATA" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -340,12 +383,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "ENUMERATERESOURCEDATA");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "ENUMERATERESOURCEDATA" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -359,12 +404,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "DELETERESOURCEDATA");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "DELETERESOURCEDATA" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -379,12 +426,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETRESOURCEHEADER");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETRESOURCEHEADER" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -398,12 +447,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "SETRESOURCE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "SETRESOURCE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -462,11 +513,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "SETRESOURCE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "SETRESOURCE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -487,11 +540,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal NameValueCollection SetResourceDataParams(string resourceid, string dataname, ResourceDataType datatype)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "SETRESOURCEDATA");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "SETRESOURCEDATA" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -507,11 +562,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "SETRESOURCEDATA");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "SETRESOURCEDATA" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -536,12 +593,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal string reqAsUrl(string resourceId, string classname, string filter, string[] columns)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "SELECTFEATURES");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "SELECTFEATURES" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -562,12 +621,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string ExecuteSqlQuery(string featureSourceID, string sql)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "EXECUTESQLQUERY");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "EXECUTESQLQUERY" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -579,7 +640,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public System.Net.WebRequest SelectFeatures(bool aggregate, string resourceId, string classname, string filter, string[] columns, NameValueCollection computedProperties, System.IO.Stream outStream)
         {
-            NameValueCollection param = new NameValueCollection();
+            var param = new NameValueCollection();
             if (aggregate)
                 param.Add("OPERATION", "SELECTAGGREGATES");
             else
@@ -638,12 +699,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string DescribeSchema(string resourceId, string schema)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "DESCRIBEFEATURESCHEMA");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "DESCRIBEFEATURESCHEMA" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -655,12 +718,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string DescribeSchema(string resourceID)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "DESCRIBEFEATURESCHEMA");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "DESCRIBEFEATURESCHEMA" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -671,12 +736,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetProviderCapabilities(string provider)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETPROVIDERCAPABILITIES");
-            param.Add("VERSION", "2.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETPROVIDERCAPABILITIES" },
+                { "VERSION", "2.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -687,12 +754,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string EnumerateCategories()
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "CS.ENUMERATECATEGORIES");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "CS.ENUMERATECATEGORIES" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -701,12 +770,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string EnumerateCoordinateSystems(string category)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "CS.ENUMERATECOORDINATESYSTEMS");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "CS.ENUMERATECOORDINATESYSTEMS" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -717,12 +788,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string ConvertWktToCoordinateSystemCode(string wkt)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "CS.CONVERTWKTTOCOORDINATESYSTEMCODE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "CS.CONVERTWKTTOCOORDINATESYSTEMCODE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -733,12 +806,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string ConvertCoordinateSystemCodeToWkt(string code)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "CS.CONVERTCOORDINATESYSTEMCODETOWKT");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "CS.CONVERTCOORDINATESYSTEMCODETOWKT" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -749,12 +824,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string ConvertWktToEpsgCode(string wkt)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "CS.CONVERTWKTTOEPSGCODE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "CS.CONVERTWKTTOEPSGCODE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -765,12 +842,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string ConvertEpsgCodeToWkt(string code)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "CS.CONVERTEPSGCODETOWKT");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "CS.CONVERTEPSGCODETOWKT" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -781,12 +860,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetBaseLibrary()
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "CS.GETBASELIBRARY");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "CS.GETBASELIBRARY" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -795,12 +876,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string IsValidCoordSys(string wkt)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "CS.ISVALID");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "CS.ISVALID" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -811,12 +894,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string DeleteResource(string resourceid)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "DELETERESOURCE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "DELETERESOURCE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -827,12 +912,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string MoveResource(string source, string target, bool overwrite)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "MOVERESOURCE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "MOVERESOURCE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -845,12 +932,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string CopyResource(string source, string target, bool overwrite)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "COPYRESOURCE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "COPYRESOURCE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -863,12 +952,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string EnumerateResourceReferences(string resourceid)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "ENUMERATERESOURCEREFERENCES");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "ENUMERATERESOURCEREFERENCES" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -879,12 +970,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public System.Net.WebRequest GetMapImage(string mapname, string format, string selectionXml, double centerX, double centerY, double scale, int dpi, int width, int height, bool clip, string[] showlayers, string[] hidelayers, string[] showgroups, string[] hidegroups, System.IO.Stream outStream)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETMAPIMAGE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("MAPNAME", mapname);
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETMAPIMAGE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "MAPNAME", mapname },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (format != null && format.Length != 0)
                 param.Add("FORMAT", format);
@@ -922,12 +1015,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public System.Net.WebRequest GetMapImage(string mapname, string format, string selectionXml, double x1, double y1, double x2, double y2, int dpi, int width, int height, bool clip, string[] showlayers, string[] hidelayers, string[] showgroups, string[] hidegroups, System.IO.Stream outStream)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETMAPIMAGE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("MAPNAME", mapname);
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETMAPIMAGE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "MAPNAME", mapname },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (format != null && format.Length != 0)
                 param.Add("FORMAT", format);
@@ -968,11 +1063,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetMapImageUrl(string mapname, string format, string selectionXml, double centerX, double centerY, double scale, int dpi, int width, int height, bool clip, string[] showlayers, string[] hidelayers, string[] showgroups, string[] hidegroups)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETMAPIMAGE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("MAPNAME", mapname);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETMAPIMAGE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "MAPNAME", mapname }
+            };
 
             if (format != null && format.Length != 0)
                 param.Add("FORMAT", format);
@@ -1006,11 +1103,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetMapImageUrl(string mapname, string format, string selectionXml, double x1, double y1, double x2, double y2, int dpi, int width, int height, bool clip, string[] showlayers, string[] hidelayers, string[] showgroups, string[] hidegroups)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETMAPIMAGE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("MAPNAME", mapname);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETMAPIMAGE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "MAPNAME", mapname }
+            };
 
             if (format != null && format.Length != 0)
                 param.Add("FORMAT", format);
@@ -1042,8 +1141,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public System.Net.WebRequest QueryMapFeatures(string mapname, bool persist, string geometry, int? requestData, System.IO.Stream outStream, QueryMapFeaturesLayerAttributes attributes)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "QUERYMAPFEATURES");
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "QUERYMAPFEATURES" }
+            };
             if (requestData.HasValue)
             {
                 param.Add("VERSION", "2.6.0");
@@ -1074,10 +1175,53 @@ namespace OSGeo.MapGuide.MaestroAPI
             return req;
         }
 
+        internal string RenderMap(string mapDefinitionId,
+                                  double x,
+                                  double y,
+                                  double scale,
+                                  int width,
+                                  int height,
+                                  int dpi,
+                                  string format,
+                                  bool clip,
+                                  IEnumerable<string> showLayers,
+                                  IEnumerable<string> hideLayers,
+                                  IEnumerable<string> showGroups,
+                                  IEnumerable<string> hideGroups)
+        {
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETMAPIMAGE" },
+                { "VERSION", "1.0.0" },
+                { "MAPDEFINITION", mapDefinitionId },
+                { "SETDISPLAYWIDTH", width.ToString(CultureInfo.InvariantCulture) },
+                { "SETDISPLAYHEIGHT", height.ToString(CultureInfo.InvariantCulture) },
+                { "SETDISPLAYDPI", dpi.ToString(CultureInfo.InvariantCulture) },
+                { "SETVIEWCENTERX", x.ToString(CultureInfo.InvariantCulture) },
+                { "SETVIEWCENTERY", y.ToString(CultureInfo.InvariantCulture) },
+                { "SETVIEWSCALE", scale.ToString(CultureInfo.InvariantCulture) },
+                { "FORMAT", format },
+                { "CLIP", clip ? "1" : "0" }
+            };
+
+            if (showLayers?.Any() == true)
+                param.Add("SHOWLAYERS", string.Join(",", showLayers));
+            if (showGroups?.Any() == true)
+                param.Add("SHOWGROUPS", string.Join(",", showGroups));
+            if (hideLayers?.Any() == true)
+                param.Add("HIDELAYERS", string.Join(",", hideLayers));
+            if (hideGroups?.Any() == true)
+                param.Add("HIDEGROUPS", string.Join(",", hideGroups));
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
         internal System.Net.WebRequest QueryMapFeatures(string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, int? requestData, Services.QueryMapOptions extraOptions, System.IO.Stream outStream)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "QUERYMAPFEATURES");
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "QUERYMAPFEATURES" }
+            };
             if (requestData.HasValue)
             {
                 param.Add("VERSION", "2.6.0");
@@ -1117,12 +1261,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string EnumerateApplicationTemplates()
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "ENUMERATEAPPLICATIONTEMPLATES");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "ENUMERATEAPPLICATIONTEMPLATES" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1132,12 +1278,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string EnumerateApplicationWidgets()
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "ENUMERATEAPPLICATIONWIDGETS");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "ENUMERATEAPPLICATIONWIDGETS" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1147,12 +1295,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string EnumerateApplicationContainers()
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "ENUMERATEAPPLICATIONCONTAINERS");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "ENUMERATEAPPLICATIONCONTAINERS" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1162,14 +1312,16 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetSpatialContextInfo(string resourceID, bool activeOnly)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETSPATIALCONTEXTS");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("RESOURCEID", resourceID);
-            param.Add("ACTIVEONLY", activeOnly ? "1" : "0");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETSPATIALCONTEXTS" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "RESOURCEID", resourceID },
+                { "ACTIVEONLY", activeOnly ? "1" : "0" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1181,15 +1333,17 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetIdentityProperties(string resourceID, string schema, string classname)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETIDENTITYPROPERTIES");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("RESOURCEID", resourceID);
-            param.Add("SCHEMA", schema);
-            param.Add("CLASSNAME", classname);
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETIDENTITYPROPERTIES" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "RESOURCEID", resourceID },
+                { "SCHEMA", schema },
+                { "CLASSNAME", classname },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1199,12 +1353,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "ENUMERATEUNMANAGEDDATA");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "ENUMERATEUNMANAGEDDATA" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (startpath != null)
                 param.Add("PATH", startpath);
             if (filter != null)
@@ -1225,12 +1381,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string EnumerateUsers(string group)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "ENUMERATEUSERS");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "ENUMERATEUSERS" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (!string.IsNullOrEmpty(group))
                 param.Add("GROUP", group);
@@ -1243,12 +1401,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string EnumerateGroups()
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "ENUMERATEGROUPS");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "ENUMERATEGROUPS" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1258,27 +1418,31 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetLegendImage(double scale, string layerdef, int themeIndex, int type, int width, int height, string format)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETLEGENDIMAGE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("SCALE", scale.ToString(System.Globalization.CultureInfo.InvariantCulture));
-            param.Add("LAYERDEFINITION", layerdef);
-            param.Add("THEMECATEGORY", themeIndex.ToString());
-            param.Add("WIDTH", width.ToString());
-            param.Add("HEIGHT", height.ToString());
-            param.Add("FORMAT", format);
-            param.Add("TYPE", type.ToString());
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETLEGENDIMAGE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "SCALE", scale.ToString(System.Globalization.CultureInfo.InvariantCulture) },
+                { "LAYERDEFINITION", layerdef },
+                { "THEMECATEGORY", themeIndex.ToString() },
+                { "WIDTH", width.ToString() },
+                { "HEIGHT", height.ToString() },
+                { "FORMAT", format },
+                { "TYPE", type.ToString() },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
         public string GetTile(string mapdefinition, string groupname, int row, int col, int scaleindex, bool includeSessionID)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETTILEIMAGE");
-            param.Add("VERSION", "1.2.0");
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETTILEIMAGE" },
+                { "VERSION", "1.2.0" }
+            };
             if (includeSessionID)
                 param.Add("SESSION", m_sessionID);
             param.Add("SCALEINDEX", scaleindex.ToString());
@@ -1293,17 +1457,19 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetTileAnonymous(string mapdefinition, string groupname, int row, int col, int scaleindex)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETTILEIMAGE");
-            param.Add("VERSION", "1.2.0");
-            param.Add("USERNAME", "Anonymous");
-            param.Add("PASSWORD", "");
-            param.Add("SCALEINDEX", scaleindex.ToString());
-            param.Add("MAPDEFINITION", mapdefinition);
-            param.Add("BASEMAPLAYERGROUPNAME", groupname);
-            param.Add("TILECOL", col.ToString());
-            param.Add("TILEROW", row.ToString());
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETTILEIMAGE" },
+                { "VERSION", "1.2.0" },
+                { "USERNAME", "Anonymous" },
+                { "PASSWORD", "" },
+                { "SCALEINDEX", scaleindex.ToString() },
+                { "MAPDEFINITION", mapdefinition },
+                { "BASEMAPLAYERGROUPNAME", groupname },
+                { "TILECOL", col.ToString() },
+                { "TILEROW", row.ToString() },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
@@ -1313,12 +1479,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "APPLYRESOURCEPACKAGE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("MAX_FILE_SIZE", "100000000");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "APPLYRESOURCEPACKAGE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "MAX_FILE_SIZE", "100000000" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -1349,12 +1517,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_sessionID == null)
                 throw new Exception("Connection is not yet logged in");
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "UPDATEREPOSITORY");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("RESOURCEID", resourceId);
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "UPDATEREPOSITORY" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "RESOURCEID", resourceId },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -1377,12 +1547,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string ResourceExists(string resourceId)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "RESOURCEEXISTS");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "RESOURCEEXISTS" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1394,12 +1566,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetConnectionPropertyValues(string providerName, string propertyName, string partialConnectionString)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETCONNECTIONPROPERTYVALUES");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETCONNECTIONPROPERTYVALUES" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -1412,12 +1586,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal string EnumerateDataStores(string providerName, string partialConnString)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "ENUMERATEDATASTORES");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "ENUMERATEDATASTORES" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -1435,12 +1611,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string DescribeDrawing(string resourceID)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "DESCRIBEDRAWING");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "DESCRIBEDRAWING" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1452,12 +1630,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string EnumerateDrawingSectionResources(string resourceID, string sectionName)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "ENUMERATEDRAWINGSECTIONRESOURCES");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "ENUMERATEDRAWINGSECTIONRESOURCES" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1470,12 +1650,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string EnumerateDrawingSections(string resourceID)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "ENUMERATEDRAWINGSECTIONS");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "ENUMERATEDRAWINGSECTIONS" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1487,12 +1669,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetDrawing(string resourceID)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETDRAWING");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETDRAWING" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1504,12 +1688,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetDrawingLayer(string resourceID, string sectionName, string layerName)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETDRAWINGLAYER");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETDRAWINGLAYER" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1523,12 +1709,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetDrawingSection(string resourceID, string sectionName)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETDRAWINGSECTION");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETDRAWINGSECTION" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1541,12 +1729,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetDrawingSectionResource(string resourceID, string resourceName)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETDRAWINGSECTIONRESOURCE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETDRAWINGSECTIONRESOURCE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1559,12 +1749,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string EnumerateDrawingLayers(string resourceID, string sectionName)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "ENUMERATEDRAWINGLAYERS");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "ENUMERATEDRAWINGLAYERS" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1577,12 +1769,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetDrawingCoordinateSpace(string resourceID)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETDRAWINGCOORDINATESPACE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETDRAWINGCOORDINATESPACE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1594,12 +1788,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetSchemas(string resourceId)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETSCHEMAS");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETSCHEMAS" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1611,12 +1807,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetClassNames(string resourceId, string schemaName)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETCLASSES");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETCLASSES" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1630,12 +1828,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal string DescribeSchemaPartial(string resourceID, string schemaName, string[] classNames)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "DESCRIBEFEATURESCHEMA");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "DESCRIBEFEATURESCHEMA" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1654,12 +1854,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             //Fortunately, we can workaround this via DESCRIBEFEATURESCHEMA with CLASSNAMES hint.
             //This should still tap into FDO RFC23 enhancements server-side where applicable
 
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "DESCRIBEFEATURESCHEMA");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "DESCRIBEFEATURESCHEMA" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
@@ -1670,7 +1872,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("CLASSNAMES", className);
 
             /*
-            NameValueCollection param = new NameValueCollection();
+            var param = new NameValueCollection();
             param.Add("OPERATION", "GETCLASSDEFINITION");
             param.Add("VERSION", "1.0.0");
             param.Add("SESSION", m_sessionID);
@@ -1690,12 +1892,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetSiteInfo()
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETSITEINFO");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETSITEINFO" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
@@ -1704,14 +1908,16 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal string GetDynamicMapOverlayImage(string mapname, string sessionId, string selectionXml, string format, Color selectionColor, int behavior)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETDYNAMICMAPOVERLAYIMAGE");
-            param.Add("VERSION", "2.1.0");
-            param.Add("SESSION", sessionId); //Don't use m_sessionID as that may not be the same one we opened the map from. Let the call be explicit about it
-            param.Add("MAPNAME", mapname);
-            param.Add("CLIENTAGENT", m_userAgent);
-            param.Add("SELECTIONCOLOR", Utility.SerializeHTMLColorRGBA(selectionColor, true));
-            param.Add("BEHAVIOR", behavior.ToString(CultureInfo.InvariantCulture));
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETDYNAMICMAPOVERLAYIMAGE" },
+                { "VERSION", "2.1.0" },
+                { "SESSION", sessionId }, //Don't use m_sessionID as that may not be the same one we opened the map from. Let the call be explicit about it
+                { "MAPNAME", mapname },
+                { "CLIENTAGENT", m_userAgent },
+                { "SELECTIONCOLOR", Utility.SerializeHTMLColorRGBA(selectionColor, true) },
+                { "BEHAVIOR", behavior.ToString(CultureInfo.InvariantCulture) }
+            };
 
             if (format != null && format.Length != 0)
                 param.Add("FORMAT", format);
@@ -1724,12 +1930,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal System.Net.WebRequest GetDynamicMapOverlayImage(string mapname, string selectionXml, string format, System.IO.Stream outStream)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETDYNAMICMAPOVERLAYIMAGE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("MAPNAME", mapname);
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETDYNAMICMAPOVERLAYIMAGE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "MAPNAME", mapname },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (format != null && format.Length != 0)
                 param.Add("FORMAT", format);
@@ -1747,24 +1955,28 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal string GetFdoCacheInfo()
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETFDOCACHEINFO");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("FORMAT", "text/xml");
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETFDOCACHEINFO" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "FORMAT", "text/xml" },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
         internal string RenderMapLegend(string mapName, int width, int height, string color, string format)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETMAPLEGENDIMAGE");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("MAPNAME", mapName);
-            param.Add("CLIENTAGENT", m_userAgent);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETMAPLEGENDIMAGE" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "MAPNAME", mapName },
+                { "CLIENTAGENT", m_userAgent }
+            };
 
             if (format != null && format.Length != 0)
                 param.Add("FORMAT", format);
@@ -1777,68 +1989,134 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal string GetLongTransactions(string resourceId, bool activeOnly)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETLONGTRANSACTIONS");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("RESOURCEID", resourceId);
-            param.Add("ACTIVEONLY", activeOnly ? "1" : "0");
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETLONGTRANSACTIONS" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "RESOURCEID", resourceId },
+                { "ACTIVEONLY", activeOnly ? "1" : "0" }
+            };
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
         internal string GetSchemaMapping(string provider, string partialConnString)
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETSCHEMAMAPPING");
-            param.Add("VERSION", "1.0.0");
-            param.Add("SESSION", m_sessionID);
-            param.Add("PROVIDER", provider);
-            param.Add("CONNECTIONSTRING", partialConnString);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETSCHEMAMAPPING" },
+                { "VERSION", "1.0.0" },
+                { "SESSION", m_sessionID },
+                { "PROVIDER", provider },
+                { "CONNECTIONSTRING", partialConnString }
+            };
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
         internal string DescribeRuntimeMap(string mapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight, string targetVersion = "2.6.0")
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "DESCRIBERUNTIMEMAP");
-            param.Add("VERSION", targetVersion);
-            param.Add("SESSION", m_sessionID);
-            param.Add("MAPNAME", mapName);
-            param.Add("REQUESTEDFEATURES", requestedFeatures.ToString());
-            param.Add("ICONSPERSCALERANGE", iconsPerScaleRange.ToString());
-            param.Add("ICONFORMAT", iconFormat.ToString());
-            param.Add("ICONWIDTH", iconWidth.ToString());
-            param.Add("ICONHEIGHT", iconHeight.ToString());
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "DESCRIBERUNTIMEMAP" },
+                { "VERSION", targetVersion },
+                { "SESSION", m_sessionID },
+                { "MAPNAME", mapName },
+                { "REQUESTEDFEATURES", requestedFeatures.ToString() },
+                { "ICONSPERSCALERANGE", iconsPerScaleRange.ToString() },
+                { "ICONFORMAT", iconFormat.ToString() },
+                { "ICONWIDTH", iconWidth.ToString() },
+                { "ICONHEIGHT", iconHeight.ToString() }
+            };
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
         internal string CreateRuntimeMap(string mapDefinition, string targetMapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight, string targetVersion = "2.6.0")
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "CREATERUNTIMEMAP");
-            param.Add("VERSION", targetVersion);
-            param.Add("SESSION", m_sessionID);
-            param.Add("MAPDEFINITION", mapDefinition);
-            param.Add("TARGETMAPNAME", targetMapName);
-            param.Add("REQUESTEDFEATURES", requestedFeatures.ToString());
-            param.Add("ICONSPERSCALERANGE", iconsPerScaleRange.ToString());
-            param.Add("ICONFORMAT", iconFormat.ToString());
-            param.Add("ICONWIDTH", iconWidth.ToString());
-            param.Add("ICONHEIGHT", iconHeight.ToString());
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "CREATERUNTIMEMAP" },
+                { "VERSION", targetVersion },
+                { "SESSION", m_sessionID },
+                { "MAPDEFINITION", mapDefinition },
+                { "TARGETMAPNAME", targetMapName },
+                { "REQUESTEDFEATURES", requestedFeatures.ToString() },
+                { "ICONSPERSCALERANGE", iconsPerScaleRange.ToString() },
+                { "ICONFORMAT", iconFormat.ToString() },
+                { "ICONWIDTH", iconWidth.ToString() },
+                { "ICONHEIGHT", iconHeight.ToString() }
+            };
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
         internal string GetTileProviders()
         {
-            NameValueCollection param = new NameValueCollection();
-            param.Add("OPERATION", "GETTILEPROVIDERS");
-            param.Add("VERSION", "3.0.0");
-            param.Add("SESSION", m_sessionID);
+            var param = new NameValueCollection
+            {
+                { "OPERATION", "GETTILEPROVIDERS" },
+                { "VERSION", "3.0.0" },
+                { "SESSION", m_sessionID }
+            };
 
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
+        internal string GetWmsCapabilities(WmsVersion version)
+        {
+            string wmsVer;
+            switch (version)
+            {
+                case WmsVersion.v1_0_0:
+                    wmsVer = "1.0.0"; //NOXLATE
+                    break;
+                case WmsVersion.v1_1_0:
+                    wmsVer = "1.1.0"; //NOXLATE
+                    break;
+                case WmsVersion.v1_1_1:
+                    wmsVer = "1.1.1"; //NOXLATE
+                    break;
+                case WmsVersion.v1_3_0:
+                    wmsVer = "1.3.0"; //NOXLATE
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(version));
+            }
+
+            var param = new NameValueCollection
+            {
+                { "REQUEST", "GETCAPABILITIES" },
+                { "VERSION", wmsVer },
+                { "SERVICE", "WMS" },
+                { "FORMAT", "text/xml" }
+            };
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
+        internal string GetWfsCapabilities(WfsVersion version)
+        {
+            string wfsVer;
+            switch (version)
+            {
+                case WfsVersion.v1_0_0:
+                    wfsVer = "1.0.0"; //NOXLATE
+                    break;
+                case WfsVersion.v1_1_0:
+                    wfsVer = "1.1.0"; //NOXLATE
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(version));
+            }
+
+            var param = new NameValueCollection
+            {
+                { "REQUEST", "GETCAPABILITIES" },
+                { "VERSION", wfsVer },
+                { "SERVICE", "WFS" },
+                { "FORMAT", "text/xml" }
+            };
             return m_hosturi + "?" + EncodeParameters(param);
         }
     }

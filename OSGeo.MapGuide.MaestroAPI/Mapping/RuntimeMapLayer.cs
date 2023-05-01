@@ -655,6 +655,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
         }
 
+        /// <summary>
+        /// Indicates if bounds information should be returned for selected features
+        /// </summary>
         public bool IncludeBoundsForSelectedFeatures { get; set; }
 
         private double[] _scaleRanges;

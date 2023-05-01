@@ -31,13 +31,14 @@ namespace Maestro.Base.Templates
     internal class WebLayoutItemTemplate : ItemTemplate
     {
         public WebLayoutItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_DEFAULT;
-            Icon = Res.application_browser;
-            Description = Strings.TPL_WL_DESC;
-            Name = Strings.TPL_WL_NAME;
-            ResourceType = ResourceTypes.WebLayout.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_DEFAULT,
+                   Res.application_browser,
+                   Strings.TPL_WL_DESC,
+                   Strings.TPL_WL_NAME,
+                   ResourceTypes.WebLayout.ToString(),
+                   null,
+                   new Version(1, 0, 0))
+        { }
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {

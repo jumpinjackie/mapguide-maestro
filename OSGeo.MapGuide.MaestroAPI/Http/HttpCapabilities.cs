@@ -45,6 +45,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                 //TODO: Work out what this can/can't do
                 cmds.Add((int)CommandType.GetResourceContents);
                 cmds.Add((int)CommandType.GetFdoCacheInfo);
+                cmds.Add((int)CommandType.GetWfsCapabilities);
+                cmds.Add((int)CommandType.GetWmsCapabilities);
 
                 //Create/Describe Runtime Map available with 2.6
                 if (_implConn.SiteVersion >= new Version(2, 6))

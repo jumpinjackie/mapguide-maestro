@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SiteInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="SiteInformation-1.0.0.xsd">
+	<SiteServer>
+		<DisplayName></DisplayName>
+		<Status>Online</Status>
+		<Version>4.0.0.9862</Version>
+		<OperatingSystem>
+			<AvailablePhysicalMemory>13408378880</AvailablePhysicalMemory>
+			<TotalPhysicalMemory>34281869312</TotalPhysicalMemory>
+			<AvailableVirtualMemory>140732317147136</AvailableVirtualMemory>
+			<TotalVirtualMemory>140737488224256</TotalVirtualMemory>
+			<Version>Microsoft WindowsHome Edition  (Build 9200)</Version>
+		</OperatingSystem>
+	</SiteServer>
+	<Statistics>
+		<AdminOperationsQueueCount>0</AdminOperationsQueueCount>
+		<ClientOperationsQueueCount>0</ClientOperationsQueueCount>
+		<SiteOperationsQueueCount>0</SiteOperationsQueueCount>
+		<AverageOperationTime>47</AverageOperationTime>
+		<CpuUtilization>0</CpuUtilization>
+		<TotalOperationTime>2</TotalOperationTime>
+		<ActiveConnections>2</ActiveConnections>
+		<TotalConnections>11</TotalConnections>
+		<TotalOperationsProcessed>42</TotalOperationsProcessed>
+		<TotalOperationsReceived>43</TotalOperationsReceived>
+		<Uptime>2588</Uptime>
+	</Statistics>
+</SiteInformation>

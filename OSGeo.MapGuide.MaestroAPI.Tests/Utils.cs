@@ -43,9 +43,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
         public static string ResolvePath(string relPath)
         {
-            UriBuilder uri = new UriBuilder(Assembly.GetExecutingAssembly().CodeBase);
-            string path = Uri.UnescapeDataString(uri.Path);
-            string absPath = Path.Combine(Path.GetDirectoryName(path), relPath);
+            var asmLoc = Assembly.GetExecutingAssembly().Location;
+            //UriBuilder uri = new UriBuilder(asmLoc);
+            //string path = Uri.UnescapeDataString(uri.Path);
+            string absPath = Path.Combine(Path.GetDirectoryName(asmLoc), relPath);
             return absPath;
         }
 

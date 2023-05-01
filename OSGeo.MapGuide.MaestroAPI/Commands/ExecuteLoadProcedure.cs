@@ -153,7 +153,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
             if (type == LoadType.Dwg || type == LoadType.Raster)
                 throw new NotSupportedException(Strings.UnsupportedLoadProcedureType);
 
-            var sproc = (IBaseLoadProcedure)proc.SubType;
+            var sproc = proc.SubType;
 
             bool firstExecute = true;
             if (type == LoadType.Shp)

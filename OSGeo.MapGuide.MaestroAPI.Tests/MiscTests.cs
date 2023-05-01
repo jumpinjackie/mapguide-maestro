@@ -73,25 +73,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         }
 
         [Fact]
-        public void TestArgParser()
-        {
-            string[] args = { "-foo", "-bar:snafu", "-whatever:" };
-
-            var parser = new ArgumentParser(args);
-            Assert.False(parser.IsDefined("snafu"));
-            Assert.True(parser.IsDefined("foo"));
-            Assert.True(parser.IsDefined("bar"));
-            Assert.True(parser.IsDefined("whatever"));
-            Assert.Equal(string.Empty, parser.GetValue("whatever"));
-            Assert.Equal("snafu", parser.GetValue("bar"));
-
-            var nvc = parser.GetAllArgumentsWithValues();
-            Assert.Null(nvc["foo"]);
-            Assert.Equal("snafu", nvc["bar"]);
-            Assert.Null(nvc["whatever"]);
-        }
-
-        [Fact]
         public void TestSiteVersions()
         {
             foreach (KnownSiteVersions ver in Enum.GetValues(typeof(KnownSiteVersions)))
@@ -140,6 +121,32 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var opts = new RebaseOptions("Library://Foo/", "Library://Bar/");
             Assert.Equal("Library://Foo/", opts.SourceFolder);
             Assert.Equal("Library://Bar/", opts.TargetFolder);
+        }
+
+        [Fact]
+        public void TestFdoCacheInfoDeserialization()
+        {
+            var pconn = new Mock<PlatformConnectionBase>();
+            pconn.CallBase = true;
+
+            using (var s = Utils.OpenFile($"Resources{System.IO.Path.DirectorySeparatorChar}FdoCacheInfo.xml"))
+            {
+                var fci = pconn.Object.DeserializeObject<Commands.FdoCacheInfo>(s);
+                Assert.NotNull(fci.Configuration);
+                Assert.Equal("True", fci.Configuration.DataConnectionPoolEnabled);
+                Assert.Equal("OSGeo.SDF,OSGeo.SHP", fci.Configuration.DataConnectionPoolExcludedProviders);
+                Assert.Equal(200, fci.Configuration.DataConnectionPoolSize);
+                Assert.Equal("OSGeo.Gdal:1", fci.Configuration.DataConnectionPoolSizeCustom);
+                Assert.Equal(28800, fci.Configuration.DataConnectionTimeout);
+
+                Assert.Single(fci.Providers);
+                Assert.Equal("OSGeo.Gdal", fci.Providers[0].FeatureSourceId);
+                Assert.Equal(1, fci.Providers[0].MaximumDataConnectionPoolSize);
+                Assert.Equal(0, fci.Providers[0].CurrentDataConnectionPoolSize);
+                Assert.Equal(0, fci.Providers[0].CurrentDataConnections);
+                Assert.Equal("Not initialized.", fci.Providers[0].ThreadModel);
+                Assert.Equal("True", fci.Providers[0].KeepDataConnectionsCached);
+            }
         }
     }
 }

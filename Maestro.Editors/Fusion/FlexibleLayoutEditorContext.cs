@@ -72,7 +72,7 @@ namespace Maestro.Editors.Fusion
         /// Gets information about all widgets
         /// </summary>
         /// <returns></returns>
-        public IWidgetInfo[] GetAllWidgets() => _widgetSet.WidgetInfo.ToArray();
+        public IWidgetInfo[] GetAllWidgets() => _widgetSet.WidgetInfo.Where(w => w.Type != "GoogleStreetViewer").ToArray();
 
         /// <summary>
         /// Gets information about a specific container

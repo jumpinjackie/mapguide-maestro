@@ -214,42 +214,6 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Google Hybrid.
-        /// </summary>
-        internal static string CmsGoogleHybrid {
-            get {
-                return ResourceManager.GetString("CmsGoogleHybrid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Google Physical.
-        /// </summary>
-        internal static string CmsGooglePhysical {
-            get {
-                return ResourceManager.GetString("CmsGooglePhysical", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Google Satellite.
-        /// </summary>
-        internal static string CmsGoogleSatellite {
-            get {
-                return ResourceManager.GetString("CmsGoogleSatellite", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Google Streets.
-        /// </summary>
-        internal static string CmsGoogleStreets {
-            get {
-                return ResourceManager.GetString("CmsGoogleStreets", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Open Street Map.
         /// </summary>
         internal static string CmsOsm {
@@ -1994,15 +1958,6 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MgCooker only works with Tile Sets using the &apos;Default&apos; tile provider.
-        /// </summary>
-        internal static string MgCookerIncompatibleTileSet {
-            get {
-                return ResourceManager.GetString("MgCookerIncompatibleTileSet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Missing column &quot;{0}&quot;.
         /// </summary>
         internal static string MissingColumnError {
@@ -2648,15 +2603,6 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You must save this map first before you can run MgCooker.
-        /// </summary>
-        internal static string SaveMapBeforeTiling {
-            get {
-                return ResourceManager.GetString("SaveMapBeforeTiling", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Save Resource.
         /// </summary>
         internal static string SaveResource {
@@ -3267,15 +3213,6 @@ namespace Maestro.Editors {
         internal static string UnmanagedBrowserMultiSelectionNotAllowed {
             get {
                 return ResourceManager.GetString("UnmanagedBrowserMultiSelectionNotAllowed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invoking MgCooker is not supported for this connection type: {0}.
-        /// </summary>
-        internal static string UnsupportedConnectionType {
-            get {
-                return ResourceManager.GetString("UnsupportedConnectionType", resourceCulture);
             }
         }
         

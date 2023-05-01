@@ -135,14 +135,15 @@ namespace MgTileSeeder
 
         public override void Validate()
         {
+            // Snap to within domain
             if (!Utility.InRange(this.MinX, -180, 180))
-                throw new Exception("minx not in range of [-180, 180]");
+                this.MinX = Math.Max(this.MinX, -180);
             if (!Utility.InRange(this.MaxX, -180, 180))
-                throw new Exception("maxx not in range of [-180, 180]");
+                this.MaxX = Math.Min(this.MaxX, 180);
             if (!Utility.InRange(this.MinY, -90, 90))
-                throw new Exception("miny not in range of [-90, 90]");
+                this.MinY = Math.Max(this.MinY, -90);
             if (!Utility.InRange(this.MaxY, -90, 90))
-                throw new Exception("maxy not in range of [-90, 90]");
+                this.MaxY = Math.Min(this.MaxY, 90);
 
             if (this.MinX > this.MaxX)
                 throw new Exception("Invalid BBOX: minx > maxx");

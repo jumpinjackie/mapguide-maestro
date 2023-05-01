@@ -32,13 +32,14 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     internal class RasterLayer240ItemTemplate : ItemTemplate
     {
         public RasterLayer240ItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_MGOS24;
-            Icon = Res.layer;
-            Description = Strings.TPL_RLDF_240_DESC;
-            Name = Strings.TPL_RLDF_240_NAME;
-            ResourceType = ResourceTypes.LayerDefinition.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_MGOS24,
+                   Res.layer,
+                   Strings.TPL_RLDF_240_DESC,
+                   Strings.TPL_RLDF_240_NAME,
+                   ResourceTypes.LayerDefinition.ToString(),
+                   "Raster", //NOXLATE
+                   new Version(2, 4, 0))
+        { }
 
         public override Version MinimumSiteVersion
         {

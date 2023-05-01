@@ -101,11 +101,6 @@ namespace Maestro.Shared.UI
         event EventHandler ViewContentHiding;
 
         /// <summary>
-        /// Fired when the view, which was hidden is now being shown
-        /// </summary>
-        event EventHandler ViewContentShowing;
-
-        /// <summary>
         /// Displays an exception message
         /// </summary>
         /// <param name="ex">The exception object</param>

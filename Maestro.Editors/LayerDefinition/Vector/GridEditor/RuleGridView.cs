@@ -513,8 +513,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             m_origLabel = labelToEdit;
             m_editLabel = (labelToEdit == null) ? null : (ITextSymbol)labelToEdit.Clone();
 
-            uc = new FontStyleEditor(_edSvc, clsDef, vl.ResourceId);
-            ((FontStyleEditor)uc).Item = m_editLabel;
+            Func<ITextSymbol> itemGetter;
+            uc = new FontStyleEditorCtrl(_edSvc, clsDef, vl.ResourceId);
+            ((FontStyleEditorCtrl)uc).Item = m_editLabel;
+            itemGetter = () => ((FontStyleEditorCtrl)uc).Item;
 
             if (uc != null)
             {
@@ -530,7 +532,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                         commit.Invoke();
                     }
 
-                    ITextSymbol editedLabel = ((FontStyleEditor)uc).Item;
+                    ITextSymbol editedLabel = itemGetter();
                     if (pr != null)
                     {
                         pr.SetLabelStyle(editedLabel);

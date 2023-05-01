@@ -22,11 +22,13 @@
 
 using ICSharpCode.Core;
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 using Maestro.Editors.Migration;
 using Maestro.Login;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.CrossConnection;
+using System.Linq;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -37,7 +39,8 @@ namespace Maestro.Base.Commands.SiteExplorer
             var wb = Workbench.Instance;
             var svc = ServiceRegistry.GetService<ServerConnectionManager>();
             var exp = wb.ActiveSiteExplorer;
-            if (exp.SelectedItems.Length == 1 && !exp.SelectedItems[0].IsFolder)
+            var sel = exp.GetSelectedResources().ToArray();
+            if (sel.Length == 1 && !sel[0].IsFolder)
             {
                 var source = svc.GetConnection(exp.ConnectionName);
                 var login = new LoginDialog();
@@ -45,12 +48,12 @@ namespace Maestro.Base.Commands.SiteExplorer
                 {
                     var target = login.Connection;
                     var dlg = new MigrateDialog(source, target);
-                    dlg.ResourceID = exp.SelectedItems[0].ResourceId;
+                    dlg.ResourceID = sel[0].ResourceId;
 
                     if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         DoMigrate(source, target, dlg.ResourceID, dlg.DependentResources, dlg.OverwriteExisting);
-                        MessageService.ShowMessage(string.Format(Strings.ResourceMigrated, exp.SelectedItems[0].ResourceId));
+                        MessageService.ShowMessage(string.Format(Strings.ResourceMigrated, sel[0].ResourceId));
                     }
                 }
             }

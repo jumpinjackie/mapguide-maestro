@@ -28,172 +28,134 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtType = new System.Windows.Forms.TextBox();
-            this.txtSubType = new System.Windows.Forms.TextBox();
-            this.txtGoogleMapsApiKey = new System.Windows.Forms.TextBox();
-            this.btnSetGoogleMapsApiKey = new System.Windows.Forms.Button();
-            this.grpGoogleApiKey = new System.Windows.Forms.GroupBox();
-            this.grpBingMapsKey = new System.Windows.Forms.GroupBox();
-            this.txtBingMapsApiKey = new System.Windows.Forms.TextBox();
-            this.btnSetBingMapsApiKey = new System.Windows.Forms.Button();
-            this.grpGoogleApiKey.SuspendLayout();
-            this.grpBingMapsKey.SuspendLayout();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            txtName = new System.Windows.Forms.TextBox();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            txtType = new System.Windows.Forms.TextBox();
+            txtSubType = new System.Windows.Forms.TextBox();
+            grpBingMapsKey = new System.Windows.Forms.GroupBox();
+            txtBingMapsApiKey = new System.Windows.Forms.TextBox();
+            btnSetBingMapsApiKey = new System.Windows.Forms.Button();
+            grpBingMapsKey.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(22, 50);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(39, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Name";
             // 
             // txtName
             // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Location = new System.Drawing.Point(85, 40);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(312, 20);
-            this.txtName.TabIndex = 1;
-            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            txtName.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtName.Location = new System.Drawing.Point(99, 46);
+            txtName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtName.Name = "txtName";
+            txtName.Size = new System.Drawing.Size(363, 23);
+            txtName.TabIndex = 1;
+            txtName.TextChanged += txtName_TextChanged;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Sub-Type";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(22, 80);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(56, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Sub-Type";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Type";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(22, 17);
+            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(31, 15);
+            label3.TabIndex = 4;
+            label3.Text = "Type";
             // 
             // txtType
             // 
-            this.txtType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtType.Location = new System.Drawing.Point(85, 12);
-            this.txtType.Name = "txtType";
-            this.txtType.ReadOnly = true;
-            this.txtType.Size = new System.Drawing.Size(176, 20);
-            this.txtType.TabIndex = 5;
+            txtType.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtType.Location = new System.Drawing.Point(99, 14);
+            txtType.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtType.Name = "txtType";
+            txtType.ReadOnly = true;
+            txtType.Size = new System.Drawing.Size(205, 23);
+            txtType.TabIndex = 5;
             // 
             // txtSubType
             // 
-            this.txtSubType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSubType.Location = new System.Drawing.Point(85, 66);
-            this.txtSubType.Name = "txtSubType";
-            this.txtSubType.ReadOnly = true;
-            this.txtSubType.Size = new System.Drawing.Size(312, 20);
-            this.txtSubType.TabIndex = 6;
-            // 
-            // txtGoogleMapsApiKey
-            // 
-            this.txtGoogleMapsApiKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtGoogleMapsApiKey.Location = new System.Drawing.Point(6, 18);
-            this.txtGoogleMapsApiKey.Multiline = true;
-            this.txtGoogleMapsApiKey.Name = "txtGoogleMapsApiKey";
-            this.txtGoogleMapsApiKey.Size = new System.Drawing.Size(372, 34);
-            this.txtGoogleMapsApiKey.TabIndex = 8;
-            this.txtGoogleMapsApiKey.TextChanged += new System.EventHandler(this.txtGoogleMapsApiKey_TextChanged);
-            // 
-            // btnSetGoogleMapsApiKey
-            // 
-            this.btnSetGoogleMapsApiKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSetGoogleMapsApiKey.Enabled = false;
-            this.btnSetGoogleMapsApiKey.Location = new System.Drawing.Point(303, 58);
-            this.btnSetGoogleMapsApiKey.Name = "btnSetGoogleMapsApiKey";
-            this.btnSetGoogleMapsApiKey.Size = new System.Drawing.Size(75, 23);
-            this.btnSetGoogleMapsApiKey.TabIndex = 9;
-            this.btnSetGoogleMapsApiKey.Text = "Set API Key";
-            this.btnSetGoogleMapsApiKey.UseVisualStyleBackColor = true;
-            this.btnSetGoogleMapsApiKey.Click += new System.EventHandler(this.btnSetGoogleMapsApiKey_Click);
-            // 
-            // grpGoogleApiKey
-            // 
-            this.grpGoogleApiKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpGoogleApiKey.Controls.Add(this.txtGoogleMapsApiKey);
-            this.grpGoogleApiKey.Controls.Add(this.btnSetGoogleMapsApiKey);
-            this.grpGoogleApiKey.Location = new System.Drawing.Point(13, 104);
-            this.grpGoogleApiKey.Name = "grpGoogleApiKey";
-            this.grpGoogleApiKey.Size = new System.Drawing.Size(384, 90);
-            this.grpGoogleApiKey.TabIndex = 10;
-            this.grpGoogleApiKey.TabStop = false;
-            this.grpGoogleApiKey.Text = "Google Maps API key";
+            txtSubType.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtSubType.Location = new System.Drawing.Point(99, 76);
+            txtSubType.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtSubType.Name = "txtSubType";
+            txtSubType.ReadOnly = true;
+            txtSubType.Size = new System.Drawing.Size(363, 23);
+            txtSubType.TabIndex = 6;
             // 
             // grpBingMapsKey
             // 
-            this.grpBingMapsKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpBingMapsKey.Controls.Add(this.txtBingMapsApiKey);
-            this.grpBingMapsKey.Controls.Add(this.btnSetBingMapsApiKey);
-            this.grpBingMapsKey.Location = new System.Drawing.Point(13, 200);
-            this.grpBingMapsKey.Name = "grpBingMapsKey";
-            this.grpBingMapsKey.Size = new System.Drawing.Size(384, 90);
-            this.grpBingMapsKey.TabIndex = 11;
-            this.grpBingMapsKey.TabStop = false;
-            this.grpBingMapsKey.Text = "Bing Maps API key";
+            grpBingMapsKey.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            grpBingMapsKey.Controls.Add(txtBingMapsApiKey);
+            grpBingMapsKey.Controls.Add(btnSetBingMapsApiKey);
+            grpBingMapsKey.Location = new System.Drawing.Point(14, 114);
+            grpBingMapsKey.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grpBingMapsKey.Name = "grpBingMapsKey";
+            grpBingMapsKey.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grpBingMapsKey.Size = new System.Drawing.Size(448, 104);
+            grpBingMapsKey.TabIndex = 11;
+            grpBingMapsKey.TabStop = false;
+            grpBingMapsKey.Text = "Bing Maps API key";
             // 
             // txtBingMapsApiKey
             // 
-            this.txtBingMapsApiKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBingMapsApiKey.Location = new System.Drawing.Point(6, 18);
-            this.txtBingMapsApiKey.Multiline = true;
-            this.txtBingMapsApiKey.Name = "txtBingMapsApiKey";
-            this.txtBingMapsApiKey.Size = new System.Drawing.Size(372, 34);
-            this.txtBingMapsApiKey.TabIndex = 8;
-            this.txtBingMapsApiKey.TextChanged += new System.EventHandler(this.txtBingMapsApiKey_TextChanged);
+            txtBingMapsApiKey.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtBingMapsApiKey.Location = new System.Drawing.Point(7, 21);
+            txtBingMapsApiKey.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtBingMapsApiKey.Multiline = true;
+            txtBingMapsApiKey.Name = "txtBingMapsApiKey";
+            txtBingMapsApiKey.Size = new System.Drawing.Size(433, 39);
+            txtBingMapsApiKey.TabIndex = 8;
+            txtBingMapsApiKey.TextChanged += txtBingMapsApiKey_TextChanged;
             // 
             // btnSetBingMapsApiKey
             // 
-            this.btnSetBingMapsApiKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSetBingMapsApiKey.Enabled = false;
-            this.btnSetBingMapsApiKey.Location = new System.Drawing.Point(303, 58);
-            this.btnSetBingMapsApiKey.Name = "btnSetBingMapsApiKey";
-            this.btnSetBingMapsApiKey.Size = new System.Drawing.Size(75, 23);
-            this.btnSetBingMapsApiKey.TabIndex = 9;
-            this.btnSetBingMapsApiKey.Text = "Set API Key";
-            this.btnSetBingMapsApiKey.UseVisualStyleBackColor = true;
-            this.btnSetBingMapsApiKey.Click += new System.EventHandler(this.btnSetBingMapsApiKey_Click);
+            btnSetBingMapsApiKey.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnSetBingMapsApiKey.Enabled = false;
+            btnSetBingMapsApiKey.Location = new System.Drawing.Point(354, 67);
+            btnSetBingMapsApiKey.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnSetBingMapsApiKey.Name = "btnSetBingMapsApiKey";
+            btnSetBingMapsApiKey.Size = new System.Drawing.Size(88, 27);
+            btnSetBingMapsApiKey.TabIndex = 9;
+            btnSetBingMapsApiKey.Text = "Set API Key";
+            btnSetBingMapsApiKey.UseVisualStyleBackColor = true;
+            btnSetBingMapsApiKey.Click += btnSetBingMapsApiKey_Click;
             // 
             // CommercialMapEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.grpBingMapsKey);
-            this.Controls.Add(this.grpGoogleApiKey);
-            this.Controls.Add(this.txtSubType);
-            this.Controls.Add(this.txtType);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.label1);
-            this.Name = "CommercialMapEditor";
-            this.Size = new System.Drawing.Size(417, 301);
-            this.grpGoogleApiKey.ResumeLayout(false);
-            this.grpGoogleApiKey.PerformLayout();
-            this.grpBingMapsKey.ResumeLayout(false);
-            this.grpBingMapsKey.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(grpBingMapsKey);
+            Controls.Add(txtSubType);
+            Controls.Add(txtType);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(txtName);
+            Controls.Add(label1);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "CommercialMapEditor";
+            Size = new System.Drawing.Size(486, 252);
+            grpBingMapsKey.ResumeLayout(false);
+            grpBingMapsKey.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -204,9 +166,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtType;
         private System.Windows.Forms.TextBox txtSubType;
-        private System.Windows.Forms.TextBox txtGoogleMapsApiKey;
-        private System.Windows.Forms.Button btnSetGoogleMapsApiKey;
-        private System.Windows.Forms.GroupBox grpGoogleApiKey;
         private System.Windows.Forms.GroupBox grpBingMapsKey;
         private System.Windows.Forms.TextBox txtBingMapsApiKey;
         private System.Windows.Forms.Button btnSetBingMapsApiKey;

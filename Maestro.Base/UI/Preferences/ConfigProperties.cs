@@ -73,9 +73,9 @@ namespace Maestro.Base.UI.Preferences
         public const string DirtyColor = "General.DirtyColor"; //NOXLATE
 
         /// <summary>
-        /// The path to MgCooker.exe
+        /// The path to MgTileSeeder.exe
         /// </summary>
-        public const string MgCookerPath = "General.MgCookerPath"; //NOXLATE
+        public const string MgTileSeederPath = "Generic.MgTileSeederPath"; //NOXLATE
 
         /// <summary>
         /// The path to ProviderTemplate.exe
@@ -156,11 +156,12 @@ namespace Maestro.Base.UI.Preferences
             Props.Set(ConfigProperties.ShowOutboundRequests, DefaultShowOutboundRequests);
             Props.Set(ConfigProperties.OpenColor, DefaultOpenColor);
             Props.Set(ConfigProperties.DirtyColor, DefaultDirtyColor);
-            Props.Set(ConfigProperties.MgCookerPath, DefaultMgCookerPath);
+            Props.Set(ConfigProperties.MgTileSeederPath, DefaultMgTileSeederPath);
             Props.Set(ConfigProperties.RtMapInspectorPath, DefaultRtMapInspectorPath);
             Props.Set(ConfigProperties.LocalFsPreviewPath, DefaultLocalFsPreviewPath);
             Props.Set(ConfigProperties.ShowTipOfTheDay, DefaultShowTipOfTheDay);
             Props.Set(ConfigProperties.LiveMapEditorPath, DefaultLiveMapEditorPath);
+            Props.Set(ConfigProperties.ProviderToolPath, DefaultProviderToolPath);
         }
 
         /// <summary>
@@ -176,82 +177,87 @@ namespace Maestro.Base.UI.Preferences
         /// <summary>
         /// Default setting for "Show tip of the day"
         /// </summary>
-        public static bool DefaultShowTipOfTheDay { get { return true; } }
+        public static bool DefaultShowTipOfTheDay => true;
 
         /// <summary>
-        /// Default path to MgCooker.exe
+        /// Default path to MgTileSeeder.exe
         /// </summary>
-        public static string DefaultMgCookerPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "MgCooker.exe"); } } //NOXLATE
+        public static string DefaultMgTileSeederPath => Path.Combine(FileUtility.ApplicationRootPath, "MgTileSeeder.exe");  //NOXLATE
 
         /// <summary>
         /// Default path to MaestroFsPreview.exe
         /// </summary>
-        public static string DefaultLocalFsPreviewPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "MaestroFsPreview.exe"); } } //NOXLATE
+        public static string DefaultLocalFsPreviewPath => Path.Combine(FileUtility.ApplicationRootPath, "MaestroFsPreview.exe");  //NOXLATE
 
         /// <summary>
         /// Default path to RtMapInspector.exe
         /// </summary>
-        public static string DefaultRtMapInspectorPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "RtMapInspector.exe"); } } //NOXLATE
+        public static string DefaultRtMapInspectorPath => Path.Combine(FileUtility.ApplicationRootPath, "RtMapInspector.exe");  //NOXLATE
 
         /// <summary>
         /// Default path to Maestro.LiveMapEditor.exe
         /// </summary>
-        public static string DefaultLiveMapEditorPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "Maestro.LiveMapEditor.exe"); } } //NOXLATE
+        public static string DefaultLiveMapEditorPath => Path.Combine(FileUtility.ApplicationRootPath, "Maestro.LiveMapEditor.exe");  //NOXLATE
+
+        /// <summary>
+        /// Default path to ProviderTemplate.exe
+        /// </summary>
+        public static string DefaultProviderToolPath => Path.Combine(FileUtility.ApplicationRootPath, "ProviderTemplate.exe"); //NOXLATE
 
         /// <summary>
         /// Default setting for using local previews
         /// </summary>
-        public static bool DefaultUseLocalPreview { get { return true; } }
+        public static bool DefaultUseLocalPreview => true;
 
         /// <summary>
         /// Default setting for adding debug watermarks
         /// </summary>
-        public static bool DefaultAddDebugWatermark { get { return true; } }
+        public static bool DefaultAddDebugWatermark => true;
 
         /// <summary>
         /// Default setting for using grid style editor
         /// </summary>
-        public static bool DefaultUseGridStyleEditor { get { return true; } }
+        public static bool DefaultUseGridStyleEditor => true;
 
         /// <summary>
         /// Default color for open resources in the Site Explorer
         /// </summary>
-        public static Color DefaultOpenColor { get { return Color.LightGreen; } }
+        public static Color DefaultOpenColor => Color.LightGreen;
 
         /// <summary>
         /// Default color for unsaved resources in the Site Explorer
         /// </summary>
-        public static Color DefaultDirtyColor { get { return Color.Pink; } }
+        public static Color DefaultDirtyColor => Color.Pink;
 
         /// <summary>
         /// Default setting for "Show Messages"
         /// </summary>
-        public static bool DefaultShowMessages { get { return true; } }
+        public static bool DefaultShowMessages => true;
 
         /// <summary>
         /// Default setting for "Show Outbound Requests"
         /// </summary>
-        public static bool DefaultShowOutboundRequests { get { return true; } }
+        public static bool DefaultShowOutboundRequests => true;
 
         /// <summary>
         /// Default setting for "Validate Resources on Save"
         /// </summary>
-        public static bool DefaultValidateOnSave { get { return true; } }
+        public static bool DefaultValidateOnSave => true;
 
         /// <summary>
         /// Default MapGuide XML schema path
         /// </summary>
-        public static string DefaultXsdSchemaPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "Schemas"); } } //NOXLATE
+        public static string DefaultXsdSchemaPath => Path.Combine(FileUtility.ApplicationRootPath, "Schemas");  //NOXLATE
 
         /// <summary>
         /// Default preview viewer type
         /// </summary>
-        public static string DefaultPreviewViewerType { get { return "AJAX"; } } //NOXLATE
+        public static string DefaultPreviewViewerType => "AJAX";  //NOXLATE
 
         /// <summary>
         /// Default user template directory
         /// </summary>
-        public static string DefaultUserTemplatesDirectory { get { return Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates"); } } //NOXLATE
+        public static string DefaultUserTemplatesDirectory => Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates");  //NOXLATE
 
         /// <summary>
         /// Default mapguide-react-layout base URL

@@ -13,9 +13,6 @@
 ; Include NSIS headers
 ;----------------------
 
-# .net Checker
-!include "DotNetChecker.nsh"
-
 # Modern UI 2
 !include "MUI2.nsh"
 
@@ -26,8 +23,7 @@
 !include "LogicLib.nsh"
 
 # VCRedist detection
-!include "VCRedist11.nsh"
-
+!include "VCRedist.nsh"
 ;-------------------------------
 ; Installer compilation settings
 ;-------------------------------
@@ -88,7 +84,7 @@ LicenseData "LGPL21.rtf"
 #!if "${RELEASE_VERSION}" != "Trunk"
 #	VIProductVersion "${RELEASE_VERSION}"
 #	VIAddVersionKey "ProductName" "${INST_PRODUCT_NAME}"
-#	VIAddVersionKey "LegalCopyright" "� 2011 Jackie Ng"
+#	VIAddVersionKey "LegalCopyright" "� 2011-2022 Jackie Ng"
 #	VIAddVersionKey "FileDescription" "Installer package for MapGuide Maestro"
 #	VIAddVersionKey "FileVersion" "${RELEASE_VERSION}"
 #!endif
@@ -96,8 +92,7 @@ LicenseData "LGPL21.rtf"
 !define REG_KEY_UNINSTALL "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INST_PRODUCT_QUALIFIED}"
 
 # Project Output
-#!define INST_OUTPUT_MAESTRO "${SLN_DIR}\out\${CPU}\${SLN_CONFIG}"
-!define INST_OUTPUT_MAESTRO "${SLN_DIR}\out\${SLN_CONFIG}"
+!define INST_OUTPUT_MAESTRO "${SLN_DIR}\out\publish\${SLN_CONFIG}"
 !define INST_OUTDIR "${SLN_DIR}\artifacts"
 
 # Executables
@@ -118,9 +113,9 @@ OutFile "${INST_OUTDIR}\${INST_OUTPUT}"
 ; Default installation folder
 ; For preview releases, use $INST_PRODUCT_NAME. Once ready for prime-time, switch to $INST_PRODUCT
 !if ${CPU} == "x64"
-InstallDir "$PROGRAMFILES64\OSGeo\${INST_PRODUCT_NAME}"
+InstallDir "$PROGRAMFILES64\${INST_PRODUCT_NAME}"
 !else
-InstallDir "$PROGRAMFILES\OSGeo\${INST_PRODUCT_NAME}"
+InstallDir "$PROGRAMFILES\${INST_PRODUCT_NAME}"
 !endif
 
 !ifdef INST_LICENSE
@@ -142,12 +137,6 @@ LicenseData "${INST_SRC}\${INST_LICENSE}"
 #!insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
-    # These indented statements modify settings for MUI_PAGE_FINISH
-    !define MUI_FINISHPAGE_NOAUTOCLOSE
-    !define MUI_FINISHPAGE_RUN
-    !define MUI_FINISHPAGE_RUN_CHECKED
-    !define MUI_FINISHPAGE_RUN_TEXT "Run MapGuide Maestro"
-    !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
 !insertmacro MUI_PAGE_FINISH
 
 !insertmacro MUI_UNPAGE_CONFIRM
@@ -177,12 +166,6 @@ Section
     SetRegView 32
     !endif
 
-    # Check for .net Framework
-    !insertmacro CheckNetFramework 48
-
-    # Check for vcredist
-    !insertmacro InstallVCRedist11_32bit "$TEMP\MaestroSetup"
-
     # set installation dir
     SetOutPath $INSTDIR
     
@@ -191,8 +174,11 @@ Section
     File /r "${INST_OUTPUT_MAESTRO}\Data"
     File /r "${INST_OUTPUT_MAESTRO}\Schemas"
 
-    # Auxillary tools
-    File /r "${INST_OUTPUT_MAESTRO}\Tools"
+    # Stdlib for IronPython
+    File /r "${INST_OUTPUT_MAESTRO}\Lib"
+
+    # Support files for Maestro.MapPublisher
+    File /r "${INST_OUTPUT_MAESTRO}\viewer_content"
     
     # docs
     File "${INST_OUTPUT_MAESTRO}\*.txt"
@@ -234,12 +220,14 @@ Section
     CreateDirectory "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}"
     
     CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\${LNK_MAESTRO}.lnk" "$INSTDIR\${EXE_MAESTRO}"
-    CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\MgCooker.lnk" "$INSTDIR\MgCooker.exe"
     CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Maestro Feature Source Preview.lnk" "$INSTDIR\MaestroFsPreview.exe"
     CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Live Map Definition Editor.lnk" "$INSTDIR\Maestro.LiveMapEditor.exe"
     CreateShortCut "$SMPROGRAMS\${INST_PRODUCT_QUALIFIED}\Uninstall.lnk" "$INSTDIR\uninstall.exe"
     
     CreateShortCut "$DESKTOP\${LNK_MAESTRO}.lnk" "$INSTDIR\${EXE_MAESTRO}"
+
+    # Run LocalConfigure (we should be elevated here)
+    Exec "$INSTDIR\LocalConfigure.exe"
     
 SectionEnd
 
@@ -280,10 +268,4 @@ Function .onInit
     !endif
     
     !insertmacro MUI_LANGDLL_DISPLAY
-FunctionEnd
-
-Function LaunchLink
-    ; TODO: Needs to launch under standard user. If installer was run under UAC elevated privileges, it will run under the
-    ; user who elevated these privileges.
-    ExecShell "" "$INSTDIR\${EXE_MAESTRO}"
 FunctionEnd

@@ -694,6 +694,60 @@ namespace MaestroAPITests
             RenderDynamicOverlayAndVerifyConvenience(map, TestPrefix + "TestRenderOverlay12kConvenience_ParcelsBackOn.png", "PNG");
         }
 
+        public virtual void TestRenderMap()
+        {
+            Skip.If(_fixture.Skip, _fixture.SkipReason);
+
+            //Render a map of sheboygan at 12k
+            //Only programmatically verify the returned stream can be fed to a
+            //System.Drawing.Image object.
+            var conn = _fixture.CreateTestConnection();
+            var resSvc = conn.ResourceService;
+            var mapSvc = conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            Assert.NotNull(mapSvc);
+
+            double x = -87.7230072, y = 43.7649574, scale = 12000;
+            int width = 1024, height = 1024;
+
+            IEnumerable<string> showLayers = null;
+            IEnumerable<string> showGroups = null;
+            IEnumerable<string> hideLayers = null;
+            IEnumerable<string> hideGroups = null;
+
+            // Render default
+            using (var s = mapSvc.RenderMap("Library://UnitTests/Maps/Sheboygan.MapDefinition", x, y, scale, width, height, showLayers: showLayers, hideLayers: hideLayers, showGroups: showGroups, hideGroups: hideGroups))
+            {
+                using (var fs = File.OpenWrite("RenderMap12k.png"))
+                {
+                    s.CopyTo(fs);
+                }
+            }
+
+            // Turn off parcels
+            hideLayers = new[] { "Parcels" };
+
+            // Render again
+            using (var s = mapSvc.RenderMap("Library://UnitTests/Maps/Sheboygan.MapDefinition", x, y, scale, width, height, showLayers: showLayers, hideLayers: hideLayers, showGroups: showGroups, hideGroups: hideGroups))
+            {
+                using (var fs = File.OpenWrite("RenderMap12k_ParcelsOff.png"))
+                {
+                    s.CopyTo(fs);
+                }
+            }
+
+            // Turn parcels back on
+            hideLayers = null;
+
+            // Render again
+            using (var s = mapSvc.RenderMap("Library://UnitTests/Maps/Sheboygan.MapDefinition", x, y, scale, width, height, showLayers: showLayers, hideLayers: hideLayers, showGroups: showGroups, hideGroups: hideGroups))
+            {
+                using (var fs = File.OpenWrite("RenderMap12k_ParcelsOnAgain.png"))
+                {
+                    s.CopyTo(fs);
+                }
+            }
+        }
+
         public virtual void TestMapManipulation()
         {
             Skip.If(_fixture.Skip, _fixture.SkipReason);
@@ -1293,6 +1347,12 @@ namespace MaestroAPITests
         public override void TestRender75k()
         {
             base.TestRender75k();
+        }
+
+        [SkippableFact]
+        public override void TestRenderMap()
+        {
+            base.TestRenderMap();
         }
 
         [SkippableFact]

@@ -22,12 +22,14 @@
 
 using ICSharpCode.Core;
 using Maestro.Base.Services;
+using Maestro.Base.UI;
 using Maestro.Editors.Migration;
 using Maestro.Login;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.CrossConnection;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -48,7 +50,8 @@ namespace Maestro.Base.Commands.SiteExplorer
                     var migrate = new CopyMoveToServerDialog(source, target);
 
                     var srcIds = new List<string>();
-                    foreach (var item in exp.SelectedItems)
+                    var sel = exp.GetSelectedResources().ToArray();
+                    foreach (var item in sel)
                     {
                         srcIds.Add(item.ResourceId);
                     }
@@ -61,7 +64,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                         MessageService.ShowMessage(string.Format(Strings.ItemsMigrated, affected));
                         if (affected > 0 && migrate.SelectedAction == MigrationAction.Move)
                         {
-                            var parent = exp.SelectedItems[0].Parent;
+                            var parent = sel[0].Parent;
                             if (parent != null)
                                 exp.RefreshModel(source.DisplayName, parent.ResourceId);
                             else

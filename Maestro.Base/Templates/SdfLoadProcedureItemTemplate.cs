@@ -24,19 +24,21 @@ using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
+using System;
 
 namespace Maestro.Base.Templates
 {
     internal class SdfLoadProcedureItemTemplate : ItemTemplate
     {
         public SdfLoadProcedureItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_DEFAULT;
-            //Icon = Res.document;
-            Description = Strings.TPL_LP_SDF_DESC;
-            Name = Strings.TPL_LP_SDF_NAME;
-            ResourceType = ResourceTypes.LoadProcedure.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_DEFAULT,
+                   null,
+                   Strings.TPL_LP_SDF_DESC,
+                   Strings.TPL_LP_SDF_NAME,
+                   ResourceTypes.LoadProcedure.ToString(),
+                   "Sdf", //NOXLATE
+                   new Version(1, 0, 0))
+        { }
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {

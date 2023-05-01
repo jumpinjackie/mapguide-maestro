@@ -23,6 +23,7 @@
 using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.Schema
@@ -66,6 +67,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 fs.ReadXml(sn, mgr);
                 schemas.Add(fs);
             }
+            this.Schemas = schemas.ToArray();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FeatureSourceDescription"/> class.
+        /// </summary>
+        /// <param name="schemas"></param>
+        public FeatureSourceDescription(IEnumerable<FeatureSchema> schemas)
+        {
             this.Schemas = schemas.ToArray();
         }
 

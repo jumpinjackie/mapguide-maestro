@@ -1,425 +1,103 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E0C36475-2B70-4F6D-ACE0-8943167806DC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Maestro</RootNamespace>
-    <AssemblyName>Maestro</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ApplicationIcon>MapGuide Maestro.ico</ApplicationIcon>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!-- Needs to be false as addins built into an expected dir that doesn't exist with this being true -->
+	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+	<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	<ApplicationIcon>MapGuide Maestro.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\out\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <Prefer32Bit>false</Prefer32Bit>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\out\Debug</OutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\out\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <Prefer32Bit>false</Prefer32Bit>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\out\Release</OutputPath>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>Maestro.Program</StartupObject>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <None Remove="changelog.txt" />
+    <None Remove="Data\TipOfTheDay\en.xml" />
+    <None Remove="license.txt" />
+    <None Remove="resource-readme.txt" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="..\Properties\CodeAnalysisRules.cs">
-      <Link>CodeAnalysisRules.cs</Link>
-    </Compile>
-    <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
-      <Link>GlobalAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Strings.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Include="..\Properties\CodeAnalysisRules.cs" Link="CodeAnalysisRules.cs" />
+    <Compile Include="..\Properties\GlobalAssemblyInfo.cs" Link="GlobalAssemblyInfo.cs" />
+    <Compile Include="..\Properties\WindowsOnlyAssemblyInfo.cs" Link="WindowsOnlyAssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LocalConfigure\LocalConfigure.csproj" />
+    <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj" />
+    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj" />
+    <ProjectReference Include="..\Maestro.LiveMapEditor\Maestro.LiveMapEditor.csproj" />
+    <ProjectReference Include="..\Maestro.Login\Maestro.Login.csproj" />
+    <ProjectReference Include="..\Maestro.MapPublisher\Maestro.MapPublisher.csproj" />
+    <ProjectReference Include="..\Maestro.Scripting.Core\Maestro.Scripting.Core.csproj" />
+    <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj" />
+    <ProjectReference Include="..\MaestroFsPreview\MaestroFsPreview.csproj" />
+    <ProjectReference Include="..\MgTileSeeder\MgTileSeeder.csproj" />
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj" />
+    <ProjectReference Include="..\RtMapInspector\RtMapInspector.csproj" />
+    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj" />
+    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
-      <DependentUpon>Strings.resx</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="Strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ApplicationDefinition-1.0.0.xsd">
-      <Link>Schemas\ApplicationDefinition-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ApplicationDefinitionInfo-1.0.0.xsd">
-      <Link>Schemas\ApplicationDefinitionInfo-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\BatchPropertyCollection-1.0.0.xsd">
-      <Link>Schemas\BatchPropertyCollection-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\DataStoreList-1.0.0.xsd">
-      <Link>Schemas\DataStoreList-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\DrawingSectionList-1.0.0.xsd">
-      <Link>Schemas\DrawingSectionList-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\DrawingSectionResourceList-1.0.0.xsd">
-      <Link>Schemas\DrawingSectionResourceList-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\DrawingSource-1.0.0.xsd">
-      <Link>Schemas\DrawingSource-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\Envelope-1.0.0.xsd">
-      <Link>Schemas\Envelope-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\FdoLongTransactionList-1.0.0.xsd">
-      <Link>Schemas\FdoLongTransactionList-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\FdoProviderCapabilities-1.0.0.xsd">
-      <Link>Schemas\FdoProviderCapabilities-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\FdoProviderCapabilities-1.1.0.xsd">
-      <Link>Schemas\FdoProviderCapabilities-1.1.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\FdoSpatialContextList-1.0.0.xsd">
-      <Link>Schemas\FdoSpatialContextList-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\FeatureProviderRegistry-1.0.0.xsd">
-      <Link>Schemas\FeatureProviderRegistry-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\FeatureSet-1.0.0.xsd">
-      <Link>Schemas\FeatureSet-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\FeatureSource-1.0.0.xsd">
-      <Link>Schemas\FeatureSource-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\Group-1.0.0.xsd">
-      <Link>Schemas\Group-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\GroupList-1.0.0.xsd">
-      <Link>Schemas\GroupList-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LayerDefinition-1.0.0.xsd">
-      <Link>Schemas\LayerDefinition-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LayerDefinition-1.1.0.xsd">
-      <Link>Schemas\LayerDefinition-1.1.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LayerDefinition-1.2.0.xsd">
-      <Link>Schemas\LayerDefinition-1.2.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LayerDefinition-1.3.0.xsd">
-      <Link>Schemas\LayerDefinition-1.3.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LayerDefinition-2.3.0.xsd">
-      <Link>Schemas\LayerDefinition-2.3.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LayerDefinition-2.4.0.xsd">
-      <Link>Schemas\LayerDefinition-2.4.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LoadProcedure-1.0.0.xsd">
-      <Link>Schemas\LoadProcedure-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LoadProcedure-1.1.0.xsd">
-      <Link>Schemas\LoadProcedure-1.1.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LoadProcedure-2.2.0.xsd">
-      <Link>Schemas\LoadProcedure-2.2.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\MapDefinition-1.0.0.xsd">
-      <Link>Schemas\MapDefinition-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\MapDefinition-2.3.0.xsd">
-      <Link>Schemas\MapDefinition-2.3.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\MapDefinition-2.4.0.xsd">
-      <Link>Schemas\MapDefinition-2.4.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\MapDefinition-3.0.0.xsd">
-      <Link>Schemas\MapDefinition-3.0.0.xsd</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\PlatformCommon-1.0.0.xsd">
-      <Link>Schemas\PlatformCommon-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\PrintLayout-1.0.0.xsd">
-      <Link>Schemas\PrintLayout-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ProfileResult-2.4.0.xsd">
-      <Link>Schemas\ProfileResult-2.4.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\RepositoryContent-1.0.0.xsd">
-      <Link>Schemas\RepositoryContent-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\RepositoryList-1.0.0.xsd">
-      <Link>Schemas\RepositoryList-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ResourceDataList-1.0.0.xsd">
-      <Link>Schemas\ResourceDataList-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ResourceDocumentHeader-1.0.0.xsd">
-      <Link>Schemas\ResourceDocumentHeader-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ResourceFolderHeader-1.0.0.xsd">
-      <Link>Schemas\ResourceFolderHeader-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ResourceList-1.0.0.xsd">
-      <Link>Schemas\ResourceList-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ResourcePackageManifest-1.0.0.xsd">
-      <Link>Schemas\ResourcePackageManifest-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ResourceReferenceList-1.0.0.xsd">
-      <Link>Schemas\ResourceReferenceList-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ResourceSecurity-1.0.0.xsd">
-      <Link>Schemas\ResourceSecurity-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\Role-1.0.0.xsd">
-      <Link>Schemas\Role-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\RuntimeMap-2.6.0.xsd">
-      <Link>Schemas\RuntimeMap-2.6.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\RuntimeMap-3.0.0.xsd">
-      <Link>Schemas\RuntimeMap-3.0.0.xsd</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SelectAggregate-1.0.0.xsd">
-      <Link>Schemas\SelectAggregate-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\Server-1.0.0.xsd">
-      <Link>Schemas\Server-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ServerList-1.0.0.xsd">
-      <Link>Schemas\ServerList-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SiteInformation-1.0.0.xsd">
-      <Link>Schemas\SiteInformation-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SiteInformation-2.2.0.xsd">
-      <Link>Schemas\SiteInformation-2.2.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SiteStatus-2.2.0.xsd">
-      <Link>Schemas\SiteStatus-2.2.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SiteVersion-1.0.0.xsd">
-      <Link>Schemas\SiteVersion-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SiteVersion-2.2.0.xsd">
-      <Link>Schemas\SiteVersion-2.2.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SqlSelect-1.0.0.xsd">
-      <Link>Schemas\SqlSelect-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\StringCollection-1.0.0.xsd">
-      <Link>Schemas\StringCollection-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SymbolDefinition-1.0.0.xsd">
-      <Link>Schemas\SymbolDefinition-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SymbolDefinition-1.1.0.xsd">
-      <Link>Schemas\SymbolDefinition-1.1.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SymbolDefinition-2.4.0.xsd">
-      <Link>Schemas\SymbolDefinition-2.4.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SymbolLibrary-1.0.0.xsd">
-      <Link>Schemas\SymbolLibrary-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\TileProviderList-3.0.0.xsd">
-      <Link>Schemas\TileProviderList-3.0.0.xsd</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\TileSetDefinition-3.0.0.xsd">
-      <Link>Schemas\TileSetDefinition-3.0.0.xsd</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\Types-1.0.0.xsd">
-      <Link>Schemas\Types-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\UnmanagedDataList-1.0.0.xsd">
-      <Link>Schemas\UnmanagedDataList-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\User-1.0.0.xsd">
-      <Link>Schemas\User-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\UserList-1.0.0.xsd">
-      <Link>Schemas\UserList-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WatermarkDefinition-2.3.0.xsd">
-      <Link>Schemas\WatermarkDefinition-2.3.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WatermarkDefinition-2.4.0.xsd">
-      <Link>Schemas\WatermarkDefinition-2.4.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-1.0.0.xsd">
-      <Link>Schemas\WebLayout-1.0.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-1.1.0.xsd">
-      <Link>Schemas\WebLayout-1.1.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-2.4.0.xsd">
-      <Link>Schemas\WebLayout-2.4.0.xsd</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-2.6.0.xsd">
-      <Link>Schemas\WebLayout-2.6.0.xsd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="App.config" />
-    <None Include="Maestro.sh">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+
   <ItemGroup>
-    <Content Include="..\Maestro.Base\Maestro.Base.addin">
-      <Link>AddIns\Maestro.Base.addin</Link>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AddIns\" />
+    <Folder Include="Schemas\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\Maestro.Base\Maestro.Base.addin" Link="AddIns\Maestro.Base.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Maestro.Editors\FsEditorMap.xml">
-      <Link>FsEditorMap.xml</Link>
+    <Content Include="..\Maestro.Editors\FsEditorMap.xml" Link="FsEditorMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Maestro.Editors\OdbcDriverMap.xml">
-      <Link>OdbcDriverMap.xml</Link>
+    <Content Include="..\Maestro.Editors\OdbcDriverMap.xml" Link="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\OSGeo.MapGuide.MaestroAPI\ConnectionProviders.xml">
-      <Link>ConnectionProviders.xml</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="..\OSGeo.MapGuide.MaestroAPI\ConnectionProviders.xml" Link="ConnectionProviders.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="changelog.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -431,71 +109,229 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="MapGuide Maestro.ico" />
-    <Content Include="mono.txt" />
-    <Content Include="resource-readme.txt" />
+    <Content Include="resource-readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj">
-      <Project>{f1e2f468-5030-4dba-968c-9620284afaa1}</Project>
-      <Name>Maestro.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj">
-      <Project>{5ad2cdba-952e-4148-98a1-31d2e0d540d5}</Project>
-      <Name>Maestro.Editors</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Maestro.Login\Maestro.Login.csproj">
-      <Project>{07588440-5f9f-4c30-aa06-9cf30ba6dde6}</Project>
-      <Name>Maestro.Login</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Maestro.Packaging\Maestro.Packaging.csproj">
-      <Project>{0ea33e36-9c33-4d60-b378-b87fadaa0f40}</Project>
-      <Name>Maestro.Packaging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj">
-      <Project>{cfd19053-2172-41d3-8460-0fd2123a1e88}</Project>
-      <Name>Maestro.Shared.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
-      <Project>{80fa3158-8b5f-48d1-a393-0378afe48a7e}</Project>
-      <Name>OSGeo.MapGuide.MaestroAPI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj">
-      <Project>{857CA1A3-FC88-4BE0-AB6A-D1EE772AB288}</Project>
-      <Name>ICSharpCode.Core.WinForms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj">
-      <Project>{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}</Project>
-      <Name>ICSharpCode.Core</Name>
-    </ProjectReference>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ApplicationDefinition-1.0.0.xsd" Link="Schemas\ApplicationDefinition-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ApplicationDefinitionInfo-1.0.0.xsd" Link="Schemas\ApplicationDefinitionInfo-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\BatchPropertyCollection-1.0.0.xsd" Link="Schemas\BatchPropertyCollection-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\DataStoreList-1.0.0.xsd" Link="Schemas\DataStoreList-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\DrawingSectionList-1.0.0.xsd" Link="Schemas\DrawingSectionList-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\DrawingSectionResourceList-1.0.0.xsd" Link="Schemas\DrawingSectionResourceList-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\DrawingSource-1.0.0.xsd" Link="Schemas\DrawingSource-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\Envelope-1.0.0.xsd" Link="Schemas\Envelope-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\FdoLongTransactionList-1.0.0.xsd" Link="Schemas\FdoLongTransactionList-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\FdoProviderCapabilities-1.0.0.xsd" Link="Schemas\FdoProviderCapabilities-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\FdoProviderCapabilities-1.1.0.xsd" Link="Schemas\FdoProviderCapabilities-1.1.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\FdoSpatialContextList-1.0.0.xsd" Link="Schemas\FdoSpatialContextList-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\FeatureProviderRegistry-1.0.0.xsd" Link="Schemas\FeatureProviderRegistry-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\FeatureSet-1.0.0.xsd" Link="Schemas\FeatureSet-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\FeatureSource-1.0.0.xsd" Link="Schemas\FeatureSource-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\Group-1.0.0.xsd" Link="Schemas\Group-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\GroupList-1.0.0.xsd" Link="Schemas\GroupList-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LayerDefinition-1.0.0.xsd" Link="Schemas\LayerDefinition-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LayerDefinition-1.1.0.xsd" Link="Schemas\LayerDefinition-1.1.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LayerDefinition-1.2.0.xsd" Link="Schemas\LayerDefinition-1.2.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LayerDefinition-1.3.0.xsd" Link="Schemas\LayerDefinition-1.3.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LayerDefinition-2.3.0.xsd" Link="Schemas\LayerDefinition-2.3.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LayerDefinition-2.4.0.xsd" Link="Schemas\LayerDefinition-2.4.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LoadProcedure-1.0.0.xsd" Link="Schemas\LoadProcedure-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LoadProcedure-1.1.0.xsd" Link="Schemas\LoadProcedure-1.1.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LoadProcedure-2.2.0.xsd" Link="Schemas\LoadProcedure-2.2.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\MapDefinition-1.0.0.xsd" Link="Schemas\MapDefinition-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\MapDefinition-2.3.0.xsd" Link="Schemas\MapDefinition-2.3.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\MapDefinition-2.4.0.xsd" Link="Schemas\MapDefinition-2.4.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\MapDefinition-3.0.0.xsd" Link="Schemas\MapDefinition-3.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\PlatformCommon-1.0.0.xsd" Link="Schemas\PlatformCommon-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\PrintLayout-1.0.0.xsd" Link="Schemas\PrintLayout-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ProfileResult-2.4.0.xsd" Link="Schemas\ProfileResult-2.4.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\RepositoryContent-1.0.0.xsd" Link="Schemas\RepositoryContent-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\RepositoryList-1.0.0.xsd" Link="Schemas\RepositoryList-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ResourceDataList-1.0.0.xsd" Link="Schemas\ResourceDataList-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ResourceDocumentHeader-1.0.0.xsd" Link="Schemas\ResourceDocumentHeader-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ResourceFolderHeader-1.0.0.xsd" Link="Schemas\ResourceFolderHeader-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ResourceList-1.0.0.xsd" Link="Schemas\ResourceList-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ResourcePackageManifest-1.0.0.xsd" Link="Schemas\ResourcePackageManifest-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ResourceReferenceList-1.0.0.xsd" Link="Schemas\ResourceReferenceList-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ResourceSecurity-1.0.0.xsd" Link="Schemas\ResourceSecurity-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\Role-1.0.0.xsd" Link="Schemas\Role-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\RuntimeMap-2.6.0.xsd" Link="Schemas\RuntimeMap-2.6.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\RuntimeMap-3.0.0.xsd" Link="Schemas\RuntimeMap-3.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SelectAggregate-1.0.0.xsd" Link="Schemas\SelectAggregate-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\Server-1.0.0.xsd" Link="Schemas\Server-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ServerList-1.0.0.xsd" Link="Schemas\ServerList-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SiteInformation-1.0.0.xsd" Link="Schemas\SiteInformation-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SiteInformation-2.2.0.xsd" Link="Schemas\SiteInformation-2.2.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SiteStatus-2.2.0.xsd" Link="Schemas\SiteStatus-2.2.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SiteVersion-1.0.0.xsd" Link="Schemas\SiteVersion-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SiteVersion-2.2.0.xsd" Link="Schemas\SiteVersion-2.2.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SqlSelect-1.0.0.xsd" Link="Schemas\SqlSelect-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\StringCollection-1.0.0.xsd" Link="Schemas\StringCollection-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SymbolDefinition-1.0.0.xsd" Link="Schemas\SymbolDefinition-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SymbolDefinition-1.1.0.xsd" Link="Schemas\SymbolDefinition-1.1.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SymbolDefinition-2.4.0.xsd" Link="Schemas\SymbolDefinition-2.4.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SymbolLibrary-1.0.0.xsd" Link="Schemas\SymbolLibrary-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\TileProviderList-3.0.0.xsd" Link="Schemas\TileProviderList-3.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\TileSetDefinition-3.0.0.xsd" Link="Schemas\TileSetDefinition-3.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\Types-1.0.0.xsd" Link="Schemas\Types-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\UnmanagedDataList-1.0.0.xsd" Link="Schemas\UnmanagedDataList-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\User-1.0.0.xsd" Link="Schemas\User-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\UserList-1.0.0.xsd" Link="Schemas\UserList-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WatermarkDefinition-2.3.0.xsd" Link="Schemas\WatermarkDefinition-2.3.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WatermarkDefinition-2.4.0.xsd" Link="Schemas\WatermarkDefinition-2.4.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-1.0.0.xsd" Link="Schemas\WebLayout-1.0.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-1.1.0.xsd" Link="Schemas\WebLayout-1.1.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-2.4.0.xsd" Link="Schemas\WebLayout-2.4.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-2.6.0.xsd" Link="Schemas\WebLayout-2.6.0.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
+
   <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
+    <PackageReference Include="NSIS" Version="2.51.0" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="NSIS">
-      <Version>2.51.0</Version>
-    </PackageReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

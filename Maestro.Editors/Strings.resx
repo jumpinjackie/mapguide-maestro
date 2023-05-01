@@ -162,18 +162,6 @@
   <data name="CmsGeneric" xml:space="preserve">
     <value>Generic Layer</value>
   </data>
-  <data name="CmsGoogleHybrid" xml:space="preserve">
-    <value>Google Hybrid</value>
-  </data>
-  <data name="CmsGooglePhysical" xml:space="preserve">
-    <value>Google Physical</value>
-  </data>
-  <data name="CmsGoogleSatellite" xml:space="preserve">
-    <value>Google Satellite</value>
-  </data>
-  <data name="CmsGoogleStreets" xml:space="preserve">
-    <value>Google Streets</value>
-  </data>
   <data name="CmsOsm" xml:space="preserve">
     <value>Open Street Map</value>
   </data>
@@ -1120,6 +1108,27 @@ Returns: {0}</value>
     &lt;Value&gt;Expression...&lt;/Value&gt;
   &lt;/Horizontal&gt;
 
+  &lt;LabelJustification&gt;
+    &lt;Display&gt;Left&lt;/Display&gt;
+    &lt;Value&gt;'Left'&lt;/Value&gt;
+  &lt;/LabelJustification&gt;
+  &lt;LabelJustification&gt;
+    &lt;Display&gt;Right&lt;/Display&gt;
+    &lt;Value&gt;'Right'&lt;/Value&gt;
+  &lt;/LabelJustification&gt;
+  &lt;LabelJustification&gt;
+    &lt;Display&gt;Center&lt;/Display&gt;
+    &lt;Value&gt;'Center'&lt;/Value&gt;
+  &lt;/LabelJustification&gt;
+  &lt;LabelJustification&gt;
+    &lt;Display&gt;Justify&lt;/Display&gt;
+    &lt;Value&gt;'Justify'&lt;/Value&gt;
+  &lt;/LabelJustification&gt;
+  &lt;LabelJustification&gt;
+    &lt;Display&gt;Expression...&lt;/Display&gt;
+    &lt;Value&gt;Expression...&lt;/Value&gt;
+  &lt;/LabelJustification&gt;
+
 &lt;/ComboBoxDataSet&gt;</value>
   </data>
   <data name="GeomFilterTemplate" xml:space="preserve">
@@ -1470,9 +1479,6 @@ Are you absolutely sure that is what you want?</value>
   <data name="ResourceDoesntExist" xml:space="preserve">
     <value>Resource doesn't exist</value>
   </data>
-  <data name="SaveMapBeforeTiling" xml:space="preserve">
-    <value>You must save this map first before you can run MgCooker</value>
-  </data>
   <data name="SaveResource" xml:space="preserve">
     <value>Save Resource</value>
   </data>
@@ -1676,9 +1682,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="UnmanagedBrowserMultiSelectionNotAllowed" xml:space="preserve">
     <value>Multiple selection is not allowed when SelectFoldersOnly is set to true</value>
   </data>
-  <data name="UnsupportedConnectionType" xml:space="preserve">
-    <value>Invoking MgCooker is not supported for this connection type: {0}</value>
-  </data>
   <data name="UpdatingConfiguration" xml:space="preserve">
     <value>Updating Configuration Document</value>
   </data>
@@ -1717,9 +1720,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   </data>
   <data name="SavedTileSet" xml:space="preserve">
     <value>Saved tile set to: {0}</value>
-  </data>
-  <data name="MgCookerIncompatibleTileSet" xml:space="preserve">
-    <value>MgCooker only works with Tile Sets using the 'Default' tile provider</value>
   </data>
   <data name="ResourcePreviewTitle" xml:space="preserve">
     <value>Resource Preview</value>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ApplicationDefinitionContainerInfoSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ApplicationDefinitionContainerInfoSet-1.0.0.xsd">
+	<ContainerInfo>
+		<Type>ContextMenu</Type>
+		<LocalizedType>Menu</LocalizedType>
+		<Description>A context menu to contain menu items to perform various tasks</Description>
+		<PreviewImageUrl>fusion/containerinfo/menu.png</PreviewImageUrl>
+	</ContainerInfo>
+	<ContainerInfo>
+		<Type>Splitterbar</Type>
+		<LocalizedType>Splitter Bar</LocalizedType>
+		<Description>A splitter bar to contain controls to display status items</Description>
+		<PreviewImageUrl>fusion/containerinfo/splitterbar.png</PreviewImageUrl>
+	</ContainerInfo>
+	<ContainerInfo>
+		<Type>Toolbar</Type>
+		<LocalizedType>Toolbar</LocalizedType>
+		<Description>A toolbar to contain buttons to perform various tasks</Description>
+		<PreviewImageUrl>fusion/containerinfo/toolbar.png</PreviewImageUrl>
+	</ContainerInfo>
+</ApplicationDefinitionContainerInfoSet>

@@ -1,4 +1,39 @@
-﻿6.0m10
+﻿6.0m11
+======
+
+ - *** MapGuide Maestro is now a .net 6.0 self-contained application ***
+   - No need to download and install .net Framework beforehand. The required files are now included.
+ - MgCooker has been removed. MgTileSeeder (introduced in 6.0m8) is now the canonical replacement.
+ - Site Explorer UI changes:
+   - Your published WMS/WFS layers are now visible as top-level nodes
+   - New context menu action on Tile Set Definitions to easily get the XYZ url pattern template (for easy consumption in OpenLayers/Leaflet/etc)
+ - Added missing support for AdvancedPlacement in (basic) label style editor
+ - Local Map Viewer component changes:
+   - Now includes a selection panel to view attributes of selected features
+   - Selection image is now properly cleared if selection action produces no selection
+ - MapGuide Open Source 4.0 authoring/runtime support:
+   - Layer Definition editor supports v4.0.0 resource schema
+      - New toggle for enabling/disabling bounding box info when a QUERYMAPFEATURES request is made against this layer
+   - New v4.0.0 Layer Definition resource template
+   - Tile Set linkage restrictions removed from Map Definition editor
+   - Features that use coordinate system transformation will use the new batch coordinate transformation API introduced in this version
+   - WMS metadata UI support for providing/hiding geometry fields
+   - Published WMS layer nodes have a context menu action to preview the layer with the new OpenLayers viewer representation for WMS layers
+   - API: RuntimeMap instances can now support the v4.0.0 runtime map schema
+ - "Create Standard Folder Structure" action now creates a "TileSets" folder
+ - API: MaestroAPI package now has SourceLink support allowing for stepping into MaestorAPI source code during debugging
+ - API: Update NetTopologySuite and removed GeoAPI dependency
+ - API: Username/Password parameters for CREATESESSION are now passed through regular query string (for GET) or form values (for POST) to support web servers that are not IIS or httpd, but implement the mapagent handler protocol.
+ - API: Add support for stateless RenderMap API (ie. The variant that does not require SESSION/MAPNAME parameters)
+ - Fix: Non-scalable "Create Layers From Feature Source" dialog
+ - Fix: LL84 bounding box transformation failing if it exceeds [-180, -90, 180, 90]
+ - Fix: '...' buttons in symbol definition editor not showing the symbol parameter picker
+ - Fix: Stylization expression functions being shown in expression editor for non-stylization contexts (eg. Calculated properties for an extended feature class)
+ - Fix: Bug moving groups up in Map Definition editor
+ - Fix: Do not save empty <Value /> WMS metadata elements
+ - Fix: Wait cursor not disappearing on failed login
+
+6.0m10
 ======
  - Fusion editor changes
    - Updated Google Maps base URL

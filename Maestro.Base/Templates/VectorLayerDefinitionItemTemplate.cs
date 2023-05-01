@@ -32,13 +32,14 @@ namespace Maestro.Base.Templates
     internal class VectorLayerDefinitionItemTemplate : ItemTemplate
     {
         public VectorLayerDefinitionItemTemplate()
-        {
-            Category = Strings.TPL_CATEGORY_DEFAULT;
-            Icon = Res.layer;
-            Description = Strings.TPL_VLDF_DESC;
-            Name = Strings.TPL_VLDF_NAME;
-            ResourceType = ResourceTypes.LayerDefinition.ToString();
-        }
+            : base(Strings.TPL_CATEGORY_DEFAULT,
+                   Res.layer,
+                   Strings.TPL_VLDF_DESC,
+                   Strings.TPL_VLDF_NAME,
+                   ResourceTypes.LayerDefinition.ToString(),
+                   "Vector", //NOXLATE
+                   new Version(1, 0, 0))
+        { }
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {

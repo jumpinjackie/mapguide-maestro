@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Maestro.Editors.Fusion

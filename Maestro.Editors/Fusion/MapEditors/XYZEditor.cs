@@ -36,7 +36,6 @@ namespace Maestro.Editors.Fusion.MapEditors
     {
         private IMap _map;
         private readonly IEditorService _edSvc;
-        private IMapView _initialView;
         private IMapGroup _group;
         private bool _init;
 

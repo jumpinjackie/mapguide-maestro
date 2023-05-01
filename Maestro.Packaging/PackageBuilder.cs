@@ -912,7 +912,7 @@ namespace Maestro.Packaging
 
                 List<KeyValuePair<string, string>> filemap = new List<KeyValuePair<string, string>>();
 
-                ZipConstants.DefaultCodePage = System.Text.Encoding.UTF8.CodePage;
+                ZipStrings.CodePage = System.Text.Encoding.UTF8.CodePage;
                 using (ZipFile zipfile = new ZipFile(sourcePackageFile))
                 {
                     zipfilecomment = zipfile.ZipFileComment;
@@ -1141,7 +1141,7 @@ namespace Maestro.Packaging
             Dictionary<string, ResourceItem> resourceList = new Dictionary<string, ResourceItem>();
 
             ResourcePackageManifest manifest;
-            ZipConstants.DefaultCodePage = System.Text.Encoding.UTF8.CodePage;
+            ZipStrings.CodePage = System.Text.Encoding.UTF8.CodePage;
             using (ZipFile zipfile = new ZipFile(packageFile))
             {
                 int index = FindZipEntry(zipfile, "MgResourcePackageManifest.xml"); //NOXLATE

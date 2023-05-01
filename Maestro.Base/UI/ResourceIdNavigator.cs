@@ -128,7 +128,10 @@ namespace Maestro.Base.UI
             var idx = _cmbActiveConnections.Items.IndexOf(e.Items[0].ConnectionName);
             if (idx >= 0)
             {
-                _cmbResourceId.Text = e.Items[0].ResourceId;
+                if (e.Items[0] is RepositoryItem ri)
+                    _cmbResourceId.Text = ri.ResourceId;
+                else
+                    _cmbResourceId.Text = null;
                 _cmbActiveConnections.SelectedIndex = idx;
             }
         }

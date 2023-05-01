@@ -63,9 +63,10 @@ namespace Maestro.Base.UI.Preferences
             chkShowTipOfTheDay.Checked = totd;
 
             txtFsPreview.Text = Props.Get(ConfigProperties.LocalFsPreviewPath, ConfigProperties.DefaultLocalFsPreviewPath);
-            txtMgCooker.Text = Props.Get(ConfigProperties.MgCookerPath, ConfigProperties.DefaultMgCookerPath);
+            txtMgTileSeeder.Text = Props.Get(ConfigProperties.MgTileSeederPath, ConfigProperties.DefaultMgTileSeederPath);
             txtRtMapInspector.Text = Props.Get(ConfigProperties.RtMapInspectorPath, ConfigProperties.DefaultRtMapInspectorPath);
             txtLiveMapEditor.Text = Props.Get(ConfigProperties.LiveMapEditorPath, ConfigProperties.DefaultLiveMapEditorPath);
+            txtProviderTemplateTool.Text = Props.Get(ConfigProperties.ProviderToolPath, ConfigProperties.DefaultProviderToolPath);
 
             cmbOpenedColor.CurrentColor = Props.Get(ConfigProperties.OpenColor, Color.LightGreen);
             cmbModifiedColor.CurrentColor = Props.Get(ConfigProperties.DirtyColor, Color.Pink);
@@ -103,13 +104,14 @@ namespace Maestro.Base.UI.Preferences
             var themeName = cmbTheme.SelectedItem?.ToString();
             Apply(ConfigProperties.SelectedTheme, themeName);
             Apply(ConfigProperties.UserTemplatesDirectory, txtTemplatePath.Text);
-            Apply(ConfigProperties.MgCookerPath, txtMgCooker.Text);
+            Apply(ConfigProperties.MgTileSeederPath, txtMgTileSeeder.Text);
             Apply(ConfigProperties.LocalFsPreviewPath, txtFsPreview.Text);
             Apply(ConfigProperties.RtMapInspectorPath, txtRtMapInspector.Text);
             Apply(ConfigProperties.LiveMapEditorPath, txtLiveMapEditor.Text);
             Apply(ConfigProperties.OpenColor, (Color)cmbOpenedColor.CurrentColor);
             Apply(ConfigProperties.DirtyColor, (Color)cmbModifiedColor.CurrentColor);
             Apply(ConfigProperties.ShowTipOfTheDay, chkShowTipOfTheDay.Checked);
+            Apply(ConfigProperties.ProviderToolPath, txtProviderTemplateTool.Text);
 
             //These changes require restart
             if (themeName != Themes.CurrentTheme)
@@ -141,15 +143,15 @@ namespace Maestro.Base.UI.Preferences
             ConfigProperties.ApplyGeneralDefaults();
         }
 
-        private void btnBrowseMgCooker_Click(object sender, EventArgs e)
+        private void btnBrowseMgTileSeeder_Click(object sender, EventArgs e)
         {
             using (var dlg = DialogFactory.OpenFile())
             {
-                dlg.Title = string.Format(Strings.LocateExecutable, "MgCooker.exe"); //NOXLATE
+                dlg.Title = string.Format(Strings.LocateExecutable, "MgTileSeeder.exe"); //NOXLATE
                 dlg.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickExe, "exe"); //NOXLATE
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    txtMgCooker.Text = dlg.FileName;
+                    txtMgTileSeeder.Text = dlg.FileName;
                 }
             }
         }

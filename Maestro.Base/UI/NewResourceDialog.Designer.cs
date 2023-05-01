@@ -37,6 +37,12 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.chkLatestVersion = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
+            this.splitContainer.Panel1.SuspendLayout();
+            this.splitContainer.Panel2.SuspendLayout();
+            this.splitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstTemplates
@@ -46,8 +52,8 @@
             this.lstTemplates.Name = "lstTemplates";
             this.lstTemplates.UseCompatibleStateImageBehavior = false;
             this.lstTemplates.View = System.Windows.Forms.View.Tile;
-            this.lstTemplates.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstTemplates_MouseDoubleClick);
             this.lstTemplates.SelectedIndexChanged += new System.EventHandler(this.lstTemplates_SelectedIndexChanged);
+            this.lstTemplates.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstTemplates_MouseDoubleClick);
             // 
             // lstCategories
             // 
@@ -93,6 +99,29 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
+            // splitContainer
+            // 
+            resources.ApplyResources(this.splitContainer, "splitContainer");
+            this.splitContainer.Cursor = System.Windows.Forms.Cursors.VSplit;
+            this.splitContainer.Name = "splitContainer";
+            // 
+            // splitContainer.Panel1
+            // 
+            this.splitContainer.Panel1.Controls.Add(this.label1);
+            this.splitContainer.Panel1.Controls.Add(this.lstCategories);
+            // 
+            // splitContainer.Panel2
+            // 
+            this.splitContainer.Panel2.Controls.Add(this.lstTemplates);
+            this.splitContainer.Panel2.Controls.Add(this.label2);
+            // 
+            // chkLatestVersion
+            // 
+            resources.ApplyResources(this.chkLatestVersion, "chkLatestVersion");
+            this.chkLatestVersion.Name = "chkLatestVersion";
+            this.chkLatestVersion.UseVisualStyleBackColor = true;
+            this.chkLatestVersion.CheckedChanged += new System.EventHandler(this.chkLatestVersion_CheckedChanged);
+            // 
             // NewResourceDialog
             // 
             this.AcceptButton = this.btnOK;
@@ -100,16 +129,20 @@
             this.CancelButton = this.btnCancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.chkLatestVersion);
+            this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtDescription);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lstCategories);
-            this.Controls.Add(this.lstTemplates);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "NewResourceDialog";
+            this.splitContainer.Panel1.ResumeLayout(false);
+            this.splitContainer.Panel1.PerformLayout();
+            this.splitContainer.Panel2.ResumeLayout(false);
+            this.splitContainer.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
+            this.splitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,5 +158,7 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.SplitContainer splitContainer;
+        private System.Windows.Forms.CheckBox chkLatestVersion;
     }
 }

@@ -24,6 +24,7 @@ using Maestro.Editors.Preview;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -56,7 +57,12 @@ namespace Maestro.Editors.Common
             /// <param name="url"></param>
             public override void OpenUrl(string url)
             {
-                System.Diagnostics.Process.Start(url);
+                var ps = new ProcessStartInfo(url)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                };
+                Process.Start(ps);
             }
 
             /// <summary>

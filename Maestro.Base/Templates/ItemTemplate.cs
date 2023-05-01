@@ -32,6 +32,27 @@ namespace Maestro.Base.Templates
     /// </summary>
     public abstract class ItemTemplate : IComparable<ItemTemplate>
     {
+        private string _subTypeKey;
+
+        protected ItemTemplate(string category,
+                               Image icon,
+                               string description,
+                               string name,
+                               string resourceType,
+                               string subTypeKey,
+                               Version resourceVersion)
+        {
+            this.Category = category;
+            this.Icon = icon;
+            this.Description = description;
+            this.Name = name;
+            this.ResourceType = resourceType;
+            _subTypeKey = subTypeKey;
+            this.ResourceVersion = resourceVersion;
+        }
+
+        public string LatestVersionGroupingKey => ResourceType + (_subTypeKey ?? string.Empty);
+
         /// <summary>
         /// Gets or sets the name of this template
         /// </summary>
@@ -51,6 +72,11 @@ namespace Maestro.Base.Templates
         /// Gets the resource type of this template
         /// </summary>
         public string ResourceType { get; protected set; }
+
+        /// <summary>
+        /// Gest the version of the resource created by this template
+        /// </summary>
+        public Version ResourceVersion { get; protected set; }
 
         /// <summary>
         /// Gets the icon for this template

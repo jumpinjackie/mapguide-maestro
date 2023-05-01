@@ -1199,15 +1199,6 @@ namespace Maestro.Base {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MgCooker.
-        /// </summary>
-        internal static string MgCooker {
-            get {
-                return ResourceManager.GetString("MgCooker", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Load this package file.
         /// </summary>
         internal static string MgpHandlerAction {
@@ -2141,6 +2132,24 @@ namespace Maestro.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open Associated Layer Definition.
+        /// </summary>
+        internal static string SiteExplorer_SelectedItem_OpenWmsLayerDefn {
+            get {
+                return ResourceManager.GetString("SiteExplorer_SelectedItem_OpenWmsLayerDefn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preview this WMS Layer.
+        /// </summary>
+        internal static string SiteExplorer_SelectedItem_PreviewWmsLayer {
+            get {
+                return ResourceManager.GetString("SiteExplorer_SelectedItem_PreviewWmsLayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Properties.
         /// </summary>
         internal static string SiteExplorer_SelectedItem_Properties {
@@ -2155,6 +2164,15 @@ namespace Maestro.Base {
         internal static string SiteExplorer_SelectedItem_Rename {
             get {
                 return ResourceManager.GetString("SiteExplorer_SelectedItem_Rename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Un-publish this WMS Layer.
+        /// </summary>
+        internal static string SiteExplorer_SelectedItem_UnPublishWmsLayer {
+            get {
+                return ResourceManager.GetString("SiteExplorer_SelectedItem_UnPublishWmsLayer", resourceCulture);
             }
         }
         
@@ -2582,6 +2600,24 @@ namespace Maestro.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (Untitled WFS Layer).
+        /// </summary>
+        internal static string UntitledWfsLayer {
+            get {
+                return ResourceManager.GetString("UntitledWfsLayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Untitled WMS Layer).
+        /// </summary>
+        internal static string UntitledWmsLayer {
+            get {
+                return ResourceManager.GetString("UntitledWmsLayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open editor updated to {0}.
         /// </summary>
         internal static string UpdatedOpenEditor {
@@ -2677,6 +2713,69 @@ namespace Maestro.Base {
         internal static string VersionUnknownOrNotConnected {
             get {
                 return ResourceManager.GetString("VersionUnknownOrNotConnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Published WFS Layers.
+        /// </summary>
+        internal static string WfsLayers {
+            get {
+                return ResourceManager.GetString("WfsLayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: {1}{0}Title: {2}{0}Abstract: {3}{0}CRS: {4}.
+        /// </summary>
+        internal static string WfsLayerTooltip {
+            get {
+                return ResourceManager.GetString("WfsLayerTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Published WMS Layers.
+        /// </summary>
+        internal static string WmsLayers {
+            get {
+                return ResourceManager.GetString("WmsLayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: {1}{0}Title: {2}{0}Abstract: {3}{0}CRS: {4}{0}BBOX: ({5}).
+        /// </summary>
+        internal static string WmsLayerTooltip {
+            get {
+                return ResourceManager.GetString("WmsLayerTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This command requires WMS layer preview support that is only available in MapGuide Open Source 4.0 or later.
+        /// </summary>
+        internal static string WmsPreviewUnsupportedVersion {
+            get {
+                return ResourceManager.GetString("WmsPreviewUnsupportedVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to un-publish this WMS layer. This will delete all associated WMS layer metadata from the Layer Definition ({0}).
+        /// </summary>
+        internal static string WmsUnpublishConfirm {
+            get {
+                return ResourceManager.GetString("WmsUnpublishConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Un-publish WMS Layer.
+        /// </summary>
+        internal static string WmsUnpublishConfirmTitle {
+            get {
+                return ResourceManager.GetString("WmsUnpublishConfirmTitle", resourceCulture);
             }
         }
         

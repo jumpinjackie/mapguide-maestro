@@ -40,6 +40,9 @@
             this.chkOutbound = new System.Windows.Forms.CheckBox();
             this.chkMessages = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnProviderTemplate = new System.Windows.Forms.Button();
+            this.txtProviderTemplateTool = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnBrowseLiveMapEditor = new System.Windows.Forms.Button();
             this.txtLiveMapEditor = new System.Windows.Forms.TextBox();
@@ -48,9 +51,9 @@
             this.txtRtMapInspector = new System.Windows.Forms.TextBox();
             this.btnBrowseFsPreview = new System.Windows.Forms.Button();
             this.txtFsPreview = new System.Windows.Forms.TextBox();
-            this.btnBrowseMgCooker = new System.Windows.Forms.Button();
+            this.btnBrowseMgTileSeeder = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtMgCooker = new System.Windows.Forms.TextBox();
+            this.txtMgTileSeeder = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cmbModifiedColor = new Maestro.Editors.Common.ColorComboBox();
@@ -59,9 +62,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbTheme = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnProviderTemplate = new System.Windows.Forms.Button();
-            this.txtProviderTemplateTool = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -145,12 +145,30 @@
             this.groupBox2.Controls.Add(this.txtRtMapInspector);
             this.groupBox2.Controls.Add(this.btnBrowseFsPreview);
             this.groupBox2.Controls.Add(this.txtFsPreview);
-            this.groupBox2.Controls.Add(this.btnBrowseMgCooker);
+            this.groupBox2.Controls.Add(this.btnBrowseMgTileSeeder);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txtMgCooker);
+            this.groupBox2.Controls.Add(this.txtMgTileSeeder);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // btnProviderTemplate
+            // 
+            resources.ApplyResources(this.btnProviderTemplate, "btnProviderTemplate");
+            this.btnProviderTemplate.Name = "btnProviderTemplate";
+            this.btnProviderTemplate.UseVisualStyleBackColor = true;
+            this.btnProviderTemplate.Click += new System.EventHandler(this.btnProviderTemplate_Click);
+            // 
+            // txtProviderTemplateTool
+            // 
+            resources.ApplyResources(this.txtProviderTemplateTool, "txtProviderTemplateTool");
+            this.txtProviderTemplateTool.Name = "txtProviderTemplateTool";
+            this.txtProviderTemplateTool.ReadOnly = true;
             // 
             // label8
             // 
@@ -201,23 +219,23 @@
             this.txtFsPreview.Name = "txtFsPreview";
             this.txtFsPreview.ReadOnly = true;
             // 
-            // btnBrowseMgCooker
+            // btnBrowseMgTileSeeder
             // 
-            resources.ApplyResources(this.btnBrowseMgCooker, "btnBrowseMgCooker");
-            this.btnBrowseMgCooker.Name = "btnBrowseMgCooker";
-            this.btnBrowseMgCooker.UseVisualStyleBackColor = true;
-            this.btnBrowseMgCooker.Click += new System.EventHandler(this.btnBrowseMgCooker_Click);
+            resources.ApplyResources(this.btnBrowseMgTileSeeder, "btnBrowseMgTileSeeder");
+            this.btnBrowseMgTileSeeder.Name = "btnBrowseMgTileSeeder";
+            this.btnBrowseMgTileSeeder.UseVisualStyleBackColor = true;
+            this.btnBrowseMgTileSeeder.Click += new System.EventHandler(this.btnBrowseMgTileSeeder_Click);
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
-            // txtMgCooker
+            // txtMgTileSeeder
             // 
-            resources.ApplyResources(this.txtMgCooker, "txtMgCooker");
-            this.txtMgCooker.Name = "txtMgCooker";
-            this.txtMgCooker.ReadOnly = true;
+            resources.ApplyResources(this.txtMgTileSeeder, "txtMgTileSeeder");
+            this.txtMgTileSeeder.Name = "txtMgTileSeeder";
+            this.txtMgTileSeeder.ReadOnly = true;
             // 
             // label3
             // 
@@ -268,24 +286,6 @@
             this.cmbTheme.FormattingEnabled = true;
             this.cmbTheme.Name = "cmbTheme";
             // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            // 
-            // btnProviderTemplate
-            // 
-            resources.ApplyResources(this.btnProviderTemplate, "btnProviderTemplate");
-            this.btnProviderTemplate.Name = "btnProviderTemplate";
-            this.btnProviderTemplate.UseVisualStyleBackColor = true;
-            this.btnProviderTemplate.Click += new System.EventHandler(this.btnProviderTemplate_Click);
-            // 
-            // txtProviderTemplateTool
-            // 
-            resources.ApplyResources(this.txtProviderTemplateTool, "txtProviderTemplateTool");
-            this.txtProviderTemplateTool.Name = "txtProviderTemplateTool";
-            this.txtProviderTemplateTool.ReadOnly = true;
-            // 
             // GeneralPreferencesCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -327,9 +327,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnBrowseFsPreview;
         private System.Windows.Forms.TextBox txtFsPreview;
-        private System.Windows.Forms.Button btnBrowseMgCooker;
+        private System.Windows.Forms.Button btnBrowseMgTileSeeder;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtMgCooker;
+        private System.Windows.Forms.TextBox txtMgTileSeeder;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label6;

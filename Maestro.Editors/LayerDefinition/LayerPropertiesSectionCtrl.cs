@@ -40,7 +40,7 @@ namespace Maestro.Editors.LayerDefinition
 
             if (_vl is IVectorLayerDefinition3 vl3)
             {
-                tsbIncludeBoundingBox.Checked = vl3.IncludeBoundsForSelectedFeatures;
+                tsbIncludeBoundingBox.Checked = vl3.IncludeBoundsForSelectedFeatures ?? false;
                 tsbIncludeBoundingBox.Visible = true;
             }
             else
