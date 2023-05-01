@@ -422,7 +422,7 @@ namespace MgTileSeeder
             using var ms = MemoryStreamPool.GetStream();
             stream.CopyTo(ms);
             ms.Position = 0L;
-            conn.Execute($"INSERT INTO tiles (zoom_level, tile_column, tile_row, tile_data) VALUES (@z, @y, @x, @img)", param: new
+            conn.Execute($"INSERT OR REPLACE INTO tiles (zoom_level, tile_column, tile_row, tile_data) VALUES (@z, @y, @x, @img)", param: new
             {
                 z = tr.Scale,
                 x = tr.Row,
