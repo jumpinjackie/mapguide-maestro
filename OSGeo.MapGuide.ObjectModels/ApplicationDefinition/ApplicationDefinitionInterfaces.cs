@@ -33,6 +33,16 @@ using System.Xml;
 namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
 {
     /// <summary>
+    /// The kind of content to be requested for an extension element
+    /// </summary>
+    public enum ExtensionElementContentKind
+    {
+        InnerText,
+        InnerXml,
+        OuterXml
+    }
+
+    /// <summary>
     /// Describes all available widgets
     /// </summary>
     public interface IApplicationDefinitionWidgetInfoSet
@@ -748,6 +758,43 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
     public static class ExtensionMethods
     {
         /// <summary>
+        /// Removes the given XML child elements with the given name if they exist on the
+        /// current extension element
+        /// </summary>
+        /// <param name="ext"></param>
+        /// <param name="name"></param>
+        /// <returns>true if elements were removed, false if nothing was removed</returns>
+        public static bool Remove(this IExtension ext, string name)
+        {
+            var updated = ext.Content.Where(e => e.Name != name).ToArray(); ;
+            if (updated.Length < ext.Content.Length)
+            {
+                ext.Content = updated;
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Gets or adds an XML element by the given name on the current extension element
+        /// </summary>
+        /// <param name="ext"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static XmlElement GetOrAdd(this IExtension ext, string name)
+        {
+            var elements = ext.Content.ToList();
+            var el = elements.FirstOrDefault(e => e.Name == name);
+            if (el == null)
+            {
+                el = AppDefDocument.Instance.CreateElement(name);
+                elements.Add(el);
+                ext.Content = elements.ToArray();
+            }
+            return el;
+        }
+
+        /// <summary>
         /// Gets the name of the fusion template
         /// </summary>
         /// <param name="appDef"></param>
@@ -1164,7 +1211,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <param name="ext"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static string GetValue(this IExtensibleElement ext, string name)
+        public static string GetValue(this IExtensibleElement ext, string name, ExtensionElementContentKind kind = ExtensionElementContentKind.InnerText)
         {
             Check.ArgumentNotNull(ext, nameof(ext));
             Check.ArgumentNotEmpty(name, nameof(name));
@@ -1174,7 +1221,12 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
                 var el = ext.Extension.Content.FindElementByName(name);
                 if (el != null)
                 {
-                    return el.InnerText;
+                    switch (kind)
+                    {
+                        case ExtensionElementContentKind.InnerText: return el.InnerText;
+                        case ExtensionElementContentKind.InnerXml: return el.InnerXml;
+                        case ExtensionElementContentKind.OuterXml: return el.OuterXml;
+                    };
                 }
             }
             return string.Empty;

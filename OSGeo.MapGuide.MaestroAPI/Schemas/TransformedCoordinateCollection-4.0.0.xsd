@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="TransformedCoordinateCollection">
+    <xs:annotation>
+      <xs:documentation>A collection of transformed coordinates</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CoordinateSystem" type="CoordinateSystemInfo" />
+        <xs:element name="TransformedCoordinate" type="TransformedCoordinate" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="CoordinateSystemInfo">
+    <xs:annotation>
+      <xs:documentation>Information about the coordinate system</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MentorCode" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Mentor (CS-Map) coordinate system code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EpsgCode" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>EPSG code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Wkt" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The well-known text of the coordinate system</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransformedCoordinate">
+    <xs:annotation>
+      <xs:documentation>Represents a transformed coordinate</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="X" type="xs:double" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>x-coordinate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Y" type="xs:double" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>y-coordinate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Error" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The string token that failed to parse into a coordinate pair</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

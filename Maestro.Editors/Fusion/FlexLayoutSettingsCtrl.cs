@@ -29,7 +29,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Net;
+using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Maestro.Editors.Fusion
 {
@@ -195,6 +197,34 @@ namespace Maestro.Editors.Fusion
         {
             Clipboard.SetText(((IPreviewUrl)cmbPublicUrl.SelectedItem).Url);
             MessageBox.Show(Strings.CopiedUrlToClipboard);
+        }
+
+        private void btnManageProjections_Click(object sender, EventArgs e)
+        {
+            using (var diag = new ManageCustomProjectionsDialog(_edsvc.CurrentConnection, _flexLayout))
+            {
+                if (diag.ShowDialog() == DialogResult.OK)
+                {
+                    if (diag.ProjectionSet.Projection.Length == 0)
+                    {
+                        if (_flexLayout.Extension.Remove("CustomProjections"))
+                        {
+                            OnResourceChanged();
+                        }
+                    }
+                    else
+                    {
+                        var el = _flexLayout.Extension.GetOrAdd("CustomProjections");
+                        var sb = new StringBuilder();
+                        foreach (var ent in diag.ProjectionSet.Projection)
+                        {
+                            sb.Append($"<Projection epsg=\"{ent.epsg}\">{ent.Value}</Projection>");
+                        }
+                        el.InnerXml = sb.ToString();
+                        OnResourceChanged();
+                    }
+                }
+            }
         }
     }
 }
