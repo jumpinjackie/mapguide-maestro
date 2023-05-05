@@ -1748,4 +1748,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="LinkedXYZTileSetNote" xml:space="preserve">
     <value>NOTE: MapGuide Open Source 4.0 and Maestro as a result now allows you to link a Map Definition to a XYZ tile set. However, this type of Map Definition is still not supported in any of our provided viewer offerings. This type of Map Definition can still be previewd, but layers from the XYZ tile set will not be visible. This restriction has been lifted to enable any custom viewer that would want to take advantage of this particular combination.</value>
   </data>
+  <data name="AddingCustomProjections" xml:space="preserve">
+    <value>Fetching and adding custom projections based on your referenced Map Definitions ...</value>
+  </data>
 </root>

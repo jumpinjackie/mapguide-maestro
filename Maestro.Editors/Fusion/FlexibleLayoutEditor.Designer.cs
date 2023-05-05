@@ -29,48 +29,44 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FlexibleLayoutEditor));
-            this.settingsCtrl = new Maestro.Editors.Fusion.FlexLayoutSettingsCtrl();
-            this.mapsCtrl = new Maestro.Editors.Fusion.MapSettingsCtrl();
-            this.widgetsCtrl = new Maestro.Editors.Fusion.WidgetSettingsCtrl();
-            this.SuspendLayout();
+            settingsCtrl = new FlexLayoutSettingsCtrl();
+            mapsCtrl = new MapSettingsCtrl();
+            widgetsCtrl = new WidgetSettingsCtrl();
+            SuspendLayout();
             // 
             // settingsCtrl
             // 
-            this.settingsCtrl.ContentBackgroundColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.settingsCtrl, "settingsCtrl");
-            this.settingsCtrl.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
-            this.settingsCtrl.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingsCtrl.HeaderText = "Flexible Layout Settings";
-            this.settingsCtrl.Name = "settingsCtrl";
+            settingsCtrl.ContentBackgroundColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(settingsCtrl, "settingsCtrl");
+            settingsCtrl.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
+            settingsCtrl.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            settingsCtrl.Name = "settingsCtrl";
             // 
             // mapsCtrl
             // 
-            this.mapsCtrl.ContentBackgroundColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.mapsCtrl, "mapsCtrl");
-            this.mapsCtrl.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
-            this.mapsCtrl.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mapsCtrl.HeaderText = "Maps";
-            this.mapsCtrl.Name = "mapsCtrl";
+            mapsCtrl.ContentBackgroundColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(mapsCtrl, "mapsCtrl");
+            mapsCtrl.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
+            mapsCtrl.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            mapsCtrl.Name = "mapsCtrl";
             // 
             // widgetsCtrl
             // 
-            this.widgetsCtrl.ContentBackgroundColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.widgetsCtrl, "widgetsCtrl");
-            this.widgetsCtrl.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
-            this.widgetsCtrl.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.widgetsCtrl.HeaderText = "Widgets";
-            this.widgetsCtrl.Name = "widgetsCtrl";
+            widgetsCtrl.ContentBackgroundColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(widgetsCtrl, "widgetsCtrl");
+            widgetsCtrl.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
+            widgetsCtrl.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            widgetsCtrl.Name = "widgetsCtrl";
             // 
             // FlexibleLayoutEditor
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.widgetsCtrl);
-            this.Controls.Add(this.mapsCtrl);
-            this.Controls.Add(this.settingsCtrl);
-            this.Name = "FlexibleLayoutEditor";
-            this.ResumeLayout(false);
-
+            Controls.Add(widgetsCtrl);
+            Controls.Add(mapsCtrl);
+            Controls.Add(settingsCtrl);
+            Name = "FlexibleLayoutEditor";
+            ResumeLayout(false);
         }
 
         #endregion

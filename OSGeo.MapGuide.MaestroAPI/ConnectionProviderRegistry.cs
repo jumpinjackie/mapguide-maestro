@@ -159,12 +159,18 @@ namespace OSGeo.MapGuide.MaestroAPI
             var httpProvider = HTTP_PROVIDER.ToUpper();
             _ctors[httpProvider] = new ConnectionFactoryMethod((initParams) =>
             {
-                var conn = new HttpServerConnection(new DefaultHttpRequestor(), initParams);
+                var conn = new HttpServerConnection(CreateHttpRequestor(), initParams);
                 return conn;
             });
             _providers.Add(new ConnectionProviderEntry(httpProvider, "HTTP Connection Provider", null, true));
             _callCount[httpProvider] = 0;   
         }
+
+        /// <summary>
+        /// Creates a HTTP client
+        /// </summary>
+        /// <returns></returns>
+        public static IHttpRequestor CreateHttpRequestor() => new DefaultHttpRequestor();
 
         /// <summary>
         /// Initializes the connection provider registry. You only need to do this if you intend to load connections

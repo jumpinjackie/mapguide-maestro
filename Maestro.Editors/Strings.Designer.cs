@@ -61,6 +61,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fetching and adding custom projections based on your referenced Map Definitions ....
+        /// </summary>
+        internal static string AddingCustomProjections {
+            get {
+                return ResourceManager.GetString("AddingCustomProjections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Widget Reference.
         /// </summary>
         internal static string AddWidgetReference {
