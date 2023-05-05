@@ -221,7 +221,7 @@
       </xs:element>
       <xs:element name="FeatureStyle" type="FeatureStyleInfo" minOccurs="0" maxOccurs="unbounded">
         <xs:annotation>
-          <xs:documentation>The feature style for a given geometry type.</xs:documentation>
+          <xs:documentation>The feature style for a given geometry type. This is empty for drawing and raster layers</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>

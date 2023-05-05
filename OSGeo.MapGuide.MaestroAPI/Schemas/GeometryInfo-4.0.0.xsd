@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="GeometryInfo">
+    <xs:annotation>
+      <xs:documentation>Geometry Information</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Area" type="xs:double" />
+        <xs:element name="Dimension" type="xs:int" />
+        <xs:element name="Length" type="xs:double" />
+        <xs:element name="IsClosed" type="xs:boolean" />
+        <xs:element name="IsEmpty" type="xs:boolean" />
+        <xs:element name="IsSimple" type="xs:boolean" />
+        <xs:element name="IsValid" type="xs:boolean" />
+        <xs:element name="Envelope" type="Envelope" />
+        <xs:element name="Centroid" type="Coordinate" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="Coordinate">
+    <xs:annotation>
+      <xs:documentation>Represents a coordinate</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="X" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>x-coordinate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Y" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>y-coordinate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Envelope">
+    <xs:annotation>
+      <xs:documentation>Represents a bounding box defined in terms of a lower left coordinate and an upper right coordinate</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LowerLeft" type="Coordinate">
+        <xs:annotation>
+          <xs:documentation>Lower-left coordinate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="UpperRight" type="Coordinate">
+        <xs:annotation>
+          <xs:documentation>Upper-right coordinate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

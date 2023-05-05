@@ -26,12 +26,12 @@
             <xs:documentation>The resource id of the Tile Set Definition that this Map Definition is linked from. If this Map Definition does not link to a tile set, this element is omitted</xs:documentation>
           </xs:annotation>
         </xs:element>
-        <xs:element name="TileWidth" type="xs:string" minOccurs="0">
+        <xs:element name="TileWidth" type="xs:integer" minOccurs="0">
           <xs:annotation>
             <xs:documentation>The tile width as defined by the settings in the Tile Set Definition. If this Map Definition does not link to a tile set, this element is omitted</xs:documentation>
           </xs:annotation>
         </xs:element>
-        <xs:element name="TileHeight" type="xs:string" minOccurs="0">
+        <xs:element name="TileHeight" type="xs:integer" minOccurs="0">
           <xs:annotation>
             <xs:documentation>The tile height as defined by the settings in the Tile Set Definition. If this Map Definition does not link to a tile set, this element is omitted</xs:documentation>
           </xs:annotation>
@@ -237,7 +237,7 @@
       </xs:element>
       <xs:element name="FeatureStyle" type="FeatureStyleInfo" minOccurs="0" maxOccurs="unbounded">
         <xs:annotation>
-          <xs:documentation>The feature style for a given geometry type.</xs:documentation>
+          <xs:documentation>The feature style for a given geometry type. This is empty for drawing and raster layers</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -288,8 +288,8 @@
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="X" type="xs:string"/>
-            <xs:element name="Y" type="xs:string"/>
+            <xs:element name="X" type="xs:double"/>
+            <xs:element name="Y" type="xs:double"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -299,8 +299,8 @@
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="X" type="xs:string"/>
-            <xs:element name="Y" type="xs:string"/>
+            <xs:element name="X" type="xs:double"/>
+            <xs:element name="Y" type="xs:double"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>

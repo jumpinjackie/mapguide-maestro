@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="ClassDefinition-4.0.0.xsd"/>
+  <xs:element name="FeatureSchemaCollection" type="FeatureSchemaCollection">
+    <xs:annotation>
+      <xs:documentation>A FDO Feature Schema Definition.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="FeatureSchemaCollection">
+    <xs:sequence>
+      <xs:element name="FeatureSchema" type="FeatureSchema" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>The feature schemas in this collection</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FeatureSchema">
+    <xs:annotation>
+      <xs:documentation>A FDO Feature Schema.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of this feature schema</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Description" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The description of this feature schema</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Classes" type="ClassDefinitionCollection">
+        <xs:annotation>
+          <xs:documentation>The collection of classes in this schema</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClassDefinitionCollection">
+    <xs:annotation>
+      <xs:documentation>A collection of FDO class definitions</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ClassDefinition" type="ClassDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
