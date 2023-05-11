@@ -33,6 +33,22 @@ The basic command syntax for xyz tiling is as follows:
 
     MgTileSeeder.exe xyz --url <url> --minx <BBOX minx> --miny <BBOX miny> --maxx <BBOX maxx> --maxy <BBOX maxy>
 
+For 6.0m12 release onwards, in xyz tiling mode you may optionally specify the following:
+
+1. Download the requested tiles to a specific directory:
+
+```
+MgTileSeeder.exe xyz --url <url> --minx <BBOX minx> --miny <BBOX miny> --maxx <BBOX maxx> --maxy <BBOX maxy> --output-path path/to/directory --output-type Directory
+```
+
+2. Or you may choose to download tiles into a MBTiles database
+
+```
+MgTileSeeder.exe xyz --url <url> --minx <BBOX minx> --miny <BBOX miny> --maxx <BBOX maxx> --maxy <BBOX maxy> --output-path path/to/tileset.mbtiles --output-type MBTiles
+```
+
+> For releases of MgTileSeeder before 6.0m12, if you specify a lng/lat BBOX that exceeds the domain of [-180,-90,180,90], it would've thrown an error and terminated. The new behavior going forward is for the outlier ordinates to be clamped down to this domain before starting the tiling run
+
 ## Examples
 
 The following example starts a tiling run for a tiled map `Library://Samples/Sheboygan/MapsTiled/Sheboygan.MapDefinition`
