@@ -23,6 +23,7 @@
 using CommandLine;
 using Dapper;
 using Microsoft.Data.Sqlite;
+using Microsoft.Extensions.ObjectPool;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Services;
@@ -414,21 +415,45 @@ namespace MgTileSeeder
             return ret;
         }
 
+        class SqliteConnectionPolicy : PooledObjectPolicy<SqliteConnection>
+        {
+            public override SqliteConnection Create()
+            {
+                return new SqliteConnection();
+            }
+
+            public override bool Return(SqliteConnection obj)
+            {
+                obj.Close();
+                return true;
+            }
+        }
+
+        static ObjectPool<SqliteConnection> smConnectionPool = new DefaultObjectPool<SqliteConnection>(new SqliteConnectionPolicy());
+
         static void WriteMBTile(XYZSeederOptions options, TileRef tr, Stream stream)
         {
-            using var conn = new SqliteConnection($"Data Source={options.OutputPath}");
+            var conn = smConnectionPool.Get();
+            conn.ConnectionString = $"Data Source={options.OutputPath}";
             conn.Open();
 
-            using var ms = MemoryStreamPool.GetStream();
-            stream.CopyTo(ms);
-            ms.Position = 0L;
-            conn.Execute($"INSERT OR REPLACE INTO tiles (zoom_level, tile_column, tile_row, tile_data) VALUES (@z, @y, @x, @img)", param: new
+            try
             {
-                z = tr.Scale,
-                x = tr.Row,
-                y = tr.Col,
-                img = ms.GetBuffer()
-            });
+                using var ms = MemoryStreamPool.GetStream();
+                stream.CopyTo(ms);
+                ms.Position = 0L;
+                conn.Execute($"INSERT OR REPLACE INTO tiles (zoom_level, tile_column, tile_row, tile_data) VALUES (@z, @y, @x, @img)", param: new
+                {
+                    z = tr.Scale,
+                    x = tr.Row,
+                    y = tr.Col,
+                    img = ms.GetBuffer()
+                });
+            }
+            finally
+            {
+                smConnectionPool.Return(conn);
+            }
         }
 
         static async Task SetupMBTilesAsync(XYZSeederOptions options)
