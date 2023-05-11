@@ -41,6 +41,6 @@ The following example starts a tiling run for a tiled map `Library://Samples/She
 
 The following example starts a tiling run for a XYZ tileset `Library://Samples/Sheboygan/TileSets/Sheboygan.TileSetDefinition`
 
-    MgTileSeeder xyz --url "http://localhost/mapguide/mapagent/mapagent.fcgi?OPERATION=GETTILEIMAGE&VERSION=1.2.0&CLIENTAGENT=OpenLayers&USERNAME=Anonymous&MAPDEFINITION=Library://Samples/Sheboygan/MapsTiled/Sheboygan.MapDefinition&BASEMAPLAYERGROUPNAME=Base+Layer+Group&TILECOL=${y}&TILEROW=${x}&SCALEINDEX=${z}" --minx -87.797866013832 --miny 43.6868578621819 --maxx -87.6645277718692 --maxy 43.8037962206133
+    MgTileSeeder xyz --url "http://localhost/mapguide/mapagent/mapagent.fcgi?OPERATION=GETTILEIMAGE&VERSION=1.2.0&CLIENTAGENT=OpenLayers&USERNAME=Anonymous&MAPDEFINITION=Library://Samples/Sheboygan/MapsTiled/Sheboygan.MapDefinition&BASEMAPLAYERGROUPNAME=Base+Layer+Group&TILECOL={y}&TILEROW={x}&SCALEINDEX={z}" --minx -87.797866013832 --miny 43.6868578621819 --maxx -87.6645277718692 --maxy 43.8037962206133
 
 Note the `{x}`, `{y}` and `{z}` placeholders in the above example. MgTileSeeder's `xyz` mode can work with any XYZ tile set (not just ones served by MapGuide).
