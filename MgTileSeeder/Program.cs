@@ -21,7 +21,6 @@
 #endregion Disclaimer / License
 
 using CommandLine;
-using Dapper;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.ObjectPool;
 using OSGeo.MapGuide.MaestroAPI;
@@ -444,22 +443,31 @@ namespace MgTileSeeder
                 stream.CopyTo(ms);
                 ms.Position = 0L;
 
-                var buf = ms.GetBuffer();
+                var msBuf = ms.GetBuffer();
 
-                conn.Execute($"INSERT OR REPLACE INTO tiles (zoom_level, tile_column, tile_row, tile_data) VALUES (@z, @y, @x, @img)", param: new
-                {
-                    z = tr.Scale,
-                    x = tr.Row,
-                    y = tr.Col,
-                    img = buf
-                });
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = $"INSERT OR REPLACE INTO tiles (zoom_level, tile_column, tile_row, tile_data) VALUES (@z, @y, @x, @img)";
+                cmd.Parameters.AddWithValue("@z", tr.Scale);
+                cmd.Parameters.AddWithValue("@x", tr.Row);
+                cmd.Parameters.AddWithValue("@y", tr.Col);
+                // Set size to avoid writing a PNG buffer with trailing 0s due to using a pooled byte
+                // array under the hood
+                cmd.Parameters.AddWithValue("@img", msBuf).Size = (int)ms.Length;
 
-                
+                var res = cmd.ExecuteNonQuery();
             }
             finally
             {
                 smConnectionPool.Return(conn);
             }
+        }
+
+        static async Task<int> ConnExecuteAsync(SqliteConnection conn, string sql)
+        {
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = sql;
+            var res = await cmd.ExecuteNonQueryAsync();
+            return res;
         }
 
         static async Task SetupMBTilesAsync(XYZSeederOptions options)
@@ -477,7 +485,7 @@ namespace MgTileSeeder
 
                 This table or view MUST yield exactly two columns of type text, named name and value. A typical create statement for the metadata table:
                  */
-                await conn.ExecuteAsync("CREATE TABLE metadata (name text, value text);");
+                await ConnExecuteAsync(conn, "CREATE TABLE metadata (name text, value text);");
                 /*
                 https://github.com/mapbox/mbtiles-spec/blob/master/1.3/spec.md#content
 
@@ -486,8 +494,8 @@ namespace MgTileSeeder
                 name (string): The human-readable name of the tileset.
                 format (string): The file format of the tile data: pbf, jpg, png, webp, or an IETF media type for other formats.
                  */
-                await conn.ExecuteAsync($"INSERT INTO metadata (name, value) VALUES ('name', '{tsName}');");
-                await conn.ExecuteAsync($"INSERT INTO metadata (name, value) VALUES ('format', '{imgFormat}');");
+                await ConnExecuteAsync(conn, $"INSERT INTO metadata (name, value) VALUES ('name', '{tsName}');");
+                await ConnExecuteAsync(conn, $"INSERT INTO metadata (name, value) VALUES ('format', '{imgFormat}');");
                 /*
                 The metadata table SHOULD contain these four rows:
 
@@ -496,7 +504,7 @@ namespace MgTileSeeder
                 minzoom (number): The lowest zoom level for which the tileset provides data
                 maxzoom (number): The highest zoom level for which the tileset provides data
                  */
-                await conn.ExecuteAsync($"INSERT INTO metadata (name, value) VALUES ('bounds', '{options.MinX},{options.MinY},{options.MaxX},{options.MaxY}');");
+                await ConnExecuteAsync(conn, $"INSERT INTO metadata (name, value) VALUES ('bounds', '{options.MinX},{options.MinY},{options.MaxX},{options.MaxY}');");
 
                 /*
                 https://github.com/mapbox/mbtiles-spec/blob/master/1.3/spec.md#schema-1
@@ -505,9 +513,9 @@ namespace MgTileSeeder
 
                 The table MUST contain three columns of type integer, named zoom_level, tile_column, tile_row, and one of type blob, named tile_data. A typical create statement for the tiles table:
                  */
-                await conn.ExecuteAsync($"CREATE TABLE tiles (zoom_level integer, tile_column integer, tile_row integer, tile_data blob);");
+                await ConnExecuteAsync(conn, $"CREATE TABLE tiles (zoom_level integer, tile_column integer, tile_row integer, tile_data blob);");
                 //The database MAY contain an index for efficient access to this table:
-                await conn.ExecuteAsync($"CREATE UNIQUE INDEX tile_index on tiles (zoom_level, tile_column, tile_row);");
+                await ConnExecuteAsync(conn, $"CREATE UNIQUE INDEX tile_index on tiles (zoom_level, tile_column, tile_row);");
             }
         }
 
