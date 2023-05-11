@@ -440,15 +440,21 @@ namespace MgTileSeeder
             try
             {
                 using var ms = MemoryStreamPool.GetStream();
+                ms.Position = 0L;
                 stream.CopyTo(ms);
                 ms.Position = 0L;
+
+                var buf = ms.GetBuffer();
+
                 conn.Execute($"INSERT OR REPLACE INTO tiles (zoom_level, tile_column, tile_row, tile_data) VALUES (@z, @y, @x, @img)", param: new
                 {
                     z = tr.Scale,
                     x = tr.Row,
                     y = tr.Col,
-                    img = ms.GetBuffer()
+                    img = buf
                 });
+
+                
             }
             finally
             {
@@ -458,7 +464,7 @@ namespace MgTileSeeder
 
         static async Task SetupMBTilesAsync(XYZSeederOptions options)
         {
-            var tsName = "MBTileSet";
+            var tsName = Path.GetFileNameWithoutExtension(options.OutputPath);
             var imgFormat = "png";
             using (var conn = new SqliteConnection())
             {
