@@ -445,11 +445,14 @@ namespace MgTileSeeder
 
                 var msBuf = ms.GetBuffer();
 
+                // Must write tile coordinates in TMS scheme
+                var tmsTr = XYZToTMS(tr);
+
                 using var cmd = conn.CreateCommand();
                 cmd.CommandText = $"INSERT OR REPLACE INTO tiles (zoom_level, tile_column, tile_row, tile_data) VALUES (@z, @y, @x, @img)";
-                cmd.Parameters.AddWithValue("@z", tr.Scale);
-                cmd.Parameters.AddWithValue("@x", tr.Row);
-                cmd.Parameters.AddWithValue("@y", tr.Col);
+                cmd.Parameters.AddWithValue("@z", tmsTr.Scale);
+                cmd.Parameters.AddWithValue("@x", tmsTr.Row);
+                cmd.Parameters.AddWithValue("@y", tmsTr.Col);
                 // Set size to avoid writing a PNG buffer with trailing 0s due to using a pooled byte
                 // array under the hood
                 cmd.Parameters.AddWithValue("@img", msBuf).Size = (int)ms.Length;
@@ -460,6 +463,14 @@ namespace MgTileSeeder
             {
                 smConnectionPool.Return(conn);
             }
+        }
+
+        private static TileRef XYZToTMS(TileRef tr)
+        {
+            return new TileRef(tr.GroupName,
+                tr.Row,                         //x
+                (1 << tr.Scale) - tr.Col - 1,   //y = (1 << z) - y_xyz - 1
+                tr.Scale);                      //z
         }
 
         static async Task<int> ConnExecuteAsync(SqliteConnection conn, string sql)
