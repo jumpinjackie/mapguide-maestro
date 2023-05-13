@@ -1751,4 +1751,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="AddingCustomProjections" xml:space="preserve">
     <value>Fetching and adding custom projections based on your referenced Map Definitions ...</value>
   </data>
+  <data name="LoadingClassDefinition" xml:space="preserve">
+    <value>Loading Class Definition</value>
+  </data>
 </root>

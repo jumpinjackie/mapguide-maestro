@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using Maestro.Editors.Common;
+using Maestro.Editors.LayerDefinition.Vector;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Schema;
@@ -199,10 +200,15 @@ namespace Maestro.Editors.WebLayout.Commands
                 var ldf = (ILayerDefinition)conn.ResourceService.GetResource(txtLayer.Tag.ToString());
                 var vl = (IVectorLayerDefinition)ldf.SubLayer;
 
-                _cls = conn.FeatureService.GetClassDefinition(vl.ResourceId, vl.FeatureName);
-
-                COL_PROPERTY.DisplayMember = "Name";
-                COL_PROPERTY.DataSource = _cls.Properties;
+                UIHelpers.LoadClassDefinition(conn.FeatureService,
+                    vl.ResourceId,
+                    vl.FeatureName,
+                    cls =>
+                    {
+                        _cls = cls;
+                        COL_PROPERTY.DisplayMember = "Name";
+                        COL_PROPERTY.DataSource = _cls.Properties;
+                    });
             }
         }
 

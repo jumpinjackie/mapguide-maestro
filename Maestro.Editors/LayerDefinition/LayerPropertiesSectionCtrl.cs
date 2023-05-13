@@ -1,7 +1,7 @@
 ﻿using Maestro.Editors.Common;
 using Maestro.Editors.Generic;
+using Maestro.Editors.LayerDefinition.Vector;
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
@@ -94,37 +94,31 @@ namespace Maestro.Editors.LayerDefinition
 
             if (_edsvc.CurrentConnection.ResourceService.ResourceExists(_vl.ResourceId))
             {
-                ClassDefinition cls = null;
-                try
-                {
-                    cls = _edsvc.CurrentConnection.FeatureService.GetClassDefinition(_vl.ResourceId, _vl.FeatureName);
-                }
-                catch
-                {
-                    //Do nothing, layer settings control does this check and should flag the feature class field as something requiring attention
-                }
-                if (cls != null)
-                {
-                    grdProperties.Rows.Clear();
-                    RemoveInvalidMappings(cls);
-                    foreach (var col in cls.Properties)
+                UIHelpers.LoadClassDefinition(_edsvc.CurrentConnection.FeatureService,
+                    _vl.ResourceId,
+                    _vl.FeatureName,
+                    cls =>
                     {
-                        if (col.Type == OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinitionType.Data)
+                        grdProperties.Rows.Clear();
+                        RemoveInvalidMappings(cls);
+                        foreach (var col in cls.Properties)
                         {
-                            bool visible = false;
-                            string disp = col.Name;
-                            foreach (var item in _vl.PropertyMapping)
+                            if (col.Type == OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinitionType.Data)
                             {
-                                if (item.Name == col.Name)
+                                bool visible = false;
+                                string disp = col.Name;
+                                foreach (var item in _vl.PropertyMapping)
                                 {
-                                    visible = true;
-                                    disp = item.Value;
+                                    if (item.Name == col.Name)
+                                    {
+                                        visible = true;
+                                        disp = item.Value;
+                                    }
                                 }
+                                grdProperties.Rows.Add(visible, col.Name, disp);
                             }
-                            grdProperties.Rows.Add(visible, col.Name, disp);
                         }
-                    }
-                }
+                    });
             }
             else
             {

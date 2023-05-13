@@ -1904,6 +1904,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Loading Class Definition.
+        /// </summary>
+        internal static string LoadingClassDefinition {
+            get {
+                return ResourceManager.GetString("LoadingClassDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loading Feature Classes.
         /// </summary>
         internal static string LoadingFeatureClasses {

@@ -1,4 +1,5 @@
 ﻿using Maestro.Editors.Common;
+using Maestro.Editors.LayerDefinition.Vector;
 using Maestro.Editors.WatermarkDefinition;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
@@ -90,8 +91,11 @@ namespace Maestro.Editors.LayerDefinition
         internal string EditExpression(string expr, ExpressionEditorMode mode, bool attachStylizationFunctions)
         {
             var fs = (IFeatureSource)_edsvc.CurrentConnection.ResourceService.GetResource(_vl.ResourceId);
-
-            var cls = _edsvc.CurrentConnection.FeatureService.GetClassDefinition(fs.ResourceID, _vl.FeatureName);
+            ClassDefinition cls = null;
+            UIHelpers.LoadClassDefinition(_edsvc.CurrentConnection.FeatureService,
+                fs.ResourceID,
+                _vl.FeatureName,
+                c => cls = c);
             return _edsvc.EditExpression(expr, cls, fs.Provider, _vl.ResourceId, mode, attachStylizationFunctions);
         }
 

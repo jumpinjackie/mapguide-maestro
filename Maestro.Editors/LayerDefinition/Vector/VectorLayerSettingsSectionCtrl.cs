@@ -187,17 +187,14 @@ namespace Maestro.Editors.LayerDefinition.Vector
             //Init cached schemas and selected class
             if (!string.IsNullOrEmpty(txtFeatureClass.Text))
             {
-                ClassDefinition cls = null;
-                try
-                {
-                    cls = _edsvc.CurrentConnection.FeatureService.GetClassDefinition(txtFeatureSource.Text, txtFeatureClass.Text);
-                }
-                catch { }
-                if (cls != null)
-                {
-                    _selectedClass = cls;
-                    OnFeatureClassChanged();
-                }
+                UIHelpers.LoadClassDefinition(_edsvc.CurrentConnection.FeatureService,
+                    txtFeatureSource.Text,
+                    txtFeatureClass.Text,
+                    cls =>
+                    {
+                        _selectedClass = cls;
+                        OnFeatureClassChanged();
+                    });
             }
         }
 
@@ -223,14 +220,15 @@ namespace Maestro.Editors.LayerDefinition.Vector
             if (!string.IsNullOrEmpty(txtFeatureClass.Text))
             {
                 //This feature source must have at least one class definition with a geometry property
-                ClassDefinition clsDef = _edsvc.CurrentConnection.FeatureService.GetClassDefinition(txtFeatureSource.Text, txtFeatureClass.Text);
-                if (clsDef == null)
-                {
-                    MessageBox.Show(string.Format(Strings.InvalidFeatureSourceNoClasses, txtFeatureSource.Text));
-                    txtFeatureSource.Text = string.Empty;
-                    return;
-                }
-                SetFeatureClass(clsDef);
+                UIHelpers.LoadClassDefinition(_edsvc.CurrentConnection.FeatureService,
+                    txtFeatureSource.Text,
+                    txtFeatureClass.Text,
+                    clsDef => SetFeatureClass(clsDef),
+                    () =>
+                    {
+                        MessageBox.Show(string.Format(Strings.InvalidFeatureSourceNoClasses, txtFeatureSource.Text));
+                        txtFeatureSource.Text = string.Empty;
+                    });
             }
         }
 
@@ -300,8 +298,10 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 _vl.ResourceId = fsId;
                 if (names.Length == 1)
                 {
-                    ClassDefinition clsDef = _edsvc.CurrentConnection.FeatureService.GetClassDefinition(fsId, names[0]);
-                    SetFeatureClass(clsDef);
+                    UIHelpers.LoadClassDefinition(_edsvc.CurrentConnection.FeatureService,
+                        fsId,
+                        names[0],
+                        clsDef => SetFeatureClass(clsDef));
                 }
             }
             finally
@@ -383,8 +383,10 @@ namespace Maestro.Editors.LayerDefinition.Vector
             var item = GenericItemSelectionDialog.SelectItem(null, null, list);
             if (item != null)
             {
-                var cls = featSvc.GetClassDefinition(txtFeatureSource.Text, item);
-                SetFeatureClass(cls);
+                UIHelpers.LoadClassDefinition(featSvc,
+                    txtFeatureSource.Text,
+                    item,
+                    cls => SetFeatureClass(cls));
             }
         }
 
