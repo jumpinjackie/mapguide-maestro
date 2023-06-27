@@ -42,12 +42,14 @@
             cmbPublicUrl = new System.Windows.Forms.ComboBox();
             btnCopyClipboard = new System.Windows.Forms.Button();
             btnManageProjections = new System.Windows.Forms.Button();
+            btnManageSettings = new System.Windows.Forms.Button();
             contentPanel.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // contentPanel
             // 
+            contentPanel.Controls.Add(btnManageSettings);
             contentPanel.Controls.Add(btnManageProjections);
             contentPanel.Controls.Add(btnCopyClipboard);
             contentPanel.Controls.Add(cmbPublicUrl);
@@ -136,6 +138,13 @@
             btnManageProjections.UseVisualStyleBackColor = true;
             btnManageProjections.Click += btnManageProjections_Click;
             // 
+            // btnManageSettings
+            // 
+            resources.ApplyResources(btnManageSettings, "btnManageSettings");
+            btnManageSettings.Name = "btnManageSettings";
+            btnManageSettings.UseVisualStyleBackColor = true;
+            btnManageSettings.Click += btnManageSettings_Click;
+            // 
             // FlexLayoutSettingsCtrl
             // 
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -161,5 +170,6 @@
         private System.Windows.Forms.ComboBox cmbPublicUrl;
         private System.Windows.Forms.Button btnCopyClipboard;
         private System.Windows.Forms.Button btnManageProjections;
+        private System.Windows.Forms.Button btnManageSettings;
     }
 }

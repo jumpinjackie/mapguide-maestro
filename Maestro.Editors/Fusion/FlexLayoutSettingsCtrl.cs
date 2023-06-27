@@ -226,5 +226,33 @@ namespace Maestro.Editors.Fusion
                 }
             }
         }
+
+        private void btnManageSettings_Click(object sender, EventArgs e)
+        {
+            using (var diag = new ManageSettingsDialog(_edsvc.CurrentConnection, _flexLayout))
+            {
+                if (diag.ShowDialog() == DialogResult.OK)
+                {
+                    if (diag.Settings.Setting.Count == 0)
+                    {
+                        if (_flexLayout.Extension.Remove("ViewerSettings"))
+                        {
+                            OnResourceChanged();
+                        }
+                    }
+                    else
+                    {
+                        var el = _flexLayout.Extension.GetOrAdd("ViewerSettings");
+                        var sb = new StringBuilder();
+                        foreach (var ent in diag.Settings.Setting)
+                        {
+                            sb.Append($"<Setting name=\"{ent.Name}\" value=\"{ent.Value}\" />");
+                        }
+                        el.InnerXml = sb.ToString();
+                        OnResourceChanged();
+                    }
+                }
+            }
+        }
     }
 }
