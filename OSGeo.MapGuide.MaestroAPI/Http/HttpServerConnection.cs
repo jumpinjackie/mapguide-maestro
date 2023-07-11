@@ -27,6 +27,7 @@ using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Http;
 using OSGeo.MapGuide.MaestroAPI.Http.Commands;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
+using OSGeo.MapGuide.MaestroAPI.Properties;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.MaestroAPI.Services;
@@ -46,6 +47,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -1657,20 +1659,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             try
             {
-                using (var fs = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
-                {
-                    var req = m_reqBuilder.ApplyPackage(fs, callback);
-                    req.Credentials = _cred;
-                    req.GetRequestStream().Flush();
-                    req.GetRequestStream().Close();
-
-                    byte[] buf = new byte[1];
-                    using (var s = req.GetResponse().GetResponseStream())
-                    {
-                        s.Read(buf, 0, 1);
-                        s.Close();
-                    }
-                }
+                NameValueCollection nvc = m_reqBuilder.ApplyPackageParams();
+                HttpUploadFile(m_reqBuilder.HostURI, filename, "PACKAGE", "application/octet-stream", nvc, callback);
             }
             catch (Exception ex)
             {

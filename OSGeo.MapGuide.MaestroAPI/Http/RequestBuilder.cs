@@ -23,6 +23,7 @@
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
+using Polly;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -1474,11 +1475,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
-        public System.Net.WebRequest ApplyPackage(System.IO.Stream filestream, Utility.StreamCopyProgressDelegate callback)
+        public NameValueCollection ApplyPackageParams()
         {
-            if (m_sessionID == null)
-                throw new Exception("Connection is not yet logged in");
-
             var param = new NameValueCollection
             {
                 { "OPERATION", "APPLYRESOURCEPACKAGE" },
@@ -1490,26 +1488,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
 
-            string boundary;
-            using (var outStream = MemoryStreamPool.GetStream())
-            {
-                System.Net.WebRequest req = PrepareFormContent(outStream, out boundary);
-                req.Timeout = 1000 * 60 * 5; //Wait up to five minutes
-
-                EncodeFormParameters(boundary, param, outStream);
-
-                /*try { req.ContentLength = outStream.Length + filestream.Length; }
-                catch {}*/
-
-                System.IO.Stream s = req.GetRequestStream();
-
-                Utility.CopyStream(outStream, s);
-
-                AppendFormContent("PACKAGE", "package.mgp", boundary, s, filestream, callback);
-                s.Close();
-
-                return req;
-            }
+            return param;
         }
 
         public System.Net.WebRequest UpdateRepository(string resourceId, System.IO.Stream headerstream)
