@@ -1,4 +1,20 @@
-﻿6.0m11
+﻿6.0m12
+======
+
+ - Expanded MapGuide Open Source 4.0 authoring support:
+   - UI support for the new label justification setting in basic stylization mode
+   - Bundled LayerDefinition-4.0.0 XML schema
+ - Impropved mapguide-react-layout integration in Fusion editor:
+   - Support managing custom projections
+   - Support managing custom app settings
+ - Improve layer editor UI thread responsiveness when layer points to a feature source with a really large schema
+ - Schema walk timeout increased to 5 minutes, with option for a higher timeout override via a new MAESTRO_HTTP_MAX_REQUEST_TIMEOUT environment variable. Units for this env var is in milliseconds.
+ - Fix: Connection error dialog buttons are no longer cut off
+ - Fix: Transactional package drag-and-drop loading works again
+ - Fix: Broken rest addin due to missing RestSharp dependency
+ - Fix: Fill/line pattern dropdowns in layer editor are working again
+
+6.0m11
 ======
 
  - *** MapGuide Maestro is now a .net 6.0 self-contained application ***
