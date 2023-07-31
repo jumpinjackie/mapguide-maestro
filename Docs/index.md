@@ -40,6 +40,7 @@ When using the tool, please bear in mind that the project is a continual work in
 
 ## Applicable version
 
-This documentation is relevant as of the 6.0m11 release. For older versions, refer to the links below:
+This documentation is relevant as of the 6.0m12 release. For older versions, refer to the links below:
 
+ * [6.0m11](/archive/6.0m11/index.html)
  * [6.0m8](/archive/6.0m8/index.html)

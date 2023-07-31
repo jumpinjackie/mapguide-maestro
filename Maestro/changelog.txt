@@ -13,6 +13,7 @@
  - Fix: Transactional package drag-and-drop loading works again
  - Fix: Broken rest addin due to missing RestSharp dependency
  - Fix: Fill/line pattern dropdowns in layer editor are working again
+ - Fix: Out-of-domain bboxes pased to MgTileSeeder will now clamp them down to the valid [-180, 90, 180, 90] lon/lat domain instead of throwing an error
 
 6.0m11
 ======
