@@ -5,6 +5,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
@@ -52,7 +53,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if not exist &quot;$(SolutionDir)out\$(Configuration)\AddIns\Rest&quot; mkdir &quot;$(SolutionDir)out\$(Configuration)\AddIns\Rest&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Rest&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)Manifest.addin&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Rest&quot;&#xD;&#xA;if exist &quot;$(TargetDir)$(TargetName).pdb&quot; copy /Y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Rest&quot;" />
+    <Exec Command="if not exist &quot;$(SolutionDir)out\$(Configuration)\AddIns\Rest&quot; mkdir &quot;$(SolutionDir)out\$(Configuration)\AddIns\Rest&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Rest&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)Manifest.addin&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Rest&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)RestSharp.*&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Rest&quot;&#xD;&#xA;if exist &quot;$(TargetDir)$(TargetName).pdb&quot; copy /Y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Rest&quot;" />
   </Target>
 
 </Project>
