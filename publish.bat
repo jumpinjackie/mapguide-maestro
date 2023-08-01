@@ -18,6 +18,7 @@ REM Rest
 if not exist "%CD%\out\publish\%CONF%\AddIns\Rest" mkdir "%CD%\out\publish\%CONF%\AddIns\Rest"
 copy /Y "%CD%\Maestro.AddIn.Rest\bin\%CONF%\Maestro.AddIn.Rest.dll" "%CD%\out\publish\%CONF%\AddIns\Rest"
 copy /Y "%CD%\Maestro.AddIn.Rest\bin\%CONF%\Manifest.addin" "%CD%\out\publish\%CONF%\AddIns\Rest"
+copy /Y "%CD%\Maestro.AddIn.Rest\bin\%CONF%\RestSharp.*" "%CD%\out\publish\%CONF%\AddIns\Rest"
 REM Local
 if not exist "%CD%\out\publish\%CONF%\AddIns\Local" mkdir "%CD%\out\publish\%CONF%\AddIns\Local"
 copy /Y "%CD%\Maestro.AddIn.Local\bin\%CONF%\Maestro.AddIn.Local.dll" "%CD%\out\publish\%CONF%\AddIns\Local"
