@@ -214,6 +214,10 @@ namespace Maestro.Editors.Fusion
                     }
                     else
                     {
+                        if (_flexLayout.Extension.Content == null)
+                        {
+                            _flexLayout.Extension.Content = new XmlElement[0];
+                        }
                         var el = _flexLayout.Extension.GetOrAdd("CustomProjections");
                         var sb = new StringBuilder();
                         foreach (var ent in diag.ProjectionSet.Projection)
@@ -242,6 +246,10 @@ namespace Maestro.Editors.Fusion
                     }
                     else
                     {
+                        if (_flexLayout.Extension.Content == null)
+                        {
+                            _flexLayout.Extension.Content = new XmlElement[0];
+                        }
                         var el = _flexLayout.Extension.GetOrAdd("ViewerSettings");
                         var sb = new StringBuilder();
                         foreach (var ent in diag.Settings.Setting)
