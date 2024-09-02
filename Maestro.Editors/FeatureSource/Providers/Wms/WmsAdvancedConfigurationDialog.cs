@@ -26,6 +26,8 @@ using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -36,12 +38,13 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
         private IEditorService _service;
         private WmsConfigurationDocument _config;
         private IFeatureSource _fs;
-
+        readonly BindingList<RasterWmsItem> _items;
         public WmsConfigurationDocument Document { get { return _config; } }
 
         public WmsAdvancedConfigurationDialog(IEditorService service)
         {
             InitializeComponent();
+            _items = new BindingList<RasterWmsItem>();
             grdSpatialContexts.AutoGenerateColumns = false;
             _service = service;
             _fs = (IFeatureSource)_service.GetEditedResource();
@@ -64,7 +67,12 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
                 MakeDefaultDocument();
             }
 
-            lstFeatureClasses.DataSource = _config.RasterOverrides;
+            foreach (var klass in _config.RasterOverrides)
+            {
+                _items.Add(klass);
+            }
+
+            lstFeatureClasses.DataSource = _items;
             grdSpatialContexts.DataSource = _config.SpatialContexts;
         }
 
@@ -148,16 +156,27 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
 
         private void lstFeatureClasses_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var item = (RasterWmsItem)lstFeatureClasses.SelectedItem;
-            grpRaster.Controls.Clear();
             _updatingLogicalClassUI = true;
             try
             {
-                if (item != null)
+                var item = (RasterWmsItem)lstFeatureClasses.SelectedItem;
+                if (item != null && lstFeatureClasses.SelectedItems.Count == 1)
                 {
-                    var ctrl = new RasterDefinitionCtrl(_config, item, _service);
-                    ctrl.Dock = DockStyle.Fill;
-                    grpRaster.Controls.Add(ctrl);
+                    RasterDefinitionCtrl ctrl = null;
+                    if (grpRaster.Controls.Count == 1)
+                        ctrl = grpRaster.Controls[0] as RasterDefinitionCtrl;
+
+                    if (ctrl == null)
+                    {
+                        grpRaster.Controls.Clear();
+                        ctrl = new RasterDefinitionCtrl(_config, item, _service);
+                        ctrl.Dock = DockStyle.Fill;
+                        grpRaster.Controls.Add(ctrl);
+                    }
+                    else
+                    {
+                        ctrl.BindItem(item);
+                    }
 
                     btnRemove.Enabled = true;
 
@@ -188,6 +207,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
                 }
                 else
                 {
+                    grpRaster.Controls.Clear();
                     _logicalClass = null;
                     txtClassName.Text = string.Empty;
                     txtClassDescription.Text = string.Empty;
@@ -202,17 +222,23 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            /*
-            var item = (RasterWmsItem)lstFeatureClasses.SelectedItem;
-            _items.Remove(item);
+            var selected = new List<RasterWmsItem>();
+            foreach (var selItem in lstFeatureClasses.SelectedItems)
+            {
+                if (selItem is RasterWmsItem item)
+                    selected.Add(item);
+            }
+            foreach (var item in selected)
+            {
+                _items.Remove(item);
 
-            //Remove schema mapping item
-            _config.RemoveRasterItem(item);
+                //Remove schema mapping item
+                _config.RemoveRasterItem(item);
 
-            //Remove mapped class from logical schema
-            var schema = _config.Schemas[0];
-            schema.RemoveClass(item.FeatureClass);
-             */
+                //Remove mapped class from logical schema
+                var schema = _config.Schemas[0];
+                schema.RemoveClass(item.FeatureClass);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

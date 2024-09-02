@@ -29,222 +29,210 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WmsAdvancedConfigurationDialog));
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtFeatureServer = new System.Windows.Forms.TextBox();
-            this.grpRaster = new System.Windows.Forms.GroupBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lstFeatureClasses = new System.Windows.Forms.ListBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnAdd = new System.Windows.Forms.ToolStripButton();
-            this.btnRemove = new System.Windows.Forms.ToolStripButton();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.grdSpatialContexts = new System.Windows.Forms.DataGridView();
-            this.COL_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.COL_CS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grpLogicalClass = new System.Windows.Forms.GroupBox();
-            this.lnkSwap = new System.Windows.Forms.LinkLabel();
-            this.txtClassDescription = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtClassName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnSwapAll = new System.Windows.Forms.Button();
-            this.groupBox2.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdSpatialContexts)).BeginInit();
-            this.grpLogicalClass.SuspendLayout();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            txtFeatureServer = new System.Windows.Forms.TextBox();
+            grpRaster = new System.Windows.Forms.GroupBox();
+            btnSave = new System.Windows.Forms.Button();
+            btnCancel = new System.Windows.Forms.Button();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            lstFeatureClasses = new System.Windows.Forms.ListBox();
+            toolStrip1 = new System.Windows.Forms.ToolStrip();
+            btnRemove = new System.Windows.Forms.ToolStripButton();
+            btnReset = new System.Windows.Forms.Button();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            grdSpatialContexts = new System.Windows.Forms.DataGridView();
+            COL_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            COL_CS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            grpLogicalClass = new System.Windows.Forms.GroupBox();
+            lnkSwap = new System.Windows.Forms.LinkLabel();
+            txtClassDescription = new System.Windows.Forms.TextBox();
+            label3 = new System.Windows.Forms.Label();
+            txtClassName = new System.Windows.Forms.TextBox();
+            label2 = new System.Windows.Forms.Label();
+            btnSwapAll = new System.Windows.Forms.Button();
+            groupBox2.SuspendLayout();
+            toolStrip1.SuspendLayout();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)grdSpatialContexts).BeginInit();
+            grpLogicalClass.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
             // 
             // txtFeatureServer
             // 
-            resources.ApplyResources(this.txtFeatureServer, "txtFeatureServer");
-            this.txtFeatureServer.Name = "txtFeatureServer";
-            this.txtFeatureServer.ReadOnly = true;
+            resources.ApplyResources(txtFeatureServer, "txtFeatureServer");
+            txtFeatureServer.Name = "txtFeatureServer";
+            txtFeatureServer.ReadOnly = true;
             // 
             // grpRaster
             // 
-            resources.ApplyResources(this.grpRaster, "grpRaster");
-            this.grpRaster.Name = "grpRaster";
-            this.grpRaster.TabStop = false;
+            resources.ApplyResources(grpRaster, "grpRaster");
+            grpRaster.Name = "grpRaster";
+            grpRaster.TabStop = false;
             // 
             // btnSave
             // 
-            resources.ApplyResources(this.btnSave, "btnSave");
-            this.btnSave.Name = "btnSave";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            resources.ApplyResources(btnSave, "btnSave");
+            btnSave.Name = "btnSave";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            resources.ApplyResources(btnCancel, "btnCancel");
+            btnCancel.Name = "btnCancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.lstFeatureClasses);
-            this.groupBox2.Controls.Add(this.toolStrip1);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            resources.ApplyResources(groupBox2, "groupBox2");
+            groupBox2.Controls.Add(lstFeatureClasses);
+            groupBox2.Controls.Add(toolStrip1);
+            groupBox2.Name = "groupBox2";
+            groupBox2.TabStop = false;
             // 
             // lstFeatureClasses
             // 
-            this.lstFeatureClasses.DisplayMember = "FeatureClass";
-            resources.ApplyResources(this.lstFeatureClasses, "lstFeatureClasses");
-            this.lstFeatureClasses.FormattingEnabled = true;
-            this.lstFeatureClasses.Name = "lstFeatureClasses";
-            this.lstFeatureClasses.SelectedIndexChanged += new System.EventHandler(this.lstFeatureClasses_SelectedIndexChanged);
+            lstFeatureClasses.DisplayMember = "FeatureClass";
+            resources.ApplyResources(lstFeatureClasses, "lstFeatureClasses");
+            lstFeatureClasses.FormattingEnabled = true;
+            lstFeatureClasses.Name = "lstFeatureClasses";
+            lstFeatureClasses.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            lstFeatureClasses.SelectedIndexChanged += lstFeatureClasses_SelectedIndexChanged;
             // 
             // toolStrip1
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnAdd,
-            this.btnRemove});
-            resources.ApplyResources(this.toolStrip1, "toolStrip1");
-            this.toolStrip1.Name = "toolStrip1";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Image = global::Maestro.Editors.Properties.Resources.plus_circle;
-            resources.ApplyResources(this.btnAdd, "btnAdd");
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { btnRemove });
+            resources.ApplyResources(toolStrip1, "toolStrip1");
+            toolStrip1.Name = "toolStrip1";
             // 
             // btnRemove
             // 
-            resources.ApplyResources(this.btnRemove, "btnRemove");
-            this.btnRemove.Image = global::Maestro.Editors.Properties.Resources.cross;
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            resources.ApplyResources(btnRemove, "btnRemove");
+            btnRemove.Image = Properties.Resources.cross_script;
+            btnRemove.Name = "btnRemove";
+            btnRemove.Click += btnRemove_Click;
             // 
             // btnReset
             // 
-            resources.ApplyResources(this.btnReset, "btnReset");
-            this.btnReset.Name = "btnReset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            resources.ApplyResources(btnReset, "btnReset");
+            btnReset.Name = "btnReset";
+            btnReset.UseVisualStyleBackColor = true;
+            btnReset.Click += btnReset_Click;
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.grdSpatialContexts);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            resources.ApplyResources(groupBox1, "groupBox1");
+            groupBox1.Controls.Add(grdSpatialContexts);
+            groupBox1.Name = "groupBox1";
+            groupBox1.TabStop = false;
             // 
             // grdSpatialContexts
             // 
-            this.grdSpatialContexts.AllowUserToAddRows = false;
-            this.grdSpatialContexts.AllowUserToDeleteRows = false;
-            this.grdSpatialContexts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdSpatialContexts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.COL_NAME,
-            this.COL_CS});
-            resources.ApplyResources(this.grdSpatialContexts, "grdSpatialContexts");
-            this.grdSpatialContexts.Name = "grdSpatialContexts";
-            this.grdSpatialContexts.ReadOnly = true;
-            this.grdSpatialContexts.RowHeadersVisible = false;
-            this.grdSpatialContexts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdSpatialContexts_CellContentClick);
+            grdSpatialContexts.AllowUserToAddRows = false;
+            grdSpatialContexts.AllowUserToDeleteRows = false;
+            grdSpatialContexts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdSpatialContexts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { COL_NAME, COL_CS });
+            resources.ApplyResources(grdSpatialContexts, "grdSpatialContexts");
+            grdSpatialContexts.Name = "grdSpatialContexts";
+            grdSpatialContexts.ReadOnly = true;
+            grdSpatialContexts.RowHeadersVisible = false;
+            grdSpatialContexts.CellClick += grdSpatialContexts_CellContentClick;
             // 
             // COL_NAME
             // 
-            this.COL_NAME.DataPropertyName = "Name";
-            resources.ApplyResources(this.COL_NAME, "COL_NAME");
-            this.COL_NAME.Name = "COL_NAME";
-            this.COL_NAME.ReadOnly = true;
+            COL_NAME.DataPropertyName = "Name";
+            resources.ApplyResources(COL_NAME, "COL_NAME");
+            COL_NAME.Name = "COL_NAME";
+            COL_NAME.ReadOnly = true;
             // 
             // COL_CS
             // 
-            this.COL_CS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.COL_CS.DataPropertyName = "CoordinateSystemWkt";
-            resources.ApplyResources(this.COL_CS, "COL_CS");
-            this.COL_CS.Name = "COL_CS";
-            this.COL_CS.ReadOnly = true;
+            COL_CS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            COL_CS.DataPropertyName = "CoordinateSystemWkt";
+            resources.ApplyResources(COL_CS, "COL_CS");
+            COL_CS.Name = "COL_CS";
+            COL_CS.ReadOnly = true;
             // 
             // grpLogicalClass
             // 
-            resources.ApplyResources(this.grpLogicalClass, "grpLogicalClass");
-            this.grpLogicalClass.Controls.Add(this.lnkSwap);
-            this.grpLogicalClass.Controls.Add(this.txtClassDescription);
-            this.grpLogicalClass.Controls.Add(this.label3);
-            this.grpLogicalClass.Controls.Add(this.txtClassName);
-            this.grpLogicalClass.Controls.Add(this.label2);
-            this.grpLogicalClass.Name = "grpLogicalClass";
-            this.grpLogicalClass.TabStop = false;
+            resources.ApplyResources(grpLogicalClass, "grpLogicalClass");
+            grpLogicalClass.Controls.Add(lnkSwap);
+            grpLogicalClass.Controls.Add(txtClassDescription);
+            grpLogicalClass.Controls.Add(label3);
+            grpLogicalClass.Controls.Add(txtClassName);
+            grpLogicalClass.Controls.Add(label2);
+            grpLogicalClass.Name = "grpLogicalClass";
+            grpLogicalClass.TabStop = false;
             // 
             // lnkSwap
             // 
-            resources.ApplyResources(this.lnkSwap, "lnkSwap");
-            this.lnkSwap.Name = "lnkSwap";
-            this.lnkSwap.TabStop = true;
-            this.lnkSwap.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSwap_LinkClicked);
+            resources.ApplyResources(lnkSwap, "lnkSwap");
+            lnkSwap.Name = "lnkSwap";
+            lnkSwap.TabStop = true;
+            lnkSwap.LinkClicked += lnkSwap_LinkClicked;
             // 
             // txtClassDescription
             // 
-            resources.ApplyResources(this.txtClassDescription, "txtClassDescription");
-            this.txtClassDescription.Name = "txtClassDescription";
-            this.txtClassDescription.TextChanged += new System.EventHandler(this.txtClassDescription_TextChanged);
+            resources.ApplyResources(txtClassDescription, "txtClassDescription");
+            txtClassDescription.Name = "txtClassDescription";
+            txtClassDescription.TextChanged += txtClassDescription_TextChanged;
             // 
             // label3
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
             // 
             // txtClassName
             // 
-            resources.ApplyResources(this.txtClassName, "txtClassName");
-            this.txtClassName.Name = "txtClassName";
-            this.txtClassName.TextChanged += new System.EventHandler(this.txtClassName_TextChanged);
+            resources.ApplyResources(txtClassName, "txtClassName");
+            txtClassName.Name = "txtClassName";
+            txtClassName.TextChanged += txtClassName_TextChanged;
             // 
             // label2
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            resources.ApplyResources(label2, "label2");
+            label2.Name = "label2";
             // 
             // btnSwapAll
             // 
-            resources.ApplyResources(this.btnSwapAll, "btnSwapAll");
-            this.btnSwapAll.Name = "btnSwapAll";
-            this.btnSwapAll.UseVisualStyleBackColor = true;
-            this.btnSwapAll.Click += new System.EventHandler(this.btnSwapAll_Click);
+            resources.ApplyResources(btnSwapAll, "btnSwapAll");
+            btnSwapAll.Name = "btnSwapAll";
+            btnSwapAll.UseVisualStyleBackColor = true;
+            btnSwapAll.Click += btnSwapAll_Click;
             // 
             // WmsAdvancedConfigurationDialog
             // 
-            this.AcceptButton = this.btnSave;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            AcceptButton = btnSave;
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.ControlBox = false;
-            this.Controls.Add(this.btnSwapAll);
-            this.Controls.Add(this.grpLogicalClass);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.grpRaster);
-            this.Controls.Add(this.txtFeatureServer);
-            this.Controls.Add(this.label1);
-            this.Name = "WmsAdvancedConfigurationDialog";
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdSpatialContexts)).EndInit();
-            this.grpLogicalClass.ResumeLayout(false);
-            this.grpLogicalClass.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            ControlBox = false;
+            Controls.Add(btnSwapAll);
+            Controls.Add(grpLogicalClass);
+            Controls.Add(groupBox1);
+            Controls.Add(btnReset);
+            Controls.Add(groupBox2);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(grpRaster);
+            Controls.Add(txtFeatureServer);
+            Controls.Add(label1);
+            Name = "WmsAdvancedConfigurationDialog";
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)grdSpatialContexts).EndInit();
+            grpLogicalClass.ResumeLayout(false);
+            grpLogicalClass.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -256,9 +244,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListBox lstFeatureClasses;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton btnAdd;
-        private System.Windows.Forms.ToolStripButton btnRemove;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView grdSpatialContexts;
@@ -271,5 +256,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel lnkSwap;
         private System.Windows.Forms.Button btnSwapAll;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton btnRemove;
     }
 }

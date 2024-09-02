@@ -41,12 +41,27 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
         public RasterDefinitionCtrl(WmsConfigurationDocument config, RasterWmsItem item, IEditorService edsvc)
         {
             InitializeComponent();
-            cmbBackground.ResetColors();
-            _config = config;
 
+            txtImageFormat.TextChanged += TxtImageFormat_TextChanged;
+            chkTransparent.CheckedChanged += ChkTransparent_CheckedChanged;
+            cmbBackground.SelectedIndexChanged += CmbBackground_SelectedIndexChanged;
+            txtElevation.TextChanged += TxtElevation_TextChanged;
+            txtEpsg.TextChanged += TxtEpsg_TextChanged;
+            txtTime.TextChanged += TxtTime_TextChanged;
+
+            _config = config;
             _fs = (IFeatureSource)edsvc.GetEditedResource();
             _item = item;
             _edsvc = edsvc;
+
+            this.BindItem(item);
+        }
+
+        internal void BindItem(RasterWmsItem item)
+        {
+            cmbBackground.ResetColors();
+
+            _item = null;
 
             txtImageFormat.Text = item.ImageFormat;
             chkTransparent.Checked = item.IsTransparent;
@@ -55,20 +70,51 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             txtEpsg.Text = item.SpatialContextName;
             txtTime.Text = item.Time;
 
-            txtImageFormat.TextChanged += (s, e) => { item.ImageFormat = txtImageFormat.Text; };
-            chkTransparent.CheckedChanged += (s, e) => { item.IsTransparent = chkTransparent.Checked; };
-            cmbBackground.SelectedIndexChanged += (s, e) => { item.BackgroundColor = cmbBackground.CurrentColor; };
-            txtElevation.TextChanged += (s, e) => { item.ElevationDimension = txtElevation.Text; };
-            txtEpsg.TextChanged += (s, e) => { item.SpatialContextName = txtEpsg.Text; };
-            txtTime.TextChanged += (s, e) => { item.Time = txtTime.Text; };
+            _item = item;
 
-            List<string> names = new List<string>();
+            var names = new List<string>();
             foreach (var layer in item.Layers)
             {
                 names.Add(layer.Name);
             }
             txtLayers.Lines = names.ToArray();
             lnkUpdate.Enabled = false;
+        }
+
+        private void TxtTime_TextChanged(object sender, EventArgs e)
+        {
+            if (_item != null)
+                _item.Time = txtTime.Text;
+        }
+
+        private void TxtEpsg_TextChanged(object sender, EventArgs e)
+        {
+            if (_item != null)
+                _item.SpatialContextName = txtEpsg.Text;
+        }
+
+        private void TxtElevation_TextChanged(object sender, EventArgs e)
+        {
+            if (_item != null)
+                _item.ElevationDimension = txtElevation.Text;
+        }
+
+        private void CmbBackground_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_item != null)
+                _item.BackgroundColor = cmbBackground.CurrentColor;
+        }
+
+        private void ChkTransparent_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_item != null)
+                _item.IsTransparent = chkTransparent.Checked;
+        }
+
+        private void TxtImageFormat_TextChanged(object sender, EventArgs e)
+        {
+            if (_item != null)
+                _item.ImageFormat = txtImageFormat.Text;
         }
 
         private void lnkUpdate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
