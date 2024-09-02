@@ -330,12 +330,13 @@ namespace Maestro.Scripting.Core.Lang.Python
             {
                 switch (keyData)
                 {
+                    // Let these keys propagate back to the text editor
                     case Keys.Left:
                     case Keys.Right:
                     case Keys.Up:
                     case Keys.Down:
+                    case Keys.Control | Keys.C:
                         return false;
-
                     default:
                         return true;
                 }
