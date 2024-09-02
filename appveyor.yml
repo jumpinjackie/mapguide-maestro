@@ -39,7 +39,7 @@ before_build:
   - dotnet tool install --global coveralls.net --version 1.0.0
   - nuget update -self
   - nuget restore Maestro.sln
-  - cinst -y docfx
+  - dotnet tool update -g docfx
   - echo Does (%APPVEYOR_BUILD_FOLDER%) a .git subdir (ie. Is a clone)?
   - dir /a:hd %APPVEYOR_BUILD_FOLDER%
 
