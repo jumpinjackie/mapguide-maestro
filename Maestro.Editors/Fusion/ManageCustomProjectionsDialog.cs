@@ -173,6 +173,7 @@ namespace Maestro.Editors.Fusion
 
         private void btnGetDefn_Click(object sender, EventArgs e)
         {
+            grdProjections.EndEdit();
             var toUpdate = new List<string>();
             foreach (DataGridViewRow row in grdProjections.SelectedRows)
             {
