@@ -34,8 +34,6 @@ before_build:
   - echo APPVEYOR_REPO_TAG_NAME         %APPVEYOR_REPO_TAG_NAME%
   - echo APPVEYOR_REPO_COMMIT           %APPVEYOR_REPO_COMMIT%
   - echo APPVEYOR_REPO_COMMIT_TIMESTAMP %APPVEYOR_REPO_COMMIT_TIMESTAMP%
-  - echo XUNIT_VERSION                  %XUNIT_VERSION%
-  - echo OPENCOVER_VERSION              %OPENCOVER_VERSION%
   - dotnet tool install --global coveralls.net --version 1.0.0
   - nuget update -self
   - nuget restore Maestro.sln
@@ -44,9 +42,6 @@ before_build:
   - dir /a:hd %APPVEYOR_BUILD_FOLDER%
 
 environment:
-  XUNIT_MONIKER: 'net472'
-  XUNIT_VERSION: '2.4.1'
-  OPENCOVER_VERSION: '4.7.1221'
   COVERALLS_REPO_TOKEN:
     secure: brg0Fy+w8aO/4JhYrsjvumIqAMCi26QNT3nJGUQNaKvLXSoXgywWn/WPCEnUJEEK
 
