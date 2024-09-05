@@ -252,8 +252,59 @@
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="grpFeatureClasses.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;lstFeatureClasses.Name" xml:space="preserve">
+    <value>lstFeatureClasses</value>
+  </data>
+  <data name="&gt;&gt;lstFeatureClasses.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lstFeatureClasses.Parent" xml:space="preserve">
+    <value>grpFeatureClasses</value>
+  </data>
+  <data name="&gt;&gt;lstFeatureClasses.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
+    <value>grpFeatureClasses</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grpFeatureClasses.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 166</value>
+  </data>
+  <data name="grpFeatureClasses.Size" type="System.Drawing.Size, System.Drawing">
+    <value>497, 454</value>
+  </data>
+  <data name="grpFeatureClasses.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="grpFeatureClasses.Text" xml:space="preserve">
+    <value>Feature Classes</value>
+  </data>
+  <data name="&gt;&gt;grpFeatureClasses.Name" xml:space="preserve">
+    <value>grpFeatureClasses</value>
+  </data>
+  <data name="&gt;&gt;grpFeatureClasses.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpFeatureClasses.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpFeatureClasses.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="lstFeatureClasses.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -277,7 +328,7 @@
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lstFeatureClasses.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grpFeatureClasses</value>
   </data>
   <data name="&gt;&gt;lstFeatureClasses.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -285,18 +336,6 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="btnRemove.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnRemove.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 22</value>
-  </data>
-  <data name="btnRemove.Text" xml:space="preserve">
-    <value>Remove</value>
-  </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 19</value>
   </data>
@@ -316,34 +355,22 @@
     <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>grpFeatureClasses</value>
   </data>
   <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 166</value>
+  <data name="btnRemove.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>497, 454</value>
+  <data name="btnRemove.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
   </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 22</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Feature Classes</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="btnRemove.Text" xml:space="preserve">
+    <value>Remove</value>
   </data>
   <data name="btnReset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -374,30 +401,6 @@
   </data>
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
-  </data>
-  <metadata name="COL_NAME.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="COL_NAME.HeaderText" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <metadata name="COL_CS.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="COL_CS.HeaderText" xml:space="preserve">
-    <value>Coordinate System</value>
-  </data>
-  <data name="grdSpatialContexts.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="grdSpatialContexts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 19</value>
-  </data>
-  <data name="grdSpatialContexts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>854, 99</value>
-  </data>
-  <data name="grdSpatialContexts.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;grdSpatialContexts.Name" xml:space="preserve">
     <value>grdSpatialContexts</value>
@@ -435,8 +438,137 @@
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="COL_NAME.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="COL_CS.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="grdSpatialContexts.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="grdSpatialContexts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 19</value>
+  </data>
+  <data name="grdSpatialContexts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>854, 99</value>
+  </data>
+  <data name="grdSpatialContexts.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;grdSpatialContexts.Name" xml:space="preserve">
+    <value>grdSpatialContexts</value>
+  </data>
+  <data name="&gt;&gt;grdSpatialContexts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grdSpatialContexts.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;grdSpatialContexts.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="COL_NAME.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="COL_NAME.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <metadata name="COL_CS.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="COL_CS.HeaderText" xml:space="preserve">
+    <value>Coordinate System</value>
+  </data>
   <data name="grpLogicalClass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;lnkSwap.Name" xml:space="preserve">
+    <value>lnkSwap</value>
+  </data>
+  <data name="&gt;&gt;lnkSwap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lnkSwap.Parent" xml:space="preserve">
+    <value>grpLogicalClass</value>
+  </data>
+  <data name="&gt;&gt;lnkSwap.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtClassDescription.Name" xml:space="preserve">
+    <value>txtClassDescription</value>
+  </data>
+  <data name="&gt;&gt;txtClassDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClassDescription.Parent" xml:space="preserve">
+    <value>grpLogicalClass</value>
+  </data>
+  <data name="&gt;&gt;txtClassDescription.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>grpLogicalClass</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtClassName.Name" xml:space="preserve">
+    <value>txtClassName</value>
+  </data>
+  <data name="&gt;&gt;txtClassName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtClassName.Parent" xml:space="preserve">
+    <value>grpLogicalClass</value>
+  </data>
+  <data name="&gt;&gt;txtClassName.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>grpLogicalClass</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="grpLogicalClass.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="grpLogicalClass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>518, 166</value>
+  </data>
+  <data name="grpLogicalClass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>354, 84</value>
+  </data>
+  <data name="grpLogicalClass.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="grpLogicalClass.Text" xml:space="preserve">
+    <value>Logical Class</value>
+  </data>
+  <data name="&gt;&gt;grpLogicalClass.Name" xml:space="preserve">
+    <value>grpLogicalClass</value>
+  </data>
+  <data name="&gt;&gt;grpLogicalClass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpLogicalClass.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpLogicalClass.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="lnkSwap.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -569,33 +701,6 @@
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="grpLogicalClass.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="grpLogicalClass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>518, 166</value>
-  </data>
-  <data name="grpLogicalClass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 84</value>
-  </data>
-  <data name="grpLogicalClass.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="grpLogicalClass.Text" xml:space="preserve">
-    <value>Logical Class</value>
-  </data>
-  <data name="&gt;&gt;grpLogicalClass.Name" xml:space="preserve">
-    <value>grpLogicalClass</value>
-  </data>
-  <data name="&gt;&gt;grpLogicalClass.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpLogicalClass.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;grpLogicalClass.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="btnSwapAll.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>

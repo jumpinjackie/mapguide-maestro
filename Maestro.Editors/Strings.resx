@@ -1754,4 +1754,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="LoadingClassDefinition" xml:space="preserve">
     <value>Loading Class Definition</value>
   </data>
+  <data name="PrgBuildingDefaultWmsDocument" xml:space="preserve">
+    <value>Building Default WMS Configuration Document</value>
+  </data>
 </root>

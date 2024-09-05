@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using Maestro.Editors.Preview;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
@@ -156,6 +157,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
 
         private void lstFeatureClasses_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_isUpdating)
+                return;
+
             _updatingLogicalClassUI = true;
             try
             {
@@ -228,16 +232,25 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
                 if (selItem is RasterWmsItem item)
                     selected.Add(item);
             }
-            foreach (var item in selected)
+            try
             {
-                _items.Remove(item);
+                this.BeginUpdate();
+                foreach (var item in selected)
+                {
+                    if (_items.Remove(item))
+                    {
+                        //Remove schema mapping item
+                        _config.RemoveRasterItem(item);
 
-                //Remove schema mapping item
-                _config.RemoveRasterItem(item);
-
-                //Remove mapped class from logical schema
-                var schema = _config.Schemas[0];
-                schema.RemoveClass(item.FeatureClass);
+                        //Remove mapped class from logical schema
+                        var schema = _config.Schemas[0];
+                        schema.RemoveClass(item.FeatureClass);
+                    }
+                }
+            }
+            finally
+            {
+                this.EndUpdate();
             }
         }
 
@@ -271,11 +284,50 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
              */
         }
 
+        private bool _isUpdating = false;
+
+        private void BeginUpdate()
+        {
+            lstFeatureClasses.BeginUpdate();
+            _isUpdating = true;
+        }
+
+        private void EndUpdate()
+        {
+            lstFeatureClasses.EndUpdate();
+            _isUpdating = false;
+        }
+
         private void btnReset_Click(object sender, EventArgs e)
         {
-            MakeDefaultDocument();
-            lstFeatureClasses.DataSource = _config.RasterOverrides;
-            grdSpatialContexts.DataSource = _config.SpatialContexts;
+            BusyWaitDialog.Run(Strings.PrgBuildingDefaultWmsDocument, () =>
+            {
+                MakeDefaultDocument();
+                return _config;
+            }, (res, ex) =>
+            {
+                if (ex != null)
+                {
+                    ErrorDialog.Show(ex);
+                }
+                else
+                {
+                    try
+                    {
+                        this.BeginUpdate();
+                        _items.Clear();
+                        foreach (var item in _config.RasterOverrides)
+                        {
+                            _items.Add(item);
+                        }
+                    }
+                    finally
+                    {
+                        this.EndUpdate();
+                    }
+                    grdSpatialContexts.DataSource = _config.SpatialContexts;
+                }
+            });
         }
 
         private void MakeDefaultDocument()
@@ -372,23 +424,31 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
         {
             if (MessageBox.Show(Strings.ConfirmWmsLogicalClassSwap, string.Empty, MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
-                using (new WaitCursor(this))
+                btnSwapAll.Enabled = false;
+                try
                 {
-                    _logicalClass = null;
-                    lstFeatureClasses.SelectedItem = null;
-                    foreach (var item in _config.RasterOverrides)
+                    using (new WaitCursor(this))
                     {
-                        var cls = _config.GetClass(item.SchemaName, item.FeatureClass);
-                        if (cls == null)
-                            continue;
+                        _logicalClass = null;
+                        lstFeatureClasses.SelectedItem = null;
+                        foreach (var item in _config.RasterOverrides)
+                        {
+                            var cls = _config.GetClass(item.SchemaName, item.FeatureClass);
+                            if (cls == null)
+                                continue;
 
-                        var tmp = cls.Name;
-                        cls.Name = cls.Description;
-                        cls.Description = tmp;
+                            var tmp = cls.Name;
+                            cls.Name = cls.Description;
+                            cls.Description = tmp;
 
-                        item.FeatureClass = cls.Name;
+                            item.FeatureClass = cls.Name;
+                        }
+                        lstFeatureClasses.DataSource = _config.RasterOverrides; //rebind
                     }
-                    lstFeatureClasses.DataSource = _config.RasterOverrides; //rebind
+                }
+                finally
+                {
+                    btnSwapAll.Enabled = true;
                 }
             }
         }

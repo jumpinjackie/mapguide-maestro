@@ -2383,6 +2383,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Building Default WMS Configuration Document.
+        /// </summary>
+        internal static string PrgBuildingDefaultWmsDocument {
+            get {
+                return ResourceManager.GetString("PrgBuildingDefaultWmsDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Preparing resource preview.
         /// </summary>
         internal static string PrgPreparingResourcePreview {

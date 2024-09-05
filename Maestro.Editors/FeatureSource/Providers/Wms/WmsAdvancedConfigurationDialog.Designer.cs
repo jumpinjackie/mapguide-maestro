@@ -34,7 +34,7 @@
             grpRaster = new System.Windows.Forms.GroupBox();
             btnSave = new System.Windows.Forms.Button();
             btnCancel = new System.Windows.Forms.Button();
-            groupBox2 = new System.Windows.Forms.GroupBox();
+            grpFeatureClasses = new System.Windows.Forms.GroupBox();
             lstFeatureClasses = new System.Windows.Forms.ListBox();
             toolStrip1 = new System.Windows.Forms.ToolStrip();
             btnRemove = new System.Windows.Forms.ToolStripButton();
@@ -50,7 +50,7 @@
             txtClassName = new System.Windows.Forms.TextBox();
             label2 = new System.Windows.Forms.Label();
             btnSwapAll = new System.Windows.Forms.Button();
-            groupBox2.SuspendLayout();
+            grpFeatureClasses.SuspendLayout();
             toolStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdSpatialContexts).BeginInit();
@@ -88,13 +88,13 @@
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
-            // groupBox2
+            // grpFeatureClasses
             // 
-            resources.ApplyResources(groupBox2, "groupBox2");
-            groupBox2.Controls.Add(lstFeatureClasses);
-            groupBox2.Controls.Add(toolStrip1);
-            groupBox2.Name = "groupBox2";
-            groupBox2.TabStop = false;
+            resources.ApplyResources(grpFeatureClasses, "grpFeatureClasses");
+            grpFeatureClasses.Controls.Add(lstFeatureClasses);
+            grpFeatureClasses.Controls.Add(toolStrip1);
+            grpFeatureClasses.Name = "grpFeatureClasses";
+            grpFeatureClasses.TabStop = false;
             // 
             // lstFeatureClasses
             // 
@@ -216,15 +216,15 @@
             Controls.Add(grpLogicalClass);
             Controls.Add(groupBox1);
             Controls.Add(btnReset);
-            Controls.Add(groupBox2);
+            Controls.Add(grpFeatureClasses);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(grpRaster);
             Controls.Add(txtFeatureServer);
             Controls.Add(label1);
             Name = "WmsAdvancedConfigurationDialog";
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            grpFeatureClasses.ResumeLayout(false);
+            grpFeatureClasses.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -242,7 +242,7 @@
         private System.Windows.Forms.GroupBox grpRaster;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpFeatureClasses;
         private System.Windows.Forms.ListBox lstFeatureClasses;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.GroupBox groupBox1;
