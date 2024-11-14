@@ -436,20 +436,33 @@ namespace OSGeo.MapGuide.ObjectModels
                                         // ury
                                         //
                                         //A the first space after each number of each parameter marks the end of that value
+                                        string sllx, slly, surx, sury = "";
+                                        if (content.StartsWith("PIAFILEVERSION_3.0,json"))
+                                        {
+                                            var  pia3= Newtonsoft.Json.Linq.JObject.Parse(content.Replace("PIAFILEVERSION_3.0,json",""));
 
-                                        // 4 - length of "llx="
-                                        int idx = content.IndexOf("llx") + 4;  //NOXLATE
-                                        string sllx = content.Substring(idx, content.IndexOf(" ", idx) - idx); //NOXLATE
-                                        // 4 - length of "lly="
-                                        idx = content.IndexOf("lly") + 4; //NOXLATE
-                                        string slly = content.Substring(idx, content.IndexOf(" ", idx) - idx); //NOXLATE
-                                        // 4 - length of "urx="
-                                        idx = content.IndexOf("urx") + 4; //NOXLATE
-                                        string surx = content.Substring(idx, content.IndexOf(" ", idx) - idx); //NOXLATE
-                                        // 4 - length of "ury="
-                                        idx = content.IndexOf("ury") + 4; //NOXLATE
-                                        string sury = content.Substring(idx, content.IndexOf(" ", idx) - idx); //NOXLATE
+                                            sllx = pia3["data"]["viewport"]["llx"].ToString();
+                                            slly = pia3["data"]["viewport"]["lly"].ToString();
+                                            surx = pia3["data"]["viewport"]["urx"].ToString();
+                                            sury = pia3["data"]["viewport"]["ury"].ToString();
 
+                                        }
+                                        else {
+
+                                            // 4 - length of "llx="
+                                            int idx = content.IndexOf("llx") + 4;  //NOXLATE
+                                            sllx = content.Substring(idx, content.IndexOf(" ", idx) - idx); //NOXLATE
+                                                                                                                   // 4 - length of "lly="
+                                            idx = content.IndexOf("lly") + 4; //NOXLATE
+                                            slly = content.Substring(idx, content.IndexOf(" ", idx) - idx); //NOXLATE
+                                                                                                                   // 4 - length of "urx="
+                                            idx = content.IndexOf("urx") + 4; //NOXLATE
+                                            surx = content.Substring(idx, content.IndexOf(" ", idx) - idx); //NOXLATE
+                                                                                                                   // 4 - length of "ury="
+                                            idx = content.IndexOf("ury") + 4; //NOXLATE
+                                            sury = content.Substring(idx, content.IndexOf(" ", idx) - idx); //NOXLATE
+                                        }
+                                        
                                         //Update extents
                                         sht.Extent = ObjectFactory.CreateEnvelope(
                                             Convert.ToDouble(sllx),
