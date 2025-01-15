@@ -20,46 +20,26 @@
 
 #endregion Disclaimer / License
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using OSGeo.MapGuide.MaestroAPI.Http;
 using System.Net;
 
 namespace Maestro.Editors.Fusion
 {
-    internal class EpsgIoResponse
-    {
-        public int NumberResult { get; set; }
-
-        public EpsgIoResult[] Results { get; set; }
-    }
-
-    internal class EpsgIoResult
+    internal class EpsgLookupResult
     {
         public string Proj4 { get; set; }
     }
 
-    internal static class EpsgIoExtensions
+    internal static class EpsgLookupExtensions
     {
         static DummyGetRequestOptions _smOptions = new DummyGetRequestOptions();
 
-        private static readonly SnakeCaseNamingStrategy _snakeCaseNamingStrategy
-            = new SnakeCaseNamingStrategy();
-
-        private static readonly JsonSerializerSettings _snakeCaseSettings = new JsonSerializerSettings
+        public static EpsgLookupResult SyncFetch(this IHttpRequestor http, string epsgCode)
         {
-            ContractResolver = new DefaultContractResolver
-            {
-                NamingStrategy = _snakeCaseNamingStrategy
-            }
-        };
+            using var s = http.Get($"https://spatialreference.org/ref/epsg/{epsgCode}/proj4.txt", _smOptions);
+            string proj4 = new System.IO.StreamReader(s).ReadToEnd();
 
-        public static EpsgIoResponse SyncFetch(this IHttpRequestor http, string epsgCode)
-        {
-            using var s = http.Get($"https://epsg.io/?format=json&q={epsgCode}", _smOptions);
-            string debug = new System.IO.StreamReader(s).ReadToEnd();
-
-            return JsonConvert.DeserializeObject<EpsgIoResponse>(debug, _snakeCaseSettings);
+            return new EpsgLookupResult { Proj4 = proj4 };
         }
     }
 

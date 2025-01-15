@@ -121,14 +121,10 @@ namespace Maestro.Editors.Fusion
 
             foreach (var epsg in epsgToResolve)
             {
-                // Hit epsg.io
-                var s = http.SyncFetch(epsg);
-                if (s.Results.Length > 0)
-                {
-                    var res = s.Results[0];
-                    if (!string.IsNullOrEmpty(res.Proj4))
-                        entries.Add(new CustomProjectionEntry { epsg = Convert.ToUInt16(epsg), Value = res.Proj4 });
-                }
+                // Hit the epsg lookup
+                var res = http.SyncFetch(epsg);
+                if (!string.IsNullOrEmpty(res.Proj4))
+                    entries.Add(new CustomProjectionEntry { epsg = Convert.ToUInt16(epsg), Value = res.Proj4 });
             }
 
             return entries.ToArray();

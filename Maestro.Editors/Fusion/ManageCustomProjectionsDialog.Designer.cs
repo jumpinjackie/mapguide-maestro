@@ -96,7 +96,7 @@
             linkLabel1.Size = new System.Drawing.Size(85, 15);
             linkLabel1.TabIndex = 5;
             linkLabel1.TabStop = true;
-            linkLabel1.Text = "https://epsg.io";
+            linkLabel1.Text = "https://spatialreference.org";
             // 
             // label1
             // 
