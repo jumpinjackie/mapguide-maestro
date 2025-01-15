@@ -6,7 +6,15 @@
     - Improved resposiveness of advanced configuration dialog
     - Restored ability to remove feature classes and enable multi-selection
  - Support PIA version 3 extents in newer DWF files (thanks ljuha)
- - Fusion editor fixes:
+ - Fusion editor changes/fixes:
+    - Reworked Stamen tile layer support
+       - Can add as a specialized tile layer (for mapguide-react-layout)
+       - Or as a XYZ layer (for Fusion or mapguide-react-layout)
+       - Both methods require a Stadia Maps API key
+    - Added support for Stadia Maps tile layers
+       - Can add as a specialized tile layer (for mapguide-react-layout)
+       - Or as a XYZ layer (for Fusion or mapguide-react-layout)
+       - Both methods require a Stadia Maps API key
     - Custom projections dialog:
        - Can now do a proj4 lookup on an edited epsg cell without needing to commit the cell edit first (thanks pcardinal)
        - proj4 lookups now use spatialreference.org instead of epsg.io

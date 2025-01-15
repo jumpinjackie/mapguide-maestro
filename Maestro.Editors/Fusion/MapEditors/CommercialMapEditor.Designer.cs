@@ -34,10 +34,10 @@
             label3 = new System.Windows.Forms.Label();
             txtType = new System.Windows.Forms.TextBox();
             txtSubType = new System.Windows.Forms.TextBox();
-            grpBingMapsKey = new System.Windows.Forms.GroupBox();
-            txtBingMapsApiKey = new System.Windows.Forms.TextBox();
-            btnSetBingMapsApiKey = new System.Windows.Forms.Button();
-            grpBingMapsKey.SuspendLayout();
+            grpApiKey = new System.Windows.Forms.GroupBox();
+            txtApiKey = new System.Windows.Forms.TextBox();
+            btnSetApiKey = new System.Windows.Forms.Button();
+            grpApiKey.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -100,49 +100,48 @@
             txtSubType.Size = new System.Drawing.Size(363, 23);
             txtSubType.TabIndex = 6;
             // 
-            // grpBingMapsKey
+            // grpApiKey
             // 
-            grpBingMapsKey.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            grpBingMapsKey.Controls.Add(txtBingMapsApiKey);
-            grpBingMapsKey.Controls.Add(btnSetBingMapsApiKey);
-            grpBingMapsKey.Location = new System.Drawing.Point(14, 114);
-            grpBingMapsKey.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            grpBingMapsKey.Name = "grpBingMapsKey";
-            grpBingMapsKey.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            grpBingMapsKey.Size = new System.Drawing.Size(448, 104);
-            grpBingMapsKey.TabIndex = 11;
-            grpBingMapsKey.TabStop = false;
-            grpBingMapsKey.Text = "Bing Maps API key";
+            grpApiKey.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            grpApiKey.Controls.Add(txtApiKey);
+            grpApiKey.Controls.Add(btnSetApiKey);
+            grpApiKey.Location = new System.Drawing.Point(14, 114);
+            grpApiKey.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grpApiKey.Name = "grpApiKey";
+            grpApiKey.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            grpApiKey.Size = new System.Drawing.Size(448, 104);
+            grpApiKey.TabIndex = 11;
+            grpApiKey.TabStop = false;
             // 
-            // txtBingMapsApiKey
+            // txtApiKey
             // 
-            txtBingMapsApiKey.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            txtBingMapsApiKey.Location = new System.Drawing.Point(7, 21);
-            txtBingMapsApiKey.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            txtBingMapsApiKey.Multiline = true;
-            txtBingMapsApiKey.Name = "txtBingMapsApiKey";
-            txtBingMapsApiKey.Size = new System.Drawing.Size(433, 39);
-            txtBingMapsApiKey.TabIndex = 8;
-            txtBingMapsApiKey.TextChanged += txtBingMapsApiKey_TextChanged;
+            txtApiKey.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtApiKey.Location = new System.Drawing.Point(7, 21);
+            txtApiKey.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtApiKey.Multiline = true;
+            txtApiKey.Name = "txtApiKey";
+            txtApiKey.Size = new System.Drawing.Size(433, 39);
+            txtApiKey.TabIndex = 8;
+            txtApiKey.TextChanged += txtApiKey_TextChanged;
             // 
             // btnSetBingMapsApiKey
             // 
-            btnSetBingMapsApiKey.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            btnSetBingMapsApiKey.Enabled = false;
-            btnSetBingMapsApiKey.Location = new System.Drawing.Point(354, 67);
-            btnSetBingMapsApiKey.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnSetBingMapsApiKey.Name = "btnSetBingMapsApiKey";
-            btnSetBingMapsApiKey.Size = new System.Drawing.Size(88, 27);
-            btnSetBingMapsApiKey.TabIndex = 9;
-            btnSetBingMapsApiKey.Text = "Set API Key";
-            btnSetBingMapsApiKey.UseVisualStyleBackColor = true;
-            btnSetBingMapsApiKey.Click += btnSetBingMapsApiKey_Click;
+            btnSetApiKey.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnSetApiKey.Enabled = false;
+            btnSetApiKey.Location = new System.Drawing.Point(354, 67);
+            btnSetApiKey.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnSetApiKey.Name = "btnSetBingMapsApiKey";
+            btnSetApiKey.Size = new System.Drawing.Size(88, 27);
+            btnSetApiKey.TabIndex = 9;
+            btnSetApiKey.Text = "Set API Key";
+            btnSetApiKey.UseVisualStyleBackColor = true;
+            btnSetApiKey.Click += btnSetApiKey_Click;
             // 
             // CommercialMapEditor
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            Controls.Add(grpBingMapsKey);
+            Controls.Add(grpApiKey);
             Controls.Add(txtSubType);
             Controls.Add(txtType);
             Controls.Add(label3);
@@ -152,8 +151,8 @@
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "CommercialMapEditor";
             Size = new System.Drawing.Size(486, 252);
-            grpBingMapsKey.ResumeLayout(false);
-            grpBingMapsKey.PerformLayout();
+            grpApiKey.ResumeLayout(false);
+            grpApiKey.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -166,8 +165,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtType;
         private System.Windows.Forms.TextBox txtSubType;
-        private System.Windows.Forms.GroupBox grpBingMapsKey;
-        private System.Windows.Forms.TextBox txtBingMapsApiKey;
-        private System.Windows.Forms.Button btnSetBingMapsApiKey;
+        private System.Windows.Forms.GroupBox grpApiKey;
+        private System.Windows.Forms.TextBox txtApiKey;
+        private System.Windows.Forms.Button btnSetApiKey;
     }
 }

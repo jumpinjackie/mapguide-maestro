@@ -20,12 +20,9 @@
 
 #endregion Disclaimer / License
 
-using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Maestro.Editors.Fusion.MapEditors
@@ -36,6 +33,7 @@ namespace Maestro.Editors.Fusion.MapEditors
         private readonly IMap _map;
         private readonly bool _init;
         const string BING_MAPS_EXTENSION_NAME = "BingMapKey";
+        internal const string STADIA_MAPS_EXTENSION_NAME = "StadiaMapsKey";
 
         public CommercialMapEditor(IEditorService edSvc, IMap map, string[] types)
         {
@@ -52,11 +50,31 @@ namespace Maestro.Editors.Fusion.MapEditors
                 txtSubType.Text = opts.Type;
 
                 var appDef = (IApplicationDefinition)_edSvc.GetEditedResource();
-                var bingMapsKey = appDef.GetValue(BING_MAPS_EXTENSION_NAME);
-                if (!string.IsNullOrEmpty(bingMapsKey))
+                switch (_map.Type)
                 {
-                    txtBingMapsApiKey.Text = bingMapsKey;
-                    btnSetBingMapsApiKey.Enabled = false;
+                    case EditorFactory.Type_Bing:
+                        {
+                            grpApiKey.Text = Strings.ApiKeyDescBingMaps;
+                            var bingMapsKey = appDef.GetValue(BING_MAPS_EXTENSION_NAME);
+                            if (!string.IsNullOrEmpty(bingMapsKey))
+                            {
+                                txtApiKey.Text = bingMapsKey;
+                                btnSetApiKey.Enabled = false;
+                            }
+                        }
+                        break;
+                    case EditorFactory.Type_Stamen:
+                    case EditorFactory.Type_StadiaMaps:
+                        {
+                            grpApiKey.Text = Strings.ApiKeyDescStadiaMaps;
+                            var stadiaMapsKey = appDef.GetValue(STADIA_MAPS_EXTENSION_NAME);
+                            if (!string.IsNullOrEmpty(stadiaMapsKey))
+                            {
+                                txtApiKey.Text = stadiaMapsKey;
+                                btnSetApiKey.Enabled = false;
+                            }
+                        }
+                        break;
                 }
             }
             finally
@@ -74,17 +92,31 @@ namespace Maestro.Editors.Fusion.MapEditors
             _edSvc.HasChanged();
         }
 
-        private void btnSetBingMapsApiKey_Click(object sender, EventArgs e)
+        private void btnSetApiKey_Click(object sender, EventArgs e)
         {
             var appDef = (IApplicationDefinition)_edSvc.GetEditedResource();
-            appDef.SetValue(BING_MAPS_EXTENSION_NAME, txtBingMapsApiKey.Text); //NOXLATE
-            _edSvc.HasChanged();
-            btnSetBingMapsApiKey.Enabled = false;
+            switch (_map.Type)
+            {
+                case EditorFactory.Type_Bing:
+                    {
+                        appDef.SetValue(BING_MAPS_EXTENSION_NAME, txtApiKey.Text);
+                        _edSvc.HasChanged();
+                    }
+                    break;
+                case EditorFactory.Type_Stamen:
+                case EditorFactory.Type_StadiaMaps:
+                    {
+                        appDef.SetValue(STADIA_MAPS_EXTENSION_NAME, txtApiKey.Text);
+                        _edSvc.HasChanged();
+                    }
+                    break;
+            }
+            btnSetApiKey.Enabled = false;
         }
 
-        private void txtBingMapsApiKey_TextChanged(object sender, EventArgs e)
+        private void txtApiKey_TextChanged(object sender, EventArgs e)
         {
-            btnSetBingMapsApiKey.Enabled = true;
+            btnSetApiKey.Enabled = true;
         }
     }
 }

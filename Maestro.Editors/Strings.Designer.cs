@@ -61,6 +61,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string Action_Ok {
+            get {
+                return ResourceManager.GetString("Action_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fetching and adding custom projections based on your referenced Map Definitions ....
         /// </summary>
         internal static string AddingCustomProjections {
@@ -102,6 +111,24 @@ namespace Maestro.Editors {
         internal static string AlternateNameMissing {
             get {
                 return ResourceManager.GetString("AlternateNameMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bing Maps API Key.
+        /// </summary>
+        internal static string ApiKeyDescBingMaps {
+            get {
+                return ResourceManager.GetString("ApiKeyDescBingMaps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stadia Maps API Key.
+        /// </summary>
+        internal static string ApiKeyDescStadiaMaps {
+            get {
+                return ResourceManager.GetString("ApiKeyDescStadiaMaps", resourceCulture);
             }
         }
         
@@ -250,11 +277,92 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stadia Maps (alidade_satellite).
+        /// </summary>
+        internal static string CmsStadiaAlidadeSatellite {
+            get {
+                return ResourceManager.GetString("CmsStadiaAlidadeSatellite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stadia Maps (alidade_satellite) as XYZ.
+        /// </summary>
+        internal static string CmsStadiaAlidadeSatelliteXyz {
+            get {
+                return ResourceManager.GetString("CmsStadiaAlidadeSatelliteXyz", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stadia Maps (alidade_smooth).
+        /// </summary>
+        internal static string CmsStadiaAlidadeSmooth {
+            get {
+                return ResourceManager.GetString("CmsStadiaAlidadeSmooth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stadia Maps (alidade_smooth_dark).
+        /// </summary>
+        internal static string CmsStadiaAlidadeSmoothDark {
+            get {
+                return ResourceManager.GetString("CmsStadiaAlidadeSmoothDark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stadia Maps (alidade_smooth_dark) as XYZ.
+        /// </summary>
+        internal static string CmsStadiaAlidadeSmoothDarkXyz {
+            get {
+                return ResourceManager.GetString("CmsStadiaAlidadeSmoothDarkXyz", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stadia Maps (alidade_smooth) as XYZ.
+        /// </summary>
+        internal static string CmsStadiaAlidadeSmoothXyz {
+            get {
+                return ResourceManager.GetString("CmsStadiaAlidadeSmoothXyz", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stadia Maps (outdoors).
+        /// </summary>
+        internal static string CmsStadiaOutdoors {
+            get {
+                return ResourceManager.GetString("CmsStadiaOutdoors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stadia Maps (outdoors) as XYZ.
+        /// </summary>
+        internal static string CmsStadiaOutdoorsXyz {
+            get {
+                return ResourceManager.GetString("CmsStadiaOutdoorsXyz", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stamen (Terrain).
         /// </summary>
         internal static string CmsStamenTerrain {
             get {
                 return ResourceManager.GetString("CmsStamenTerrain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stamen (Terrain) as XYZ.
+        /// </summary>
+        internal static string CmsStamenTerrainXyz {
+            get {
+                return ResourceManager.GetString("CmsStamenTerrainXyz", resourceCulture);
             }
         }
         
@@ -268,11 +376,29 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stamen (Toner) as XYZ.
+        /// </summary>
+        internal static string CmsStamenTonerXyz {
+            get {
+                return ResourceManager.GetString("CmsStamenTonerXyz", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stamen (WaterColor).
         /// </summary>
         internal static string CmsStamenWaterColor {
             get {
                 return ResourceManager.GetString("CmsStamenWaterColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stamen (WaterColor) as XYZ.
+        /// </summary>
+        internal static string CmsStamenWaterColorXyz {
+            get {
+                return ResourceManager.GetString("CmsStamenWaterColorXyz", resourceCulture);
             }
         }
         
@@ -2833,6 +2959,15 @@ namespace Maestro.Editors {
         internal static string SQLQuery {
             get {
                 return ResourceManager.GetString("SQLQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the API key for Stadia Maps.
+        /// </summary>
+        internal static string StadiaMapsKeyPrompt {
+            get {
+                return ResourceManager.GetString("StadiaMapsKeyPrompt", resourceCulture);
             }
         }
         

@@ -1757,4 +1757,49 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="PrgBuildingDefaultWmsDocument" xml:space="preserve">
     <value>Building Default WMS Configuration Document</value>
   </data>
+  <data name="ApiKeyDescBingMaps" xml:space="preserve">
+    <value>Bing Maps API Key</value>
+  </data>
+  <data name="ApiKeyDescStadiaMaps" xml:space="preserve">
+    <value>Stadia Maps API Key</value>
+  </data>
+  <data name="CmsStadiaAlidadeSmooth" xml:space="preserve">
+    <value>Stadia Maps (alidade_smooth)</value>
+  </data>
+  <data name="CmsStadiaAlidadeSmoothDark" xml:space="preserve">
+    <value>Stadia Maps (alidade_smooth_dark)</value>
+  </data>
+  <data name="CmsStadiaAlidadeSatellite" xml:space="preserve">
+    <value>Stadia Maps (alidade_satellite)</value>
+  </data>
+  <data name="CmsStadiaOutdoors" xml:space="preserve">
+    <value>Stadia Maps (outdoors)</value>
+  </data>
+  <data name="CmsStadiaAlidadeSmoothXyz" xml:space="preserve">
+    <value>Stadia Maps (alidade_smooth) as XYZ</value>
+  </data>
+  <data name="CmsStadiaAlidadeSmoothDarkXyz" xml:space="preserve">
+    <value>Stadia Maps (alidade_smooth_dark) as XYZ</value>
+  </data>
+  <data name="CmsStadiaAlidadeSatelliteXyz" xml:space="preserve">
+    <value>Stadia Maps (alidade_satellite) as XYZ</value>
+  </data>
+  <data name="CmsStadiaOutdoorsXyz" xml:space="preserve">
+    <value>Stadia Maps (outdoors) as XYZ</value>
+  </data>
+  <data name="CmsStamenTerrainXyz" xml:space="preserve">
+    <value>Stamen (Terrain) as XYZ</value>
+  </data>
+  <data name="CmsStamenTonerXyz" xml:space="preserve">
+    <value>Stamen (Toner) as XYZ</value>
+  </data>
+  <data name="CmsStamenWaterColorXyz" xml:space="preserve">
+    <value>Stamen (WaterColor) as XYZ</value>
+  </data>
+  <data name="Action_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="StadiaMapsKeyPrompt" xml:space="preserve">
+    <value>Enter the API key for Stadia Maps</value>
+  </data>
 </root>

@@ -108,7 +108,8 @@ namespace Maestro.Editors.Fusion
 
         private void LoadMapOptions()
         {
-            foreach (var option in EditorFactory.GetAvailableOptions(_edSvc.CurrentConnection.SiteVersion, _group))
+            var appDef = (IApplicationDefinition)_edSvc.GetEditedResource();
+            foreach (var option in EditorFactory.GetAvailableOptions(appDef, _edSvc.CurrentConnection.SiteVersion, _group))
             {
                 var ed = option;
                 btnNewMap.DropDown.Items.Add(ed.Name, null, (s, e) =>
@@ -118,14 +119,9 @@ namespace Maestro.Editors.Fusion
                     switch (map.Type)
                     {
                         case EditorFactory.Type_Bing:
-                            bAddedCommercialLayer = true;
-                            break;
                         case EditorFactory.Type_OSM:
-                            bAddedCommercialLayer = true;
-                            break;
                         case EditorFactory.Type_Stamen:
-                            bAddedCommercialLayer = true;
-                            break;
+                        case EditorFactory.Type_StadiaMaps:
                         case EditorFactory.Type_XYZ:
                             bAddedCommercialLayer = true;
                             break;
