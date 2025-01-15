@@ -1,4 +1,18 @@
-﻿6.0m12
+﻿6.0m13
+======
+
+ - Support clipboard copy of content from IronPython console
+ - WMS Feature Source Editor: 
+    - Improved resposiveness of advanced configuration dialog
+    - Restored ability to remove feature classes and enable multi-selection
+ - Support PIA version 3 extents in newer DWF files (thanks ljuha)
+ - Fusion editor fixes:
+    - Custom projections dialog:
+       - Can now do a proj4 lookup on an edited epsg cell without needing to commit the cell edit first (thanks pcardinal)
+       - proj4 lookups now use spatialreference.org instead of epsg.io
+       - Fix apply and close button not applying in certain cases
+
+6.0m12
 ======
 
  - Expanded MapGuide Open Source 4.0 authoring support:
