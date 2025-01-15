@@ -89,16 +89,6 @@ artifacts:
 #    type: zip
 
 deploy:
-  - provider: NuGet
-    server:                  # remove to push to NuGet.org
-    api_key:
-      secure: NBwtvwlD5/lPg9ha+M9LP+o3d+nCBUmLBqkyfiehKHx9BPn1if37//NAHiRTo38z
-    skip_symbols: false
-    symbol_server:           # remove to push symbols to SymbolSource.org
-    artifact: /.*(\.|\.s)nupkg/
-    on:
-      branch: master                 # release from master branch only
-      appveyor_repo_tag: true        # deploy on tag push only
   - provider: GitHub
     release: $(appveyor_repo_tag_name)
     description: 'Release $(appveyor_repo_tag_name) ($(appveyor_build_version))'
@@ -108,6 +98,16 @@ deploy:
     artifact: installer_windows,portable_package,nuget_packages,seeder_windows,seeder_linux
     draft: true
     prerelease: true
+    on:
+      branch: master                 # release from master branch only
+      appveyor_repo_tag: true        # deploy on tag push only
+  - provider: NuGet
+    server:                  # remove to push to NuGet.org
+    api_key:
+      secure: rdu4ZWGKQFndZZ8QfRH0UI7mHiR4DHG9pa9oKRRR1yMJJ7uIu0U3VhsftXOEA1YY
+    skip_symbols: false
+    symbol_server:           # remove to push symbols to SymbolSource.org
+    artifact: /.*(\.|\.s)nupkg/
     on:
       branch: master                 # release from master branch only
       appveyor_repo_tag: true        # deploy on tag push only
