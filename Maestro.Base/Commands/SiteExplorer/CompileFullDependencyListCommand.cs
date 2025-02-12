@@ -104,7 +104,7 @@ namespace Maestro.Base.Commands.SiteExplorer
 
         private static object DoBackgroundWorker(BackgroundWorker wrk, DoWorkEventArgs e, params object[] args)
         {
-            var items = (RepositoryItem[])args[0];
+            var items = (ISiteExplorerNode[])args[0];
             var conn = (IServerConnection)args[1];
 
             LengthyOperationProgressCallBack cb = (o, pe) =>
@@ -116,11 +116,14 @@ namespace Maestro.Base.Commands.SiteExplorer
             var downRefs = new HashSet<string>();
             var selResources = new HashSet<string>();
 
-            foreach (var ri in items)
+            foreach (var item in items)
             {
-                selResources.Add(ri.ResourceId);
-                ProcessUpstreamDependencies(upRefs, ri.ResourceId, conn.ResourceService);
-                ProcessDownstreamDependencies(downRefs, ri.ResourceId, conn.ResourceService);
+                if (item is RepositoryItem ri)
+                {
+                    selResources.Add(ri.ResourceId);
+                    ProcessUpstreamDependencies(upRefs, ri.ResourceId, conn.ResourceService);
+                    ProcessDownstreamDependencies(downRefs, ri.ResourceId, conn.ResourceService);
+                }
             }
 
             return new DependencySet(selResources, downRefs, upRefs);
