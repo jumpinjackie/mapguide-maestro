@@ -136,6 +136,68 @@ namespace Maestro.Scripting.Core.Lang.Python
 
         public IList<string> GetGlobals(string name) => _commandLine.GetGlobals(name);
 
+        /// <inheritdoc/>
+        public string GetMemberDoc(string name, string memberName)
+        {
+            try
+            {
+                var scope = _commandLine.ScriptScope;
+                if (scope == null)
+                    return string.Empty;
+
+                var engine = scope.Engine;
+                var ops = engine.CreateOperations();
+
+                // Only allow plain identifiers and attribute access (e.g. "os" or "sys.path")
+                // to avoid executing arbitrary code with side effects
+                if (!IsValidMemberAccessExpression(name))
+                    return string.Empty;
+
+                // Evaluate the parent object in the current scope
+                var obj = engine.Execute(name, scope);
+                if (obj == null)
+                    return string.Empty;
+
+                // Get the specific member
+                if (!ops.TryGetMember(obj, memberName, out object? member) || member == null)
+                    return string.Empty;
+
+                // Collect call signatures (for functions/methods/constructors)
+                var signatures = ops.GetCallSignatures(member);
+                var doc = ops.GetDocumentation(member) ?? string.Empty;
+
+                if (signatures != null && signatures.Count > 0)
+                {
+                    string sigText = string.Join(Environment.NewLine, signatures);
+                    if (!string.IsNullOrEmpty(doc))
+                        return sigText + Environment.NewLine + Environment.NewLine + doc;
+                    return sigText;
+                }
+
+                return doc;
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// Returns true if <paramref name="expression"/> is a safe Python identifier or dotted
+        /// attribute access chain (e.g. "os" or "sys.path"), which ensures no arbitrary code
+        /// with side effects is executed during member documentation lookup.
+        /// </summary>
+        private static bool IsValidMemberAccessExpression(string expression)
+        {
+            if (string.IsNullOrEmpty(expression))
+                return false;
+
+            // Match one or more Python identifiers separated by dots
+            return System.Text.RegularExpressions.Regex.IsMatch(
+                expression,
+                @"^[A-Za-z_][A-Za-z0-9_]*(\.[A-Za-z_][A-Za-z0-9_]*)*$"); //NOXLATE
+        }
+
         /// <summary>
         /// Returns the next line typed in by the console user. If no line is available this method
         /// will block.

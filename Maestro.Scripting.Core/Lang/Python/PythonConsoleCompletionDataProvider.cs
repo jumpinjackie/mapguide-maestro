@@ -73,11 +73,10 @@ namespace Maestro.Scripting.Core.Lang.Python
             {
                 try
                 {
-                    //TODO: It would be nice if we could get extra information besides the name. I'm not sure
-                    //if the DLR hosting API can give us anymore information
                     foreach (string member in memberProvider.GetMemberNames(name))
                     {
-                        items.Add(new DefaultCompletionData(member, String.Empty, 0)); //ClassBrowserIconService.MethodIndex));
+                        string doc = memberProvider.GetMemberDoc(name, member);
+                        items.Add(new DefaultCompletionData(member, doc, 0));
                     }
                 }
                 catch
