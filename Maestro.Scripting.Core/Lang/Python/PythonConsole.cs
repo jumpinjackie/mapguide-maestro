@@ -164,7 +164,12 @@ namespace Maestro.Scripting.Core.Lang.Python
 
                 // Collect call signatures (for functions/methods/constructors)
                 var signatures = ops.GetCallSignatures(member);
-                var doc = ops.GetDocumentation(member) ?? string.Empty;
+
+                // Prefer .NET XML documentation (has summary + parameter descriptions),
+                // fall back to the DLR's built-in documentation if XML docs are unavailable
+                var doc = XmlDocHelper.GetFullMemberDoc(member)
+                       ?? ops.GetDocumentation(member)
+                       ?? string.Empty;
 
                 if (signatures != null && signatures.Count > 0)
                 {

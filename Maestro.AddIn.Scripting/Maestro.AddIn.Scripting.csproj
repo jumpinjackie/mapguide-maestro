@@ -5,6 +5,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -65,7 +66,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if not exist &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot; mkdir &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)Manifest.addin&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot;&#xD;&#xA;if exist &quot;$(TargetDir)$(TargetName).pdb&quot; copy /Y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot;" />
+    <Exec Command="if not exist &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot; mkdir &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)Manifest.addin&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot;&#xD;&#xA;if exist &quot;$(TargetDir)$(TargetName).pdb&quot; copy /Y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot;&#xD;&#xA;if exist &quot;$(TargetDir)$(TargetName).xml&quot; copy /Y &quot;$(TargetDir)$(TargetName).xml&quot; &quot;$(SolutionDir)out\$(Configuration)\AddIns\Scripting&quot;" />
   </Target>
 
 </Project>
