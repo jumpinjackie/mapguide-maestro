@@ -73,6 +73,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             ResourceValidatorSet.RegisterValidator(new MapDefinitionValidator("1.0.0"));
             ResourceValidatorSet.RegisterValidator(new MapDefinitionValidator("2.3.0"));
             ResourceValidatorSet.RegisterValidator(new MapDefinitionValidator("2.4.0"));
+            ResourceValidatorSet.RegisterValidator(new MapDefinitionValidator("3.0.0"));
             ResourceValidatorSet.RegisterValidator(new WebLayoutValidator("1.0.0"));
             ResourceValidatorSet.RegisterValidator(new WebLayoutValidator("1.1.0"));
             ResourceValidatorSet.RegisterValidator(new WebLayoutValidator("2.4.0"));
