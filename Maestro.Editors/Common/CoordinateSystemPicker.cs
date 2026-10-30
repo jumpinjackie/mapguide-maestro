@@ -359,7 +359,7 @@ namespace Maestro.Editors.Common
                     try { WKTText.Text = selectedCoordsys == null ? string.Empty : selectedCoordsys.WKT; } //NOXLATE
                     catch { }
                 if (!SelectByEPSGCode.Checked)
-                    try { EPSGCodeText.Text = selectedCoordsys.EPSG; }
+                    try { EPSGCodeText.Text = selectedCoordsys == null ? string.Empty : selectedCoordsys.EPSG; } //NOXLATE
                     catch { }
             }
             finally
