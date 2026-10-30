@@ -19,10 +19,9 @@ namespace ICSharpCode.TextEditor
 	{
 		public Ime(IntPtr hWnd, Font font)
 		{
-			// For unknown reasons, the IME support is causing crashes when used in a WOW64 process
-			// or when used in .NET 4.0. We'll disable IME support in those cases.
+			// The IME support is known to crash in a WOW64 process; disable it there.
 			string PROCESSOR_ARCHITEW6432 = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITEW6432");
-			if (PROCESSOR_ARCHITEW6432 == "IA64" || PROCESSOR_ARCHITEW6432 == "AMD64" || Environment.OSVersion.Platform == PlatformID.Unix || Environment.Version >= new Version(4,0)) {
+			if (PROCESSOR_ARCHITEW6432 == "IA64" || PROCESSOR_ARCHITEW6432 == "AMD64" || Environment.OSVersion.Platform == PlatformID.Unix) {
 				disableIME = true;
 			} else {
 				this.hIMEWnd = ImmGetDefaultIMEWnd(hWnd);
@@ -98,7 +97,10 @@ namespace ICSharpCode.TextEditor
 		private IntPtr hWnd;
 		private const int CFS_POINT = 0x0002;
 
-		[ StructLayout(LayoutKind.Sequential) ]
+		// CharSet.Unicode is required: Font.ToLogFont rejects any type that does not marshal to
+		// exactly the 92-byte native LOGFONTW, and the IME composition window expects a
+		// wide-character LOGFONT.
+		[ StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode) ]
 		private class LOGFONT
 		{
 			public int lfHeight = 0;
@@ -127,7 +129,7 @@ namespace ICSharpCode.TextEditor
 			if (lf == null) {
 				lf = new LOGFONT();
 				f.ToLogFont(lf);
-				lf.lfFaceName = f.Name;  // This is very important! "Font.ToLogFont" Method sets invalid value to LOGFONT.lfFaceName
+				lf.lfFaceName = f.Name;
 			}
 
 			try {
