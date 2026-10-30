@@ -52,22 +52,22 @@ namespace Maestro.AddIn.Scripting.Services
         /// <summary>
         /// Returns a list of the names of all currently open connections
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A list of connection names</returns>
         public string[] GetConnectionNames() => ServiceRegistry.GetService<ServerConnectionManager>().GetConnectionNames().ToArray();
 
         /// <summary>
         /// Gets the connection by its specified name
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="name">The name of the connection to retrieve</param>
+        /// <returns>The server connection, or null if not found</returns>
         public IServerConnection GetConnection(string name) => ServiceRegistry.GetService<ServerConnectionManager>().GetConnection(name);
 
         /// <summary>
         /// Gets the XML content of the given resource id
         /// </summary>
-        /// <param name="conn"></param>
-        /// <param name="resourceId"></param>
-        /// <returns></returns>
+        /// <param name="conn">The server connection</param>
+        /// <param name="resourceId">The ID of the resource</param>
+        /// <returns>The serialized XML content of the resource</returns>
         public string GetResourceXml(IServerConnection conn, string resourceId)
         {
             var res = conn.ResourceService.GetResource(resourceId);
@@ -77,9 +77,9 @@ namespace Maestro.AddIn.Scripting.Services
         /// <summary>
         /// Sets the XML content of the given resource id
         /// </summary>
-        /// <param name="conn"></param>
-        /// <param name="resourceId"></param>
-        /// <param name="xml"></param>
+        /// <param name="conn">The server connection</param>
+        /// <param name="resourceId">The ID of the resource</param>
+        /// <param name="xml">The XML content to set on the resource</param>
         public void SetResourceXml(IServerConnection conn, string resourceId, string xml)
         {
             try
@@ -98,7 +98,7 @@ namespace Maestro.AddIn.Scripting.Services
         /// <summary>
         /// Launches the specified url
         /// </summary>
-        /// <param name="url"></param>
+        /// <param name="url">The URL to open in the default browser</param>
         public void OpenUrl(string url)
         {
             var svc = ServiceRegistry.GetService<UrlLauncherService>();
@@ -108,30 +108,30 @@ namespace Maestro.AddIn.Scripting.Services
         /// <summary>
         /// Prompts for a question that requires a boolean response
         /// </summary>
-        /// <param name="title"></param>
-        /// <param name="question"></param>
-        /// <returns></returns>
+        /// <param name="title">The dialog title</param>
+        /// <param name="question">The question to display</param>
+        /// <returns>true if the user answered yes, false otherwise</returns>
         public bool AskQuestion(string title, string question) => MessageService.AskQuestion(question, title);
 
         /// <summary>
         /// Displays a message
         /// </summary>
-        /// <param name="title"></param>
-        /// <param name="message"></param>
+        /// <param name="title">The dialog title</param>
+        /// <param name="message">The message to display</param>
         public void ShowMessage(string title, string message) => MessageService.ShowMessage(message, title);
 
         /// <summary>
         /// Displays an exception in a dialog
         /// </summary>
-        /// <param name="ex"></param>
+        /// <param name="ex">The exception to display</param>
         public void ShowError(Exception ex) => ErrorDialog.Show(ex);
 
         /// <summary>
         /// Displays a resource picker for opening
         /// </summary>
-        /// <param name="conn"></param>
-        /// <param name="resourceType"></param>
-        /// <returns></returns>
+        /// <param name="conn">The server connection</param>
+        /// <param name="resourceType">The type of resource to pick</param>
+        /// <returns>The selected resource ID, or null if cancelled</returns>
         public string PickResourceOpen(IServerConnection conn, string resourceType)
         {
             Func<string> picker = () =>
@@ -160,9 +160,9 @@ namespace Maestro.AddIn.Scripting.Services
         /// <summary>
         /// Displays a resource picker for saving
         /// </summary>
-        /// <param name="conn"></param>
-        /// <param name="resourceType"></param>
-        /// <returns></returns>
+        /// <param name="conn">The server connection</param>
+        /// <param name="resourceType">The type of resource to pick</param>
+        /// <returns>The selected resource ID, or null if cancelled</returns>
         public string PickResourceSave(IServerConnection conn, string resourceType)
         {
             Func<string> picker = () =>
@@ -191,8 +191,8 @@ namespace Maestro.AddIn.Scripting.Services
         /// <summary>
         /// Prompts a dialog to select a folder
         /// </summary>
-        /// <param name="conn"></param>
-        /// <returns></returns>
+        /// <param name="conn">The server connection</param>
+        /// <returns>The selected folder path, or null if cancelled</returns>
         public string PickFolder(IServerConnection conn)
         {
             Func<string> picker = () =>
@@ -221,8 +221,8 @@ namespace Maestro.AddIn.Scripting.Services
         /// <summary>
         /// Opens the default editor for the specified resource
         /// </summary>
-        /// <param name="conn"></param>
-        /// <param name="resourceId"></param>
+        /// <param name="conn">The server connection</param>
+        /// <param name="resourceId">The ID of the resource to open</param>
         public void OpenEditor(IServerConnection conn, string resourceId)
         {
             Action action = () =>
@@ -240,9 +240,9 @@ namespace Maestro.AddIn.Scripting.Services
         /// <summary>
         /// Launches a preview of the given open resource
         /// </summary>
-        /// <param name="conn"></param>
-        /// <param name="resourceId"></param>
-        /// <param name="locale"></param>
+        /// <param name="conn">The server connection</param>
+        /// <param name="resourceId">The ID of the open resource to preview</param>
+        /// <param name="locale">The locale to use for the preview</param>
         public void PreviewResource(IServerConnection conn, string resourceId, string locale)
         {
             Action action = () =>
@@ -281,7 +281,7 @@ namespace Maestro.AddIn.Scripting.Services
         /// Invokes the specified method on the UI thread. Methods that interact with the UI or create UI components
         /// must be done on this thread
         /// </summary>
-        /// <param name="method"></param>
+        /// <param name="method">The delegate to invoke on the UI thread</param>
         public void UIInvoke(Delegate method) => this.MainWindow.Invoke(method);
     }
 }

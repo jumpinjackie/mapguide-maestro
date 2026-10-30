@@ -43,5 +43,13 @@ namespace Maestro.Scripting.Core.Lang.Python
         IList<string> GetMemberNames(string name);
 
         IList<string> GetGlobals(string name);
+
+        /// <summary>
+        /// Gets documentation for a specific member of a named object, including call signatures if available.
+        /// </summary>
+        /// <param name="name">The name of the object to inspect.</param>
+        /// <param name="memberName">The name of the member to get documentation for.</param>
+        /// <returns>A string containing the call signatures and/or docstring, or an empty string if unavailable.</returns>
+        string GetMemberDoc(string name, string memberName);
     }
 }
